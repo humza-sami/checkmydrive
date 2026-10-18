@@ -273,4 +273,5 @@ jobs:
           echo "Depends: $DEPENDS"
           echo "$DEPENDS" | grep -q smartmontools || { echo "::error::Depends lacks smartmontools"; exit 1; }
           dpkg-deb -c "$DEB"
-          dpkg-deb -c "$DEB" | grep -Eq '(\./)?usr/bin/checkmydrive-engine$' || { echo "::error::usr/bin/checkmydrive-engine missing from .deb"; exit 1; }
+          CONTENTS="$(dpkg-deb -c "$DEB")"
+          grep -Eq '(\./)?usr/bin/checkmydrive-engine$' <<<"$CONTENTS" || { echo "::error::usr/bin/checkmydrive-engine missing from .deb"; exit 1; }
