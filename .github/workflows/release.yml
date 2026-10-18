@@ -135,16 +135,33 @@ jobs:
       # smartctl on Linux comes from the .deb "smartmontools" dependency.
       # tauri.conf.json bundle.resources must tolerate the missing file there (see report).
 
-      - uses: tauri-apps/tauri-action@v0.6.2
+      # Signed + notarized build (macOS only, when APPLE_CERTIFICATE secret is set).
+      - name: Build and release (signed)
+        if: steps.apple_cert.outputs.signed == 'true'
+        uses: tauri-apps/tauri-action@v0.6.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Empty values make Tauri skip signing/notarization.
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        with:
+          projectPath: app
+          tagName: v__VERSION__
+          releaseName: CheckMyDrive v__VERSION__
+          releaseBody: See the assets below to download CheckMyDrive for your platform.
+          releaseDraft: true
+          prerelease: false
+          args: ${{ matrix.tauri_args }}
+
+      # Unsigned build: Windows, Linux, and macOS without certificate. No APPLE_* env at all.
+      - name: Build and release (unsigned)
+        if: steps.apple_cert.outputs.signed != 'true'
+        uses: tauri-apps/tauri-action@v0.6.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           projectPath: app
           tagName: v__VERSION__
