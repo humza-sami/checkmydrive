@@ -1,0 +1,116 @@
+{
+  "json_format_version": [
+    1,
+    0
+  ],
+  "smartctl": {
+    "version": [
+      7,
+      5
+    ],
+    "pre_release": false,
+    "svn_revision": "5714",
+    "platform_info": "x86_64-linux-6.8.0",
+    "build_info": "(local build)",
+    "argv": [
+      "smartctl",
+      "-a",
+      "-j",
+      "/dev/nvme0"
+    ],
+    "exit_status": 0
+  },
+  "local_time": {
+    "time_t": 1760000000,
+    "asctime": "Thu Oct  9 08:53:20 2025 UTC"
+  },
+  "device": {
+    "name": "/dev/nvme0",
+    "info_name": "/dev/nvme0",
+    "type": "nvme",
+    "protocol": "NVMe"
+  },
+  "model_name": "WDC WDS500G3X0C-00SJG0",
+  "serial_number": "20123F800123",
+  "firmware_version": "111110WD",
+  "nvme_pci_vendor": {
+    "id": 5559,
+    "subsystem_id": 5559
+  },
+  "nvme_ieee_oui_identifier": 6980,
+  "nvme_total_capacity": 500107862016,
+  "nvme_unallocated_capacity": 0,
+  "nvme_controller_id": 8224,
+  "nvme_version": {
+    "string": "1.4",
+    "value": 66560
+  },
+  "nvme_number_of_namespaces": 1,
+  "nvme_controller_capabilities": {
+    "self_test": true
+  },
+  "user_capacity": {
+    "blocks": 976773168,
+    "bytes": 500107862016
+  },
+  "logical_block_size": 512,
+  "smart_support": {
+    "available": true,
+    "enabled": true
+  },
+  "smart_status": {
+    "passed": true,
+    "nvme": {
+      "value": 0
+    }
+  },
+  "nvme_smart_health_information_log": {
+    "critical_warning": 0,
+    "temperature": 38,
+    "available_spare": 100,
+    "available_spare_threshold": 10,
+    "percentage_used": 3,
+    "data_units_read": 15439821,
+    "data_units_written": 21873360,
+    "host_reads": 98223411,
+    "host_writes": 412983120,
+    "controller_busy_time": 812,
+    "power_cycles": 402,
+    "power_on_hours": 4310,
+    "unsafe_shutdowns": 21,
+    "media_errors": 0,
+    "num_err_log_entries": 0,
+    "warning_temp_time": 0,
+    "critical_comp_time": 0,
+    "temperature_sensors": [
+      38,
+      41
+    ]
+  },
+  "temperature": {
+    "current": 38
+  },
+  "power_cycle_count": 402,
+  "power_on_time": {
+    "hours": 4310
+  },
+  "nvme_self_test_log": {
+    "current_self_test_operation": {
+      "value": 0,
+      "string": "No self-test in progress"
+    },
+    "table": [
+      {
+        "self_test_code": {
+          "value": 1,
+          "string": "Short"
+        },
+        "self_test_result": {
+          "value": 0,
+          "string": "Completed without error"
+        },
+        "power_on_hours": 4300
+      }
+    ]
+  }
+}

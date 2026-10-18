@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Know if a used drive is safe before you trust it.",
+    "skip": "Skip to main content"
+  },
+  "nav": {
+    "settings": "Settings",
+    "back": "Back",
+    "mockBanner": "Demo mode: showing sample drives. Nothing on your computer is being tested."
+  },
+  "picker": {
+    "title": "Which drive do you want to check?",
+    "subtitle": "Plug in the drive you are thinking of buying or using, then pick it below. The check takes about 3 to 4 minutes.",
+    "refresh": "Refresh",
+    "refreshing": "Looking for drives…",
+    "empty": "No drives found. Plug one in and press Refresh.",
+    "systemDisk": "System disk",
+    "systemDiskHint": "Your computer runs from this drive. It can be checked in safe mode only.",
+    "unknownModel": "Unknown drive",
+    "select": "Check this drive",
+    "kind": {
+      "hdd": "Hard disk (HDD)",
+      "ssd": "Solid-state drive (SSD)",
+      "nvme": "NVMe SSD",
+      "usb": "USB stick or drive",
+      "sd": "SD / memory card",
+      "unknown": "Drive"
+    },
+    "removable": "Removable",
+    "loadFailed": "We could not read the list of drives.",
+    "noAdminNote": "Some details such as health data may need administrator permission and will be requested when the check starts."
+  },
+  "mode": {
+    "title": "How thorough should the check be?",
+    "checking": "Checking",
+    "safe": {
+      "title": "Quick safe test (keeps your files)",
+      "desc": "Reads the whole drive and writes a small temporary file, so nothing you own is changed or lost.",
+      "badge": "Recommended",
+      "limit": "Cannot detect fake capacity."
+    },
+    "wipe": {
+      "title": "Full wipe test (most thorough, ERASES everything)",
+      "desc": "Also writes across the entire drive to catch fake capacity and hidden defects. Every file on the drive is permanently destroyed.",
+      "dangerTitle": "Danger zone: erases the drive",
+      "dangerBody": "This permanently deletes ALL data on {{model}}. It cannot be undone. Only continue if the drive is empty or you have a backup.",
+      "confirmLabel": "To confirm, type the drive's serial number: {{serial}}",
+      "confirmPlaceholder": "Type the serial number here",
+      "noSerial": "This drive does not report a serial number, so a full wipe test is not available.",
+      "systemBlocked": "Your system disk can never be wiped. Only the safe test is available.",
+      "mismatch": "The text does not match the serial number yet.",
+      "start": "Erase and run full test",
+      "expand": "Show full wipe test",
+      "collapse": "Hide full wipe test"
+    },
+    "start": "Start quick safe test",
+    "back": "Choose another drive",
+    "duration": "Takes about 3 to 4 minutes. Please do not unplug the drive."
+  },
+  "running": {
+    "title": "Checking your drive",
+    "subtitle": "Please keep the drive plugged in and the computer awake.",
+    "overall": "Overall progress",
+    "elapsed": "Elapsed",
+    "remaining": "About {{time}} left",
+    "estimating": "Estimating time…",
+    "cancel": "Cancel test",
+    "cancelling": "Cancelling…",
+    "cancelConfirm": "Stop the test? Nothing on your drive was changed in safe mode.",
+    "keepGoing": "Keep going",
+    "stop": "Stop test",
+    "checklist": "What we are checking",
+    "waiting": "Waiting for permission…",
+    "adminPrompt": "Your computer may ask for your password. This lets CheckMyDrive read the drive directly.",
+    "phase": {
+      "prepare": "Getting ready",
+      "finish": "Working out your score"
+    },
+    "status": {
+      "pending": "Waiting",
+      "running": "Checking",
+      "done": "Done"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Drive identity",
+      "desc": "Model, size and type of drive"
+    },
+    "smart_health": {
+      "name": "Health report",
+      "desc": "The drive's own record of problems and wear"
+    },
+    "selftest_short": {
+      "name": "Built-in self-check",
+      "desc": "The drive checks itself"
+    },
+    "surface_read": {
+      "name": "Surface scan",
+      "desc": "Reads spots across the whole drive"
+    },
+    "write_verify": {
+      "name": "Write and verify",
+      "desc": "Saves data and reads it back"
+    },
+    "capacity_check": {
+      "name": "Real capacity",
+      "desc": "Makes sure the size is not fake"
+    },
+    "stability": {
+      "name": "Stability",
+      "desc": "Watches for disconnects and errors"
+    }
+  },
+  "status": {
+    "pass": "Passed",
+    "warn": "Warning",
+    "fail": "Failed",
+    "skipped": "Skipped"
+  },
+  "results": {
+    "title": "Results",
+    "scoreOutOf": "out of 100",
+    "scoreLabel": "Score {{score}} out of 100",
+    "verdict": {
+      "buy": "Good to buy",
+      "caution": "Use with caution",
+      "avoid": "Avoid"
+    },
+    "summary": {
+      "buy": "This {{model}} looks healthy. We found no serious problems and it should be fine for everyday use.",
+      "caution": "This {{model}} works, but we found some warning signs. Only use it for files you can afford to lose, or negotiate a lower price.",
+      "avoid": "Do not trust this {{model}}. We found serious problems that put your files at risk.",
+      "fake_capacity": "This {{model}} is lying about its size. It claims {{claimed}} but cannot actually store that much. Do not buy or use it.",
+      "failing": "This {{model}} is failing. Its own health data and our tests show it can lose your files at any time."
+    },
+    "can": {
+      "title": "Can I…",
+      "os": "Install an operating system on it?",
+      "storage": "Store files on it long-term?",
+      "daily": "Use it every day?",
+      "fill": "Safely fill it up?",
+      "fillYes": "Safely store up to {{size}} of {{total}}",
+      "fillNo": "We would not store anything important on it.",
+      "yes": "Yes",
+      "maybe": "Maybe",
+      "no": "No"
+    },
+    "age": {
+      "title": "Age of the drive",
+      "years": "About {{count}} years of use",
+      "yearsLessThanOne": "Less than a year of use",
+      "hours": "{{hours}} hours powered on",
+      "made": "Made: {{date}}",
+      "cycles": "{{count}} times switched on",
+      "unknown": "This drive does not report how long it has been used.",
+      "note": "Hours are counted only while the drive is powered on. A drive used 24/7 ages faster than one used a few hours a day."
+    },
+    "issues": {
+      "title": "What we found",
+      "none": "No problems found.",
+      "critical": "Serious",
+      "warn": "Warning",
+      "info": "Note"
+    },
+    "matrix": {
+      "title": "Test matrix",
+      "subtitle": "Details for advanced users",
+      "show": "Show details",
+      "hide": "Hide details",
+      "test": "Test",
+      "status": "Status",
+      "score": "Score",
+      "metrics": "Key numbers",
+      "none": "No numbers recorded"
+    },
+    "export": "Export report",
+    "exportJson": "Save as JSON",
+    "exportHtml": "Save as web page (HTML)",
+    "print": "Print or save as PDF",
+    "saved": "Report saved.",
+    "saveFailed": "Could not save the report.",
+    "another": "Test another drive",
+    "mode": {
+      "safe": "Quick safe test",
+      "wipe": "Full wipe test"
+    },
+    "tested": "Tested on {{date}}",
+    "engine": "Engine {{version}}",
+    "skippedNote": "Fake-capacity detection was not run. Use the full wipe test on an empty drive for a complete answer."
+  },
+  "report": {
+    "title": "CheckMyDrive report",
+    "generatedBy": "Generated by CheckMyDrive (open source)"
+  },
+  "settings": {
+    "title": "Settings and about",
+    "language": "Language",
+    "languageHint": "Languages other than English are loaded as they become available; missing text appears in English.",
+    "theme": "Appearance",
+    "themeSystem": "Match system",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "about": "About",
+    "version": "Version",
+    "license": "License",
+    "licenseValue": "MIT License (free and open source)",
+    "github": "Source code on GitHub",
+    "engineVersion": "Engine",
+    "disclaimer": "CheckMyDrive gives an educated estimate and cannot guarantee a drive will never fail. Always keep backups of files that matter.",
+    "close": "Done"
+  },
+  "metric": {
+    "read_mbps_avg": "Average read speed (MB/s)",
+    "write_mbps": "Write speed (MB/s)",
+    "latency_ms_p99": "Slowest 1% response (ms)",
+    "slow_samples": "Slow spots",
+    "read_errors": "Read errors",
+    "reallocated_sectors": "Replaced bad areas",
+    "pending_sectors": "Unstable areas",
+    "uncorrectable_sectors": "Unreadable areas",
+    "temperature_c": "Temperature (°C)",
+    "percent_used": "Wear used (%)",
+    "media_errors": "Media errors",
+    "written_mb": "Data written (MB)",
+    "mismatches": "Mismatches",
+    "sectors_checked": "Spots checked",
+    "real_capacity_gb": "Real capacity (GB)",
+    "claimed_gb": "Claimed capacity (GB)",
+    "disconnects": "Disconnects",
+    "io_errors": "Input/output errors",
+    "rpm": "Spin speed (RPM)",
+    "interface": "Connection",
+    "result": "Result"
+  },
+  "issue": {
+    "unknown": "Something unusual was found ({{code}}). See the test matrix for details.",
+    "age": {
+      "high_hours": "This drive has been powered on for about {{years}} years ({{hours}} hours), which is a lot of use.",
+      "moderate_hours": "This drive has been powered on for about {{years}} years ({{hours}} hours)."
+    },
+    "drive_info": {
+      "capacity_unknown": "The drive did not report how big it is.",
+      "model_unknown": "The drive did not report its model name.",
+      "system_disk": "This is the disk your computer runs from. Only the safe, non-destructive test was run."
+    },
+    "smart": {
+      "unavailable": "The health-report tool (smartmontools) is not available, so the drive's internal health data could not be read.",
+      "needs_admin": "The drive's health report could not be read without administrator permission.",
+      "timeout": "The drive did not answer the health-report request in time.",
+      "not_supported": "This drive does not provide a health report, so its internal condition is unknown.",
+      "usb_bridge_blocked": "The USB adapter hides the drive's health report, so its internal condition is unknown.",
+      "overall_failed": "The drive's own health check says it is failing.",
+      "reallocated_sectors": "The drive has already replaced {{count}} damaged areas with spares.",
+      "pending_sectors": "{{count}} areas of the drive are unreadable and waiting to be replaced.",
+      "uncorrectable_sectors": "{{count}} areas of the drive could not be read or corrected.",
+      "crc_errors": "{{count}} data-transfer errors were recorded, often caused by a bad cable or connector.",
+      "error_log_entries": "The drive's error log contains {{count}} entries.",
+      "ssd_worn": "This SSD has used up about {{percent}}% of its rated lifetime.",
+      "ssd_worn_out": "This SSD has used up about {{percent}}% of its rated lifetime and is close to the end of its life.",
+      "nvme_critical_warning": "The drive is reporting a critical warning (code {{value}}).",
+      "nvme_media_errors": "The drive's memory has logged {{count}} data-integrity errors.",
+      "spare_low": "Only {{percent}}% of the drive's spare memory is left.",
+      "temperature_high": "The drive is running hot ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "The drive's quick self-test was skipped because its health interface is not available.",
+      "not_supported": "This drive does not support the quick self-test.",
+      "could_not_start": "The drive's quick self-test could not be started.",
+      "failed": "The drive failed its own quick self-test.",
+      "aborted": "The drive's quick self-test was interrupted before it finished.",
+      "timeout": "The drive's quick self-test did not finish within {{seconds}} seconds and was stopped."
+    },
+    "surface_read": {
+      "cannot_open": "The drive could not be opened for reading.",
+      "read_errors": "{{count}} parts of the drive could not be read.",
+      "slow_areas": "{{count}} areas ({{percent}}%) responded very slowly, which can mean the surface is wearing out.",
+      "low_speed": "The drive reads slowly ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "The write test was skipped because the drive has no folder we can safely write to.",
+      "insufficient_space": "The write test was skipped because the drive has too little free space.",
+      "write_error": "The drive reported an error while writing test data.",
+      "data_mismatch": "{{count}} blocks of test data came back different from what was written.",
+      "slow_write": "The drive writes very slowly ({{mbps}} MB/s).",
+      "cleanup_failed": "The temporary test file could not be deleted. You can remove {{path}} yourself."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "The fake-capacity check needs the full test, which erases the drive. It was skipped.",
+      "fake_capacity": "This drive claims to hold {{claimed_bytes}} bytes but only about {{real_bytes}} bytes are real. It is a fake-capacity drive.",
+      "data_corruption": "{{count}} test blocks came back damaged.",
+      "io_error": "The drive returned {{count}} errors during the capacity check."
+    },
+    "stability": {
+      "device_disconnected": "The drive disappeared {{count}} time(s) during the tests.",
+      "io_errors": "The drive returned {{count}} read or write errors during the tests.",
+      "timeouts": "The drive timed out {{count}} time(s) during the tests.",
+      "crc_errors_increased": "Data-transfer errors increased by {{count}} during the tests. Check the cable.",
+      "new_bad_sectors": "{{count}} new damaged areas appeared while we were testing."
+    }
+  },
+  "progress": {
+    "unknown": "Working…",
+    "working": "Working…",
+    "prepare": {
+      "starting": "Getting ready...",
+      "reading_smart": "Reading the drive's built-in health report...",
+      "unmounting": "Safely disconnecting the drive's volumes...",
+      "ready": "Ready to test."
+    },
+    "drive_info": {
+      "identifying": "Identifying the drive..."
+    },
+    "smart_health": {
+      "analyzing": "Checking the drive's health report..."
+    },
+    "selftest_short": {
+      "starting": "Starting the drive's built-in quick self-test...",
+      "running": "The drive is running its own quick self-test ({{percent}}% done).",
+      "done": "The drive's self-test finished.",
+      "running_seconds": "The drive is running its own quick self-test ({{seconds}} seconds so far)."
+    },
+    "surface_read": {
+      "sampling": "Reading sample areas across the whole drive ({{done}} of {{total}}).",
+      "sequential": "Measuring read speed ({{mbps}} MB/s).",
+      "done": "Surface scan finished."
+    },
+    "write_verify": {
+      "writing": "Writing test data ({{mb}} MB written).",
+      "verifying": "Reading the data back to check it ({{mb}} MB checked).",
+      "cleaning": "Removing the temporary test file...",
+      "done": "Write test finished."
+    },
+    "capacity_check": {
+      "writing": "Marking spots across the full claimed size ({{done}} of {{total}}).",
+      "verifying": "Checking that every spot holds its own data ({{done}} of {{total}}).",
+      "done": "Capacity check finished."
+    },
+    "stability": {
+      "checking": "Checking the drive stayed stable during the tests..."
+    },
+    "finish": {
+      "scoring": "Working out your score...",
+      "done": "Done."
+    }
+  },
+  "suitability": {
+    "unknown": "No details available.",
+    "fallback": {
+      "os_install": {
+        "good": "No problems that would stop an operating system from running reliably.",
+        "caution": "It may work, but there is some risk. Keep a backup.",
+        "no": "Not safe for an operating system."
+      },
+      "long_term_storage": {
+        "good": "Looks reliable for keeping files long-term. Keep a second copy anyway.",
+        "caution": "Risky for long-term storage. Keep another copy elsewhere.",
+        "no": "Do not keep important files here."
+      },
+      "daily_use": {
+        "good": "Fine for everyday use.",
+        "caution": "OK for everyday use, but watch for new problems.",
+        "no": "Not reliable enough for daily use."
+      }
+    },
+    "os_install": {
+      "ok": "Good for installing an operating system on.",
+      "bad_sectors": "Not recommended for an operating system: it has damaged areas.",
+      "slow_latency": "Not recommended for an operating system: some reads are too slow.",
+      "score_low": "Not recommended for an operating system: the overall score ({{score}}) is too low."
+    },
+    "long_term_storage": {
+      "ok": "Good for storing files long term.",
+      "critical_issues": "Not safe for long-term storage: serious problems were found.",
+      "score_low": "Risky for long-term storage: the overall score ({{score}}) is too low. Keep backups."
+    },
+    "daily_use": {
+      "ok": "Fine for everyday use.",
+      "caution": "Usable for everyday files, but keep backups.",
+      "no": "Not recommended for everyday use."
+    }
+  },
+  "error": {
+    "unknown": "Something went wrong ({{code}}).",
+    "title": "The check could not finish",
+    "retry": "Try again",
+    "choose": "Choose another drive",
+    "refused": "The test was refused for safety. Wipe tests cannot run on the system disk or without a matching serial number.",
+    "engine_failed": "The checking tool stopped unexpectedly.",
+    "engine_missing": "The checking tool was not found. Please reinstall CheckMyDrive.",
+    "auth_cancelled": "Permission was not granted, so the drive was not checked.",
+    "elevation_unavailable": "Could not ask for administrator permission on this computer.",
+    "bad_args": "The test could not start because of an internal request error.",
+    "needs_admin": "Administrator permission is needed to test this drive.",
+    "drive_not_found": "That drive could not be found. It may have been unplugged.",
+    "system_disk_refused": "This is the disk your computer runs from, so it cannot be erased. Choose another drive.",
+    "confirm_required": "Please confirm the drive's serial number before a full test that erases data.",
+    "confirm_mismatch": "The serial number you entered does not match this drive. Nothing was changed.",
+    "cannot_open_device": "The drive could not be opened for testing. Another program may be using it.",
+    "unmount_failed": "The drive's volumes could not be safely disconnected before the full test. Close any programs using it and try again.",
+    "internal": "Something unexpected went wrong inside the test engine."
+  },
+  "common": {
+    "loading": "Loading…",
+    "close": "Close",
+    "unknown": "Unknown"
+  }
+}

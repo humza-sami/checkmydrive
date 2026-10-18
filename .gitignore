@@ -1,0 +1,11 @@
+target/
+node_modules/
+dist/
+app/src-tauri/binaries/*
+!app/src-tauri/binaries/.gitkeep
+engine/vendor/
+resources/smartctl*
+app/src-tauri/resources/smartctl*
+.DS_Store
+*.p12
+assets-src/icon-candidates/

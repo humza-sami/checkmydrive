@@ -1,0 +1,35 @@
+[package]
+name = "checkmydrive-engine"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Disk-testing engine for CheckMyDrive"
+
+[lib]
+name = "checkmydrive_engine"
+path = "src/lib.rs"
+
+[[bin]]
+name = "checkmydrive-engine"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rand = "0.8"
+ctrlc = { version = "3", features = ["termination"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = [
+  "Win32_Foundation", "Win32_Storage_FileSystem", "Win32_System_IO",
+  "Win32_System_Ioctl", "Win32_Security", "Win32_System_Threading",
+] }
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true

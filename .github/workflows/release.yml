@@ -1,0 +1,155 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  release:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS (universal)
+            os: macos-latest
+            rust_targets: aarch64-apple-darwin,x86_64-apple-darwin
+            tauri_args: --target universal-apple-darwin --bundles app,dmg
+          - name: Windows (x64)
+            os: windows-latest
+            rust_targets: x86_64-pc-windows-msvc
+            tauri_args: --target x86_64-pc-windows-msvc --bundles nsis,msi
+          - name: Linux (x64)
+            os: ubuntu-22.04
+            rust_targets: x86_64-unknown-linux-gnu
+            tauri_args: --target x86_64-unknown-linux-gnu --bundles deb
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.rust_targets }}
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            engine
+            app/src-tauri
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Install frontend dependencies
+        working-directory: app
+        run: npm ci
+
+      # ---------------- macOS ----------------
+      - name: Import Apple certificate into temporary keychain
+        if: runner.os == 'macOS'
+        id: apple_cert
+        env:
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+        run: |
+          if [ -z "$APPLE_CERTIFICATE" ]; then
+            echo "APPLE_CERTIFICATE not set; building UNSIGNED."
+            echo "signed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          KEYCHAIN="$RUNNER_TEMP/build.keychain-db"
+          KEYCHAIN_PW="$(uuidgen)"
+          echo "$APPLE_CERTIFICATE" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "$KEYCHAIN_PW" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PW" "$KEYCHAIN"
+          security import "$RUNNER_TEMP/cert.p12" -P "$APPLE_CERTIFICATE_PASSWORD" \
+            -A -t cert -f pkcs12 -k "$KEYCHAIN"
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PW" "$KEYCHAIN"
+          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | tr -d '"')
+          rm -f "$RUNNER_TEMP/cert.p12"
+          echo "signed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Build engine sidecar (macOS, both arches + lipo universal)
+        if: runner.os == 'macOS'
+        run: |
+          bash scripts/build-sidecar.sh aarch64-apple-darwin
+          bash scripts/build-sidecar.sh x86_64-apple-darwin
+          cd app/src-tauri/binaries
+          lipo -create -output checkmydrive-engine-universal-apple-darwin \
+            checkmydrive-engine-aarch64-apple-darwin \
+            checkmydrive-engine-x86_64-apple-darwin
+          lipo -info checkmydrive-engine-universal-apple-darwin
+          ls -la
+
+      - name: Fetch smartctl (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          bash scripts/ci/fetch-smartctl-macos.sh app/src-tauri/resources/smartctl 7.5
+          lipo -info app/src-tauri/resources/smartctl
+
+      - name: Sign smartctl (hardened runtime)
+        if: runner.os == 'macOS' && steps.apple_cert.outputs.signed == 'true'
+        env:
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+        run: |
+          # Tauri signs the app and externalBin sidecars, but not arbitrary bundle.resources
+          # binaries; unsigned Mach-O files would fail notarization.
+          codesign --force --options runtime --timestamp \
+            --sign "$APPLE_SIGNING_IDENTITY" app/src-tauri/resources/smartctl
+          codesign --verify --strict --verbose=2 app/src-tauri/resources/smartctl
+
+      # ---------------- Windows ----------------
+      - name: Build engine sidecar (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./scripts/build-sidecar.ps1 x86_64-pc-windows-msvc
+
+      - name: Fetch smartctl (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./scripts/ci/fetch-smartctl-windows.ps1 -Out app/src-tauri/resources/smartctl.exe -Version 7.5
+
+      # ---------------- Linux ----------------
+      - name: Build engine sidecar (Linux)
+        if: runner.os == 'Linux'
+        run: bash scripts/build-sidecar.sh x86_64-unknown-linux-gnu
+
+      # smartctl on Linux comes from the .deb "smartmontools" dependency.
+      # tauri.conf.json bundle.resources must tolerate the missing file there (see report).
+
+      - uses: tauri-apps/tauri-action@v0.6.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Empty values make Tauri skip signing/notarization.
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        with:
+          projectPath: app
+          tagName: v__VERSION__
+          releaseName: CheckMyDrive v__VERSION__
+          releaseBody: See the assets below to download CheckMyDrive for your platform.
+          releaseDraft: true
+          prerelease: false
+          args: ${{ matrix.tauri_args }}
