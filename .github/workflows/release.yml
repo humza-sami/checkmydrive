@@ -170,3 +170,107 @@ jobs:
           releaseDraft: true
           prerelease: false
           args: ${{ matrix.tauri_args }}
+
+      # ---------------- Post-build bundle verification ----------------
+      - name: Verify bundle (macOS)
+        if: runner.os == 'macOS'
+        env:
+          SIGNED: ${{ steps.apple_cert.outputs.signed }}
+        run: |
+          set -euo pipefail
+          APP="$(find app/src-tauri/target -type d -name 'CheckMyDrive.app' -path '*/release/bundle/macos/*' | head -n1)"
+          if [ -z "$APP" ]; then echo "::error::CheckMyDrive.app not found"; exit 1; fi
+          echo "App: $APP"
+          ENGINE="$APP/Contents/MacOS/checkmydrive-engine"
+          SMART="$APP/Contents/Resources/smartctl"
+          for f in "$ENGINE" "$SMART"; do
+            if [ ! -f "$f" ]; then echo "::error::Missing $f"; exit 1; fi
+            ls -la "$f"
+          done
+          for f in "$ENGINE" "$SMART"; do
+            ARCHS="$(lipo -archs "$f")"
+            echo "$f archs: $ARCHS"
+            case " $ARCHS " in *" x86_64 "*) ;; *) echo "::error::$f lacks x86_64"; exit 1;; esac
+            case " $ARCHS " in *" arm64 "*) ;; *) echo "::error::$f lacks arm64"; exit 1;; esac
+          done
+          echo "--- checkmydrive-engine version ---"
+          "$ENGINE" version
+          if [ "$SIGNED" = "true" ]; then
+            codesign --verify --deep --strict --verbose=2 "$APP"
+            spctl -a -vv "$APP" || echo "::warning::spctl assessment failed for $APP"
+          fi
+
+      - name: Verify bundle (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          # NSIS
+          $nsis = Get-ChildItem -Path app/src-tauri/target -Recurse -Filter '*-setup.exe' -File -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -match '[\\/]release[\\/]bundle[\\/]nsis[\\/]' } | Select-Object -First 1
+          if (-not $nsis) { throw 'NSIS setup .exe not found' }
+          Write-Host "NSIS: $($nsis.FullName) ($($nsis.Length) bytes)"
+          if ($nsis.Length -le 1MB) { throw "NSIS setup too small: $($nsis.Length) bytes" }
+
+          # MSI
+          $msi = Get-ChildItem -Path app/src-tauri/target -Recurse -Filter '*.msi' -File -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -match '[\\/]release[\\/]bundle[\\/]msi[\\/]' } | Select-Object -First 1
+          if (-not $msi) { throw 'MSI not found' }
+          Write-Host "MSI: $($msi.FullName) ($($msi.Length) bytes)"
+          $target = Join-Path $env:RUNNER_TEMP 'msi-extract'
+          if (Test-Path $target) { Remove-Item $target -Recurse -Force }
+          New-Item -ItemType Directory -Path $target | Out-Null
+          $p = Start-Process msiexec -ArgumentList '/a', "`"$($msi.FullName)`"", '/qn', "TARGETDIR=`"$target`"" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "msiexec administrative extract failed with exit code $($p.ExitCode)" }
+
+          $engine = Get-ChildItem -Path $target -Recurse -Filter 'checkmydrive-engine.exe' -File | Select-Object -First 1
+          $smart = Get-ChildItem -Path $target -Recurse -Filter 'smartctl.exe' -File | Select-Object -First 1
+          if (-not $engine) { throw 'checkmydrive-engine.exe missing from MSI' }
+          if (-not $smart) { throw 'smartctl.exe missing from MSI' }
+          Write-Host "engine: $($engine.FullName) ($($engine.Length) bytes)"
+          Write-Host "smartctl: $($smart.FullName) ($($smart.Length) bytes)"
+
+          # PE header machine field
+          $fs = [System.IO.File]::OpenRead($smart.FullName)
+          try {
+            $br = New-Object System.IO.BinaryReader($fs)
+            $fs.Seek(0x3C, 'Begin') | Out-Null
+            $peOffset = $br.ReadInt32()
+            $fs.Seek($peOffset, 'Begin') | Out-Null
+            $sig = $br.ReadUInt32()
+            if ($sig -ne 0x00004550) { throw 'smartctl.exe: invalid PE signature' }
+            $machine = $br.ReadUInt16()
+          } finally { $fs.Dispose() }
+          Write-Host ('smartctl.exe PE machine: 0x{0:X4}' -f $machine)
+          if ($machine -ne 0x8664) { throw ('smartctl.exe is not 64-bit (machine 0x{0:X4})' -f $machine) }
+
+          # Engine version
+          $env:CHECKMYDRIVE_SMARTCTL = $smart.FullName
+          Push-Location $engine.DirectoryName
+          try {
+            $out = & $engine.FullName version 2>&1 | Out-String
+            Write-Host "engine version exit code: $LASTEXITCODE"
+            Write-Host $out
+          } finally { Pop-Location }
+          $smartVer = $null
+          try {
+            $json = $out | ConvertFrom-Json
+            $prop = $json.PSObject.Properties | Where-Object { $_.Name -match 'smartctl' } | Select-Object -First 1
+            if ($prop) { $smartVer = $prop.Value }
+          } catch { Write-Host "Could not parse version output as JSON: $_" }
+          if (-not $smartVer) {
+            Write-Host '::warning::checkmydrive-engine version did not report a smartctl version'
+          }
+
+      - name: Verify bundle (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          set -euo pipefail
+          DEB="$(find app/src-tauri/target -type f -name '*.deb' -path '*/release/bundle/deb/*' | head -n1)"
+          if [ -z "$DEB" ]; then echo "::error::.deb not found"; exit 1; fi
+          echo "Deb: $DEB"
+          DEPENDS="$(dpkg-deb -f "$DEB" Depends)"
+          echo "Depends: $DEPENDS"
+          echo "$DEPENDS" | grep -q smartmontools || { echo "::error::Depends lacks smartmontools"; exit 1; }
+          dpkg-deb -c "$DEB"
+          dpkg-deb -c "$DEB" | grep -Eq '(\./)?usr/bin/checkmydrive-engine$' || { echo "::error::usr/bin/checkmydrive-engine missing from .deb"; exit 1; }
