@@ -104,7 +104,7 @@ fn run_file(ctx: &Ctx, max_file: u64) -> TestResult {
         .iter()
         .filter_map(|m| platform::free_bytes(Path::new(m)).map(|f| (f, m.clone())))
         .collect();
-    mounts.sort_by(|a, b| b.0.cmp(&a.0));
+    mounts.sort_by_key(|m| std::cmp::Reverse(m.0));
     if mounts.is_empty() {
         return skipped("issue.write_verify.no_writable_volume");
     }

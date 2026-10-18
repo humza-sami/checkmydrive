@@ -132,7 +132,7 @@ pub fn safe_fill_percent(score: u8) -> u8 {
 /// All issues sorted critical -> info (stable within a severity).
 pub fn sorted_issues(tests: &[TestResult]) -> Vec<Issue> {
     let mut all: Vec<Issue> = tests.iter().flat_map(|t| t.issues.iter().cloned()).collect();
-    all.sort_by(|a, b| b.severity.cmp(&a.severity));
+    all.sort_by_key(|i| std::cmp::Reverse(i.severity));
     all
 }
 
@@ -205,7 +205,7 @@ mod tests {
     fn clean() -> Vec<TestResult> {
         TestId::ALL.iter().map(|i| tr(*i, &[], vec![])).collect()
     }
-    fn with(tests: &mut Vec<TestResult>, id: TestId, k: &str, v: Value) {
+    fn with(tests: &mut [TestResult], id: TestId, k: &str, v: Value) {
         tests.iter_mut().find(|t| t.id == id).unwrap().metrics.insert(k.into(), v);
     }
 

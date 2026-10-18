@@ -46,7 +46,7 @@ impl Drop for AlignedBuf {
 /// SplitMix64 – tiny, fast, deterministic; used for reproducible test patterns.
 pub struct SplitMix64(pub u64);
 impl SplitMix64 {
-    pub fn next(&mut self) -> u64 {
+    pub fn next_u64(&mut self) -> u64 {
         self.0 = self.0.wrapping_add(0x9E37_79B9_7F4A_7C15);
         let mut z = self.0;
         z = (z ^ (z >> 30)).wrapping_mul(0xBF58_476D_1CE4_E5B9);
@@ -55,7 +55,7 @@ impl SplitMix64 {
     }
     pub fn fill(&mut self, buf: &mut [u8]) {
         for chunk in buf.chunks_mut(8) {
-            let v = self.next().to_le_bytes();
+            let v = self.next_u64().to_le_bytes();
             chunk.copy_from_slice(&v[..chunk.len()]);
         }
     }

@@ -233,7 +233,7 @@ mod tests {
         let (avg, p50, p99, max, slow) = summarize(&l, 90.0);
         assert!((avg - 50.5).abs() < 1e-9);
         assert_eq!(max, 100.0);
-        assert!(p50 >= 50.0 && p50 <= 51.0);
+        assert!((50.0..=51.0).contains(&p50));
         assert!(p99 >= 99.0);
         assert_eq!(slow, 10);
     }

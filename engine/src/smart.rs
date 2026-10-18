@@ -297,10 +297,8 @@ fn parse_ata_attributes(table: &[Value], d: &mut SmartData) {
             },
             197 => d.pending = raw,
             199 => d.crc_errors = raw,
-            194 | 190 => {
-                if d.temperature_c.is_none() {
-                    d.temperature_c = a.get("raw").and_then(|r| r.get("value")).and_then(|x| x.as_i64()).map(|t| t & 0xFF);
-                }
+            194 | 190 if d.temperature_c.is_none() => {
+                d.temperature_c = a.get("raw").and_then(|r| r.get("value")).and_then(|x| x.as_i64()).map(|t| t & 0xFF);
             }
             _ => {}
         }
