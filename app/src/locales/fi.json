@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "Aseman ikä",
-      "years": "Noin {{count}} vuoden käyttö",
+      "years_one": "Noin {{count}} vuoden käyttö",
+      "years_other": "Noin {{count}} vuoden käyttö",
       "yearsLessThanOne": "Alle vuoden käyttö",
-      "hours": "{{hours}} tuntia käynnissä",
+      "hours_one": "{{hours}} tunti käynnissä",
+      "hours_other": "{{hours}} tuntia käynnissä",
       "made": "Valmistettu: {{date}}",
-      "cycles": "Kytketty päälle {{count}} kertaa",
+      "cycles_one": "Kytketty päälle {{count}} kerran",
+      "cycles_other": "Kytketty päälle {{count}} kertaa",
       "unknown": "Tämä asema ei ilmoita, kuinka kauan sitä on käytetty.",
       "note": "Tunnit lasketaan vain, kun asema on päällä. Ympäri vuorokauden käytössä oleva asema vanhenee nopeammin kuin muutaman tunnin päivässä käytetty."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Löytyi jotain epätavallista ({{code}}). Katso lisätietoja testitaulukosta.",
     "age": {
-      "high_hours": "Tämä asema on ollut päällä noin {{years}} vuotta ({{hours}} tuntia), mikä on paljon käyttöä.",
-      "moderate_hours": "Tämä asema on ollut päällä noin {{years}} vuotta ({{hours}} tuntia)."
+      "high_hours_one": "Tämä asema on ollut päällä noin {{years}} vuoden ({{hours}} tuntia), mikä on paljon käyttöä.",
+      "high_hours_other": "Tämä asema on ollut päällä noin {{years}} vuotta ({{hours}} tuntia), mikä on paljon käyttöä.",
+      "moderate_hours_one": "Tämä asema on ollut päällä noin {{years}} vuoden ({{hours}} tuntia).",
+      "moderate_hours_other": "Tämä asema on ollut päällä noin {{years}} vuotta ({{hours}} tuntia)."
     },
     "drive_info": {
       "capacity_unknown": "Asema ei ilmoittanut kokoaan.",
@@ -252,15 +257,21 @@
       "not_supported": "Tämä asema ei tarjoa kuntoraporttia, joten sen sisäinen kunto on tuntematon.",
       "usb_bridge_blocked": "USB-sovitin piilottaa aseman kuntoraportin, joten sen sisäinen kunto on tuntematon.",
       "overall_failed": "Aseman oman kuntotarkistuksen mukaan se on hajoamassa.",
-      "reallocated_sectors": "Asema on jo korvannut {{count}} vaurioitunutta aluetta varaosilla.",
-      "pending_sectors": "{{count}} aluetta asemalla on lukukelvottomia ja odottaa korvaamista.",
-      "uncorrectable_sectors": "{{count}} aluetta asemalla ei voitu lukea tai korjata.",
-      "crc_errors": "Tiedonsiirtovirheitä kirjattiin {{count}}, usein huonon kaapelin tai liittimen vuoksi.",
-      "error_log_entries": "Aseman virheloki sisältää {{count}} merkintää.",
+      "reallocated_sectors_one": "Asema on jo korvannut {{count}} vaurioituneen alueen varalla.",
+      "reallocated_sectors_other": "Asema on jo korvannut {{count}} vaurioitunutta aluetta varaosilla.",
+      "pending_sectors_one": "{{count}} alue asemalla on lukukelvoton ja odottaa korvaamista.",
+      "pending_sectors_other": "{{count}} aluetta asemalla on lukukelvottomia ja odottaa korvaamista.",
+      "uncorrectable_sectors_one": "Aseman {{count}} alue ei ollut luettavissa tai korjattavissa.",
+      "uncorrectable_sectors_other": "Aseman {{count}} aluetta ei voitu lukea tai korjata.",
+      "crc_errors_one": "Kirjattiin {{count}} tiedonsiirtovirhe, joka johtuu usein huonosta kaapelista tai liittimestä.",
+      "crc_errors_other": "Kirjattiin {{count}} tiedonsiirtovirhettä, jotka johtuvat usein huonosta kaapelista tai liittimestä.",
+      "error_log_entries_one": "Aseman virhelokissa on {{count}} merkintä.",
+      "error_log_entries_other": "Aseman virhelokissa on {{count}} merkintää.",
       "ssd_worn": "Tämä SSD on käyttänyt noin {{percent}} % arvioidusta käyttöiästään.",
       "ssd_worn_out": "Tämä SSD on käyttänyt noin {{percent}} % arvioidusta käyttöiästään ja on lähellä elinkaarensa loppua.",
       "nvme_critical_warning": "Asema ilmoittaa kriittisestä varoituksesta (koodi {{value}}).",
-      "nvme_media_errors": "Aseman muisti on kirjannut {{count}} tietojen eheysvirhettä.",
+      "nvme_media_errors_one": "Aseman muisti on kirjannut {{count}} tietojen eheysvirheen.",
+      "nvme_media_errors_other": "Aseman muisti on kirjannut {{count}} tietojen eheysvirhettä.",
       "spare_low": "Aseman varamuistista on jäljellä vain {{percent}} %.",
       "temperature_high": "Asema käy kuumana ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "Aseman nopeaa omatestiä ei voitu käynnistää.",
       "failed": "Asema ei läpäissyt omaa nopeaa omatestiään.",
       "aborted": "Aseman nopea omatesti keskeytyi ennen valmistumista.",
-      "timeout": "Aseman nopea omatesti ei valmistunut {{seconds}} sekunnissa ja se pysäytettiin."
+      "timeout_one": "Aseman nopea omatesti ei valmistunut {{seconds}} sekunnissa ja se pysäytettiin.",
+      "timeout_other": "Aseman nopea omatesti ei valmistunut {{seconds}} sekunnissa ja se pysäytettiin."
     },
     "surface_read": {
       "cannot_open": "Asemaa ei voitu avata lukemista varten.",
-      "read_errors": "{{count}} aseman osaa ei voitu lukea.",
-      "slow_areas": "{{count}} aluetta ({{percent}} %) vastasi erittäin hitaasti, mikä voi tarkoittaa pinnan kulumista.",
+      "read_errors_one": "Aseman {{count}} osa ei ollut luettavissa.",
+      "read_errors_other": "Aseman {{count}} osaa ei voitu lukea.",
+      "slow_areas_one": "{{count}} alue ({{percent}} %) vastasi erittäin hitaasti, mikä voi tarkoittaa pinnan kulumista.",
+      "slow_areas_other": "{{count}} aluetta ({{percent}} %) vastasi erittäin hitaasti, mikä voi tarkoittaa pinnan kulumista.",
       "low_speed": "Asema lukee hitaasti ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Kirjoitustesti ohitettiin, koska asemalla ei ole kansiota, johon voisimme kirjoittaa turvallisesti.",
       "insufficient_space": "Kirjoitustesti ohitettiin, koska asemalla on liian vähän vapaata tilaa.",
       "write_error": "Asema ilmoitti virheestä testitietoja kirjoitettaessa.",
-      "data_mismatch": "{{count}} testitietolohkoa palasi erilaisina kuin ne kirjoitettiin.",
+      "data_mismatch_one": "{{count}} testitietolohko palasi erilaisena kuin se kirjoitettiin.",
+      "data_mismatch_other": "{{count}} testitietolohkoa palasi erilaisina kuin ne kirjoitettiin.",
       "slow_write": "Asema kirjoittaa erittäin hitaasti ({{mbps}} MB/s).",
       "cleanup_failed": "Väliaikaista testitiedostoa ei voitu poistaa. Voit poistaa tiedoston {{path}} itse."
     },
     "capacity_check": {
       "needs_wipe_mode": "Väärennetyn kapasiteetin tarkistus vaatii täyden testin, joka tyhjentää aseman. Se ohitettiin.",
       "fake_capacity": "Tämä asema väittää mahtuvansa {{claimed_bytes}} tavua, mutta vain noin {{real_bytes}} tavua on todellista. Se on väärennetyn kapasiteetin asema.",
-      "data_corruption": "{{count}} testilohkoa palasi vaurioituneina.",
-      "io_error": "Asema palautti {{count}} virhettä kapasiteettitarkistuksen aikana."
+      "data_corruption_one": "{{count}} testilohko palasi vaurioituneena.",
+      "data_corruption_other": "{{count}} testilohkoa palasi vaurioituneina.",
+      "io_error_one": "Asema palautti {{count}} virheen kapasiteettitarkistuksen aikana.",
+      "io_error_other": "Asema palautti {{count}} virhettä kapasiteettitarkistuksen aikana."
     },
     "stability": {
-      "device_disconnected": "Asema katosi {{count}} kertaa testien aikana.",
-      "io_errors": "Asema palautti {{count}} luku- tai kirjoitusvirhettä testien aikana.",
-      "timeouts": "Asema ei vastannut ajoissa {{count}} kertaa testien aikana.",
+      "device_disconnected_one": "Asema katosi {{count}} kerran testien aikana.",
+      "device_disconnected_other": "Asema katosi {{count}} kertaa testien aikana.",
+      "io_errors_one": "Asema palautti {{count}} luku- tai kirjoitusvirheen testien aikana.",
+      "io_errors_other": "Asema palautti {{count}} luku- tai kirjoitusvirhettä testien aikana.",
+      "timeouts_one": "Asema ei vastannut ajoissa {{count}} kerran testien aikana.",
+      "timeouts_other": "Asema ei vastannut ajoissa {{count}} kertaa testien aikana.",
       "crc_errors_increased": "Tiedonsiirtovirheet lisääntyivät {{count}} testien aikana. Tarkista kaapeli.",
-      "new_bad_sectors": "{{count}} uutta vaurioitunutta aluetta ilmestyi testauksen aikana."
+      "new_bad_sectors_one": "Testauksen aikana ilmestyi {{count}} uusi vaurioitunut alue.",
+      "new_bad_sectors_other": "Testauksen aikana ilmestyi {{count}} uutta vaurioitunutta aluetta."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "Käynnistetään aseman sisäänrakennettu nopea omatesti...",
       "running": "Asema suorittaa omaa nopeaa omatestiään ({{percent}} % valmis).",
       "done": "Aseman omatesti valmistui.",
-      "running_seconds": "Asema suorittaa omaa nopeaa omatestiään ({{seconds}} sekuntia tähän mennessä)."
+      "running_seconds_one": "Asema suorittaa omaa nopeaa omatestiään ({{seconds}} sekunti tähän mennessä).",
+      "running_seconds_other": "Asema suorittaa omaa nopeaa omatestiään ({{seconds}} sekuntia tähän mennessä)."
     },
     "surface_read": {
       "sampling": "Luetaan näytealueita koko asemalta ({{done}} / {{total}}).",

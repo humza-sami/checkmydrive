@@ -149,11 +149,11 @@
     },
     "age": {
       "title": "Usia pemacu",
-      "years": "Kira-kira {{count}} tahun penggunaan",
+      "years_other": "Kira-kira {{count}} tahun penggunaan",
       "yearsLessThanOne": "Penggunaan kurang daripada setahun",
-      "hours": "Dihidupkan selama {{hours}} jam",
+      "hours_other": "Dihidupkan selama {{hours}} jam",
       "made": "Dibuat: {{date}}",
-      "cycles": "Dihidupkan {{count}} kali",
+      "cycles_other": "Dihidupkan {{count}} kali",
       "unknown": "Pemacu ini tidak melaporkan sudah berapa lama ia digunakan.",
       "note": "Jam hanya dikira ketika pemacu dihidupkan. Pemacu yang digunakan 24/7 menjadi usang lebih cepat daripada yang digunakan beberapa jam sehari."
     },
@@ -237,8 +237,8 @@
   "issue": {
     "unknown": "Sesuatu yang luar biasa ditemui ({{code}}). Lihat jadual ujian untuk butiran.",
     "age": {
-      "high_hours": "Pemacu ini telah dihidupkan selama kira-kira {{years}} tahun ({{hours}} jam), iaitu penggunaan yang banyak.",
-      "moderate_hours": "Pemacu ini telah dihidupkan selama kira-kira {{years}} tahun ({{hours}} jam)."
+      "high_hours_other": "Pemacu ini telah dihidupkan selama kira-kira {{years}} tahun ({{hours}} jam), iaitu penggunaan yang banyak.",
+      "moderate_hours_other": "Pemacu ini telah dihidupkan selama kira-kira {{years}} tahun ({{hours}} jam)."
     },
     "drive_info": {
       "capacity_unknown": "Pemacu tidak melaporkan saiznya.",
@@ -252,15 +252,15 @@
       "not_supported": "Pemacu ini tidak menyediakan laporan kesihatan, jadi keadaan dalamannya tidak diketahui.",
       "usb_bridge_blocked": "Penyesuai USB menyembunyikan laporan kesihatan pemacu, jadi keadaan dalamannya tidak diketahui.",
       "overall_failed": "Pemeriksaan kesihatan pemacu itu sendiri menyatakan ia semakin rosak.",
-      "reallocated_sectors": "Pemacu telah menggantikan {{count}} kawasan rosak dengan kawasan simpanan.",
-      "pending_sectors": "{{count}} kawasan pemacu tidak boleh dibaca dan menunggu untuk diganti.",
-      "uncorrectable_sectors": "{{count}} kawasan pemacu tidak dapat dibaca atau dibetulkan.",
-      "crc_errors": "{{count}} ralat pemindahan data direkodkan, yang selalunya disebabkan oleh kabel atau penyambung yang rosak.",
-      "error_log_entries": "Log ralat pemacu mengandungi {{count}} catatan.",
+      "reallocated_sectors_other": "Pemacu telah menggantikan {{count}} kawasan rosak dengan kawasan simpanan.",
+      "pending_sectors_other": "{{count}} kawasan pemacu tidak boleh dibaca dan menunggu untuk diganti.",
+      "uncorrectable_sectors_other": "{{count}} kawasan pemacu tidak dapat dibaca atau dibetulkan.",
+      "crc_errors_other": "{{count}} ralat pemindahan data direkodkan, yang selalunya disebabkan oleh kabel atau penyambung yang rosak.",
+      "error_log_entries_other": "Log ralat pemacu mengandungi {{count}} catatan.",
       "ssd_worn": "SSD ini telah menggunakan kira-kira {{percent}}% daripada jangka hayat yang dijangkakan.",
       "ssd_worn_out": "SSD ini telah menggunakan kira-kira {{percent}}% daripada jangka hayat yang dijangkakan dan hampir tamat hayatnya.",
       "nvme_critical_warning": "Pemacu melaporkan amaran kritikal (kod {{value}}).",
-      "nvme_media_errors": "Memori pemacu telah merekodkan {{count}} ralat integriti data.",
+      "nvme_media_errors_other": "Memori pemacu telah merekodkan {{count}} ralat integriti data.",
       "spare_low": "Hanya {{percent}}% memori simpanan pemacu yang tinggal.",
       "temperature_high": "Pemacu berjalan panas ({{celsius}} C)."
     },
@@ -270,34 +270,34 @@
       "could_not_start": "Ujian kendiri pantas pemacu tidak dapat dimulakan.",
       "failed": "Pemacu gagal dalam ujian kendiri pantasnya sendiri.",
       "aborted": "Ujian kendiri pantas pemacu terganggu sebelum selesai.",
-      "timeout": "Ujian kendiri pantas pemacu tidak selesai dalam {{seconds}} saat dan telah dihentikan."
+      "timeout_other": "Ujian kendiri pantas pemacu tidak selesai dalam {{seconds}} saat dan telah dihentikan."
     },
     "surface_read": {
       "cannot_open": "Pemacu tidak dapat dibuka untuk dibaca.",
-      "read_errors": "{{count}} bahagian pemacu tidak dapat dibaca.",
-      "slow_areas": "{{count}} kawasan ({{percent}}%) bertindak balas dengan sangat perlahan, yang boleh bermakna permukaannya semakin haus.",
+      "read_errors_other": "{{count}} bahagian pemacu tidak dapat dibaca.",
+      "slow_areas_other": "{{count}} kawasan ({{percent}}%) bertindak balas dengan sangat perlahan, yang boleh bermakna permukaannya semakin haus.",
       "low_speed": "Pemacu membaca dengan perlahan ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Ujian tulis dilangkau kerana pemacu tidak mempunyai folder yang boleh kami tulis dengan selamat.",
       "insufficient_space": "Ujian tulis dilangkau kerana pemacu mempunyai terlalu sedikit ruang kosong.",
       "write_error": "Pemacu melaporkan ralat semasa menulis data ujian.",
-      "data_mismatch": "{{count}} blok data ujian kembali berbeza daripada yang ditulis.",
+      "data_mismatch_other": "{{count}} blok data ujian kembali berbeza daripada yang ditulis.",
       "slow_write": "Pemacu menulis dengan sangat perlahan ({{mbps}} MB/s).",
       "cleanup_failed": "Fail ujian sementara tidak dapat dipadam. Anda boleh memadam {{path}} sendiri."
     },
     "capacity_check": {
       "needs_wipe_mode": "Pemeriksaan kapasiti palsu memerlukan ujian penuh yang memadam pemacu. Ia dilangkau.",
       "fake_capacity": "Pemacu ini mendakwa boleh memuatkan {{claimed_bytes}} bait tetapi hanya kira-kira {{real_bytes}} bait yang sebenar. Ia ialah pemacu berkapasiti palsu.",
-      "data_corruption": "{{count}} blok ujian kembali dalam keadaan rosak.",
-      "io_error": "Pemacu memulangkan {{count}} ralat semasa pemeriksaan kapasiti."
+      "data_corruption_other": "{{count}} blok ujian kembali dalam keadaan rosak.",
+      "io_error_other": "Pemacu memulangkan {{count}} ralat semasa pemeriksaan kapasiti."
     },
     "stability": {
-      "device_disconnected": "Pemacu hilang sebanyak {{count}} kali semasa ujian.",
-      "io_errors": "Pemacu memulangkan {{count}} ralat baca atau tulis semasa ujian.",
-      "timeouts": "Pemacu tamat masa sebanyak {{count}} kali semasa ujian.",
+      "device_disconnected_other": "Pemacu hilang sebanyak {{count}} kali semasa ujian.",
+      "io_errors_other": "Pemacu memulangkan {{count}} ralat baca atau tulis semasa ujian.",
+      "timeouts_other": "Pemacu tamat masa sebanyak {{count}} kali semasa ujian.",
       "crc_errors_increased": "Ralat pemindahan data meningkat sebanyak {{count}} semasa ujian. Periksa kabel.",
-      "new_bad_sectors": "{{count}} kawasan rosak baharu muncul semasa kami menguji."
+      "new_bad_sectors_other": "{{count}} kawasan rosak baharu muncul semasa kami menguji."
     }
   },
   "progress": {
@@ -319,7 +319,7 @@
       "starting": "Memulakan ujian kendiri pantas terbina dalam pemacu...",
       "running": "Pemacu sedang menjalankan ujian kendiri pantasnya sendiri ({{percent}}% selesai).",
       "done": "Ujian kendiri pemacu selesai.",
-      "running_seconds": "Pemacu sedang menjalankan ujian kendiri pantasnya sendiri ({{seconds}} saat setakat ini)."
+      "running_seconds_other": "Pemacu sedang menjalankan ujian kendiri pantasnya sendiri ({{seconds}} saat setakat ini)."
     },
     "surface_read": {
       "sampling": "Membaca kawasan sampel merentasi seluruh pemacu ({{done}} daripada {{total}}).",

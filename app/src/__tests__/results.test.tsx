@@ -44,7 +44,7 @@ describe("Results view", () => {
   });
   it("has translations for every code the mock emits", () => {
     for (const d of MOCK_DRIVES) for (const m of ["safe", "wipe"] as const)
-      for (const i of mockReport(d, m).issues) expect(i18n.exists(i.code), i.code).toBe(true);
+      for (const i of mockReport(d, m).issues) expect(i18n.exists(i.code, { count: 1 }), i.code).toBe(true);
   });
 });
 

@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "Umri wa diski",
-      "years": "Takriban miaka {{count}} ya matumizi",
+      "years_one": "Takriban mwaka {{count}} wa matumizi",
+      "years_other": "Takriban miaka {{count}} ya matumizi",
       "yearsLessThanOne": "Chini ya mwaka mmoja wa matumizi",
-      "hours": "Imewashwa kwa saa {{hours}}",
+      "hours_one": "Imewashwa kwa saa {{hours}}",
+      "hours_other": "Imewashwa kwa saa {{hours}}",
       "made": "Ilitengenezwa: {{date}}",
-      "cycles": "Imewashwa mara {{count}}",
+      "cycles_one": "Imewashwa mara {{count}}",
+      "cycles_other": "Imewashwa mara {{count}}",
       "unknown": "Diski hii haitoi taarifa ya muda ambao imetumika.",
       "note": "Saa huhesabiwa tu diski ikiwa imewashwa. Diski inayotumika masaa 24 kila siku huchakaa haraka kuliko inayotumika masaa machache kwa siku."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Kitu cha kawaida kidogo kimepatikana ({{code}}). Tazama jedwali la majaribio kwa maelezo.",
     "age": {
-      "high_hours": "Diski hii imewashwa kwa takriban miaka {{years}} (saa {{hours}}), ambayo ni matumizi mengi.",
-      "moderate_hours": "Diski hii imewashwa kwa takriban miaka {{years}} (saa {{hours}})."
+      "high_hours_one": "Diski hii imewashwa kwa takriban mwaka {{years}} (saa {{hours}}), ambayo ni matumizi mengi.",
+      "high_hours_other": "Diski hii imewashwa kwa takriban miaka {{years}} (saa {{hours}}), ambayo ni matumizi mengi.",
+      "moderate_hours_one": "Diski hii imewashwa kwa takriban mwaka {{years}} (saa {{hours}}).",
+      "moderate_hours_other": "Diski hii imewashwa kwa takriban miaka {{years}} (saa {{hours}})."
     },
     "drive_info": {
       "capacity_unknown": "Diski haikutoa taarifa ya ukubwa wake.",
@@ -252,15 +257,21 @@
       "not_supported": "Diski hii haitoi ripoti ya afya, kwa hivyo hali yake ya ndani haijulikani.",
       "usb_bridge_blocked": "Adapta ya USB inaficha ripoti ya afya ya diski, kwa hivyo hali yake ya ndani haijulikani.",
       "overall_failed": "Ukaguzi wa afya wa diski yenyewe unasema inaharibika.",
-      "reallocated_sectors": "Diski tayari imebadilisha sehemu {{count}} zilizoharibika kwa akiba.",
-      "pending_sectors": "Sehemu {{count}} za diski hazisomeki na zinasubiri kubadilishwa.",
-      "uncorrectable_sectors": "Sehemu {{count}} za diski hazikuweza kusomwa wala kurekebishwa.",
-      "crc_errors": "Hitilafu {{count}} za kuhamisha data zilirekodiwa, mara nyingi husababishwa na kebo au kiunganishi kibovu.",
-      "error_log_entries": "Kumbukumbu ya hitilafu za diski ina rekodi {{count}}.",
+      "reallocated_sectors_one": "Diski tayari imebadilisha sehemu {{count}} iliyoharibika kwa akiba.",
+      "reallocated_sectors_other": "Diski tayari imebadilisha sehemu {{count}} zilizoharibika kwa akiba.",
+      "pending_sectors_one": "Sehemu {{count}} ya diski haisomeki na inasubiri kubadilishwa.",
+      "pending_sectors_other": "Sehemu {{count}} za diski hazisomeki na zinasubiri kubadilishwa.",
+      "uncorrectable_sectors_one": "Sehemu {{count}} ya diski haikuweza kusomwa wala kurekebishwa.",
+      "uncorrectable_sectors_other": "Sehemu {{count}} za diski hazikuweza kusomwa wala kurekebishwa.",
+      "crc_errors_one": "Hitilafu {{count}} ya kuhamisha data ilirekodiwa, mara nyingi husababishwa na kebo au kiunganishi kibovu.",
+      "crc_errors_other": "Hitilafu {{count}} za kuhamisha data zilirekodiwa, mara nyingi husababishwa na kebo au kiunganishi kibovu.",
+      "error_log_entries_one": "Kumbukumbu ya hitilafu za diski ina rekodi {{count}}.",
+      "error_log_entries_other": "Kumbukumbu ya hitilafu za diski ina rekodi {{count}}.",
       "ssd_worn": "SSD hii imetumia takriban {{percent}}% ya maisha yake yaliyokadiriwa.",
       "ssd_worn_out": "SSD hii imetumia takriban {{percent}}% ya maisha yake yaliyokadiriwa na iko karibu na mwisho wa maisha yake.",
       "nvme_critical_warning": "Diski inaripoti onyo kali (msimbo {{value}}).",
-      "nvme_media_errors": "Kumbukumbu ya diski imerekodi hitilafu {{count}} za uadilifu wa data.",
+      "nvme_media_errors_one": "Kumbukumbu ya diski imerekodi hitilafu {{count}} ya uadilifu wa data.",
+      "nvme_media_errors_other": "Kumbukumbu ya diski imerekodi hitilafu {{count}} za uadilifu wa data.",
       "spare_low": "Ni {{percent}}% tu ya kumbukumbu ya akiba ya diski iliyobaki.",
       "temperature_high": "Diski inapata joto jingi ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "Ukaguzi wa haraka wa ndani wa diski haukuweza kuanzishwa.",
       "failed": "Diski ilishindwa kwenye ukaguzi wake wa haraka wa ndani.",
       "aborted": "Ukaguzi wa haraka wa ndani wa diski ulikatizwa kabla ya kukamilika.",
-      "timeout": "Ukaguzi wa haraka wa ndani wa diski haukukamilika ndani ya sekunde {{seconds}} na ulisimamishwa."
+      "timeout_one": "Ukaguzi wa haraka wa ndani wa diski haukukamilika ndani ya sekunde {{seconds}} na ulisimamishwa.",
+      "timeout_other": "Ukaguzi wa haraka wa ndani wa diski haukukamilika ndani ya sekunde {{seconds}} na ulisimamishwa."
     },
     "surface_read": {
       "cannot_open": "Diski haikuweza kufunguliwa kwa ajili ya kusoma.",
-      "read_errors": "Sehemu {{count}} za diski hazikuweza kusomwa.",
-      "slow_areas": "Sehemu {{count}} ({{percent}}%) zilijibu polepole sana, jambo linaloweza kumaanisha uso unachakaa.",
+      "read_errors_one": "Sehemu {{count}} ya diski haikuweza kusomwa.",
+      "read_errors_other": "Sehemu {{count}} za diski hazikuweza kusomwa.",
+      "slow_areas_one": "Sehemu {{count}} ({{percent}}%) ilijibu polepole sana, jambo linaloweza kumaanisha uso unachakaa.",
+      "slow_areas_other": "Sehemu {{count}} ({{percent}}%) zilijibu polepole sana, jambo linaloweza kumaanisha uso unachakaa.",
       "low_speed": "Diski inasoma polepole ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Jaribio la kuandika lilirukwa kwa sababu diski haina folda tunayoweza kuandika kwa usalama.",
       "insufficient_space": "Jaribio la kuandika lilirukwa kwa sababu diski ina nafasi ndogo sana iliyobaki.",
       "write_error": "Diski iliripoti hitilafu wakati wa kuandika data ya jaribio.",
-      "data_mismatch": "Vipande {{count}} vya data ya jaribio vilirudi tofauti na vilivyoandikwa.",
+      "data_mismatch_one": "Kipande {{count}} cha data ya jaribio kilirudi tofauti na kilichoandikwa.",
+      "data_mismatch_other": "Vipande {{count}} vya data ya jaribio vilirudi tofauti na vilivyoandikwa.",
       "slow_write": "Diski inaandika polepole sana ({{mbps}} MB/s).",
       "cleanup_failed": "Faili ya muda ya jaribio haikuweza kufutwa. Unaweza kuondoa {{path}} mwenyewe."
     },
     "capacity_check": {
       "needs_wipe_mode": "Ukaguzi wa ukubwa wa uongo unahitaji jaribio kamili, ambalo hufuta diski. Ulirukwa.",
       "fake_capacity": "Diski hii inadai kuweza kubeba baiti {{claimed_bytes}} lakini ni takriban baiti {{real_bytes}} tu ndizo halisi. Ni diski yenye ukubwa wa uongo.",
-      "data_corruption": "Vipande {{count}} vya jaribio vilirudi vimeharibika.",
-      "io_error": "Diski ilirudisha hitilafu {{count}} wakati wa ukaguzi wa ukubwa."
+      "data_corruption_one": "Kipande {{count}} cha jaribio kilirudi kimeharibika.",
+      "data_corruption_other": "Vipande {{count}} vya jaribio vilirudi vimeharibika.",
+      "io_error_one": "Diski ilirudisha hitilafu {{count}} wakati wa ukaguzi wa ukubwa.",
+      "io_error_other": "Diski ilirudisha hitilafu {{count}} wakati wa ukaguzi wa ukubwa."
     },
     "stability": {
-      "device_disconnected": "Diski ilitoweka mara {{count}} wakati wa majaribio.",
-      "io_errors": "Diski ilirudisha hitilafu {{count}} za kusoma au kuandika wakati wa majaribio.",
-      "timeouts": "Diski ilichelewa kujibu mara {{count}} wakati wa majaribio.",
+      "device_disconnected_one": "Diski ilitoweka mara {{count}} wakati wa majaribio.",
+      "device_disconnected_other": "Diski ilitoweka mara {{count}} wakati wa majaribio.",
+      "io_errors_one": "Diski ilirudisha hitilafu {{count}} za kusoma au kuandika wakati wa majaribio.",
+      "io_errors_other": "Diski ilirudisha hitilafu {{count}} za kusoma au kuandika wakati wa majaribio.",
+      "timeouts_one": "Diski ilichelewa kujibu mara {{count}} wakati wa majaribio.",
+      "timeouts_other": "Diski ilichelewa kujibu mara {{count}} wakati wa majaribio.",
       "crc_errors_increased": "Hitilafu za kuhamisha data ziliongezeka kwa {{count}} wakati wa majaribio. Kagua kebo.",
-      "new_bad_sectors": "Sehemu {{count}} mpya zilizoharibika zilitokea tulipokuwa tukijaribu."
+      "new_bad_sectors_one": "Sehemu {{count}} mpya iliyoharibika ilitokea tulipokuwa tukijaribu.",
+      "new_bad_sectors_other": "Sehemu {{count}} mpya zilizoharibika zilitokea tulipokuwa tukijaribu."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "Inaanzisha ukaguzi wa haraka wa ndani wa diski...",
       "running": "Diski inaendesha ukaguzi wake wa haraka wa ndani (imekamilika {{percent}}%).",
       "done": "Ukaguzi wa ndani wa diski umekamilika.",
-      "running_seconds": "Diski inaendesha ukaguzi wake wa haraka wa ndani (sekunde {{seconds}} hadi sasa)."
+      "running_seconds_one": "Diski inaendesha ukaguzi wake wa haraka wa ndani (sekunde {{seconds}} hadi sasa).",
+      "running_seconds_other": "Diski inaendesha ukaguzi wake wa haraka wa ndani (sekunde {{seconds}} hadi sasa)."
     },
     "surface_read": {
       "sampling": "Inasoma sehemu za sampuli kote kwenye diski ({{done}} kati ya {{total}}).",

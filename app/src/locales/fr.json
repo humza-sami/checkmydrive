@@ -149,11 +149,17 @@
     },
     "age": {
       "title": "Âge du disque",
-      "years": "Environ {{count}} ans d'utilisation",
+      "years_one": "Environ {{count}} an d'utilisation",
+      "years_many": "Environ {{count}} d'ans d'utilisation",
+      "years_other": "Environ {{count}} ans d'utilisation",
       "yearsLessThanOne": "Moins d'un an d'utilisation",
-      "hours": "{{hours}} heures sous tension",
+      "hours_one": "{{hours}} heure sous tension",
+      "hours_many": "{{hours}} d'heures sous tension",
+      "hours_other": "{{hours}} heures sous tension",
       "made": "Fabriqué : {{date}}",
-      "cycles": "Allumé {{count}} fois",
+      "cycles_one": "Allumé {{count}} fois",
+      "cycles_many": "Allumé {{count}} de fois",
+      "cycles_other": "Allumé {{count}} fois",
       "unknown": "Ce disque ne communique pas sa durée d'utilisation.",
       "note": "Les heures ne sont comptées que lorsque le disque est sous tension. Un disque utilisé 24 h/24 vieillit plus vite qu'un disque utilisé quelques heures par jour."
     },
@@ -237,8 +243,12 @@
   "issue": {
     "unknown": "Quelque chose d'inhabituel a été trouvé ({{code}}). Consultez le tableau des tests pour plus de détails.",
     "age": {
-      "high_hours": "Ce disque a été sous tension pendant environ {{years}} ans ({{hours}} heures), ce qui représente beaucoup d'usage.",
-      "moderate_hours": "Ce disque a été sous tension pendant environ {{years}} ans ({{hours}} heures)."
+      "high_hours_one": "Ce disque a été sous tension pendant environ {{years}} an ({{hours}} heures), ce qui représente beaucoup d'usage.",
+      "high_hours_many": "Ce disque a été sous tension pendant environ {{years}} d'ans ({{hours}} heures), ce qui représente beaucoup d'usage.",
+      "high_hours_other": "Ce disque a été sous tension pendant environ {{years}} ans ({{hours}} heures), ce qui représente beaucoup d'usage.",
+      "moderate_hours_one": "Ce disque a été sous tension pendant environ {{years}} an ({{hours}} heures).",
+      "moderate_hours_many": "Ce disque a été sous tension pendant environ {{years}} d'ans ({{hours}} heures).",
+      "moderate_hours_other": "Ce disque a été sous tension pendant environ {{years}} ans ({{hours}} heures)."
     },
     "drive_info": {
       "capacity_unknown": "Le disque n'a pas communiqué sa taille.",
@@ -252,15 +262,27 @@
       "not_supported": "Ce disque ne fournit pas de rapport de santé, son état interne est donc inconnu.",
       "usb_bridge_blocked": "L'adaptateur USB masque le rapport de santé du disque, son état interne est donc inconnu.",
       "overall_failed": "La vérification de santé du disque lui-même indique qu'il est en train de lâcher.",
-      "reallocated_sectors": "Le disque a déjà remplacé {{count}} zones endommagées par des zones de rechange.",
-      "pending_sectors": "{{count}} zones du disque sont illisibles et attendent d'être remplacées.",
-      "uncorrectable_sectors": "{{count}} zones du disque n'ont pas pu être lues ni corrigées.",
-      "crc_errors": "{{count}} erreurs de transfert de données ont été enregistrées, souvent dues à un câble ou un connecteur défectueux.",
-      "error_log_entries": "Le journal d'erreurs du disque contient {{count}} entrées.",
+      "reallocated_sectors_one": "Le disque a déjà remplacé {{count}} zone endommagée par une zone de rechange.",
+      "reallocated_sectors_many": "Le disque a déjà remplacé {{count}} de zones endommagées par des zones de rechange.",
+      "reallocated_sectors_other": "Le disque a déjà remplacé {{count}} zones endommagées par des zones de rechange.",
+      "pending_sectors_one": "{{count}} zone du disque est illisible et attend d'être remplacée.",
+      "pending_sectors_many": "{{count}} de zones du disque sont illisibles et attendent d'être remplacées.",
+      "pending_sectors_other": "{{count}} zones du disque sont illisibles et attendent d'être remplacées.",
+      "uncorrectable_sectors_one": "{{count}} zone du disque n'a pas pu être lue ni corrigée.",
+      "uncorrectable_sectors_many": "{{count}} de zones du disque n'ont pas pu être lues ni corrigées.",
+      "uncorrectable_sectors_other": "{{count}} zones du disque n'ont pas pu être lues ni corrigées.",
+      "crc_errors_one": "{{count}} erreur de transfert de données a été enregistrée, souvent due à un câble ou un connecteur défectueux.",
+      "crc_errors_many": "{{count}} d'erreurs de transfert de données ont été enregistrées, souvent dues à un câble ou un connecteur défectueux.",
+      "crc_errors_other": "{{count}} erreurs de transfert de données ont été enregistrées, souvent dues à un câble ou un connecteur défectueux.",
+      "error_log_entries_one": "Le journal d'erreurs du disque contient {{count}} entrée.",
+      "error_log_entries_many": "Le journal d'erreurs du disque contient {{count}} d'entrées.",
+      "error_log_entries_other": "Le journal d'erreurs du disque contient {{count}} entrées.",
       "ssd_worn": "Ce SSD a utilisé environ {{percent}} % de sa durée de vie prévue.",
       "ssd_worn_out": "Ce SSD a utilisé environ {{percent}} % de sa durée de vie prévue et approche de la fin de sa vie.",
       "nvme_critical_warning": "Le disque signale un avertissement critique (code {{value}}).",
-      "nvme_media_errors": "La mémoire du disque a enregistré {{count}} erreurs d'intégrité des données.",
+      "nvme_media_errors_one": "La mémoire du disque a enregistré {{count}} erreur d'intégrité des données.",
+      "nvme_media_errors_many": "La mémoire du disque a enregistré {{count}} d'erreurs d'intégrité des données.",
+      "nvme_media_errors_other": "La mémoire du disque a enregistré {{count}} erreurs d'intégrité des données.",
       "spare_low": "Il ne reste que {{percent}} % de la mémoire de réserve du disque.",
       "temperature_high": "Le disque chauffe beaucoup ({{celsius}} C)."
     },
@@ -270,34 +292,54 @@
       "could_not_start": "L'auto-vérification rapide du disque n'a pas pu démarrer.",
       "failed": "Le disque a échoué à sa propre auto-vérification rapide.",
       "aborted": "L'auto-vérification rapide du disque a été interrompue avant la fin.",
-      "timeout": "L'auto-vérification rapide du disque ne s'est pas terminée en {{seconds}} secondes et a été arrêtée."
+      "timeout_one": "L'auto-vérification rapide du disque ne s'est pas terminée en {{seconds}} seconde et a été arrêtée.",
+      "timeout_many": "L'auto-vérification rapide du disque ne s'est pas terminée en {{seconds}} de secondes et a été arrêtée.",
+      "timeout_other": "L'auto-vérification rapide du disque ne s'est pas terminée en {{seconds}} secondes et a été arrêtée."
     },
     "surface_read": {
       "cannot_open": "Le disque n'a pas pu être ouvert en lecture.",
-      "read_errors": "{{count}} parties du disque n'ont pas pu être lues.",
-      "slow_areas": "{{count}} zones ({{percent}} %) ont répondu très lentement, ce qui peut signifier que la surface s'use.",
+      "read_errors_one": "{{count}} partie du disque n'a pas pu être lue.",
+      "read_errors_many": "{{count}} de parties du disque n'ont pas pu être lues.",
+      "read_errors_other": "{{count}} parties du disque n'ont pas pu être lues.",
+      "slow_areas_one": "{{count}} zone ({{percent}} %) a répondu très lentement, ce qui peut signifier que la surface s'use.",
+      "slow_areas_many": "{{count}} de zones ({{percent}} %) ont répondu très lentement, ce qui peut signifier que la surface s'use.",
+      "slow_areas_other": "{{count}} zones ({{percent}} %) ont répondu très lentement, ce qui peut signifier que la surface s'use.",
       "low_speed": "Le disque lit lentement ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Le test d'écriture a été ignoré car le disque n'a aucun dossier dans lequel nous puissions écrire en toute sécurité.",
       "insufficient_space": "Le test d'écriture a été ignoré car le disque a trop peu d'espace libre.",
       "write_error": "Le disque a signalé une erreur lors de l'écriture des données de test.",
-      "data_mismatch": "{{count}} blocs de données de test sont revenus différents de ce qui avait été écrit.",
+      "data_mismatch_one": "{{count}} bloc de données de test est revenu différent de ce qui avait été écrit.",
+      "data_mismatch_many": "{{count}} de blocs de données de test sont revenus différents de ce qui avait été écrit.",
+      "data_mismatch_other": "{{count}} blocs de données de test sont revenus différents de ce qui avait été écrit.",
       "slow_write": "Le disque écrit très lentement ({{mbps}} MB/s).",
       "cleanup_failed": "Le fichier temporaire de test n'a pas pu être supprimé. Vous pouvez supprimer {{path}} vous-même."
     },
     "capacity_check": {
       "needs_wipe_mode": "La vérification de fausse capacité nécessite le test complet, qui efface le disque. Elle a été ignorée.",
       "fake_capacity": "Ce disque prétend contenir {{claimed_bytes}} octets, mais seuls environ {{real_bytes}} octets sont réels. C'est un disque à fausse capacité.",
-      "data_corruption": "{{count}} blocs de test sont revenus endommagés.",
-      "io_error": "Le disque a renvoyé {{count}} erreurs pendant la vérification de capacité."
+      "data_corruption_one": "{{count}} bloc de test est revenu endommagé.",
+      "data_corruption_many": "{{count}} de blocs de test sont revenus endommagés.",
+      "data_corruption_other": "{{count}} blocs de test sont revenus endommagés.",
+      "io_error_one": "Le disque a renvoyé {{count}} erreur pendant la vérification de capacité.",
+      "io_error_many": "Le disque a renvoyé {{count}} d'erreurs pendant la vérification de capacité.",
+      "io_error_other": "Le disque a renvoyé {{count}} erreurs pendant la vérification de capacité."
     },
     "stability": {
-      "device_disconnected": "Le disque a disparu {{count}} fois pendant les tests.",
-      "io_errors": "Le disque a renvoyé {{count}} erreurs de lecture ou d'écriture pendant les tests.",
-      "timeouts": "Le disque a dépassé le délai {{count}} fois pendant les tests.",
+      "device_disconnected_one": "Le disque a disparu {{count}} fois pendant les tests.",
+      "device_disconnected_many": "Le disque a disparu {{count}} de fois pendant les tests.",
+      "device_disconnected_other": "Le disque a disparu {{count}} fois pendant les tests.",
+      "io_errors_one": "Le disque a renvoyé {{count}} erreur de lecture ou d'écriture pendant les tests.",
+      "io_errors_many": "Le disque a renvoyé {{count}} d'erreurs de lecture ou d'écriture pendant les tests.",
+      "io_errors_other": "Le disque a renvoyé {{count}} erreurs de lecture ou d'écriture pendant les tests.",
+      "timeouts_one": "Le disque a dépassé le délai {{count}} fois pendant les tests.",
+      "timeouts_many": "Le disque a dépassé le délai {{count}} de fois pendant les tests.",
+      "timeouts_other": "Le disque a dépassé le délai {{count}} fois pendant les tests.",
       "crc_errors_increased": "Les erreurs de transfert de données ont augmenté de {{count}} pendant les tests. Vérifiez le câble.",
-      "new_bad_sectors": "{{count}} nouvelles zones endommagées sont apparues pendant le test."
+      "new_bad_sectors_one": "{{count}} nouvelle zone endommagée est apparue pendant le test.",
+      "new_bad_sectors_many": "{{count}} de nouvelles zones endommagées sont apparues pendant le test.",
+      "new_bad_sectors_other": "{{count}} nouvelles zones endommagées sont apparues pendant le test."
     }
   },
   "progress": {
@@ -319,7 +361,9 @@
       "starting": "Démarrage de l'auto-vérification rapide intégrée du disque...",
       "running": "Le disque effectue sa propre auto-vérification rapide ({{percent}} % effectué).",
       "done": "L'auto-vérification du disque est terminée.",
-      "running_seconds": "Le disque effectue sa propre auto-vérification rapide ({{seconds}} secondes écoulées)."
+      "running_seconds_one": "Le disque effectue sa propre auto-vérification rapide ({{seconds}} seconde écoulée).",
+      "running_seconds_many": "Le disque effectue sa propre auto-vérification rapide ({{seconds}} de secondes écoulées).",
+      "running_seconds_other": "Le disque effectue sa propre auto-vérification rapide ({{seconds}} secondes écoulées)."
     },
     "surface_read": {
       "sampling": "Lecture de zones d'échantillon sur tout le disque ({{done}} sur {{total}}).",

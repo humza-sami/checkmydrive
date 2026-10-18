@@ -149,11 +149,11 @@
     },
     "age": {
       "title": "硬盘的使用年限",
-      "years": "已使用约 {{count}} 年",
+      "years_other": "已使用约 {{count}} 年",
       "yearsLessThanOne": "使用不到一年",
-      "hours": "已通电 {{hours}} 小时",
+      "hours_other": "已通电 {{hours}} 小时",
       "made": "生产日期：{{date}}",
-      "cycles": "已开关机 {{count}} 次",
+      "cycles_other": "已开关机 {{count}} 次",
       "unknown": "这块硬盘没有提供已使用多长时间的信息。",
       "note": "时长只在硬盘通电时计算。全天候运行的硬盘比每天只用几个小时的硬盘老化得更快。"
     },
@@ -237,8 +237,8 @@
   "issue": {
     "unknown": "发现了一些异常情况（{{code}}）。详情请查看检测明细表。",
     "age": {
-      "high_hours": "这块硬盘已通电约 {{years}} 年（{{hours}} 小时），使用量很大。",
-      "moderate_hours": "这块硬盘已通电约 {{years}} 年（{{hours}} 小时）。"
+      "high_hours_other": "这块硬盘已通电约 {{years}} 年（{{hours}} 小时），使用量很大。",
+      "moderate_hours_other": "这块硬盘已通电约 {{years}} 年（{{hours}} 小时）。"
     },
     "drive_info": {
       "capacity_unknown": "硬盘没有提供自身的容量大小。",
@@ -252,15 +252,15 @@
       "not_supported": "这块硬盘不提供健康报告，因此其内部状况未知。",
       "usb_bridge_blocked": "USB 转接器隐藏了硬盘的健康报告，因此其内部状况未知。",
       "overall_failed": "硬盘自身的健康检查显示它正在损坏。",
-      "reallocated_sectors": "硬盘已经用备用区域替换了 {{count}} 个损坏的区域。",
-      "pending_sectors": "硬盘上有 {{count}} 个区域无法读取，正等待被替换。",
-      "uncorrectable_sectors": "硬盘上有 {{count}} 个区域无法读取，也无法纠正。",
-      "crc_errors": "记录到 {{count}} 次数据传输错误，通常由数据线或接口不良引起。",
-      "error_log_entries": "硬盘的错误日志中有 {{count}} 条记录。",
+      "reallocated_sectors_other": "硬盘已经用备用区域替换了 {{count}} 个损坏的区域。",
+      "pending_sectors_other": "硬盘上有 {{count}} 个区域无法读取，正等待被替换。",
+      "uncorrectable_sectors_other": "硬盘上有 {{count}} 个区域无法读取，也无法纠正。",
+      "crc_errors_other": "记录到 {{count}} 次数据传输错误，通常由数据线或接口不良引起。",
+      "error_log_entries_other": "硬盘的错误日志中有 {{count}} 条记录。",
       "ssd_worn": "这块固态硬盘已用掉其额定寿命的约 {{percent}}%。",
       "ssd_worn_out": "这块固态硬盘已用掉其额定寿命的约 {{percent}}%，即将走到寿命的尽头。",
       "nvme_critical_warning": "硬盘报告了一个严重警告（代码 {{value}}）。",
-      "nvme_media_errors": "硬盘的存储芯片已记录 {{count}} 次数据完整性错误。",
+      "nvme_media_errors_other": "硬盘的存储芯片已记录 {{count}} 次数据完整性错误。",
       "spare_low": "硬盘的备用存储空间只剩 {{percent}}%。",
       "temperature_high": "硬盘温度很高（{{celsius}} C）。"
     },
@@ -270,34 +270,34 @@
       "could_not_start": "无法启动硬盘的快速自检。",
       "failed": "硬盘没有通过自身的快速自检。",
       "aborted": "硬盘的快速自检在完成前被中断。",
-      "timeout": "硬盘的快速自检未能在 {{seconds}} 秒内完成，已被停止。"
+      "timeout_other": "硬盘的快速自检未能在 {{seconds}} 秒内完成，已被停止。"
     },
     "surface_read": {
       "cannot_open": "无法打开硬盘进行读取。",
-      "read_errors": "硬盘上有 {{count}} 处无法读取。",
-      "slow_areas": "有 {{count}} 个区域（{{percent}}%）响应非常慢，这可能意味着盘面正在磨损。",
+      "read_errors_other": "硬盘上有 {{count}} 处无法读取。",
+      "slow_areas_other": "有 {{count}} 个区域（{{percent}}%）响应非常慢，这可能意味着盘面正在磨损。",
       "low_speed": "硬盘读取速度很慢（{{mbps}} MB/s）。"
     },
     "write_verify": {
       "no_writable_volume": "已跳过写入检测，因为硬盘上没有可以安全写入的文件夹。",
       "insufficient_space": "已跳过写入检测，因为硬盘的可用空间太小。",
       "write_error": "硬盘在写入测试数据时报告了错误。",
-      "data_mismatch": "有 {{count}} 个测试数据块读回来的内容与写入的不同。",
+      "data_mismatch_other": "有 {{count}} 个测试数据块读回来的内容与写入的不同。",
       "slow_write": "硬盘写入速度非常慢（{{mbps}} MB/s）。",
       "cleanup_failed": "无法删除临时测试文件。您可以自行删除 {{path}}。"
     },
     "capacity_check": {
       "needs_wipe_mode": "虚假容量检查需要使用会清除硬盘的完整检测，因此已跳过。",
       "fake_capacity": "这块硬盘声称可存放 {{claimed_bytes}} 字节，但真正可用的只有约 {{real_bytes}} 字节。这是一块虚假容量的硬盘。",
-      "data_corruption": "有 {{count}} 个测试数据块读回来时已损坏。",
-      "io_error": "硬盘在容量检查期间返回了 {{count}} 个错误。"
+      "data_corruption_other": "有 {{count}} 个测试数据块读回来时已损坏。",
+      "io_error_other": "硬盘在容量检查期间返回了 {{count}} 个错误。"
     },
     "stability": {
-      "device_disconnected": "检测期间硬盘消失了 {{count}} 次。",
-      "io_errors": "检测期间硬盘返回了 {{count}} 个读取或写入错误。",
-      "timeouts": "检测期间硬盘超时了 {{count}} 次。",
+      "device_disconnected_other": "检测期间硬盘消失了 {{count}} 次。",
+      "io_errors_other": "检测期间硬盘返回了 {{count}} 个读取或写入错误。",
+      "timeouts_other": "检测期间硬盘超时了 {{count}} 次。",
       "crc_errors_increased": "检测期间数据传输错误增加了 {{count}} 个。请检查数据线。",
-      "new_bad_sectors": "检测期间出现了 {{count}} 个新的损坏区域。"
+      "new_bad_sectors_other": "检测期间出现了 {{count}} 个新的损坏区域。"
     }
   },
   "progress": {
@@ -319,7 +319,7 @@
       "starting": "正在启动硬盘内置的快速自检...",
       "running": "硬盘正在进行自己的快速自检（已完成 {{percent}}%）。",
       "done": "硬盘自检已完成。",
-      "running_seconds": "硬盘正在进行自己的快速自检（已进行 {{seconds}} 秒）。"
+      "running_seconds_other": "硬盘正在进行自己的快速自检（已进行 {{seconds}} 秒）。"
     },
     "surface_read": {
       "sampling": "正在读取整块硬盘上的抽样区域（{{done}} / {{total}}）。",

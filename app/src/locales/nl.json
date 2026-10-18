@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "Leeftijd van de schijf",
-      "years": "Ongeveer {{count}} jaar gebruikt",
+      "years_one": "Ongeveer {{count}} jaar gebruikt",
+      "years_other": "Ongeveer {{count}} jaar gebruikt",
       "yearsLessThanOne": "Minder dan een jaar gebruikt",
-      "hours": "{{hours}} uur ingeschakeld geweest",
+      "hours_one": "{{hours}} uur ingeschakeld geweest",
+      "hours_other": "{{hours}} uur ingeschakeld geweest",
       "made": "Gemaakt: {{date}}",
-      "cycles": "{{count}} keer aangezet",
+      "cycles_one": "{{count}} keer aangezet",
+      "cycles_other": "{{count}} keer aangezet",
       "unknown": "Deze schijf geeft niet door hoe lang hij is gebruikt.",
       "note": "Uren worden alleen geteld terwijl de schijf aanstaat. Een schijf die dag en nacht draait, veroudert sneller dan een schijf die een paar uur per dag wordt gebruikt."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Er is iets ongewoons gevonden ({{code}}). Zie het testoverzicht voor details.",
     "age": {
-      "high_hours": "Deze schijf heeft ongeveer {{years}} jaar ({{hours}} uur) aangestaan, wat veel gebruik is.",
-      "moderate_hours": "Deze schijf heeft ongeveer {{years}} jaar ({{hours}} uur) aangestaan."
+      "high_hours_one": "Deze schijf heeft ongeveer {{years}} jaar ({{hours}} uur) aangestaan, wat veel gebruik is.",
+      "high_hours_other": "Deze schijf heeft ongeveer {{years}} jaar ({{hours}} uur) aangestaan, wat veel gebruik is.",
+      "moderate_hours_one": "Deze schijf heeft ongeveer {{years}} jaar ({{hours}} uur) aangestaan.",
+      "moderate_hours_other": "Deze schijf heeft ongeveer {{years}} jaar ({{hours}} uur) aangestaan."
     },
     "drive_info": {
       "capacity_unknown": "De schijf gaf niet door hoe groot hij is.",
@@ -252,15 +257,21 @@
       "not_supported": "Deze schijf biedt geen gezondheidsrapport, dus de interne toestand is onbekend.",
       "usb_bridge_blocked": "De USB-adapter verbergt het gezondheidsrapport van de schijf, dus de interne toestand is onbekend.",
       "overall_failed": "De eigen gezondheidscontrole van de schijf zegt dat hij kapotgaat.",
-      "reallocated_sectors": "De schijf heeft al {{count}} beschadigde gebieden vervangen door reserves.",
-      "pending_sectors": "{{count}} gebieden van de schijf zijn onleesbaar en wachten op vervanging.",
-      "uncorrectable_sectors": "{{count}} gebieden van de schijf konden niet worden gelezen of hersteld.",
-      "crc_errors": "Er zijn {{count}} fouten bij gegevensoverdracht vastgelegd, vaak veroorzaakt door een slechte kabel of aansluiting.",
-      "error_log_entries": "Het foutenlogboek van de schijf bevat {{count}} meldingen.",
+      "reallocated_sectors_one": "De schijf heeft al {{count}} beschadigd gebied vervangen door een reserve.",
+      "reallocated_sectors_other": "De schijf heeft al {{count}} beschadigde gebieden vervangen door reserves.",
+      "pending_sectors_one": "{{count}} gebied van de schijf is onleesbaar en wacht op vervanging.",
+      "pending_sectors_other": "{{count}} gebieden van de schijf zijn onleesbaar en wachten op vervanging.",
+      "uncorrectable_sectors_one": "{{count}} gebied van de schijf kon niet worden gelezen of hersteld.",
+      "uncorrectable_sectors_other": "{{count}} gebieden van de schijf konden niet worden gelezen of hersteld.",
+      "crc_errors_one": "Er is {{count}} fout bij gegevensoverdracht vastgelegd, vaak veroorzaakt door een slechte kabel of aansluiting.",
+      "crc_errors_other": "Er zijn {{count}} fouten bij gegevensoverdracht vastgelegd, vaak veroorzaakt door een slechte kabel of aansluiting.",
+      "error_log_entries_one": "Het foutenlogboek van de schijf bevat {{count}} melding.",
+      "error_log_entries_other": "Het foutenlogboek van de schijf bevat {{count}} meldingen.",
       "ssd_worn": "Deze SSD heeft ongeveer {{percent}}% van zijn verwachte levensduur verbruikt.",
       "ssd_worn_out": "Deze SSD heeft ongeveer {{percent}}% van zijn verwachte levensduur verbruikt en nadert het einde van zijn leven.",
       "nvme_critical_warning": "De schijf meldt een kritieke waarschuwing (code {{value}}).",
-      "nvme_media_errors": "Het geheugen van de schijf heeft {{count}} fouten in de gegevensintegriteit vastgelegd.",
+      "nvme_media_errors_one": "Het geheugen van de schijf heeft {{count}} fout in de gegevensintegriteit vastgelegd.",
+      "nvme_media_errors_other": "Het geheugen van de schijf heeft {{count}} fouten in de gegevensintegriteit vastgelegd.",
       "spare_low": "Er is nog maar {{percent}}% van het reservegeheugen van de schijf over.",
       "temperature_high": "De schijf wordt erg warm ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "De snelle zelftest van de schijf kon niet worden gestart.",
       "failed": "De schijf is gezakt voor zijn eigen snelle zelftest.",
       "aborted": "De snelle zelftest van de schijf is onderbroken voordat hij klaar was.",
-      "timeout": "De snelle zelftest van de schijf was niet klaar binnen {{seconds}} seconden en is gestopt."
+      "timeout_one": "De snelle zelftest van de schijf was niet klaar binnen {{seconds}} seconde en is gestopt.",
+      "timeout_other": "De snelle zelftest van de schijf was niet klaar binnen {{seconds}} seconden en is gestopt."
     },
     "surface_read": {
       "cannot_open": "De schijf kon niet worden geopend om te lezen.",
-      "read_errors": "{{count}} delen van de schijf konden niet worden gelezen.",
-      "slow_areas": "{{count}} gebieden ({{percent}}%) reageerden erg traag, wat kan betekenen dat het oppervlak slijt.",
+      "read_errors_one": "{{count}} deel van de schijf kon niet worden gelezen.",
+      "read_errors_other": "{{count}} delen van de schijf konden niet worden gelezen.",
+      "slow_areas_one": "{{count}} gebied ({{percent}}%) reageerde erg traag, wat kan betekenen dat het oppervlak slijt.",
+      "slow_areas_other": "{{count}} gebieden ({{percent}}%) reageerden erg traag, wat kan betekenen dat het oppervlak slijt.",
       "low_speed": "De schijf leest langzaam ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "De schrijftest is overgeslagen omdat de schijf geen map heeft waarin we veilig kunnen schrijven.",
       "insufficient_space": "De schrijftest is overgeslagen omdat de schijf te weinig vrije ruimte heeft.",
       "write_error": "De schijf meldde een fout tijdens het schrijven van testgegevens.",
-      "data_mismatch": "{{count}} blokken testgegevens kwamen anders terug dan ze waren geschreven.",
+      "data_mismatch_one": "{{count}} blok testgegevens kwam anders terug dan het was geschreven.",
+      "data_mismatch_other": "{{count}} blokken testgegevens kwamen anders terug dan ze waren geschreven.",
       "slow_write": "De schijf schrijft erg langzaam ({{mbps}} MB/s).",
       "cleanup_failed": "Het tijdelijke testbestand kon niet worden verwijderd. Je kunt {{path}} zelf verwijderen."
     },
     "capacity_check": {
       "needs_wipe_mode": "De controle op nepcapaciteit vereist de volledige test, die de schijf wist. Hij is overgeslagen.",
       "fake_capacity": "Deze schijf beweert {{claimed_bytes}} bytes te kunnen bevatten, maar slechts ongeveer {{real_bytes}} bytes zijn echt. Het is een schijf met nepcapaciteit.",
-      "data_corruption": "{{count}} testblokken kwamen beschadigd terug.",
-      "io_error": "De schijf gaf tijdens de capaciteitscontrole {{count}} fouten terug."
+      "data_corruption_one": "{{count}} testblok kwam beschadigd terug.",
+      "data_corruption_other": "{{count}} testblokken kwamen beschadigd terug.",
+      "io_error_one": "De schijf gaf tijdens de capaciteitscontrole {{count}} fout terug.",
+      "io_error_other": "De schijf gaf tijdens de capaciteitscontrole {{count}} fouten terug."
     },
     "stability": {
-      "device_disconnected": "De schijf verdween {{count}} keer tijdens de tests.",
-      "io_errors": "De schijf gaf tijdens de tests {{count}} lees- of schrijffouten terug.",
-      "timeouts": "De schijf reageerde tijdens de tests {{count}} keer niet meer op tijd.",
+      "device_disconnected_one": "De schijf verdween {{count}} keer tijdens de tests.",
+      "device_disconnected_other": "De schijf verdween {{count}} keer tijdens de tests.",
+      "io_errors_one": "De schijf gaf tijdens de tests {{count}} lees- of schrijffout terug.",
+      "io_errors_other": "De schijf gaf tijdens de tests {{count}} lees- of schrijffouten terug.",
+      "timeouts_one": "De schijf reageerde tijdens de tests {{count}} keer niet meer op tijd.",
+      "timeouts_other": "De schijf reageerde tijdens de tests {{count}} keer niet meer op tijd.",
       "crc_errors_increased": "Fouten bij gegevensoverdracht namen tijdens de tests met {{count}} toe. Controleer de kabel.",
-      "new_bad_sectors": "Er verschenen {{count}} nieuwe beschadigde gebieden terwijl we testten."
+      "new_bad_sectors_one": "Er verscheen {{count}} nieuw beschadigd gebied terwijl we testten.",
+      "new_bad_sectors_other": "Er verschenen {{count}} nieuwe beschadigde gebieden terwijl we testten."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "De ingebouwde snelle zelftest van de schijf starten...",
       "running": "De schijf voert zijn eigen snelle zelftest uit ({{percent}}% klaar).",
       "done": "De zelftest van de schijf is klaar.",
-      "running_seconds": "De schijf voert zijn eigen snelle zelftest uit (al {{seconds}} seconden bezig)."
+      "running_seconds_one": "De schijf voert zijn eigen snelle zelftest uit (al {{seconds}} seconde bezig).",
+      "running_seconds_other": "De schijf voert zijn eigen snelle zelftest uit (al {{seconds}} seconden bezig)."
     },
     "surface_read": {
       "sampling": "Steekproefgebieden over de hele schijf lezen ({{done}} van {{total}}).",

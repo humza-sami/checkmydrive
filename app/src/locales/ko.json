@@ -149,11 +149,11 @@
     },
     "age": {
       "title": "드라이브 사용 기간",
-      "years": "약 {{count}}년 사용",
+      "years_other": "약 {{count}}년 사용",
       "yearsLessThanOne": "사용 기간 1년 미만",
-      "hours": "전원이 켜진 시간 {{hours}}시간",
+      "hours_other": "전원이 켜진 시간 {{hours}}시간",
       "made": "제조일: {{date}}",
-      "cycles": "{{count}}번 켜짐",
+      "cycles_other": "{{count}}번 켜짐",
       "unknown": "이 드라이브는 얼마나 사용했는지 알려 주지 않아요.",
       "note": "시간은 드라이브 전원이 켜져 있을 때만 계산돼요. 하루 종일 쓰는 드라이브는 하루에 몇 시간만 쓰는 드라이브보다 더 빨리 낡아요."
     },
@@ -237,8 +237,8 @@
   "issue": {
     "unknown": "평소와 다른 점이 발견됐어요 ({{code}}). 자세한 내용은 검사 상세표를 확인하세요.",
     "age": {
-      "high_hours": "이 드라이브는 약 {{years}}년({{hours}}시간) 동안 전원이 켜져 있었어요. 꽤 많이 쓴 거예요.",
-      "moderate_hours": "이 드라이브는 약 {{years}}년({{hours}}시간) 동안 전원이 켜져 있었어요."
+      "high_hours_other": "이 드라이브는 약 {{years}}년({{hours}}시간) 동안 전원이 켜져 있었어요. 꽤 많이 쓴 거예요.",
+      "moderate_hours_other": "이 드라이브는 약 {{years}}년({{hours}}시간) 동안 전원이 켜져 있었어요."
     },
     "drive_info": {
       "capacity_unknown": "드라이브가 크기를 알려 주지 않았어요.",
@@ -252,15 +252,15 @@
       "not_supported": "이 드라이브는 건강 보고서를 제공하지 않아서 내부 상태를 알 수 없어요.",
       "usb_bridge_blocked": "USB 어댑터가 드라이브의 건강 보고서를 가리고 있어서 내부 상태를 알 수 없어요.",
       "overall_failed": "드라이브 자체 건강 검사에서 고장 나고 있다고 나왔어요.",
-      "reallocated_sectors": "드라이브가 손상된 {{count}}개 영역을 예비 영역으로 이미 교체했어요.",
-      "pending_sectors": "드라이브의 {{count}}개 영역을 읽을 수 없고 교체를 기다리고 있어요.",
-      "uncorrectable_sectors": "드라이브의 {{count}}개 영역을 읽거나 복구할 수 없었어요.",
-      "crc_errors": "데이터 전송 오류가 {{count}}건 기록됐어요. 케이블이나 연결 부위가 나쁠 때 자주 생겨요.",
-      "error_log_entries": "드라이브의 오류 기록에 {{count}}개 항목이 있어요.",
+      "reallocated_sectors_other": "드라이브가 손상된 {{count}}개 영역을 예비 영역으로 이미 교체했어요.",
+      "pending_sectors_other": "드라이브의 {{count}}개 영역을 읽을 수 없고 교체를 기다리고 있어요.",
+      "uncorrectable_sectors_other": "드라이브의 {{count}}개 영역을 읽거나 복구할 수 없었어요.",
+      "crc_errors_other": "데이터 전송 오류가 {{count}}건 기록됐어요. 케이블이나 연결 부위가 나쁠 때 자주 생겨요.",
+      "error_log_entries_other": "드라이브의 오류 기록에 {{count}}개 항목이 있어요.",
       "ssd_worn": "이 SSD는 정해진 수명의 약 {{percent}}%를 사용했어요.",
       "ssd_worn_out": "이 SSD는 정해진 수명의 약 {{percent}}%를 사용해서 수명이 거의 다 됐어요.",
       "nvme_critical_warning": "드라이브가 심각한 경고를 알리고 있어요 (코드 {{value}}).",
-      "nvme_media_errors": "드라이브 메모리에 데이터 무결성 오류가 {{count}}건 기록됐어요.",
+      "nvme_media_errors_other": "드라이브 메모리에 데이터 무결성 오류가 {{count}}건 기록됐어요.",
       "spare_low": "드라이브의 예비 메모리가 {{percent}}%만 남았어요.",
       "temperature_high": "드라이브가 뜨겁게 작동하고 있어요 ({{celsius}} C)."
     },
@@ -270,34 +270,34 @@
       "could_not_start": "드라이브의 빠른 자가 점검을 시작하지 못했어요.",
       "failed": "드라이브가 자체 빠른 자가 점검에서 실패했어요.",
       "aborted": "드라이브의 빠른 자가 점검이 끝나기 전에 중단됐어요.",
-      "timeout": "드라이브의 빠른 자가 점검이 {{seconds}}초 안에 끝나지 않아 중지했어요."
+      "timeout_other": "드라이브의 빠른 자가 점검이 {{seconds}}초 안에 끝나지 않아 중지했어요."
     },
     "surface_read": {
       "cannot_open": "드라이브를 읽기 위해 열 수 없었어요.",
-      "read_errors": "드라이브의 {{count}}곳을 읽을 수 없었어요.",
-      "slow_areas": "{{count}}개 영역({{percent}}%)의 응답이 매우 느렸어요. 표면이 닳고 있다는 뜻일 수 있어요.",
+      "read_errors_other": "드라이브의 {{count}}곳을 읽을 수 없었어요.",
+      "slow_areas_other": "{{count}}개 영역({{percent}}%)의 응답이 매우 느렸어요. 표면이 닳고 있다는 뜻일 수 있어요.",
       "low_speed": "드라이브 읽기 속도가 느려요 ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "드라이브에 안전하게 쓸 수 있는 폴더가 없어서 쓰기 검사를 건너뛰었어요.",
       "insufficient_space": "드라이브의 여유 공간이 너무 적어서 쓰기 검사를 건너뛰었어요.",
       "write_error": "검사 데이터를 쓰는 중 드라이브에서 오류가 발생했어요.",
-      "data_mismatch": "검사 데이터 {{count}}블록이 쓴 내용과 다르게 돌아왔어요.",
+      "data_mismatch_other": "검사 데이터 {{count}}블록이 쓴 내용과 다르게 돌아왔어요.",
       "slow_write": "드라이브 쓰기 속도가 매우 느려요 ({{mbps}} MB/s).",
       "cleanup_failed": "임시 검사 파일을 삭제하지 못했어요. {{path}} 파일을 직접 지우셔도 돼요."
     },
     "capacity_check": {
       "needs_wipe_mode": "가짜 용량 검사는 드라이브를 지우는 전체 검사가 필요해요. 이 검사는 건너뛰었어요.",
       "fake_capacity": "이 드라이브는 {{claimed_bytes}}바이트를 저장할 수 있다고 하지만 실제로는 약 {{real_bytes}}바이트뿐이에요. 가짜 용량 드라이브예요.",
-      "data_corruption": "검사 블록 {{count}}개가 손상된 채 돌아왔어요.",
-      "io_error": "용량 검사 중 드라이브에서 오류가 {{count}}건 발생했어요."
+      "data_corruption_other": "검사 블록 {{count}}개가 손상된 채 돌아왔어요.",
+      "io_error_other": "용량 검사 중 드라이브에서 오류가 {{count}}건 발생했어요."
     },
     "stability": {
-      "device_disconnected": "검사 중 드라이브가 {{count}}번 사라졌어요.",
-      "io_errors": "검사 중 드라이브에서 읽기 또는 쓰기 오류가 {{count}}건 발생했어요.",
-      "timeouts": "검사 중 드라이브 응답 시간이 {{count}}번 초과됐어요.",
+      "device_disconnected_other": "검사 중 드라이브가 {{count}}번 사라졌어요.",
+      "io_errors_other": "검사 중 드라이브에서 읽기 또는 쓰기 오류가 {{count}}건 발생했어요.",
+      "timeouts_other": "검사 중 드라이브 응답 시간이 {{count}}번 초과됐어요.",
       "crc_errors_increased": "검사 중 데이터 전송 오류가 {{count}}건 늘었어요. 케이블을 확인해 보세요.",
-      "new_bad_sectors": "검사하는 동안 새로 손상된 영역이 {{count}}개 생겼어요."
+      "new_bad_sectors_other": "검사하는 동안 새로 손상된 영역이 {{count}}개 생겼어요."
     }
   },
   "progress": {
@@ -319,7 +319,7 @@
       "starting": "드라이브의 내장 빠른 자가 점검을 시작하는 중...",
       "running": "드라이브가 빠른 자가 점검을 하고 있어요 ({{percent}}% 완료).",
       "done": "드라이브의 자가 점검이 끝났어요.",
-      "running_seconds": "드라이브가 빠른 자가 점검을 하고 있어요 (지금까지 {{seconds}}초)."
+      "running_seconds_other": "드라이브가 빠른 자가 점검을 하고 있어요 (지금까지 {{seconds}}초)."
     },
     "surface_read": {
       "sampling": "드라이브 전체의 샘플 영역을 읽는 중 ({{total}}개 중 {{done}}개).",

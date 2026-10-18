@@ -116,7 +116,7 @@ export function Results({ report: r, onAnother }: { report: TestReport; onAnothe
               <div className="age-big">
                 {years != null && years < 1 ? t("results.age.yearsLessThanOne") : t("results.age.years", { count: years ?? 0 })}
               </div>
-              <div>{t("results.age.hours", { hours: r.age.power_on_hours.toLocaleString(lang) })}
+              <div>{t("results.age.hours", { count: r.age.power_on_hours, hours: r.age.power_on_hours.toLocaleString(lang) })}
                 {r.age.power_cycles != null && <> · {t("results.age.cycles", { count: r.age.power_cycles })}</>}</div>
             </>
           ) : (

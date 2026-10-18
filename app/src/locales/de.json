@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "Alter des Laufwerks",
-      "years": "Etwa {{count}} Jahre in Gebrauch",
+      "years_one": "Etwa {{count}} Jahr in Gebrauch",
+      "years_other": "Etwa {{count}} Jahre in Gebrauch",
       "yearsLessThanOne": "Weniger als ein Jahr in Gebrauch",
-      "hours": "{{hours}} Stunden eingeschaltet",
+      "hours_one": "{{hours}} Stunde eingeschaltet",
+      "hours_other": "{{hours}} Stunden eingeschaltet",
       "made": "Hergestellt: {{date}}",
-      "cycles": "{{count}} Mal eingeschaltet",
+      "cycles_one": "{{count}} Mal eingeschaltet",
+      "cycles_other": "{{count}} Mal eingeschaltet",
       "unknown": "Dieses Laufwerk meldet nicht, wie lange es benutzt wurde.",
       "note": "Stunden werden nur gezählt, solange das Laufwerk eingeschaltet ist. Ein Laufwerk, das rund um die Uhr läuft, altert schneller als eines, das nur ein paar Stunden am Tag benutzt wird."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Es wurde etwas Ungewöhnliches gefunden ({{code}}). Details finden Sie in der Testübersicht.",
     "age": {
-      "high_hours": "Dieses Laufwerk war etwa {{years}} Jahre ({{hours}} Stunden) eingeschaltet, das ist sehr viel.",
-      "moderate_hours": "Dieses Laufwerk war etwa {{years}} Jahre ({{hours}} Stunden) eingeschaltet."
+      "high_hours_one": "Dieses Laufwerk war etwa {{years}} Jahr ({{hours}} Stunden) eingeschaltet, das ist sehr viel.",
+      "high_hours_other": "Dieses Laufwerk war etwa {{years}} Jahre ({{hours}} Stunden) eingeschaltet, das ist sehr viel.",
+      "moderate_hours_one": "Dieses Laufwerk war etwa {{years}} Jahr ({{hours}} Stunden) eingeschaltet.",
+      "moderate_hours_other": "Dieses Laufwerk war etwa {{years}} Jahre ({{hours}} Stunden) eingeschaltet."
     },
     "drive_info": {
       "capacity_unknown": "Das Laufwerk hat seine Größe nicht gemeldet.",
@@ -252,15 +257,21 @@
       "not_supported": "Dieses Laufwerk liefert keinen Gesundheitsbericht, daher ist sein innerer Zustand unbekannt.",
       "usb_bridge_blocked": "Der USB-Adapter verbirgt den Gesundheitsbericht des Laufwerks, daher ist sein innerer Zustand unbekannt.",
       "overall_failed": "Die eigene Gesundheitsprüfung des Laufwerks meldet, dass es ausfällt.",
-      "reallocated_sectors": "Das Laufwerk hat bereits {{count}} beschädigte Bereiche durch Reserve ersetzt.",
-      "pending_sectors": "{{count}} Bereiche des Laufwerks sind nicht lesbar und warten auf Ersatz.",
-      "uncorrectable_sectors": "{{count}} Bereiche des Laufwerks konnten weder gelesen noch korrigiert werden.",
-      "crc_errors": "Es wurden {{count}} Datenübertragungsfehler aufgezeichnet, oft verursacht durch ein defektes Kabel oder einen defekten Anschluss.",
-      "error_log_entries": "Das Fehlerprotokoll des Laufwerks enthält {{count}} Einträge.",
+      "reallocated_sectors_one": "Das Laufwerk hat bereits {{count}} beschädigten Bereich durch Reserve ersetzt.",
+      "reallocated_sectors_other": "Das Laufwerk hat bereits {{count}} beschädigte Bereiche durch Reserve ersetzt.",
+      "pending_sectors_one": "{{count}} Bereich des Laufwerks ist nicht lesbar und wartet auf Ersatz.",
+      "pending_sectors_other": "{{count}} Bereiche des Laufwerks sind nicht lesbar und warten auf Ersatz.",
+      "uncorrectable_sectors_one": "{{count}} Bereich des Laufwerks konnte weder gelesen noch korrigiert werden.",
+      "uncorrectable_sectors_other": "{{count}} Bereiche des Laufwerks konnten weder gelesen noch korrigiert werden.",
+      "crc_errors_one": "Es wurde {{count}} Datenübertragungsfehler aufgezeichnet, oft verursacht durch ein defektes Kabel oder einen defekten Anschluss.",
+      "crc_errors_other": "Es wurden {{count}} Datenübertragungsfehler aufgezeichnet, oft verursacht durch ein defektes Kabel oder einen defekten Anschluss.",
+      "error_log_entries_one": "Das Fehlerprotokoll des Laufwerks enthält {{count}} Eintrag.",
+      "error_log_entries_other": "Das Fehlerprotokoll des Laufwerks enthält {{count}} Einträge.",
       "ssd_worn": "Diese SSD hat etwa {{percent}} % ihrer Lebensdauer verbraucht.",
       "ssd_worn_out": "Diese SSD hat etwa {{percent}} % ihrer Lebensdauer verbraucht und ist fast am Ende ihrer Lebenszeit.",
       "nvme_critical_warning": "Das Laufwerk meldet eine kritische Warnung (Code {{value}}).",
-      "nvme_media_errors": "Der Speicher des Laufwerks hat {{count}} Datenintegritätsfehler protokolliert.",
+      "nvme_media_errors_one": "Der Speicher des Laufwerks hat {{count}} Datenintegritätsfehler protokolliert.",
+      "nvme_media_errors_other": "Der Speicher des Laufwerks hat {{count}} Datenintegritätsfehler protokolliert.",
       "spare_low": "Vom Reservespeicher des Laufwerks sind nur noch {{percent}} % übrig.",
       "temperature_high": "Das Laufwerk läuft heiß ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "Die schnelle Selbstprüfung des Laufwerks konnte nicht gestartet werden.",
       "failed": "Das Laufwerk hat seine eigene schnelle Selbstprüfung nicht bestanden.",
       "aborted": "Die schnelle Selbstprüfung des Laufwerks wurde vor dem Ende unterbrochen.",
-      "timeout": "Die schnelle Selbstprüfung des Laufwerks wurde nicht innerhalb von {{seconds}} Sekunden fertig und wurde abgebrochen."
+      "timeout_one": "Die schnelle Selbstprüfung des Laufwerks wurde nicht innerhalb von {{seconds}} Sekunde fertig und wurde abgebrochen.",
+      "timeout_other": "Die schnelle Selbstprüfung des Laufwerks wurde nicht innerhalb von {{seconds}} Sekunden fertig und wurde abgebrochen."
     },
     "surface_read": {
       "cannot_open": "Das Laufwerk konnte nicht zum Lesen geöffnet werden.",
-      "read_errors": "{{count}} Teile des Laufwerks konnten nicht gelesen werden.",
-      "slow_areas": "{{count}} Bereiche ({{percent}} %) haben sehr langsam geantwortet, was bedeuten kann, dass die Oberfläche verschleißt.",
+      "read_errors_one": "{{count}} Teil des Laufwerks konnte nicht gelesen werden.",
+      "read_errors_other": "{{count}} Teile des Laufwerks konnten nicht gelesen werden.",
+      "slow_areas_one": "{{count}} Bereich ({{percent}} %) hat sehr langsam geantwortet, was bedeuten kann, dass die Oberfläche verschleißt.",
+      "slow_areas_other": "{{count}} Bereiche ({{percent}} %) haben sehr langsam geantwortet, was bedeuten kann, dass die Oberfläche verschleißt.",
       "low_speed": "Das Laufwerk liest langsam ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Der Schreibtest wurde übersprungen, weil das Laufwerk keinen Ordner hat, in den wir sicher schreiben können.",
       "insufficient_space": "Der Schreibtest wurde übersprungen, weil das Laufwerk zu wenig freien Speicherplatz hat.",
       "write_error": "Das Laufwerk hat beim Schreiben der Testdaten einen Fehler gemeldet.",
-      "data_mismatch": "{{count}} Blöcke mit Testdaten sind anders zurückgekommen, als sie geschrieben wurden.",
+      "data_mismatch_one": "{{count}} Block mit Testdaten ist anders zurückgekommen, als er geschrieben wurde.",
+      "data_mismatch_other": "{{count}} Blöcke mit Testdaten sind anders zurückgekommen, als sie geschrieben wurden.",
       "slow_write": "Das Laufwerk schreibt sehr langsam ({{mbps}} MB/s).",
       "cleanup_failed": "Die temporäre Testdatei konnte nicht gelöscht werden. Sie können {{path}} selbst entfernen."
     },
     "capacity_check": {
       "needs_wipe_mode": "Die Prüfung auf gefälschte Kapazität erfordert den vollständigen Test, der das Laufwerk löscht. Sie wurde übersprungen.",
       "fake_capacity": "Dieses Laufwerk gibt an, {{claimed_bytes}} Bytes zu fassen, aber nur etwa {{real_bytes}} Bytes sind echt. Es ist ein Laufwerk mit gefälschter Kapazität.",
-      "data_corruption": "{{count}} Testblöcke sind beschädigt zurückgekommen.",
-      "io_error": "Das Laufwerk hat bei der Kapazitätsprüfung {{count}} Fehler gemeldet."
+      "data_corruption_one": "{{count}} Testblock ist beschädigt zurückgekommen.",
+      "data_corruption_other": "{{count}} Testblöcke sind beschädigt zurückgekommen.",
+      "io_error_one": "Das Laufwerk hat bei der Kapazitätsprüfung {{count}} Fehler gemeldet.",
+      "io_error_other": "Das Laufwerk hat bei der Kapazitätsprüfung {{count}} Fehler gemeldet."
     },
     "stability": {
-      "device_disconnected": "Das Laufwerk ist während der Tests {{count}} Mal verschwunden.",
-      "io_errors": "Das Laufwerk hat während der Tests {{count}} Lese- oder Schreibfehler gemeldet.",
-      "timeouts": "Beim Laufwerk gab es während der Tests {{count}} Mal eine Zeitüberschreitung.",
+      "device_disconnected_one": "Das Laufwerk ist während der Tests {{count}} Mal verschwunden.",
+      "device_disconnected_other": "Das Laufwerk ist während der Tests {{count}} Mal verschwunden.",
+      "io_errors_one": "Das Laufwerk hat während der Tests {{count}} Lese- oder Schreibfehler gemeldet.",
+      "io_errors_other": "Das Laufwerk hat während der Tests {{count}} Lese- oder Schreibfehler gemeldet.",
+      "timeouts_one": "Beim Laufwerk gab es während der Tests {{count}} Mal eine Zeitüberschreitung.",
+      "timeouts_other": "Beim Laufwerk gab es während der Tests {{count}} Mal eine Zeitüberschreitung.",
       "crc_errors_increased": "Die Datenübertragungsfehler haben während der Tests um {{count}} zugenommen. Prüfen Sie das Kabel.",
-      "new_bad_sectors": "Während des Tests sind {{count}} neue beschädigte Bereiche aufgetreten."
+      "new_bad_sectors_one": "Während des Tests ist {{count}} neuer beschädigter Bereich aufgetreten.",
+      "new_bad_sectors_other": "Während des Tests sind {{count}} neue beschädigte Bereiche aufgetreten."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "Die eingebaute schnelle Selbstprüfung des Laufwerks wird gestartet...",
       "running": "Das Laufwerk führt seine eigene schnelle Selbstprüfung durch ({{percent}} % erledigt).",
       "done": "Die Selbstprüfung des Laufwerks ist abgeschlossen.",
-      "running_seconds": "Das Laufwerk führt seine eigene schnelle Selbstprüfung durch (bisher {{seconds}} Sekunden)."
+      "running_seconds_one": "Das Laufwerk führt seine eigene schnelle Selbstprüfung durch (bisher {{seconds}} Sekunde).",
+      "running_seconds_other": "Das Laufwerk führt seine eigene schnelle Selbstprüfung durch (bisher {{seconds}} Sekunden)."
     },
     "surface_read": {
       "sampling": "Stichprobenbereiche über das gesamte Laufwerk werden gelesen ({{done}} von {{total}}).",

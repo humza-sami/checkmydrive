@@ -12,9 +12,31 @@ export function prepParams(params?: Params): Params | undefined {
   return out;
 }
 
+/**
+ * i18next only pluralizes on the `count` option. Most engine codes already send their quantity as
+ * `count`; for the few that name it differently, this table says which numeric param is the quantity
+ * the sentence must agree with. Codes not listed (and without `count`) are never pluralized.
+ * The engine's JSON contract is unchanged: `count` is added here, in the GUI, and the original
+ * param (e.g. `years`) stays available to the translation text.
+ */
+export const COUNT_PARAM: Record<string, string> = {
+  "issue.age.high_hours": "years",
+  "issue.age.moderate_hours": "years",
+  "issue.selftest.timeout": "seconds",
+  "progress.selftest_short.running": "seconds", // the `_seconds` context variant
+};
+
+/** Add `count` (the quantity the text agrees with) to engine params when the code needs it. */
+export function withCount(code: string, params?: Params): Params | undefined {
+  if (!params || typeof params.count === "number") return params;
+  const name = COUNT_PARAM[code];
+  const v = name ? params[name] : undefined;
+  return typeof v === "number" ? { ...params, count: v } : params;
+}
+
 /** Translate an engine code (issue.*, progress.*, suitability.*, error.*) with a safe fallback. */
 export function tCode(t: TFunction, code: string, params?: Params, fallbackKey?: string): string {
-  const p = prepParams(params);
+  const p = prepParams(withCount(code, params));
   const fallback = fallbackKey
     ? t(fallbackKey, p as never)
     : t(`${code.split(".")[0]}.unknown`, { ...p, code } as never);

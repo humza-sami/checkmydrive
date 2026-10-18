@@ -149,11 +149,17 @@
     },
     "age": {
       "title": "Vârsta unității",
-      "years": "Ani de utilizare: aproximativ {{count}}",
+      "years_one": "Aproximativ {{count}} an de utilizare",
+      "years_few": "Aproximativ {{count}} ani de utilizare",
+      "years_other": "Aproximativ {{count}} de ani de utilizare",
       "yearsLessThanOne": "Folosită mai puțin de un an",
-      "hours": "Ore de funcționare: {{hours}}",
+      "hours_one": "{{hours}} oră de funcționare",
+      "hours_few": "{{hours}} ore de funcționare",
+      "hours_other": "{{hours}} de ore de funcționare",
       "made": "Fabricată: {{date}}",
-      "cycles": "Număr de porniri: {{count}}",
+      "cycles_one": "Pornită o dată",
+      "cycles_few": "Pornită de {{count}} ori",
+      "cycles_other": "Pornită de {{count}} de ori",
       "unknown": "Această unitate nu raportează cât timp a fost folosită.",
       "note": "Orele se numără doar cât timp unitatea este pornită. O unitate folosită non-stop îmbătrânește mai repede decât una folosită câteva ore pe zi."
     },
@@ -237,8 +243,12 @@
   "issue": {
     "unknown": "A fost găsit ceva neobișnuit ({{code}}). Vezi tabelul testelor pentru detalii.",
     "age": {
-      "high_hours": "Această unitate a funcționat {{hours}} de ore (ani, aproximativ: {{years}}), ceea ce înseamnă multă folosire.",
-      "moderate_hours": "Această unitate a funcționat {{hours}} de ore (ani, aproximativ: {{years}})."
+      "high_hours_one": "Această unitate a fost pornită aproximativ {{years}} an ({{hours}} de ore), ceea ce înseamnă multă folosire.",
+      "high_hours_few": "Această unitate a fost pornită aproximativ {{years}} ani ({{hours}} de ore), ceea ce înseamnă multă folosire.",
+      "high_hours_other": "Această unitate a fost pornită aproximativ {{years}} de ani ({{hours}} de ore), ceea ce înseamnă multă folosire.",
+      "moderate_hours_one": "Această unitate a fost pornită aproximativ {{years}} an ({{hours}} de ore).",
+      "moderate_hours_few": "Această unitate a fost pornită aproximativ {{years}} ani ({{hours}} de ore).",
+      "moderate_hours_other": "Această unitate a fost pornită aproximativ {{years}} de ani ({{hours}} de ore)."
     },
     "drive_info": {
       "capacity_unknown": "Unitatea nu a raportat cât de mare este.",
@@ -252,15 +262,27 @@
       "not_supported": "Această unitate nu oferă un raport de sănătate, deci starea ei internă este necunoscută.",
       "usb_bridge_blocked": "Adaptorul USB ascunde raportul de sănătate al unității, deci starea ei internă este necunoscută.",
       "overall_failed": "Propria verificare de sănătate a unității spune că se defectează.",
-      "reallocated_sectors": "Unitatea a înlocuit deja cu rezerve zonele deteriorate (număr: {{count}}).",
-      "pending_sectors": "Zone ale unității care nu pot fi citite și așteaptă să fie înlocuite (număr: {{count}}).",
-      "uncorrectable_sectors": "Zone ale unității care nu au putut fi citite sau corectate (număr: {{count}}).",
-      "crc_errors": "Erori de transfer de date înregistrate, adesea cauzate de un cablu sau un conector defect (număr: {{count}}).",
-      "error_log_entries": "Număr de intrări în jurnalul de erori al unității: {{count}}.",
+      "reallocated_sectors_one": "Unitatea a înlocuit deja {{count}} zonă deteriorată cu una de rezervă.",
+      "reallocated_sectors_few": "Unitatea a înlocuit deja {{count}} zone deteriorate cu unele de rezervă.",
+      "reallocated_sectors_other": "Unitatea a înlocuit deja {{count}} de zone deteriorate cu unele de rezervă.",
+      "pending_sectors_one": "{{count}} zonă a unității nu poate fi citită și așteaptă înlocuirea.",
+      "pending_sectors_few": "{{count}} zone ale unității nu pot fi citite și așteaptă înlocuirea.",
+      "pending_sectors_other": "{{count}} de zone ale unității nu pot fi citite și așteaptă înlocuirea.",
+      "uncorrectable_sectors_one": "{{count}} zonă a unității nu a putut fi citită sau corectată.",
+      "uncorrectable_sectors_few": "{{count}} zone ale unității nu au putut fi citite sau corectate.",
+      "uncorrectable_sectors_other": "{{count}} de zone ale unității nu au putut fi citite sau corectate.",
+      "crc_errors_one": "A fost înregistrată {{count}} eroare de transfer de date, adesea cauzată de un cablu sau un conector defect.",
+      "crc_errors_few": "Au fost înregistrate {{count}} erori de transfer de date, adesea cauzate de un cablu sau un conector defect.",
+      "crc_errors_other": "Au fost înregistrate {{count}} de erori de transfer de date, adesea cauzate de un cablu sau un conector defect.",
+      "error_log_entries_one": "Jurnalul de erori al unității conține {{count}} intrare.",
+      "error_log_entries_few": "Jurnalul de erori al unității conține {{count}} intrări.",
+      "error_log_entries_other": "Jurnalul de erori al unității conține {{count}} de intrări.",
       "ssd_worn": "Acest SSD a consumat aproximativ {{percent}}% din durata de viață estimată.",
       "ssd_worn_out": "Acest SSD a consumat aproximativ {{percent}}% din durata de viață estimată și este aproape de sfârșitul vieții.",
       "nvme_critical_warning": "Unitatea raportează un avertisment critic (cod {{value}}).",
-      "nvme_media_errors": "Memoria unității a înregistrat erori de integritate a datelor (număr: {{count}}).",
+      "nvme_media_errors_one": "Memoria unității a înregistrat {{count}} eroare de integritate a datelor.",
+      "nvme_media_errors_few": "Memoria unității a înregistrat {{count}} erori de integritate a datelor.",
+      "nvme_media_errors_other": "Memoria unității a înregistrat {{count}} de erori de integritate a datelor.",
       "spare_low": "Mai este doar {{percent}}% din memoria de rezervă a unității.",
       "temperature_high": "Unitatea se încălzește prea tare ({{celsius}} C)."
     },
@@ -270,34 +292,54 @@
       "could_not_start": "Autotestul rapid al unității nu a putut fi pornit.",
       "failed": "Unitatea a picat propriul autotest rapid.",
       "aborted": "Autotestul rapid al unității a fost întrerupt înainte să se termine.",
-      "timeout": "Autotestul rapid al unității nu s-a terminat în {{seconds}} secunde și a fost oprit."
+      "timeout_one": "Autotestul rapid al unității nu s-a terminat în {{seconds}} secundă și a fost oprit.",
+      "timeout_few": "Autotestul rapid al unității nu s-a terminat în {{seconds}} secunde și a fost oprit.",
+      "timeout_other": "Autotestul rapid al unității nu s-a terminat în {{seconds}} de secunde și a fost oprit."
     },
     "surface_read": {
       "cannot_open": "Unitatea nu a putut fi deschisă pentru citire.",
-      "read_errors": "Părți ale unității care nu au putut fi citite (număr: {{count}}).",
-      "slow_areas": "Zone care au răspuns foarte lent (număr: {{count}}, adică {{percent}}%). Asta poate însemna că suprafața se uzează.",
+      "read_errors_one": "{{count}} parte a unității nu a putut fi citită.",
+      "read_errors_few": "{{count}} părți ale unității nu au putut fi citite.",
+      "read_errors_other": "{{count}} de părți ale unității nu au putut fi citite.",
+      "slow_areas_one": "{{count}} zonă ({{percent}}%) a răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
+      "slow_areas_few": "{{count}} zone ({{percent}}%) au răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
+      "slow_areas_other": "{{count}} de zone ({{percent}}%) au răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
       "low_speed": "Unitatea citește lent ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Testul de scriere a fost omis deoarece unitatea nu are un dosar în care să putem scrie în siguranță.",
       "insufficient_space": "Testul de scriere a fost omis deoarece unitatea are prea puțin spațiu liber.",
       "write_error": "Unitatea a raportat o eroare la scrierea datelor de test.",
-      "data_mismatch": "Blocuri de date de test care s-au întors diferite de cum au fost scrise (număr: {{count}}).",
+      "data_mismatch_one": "{{count}} bloc de date de test s-a întors diferit de cum a fost scris.",
+      "data_mismatch_few": "{{count}} blocuri de date de test s-au întors diferite de cum au fost scrise.",
+      "data_mismatch_other": "{{count}} de blocuri de date de test s-au întors diferite de cum au fost scrise.",
       "slow_write": "Unitatea scrie foarte lent ({{mbps}} MB/s).",
       "cleanup_failed": "Fișierul temporar de test nu a putut fi șters. Poți șterge singur {{path}}."
     },
     "capacity_check": {
       "needs_wipe_mode": "Verificarea capacității false necesită testul complet, care șterge unitatea. A fost omisă.",
       "fake_capacity": "Această unitate pretinde că poate stoca {{claimed_bytes}} octeți, dar doar aproximativ {{real_bytes}} octeți sunt reali. Este o unitate cu capacitate falsă.",
-      "data_corruption": "Blocuri de test care s-au întors deteriorate (număr: {{count}}).",
-      "io_error": "Erori returnate de unitate în timpul verificării capacității (număr: {{count}})."
+      "data_corruption_one": "{{count}} bloc de test s-a întors deteriorat.",
+      "data_corruption_few": "{{count}} blocuri de test s-au întors deteriorate.",
+      "data_corruption_other": "{{count}} de blocuri de test s-au întors deteriorate.",
+      "io_error_one": "Unitatea a returnat {{count}} eroare în timpul verificării capacității.",
+      "io_error_few": "Unitatea a returnat {{count}} erori în timpul verificării capacității.",
+      "io_error_other": "Unitatea a returnat {{count}} de erori în timpul verificării capacității."
     },
     "stability": {
-      "device_disconnected": "Unitatea a dispărut în timpul testelor (de câte ori: {{count}}).",
-      "io_errors": "Erori de citire sau scriere returnate de unitate în timpul testelor (număr: {{count}}).",
-      "timeouts": "Unitatea a încetat să răspundă în timpul testelor (de câte ori: {{count}}).",
+      "device_disconnected_one": "Unitatea a dispărut o dată în timpul testelor.",
+      "device_disconnected_few": "Unitatea a dispărut de {{count}} ori în timpul testelor.",
+      "device_disconnected_other": "Unitatea a dispărut de {{count}} de ori în timpul testelor.",
+      "io_errors_one": "Unitatea a returnat {{count}} eroare de citire sau scriere în timpul testelor.",
+      "io_errors_few": "Unitatea a returnat {{count}} erori de citire sau scriere în timpul testelor.",
+      "io_errors_other": "Unitatea a returnat {{count}} de erori de citire sau scriere în timpul testelor.",
+      "timeouts_one": "Unitatea nu a răspuns la timp o dată în timpul testelor.",
+      "timeouts_few": "Unitatea nu a răspuns la timp de {{count}} ori în timpul testelor.",
+      "timeouts_other": "Unitatea nu a răspuns la timp de {{count}} de ori în timpul testelor.",
       "crc_errors_increased": "Erorile de transfer de date au crescut în timpul testelor cu {{count}}. Verifică cablul.",
-      "new_bad_sectors": "Zone noi deteriorate, apărute în timp ce testam (număr: {{count}})."
+      "new_bad_sectors_one": "A apărut {{count}} zonă nouă deteriorată în timp ce testam.",
+      "new_bad_sectors_few": "Au apărut {{count}} zone noi deteriorate în timp ce testam.",
+      "new_bad_sectors_other": "Au apărut {{count}} de zone noi deteriorate în timp ce testam."
     }
   },
   "progress": {
@@ -319,7 +361,9 @@
       "starting": "Se pornește autotestul rapid încorporat al unității...",
       "running": "Unitatea rulează propriul autotest rapid ({{percent}}% terminat).",
       "done": "Autotestul unității s-a terminat.",
-      "running_seconds": "Unitatea rulează propriul autotest rapid (până acum {{seconds}} secunde)."
+      "running_seconds_one": "Unitatea rulează propriul autotest rapid (până acum {{seconds}} secundă).",
+      "running_seconds_few": "Unitatea rulează propriul autotest rapid (până acum {{seconds}} secunde).",
+      "running_seconds_other": "Unitatea rulează propriul autotest rapid (până acum {{seconds}} de secunde)."
     },
     "surface_read": {
       "sampling": "Se citesc zone de probă din toată unitatea ({{done}} din {{total}}).",

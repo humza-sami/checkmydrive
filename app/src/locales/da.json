@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "Drevets alder",
-      "years": "Cirka {{count}} års brug",
+      "years_one": "Cirka {{count}} års brug",
+      "years_other": "Cirka {{count}} års brug",
       "yearsLessThanOne": "Mindre end et års brug",
-      "hours": "{{hours}} timer tændt",
+      "hours_one": "{{hours}} time tændt",
+      "hours_other": "{{hours}} timer tændt",
       "made": "Fremstillet: {{date}}",
-      "cycles": "Tændt {{count}} gange",
+      "cycles_one": "Tændt {{count}} gang",
+      "cycles_other": "Tændt {{count}} gange",
       "unknown": "Dette drev oplyser ikke, hvor længe det har været brugt.",
       "note": "Timer tælles kun, mens drevet er tændt. Et drev, der kører døgnet rundt, ældes hurtigere end et, der bruges få timer om dagen."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Der blev fundet noget usædvanligt ({{code}}). Se testoversigten for detaljer.",
     "age": {
-      "high_hours": "Dette drev har været tændt i cirka {{years}} år ({{hours}} timer), hvilket er meget brug.",
-      "moderate_hours": "Dette drev har været tændt i cirka {{years}} år ({{hours}} timer)."
+      "high_hours_one": "Dette drev har været tændt i cirka {{years}} år ({{hours}} timer), hvilket er meget brug.",
+      "high_hours_other": "Dette drev har været tændt i cirka {{years}} år ({{hours}} timer), hvilket er meget brug.",
+      "moderate_hours_one": "Dette drev har været tændt i cirka {{years}} år ({{hours}} timer).",
+      "moderate_hours_other": "Dette drev har været tændt i cirka {{years}} år ({{hours}} timer)."
     },
     "drive_info": {
       "capacity_unknown": "Drevet oplyste ikke, hvor stort det er.",
@@ -252,15 +257,21 @@
       "not_supported": "Dette drev leverer ikke en sundhedsrapport, så dets indre tilstand er ukendt.",
       "usb_bridge_blocked": "USB-adapteren skjuler drevets sundhedsrapport, så dets indre tilstand er ukendt.",
       "overall_failed": "Drevets eget sundhedstjek siger, at det er ved at gå i stykker.",
-      "reallocated_sectors": "Drevet har allerede erstattet {{count}} beskadigede områder med reserver.",
-      "pending_sectors": "{{count}} områder på drevet er ulæselige og venter på at blive udskiftet.",
-      "uncorrectable_sectors": "{{count}} områder på drevet kunne ikke læses eller rettes.",
-      "crc_errors": "{{count}} dataoverførselsfejl blev registreret, ofte forårsaget af et dårligt kabel eller stik.",
-      "error_log_entries": "Drevets fejllog indeholder {{count}} poster.",
+      "reallocated_sectors_one": "Drevet har allerede erstattet {{count}} beskadiget område med en reserve.",
+      "reallocated_sectors_other": "Drevet har allerede erstattet {{count}} beskadigede områder med reserver.",
+      "pending_sectors_one": "{{count}} område på drevet er ulæseligt og venter på at blive udskiftet.",
+      "pending_sectors_other": "{{count}} områder på drevet er ulæselige og venter på at blive udskiftet.",
+      "uncorrectable_sectors_one": "{{count}} område på drevet kunne ikke læses eller rettes.",
+      "uncorrectable_sectors_other": "{{count}} områder på drevet kunne ikke læses eller rettes.",
+      "crc_errors_one": "{{count}} dataoverførselsfejl blev registreret, ofte forårsaget af et dårligt kabel eller stik.",
+      "crc_errors_other": "{{count}} dataoverførselsfejl blev registreret, ofte forårsaget af et dårligt kabel eller stik.",
+      "error_log_entries_one": "Drevets fejllog indeholder {{count}} post.",
+      "error_log_entries_other": "Drevets fejllog indeholder {{count}} poster.",
       "ssd_worn": "Dette SSD-drev har brugt cirka {{percent}} % af sin forventede levetid.",
       "ssd_worn_out": "Dette SSD-drev har brugt cirka {{percent}} % af sin forventede levetid og er tæt på enden.",
       "nvme_critical_warning": "Drevet rapporterer en kritisk advarsel (kode {{value}}).",
-      "nvme_media_errors": "Drevets hukommelse har registreret {{count}} fejl i dataintegriteten.",
+      "nvme_media_errors_one": "Drevets hukommelse har registreret {{count}} fejl i dataintegriteten.",
+      "nvme_media_errors_other": "Drevets hukommelse har registreret {{count}} fejl i dataintegriteten.",
       "spare_low": "Kun {{percent}} % af drevets reservehukommelse er tilbage.",
       "temperature_high": "Drevet kører varmt ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "Drevets hurtige selvtest kunne ikke startes.",
       "failed": "Drevet bestod ikke sin egen hurtige selvtest.",
       "aborted": "Drevets hurtige selvtest blev afbrudt, før den blev færdig.",
-      "timeout": "Drevets hurtige selvtest blev ikke færdig inden for {{seconds}} sekunder og blev stoppet."
+      "timeout_one": "Drevets hurtige selvtest blev ikke færdig inden for {{seconds}} sekund og blev stoppet.",
+      "timeout_other": "Drevets hurtige selvtest blev ikke færdig inden for {{seconds}} sekunder og blev stoppet."
     },
     "surface_read": {
       "cannot_open": "Drevet kunne ikke åbnes til læsning.",
-      "read_errors": "{{count}} dele af drevet kunne ikke læses.",
-      "slow_areas": "{{count}} områder ({{percent}} %) svarede meget langsomt, hvilket kan betyde, at overfladen slides ned.",
+      "read_errors_one": "{{count}} del af drevet kunne ikke læses.",
+      "read_errors_other": "{{count}} dele af drevet kunne ikke læses.",
+      "slow_areas_one": "{{count}} område ({{percent}} %) svarede meget langsomt, hvilket kan betyde, at overfladen slides ned.",
+      "slow_areas_other": "{{count}} områder ({{percent}} %) svarede meget langsomt, hvilket kan betyde, at overfladen slides ned.",
       "low_speed": "Drevet læser langsomt ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Skrivetesten blev sprunget over, fordi drevet ikke har en mappe, vi sikkert kan skrive til.",
       "insufficient_space": "Skrivetesten blev sprunget over, fordi drevet har for lidt ledig plads.",
       "write_error": "Drevet rapporterede en fejl under skrivning af testdata.",
-      "data_mismatch": "{{count}} blokke testdata kom tilbage anderledes end det, der blev skrevet.",
+      "data_mismatch_one": "{{count}} blok testdata kom tilbage anderledes end det, der blev skrevet.",
+      "data_mismatch_other": "{{count}} blokke testdata kom tilbage anderledes end det, der blev skrevet.",
       "slow_write": "Drevet skriver meget langsomt ({{mbps}} MB/s).",
       "cleanup_failed": "Den midlertidige testfil kunne ikke slettes. Du kan selv fjerne {{path}}."
     },
     "capacity_check": {
       "needs_wipe_mode": "Tjekket for falsk kapacitet kræver den fulde test, som sletter drevet. Det blev sprunget over.",
       "fake_capacity": "Dette drev påstår at kunne rumme {{claimed_bytes}} bytes, men kun cirka {{real_bytes}} bytes er ægte. Det er et drev med falsk kapacitet.",
-      "data_corruption": "{{count}} testblokke kom tilbage beskadigede.",
-      "io_error": "Drevet returnerede {{count}} fejl under kapacitetstjekket."
+      "data_corruption_one": "{{count}} testblok kom tilbage beskadiget.",
+      "data_corruption_other": "{{count}} testblokke kom tilbage beskadigede.",
+      "io_error_one": "Drevet returnerede {{count}} fejl under kapacitetstjekket.",
+      "io_error_other": "Drevet returnerede {{count}} fejl under kapacitetstjekket."
     },
     "stability": {
-      "device_disconnected": "Drevet forsvandt {{count}} gang(e) under testene.",
-      "io_errors": "Drevet returnerede {{count}} læse- eller skrivefejl under testene.",
-      "timeouts": "Drevet svarede ikke i tide {{count}} gang(e) under testene.",
+      "device_disconnected_one": "Drevet forsvandt {{count}} gang under testene.",
+      "device_disconnected_other": "Drevet forsvandt {{count}} gange under testene.",
+      "io_errors_one": "Drevet returnerede {{count}} læse- eller skrivefejl under testene.",
+      "io_errors_other": "Drevet returnerede {{count}} læse- eller skrivefejl under testene.",
+      "timeouts_one": "Drevet svarede ikke i tide {{count}} gang under testene.",
+      "timeouts_other": "Drevet svarede ikke i tide {{count}} gange under testene.",
       "crc_errors_increased": "Dataoverførselsfejl steg med {{count}} under testene. Tjek kablet.",
-      "new_bad_sectors": "{{count}} nye beskadigede områder dukkede op, mens vi testede."
+      "new_bad_sectors_one": "{{count}} nyt beskadiget område dukkede op, mens vi testede.",
+      "new_bad_sectors_other": "{{count}} nye beskadigede områder dukkede op, mens vi testede."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "Starter drevets indbyggede hurtige selvtest...",
       "running": "Drevet kører sin egen hurtige selvtest ({{percent}} % færdig).",
       "done": "Drevets selvtest er færdig.",
-      "running_seconds": "Drevet kører sin egen hurtige selvtest ({{seconds}} sekunder indtil videre)."
+      "running_seconds_one": "Drevet kører sin egen hurtige selvtest ({{seconds}} sekund indtil videre).",
+      "running_seconds_other": "Drevet kører sin egen hurtige selvtest ({{seconds}} sekunder indtil videre)."
     },
     "surface_read": {
       "sampling": "Læser stikprøver over hele drevet ({{done}} af {{total}}).",

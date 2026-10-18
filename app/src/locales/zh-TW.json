@@ -149,11 +149,11 @@
     },
     "age": {
       "title": "硬碟的使用年數",
-      "years": "已使用約 {{count}} 年",
+      "years_other": "已使用約 {{count}} 年",
       "yearsLessThanOne": "使用不到一年",
-      "hours": "已通電 {{hours}} 小時",
+      "hours_other": "已通電 {{hours}} 小時",
       "made": "製造日期：{{date}}",
-      "cycles": "已開關機 {{count}} 次",
+      "cycles_other": "已開關機 {{count}} 次",
       "unknown": "這顆硬碟沒有提供已使用多久的資訊。",
       "note": "時數只在硬碟通電時計算。全天候運作的硬碟比每天只用幾個小時的硬碟老化得更快。"
     },
@@ -237,8 +237,8 @@
   "issue": {
     "unknown": "發現了一些異常情況（{{code}}）。詳情請查看檢測明細表。",
     "age": {
-      "high_hours": "這顆硬碟已通電約 {{years}} 年（{{hours}} 小時），使用量很大。",
-      "moderate_hours": "這顆硬碟已通電約 {{years}} 年（{{hours}} 小時）。"
+      "high_hours_other": "這顆硬碟已通電約 {{years}} 年（{{hours}} 小時），使用量很大。",
+      "moderate_hours_other": "這顆硬碟已通電約 {{years}} 年（{{hours}} 小時）。"
     },
     "drive_info": {
       "capacity_unknown": "硬碟沒有提供自身的容量大小。",
@@ -252,15 +252,15 @@
       "not_supported": "這顆硬碟不提供健康報告，因此其內部狀況未知。",
       "usb_bridge_blocked": "USB 轉接器隱藏了硬碟的健康報告，因此其內部狀況未知。",
       "overall_failed": "硬碟自身的健康檢查顯示它正在故障。",
-      "reallocated_sectors": "硬碟已經用備用區域替換了 {{count}} 個損壞的區域。",
-      "pending_sectors": "硬碟上有 {{count}} 個區域無法讀取，正等待被替換。",
-      "uncorrectable_sectors": "硬碟上有 {{count}} 個區域無法讀取，也無法修正。",
-      "crc_errors": "記錄到 {{count}} 次資料傳輸錯誤，通常由傳輸線或接頭不良所引起。",
-      "error_log_entries": "硬碟的錯誤記錄中有 {{count}} 筆資料。",
+      "reallocated_sectors_other": "硬碟已經用備用區域替換了 {{count}} 個損壞的區域。",
+      "pending_sectors_other": "硬碟上有 {{count}} 個區域無法讀取，正等待被替換。",
+      "uncorrectable_sectors_other": "硬碟上有 {{count}} 個區域無法讀取，也無法修正。",
+      "crc_errors_other": "記錄到 {{count}} 次資料傳輸錯誤，通常由傳輸線或接頭不良所引起。",
+      "error_log_entries_other": "硬碟的錯誤記錄中有 {{count}} 筆資料。",
       "ssd_worn": "這顆固態硬碟已用掉其額定壽命的約 {{percent}}%。",
       "ssd_worn_out": "這顆固態硬碟已用掉其額定壽命的約 {{percent}}%，即將走到壽命的盡頭。",
       "nvme_critical_warning": "硬碟回報了一個嚴重警告（代碼 {{value}}）。",
-      "nvme_media_errors": "硬碟的記憶體已記錄 {{count}} 次資料完整性錯誤。",
+      "nvme_media_errors_other": "硬碟的記憶體已記錄 {{count}} 次資料完整性錯誤。",
       "spare_low": "硬碟的備用記憶體只剩 {{percent}}%。",
       "temperature_high": "硬碟溫度很高（{{celsius}} C）。"
     },
@@ -270,34 +270,34 @@
       "could_not_start": "無法啟動硬碟的快速自我檢測。",
       "failed": "硬碟沒有通過自身的快速自我檢測。",
       "aborted": "硬碟的快速自我檢測在完成前被中斷。",
-      "timeout": "硬碟的快速自我檢測未能在 {{seconds}} 秒內完成，已被停止。"
+      "timeout_other": "硬碟的快速自我檢測未能在 {{seconds}} 秒內完成，已被停止。"
     },
     "surface_read": {
       "cannot_open": "無法開啟硬碟進行讀取。",
-      "read_errors": "硬碟上有 {{count}} 處無法讀取。",
-      "slow_areas": "有 {{count}} 個區域（{{percent}}%）回應非常慢，這可能表示碟面正在耗損。",
+      "read_errors_other": "硬碟上有 {{count}} 處無法讀取。",
+      "slow_areas_other": "有 {{count}} 個區域（{{percent}}%）回應非常慢，這可能表示碟面正在耗損。",
       "low_speed": "硬碟讀取速度很慢（{{mbps}} MB/s）。"
     },
     "write_verify": {
       "no_writable_volume": "已略過寫入檢測，因為硬碟上沒有可以安全寫入的資料夾。",
       "insufficient_space": "已略過寫入檢測，因為硬碟的可用空間太小。",
       "write_error": "硬碟在寫入測試資料時回報了錯誤。",
-      "data_mismatch": "有 {{count}} 個測試資料區塊讀回來的內容與寫入的不同。",
+      "data_mismatch_other": "有 {{count}} 個測試資料區塊讀回來的內容與寫入的不同。",
       "slow_write": "硬碟寫入速度非常慢（{{mbps}} MB/s）。",
       "cleanup_failed": "無法刪除暫存的測試檔案。您可以自行刪除 {{path}}。"
     },
     "capacity_check": {
       "needs_wipe_mode": "虛假容量檢查需要使用會清除硬碟的完整檢測，因此已略過。",
       "fake_capacity": "這顆硬碟宣稱可存放 {{claimed_bytes}} 位元組，但真正可用的只有約 {{real_bytes}} 位元組。這是一顆虛假容量的硬碟。",
-      "data_corruption": "有 {{count}} 個測試區塊讀回來時已損壞。",
-      "io_error": "硬碟在容量檢查期間回傳了 {{count}} 個錯誤。"
+      "data_corruption_other": "有 {{count}} 個測試區塊讀回來時已損壞。",
+      "io_error_other": "硬碟在容量檢查期間回傳了 {{count}} 個錯誤。"
     },
     "stability": {
-      "device_disconnected": "檢測期間硬碟消失了 {{count}} 次。",
-      "io_errors": "檢測期間硬碟回傳了 {{count}} 個讀取或寫入錯誤。",
-      "timeouts": "檢測期間硬碟逾時了 {{count}} 次。",
+      "device_disconnected_other": "檢測期間硬碟消失了 {{count}} 次。",
+      "io_errors_other": "檢測期間硬碟回傳了 {{count}} 個讀取或寫入錯誤。",
+      "timeouts_other": "檢測期間硬碟逾時了 {{count}} 次。",
       "crc_errors_increased": "檢測期間資料傳輸錯誤增加了 {{count}} 個。請檢查傳輸線。",
-      "new_bad_sectors": "檢測期間出現了 {{count}} 個新的損壞區域。"
+      "new_bad_sectors_other": "檢測期間出現了 {{count}} 個新的損壞區域。"
     }
   },
   "progress": {
@@ -319,7 +319,7 @@
       "starting": "正在啟動硬碟內建的快速自我檢測...",
       "running": "硬碟正在進行自己的快速自我檢測（已完成 {{percent}}%）。",
       "done": "硬碟自我檢測已完成。",
-      "running_seconds": "硬碟正在進行自己的快速自我檢測（已進行 {{seconds}} 秒）。"
+      "running_seconds_other": "硬碟正在進行自己的快速自我檢測（已進行 {{seconds}} 秒）。"
     },
     "surface_read": {
       "sampling": "正在讀取整顆硬碟上的抽樣區域（{{done}} / {{total}}）。",

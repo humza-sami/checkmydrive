@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "Age of the drive",
-      "years": "About {{count}} years of use",
+      "years_one": "About {{count}} year of use",
+      "years_other": "About {{count}} years of use",
       "yearsLessThanOne": "Less than a year of use",
-      "hours": "{{hours}} hours powered on",
+      "hours_one": "{{hours}} hour powered on",
+      "hours_other": "{{hours}} hours powered on",
       "made": "Made: {{date}}",
-      "cycles": "{{count}} times switched on",
+      "cycles_one": "Switched on {{count}} time",
+      "cycles_other": "Switched on {{count}} times",
       "unknown": "This drive does not report how long it has been used.",
       "note": "Hours are counted only while the drive is powered on. A drive used 24/7 ages faster than one used a few hours a day."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Something unusual was found ({{code}}). See the test matrix for details.",
     "age": {
-      "high_hours": "This drive has been powered on for about {{years}} years ({{hours}} hours), which is a lot of use.",
-      "moderate_hours": "This drive has been powered on for about {{years}} years ({{hours}} hours)."
+      "high_hours_one": "This drive has been powered on for about {{years}} year ({{hours}} hours), which is a lot of use.",
+      "high_hours_other": "This drive has been powered on for about {{years}} years ({{hours}} hours), which is a lot of use.",
+      "moderate_hours_one": "This drive has been powered on for about {{years}} year ({{hours}} hours).",
+      "moderate_hours_other": "This drive has been powered on for about {{years}} years ({{hours}} hours)."
     },
     "drive_info": {
       "capacity_unknown": "The drive did not report how big it is.",
@@ -252,15 +257,21 @@
       "not_supported": "This drive does not provide a health report, so its internal condition is unknown.",
       "usb_bridge_blocked": "The USB adapter hides the drive's health report, so its internal condition is unknown.",
       "overall_failed": "The drive's own health check says it is failing.",
-      "reallocated_sectors": "The drive has already replaced {{count}} damaged areas with spares.",
-      "pending_sectors": "{{count}} areas of the drive are unreadable and waiting to be replaced.",
-      "uncorrectable_sectors": "{{count}} areas of the drive could not be read or corrected.",
-      "crc_errors": "{{count}} data-transfer errors were recorded, often caused by a bad cable or connector.",
-      "error_log_entries": "The drive's error log contains {{count}} entries.",
+      "reallocated_sectors_one": "The drive has already replaced {{count}} damaged area with a spare.",
+      "reallocated_sectors_other": "The drive has already replaced {{count}} damaged areas with spares.",
+      "pending_sectors_one": "{{count}} area of the drive is unreadable and waiting to be replaced.",
+      "pending_sectors_other": "{{count}} areas of the drive are unreadable and waiting to be replaced.",
+      "uncorrectable_sectors_one": "{{count}} area of the drive could not be read or corrected.",
+      "uncorrectable_sectors_other": "{{count}} areas of the drive could not be read or corrected.",
+      "crc_errors_one": "{{count}} data-transfer error was recorded, often caused by a bad cable or connector.",
+      "crc_errors_other": "{{count}} data-transfer errors were recorded, often caused by a bad cable or connector.",
+      "error_log_entries_one": "The drive's error log contains {{count}} entry.",
+      "error_log_entries_other": "The drive's error log contains {{count}} entries.",
       "ssd_worn": "This SSD has used up about {{percent}}% of its rated lifetime.",
       "ssd_worn_out": "This SSD has used up about {{percent}}% of its rated lifetime and is close to the end of its life.",
       "nvme_critical_warning": "The drive is reporting a critical warning (code {{value}}).",
-      "nvme_media_errors": "The drive's memory has logged {{count}} data-integrity errors.",
+      "nvme_media_errors_one": "The drive's memory has logged {{count}} data-integrity error.",
+      "nvme_media_errors_other": "The drive's memory has logged {{count}} data-integrity errors.",
       "spare_low": "Only {{percent}}% of the drive's spare memory is left.",
       "temperature_high": "The drive is running hot ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "The drive's quick self-test could not be started.",
       "failed": "The drive failed its own quick self-test.",
       "aborted": "The drive's quick self-test was interrupted before it finished.",
-      "timeout": "The drive's quick self-test did not finish within {{seconds}} seconds and was stopped."
+      "timeout_one": "The drive's quick self-test did not finish within {{seconds}} second and was stopped.",
+      "timeout_other": "The drive's quick self-test did not finish within {{seconds}} seconds and was stopped."
     },
     "surface_read": {
       "cannot_open": "The drive could not be opened for reading.",
-      "read_errors": "{{count}} parts of the drive could not be read.",
-      "slow_areas": "{{count}} areas ({{percent}}%) responded very slowly, which can mean the surface is wearing out.",
+      "read_errors_one": "{{count}} part of the drive could not be read.",
+      "read_errors_other": "{{count}} parts of the drive could not be read.",
+      "slow_areas_one": "{{count}} area ({{percent}}%) responded very slowly, which can mean the surface is wearing out.",
+      "slow_areas_other": "{{count}} areas ({{percent}}%) responded very slowly, which can mean the surface is wearing out.",
       "low_speed": "The drive reads slowly ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "The write test was skipped because the drive has no folder we can safely write to.",
       "insufficient_space": "The write test was skipped because the drive has too little free space.",
       "write_error": "The drive reported an error while writing test data.",
-      "data_mismatch": "{{count}} blocks of test data came back different from what was written.",
+      "data_mismatch_one": "{{count}} block of test data came back different from what was written.",
+      "data_mismatch_other": "{{count}} blocks of test data came back different from what was written.",
       "slow_write": "The drive writes very slowly ({{mbps}} MB/s).",
       "cleanup_failed": "The temporary test file could not be deleted. You can remove {{path}} yourself."
     },
     "capacity_check": {
       "needs_wipe_mode": "The fake-capacity check needs the full test, which erases the drive. It was skipped.",
       "fake_capacity": "This drive claims to hold {{claimed_bytes}} bytes but only about {{real_bytes}} bytes are real. It is a fake-capacity drive.",
-      "data_corruption": "{{count}} test blocks came back damaged.",
-      "io_error": "The drive returned {{count}} errors during the capacity check."
+      "data_corruption_one": "{{count}} test block came back damaged.",
+      "data_corruption_other": "{{count}} test blocks came back damaged.",
+      "io_error_one": "The drive returned {{count}} error during the capacity check.",
+      "io_error_other": "The drive returned {{count}} errors during the capacity check."
     },
     "stability": {
-      "device_disconnected": "The drive disappeared {{count}} time(s) during the tests.",
-      "io_errors": "The drive returned {{count}} read or write errors during the tests.",
-      "timeouts": "The drive timed out {{count}} time(s) during the tests.",
+      "device_disconnected_one": "The drive disappeared {{count}} time during the tests.",
+      "device_disconnected_other": "The drive disappeared {{count}} times during the tests.",
+      "io_errors_one": "The drive returned {{count}} read or write error during the tests.",
+      "io_errors_other": "The drive returned {{count}} read or write errors during the tests.",
+      "timeouts_one": "The drive timed out {{count}} time during the tests.",
+      "timeouts_other": "The drive timed out {{count}} times during the tests.",
       "crc_errors_increased": "Data-transfer errors increased by {{count}} during the tests. Check the cable.",
-      "new_bad_sectors": "{{count}} new damaged areas appeared while we were testing."
+      "new_bad_sectors_one": "{{count}} new damaged area appeared while we were testing.",
+      "new_bad_sectors_other": "{{count}} new damaged areas appeared while we were testing."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "Starting the drive's built-in quick self-test...",
       "running": "The drive is running its own quick self-test ({{percent}}% done).",
       "done": "The drive's self-test finished.",
-      "running_seconds": "The drive is running its own quick self-test ({{seconds}} seconds so far)."
+      "running_seconds_one": "The drive is running its own quick self-test ({{seconds}} second so far).",
+      "running_seconds_other": "The drive is running its own quick self-test ({{seconds}} seconds so far)."
     },
     "surface_read": {
       "sampling": "Reading sample areas across the whole drive ({{done}} of {{total}}).",

@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "Sürücünün yaşı",
-      "years": "Yaklaşık {{count}} yıllık kullanım",
+      "years_one": "Yaklaşık {{count}} yıllık kullanım",
+      "years_other": "Yaklaşık {{count}} yıllık kullanım",
       "yearsLessThanOne": "Bir yıldan az kullanım",
-      "hours": "{{hours}} saat açık kaldı",
+      "hours_one": "{{hours}} saat açık kaldı",
+      "hours_other": "{{hours}} saat açık kaldı",
       "made": "Üretim: {{date}}",
-      "cycles": "{{count}} kez açıldı",
+      "cycles_one": "{{count}} kez açıldı",
+      "cycles_other": "{{count}} kez açıldı",
       "unknown": "Bu sürücü ne kadar süredir kullanıldığını bildirmiyor.",
       "note": "Saatler yalnızca sürücü açıkken sayılır. 7/24 kullanılan bir sürücü, günde birkaç saat kullanılandan daha hızlı yaşlanır."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Alışılmadık bir şey bulundu ({{code}}). Ayrıntılar için test tablosuna bakın.",
     "age": {
-      "high_hours": "Bu sürücü yaklaşık {{years}} yıldır ({{hours}} saat) açık kaldı; bu çok yoğun bir kullanım.",
-      "moderate_hours": "Bu sürücü yaklaşık {{years}} yıldır ({{hours}} saat) açık kaldı."
+      "high_hours_one": "Bu sürücü yaklaşık {{years}} yıldır ({{hours}} saat) açık kaldı; bu çok yoğun bir kullanım.",
+      "high_hours_other": "Bu sürücü yaklaşık {{years}} yıldır ({{hours}} saat) açık kaldı; bu çok yoğun bir kullanım.",
+      "moderate_hours_one": "Bu sürücü yaklaşık {{years}} yıldır ({{hours}} saat) açık kaldı.",
+      "moderate_hours_other": "Bu sürücü yaklaşık {{years}} yıldır ({{hours}} saat) açık kaldı."
     },
     "drive_info": {
       "capacity_unknown": "Sürücü ne kadar büyük olduğunu bildirmedi.",
@@ -252,15 +257,21 @@
       "not_supported": "Bu sürücü sağlık raporu sunmuyor, bu yüzden iç durumu bilinmiyor.",
       "usb_bridge_blocked": "USB adaptörü sürücünün sağlık raporunu gizliyor, bu yüzden iç durumu bilinmiyor.",
       "overall_failed": "Sürücünün kendi sağlık kontrolü bozulduğunu söylüyor.",
-      "reallocated_sectors": "Sürücü hasarlı {{count}} alanı yedekleriyle değiştirmiş.",
-      "pending_sectors": "Sürücünün {{count}} alanı okunamıyor ve değiştirilmeyi bekliyor.",
-      "uncorrectable_sectors": "Sürücünün {{count}} alanı okunamadı veya düzeltilemedi.",
-      "crc_errors": "{{count}} veri aktarım hatası kaydedildi; bunlara çoğunlukla bozuk bir kablo veya bağlantı neden olur.",
-      "error_log_entries": "Sürücünün hata kaydında {{count}} giriş var.",
+      "reallocated_sectors_one": "Sürücü hasarlı {{count}} alanı yedekleriyle değiştirmiş.",
+      "reallocated_sectors_other": "Sürücü hasarlı {{count}} alanı yedekleriyle değiştirmiş.",
+      "pending_sectors_one": "Sürücünün {{count}} alanı okunamıyor ve değiştirilmeyi bekliyor.",
+      "pending_sectors_other": "Sürücünün {{count}} alanı okunamıyor ve değiştirilmeyi bekliyor.",
+      "uncorrectable_sectors_one": "Sürücünün {{count}} alanı okunamadı veya düzeltilemedi.",
+      "uncorrectable_sectors_other": "Sürücünün {{count}} alanı okunamadı veya düzeltilemedi.",
+      "crc_errors_one": "{{count}} veri aktarım hatası kaydedildi; bunlara çoğunlukla bozuk bir kablo veya bağlantı neden olur.",
+      "crc_errors_other": "{{count}} veri aktarım hatası kaydedildi; bunlara çoğunlukla bozuk bir kablo veya bağlantı neden olur.",
+      "error_log_entries_one": "Sürücünün hata kaydında {{count}} giriş var.",
+      "error_log_entries_other": "Sürücünün hata kaydında {{count}} giriş var.",
       "ssd_worn": "Bu SSD, beklenen ömrünün yaklaşık %{{percent}} kadarını kullanmış.",
       "ssd_worn_out": "Bu SSD, beklenen ömrünün yaklaşık %{{percent}} kadarını kullanmış ve ömrünün sonuna yaklaşıyor.",
       "nvme_critical_warning": "Sürücü kritik bir uyarı bildiriyor (kod {{value}}).",
-      "nvme_media_errors": "Sürücünün belleği {{count}} veri bütünlüğü hatası kaydetmiş.",
+      "nvme_media_errors_one": "Sürücünün belleği {{count}} veri bütünlüğü hatası kaydetmiş.",
+      "nvme_media_errors_other": "Sürücünün belleği {{count}} veri bütünlüğü hatası kaydetmiş.",
       "spare_low": "Sürücünün yedek belleğinin yalnızca %{{percent}} kadarı kaldı.",
       "temperature_high": "Sürücü sıcak çalışıyor ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "Sürücünün hızlı kendi kendine testi başlatılamadı.",
       "failed": "Sürücü kendi hızlı kendi kendine testinde başarısız oldu.",
       "aborted": "Sürücünün hızlı kendi kendine testi bitmeden kesildi.",
-      "timeout": "Sürücünün hızlı kendi kendine testi {{seconds}} saniye içinde bitmedi ve durduruldu."
+      "timeout_one": "Sürücünün hızlı kendi kendine testi {{seconds}} saniye içinde bitmedi ve durduruldu.",
+      "timeout_other": "Sürücünün hızlı kendi kendine testi {{seconds}} saniye içinde bitmedi ve durduruldu."
     },
     "surface_read": {
       "cannot_open": "Sürücü okumak için açılamadı.",
-      "read_errors": "Sürücünün {{count}} bölümü okunamadı.",
-      "slow_areas": "{{count}} alan (%{{percent}}) çok yavaş yanıt verdi; bu, yüzeyin aşınıyor olabileceği anlamına gelebilir.",
+      "read_errors_one": "Sürücünün {{count}} bölümü okunamadı.",
+      "read_errors_other": "Sürücünün {{count}} bölümü okunamadı.",
+      "slow_areas_one": "{{count}} alan (%{{percent}}) çok yavaş yanıt verdi; bu, yüzeyin aşınıyor olabileceği anlamına gelebilir.",
+      "slow_areas_other": "{{count}} alan (%{{percent}}) çok yavaş yanıt verdi; bu, yüzeyin aşınıyor olabileceği anlamına gelebilir.",
       "low_speed": "Sürücü yavaş okuyor ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Sürücüde güvenle yazabileceğimiz bir klasör olmadığı için yazma testi atlandı.",
       "insufficient_space": "Sürücüde boş alan çok az olduğu için yazma testi atlandı.",
       "write_error": "Sürücü, test verisi yazarken bir hata bildirdi.",
-      "data_mismatch": "{{count}} test veri bloğu yazılandan farklı geri geldi.",
+      "data_mismatch_one": "{{count}} test veri bloğu yazılandan farklı geri geldi.",
+      "data_mismatch_other": "{{count}} test veri bloğu yazılandan farklı geri geldi.",
       "slow_write": "Sürücü çok yavaş yazıyor ({{mbps}} MB/s).",
       "cleanup_failed": "Geçici test dosyası silinemedi. {{path}} dosyasını kendiniz silebilirsiniz."
     },
     "capacity_check": {
       "needs_wipe_mode": "Sahte kapasite kontrolü, sürücüyü silen tam testi gerektirir. Bu kontrol atlandı.",
       "fake_capacity": "Bu sürücü {{claimed_bytes}} bayt tutabildiğini iddia ediyor ama yalnızca yaklaşık {{real_bytes}} bayt gerçek. Bu, sahte kapasiteli bir sürücü.",
-      "data_corruption": "{{count}} test bloğu hasarlı geri geldi.",
-      "io_error": "Sürücü, kapasite kontrolü sırasında {{count}} hata verdi."
+      "data_corruption_one": "{{count}} test bloğu hasarlı geri geldi.",
+      "data_corruption_other": "{{count}} test bloğu hasarlı geri geldi.",
+      "io_error_one": "Sürücü, kapasite kontrolü sırasında {{count}} hata verdi.",
+      "io_error_other": "Sürücü, kapasite kontrolü sırasında {{count}} hata verdi."
     },
     "stability": {
-      "device_disconnected": "Sürücü testler sırasında {{count}} kez kayboldu.",
-      "io_errors": "Sürücü testler sırasında {{count}} okuma veya yazma hatası verdi.",
-      "timeouts": "Sürücü testler sırasında {{count}} kez zaman aşımına uğradı.",
+      "device_disconnected_one": "Sürücü testler sırasında {{count}} kez kayboldu.",
+      "device_disconnected_other": "Sürücü testler sırasında {{count}} kez kayboldu.",
+      "io_errors_one": "Sürücü testler sırasında {{count}} okuma veya yazma hatası verdi.",
+      "io_errors_other": "Sürücü testler sırasında {{count}} okuma veya yazma hatası verdi.",
+      "timeouts_one": "Sürücü testler sırasında {{count}} kez zaman aşımına uğradı.",
+      "timeouts_other": "Sürücü testler sırasında {{count}} kez zaman aşımına uğradı.",
       "crc_errors_increased": "Veri aktarım hataları testler sırasında {{count}} arttı. Kabloyu kontrol edin.",
-      "new_bad_sectors": "Test ederken {{count}} yeni hasarlı alan ortaya çıktı."
+      "new_bad_sectors_one": "Test ederken {{count}} yeni hasarlı alan ortaya çıktı.",
+      "new_bad_sectors_other": "Test ederken {{count}} yeni hasarlı alan ortaya çıktı."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "Sürücünün yerleşik hızlı kendi kendine testi başlatılıyor...",
       "running": "Sürücü kendi hızlı kendi kendine testini yapıyor (%{{percent}} tamamlandı).",
       "done": "Sürücünün kendi kendine testi bitti.",
-      "running_seconds": "Sürücü kendi hızlı kendi kendine testini yapıyor (şu ana kadar {{seconds}} saniye)."
+      "running_seconds_one": "Sürücü kendi hızlı kendi kendine testini yapıyor (şu ana kadar {{seconds}} saniye).",
+      "running_seconds_other": "Sürücü kendi hızlı kendi kendine testini yapıyor (şu ana kadar {{seconds}} saniye)."
     },
     "surface_read": {
       "sampling": "Sürücünün her yerinden örnek alanlar okunuyor ({{done}} / {{total}}).",

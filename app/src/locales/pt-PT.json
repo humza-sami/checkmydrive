@@ -149,11 +149,17 @@
     },
     "age": {
       "title": "Idade do disco",
-      "years": "Cerca de {{count}} anos de uso",
+      "years_one": "Cerca de {{count}} ano de uso",
+      "years_many": "Cerca de {{count}} de anos de uso",
+      "years_other": "Cerca de {{count}} anos de uso",
       "yearsLessThanOne": "Menos de um ano de uso",
-      "hours": "{{hours}} horas ligado",
+      "hours_one": "{{hours}} hora ligado",
+      "hours_many": "{{hours}} de horas ligado",
+      "hours_other": "{{hours}} horas ligado",
       "made": "Fabricado em: {{date}}",
-      "cycles": "Ligado {{count}} vezes",
+      "cycles_one": "Ligado {{count}} vez",
+      "cycles_many": "Ligado {{count}} de vezes",
+      "cycles_other": "Ligado {{count}} vezes",
       "unknown": "Este disco não informa há quanto tempo está em uso.",
       "note": "As horas só são contadas enquanto o disco está ligado. Um disco usado 24 horas por dia envelhece mais rápido do que um usado poucas horas por dia."
     },
@@ -237,8 +243,12 @@
   "issue": {
     "unknown": "Encontrámos algo incomum ({{code}}). Veja a tabela de testes para mais detalhes.",
     "age": {
-      "high_hours": "Este disco ficou ligado por cerca de {{years}} anos ({{hours}} horas), o que é muito uso.",
-      "moderate_hours": "Este disco ficou ligado por cerca de {{years}} anos ({{hours}} horas)."
+      "high_hours_one": "Este disco ficou ligado por cerca de {{years}} ano ({{hours}} horas), o que é muito uso.",
+      "high_hours_many": "Este disco ficou ligado por cerca de {{years}} de anos ({{hours}} horas), o que é muito uso.",
+      "high_hours_other": "Este disco ficou ligado por cerca de {{years}} anos ({{hours}} horas), o que é muito uso.",
+      "moderate_hours_one": "Este disco ficou ligado por cerca de {{years}} ano ({{hours}} horas).",
+      "moderate_hours_many": "Este disco ficou ligado por cerca de {{years}} de anos ({{hours}} horas).",
+      "moderate_hours_other": "Este disco ficou ligado por cerca de {{years}} anos ({{hours}} horas)."
     },
     "drive_info": {
       "capacity_unknown": "O disco não informou o próprio tamanho.",
@@ -252,15 +262,27 @@
       "not_supported": "Este disco não fornece relatório de saúde, por isso a sua condição interna é desconhecida.",
       "usb_bridge_blocked": "O adaptador USB esconde o relatório de saúde do disco, por isso a sua condição interna é desconhecida.",
       "overall_failed": "A própria verificação de saúde do disco diz que está a falhar.",
-      "reallocated_sectors": "O disco já substituiu {{count}} áreas danificadas por áreas de reserva.",
-      "pending_sectors": "{{count}} áreas do disco estão ilegíveis e aguardam substituição.",
-      "uncorrectable_sectors": "{{count}} áreas do disco não puderam ser lidas nem corrigidas.",
-      "crc_errors": "Foram registados {{count}} erros de transferência de dados, geralmente causados por um cabo ou conector ruim.",
-      "error_log_entries": "O registo de erros do disco tem {{count}} entradas.",
+      "reallocated_sectors_one": "O disco já substituiu {{count}} área danificada por uma área de reserva.",
+      "reallocated_sectors_many": "O disco já substituiu {{count}} de áreas danificadas por áreas de reserva.",
+      "reallocated_sectors_other": "O disco já substituiu {{count}} áreas danificadas por áreas de reserva.",
+      "pending_sectors_one": "{{count}} área do disco está ilegível e aguarda substituição.",
+      "pending_sectors_many": "{{count}} de áreas do disco estão ilegíveis e aguardam substituição.",
+      "pending_sectors_other": "{{count}} áreas do disco estão ilegíveis e aguardam substituição.",
+      "uncorrectable_sectors_one": "{{count}} área do disco não pôde ser lida nem corrigida.",
+      "uncorrectable_sectors_many": "{{count}} de áreas do disco não puderam ser lidas nem corrigidas.",
+      "uncorrectable_sectors_other": "{{count}} áreas do disco não puderam ser lidas nem corrigidas.",
+      "crc_errors_one": "Foi registado {{count}} erro de transferência de dados, geralmente causado por um cabo ou conector defeituoso.",
+      "crc_errors_many": "Foram registados {{count}} de erros de transferência de dados, geralmente causados por um cabo ou conector defeituoso.",
+      "crc_errors_other": "Foram registados {{count}} erros de transferência de dados, geralmente causados por um cabo ou conector defeituoso.",
+      "error_log_entries_one": "O registo de erros do disco tem {{count}} entrada.",
+      "error_log_entries_many": "O registo de erros do disco tem {{count}} de entradas.",
+      "error_log_entries_other": "O registo de erros do disco tem {{count}} entradas.",
       "ssd_worn": "Este SSD já usou cerca de {{percent}}% da sua vida útil prevista.",
       "ssd_worn_out": "Este SSD já usou cerca de {{percent}}% da sua vida útil prevista e está perto do fim da vida.",
       "nvme_critical_warning": "O disco está a indicar um alerta crítico (código {{value}}).",
-      "nvme_media_errors": "A memória do disco registou {{count}} erros de integridade de dados.",
+      "nvme_media_errors_one": "A memória do disco registou {{count}} erro de integridade de dados.",
+      "nvme_media_errors_many": "A memória do disco registou {{count}} de erros de integridade de dados.",
+      "nvme_media_errors_other": "A memória do disco registou {{count}} erros de integridade de dados.",
       "spare_low": "Resta apenas {{percent}}% da memória de reserva do disco.",
       "temperature_high": "O disco está a funcionar muito quente ({{celsius}} C)."
     },
@@ -270,34 +292,54 @@
       "could_not_start": "Não foi possível iniciar a autoverificação rápida do disco.",
       "failed": "O disco falhou na própria autoverificação rápida.",
       "aborted": "A autoverificação rápida do disco foi interrompida antes de terminar.",
-      "timeout": "A autoverificação rápida do disco não terminou em {{seconds}} segundos e foi interrompida."
+      "timeout_one": "A autoverificação rápida do disco não terminou em {{seconds}} segundo e foi interrompida.",
+      "timeout_many": "A autoverificação rápida do disco não terminou em {{seconds}} de segundos e foi interrompida.",
+      "timeout_other": "A autoverificação rápida do disco não terminou em {{seconds}} segundos e foi interrompida."
     },
     "surface_read": {
       "cannot_open": "Não foi possível abrir o disco para leitura.",
-      "read_errors": "{{count}} partes do disco não puderam ser lidas.",
-      "slow_areas": "{{count}} áreas ({{percent}}%) responderam muito devagar, o que pode significar que a superfície está a desgastar-se.",
+      "read_errors_one": "{{count}} parte do disco não pôde ser lida.",
+      "read_errors_many": "{{count}} de partes do disco não puderam ser lidas.",
+      "read_errors_other": "{{count}} partes do disco não puderam ser lidas.",
+      "slow_areas_one": "{{count}} área ({{percent}}%) respondeu muito devagar, o que pode significar que a superfície está a desgastar-se.",
+      "slow_areas_many": "{{count}} de áreas ({{percent}}%) responderam muito devagar, o que pode significar que a superfície está a desgastar-se.",
+      "slow_areas_other": "{{count}} áreas ({{percent}}%) responderam muito devagar, o que pode significar que a superfície está a desgastar-se.",
       "low_speed": "O disco lê devagar ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "O teste de escrita foi ignorado porque o disco não tem uma pasta onde possamos escrever com segurança.",
       "insufficient_space": "O teste de escrita foi ignorado porque o disco tem pouco espaço livre.",
       "write_error": "O disco informou um erro ao escrever os dados de teste.",
-      "data_mismatch": "{{count}} blocos de dados de teste voltaram diferentes do que foi escrito.",
+      "data_mismatch_one": "{{count}} bloco de dados de teste voltou diferente do que foi escrito.",
+      "data_mismatch_many": "{{count}} de blocos de dados de teste voltaram diferentes do que foi escrito.",
+      "data_mismatch_other": "{{count}} blocos de dados de teste voltaram diferentes do que foi escrito.",
       "slow_write": "O disco escreve muito devagar ({{mbps}} MB/s).",
       "cleanup_failed": "Não foi possível eliminar o ficheiro temporário de teste. Você mesmo pode remover {{path}}."
     },
     "capacity_check": {
       "needs_wipe_mode": "A verificação de capacidade falsa precisa do teste completo, que apaga o disco. Ela foi ignorada.",
       "fake_capacity": "Este disco diz comportar {{claimed_bytes}} bytes, mas só cerca de {{real_bytes}} bytes são reais. É um disco com capacidade falsa.",
-      "data_corruption": "{{count}} blocos de teste voltaram danificados.",
-      "io_error": "O disco retornou {{count}} erros durante a verificação de capacidade."
+      "data_corruption_one": "{{count}} bloco de teste voltou danificado.",
+      "data_corruption_many": "{{count}} de blocos de teste voltaram danificados.",
+      "data_corruption_other": "{{count}} blocos de teste voltaram danificados.",
+      "io_error_one": "O disco retornou {{count}} erro durante a verificação de capacidade.",
+      "io_error_many": "O disco retornou {{count}} de erros durante a verificação de capacidade.",
+      "io_error_other": "O disco retornou {{count}} erros durante a verificação de capacidade."
     },
     "stability": {
-      "device_disconnected": "O disco desapareceu {{count}} vez(es) durante os testes.",
-      "io_errors": "O disco retornou {{count}} erros de leitura ou escrita durante os testes.",
-      "timeouts": "O disco excedeu o tempo limite {{count}} vez(es) durante os testes.",
+      "device_disconnected_one": "O disco desapareceu {{count}} vez durante os testes.",
+      "device_disconnected_many": "O disco desapareceu {{count}} de vezes durante os testes.",
+      "device_disconnected_other": "O disco desapareceu {{count}} vezes durante os testes.",
+      "io_errors_one": "O disco retornou {{count}} erro de leitura ou escrita durante os testes.",
+      "io_errors_many": "O disco retornou {{count}} de erros de leitura ou escrita durante os testes.",
+      "io_errors_other": "O disco retornou {{count}} erros de leitura ou escrita durante os testes.",
+      "timeouts_one": "O disco excedeu o tempo limite {{count}} vez durante os testes.",
+      "timeouts_many": "O disco excedeu o tempo limite {{count}} de vezes durante os testes.",
+      "timeouts_other": "O disco excedeu o tempo limite {{count}} vezes durante os testes.",
       "crc_errors_increased": "Os erros de transferência de dados aumentaram em {{count}} durante os testes. Verifique o cabo.",
-      "new_bad_sectors": "Apareceram {{count}} novas áreas danificadas enquanto testávamos."
+      "new_bad_sectors_one": "Apareceu {{count}} nova área danificada enquanto testávamos.",
+      "new_bad_sectors_many": "Apareceram {{count}} de novas áreas danificadas enquanto testávamos.",
+      "new_bad_sectors_other": "Apareceram {{count}} novas áreas danificadas enquanto testávamos."
     }
   },
   "progress": {
@@ -319,7 +361,9 @@
       "starting": "A iniciar a autoverificação rápida integrada do disco...",
       "running": "O disco está a fazer a própria autoverificação rápida ({{percent}}% concluído).",
       "done": "A autoverificação do disco terminou.",
-      "running_seconds": "O disco está a fazer a própria autoverificação rápida ({{seconds}} segundos até agora)."
+      "running_seconds_one": "O disco está a fazer a própria autoverificação rápida ({{seconds}} segundo até agora).",
+      "running_seconds_many": "O disco está a fazer a própria autoverificação rápida ({{seconds}} de segundos até agora).",
+      "running_seconds_other": "O disco está a fazer a própria autoverificação rápida ({{seconds}} segundos até agora)."
     },
     "surface_read": {
       "sampling": "A ler áreas de amostra do disco inteiro ({{done}} de {{total}}).",

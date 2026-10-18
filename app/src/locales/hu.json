@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "A meghajtó kora",
-      "years": "Körülbelül {{count}} év használat",
+      "years_one": "Körülbelül {{count}} év használat",
+      "years_other": "Körülbelül {{count}} év használat",
       "yearsLessThanOne": "Egy évnél kevesebb használat",
-      "hours": "{{hours}} órát volt bekapcsolva",
+      "hours_one": "{{hours}} órát volt bekapcsolva",
+      "hours_other": "{{hours}} órát volt bekapcsolva",
       "made": "Gyártva: {{date}}",
-      "cycles": "{{count}}-szor kapcsolták be",
+      "cycles_one": "{{count}}-szor kapcsolták be",
+      "cycles_other": "{{count}}-szor kapcsolták be",
       "unknown": "Ez a meghajtó nem közli, mennyi ideig használták.",
       "note": "Az órák csak a bekapcsolt állapotot számolják. Az éjjel-nappal használt meghajtó gyorsabban öregszik, mint az, amelyet naponta néhány órán át használnak."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Szokatlan dolgot találtunk ({{code}}). A részleteket lásd a tesztmátrixban.",
     "age": {
-      "high_hours": "Ez a meghajtó körülbelül {{years}} évig volt bekapcsolva ({{hours}} óra), ami nagy használatot jelent.",
-      "moderate_hours": "Ez a meghajtó körülbelül {{years}} évig volt bekapcsolva ({{hours}} óra)."
+      "high_hours_one": "Ez a meghajtó körülbelül {{years}} évig volt bekapcsolva ({{hours}} óra), ami nagy használatot jelent.",
+      "high_hours_other": "Ez a meghajtó körülbelül {{years}} évig volt bekapcsolva ({{hours}} óra), ami nagy használatot jelent.",
+      "moderate_hours_one": "Ez a meghajtó körülbelül {{years}} évig volt bekapcsolva ({{hours}} óra).",
+      "moderate_hours_other": "Ez a meghajtó körülbelül {{years}} évig volt bekapcsolva ({{hours}} óra)."
     },
     "drive_info": {
       "capacity_unknown": "A meghajtó nem közölte, mekkora.",
@@ -252,15 +257,21 @@
       "not_supported": "Ez a meghajtó nem ad állapotjelentést, ezért a belső állapota ismeretlen.",
       "usb_bridge_blocked": "Az USB-adapter elrejti a meghajtó állapotjelentését, ezért a belső állapota ismeretlen.",
       "overall_failed": "A meghajtó saját állapotellenőrzése szerint meghibásodóban van.",
-      "reallocated_sectors": "A meghajtó már {{count}} sérült területet cserélt le tartalékra.",
-      "pending_sectors": "A meghajtó {{count}} területe olvashatatlan, és cserére vár.",
-      "uncorrectable_sectors": "A meghajtó {{count}} területét nem lehetett beolvasni vagy kijavítani.",
-      "crc_errors": "{{count}} adatátviteli hibát jegyeztek fel, amit gyakran rossz kábel vagy csatlakozó okoz.",
-      "error_log_entries": "A meghajtó hibanaplója {{count}} bejegyzést tartalmaz.",
+      "reallocated_sectors_one": "A meghajtó már {{count}} sérült területet cserélt le tartalékra.",
+      "reallocated_sectors_other": "A meghajtó már {{count}} sérült területet cserélt le tartalékra.",
+      "pending_sectors_one": "A meghajtó {{count}} területe olvashatatlan, és cserére vár.",
+      "pending_sectors_other": "A meghajtó {{count}} területe olvashatatlan, és cserére vár.",
+      "uncorrectable_sectors_one": "A meghajtó {{count}} területét nem lehetett beolvasni vagy kijavítani.",
+      "uncorrectable_sectors_other": "A meghajtó {{count}} területét nem lehetett beolvasni vagy kijavítani.",
+      "crc_errors_one": "{{count}} adatátviteli hibát jegyeztek fel, amit gyakran rossz kábel vagy csatlakozó okoz.",
+      "crc_errors_other": "{{count}} adatátviteli hibát jegyeztek fel, amit gyakran rossz kábel vagy csatlakozó okoz.",
+      "error_log_entries_one": "A meghajtó hibanaplója {{count}} bejegyzést tartalmaz.",
+      "error_log_entries_other": "A meghajtó hibanaplója {{count}} bejegyzést tartalmaz.",
       "ssd_worn": "Ez az SSD a névleges élettartamának körülbelül {{percent}}%-át elhasználta.",
       "ssd_worn_out": "Ez az SSD a névleges élettartamának körülbelül {{percent}}%-át elhasználta, és közel van az élettartama végéhez.",
       "nvme_critical_warning": "A meghajtó kritikus figyelmeztetést jelez (kód: {{value}}).",
-      "nvme_media_errors": "A meghajtó memóriája {{count}} adatintegritási hibát naplózott.",
+      "nvme_media_errors_one": "A meghajtó memóriája {{count}} adatintegritási hibát naplózott.",
+      "nvme_media_errors_other": "A meghajtó memóriája {{count}} adatintegritási hibát naplózott.",
       "spare_low": "A meghajtó tartalékmemóriájából már csak {{percent}}% maradt.",
       "temperature_high": "A meghajtó forró ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "A meghajtó gyors önellenőrzését nem sikerült elindítani.",
       "failed": "A meghajtó megbukott a saját gyors önellenőrzésén.",
       "aborted": "A meghajtó gyors önellenőrzése megszakadt, mielőtt befejeződött volna.",
-      "timeout": "A meghajtó gyors önellenőrzése {{seconds}} másodpercen belül nem fejeződött be, ezért leállítottuk."
+      "timeout_one": "A meghajtó gyors önellenőrzése {{seconds}} másodpercen belül nem fejeződött be, ezért leállítottuk.",
+      "timeout_other": "A meghajtó gyors önellenőrzése {{seconds}} másodpercen belül nem fejeződött be, ezért leállítottuk."
     },
     "surface_read": {
       "cannot_open": "A meghajtót nem lehetett megnyitni olvasásra.",
-      "read_errors": "A meghajtó {{count}} részét nem lehetett beolvasni.",
-      "slow_areas": "{{count}} terület ({{percent}}%) nagyon lassan válaszolt, ami a felület kopására utalhat.",
+      "read_errors_one": "A meghajtó {{count}} részét nem lehetett beolvasni.",
+      "read_errors_other": "A meghajtó {{count}} részét nem lehetett beolvasni.",
+      "slow_areas_one": "{{count}} terület ({{percent}}%) nagyon lassan válaszolt, ami a felület kopására utalhat.",
+      "slow_areas_other": "{{count}} terület ({{percent}}%) nagyon lassan válaszolt, ami a felület kopására utalhat.",
       "low_speed": "A meghajtó lassan olvas ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Az írási teszt kimaradt, mert a meghajtón nincs olyan mappa, ahová biztonságosan írhatnánk.",
       "insufficient_space": "Az írási teszt kimaradt, mert a meghajtón túl kevés a szabad hely.",
       "write_error": "A meghajtó hibát jelzett a tesztadatok írása közben.",
-      "data_mismatch": "{{count}} tesztadatblokk másképp jött vissza, mint ahogy írtuk.",
+      "data_mismatch_one": "{{count}} tesztadatblokk másképp jött vissza, mint ahogy írtuk.",
+      "data_mismatch_other": "{{count}} tesztadatblokk másképp jött vissza, mint ahogy írtuk.",
       "slow_write": "A meghajtó nagyon lassan ír ({{mbps}} MB/s).",
       "cleanup_failed": "Az ideiglenes tesztfájlt nem sikerült törölni. A(z) {{path}} fájlt Ön is eltávolíthatja."
     },
     "capacity_check": {
       "needs_wipe_mode": "A hamis kapacitás ellenőrzéséhez a teljes teszt kell, amely törli a meghajtót. Ezt kihagytuk.",
       "fake_capacity": "Ez a meghajtó {{claimed_bytes}} bájtot állít magáról, de csak körülbelül {{real_bytes}} bájt valódi. Hamis kapacitású meghajtó.",
-      "data_corruption": "{{count}} tesztblokk sérülten jött vissza.",
-      "io_error": "A meghajtó {{count}} hibát jelzett a kapacitásellenőrzés során."
+      "data_corruption_one": "{{count}} tesztblokk sérülten jött vissza.",
+      "data_corruption_other": "{{count}} tesztblokk sérülten jött vissza.",
+      "io_error_one": "A meghajtó {{count}} hibát jelzett a kapacitásellenőrzés során.",
+      "io_error_other": "A meghajtó {{count}} hibát jelzett a kapacitásellenőrzés során."
     },
     "stability": {
-      "device_disconnected": "A meghajtó {{count}} alkalommal eltűnt a tesztek alatt.",
-      "io_errors": "A meghajtó {{count}} olvasási vagy írási hibát jelzett a tesztek alatt.",
-      "timeouts": "A meghajtó {{count}} alkalommal nem válaszolt időben a tesztek alatt.",
+      "device_disconnected_one": "A meghajtó {{count}} alkalommal eltűnt a tesztek alatt.",
+      "device_disconnected_other": "A meghajtó {{count}} alkalommal eltűnt a tesztek alatt.",
+      "io_errors_one": "A meghajtó {{count}} olvasási vagy írási hibát jelzett a tesztek alatt.",
+      "io_errors_other": "A meghajtó {{count}} olvasási vagy írási hibát jelzett a tesztek alatt.",
+      "timeouts_one": "A meghajtó {{count}} alkalommal nem válaszolt időben a tesztek alatt.",
+      "timeouts_other": "A meghajtó {{count}} alkalommal nem válaszolt időben a tesztek alatt.",
       "crc_errors_increased": "Az adatátviteli hibák száma {{count}}-val nőtt a tesztek alatt. Ellenőrizze a kábelt.",
-      "new_bad_sectors": "{{count}} új sérült terület jelent meg a tesztelés közben."
+      "new_bad_sectors_one": "{{count}} új sérült terület jelent meg a tesztelés közben.",
+      "new_bad_sectors_other": "{{count}} új sérült terület jelent meg a tesztelés közben."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "A meghajtó beépített gyors önellenőrzésének indítása...",
       "running": "A meghajtó a saját gyors önellenőrzését futtatja ({{percent}}% kész).",
       "done": "A meghajtó önellenőrzése befejeződött.",
-      "running_seconds": "A meghajtó a saját gyors önellenőrzését futtatja (eddig {{seconds}} másodperc)."
+      "running_seconds_one": "A meghajtó a saját gyors önellenőrzését futtatja (eddig {{seconds}} másodperc).",
+      "running_seconds_other": "A meghajtó a saját gyors önellenőrzését futtatja (eddig {{seconds}} másodperc)."
     },
     "surface_read": {
       "sampling": "Mintaterületek olvasása a teljes meghajtón ({{done}} / {{total}}).",

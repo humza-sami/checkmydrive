@@ -149,11 +149,14 @@
     },
     "age": {
       "title": "Diskens alder",
-      "years": "Omtrent {{count}} års bruk",
+      "years_one": "Omtrent {{count}} års bruk",
+      "years_other": "Omtrent {{count}} års bruk",
       "yearsLessThanOne": "Mindre enn ett års bruk",
-      "hours": "{{hours}} timer påslått",
+      "hours_one": "{{hours}} time påslått",
+      "hours_other": "{{hours}} timer påslått",
       "made": "Produsert: {{date}}",
-      "cycles": "Slått på {{count}} ganger",
+      "cycles_one": "Slått på {{count}} gang",
+      "cycles_other": "Slått på {{count}} ganger",
       "unknown": "Denne disken oppgir ikke hvor lenge den har vært brukt.",
       "note": "Timer telles bare mens disken er påslått. En disk som går døgnet rundt eldes raskere enn en som brukes noen timer om dagen."
     },
@@ -237,8 +240,10 @@
   "issue": {
     "unknown": "Noe uvanlig ble funnet ({{code}}). Se testoversikten for detaljer.",
     "age": {
-      "high_hours": "Denne disken har vært påslått i omtrent {{years}} år ({{hours}} timer), noe som er mye bruk.",
-      "moderate_hours": "Denne disken har vært påslått i omtrent {{years}} år ({{hours}} timer)."
+      "high_hours_one": "Denne disken har vært påslått i omtrent {{years}} år ({{hours}} timer), noe som er mye bruk.",
+      "high_hours_other": "Denne disken har vært påslått i omtrent {{years}} år ({{hours}} timer), noe som er mye bruk.",
+      "moderate_hours_one": "Denne disken har vært påslått i omtrent {{years}} år ({{hours}} timer).",
+      "moderate_hours_other": "Denne disken har vært påslått i omtrent {{years}} år ({{hours}} timer)."
     },
     "drive_info": {
       "capacity_unknown": "Disken oppga ikke hvor stor den er.",
@@ -252,15 +257,21 @@
       "not_supported": "Denne disken gir ingen helserapport, så den indre tilstanden er ukjent.",
       "usb_bridge_blocked": "USB-adapteren skjuler diskens helserapport, så den indre tilstanden er ukjent.",
       "overall_failed": "Diskens egen helsesjekk sier at den er i ferd med å svikte.",
-      "reallocated_sectors": "Disken har allerede byttet ut {{count}} skadde områder med reserver.",
-      "pending_sectors": "{{count}} områder på disken er uleselige og venter på å bli byttet ut.",
-      "uncorrectable_sectors": "{{count}} områder på disken kunne ikke leses eller rettes.",
-      "crc_errors": "{{count}} dataoverføringsfeil ble registrert, ofte forårsaket av en dårlig kabel eller kontakt.",
-      "error_log_entries": "Diskens feillogg inneholder {{count}} oppføringer.",
+      "reallocated_sectors_one": "Disken har allerede byttet ut {{count}} skadet område med en reserve.",
+      "reallocated_sectors_other": "Disken har allerede byttet ut {{count}} skadde områder med reserver.",
+      "pending_sectors_one": "{{count}} område på disken er uleselig og venter på å bli byttet ut.",
+      "pending_sectors_other": "{{count}} områder på disken er uleselige og venter på å bli byttet ut.",
+      "uncorrectable_sectors_one": "{{count}} område på disken kunne ikke leses eller rettes.",
+      "uncorrectable_sectors_other": "{{count}} områder på disken kunne ikke leses eller rettes.",
+      "crc_errors_one": "{{count}} dataoverføringsfeil ble registrert, ofte forårsaket av en dårlig kabel eller kontakt.",
+      "crc_errors_other": "{{count}} dataoverføringsfeil ble registrert, ofte forårsaket av en dårlig kabel eller kontakt.",
+      "error_log_entries_one": "Diskens feillogg inneholder {{count}} oppføring.",
+      "error_log_entries_other": "Diskens feillogg inneholder {{count}} oppføringer.",
       "ssd_worn": "Denne SSD-en har brukt opp omtrent {{percent}} % av den forventede levetiden.",
       "ssd_worn_out": "Denne SSD-en har brukt opp omtrent {{percent}} % av den forventede levetiden og er nær slutten.",
       "nvme_critical_warning": "Disken melder en kritisk advarsel (kode {{value}}).",
-      "nvme_media_errors": "Diskens minne har logget {{count}} feil i dataintegriteten.",
+      "nvme_media_errors_one": "Diskens minne har logget {{count}} feil i dataintegriteten.",
+      "nvme_media_errors_other": "Diskens minne har logget {{count}} feil i dataintegriteten.",
       "spare_low": "Bare {{percent}} % av diskens reserveminne er igjen.",
       "temperature_high": "Disken går varm ({{celsius}} C)."
     },
@@ -270,34 +281,44 @@
       "could_not_start": "Diskens raske selvtest kunne ikke startes.",
       "failed": "Disken besto ikke sin egen raske selvtest.",
       "aborted": "Diskens raske selvtest ble avbrutt før den ble ferdig.",
-      "timeout": "Diskens raske selvtest ble ikke ferdig innen {{seconds}} sekunder og ble stoppet."
+      "timeout_one": "Diskens raske selvtest ble ikke ferdig innen {{seconds}} sekund og ble stoppet.",
+      "timeout_other": "Diskens raske selvtest ble ikke ferdig innen {{seconds}} sekunder og ble stoppet."
     },
     "surface_read": {
       "cannot_open": "Disken kunne ikke åpnes for lesing.",
-      "read_errors": "{{count}} deler av disken kunne ikke leses.",
-      "slow_areas": "{{count}} områder ({{percent}} %) svarte veldig tregt, noe som kan bety at overflaten slites ut.",
+      "read_errors_one": "{{count}} del av disken kunne ikke leses.",
+      "read_errors_other": "{{count}} deler av disken kunne ikke leses.",
+      "slow_areas_one": "{{count}} område ({{percent}} %) svarte veldig tregt, noe som kan bety at overflaten slites ut.",
+      "slow_areas_other": "{{count}} områder ({{percent}} %) svarte veldig tregt, noe som kan bety at overflaten slites ut.",
       "low_speed": "Disken leser tregt ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Skrivetesten ble hoppet over fordi disken ikke har en mappe vi trygt kan skrive til.",
       "insufficient_space": "Skrivetesten ble hoppet over fordi disken har for lite ledig plass.",
       "write_error": "Disken meldte en feil under skriving av testdata.",
-      "data_mismatch": "{{count}} blokker med testdata kom tilbake annerledes enn det som ble skrevet.",
+      "data_mismatch_one": "{{count}} blokk med testdata kom tilbake annerledes enn det som ble skrevet.",
+      "data_mismatch_other": "{{count}} blokker med testdata kom tilbake annerledes enn det som ble skrevet.",
       "slow_write": "Disken skriver veldig tregt ({{mbps}} MB/s).",
       "cleanup_failed": "Den midlertidige testfilen kunne ikke slettes. Du kan fjerne {{path}} selv."
     },
     "capacity_check": {
       "needs_wipe_mode": "Sjekken for falsk kapasitet krever den fulle testen, som sletter disken. Den ble hoppet over.",
       "fake_capacity": "Denne disken påstår å romme {{claimed_bytes}} byte, men bare omtrent {{real_bytes}} byte er ekte. Det er en disk med falsk kapasitet.",
-      "data_corruption": "{{count}} testblokker kom tilbake skadet.",
-      "io_error": "Disken ga {{count}} feil under kapasitetssjekken."
+      "data_corruption_one": "{{count}} testblokk kom tilbake skadet.",
+      "data_corruption_other": "{{count}} testblokker kom tilbake skadet.",
+      "io_error_one": "Disken ga {{count}} feil under kapasitetssjekken.",
+      "io_error_other": "Disken ga {{count}} feil under kapasitetssjekken."
     },
     "stability": {
-      "device_disconnected": "Disken forsvant {{count}} gang(er) under testene.",
-      "io_errors": "Disken ga {{count}} lese- eller skrivefeil under testene.",
-      "timeouts": "Disken svarte ikke i tide {{count}} gang(er) under testene.",
+      "device_disconnected_one": "Disken forsvant {{count}} gang under testene.",
+      "device_disconnected_other": "Disken forsvant {{count}} ganger under testene.",
+      "io_errors_one": "Disken ga {{count}} lese- eller skrivefeil under testene.",
+      "io_errors_other": "Disken ga {{count}} lese- eller skrivefeil under testene.",
+      "timeouts_one": "Disken svarte ikke i tide {{count}} gang under testene.",
+      "timeouts_other": "Disken svarte ikke i tide {{count}} ganger under testene.",
       "crc_errors_increased": "Dataoverføringsfeil økte med {{count}} under testene. Sjekk kabelen.",
-      "new_bad_sectors": "{{count}} nye skadde områder dukket opp mens vi testet."
+      "new_bad_sectors_one": "{{count}} nytt skadet område dukket opp mens vi testet.",
+      "new_bad_sectors_other": "{{count}} nye skadde områder dukket opp mens vi testet."
     }
   },
   "progress": {
@@ -319,7 +340,8 @@
       "starting": "Starter diskens innebygde raske selvtest...",
       "running": "Disken kjører sin egen raske selvtest ({{percent}} % ferdig).",
       "done": "Diskens selvtest er ferdig.",
-      "running_seconds": "Disken kjører sin egen raske selvtest ({{seconds}} sekunder så langt)."
+      "running_seconds_one": "Disken kjører sin egen raske selvtest ({{seconds}} sekund så langt).",
+      "running_seconds_other": "Disken kjører sin egen raske selvtest ({{seconds}} sekunder så langt)."
     },
     "surface_read": {
       "sampling": "Leser stikkprøver over hele disken ({{done}} av {{total}}).",

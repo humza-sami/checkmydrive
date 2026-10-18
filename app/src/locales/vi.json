@@ -149,11 +149,11 @@
     },
     "age": {
       "title": "Tuổi của ổ đĩa",
-      "years": "Đã dùng khoảng {{count}} năm",
+      "years_other": "Đã dùng khoảng {{count}} năm",
       "yearsLessThanOne": "Đã dùng chưa đến một năm",
-      "hours": "Đã bật nguồn {{hours}} giờ",
+      "hours_other": "Đã bật nguồn {{hours}} giờ",
       "made": "Sản xuất: {{date}}",
-      "cycles": "Đã bật {{count}} lần",
+      "cycles_other": "Đã bật {{count}} lần",
       "unknown": "Ổ đĩa này không cho biết nó đã được dùng bao lâu.",
       "note": "Số giờ chỉ được tính khi ổ đĩa đang bật nguồn. Ổ đĩa chạy 24/7 sẽ xuống cấp nhanh hơn ổ đĩa chỉ dùng vài giờ mỗi ngày."
     },
@@ -237,8 +237,8 @@
   "issue": {
     "unknown": "Phát hiện điều bất thường ({{code}}). Xem bảng kiểm tra để biết chi tiết.",
     "age": {
-      "high_hours": "Ổ đĩa này đã bật nguồn khoảng {{years}} năm ({{hours}} giờ), tức là đã dùng rất nhiều.",
-      "moderate_hours": "Ổ đĩa này đã bật nguồn khoảng {{years}} năm ({{hours}} giờ)."
+      "high_hours_other": "Ổ đĩa này đã bật nguồn khoảng {{years}} năm ({{hours}} giờ), tức là đã dùng rất nhiều.",
+      "moderate_hours_other": "Ổ đĩa này đã bật nguồn khoảng {{years}} năm ({{hours}} giờ)."
     },
     "drive_info": {
       "capacity_unknown": "Ổ đĩa không cho biết dung lượng của nó.",
@@ -252,15 +252,15 @@
       "not_supported": "Ổ đĩa này không cung cấp báo cáo sức khỏe, nên không biết tình trạng bên trong của nó.",
       "usb_bridge_blocked": "Bộ chuyển USB che mất báo cáo sức khỏe của ổ đĩa, nên không biết tình trạng bên trong của nó.",
       "overall_failed": "Chính phần tự kiểm tra sức khỏe của ổ đĩa báo rằng nó đang hỏng.",
-      "reallocated_sectors": "Ổ đĩa đã thay {{count}} vùng bị hỏng bằng vùng dự phòng.",
-      "pending_sectors": "{{count}} vùng của ổ đĩa không đọc được và đang chờ được thay thế.",
-      "uncorrectable_sectors": "{{count}} vùng của ổ đĩa không thể đọc hoặc sửa được.",
-      "crc_errors": "Đã ghi nhận {{count}} lỗi truyền dữ liệu, thường do cáp hoặc đầu nối kém.",
-      "error_log_entries": "Nhật ký lỗi của ổ đĩa có {{count}} mục.",
+      "reallocated_sectors_other": "Ổ đĩa đã thay {{count}} vùng bị hỏng bằng vùng dự phòng.",
+      "pending_sectors_other": "{{count}} vùng của ổ đĩa không đọc được và đang chờ được thay thế.",
+      "uncorrectable_sectors_other": "{{count}} vùng của ổ đĩa không thể đọc hoặc sửa được.",
+      "crc_errors_other": "Đã ghi nhận {{count}} lỗi truyền dữ liệu, thường do cáp hoặc đầu nối kém.",
+      "error_log_entries_other": "Nhật ký lỗi của ổ đĩa có {{count}} mục.",
       "ssd_worn": "SSD này đã dùng hết khoảng {{percent}}% tuổi thọ định mức.",
       "ssd_worn_out": "SSD này đã dùng hết khoảng {{percent}}% tuổi thọ định mức và sắp hết tuổi thọ.",
       "nvme_critical_warning": "Ổ đĩa đang báo một cảnh báo nghiêm trọng (mã {{value}}).",
-      "nvme_media_errors": "Bộ nhớ của ổ đĩa đã ghi {{count}} lỗi toàn vẹn dữ liệu.",
+      "nvme_media_errors_other": "Bộ nhớ của ổ đĩa đã ghi {{count}} lỗi toàn vẹn dữ liệu.",
       "spare_low": "Bộ nhớ dự phòng của ổ đĩa chỉ còn {{percent}}%.",
       "temperature_high": "Ổ đĩa đang chạy nóng ({{celsius}} C)."
     },
@@ -270,34 +270,34 @@
       "could_not_start": "Không thể bắt đầu bài tự kiểm tra nhanh của ổ đĩa.",
       "failed": "Ổ đĩa không đạt bài tự kiểm tra nhanh của chính nó.",
       "aborted": "Bài tự kiểm tra nhanh của ổ đĩa bị gián đoạn trước khi xong.",
-      "timeout": "Bài tự kiểm tra nhanh của ổ đĩa không xong trong {{seconds}} giây nên đã bị dừng."
+      "timeout_other": "Bài tự kiểm tra nhanh của ổ đĩa không xong trong {{seconds}} giây nên đã bị dừng."
     },
     "surface_read": {
       "cannot_open": "Không thể mở ổ đĩa để đọc.",
-      "read_errors": "{{count}} phần của ổ đĩa không thể đọc được.",
-      "slow_areas": "{{count}} vùng ({{percent}}%) phản hồi rất chậm, có thể do bề mặt đang bị mòn.",
+      "read_errors_other": "{{count}} phần của ổ đĩa không thể đọc được.",
+      "slow_areas_other": "{{count}} vùng ({{percent}}%) phản hồi rất chậm, có thể do bề mặt đang bị mòn.",
       "low_speed": "Ổ đĩa đọc chậm ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Bài kiểm tra ghi bị bỏ qua vì ổ đĩa không có thư mục nào chúng tôi có thể ghi an toàn.",
       "insufficient_space": "Bài kiểm tra ghi bị bỏ qua vì ổ đĩa còn quá ít chỗ trống.",
       "write_error": "Ổ đĩa báo lỗi khi ghi dữ liệu kiểm tra.",
-      "data_mismatch": "{{count}} khối dữ liệu kiểm tra khi đọc lại khác với dữ liệu đã ghi.",
+      "data_mismatch_other": "{{count}} khối dữ liệu kiểm tra khi đọc lại khác với dữ liệu đã ghi.",
       "slow_write": "Ổ đĩa ghi rất chậm ({{mbps}} MB/s).",
       "cleanup_failed": "Không thể xóa tệp kiểm tra tạm. Bạn có thể tự xóa {{path}}."
     },
     "capacity_check": {
       "needs_wipe_mode": "Việc kiểm tra dung lượng giả cần bài kiểm tra đầy đủ, vốn sẽ xóa ổ đĩa. Bài này đã bị bỏ qua.",
       "fake_capacity": "Ổ đĩa này khai chứa được {{claimed_bytes}} byte nhưng chỉ có khoảng {{real_bytes}} byte là thật. Đây là ổ đĩa giả dung lượng.",
-      "data_corruption": "{{count}} khối kiểm tra khi đọc lại bị hỏng.",
-      "io_error": "Ổ đĩa trả về {{count}} lỗi trong lúc kiểm tra dung lượng."
+      "data_corruption_other": "{{count}} khối kiểm tra khi đọc lại bị hỏng.",
+      "io_error_other": "Ổ đĩa trả về {{count}} lỗi trong lúc kiểm tra dung lượng."
     },
     "stability": {
-      "device_disconnected": "Ổ đĩa biến mất {{count}} lần trong lúc kiểm tra.",
-      "io_errors": "Ổ đĩa trả về {{count}} lỗi đọc hoặc ghi trong lúc kiểm tra.",
-      "timeouts": "Ổ đĩa quá thời gian chờ {{count}} lần trong lúc kiểm tra.",
+      "device_disconnected_other": "Ổ đĩa biến mất {{count}} lần trong lúc kiểm tra.",
+      "io_errors_other": "Ổ đĩa trả về {{count}} lỗi đọc hoặc ghi trong lúc kiểm tra.",
+      "timeouts_other": "Ổ đĩa quá thời gian chờ {{count}} lần trong lúc kiểm tra.",
       "crc_errors_increased": "Lỗi truyền dữ liệu tăng thêm {{count}} trong lúc kiểm tra. Hãy kiểm tra cáp.",
-      "new_bad_sectors": "Có {{count}} vùng hỏng mới xuất hiện trong lúc chúng tôi kiểm tra."
+      "new_bad_sectors_other": "Có {{count}} vùng hỏng mới xuất hiện trong lúc chúng tôi kiểm tra."
     }
   },
   "progress": {
@@ -319,7 +319,7 @@
       "starting": "Đang bắt đầu bài tự kiểm tra nhanh tích hợp của ổ đĩa...",
       "running": "Ổ đĩa đang chạy bài tự kiểm tra nhanh của chính nó (xong {{percent}}%).",
       "done": "Ổ đĩa đã tự kiểm tra xong.",
-      "running_seconds": "Ổ đĩa đang chạy bài tự kiểm tra nhanh của chính nó (đã {{seconds}} giây)."
+      "running_seconds_other": "Ổ đĩa đang chạy bài tự kiểm tra nhanh của chính nó (đã {{seconds}} giây)."
     },
     "surface_read": {
       "sampling": "Đang đọc các vùng mẫu trên toàn bộ ổ đĩa ({{done}} trên {{total}}).",

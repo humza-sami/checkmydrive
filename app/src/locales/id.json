@@ -149,11 +149,11 @@
     },
     "age": {
       "title": "Usia drive",
-      "years": "Sekitar {{count}} tahun pemakaian",
+      "years_other": "Sekitar {{count}} tahun pemakaian",
       "yearsLessThanOne": "Pemakaian kurang dari setahun",
-      "hours": "Menyala selama {{hours}} jam",
+      "hours_other": "Menyala selama {{hours}} jam",
       "made": "Dibuat: {{date}}",
-      "cycles": "Dinyalakan {{count}} kali",
+      "cycles_other": "Dinyalakan {{count}} kali",
       "unknown": "Drive ini tidak melaporkan sudah berapa lama dipakai.",
       "note": "Jam dihitung hanya saat drive menyala. Drive yang dipakai 24 jam nonstop menua lebih cepat daripada yang dipakai beberapa jam sehari."
     },
@@ -237,8 +237,8 @@
   "issue": {
     "unknown": "Ditemukan hal yang tidak biasa ({{code}}). Lihat tabel tes untuk detailnya.",
     "age": {
-      "high_hours": "Drive ini sudah menyala selama sekitar {{years}} tahun ({{hours}} jam), yang berarti pemakaian sangat banyak.",
-      "moderate_hours": "Drive ini sudah menyala selama sekitar {{years}} tahun ({{hours}} jam)."
+      "high_hours_other": "Drive ini sudah menyala selama sekitar {{years}} tahun ({{hours}} jam), yang berarti pemakaian sangat banyak.",
+      "moderate_hours_other": "Drive ini sudah menyala selama sekitar {{years}} tahun ({{hours}} jam)."
     },
     "drive_info": {
       "capacity_unknown": "Drive tidak melaporkan ukurannya.",
@@ -252,15 +252,15 @@
       "not_supported": "Drive ini tidak menyediakan laporan kesehatan, sehingga kondisi internalnya tidak diketahui.",
       "usb_bridge_blocked": "Adaptor USB menyembunyikan laporan kesehatan drive, sehingga kondisi internalnya tidak diketahui.",
       "overall_failed": "Pemeriksaan kesehatan drive sendiri menyatakan drive ini rusak.",
-      "reallocated_sectors": "Drive sudah mengganti {{count}} area yang rusak dengan area cadangan.",
-      "pending_sectors": "{{count}} area drive tidak terbaca dan menunggu diganti.",
-      "uncorrectable_sectors": "{{count}} area drive tidak dapat dibaca atau diperbaiki.",
-      "crc_errors": "{{count}} kesalahan transfer data tercatat, yang sering disebabkan oleh kabel atau konektor yang buruk.",
-      "error_log_entries": "Catatan kesalahan drive berisi {{count}} entri.",
+      "reallocated_sectors_other": "Drive sudah mengganti {{count}} area yang rusak dengan area cadangan.",
+      "pending_sectors_other": "{{count}} area drive tidak terbaca dan menunggu diganti.",
+      "uncorrectable_sectors_other": "{{count}} area drive tidak dapat dibaca atau diperbaiki.",
+      "crc_errors_other": "{{count}} kesalahan transfer data tercatat, yang sering disebabkan oleh kabel atau konektor yang buruk.",
+      "error_log_entries_other": "Catatan kesalahan drive berisi {{count}} entri.",
       "ssd_worn": "SSD ini sudah memakai sekitar {{percent}}% dari umur pakainya.",
       "ssd_worn_out": "SSD ini sudah memakai sekitar {{percent}}% dari umur pakainya dan hampir habis masa pakainya.",
       "nvme_critical_warning": "Drive melaporkan peringatan kritis (kode {{value}}).",
-      "nvme_media_errors": "Memori drive mencatat {{count}} kesalahan integritas data.",
+      "nvme_media_errors_other": "Memori drive mencatat {{count}} kesalahan integritas data.",
       "spare_low": "Memori cadangan drive tinggal {{percent}}%.",
       "temperature_high": "Drive berjalan panas ({{celsius}} C)."
     },
@@ -270,34 +270,34 @@
       "could_not_start": "Tes mandiri cepat drive tidak dapat dimulai.",
       "failed": "Drive gagal dalam tes mandiri cepatnya sendiri.",
       "aborted": "Tes mandiri cepat drive terhenti sebelum selesai.",
-      "timeout": "Tes mandiri cepat drive tidak selesai dalam {{seconds}} detik dan dihentikan."
+      "timeout_other": "Tes mandiri cepat drive tidak selesai dalam {{seconds}} detik dan dihentikan."
     },
     "surface_read": {
       "cannot_open": "Drive tidak dapat dibuka untuk dibaca.",
-      "read_errors": "{{count}} bagian drive tidak dapat dibaca.",
-      "slow_areas": "{{count}} area ({{percent}}%) merespons sangat lambat, yang bisa berarti permukaannya mulai aus.",
+      "read_errors_other": "{{count}} bagian drive tidak dapat dibaca.",
+      "slow_areas_other": "{{count}} area ({{percent}}%) merespons sangat lambat, yang bisa berarti permukaannya mulai aus.",
       "low_speed": "Drive membaca dengan lambat ({{mbps}} MB/s)."
     },
     "write_verify": {
       "no_writable_volume": "Tes tulis dilewati karena drive tidak memiliki folder yang aman untuk kami tulisi.",
       "insufficient_space": "Tes tulis dilewati karena ruang kosong di drive terlalu sedikit.",
       "write_error": "Drive melaporkan kesalahan saat menulis data uji.",
-      "data_mismatch": "{{count}} blok data uji kembali berbeda dari yang ditulis.",
+      "data_mismatch_other": "{{count}} blok data uji kembali berbeda dari yang ditulis.",
       "slow_write": "Drive menulis dengan sangat lambat ({{mbps}} MB/s).",
       "cleanup_failed": "File uji sementara tidak dapat dihapus. Anda bisa menghapus {{path}} sendiri."
     },
     "capacity_check": {
       "needs_wipe_mode": "Pemeriksaan kapasitas palsu memerlukan tes penuh yang menghapus drive. Pemeriksaan ini dilewati.",
       "fake_capacity": "Drive ini mengaku menampung {{claimed_bytes}} byte tetapi hanya sekitar {{real_bytes}} byte yang nyata. Ini adalah drive berkapasitas palsu.",
-      "data_corruption": "{{count}} blok uji kembali dalam keadaan rusak.",
-      "io_error": "Drive mengembalikan {{count}} kesalahan selama pemeriksaan kapasitas."
+      "data_corruption_other": "{{count}} blok uji kembali dalam keadaan rusak.",
+      "io_error_other": "Drive mengembalikan {{count}} kesalahan selama pemeriksaan kapasitas."
     },
     "stability": {
-      "device_disconnected": "Drive menghilang sebanyak {{count}} kali selama tes.",
-      "io_errors": "Drive mengembalikan {{count}} kesalahan baca atau tulis selama tes.",
-      "timeouts": "Drive kehabisan waktu sebanyak {{count}} kali selama tes.",
+      "device_disconnected_other": "Drive menghilang sebanyak {{count}} kali selama tes.",
+      "io_errors_other": "Drive mengembalikan {{count}} kesalahan baca atau tulis selama tes.",
+      "timeouts_other": "Drive kehabisan waktu sebanyak {{count}} kali selama tes.",
       "crc_errors_increased": "Kesalahan transfer data bertambah {{count}} selama tes. Periksa kabelnya.",
-      "new_bad_sectors": "{{count}} area rusak baru muncul saat kami menguji."
+      "new_bad_sectors_other": "{{count}} area rusak baru muncul saat kami menguji."
     }
   },
   "progress": {
@@ -319,7 +319,7 @@
       "starting": "Memulai tes mandiri cepat bawaan drive...",
       "running": "Drive sedang menjalankan tes mandiri cepatnya sendiri ({{percent}}% selesai).",
       "done": "Tes mandiri drive selesai.",
-      "running_seconds": "Drive sedang menjalankan tes mandiri cepatnya sendiri (sudah {{seconds}} detik)."
+      "running_seconds_other": "Drive sedang menjalankan tes mandiri cepatnya sendiri (sudah {{seconds}} detik)."
     },
     "surface_read": {
       "sampling": "Membaca area contoh di seluruh drive ({{done}} dari {{total}}).",

@@ -3,6 +3,11 @@
 Every human-readable string is a code. `{param}` placeholders are interpolated by the GUI (i18next).
 Params are JSON numbers or strings. Severity is in brackets for issues. `en-US` sentences below are the source text.
 
+**Plurals (GUI-side, no engine change):** the GUI passes `count` to i18next so sentences agree grammatically
+(`_one`/`_other`/... suffixes per CLDR category in each locale file). Codes with a `count` param use it directly;
+`issue.age.*` use `years`, and `issue.selftest.timeout` / `progress.selftest_short.running` (seconds variant) use
+`seconds` as the count (table `COUNT_PARAM` in `app/src/lib/codes.ts`). The original param stays available to the text.
+
 ## Errors (`{"type":"error","code":...,"params"?}`; exit code in parentheses)
 
 | code | params | en-US |
