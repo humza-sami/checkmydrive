@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Kullanılmış bir sürücüye güvenmeden önce güvenli olup olmadığını öğrenin.",
+    "skip": "Ana içeriğe geç"
+  },
+  "nav": {
+    "settings": "Ayarlar",
+    "back": "Geri",
+    "mockBanner": "Demo modu: örnek sürücüler gösteriliyor. Bilgisayarınızda hiçbir şey test edilmiyor."
+  },
+  "picker": {
+    "title": "Hangi sürücüyü kontrol etmek istiyorsunuz?",
+    "subtitle": "Satın almayı veya kullanmayı düşündüğünüz sürücüyü takın, sonra aşağıdan seçin. Kontrol yaklaşık 3 ila 4 dakika sürer.",
+    "refresh": "Yenile",
+    "refreshing": "Sürücüler aranıyor…",
+    "empty": "Hiç sürücü bulunamadı. Bir sürücü takın ve Yenile'ye basın.",
+    "systemDisk": "Sistem diski",
+    "systemDiskHint": "Bilgisayarınız bu sürücüden çalışıyor. Yalnızca güvenli modda kontrol edilebilir.",
+    "unknownModel": "Bilinmeyen sürücü",
+    "select": "Bu sürücüyü kontrol et",
+    "kind": {
+      "hdd": "Sabit disk (HDD)",
+      "ssd": "Katı hal sürücüsü (SSD)",
+      "nvme": "NVMe SSD",
+      "usb": "USB bellek veya sürücü",
+      "sd": "SD / hafıza kartı",
+      "unknown": "Sürücü"
+    },
+    "removable": "Çıkarılabilir",
+    "loadFailed": "Sürücü listesini okuyamadık.",
+    "noAdminNote": "Sağlık verisi gibi bazı ayrıntılar yönetici izni gerektirebilir ve kontrol başlarken istenecektir."
+  },
+  "mode": {
+    "title": "Kontrol ne kadar kapsamlı olsun?",
+    "checking": "Kontrol ediliyor",
+    "safe": {
+      "title": "Hızlı güvenli test (dosyalarınız korunur)",
+      "desc": "Sürücünün tamamını okur ve küçük bir geçici dosya yazar; böylece size ait hiçbir şey değişmez veya kaybolmaz.",
+      "badge": "Önerilen",
+      "limit": "Sahte kapasiteyi tespit edemez."
+    },
+    "wipe": {
+      "title": "Tam silme testi (en kapsamlı, her şeyi SİLER)",
+      "desc": "Sahte kapasiteyi ve gizli kusurları yakalamak için sürücünün tamamına da yazar. Sürücüdeki tüm dosyalar kalıcı olarak yok edilir.",
+      "dangerTitle": "Tehlikeli bölge: sürücü silinir",
+      "dangerBody": "Bu işlem {{model}} üzerindeki TÜM verileri kalıcı olarak siler. Geri alınamaz. Yalnızca sürücü boşsa veya yedeğiniz varsa devam edin.",
+      "confirmLabel": "Onaylamak için sürücünün seri numarasını yazın: {{serial}}",
+      "confirmPlaceholder": "Seri numarasını buraya yazın",
+      "noSerial": "Bu sürücü seri numarası bildirmiyor, bu yüzden tam silme testi kullanılamıyor.",
+      "systemBlocked": "Sistem diskiniz asla silinemez. Yalnızca güvenli test kullanılabilir.",
+      "mismatch": "Yazdığınız metin henüz seri numarasıyla eşleşmiyor.",
+      "start": "Sil ve tam testi çalıştır",
+      "expand": "Tam silme testini göster",
+      "collapse": "Tam silme testini gizle"
+    },
+    "start": "Hızlı güvenli testi başlat",
+    "back": "Başka bir sürücü seç",
+    "duration": "Yaklaşık 3 ila 4 dakika sürer. Lütfen sürücüyü çıkarmayın."
+  },
+  "running": {
+    "title": "Sürücünüz kontrol ediliyor",
+    "subtitle": "Lütfen sürücüyü takılı ve bilgisayarı uyanık tutun.",
+    "overall": "Genel ilerleme",
+    "elapsed": "Geçen süre",
+    "remaining": "Yaklaşık {{time}} kaldı",
+    "estimating": "Süre tahmin ediliyor…",
+    "cancel": "Testi iptal et",
+    "cancelling": "İptal ediliyor…",
+    "cancelConfirm": "Test durdurulsun mu? Güvenli modda sürücünüzde hiçbir şey değişmedi.",
+    "keepGoing": "Devam et",
+    "stop": "Testi durdur",
+    "checklist": "Neleri kontrol ediyoruz",
+    "waiting": "İzin bekleniyor…",
+    "adminPrompt": "Bilgisayarınız parolanızı isteyebilir. Bu, CheckMyDrive'ın sürücüyü doğrudan okumasını sağlar.",
+    "phase": {
+      "prepare": "Hazırlanıyor",
+      "finish": "Puanınız hesaplanıyor"
+    },
+    "status": {
+      "pending": "Bekliyor",
+      "running": "Kontrol ediliyor",
+      "done": "Bitti"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Sürücü kimliği",
+      "desc": "Sürücünün modeli, boyutu ve türü"
+    },
+    "smart_health": {
+      "name": "Sağlık raporu",
+      "desc": "Sürücünün kendi tuttuğu sorun ve aşınma kaydı"
+    },
+    "selftest_short": {
+      "name": "Dahili kendi kendine kontrol",
+      "desc": "Sürücü kendini kontrol eder"
+    },
+    "surface_read": {
+      "name": "Yüzey taraması",
+      "desc": "Sürücünün her yerinden noktalar okur"
+    },
+    "write_verify": {
+      "name": "Yaz ve doğrula",
+      "desc": "Veriyi kaydeder ve geri okur"
+    },
+    "capacity_check": {
+      "name": "Gerçek kapasite",
+      "desc": "Boyutun sahte olmadığından emin olur"
+    },
+    "stability": {
+      "name": "Kararlılık",
+      "desc": "Bağlantı kopmalarını ve hataları izler"
+    }
+  },
+  "status": {
+    "pass": "Geçti",
+    "warn": "Uyarı",
+    "fail": "Başarısız",
+    "skipped": "Atlandı"
+  },
+  "results": {
+    "title": "Sonuçlar",
+    "scoreOutOf": "/ 100",
+    "scoreLabel": "Puan: 100 üzerinden {{score}}",
+    "verdict": {
+      "buy": "Almaya uygun",
+      "caution": "Dikkatli kullanın",
+      "avoid": "Uzak durun"
+    },
+    "summary": {
+      "buy": "Bu {{model}} sağlıklı görünüyor. Ciddi bir sorun bulmadık ve günlük kullanım için sorunsuz olmalı.",
+      "caution": "Bu {{model}} çalışıyor ama bazı uyarı işaretleri bulduk. Yalnızca kaybetmeyi göze alabileceğiniz dosyalar için kullanın ya da daha düşük bir fiyat pazarlığı yapın.",
+      "avoid": "Bu {{model}} cihazına güvenmeyin. Dosyalarınızı tehlikeye atan ciddi sorunlar bulduk.",
+      "fake_capacity": "Bu {{model}} boyutu konusunda yalan söylüyor. {{claimed}} olduğunu iddia ediyor ama gerçekte o kadar veri saklayamıyor. Satın almayın ve kullanmayın.",
+      "failing": "Bu {{model}} bozuluyor. Kendi sağlık verileri ve testlerimiz, dosyalarınızı her an kaybedebileceğini gösteriyor."
+    },
+    "can": {
+      "title": "Şunu yapabilir miyim…",
+      "os": "Üzerine işletim sistemi kurabilir miyim?",
+      "storage": "Dosyaları uzun süre üzerinde saklayabilir miyim?",
+      "daily": "Her gün kullanabilir miyim?",
+      "fill": "Güvenle doldurabilir miyim?",
+      "fillYes": "{{total}} içinden {{size}} kadarını güvenle saklayabilirsiniz",
+      "fillNo": "Üzerinde önemli hiçbir şey saklamazdık.",
+      "yes": "Evet",
+      "maybe": "Belki",
+      "no": "Hayır"
+    },
+    "age": {
+      "title": "Sürücünün yaşı",
+      "years": "Yaklaşık {{count}} yıllık kullanım",
+      "yearsLessThanOne": "Bir yıldan az kullanım",
+      "hours": "{{hours}} saat açık kaldı",
+      "made": "Üretim: {{date}}",
+      "cycles": "{{count}} kez açıldı",
+      "unknown": "Bu sürücü ne kadar süredir kullanıldığını bildirmiyor.",
+      "note": "Saatler yalnızca sürücü açıkken sayılır. 7/24 kullanılan bir sürücü, günde birkaç saat kullanılandan daha hızlı yaşlanır."
+    },
+    "issues": {
+      "title": "Bulduklarımız",
+      "none": "Hiç sorun bulunamadı.",
+      "critical": "Ciddi",
+      "warn": "Uyarı",
+      "info": "Not"
+    },
+    "matrix": {
+      "title": "Test tablosu",
+      "subtitle": "İleri düzey kullanıcılar için ayrıntılar",
+      "show": "Ayrıntıları göster",
+      "hide": "Ayrıntıları gizle",
+      "test": "Test",
+      "status": "Durum",
+      "score": "Puan",
+      "metrics": "Önemli sayılar",
+      "none": "Kaydedilmiş sayı yok"
+    },
+    "export": "Raporu dışa aktar",
+    "exportJson": "JSON olarak kaydet",
+    "exportHtml": "Web sayfası (HTML) olarak kaydet",
+    "print": "Yazdır veya PDF olarak kaydet",
+    "saved": "Rapor kaydedildi.",
+    "saveFailed": "Rapor kaydedilemedi.",
+    "another": "Başka bir sürücüyü test et",
+    "mode": {
+      "safe": "Hızlı güvenli test",
+      "wipe": "Tam silme testi"
+    },
+    "tested": "Test tarihi: {{date}}",
+    "engine": "Motor {{version}}",
+    "skippedNote": "Sahte kapasite tespiti çalıştırılmadı. Tam bir sonuç için boş bir sürücüde tam silme testini kullanın."
+  },
+  "report": {
+    "title": "CheckMyDrive raporu",
+    "generatedBy": "CheckMyDrive tarafından oluşturuldu (açık kaynak)"
+  },
+  "settings": {
+    "title": "Ayarlar ve hakkında",
+    "language": "Dil",
+    "languageHint": "İngilizce dışındaki diller hazır oldukça yüklenir; eksik metinler İngilizce görünür.",
+    "theme": "Görünüm",
+    "themeSystem": "Sistemi izle",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "about": "Hakkında",
+    "version": "Sürüm",
+    "license": "Lisans",
+    "licenseValue": "MIT Lisansı (ücretsiz ve açık kaynak)",
+    "github": "GitHub'da kaynak kodu",
+    "engineVersion": "Motor",
+    "disclaimer": "CheckMyDrive bilinçli bir tahmin sunar ve bir sürücünün asla bozulmayacağını garanti edemez. Önemli dosyalarınızın yedeğini her zaman alın.",
+    "close": "Bitti"
+  },
+  "metric": {
+    "read_mbps_avg": "Ortalama okuma hızı (MB/s)",
+    "write_mbps": "Yazma hızı (MB/s)",
+    "latency_ms_p99": "En yavaş %1 yanıt süresi (ms)",
+    "slow_samples": "Yavaş noktalar",
+    "read_errors": "Okuma hataları",
+    "reallocated_sectors": "Değiştirilen bozuk alanlar",
+    "pending_sectors": "Kararsız alanlar",
+    "uncorrectable_sectors": "Okunamayan alanlar",
+    "temperature_c": "Sıcaklık (°C)",
+    "percent_used": "Kullanılan aşınma (%)",
+    "media_errors": "Ortam hataları",
+    "written_mb": "Yazılan veri (MB)",
+    "mismatches": "Uyuşmazlıklar",
+    "sectors_checked": "Kontrol edilen noktalar",
+    "real_capacity_gb": "Gerçek kapasite (GB)",
+    "claimed_gb": "İddia edilen kapasite (GB)",
+    "disconnects": "Bağlantı kopmaları",
+    "io_errors": "Giriş/çıkış hataları",
+    "rpm": "Dönüş hızı (RPM)",
+    "interface": "Bağlantı",
+    "result": "Sonuç"
+  },
+  "issue": {
+    "unknown": "Alışılmadık bir şey bulundu ({{code}}). Ayrıntılar için test tablosuna bakın.",
+    "age": {
+      "high_hours": "Bu sürücü yaklaşık {{years}} yıldır ({{hours}} saat) açık kaldı; bu çok yoğun bir kullanım.",
+      "moderate_hours": "Bu sürücü yaklaşık {{years}} yıldır ({{hours}} saat) açık kaldı."
+    },
+    "drive_info": {
+      "capacity_unknown": "Sürücü ne kadar büyük olduğunu bildirmedi.",
+      "model_unknown": "Sürücü model adını bildirmedi.",
+      "system_disk": "Bu, bilgisayarınızın üzerinden çalıştığı disk. Yalnızca güvenli, veri silmeyen test çalıştırıldı."
+    },
+    "smart": {
+      "unavailable": "Sağlık raporu aracı (smartmontools) kullanılamıyor, bu yüzden sürücünün iç sağlık verileri okunamadı.",
+      "needs_admin": "Sürücünün sağlık raporu yönetici izni olmadan okunamadı.",
+      "timeout": "Sürücü sağlık raporu isteğine zamanında yanıt vermedi.",
+      "not_supported": "Bu sürücü sağlık raporu sunmuyor, bu yüzden iç durumu bilinmiyor.",
+      "usb_bridge_blocked": "USB adaptörü sürücünün sağlık raporunu gizliyor, bu yüzden iç durumu bilinmiyor.",
+      "overall_failed": "Sürücünün kendi sağlık kontrolü bozulduğunu söylüyor.",
+      "reallocated_sectors": "Sürücü hasarlı {{count}} alanı yedekleriyle değiştirmiş.",
+      "pending_sectors": "Sürücünün {{count}} alanı okunamıyor ve değiştirilmeyi bekliyor.",
+      "uncorrectable_sectors": "Sürücünün {{count}} alanı okunamadı veya düzeltilemedi.",
+      "crc_errors": "{{count}} veri aktarım hatası kaydedildi; bunlara çoğunlukla bozuk bir kablo veya bağlantı neden olur.",
+      "error_log_entries": "Sürücünün hata kaydında {{count}} giriş var.",
+      "ssd_worn": "Bu SSD, beklenen ömrünün yaklaşık %{{percent}} kadarını kullanmış.",
+      "ssd_worn_out": "Bu SSD, beklenen ömrünün yaklaşık %{{percent}} kadarını kullanmış ve ömrünün sonuna yaklaşıyor.",
+      "nvme_critical_warning": "Sürücü kritik bir uyarı bildiriyor (kod {{value}}).",
+      "nvme_media_errors": "Sürücünün belleği {{count}} veri bütünlüğü hatası kaydetmiş.",
+      "spare_low": "Sürücünün yedek belleğinin yalnızca %{{percent}} kadarı kaldı.",
+      "temperature_high": "Sürücü sıcak çalışıyor ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Sağlık arayüzü kullanılamadığı için sürücünün hızlı kendi kendine testi atlandı.",
+      "not_supported": "Bu sürücü hızlı kendi kendine testi desteklemiyor.",
+      "could_not_start": "Sürücünün hızlı kendi kendine testi başlatılamadı.",
+      "failed": "Sürücü kendi hızlı kendi kendine testinde başarısız oldu.",
+      "aborted": "Sürücünün hızlı kendi kendine testi bitmeden kesildi.",
+      "timeout": "Sürücünün hızlı kendi kendine testi {{seconds}} saniye içinde bitmedi ve durduruldu."
+    },
+    "surface_read": {
+      "cannot_open": "Sürücü okumak için açılamadı.",
+      "read_errors": "Sürücünün {{count}} bölümü okunamadı.",
+      "slow_areas": "{{count}} alan (%{{percent}}) çok yavaş yanıt verdi; bu, yüzeyin aşınıyor olabileceği anlamına gelebilir.",
+      "low_speed": "Sürücü yavaş okuyor ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Sürücüde güvenle yazabileceğimiz bir klasör olmadığı için yazma testi atlandı.",
+      "insufficient_space": "Sürücüde boş alan çok az olduğu için yazma testi atlandı.",
+      "write_error": "Sürücü, test verisi yazarken bir hata bildirdi.",
+      "data_mismatch": "{{count}} test veri bloğu yazılandan farklı geri geldi.",
+      "slow_write": "Sürücü çok yavaş yazıyor ({{mbps}} MB/s).",
+      "cleanup_failed": "Geçici test dosyası silinemedi. {{path}} dosyasını kendiniz silebilirsiniz."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Sahte kapasite kontrolü, sürücüyü silen tam testi gerektirir. Bu kontrol atlandı.",
+      "fake_capacity": "Bu sürücü {{claimed_bytes}} bayt tutabildiğini iddia ediyor ama yalnızca yaklaşık {{real_bytes}} bayt gerçek. Bu, sahte kapasiteli bir sürücü.",
+      "data_corruption": "{{count}} test bloğu hasarlı geri geldi.",
+      "io_error": "Sürücü, kapasite kontrolü sırasında {{count}} hata verdi."
+    },
+    "stability": {
+      "device_disconnected": "Sürücü testler sırasında {{count}} kez kayboldu.",
+      "io_errors": "Sürücü testler sırasında {{count}} okuma veya yazma hatası verdi.",
+      "timeouts": "Sürücü testler sırasında {{count}} kez zaman aşımına uğradı.",
+      "crc_errors_increased": "Veri aktarım hataları testler sırasında {{count}} arttı. Kabloyu kontrol edin.",
+      "new_bad_sectors": "Test ederken {{count}} yeni hasarlı alan ortaya çıktı."
+    }
+  },
+  "progress": {
+    "unknown": "Çalışıyor…",
+    "working": "Çalışıyor…",
+    "prepare": {
+      "starting": "Hazırlanıyor...",
+      "reading_smart": "Sürücünün yerleşik sağlık raporu okunuyor...",
+      "unmounting": "Sürücünün bölümleri güvenle ayrılıyor...",
+      "ready": "Teste hazır."
+    },
+    "drive_info": {
+      "identifying": "Sürücü tanınıyor..."
+    },
+    "smart_health": {
+      "analyzing": "Sürücünün sağlık raporu inceleniyor..."
+    },
+    "selftest_short": {
+      "starting": "Sürücünün yerleşik hızlı kendi kendine testi başlatılıyor...",
+      "running": "Sürücü kendi hızlı kendi kendine testini yapıyor (%{{percent}} tamamlandı).",
+      "done": "Sürücünün kendi kendine testi bitti.",
+      "running_seconds": "Sürücü kendi hızlı kendi kendine testini yapıyor (şu ana kadar {{seconds}} saniye)."
+    },
+    "surface_read": {
+      "sampling": "Sürücünün her yerinden örnek alanlar okunuyor ({{done}} / {{total}}).",
+      "sequential": "Okuma hızı ölçülüyor ({{mbps}} MB/s).",
+      "done": "Yüzey taraması bitti."
+    },
+    "write_verify": {
+      "writing": "Test verisi yazılıyor ({{mb}} MB yazıldı).",
+      "verifying": "Veri kontrol için geri okunuyor ({{mb}} MB kontrol edildi).",
+      "cleaning": "Geçici test dosyası siliniyor...",
+      "done": "Yazma testi bitti."
+    },
+    "capacity_check": {
+      "writing": "İddia edilen boyutun tamamında noktalar işaretleniyor ({{done}} / {{total}}).",
+      "verifying": "Her noktanın kendi verisini tuttuğu kontrol ediliyor ({{done}} / {{total}}).",
+      "done": "Kapasite kontrolü bitti."
+    },
+    "stability": {
+      "checking": "Sürücünün testler boyunca kararlı kalıp kalmadığı kontrol ediliyor..."
+    },
+    "finish": {
+      "scoring": "Puanınız hesaplanıyor...",
+      "done": "Bitti."
+    }
+  },
+  "suitability": {
+    "unknown": "Ayrıntı yok.",
+    "fallback": {
+      "os_install": {
+        "good": "Bir işletim sisteminin güvenilir çalışmasını engelleyecek bir sorun yok.",
+        "caution": "Çalışabilir ama biraz risk var. Yedek alın.",
+        "no": "İşletim sistemi için güvenli değil."
+      },
+      "long_term_storage": {
+        "good": "Dosyaları uzun süre saklamak için güvenilir görünüyor. Yine de ikinci bir kopya bulundurun.",
+        "caution": "Uzun süreli saklama için riskli. Başka bir yerde bir kopya daha tutun.",
+        "no": "Önemli dosyaları burada saklamayın."
+      },
+      "daily_use": {
+        "good": "Günlük kullanım için uygun.",
+        "caution": "Günlük kullanım için olur, ama yeni sorunlara dikkat edin.",
+        "no": "Günlük kullanım için yeterince güvenilir değil."
+      }
+    },
+    "os_install": {
+      "ok": "Üzerine işletim sistemi kurmak için uygun.",
+      "bad_sectors": "İşletim sistemi için önerilmez: hasarlı alanları var.",
+      "slow_latency": "İşletim sistemi için önerilmez: bazı okumalar çok yavaş.",
+      "score_low": "İşletim sistemi için önerilmez: genel puan ({{score}}) çok düşük."
+    },
+    "long_term_storage": {
+      "ok": "Dosyaları uzun süre saklamak için uygun.",
+      "critical_issues": "Uzun süreli saklama için güvenli değil: ciddi sorunlar bulundu.",
+      "score_low": "Uzun süreli saklama için riskli: genel puan ({{score}}) çok düşük. Yedek alın."
+    },
+    "daily_use": {
+      "ok": "Günlük kullanım için uygun.",
+      "caution": "Günlük dosyalar için kullanılabilir, ama yedek alın.",
+      "no": "Günlük kullanım için önerilmez."
+    }
+  },
+  "error": {
+    "unknown": "Bir şeyler ters gitti ({{code}}).",
+    "title": "Kontrol tamamlanamadı",
+    "retry": "Tekrar dene",
+    "choose": "Başka bir sürücü seç",
+    "refused": "Test güvenlik nedeniyle reddedildi. Silme testleri sistem diskinde veya eşleşen bir seri numarası olmadan çalıştırılamaz.",
+    "engine_failed": "Kontrol aracı beklenmedik şekilde durdu.",
+    "engine_missing": "Kontrol aracı bulunamadı. Lütfen CheckMyDrive'ı yeniden yükleyin.",
+    "auth_cancelled": "İzin verilmedi, bu yüzden sürücü kontrol edilmedi.",
+    "elevation_unavailable": "Bu bilgisayarda yönetici izni istenemedi.",
+    "bad_args": "Dahili bir istek hatası nedeniyle test başlatılamadı.",
+    "needs_admin": "Bu sürücüyü test etmek için yönetici izni gerekli.",
+    "drive_not_found": "Bu sürücü bulunamadı. Çıkarılmış olabilir.",
+    "system_disk_refused": "Bu, bilgisayarınızın üzerinden çalıştığı disk, bu yüzden silinemez. Başka bir sürücü seçin.",
+    "confirm_required": "Verileri silen tam testten önce lütfen sürücünün seri numarasını onaylayın.",
+    "confirm_mismatch": "Girdiğiniz seri numarası bu sürücüyle eşleşmiyor. Hiçbir şey değiştirilmedi.",
+    "cannot_open_device": "Sürücü test için açılamadı. Başka bir program kullanıyor olabilir.",
+    "unmount_failed": "Tam testten önce sürücünün bölümleri güvenle ayrılamadı. Sürücüyü kullanan programları kapatıp tekrar deneyin.",
+    "internal": "Test motorunun içinde beklenmedik bir sorun oluştu."
+  },
+  "common": {
+    "loading": "Yükleniyor…",
+    "close": "Kapat",
+    "unknown": "Bilinmiyor"
+  }
+}

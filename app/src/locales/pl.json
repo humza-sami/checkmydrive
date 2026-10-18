@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Sprawdź, czy używany dysk jest bezpieczny, zanim mu zaufasz.",
+    "skip": "Przejdź do głównej treści"
+  },
+  "nav": {
+    "settings": "Ustawienia",
+    "back": "Wstecz",
+    "mockBanner": "Tryb demo: pokazujemy przykładowe dyski. Nic na Twoim komputerze nie jest testowane."
+  },
+  "picker": {
+    "title": "Który dysk chcesz sprawdzić?",
+    "subtitle": "Podłącz dysk, który zamierzasz kupić lub używać, a potem wybierz go poniżej. Sprawdzanie trwa około 3–4 minut.",
+    "refresh": "Odśwież",
+    "refreshing": "Szukam dysków…",
+    "empty": "Nie znaleziono żadnych dysków. Podłącz dysk i naciśnij Odśwież.",
+    "systemDisk": "Dysk systemowy",
+    "systemDiskHint": "Twój komputer działa z tego dysku. Można go sprawdzić tylko w trybie bezpiecznym.",
+    "unknownModel": "Nieznany dysk",
+    "select": "Sprawdź ten dysk",
+    "kind": {
+      "hdd": "Dysk twardy (HDD)",
+      "ssd": "Dysk SSD",
+      "nvme": "Dysk SSD NVMe",
+      "usb": "Pendrive lub dysk USB",
+      "sd": "Karta SD / karta pamięci",
+      "unknown": "Dysk"
+    },
+    "removable": "Wymienny",
+    "loadFailed": "Nie udało się odczytać listy dysków.",
+    "noAdminNote": "Niektóre szczegóły, np. dane o stanie dysku, mogą wymagać uprawnień administratora. Poprosimy o nie po rozpoczęciu sprawdzania."
+  },
+  "mode": {
+    "title": "Jak dokładne ma być sprawdzanie?",
+    "checking": "Sprawdzany dysk",
+    "safe": {
+      "title": "Szybki test bezpieczny (Twoje pliki zostają)",
+      "desc": "Odczytuje cały dysk i zapisuje niewielki plik tymczasowy, więc nic, co do Ciebie należy, nie zostanie zmienione ani utracone.",
+      "badge": "Zalecany",
+      "limit": "Nie wykryje fałszywej pojemności."
+    },
+    "wipe": {
+      "title": "Pełny test z wymazaniem (najdokładniejszy, KASUJE wszystko)",
+      "desc": "Zapisuje dane także na całym dysku, aby wykryć fałszywą pojemność i ukryte wady. Wszystkie pliki na dysku zostaną trwale zniszczone.",
+      "dangerTitle": "Strefa zagrożenia: dysk zostanie wymazany",
+      "dangerBody": "To trwale usunie WSZYSTKIE dane z urządzenia {{model}}. Nie da się tego cofnąć. Kontynuuj tylko wtedy, gdy dysk jest pusty lub masz kopię zapasową.",
+      "confirmLabel": "Aby potwierdzić, wpisz numer seryjny dysku: {{serial}}",
+      "confirmPlaceholder": "Wpisz tutaj numer seryjny",
+      "noSerial": "Ten dysk nie podaje numeru seryjnego, więc pełny test z wymazaniem jest niedostępny.",
+      "systemBlocked": "Dysku systemowego nigdy nie można wymazać. Dostępny jest tylko test bezpieczny.",
+      "mismatch": "Wpisany tekst nie zgadza się jeszcze z numerem seryjnym.",
+      "start": "Wymaż i uruchom pełny test",
+      "expand": "Pokaż pełny test z wymazaniem",
+      "collapse": "Ukryj pełny test z wymazaniem"
+    },
+    "start": "Rozpocznij szybki test bezpieczny",
+    "back": "Wybierz inny dysk",
+    "duration": "Trwa około 3–4 minut. Nie odłączaj dysku."
+  },
+  "running": {
+    "title": "Sprawdzamy Twój dysk",
+    "subtitle": "Nie odłączaj dysku i nie pozwól, aby komputer zasnął.",
+    "overall": "Postęp całkowity",
+    "elapsed": "Upłynęło",
+    "remaining": "Pozostało około {{time}}",
+    "estimating": "Szacuję czas…",
+    "cancel": "Anuluj test",
+    "cancelling": "Anuluję…",
+    "cancelConfirm": "Zatrzymać test? W trybie bezpiecznym nic na dysku nie zostało zmienione.",
+    "keepGoing": "Kontynuuj",
+    "stop": "Zatrzymaj test",
+    "checklist": "Co sprawdzamy",
+    "waiting": "Czekam na zgodę…",
+    "adminPrompt": "Komputer może poprosić o hasło. Dzięki temu CheckMyDrive może odczytać dysk bezpośrednio.",
+    "phase": {
+      "prepare": "Przygotowanie",
+      "finish": "Obliczanie wyniku"
+    },
+    "status": {
+      "pending": "Oczekuje",
+      "running": "Sprawdzam",
+      "done": "Gotowe"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Dane dysku",
+      "desc": "Model, rozmiar i rodzaj dysku"
+    },
+    "smart_health": {
+      "name": "Raport o stanie",
+      "desc": "Zapis problemów i zużycia prowadzony przez sam dysk"
+    },
+    "selftest_short": {
+      "name": "Wbudowany autotest",
+      "desc": "Dysk sprawdza sam siebie"
+    },
+    "surface_read": {
+      "name": "Skan powierzchni",
+      "desc": "Odczytuje punkty na całym dysku"
+    },
+    "write_verify": {
+      "name": "Zapis i weryfikacja",
+      "desc": "Zapisuje dane i odczytuje je z powrotem"
+    },
+    "capacity_check": {
+      "name": "Prawdziwa pojemność",
+      "desc": "Upewnia się, że rozmiar nie jest fałszywy"
+    },
+    "stability": {
+      "name": "Stabilność",
+      "desc": "Wypatruje rozłączeń i błędów"
+    }
+  },
+  "status": {
+    "pass": "Zaliczony",
+    "warn": "Ostrzeżenie",
+    "fail": "Niezaliczony",
+    "skipped": "Pominięty"
+  },
+  "results": {
+    "title": "Wyniki",
+    "scoreOutOf": "na 100",
+    "scoreLabel": "Wynik {{score}} na 100",
+    "verdict": {
+      "buy": "Warto kupić",
+      "caution": "Używaj ostrożnie",
+      "avoid": "Lepiej unikać"
+    },
+    "summary": {
+      "buy": "Urządzenie {{model}} wygląda na zdrowe. Nie znaleźliśmy poważnych problemów i powinno nadawać się do codziennego użytku.",
+      "caution": "Urządzenie {{model}} działa, ale zauważyliśmy kilka niepokojących sygnałów. Używaj go tylko do plików, których utrata nie będzie bolesna, albo negocjuj niższą cenę.",
+      "avoid": "Nie ufaj urządzeniu {{model}}. Znaleźliśmy poważne problemy, które zagrażają Twoim plikom.",
+      "fake_capacity": "Urządzenie {{model}} kłamie na temat swojego rozmiaru. Podaje {{claimed}}, ale w rzeczywistości nie zmieści tyle danych. Nie kupuj go i nie używaj.",
+      "failing": "Urządzenie {{model}} się psuje. Jego własne dane o stanie i nasze testy pokazują, że w każdej chwili może zgubić Twoje pliki."
+    },
+    "can": {
+      "title": "Czy mogę…",
+      "os": "Zainstalować na nim system operacyjny?",
+      "storage": "Przechowywać na nim pliki długo?",
+      "daily": "Używać go codziennie?",
+      "fill": "Bezpiecznie go zapełnić?",
+      "fillYes": "Bezpiecznie zapisz do {{size}} z {{total}}",
+      "fillNo": "Nie zapisywalibyśmy na nim niczego ważnego.",
+      "yes": "Tak",
+      "maybe": "Może",
+      "no": "Nie"
+    },
+    "age": {
+      "title": "Wiek dysku",
+      "years": "Czas użytkowania w latach: około {{count}}",
+      "yearsLessThanOne": "Używany krócej niż rok",
+      "hours": "Włączony przez {{hours}} godz.",
+      "made": "Wyprodukowany: {{date}}",
+      "cycles": "Liczba włączeń: {{count}}",
+      "unknown": "Ten dysk nie podaje, jak długo był używany.",
+      "note": "Godziny liczą się tylko wtedy, gdy dysk jest włączony. Dysk pracujący całą dobę starzeje się szybciej niż taki, który działa kilka godzin dziennie."
+    },
+    "issues": {
+      "title": "Co znaleźliśmy",
+      "none": "Nie znaleziono problemów.",
+      "critical": "Poważne",
+      "warn": "Ostrzeżenie",
+      "info": "Uwaga"
+    },
+    "matrix": {
+      "title": "Tabela testów",
+      "subtitle": "Szczegóły dla zaawansowanych",
+      "show": "Pokaż szczegóły",
+      "hide": "Ukryj szczegóły",
+      "test": "Test",
+      "status": "Stan",
+      "score": "Wynik",
+      "metrics": "Najważniejsze liczby",
+      "none": "Brak zapisanych liczb"
+    },
+    "export": "Eksportuj raport",
+    "exportJson": "Zapisz jako JSON",
+    "exportHtml": "Zapisz jako stronę internetową (HTML)",
+    "print": "Drukuj lub zapisz jako PDF",
+    "saved": "Raport zapisany.",
+    "saveFailed": "Nie udało się zapisać raportu.",
+    "another": "Sprawdź inny dysk",
+    "mode": {
+      "safe": "Szybki test bezpieczny",
+      "wipe": "Pełny test z wymazaniem"
+    },
+    "tested": "Sprawdzono: {{date}}",
+    "engine": "Silnik {{version}}",
+    "skippedNote": "Nie wykonano wykrywania fałszywej pojemności. Aby uzyskać pełną odpowiedź, użyj pełnego testu z wymazaniem na pustym dysku."
+  },
+  "report": {
+    "title": "Raport CheckMyDrive",
+    "generatedBy": "Wygenerowano w CheckMyDrive (otwarte oprogramowanie)"
+  },
+  "settings": {
+    "title": "Ustawienia i informacje",
+    "language": "Język",
+    "languageHint": "Języki inne niż angielski są ładowane, gdy tylko staną się dostępne; brakujące teksty pojawiają się po angielsku.",
+    "theme": "Wygląd",
+    "themeSystem": "Zgodnie z systemem",
+    "themeLight": "Jasny",
+    "themeDark": "Ciemny",
+    "about": "Informacje",
+    "version": "Wersja",
+    "license": "Licencja",
+    "licenseValue": "Licencja MIT (darmowa i otwarta)",
+    "github": "Kod źródłowy na GitHubie",
+    "engineVersion": "Silnik",
+    "disclaimer": "CheckMyDrive podaje rzetelną ocenę, ale nie może zagwarantować, że dysk nigdy się nie zepsuje. Zawsze miej kopię zapasową ważnych plików.",
+    "close": "Gotowe"
+  },
+  "metric": {
+    "read_mbps_avg": "Średnia prędkość odczytu (MB/s)",
+    "write_mbps": "Prędkość zapisu (MB/s)",
+    "latency_ms_p99": "Najwolniejszy 1% odpowiedzi (ms)",
+    "slow_samples": "Wolne miejsca",
+    "read_errors": "Błędy odczytu",
+    "reallocated_sectors": "Zastąpione uszkodzone obszary",
+    "pending_sectors": "Niestabilne obszary",
+    "uncorrectable_sectors": "Nieczytelne obszary",
+    "temperature_c": "Temperatura (°C)",
+    "percent_used": "Zużycie (%)",
+    "media_errors": "Błędy nośnika",
+    "written_mb": "Zapisane dane (MB)",
+    "mismatches": "Niezgodności",
+    "sectors_checked": "Sprawdzone punkty",
+    "real_capacity_gb": "Prawdziwa pojemność (GB)",
+    "claimed_gb": "Deklarowana pojemność (GB)",
+    "disconnects": "Rozłączenia",
+    "io_errors": "Błędy wejścia/wyjścia",
+    "rpm": "Prędkość obrotowa (RPM)",
+    "interface": "Połączenie",
+    "result": "Wynik"
+  },
+  "issue": {
+    "unknown": "Znaleziono coś niezwykłego ({{code}}). Szczegóły są w tabeli testów.",
+    "age": {
+      "high_hours": "Ten dysk był włączony przez {{hours}} godz. (w latach: około {{years}}), co oznacza bardzo intensywne użytkowanie.",
+      "moderate_hours": "Ten dysk był włączony przez {{hours}} godz. (w latach: około {{years}})."
+    },
+    "drive_info": {
+      "capacity_unknown": "Dysk nie podał, jak jest duży.",
+      "model_unknown": "Dysk nie podał nazwy modelu.",
+      "system_disk": "To dysk, z którego działa Twój komputer. Wykonano tylko bezpieczny test, który niczego nie niszczy."
+    },
+    "smart": {
+      "unavailable": "Narzędzie do raportu o stanie (smartmontools) jest niedostępne, więc nie udało się odczytać wewnętrznych danych o stanie dysku.",
+      "needs_admin": "Bez uprawnień administratora nie udało się odczytać raportu o stanie dysku.",
+      "timeout": "Dysk nie odpowiedział na prośbę o raport o stanie na czas.",
+      "not_supported": "Ten dysk nie udostępnia raportu o stanie, więc jego wewnętrzny stan jest nieznany.",
+      "usb_bridge_blocked": "Adapter USB ukrywa raport o stanie dysku, więc jego wewnętrzny stan jest nieznany.",
+      "overall_failed": "Własna kontrola stanu dysku mówi, że dysk się psuje.",
+      "reallocated_sectors": "Dysk zastąpił już zapasowymi uszkodzone obszary (liczba: {{count}}).",
+      "pending_sectors": "Nieczytelne obszary dysku czekające na zastąpienie (liczba: {{count}}).",
+      "uncorrectable_sectors": "Obszary dysku, których nie udało się odczytać ani naprawić (liczba: {{count}}).",
+      "crc_errors": "Zapisane błędy przesyłania danych, najczęściej z powodu złego kabla lub złącza (liczba: {{count}}).",
+      "error_log_entries": "Liczba wpisów w dzienniku błędów dysku: {{count}}.",
+      "ssd_worn": "Ten dysk SSD zużył około {{percent}}% swojej przewidzianej trwałości.",
+      "ssd_worn_out": "Ten dysk SSD zużył około {{percent}}% swojej przewidzianej trwałości i zbliża się do końca życia.",
+      "nvme_critical_warning": "Dysk zgłasza krytyczne ostrzeżenie (kod {{value}}).",
+      "nvme_media_errors": "Pamięć dysku zapisała błędy spójności danych (liczba: {{count}}).",
+      "spare_low": "Zostało tylko {{percent}}% zapasowej pamięci dysku.",
+      "temperature_high": "Dysk mocno się grzeje ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Pominięto szybki autotest dysku, ponieważ jego interfejs informacji o stanie jest niedostępny.",
+      "not_supported": "Ten dysk nie obsługuje szybkiego autotestu.",
+      "could_not_start": "Nie udało się uruchomić szybkiego autotestu dysku.",
+      "failed": "Dysk nie zaliczył własnego szybkiego autotestu.",
+      "aborted": "Szybki autotest dysku został przerwany, zanim się skończył.",
+      "timeout": "Szybki autotest dysku nie zakończył się w ciągu {{seconds}} s i został zatrzymany."
+    },
+    "surface_read": {
+      "cannot_open": "Nie udało się otworzyć dysku do odczytu.",
+      "read_errors": "Części dysku, których nie udało się odczytać (liczba: {{count}}).",
+      "slow_areas": "Obszary, które odpowiadały bardzo wolno (liczba: {{count}}, czyli {{percent}}%). Może to oznaczać zużywanie się powierzchni.",
+      "low_speed": "Dysk czyta wolno ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Pominięto test zapisu, ponieważ na dysku nie ma folderu, do którego możemy bezpiecznie zapisywać.",
+      "insufficient_space": "Pominięto test zapisu, ponieważ na dysku jest za mało wolnego miejsca.",
+      "write_error": "Dysk zgłosił błąd podczas zapisywania danych testowych.",
+      "data_mismatch": "Bloki danych testowych, które wróciły inne, niż zapisano (liczba: {{count}}).",
+      "slow_write": "Dysk zapisuje bardzo wolno ({{mbps}} MB/s).",
+      "cleanup_failed": "Nie udało się usunąć tymczasowego pliku testowego. Możesz usunąć {{path}} samodzielnie."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Sprawdzenie fałszywej pojemności wymaga pełnego testu, który wymazuje dysk. Zostało pominięte.",
+      "fake_capacity": "Ten dysk twierdzi, że mieści {{claimed_bytes}} bajtów, ale prawdziwe jest tylko około {{real_bytes}} bajtów. To dysk z fałszywą pojemnością.",
+      "data_corruption": "Bloki testowe, które wróciły uszkodzone (liczba: {{count}}).",
+      "io_error": "Błędy zwrócone przez dysk podczas sprawdzania pojemności (liczba: {{count}})."
+    },
+    "stability": {
+      "device_disconnected": "Dysk znikał podczas testów (liczba razy: {{count}}).",
+      "io_errors": "Błędy odczytu lub zapisu zwrócone przez dysk podczas testów (liczba: {{count}}).",
+      "timeouts": "Dysk przestawał odpowiadać podczas testów (liczba razy: {{count}}).",
+      "crc_errors_increased": "Błędy przesyłania danych wzrosły podczas testów o {{count}}. Sprawdź kabel.",
+      "new_bad_sectors": "Nowe uszkodzone obszary, które pojawiły się podczas testowania (liczba: {{count}})."
+    }
+  },
+  "progress": {
+    "unknown": "Pracuję…",
+    "working": "Pracuję…",
+    "prepare": {
+      "starting": "Przygotowuję…",
+      "reading_smart": "Odczytuję wbudowany raport o stanie dysku...",
+      "unmounting": "Bezpiecznie odłączam woluminy dysku...",
+      "ready": "Gotowe do testu."
+    },
+    "drive_info": {
+      "identifying": "Rozpoznaję dysk..."
+    },
+    "smart_health": {
+      "analyzing": "Sprawdzam raport o stanie dysku..."
+    },
+    "selftest_short": {
+      "starting": "Uruchamiam wbudowany szybki autotest dysku...",
+      "running": "Dysk wykonuje własny szybki autotest (ukończono {{percent}}%).",
+      "done": "Autotest dysku zakończony.",
+      "running_seconds": "Dysk wykonuje własny szybki autotest (dotychczas {{seconds}} s)."
+    },
+    "surface_read": {
+      "sampling": "Odczytuję przykładowe obszary na całym dysku ({{done}} z {{total}}).",
+      "sequential": "Mierzę prędkość odczytu ({{mbps}} MB/s).",
+      "done": "Skan powierzchni zakończony."
+    },
+    "write_verify": {
+      "writing": "Zapisuję dane testowe (zapisano {{mb}} MB).",
+      "verifying": "Odczytuję dane z powrotem, aby je sprawdzić (sprawdzono {{mb}} MB).",
+      "cleaning": "Usuwam tymczasowy plik testowy...",
+      "done": "Test zapisu zakończony."
+    },
+    "capacity_check": {
+      "writing": "Oznaczam punkty w całym deklarowanym rozmiarze ({{done}} z {{total}}).",
+      "verifying": "Sprawdzam, czy każdy punkt zawiera własne dane ({{done}} z {{total}}).",
+      "done": "Sprawdzanie pojemności zakończone."
+    },
+    "stability": {
+      "checking": "Sprawdzam, czy dysk pozostał stabilny podczas testów..."
+    },
+    "finish": {
+      "scoring": "Obliczam wynik...",
+      "done": "Gotowe."
+    }
+  },
+  "suitability": {
+    "unknown": "Brak szczegółów.",
+    "fallback": {
+      "os_install": {
+        "good": "Brak problemów, które przeszkadzałyby w niezawodnym działaniu systemu operacyjnego.",
+        "caution": "Może działać, ale jest pewne ryzyko. Zrób kopię zapasową.",
+        "no": "Niebezpieczny dla systemu operacyjnego."
+      },
+      "long_term_storage": {
+        "good": "Wygląda na niezawodny do długiego przechowywania plików. Mimo to trzymaj drugą kopię.",
+        "caution": "Ryzykowny do długiego przechowywania. Trzymaj kopię gdzie indziej.",
+        "no": "Nie trzymaj tu ważnych plików."
+      },
+      "daily_use": {
+        "good": "Nadaje się do codziennego użytku.",
+        "caution": "Do codziennego użytku może być, ale obserwuj, czy nie pojawią się nowe problemy.",
+        "no": "Za mało niezawodny do codziennego użytku."
+      }
+    },
+    "os_install": {
+      "ok": "Dobrze nadaje się do instalacji systemu operacyjnego.",
+      "bad_sectors": "Niezalecany dla systemu operacyjnego: ma uszkodzone obszary.",
+      "slow_latency": "Niezalecany dla systemu operacyjnego: część odczytów jest zbyt wolna.",
+      "score_low": "Niezalecany dla systemu operacyjnego: wynik ogólny ({{score}}) jest zbyt niski."
+    },
+    "long_term_storage": {
+      "ok": "Dobrze nadaje się do długiego przechowywania plików.",
+      "critical_issues": "Niebezpieczny do długiego przechowywania: znaleziono poważne problemy.",
+      "score_low": "Ryzykowny do długiego przechowywania: wynik ogólny ({{score}}) jest zbyt niski. Rób kopie zapasowe."
+    },
+    "daily_use": {
+      "ok": "Nadaje się do codziennego użytku.",
+      "caution": "Można używać do zwykłych plików, ale rób kopie zapasowe.",
+      "no": "Niezalecany do codziennego użytku."
+    }
+  },
+  "error": {
+    "unknown": "Coś poszło nie tak ({{code}}).",
+    "title": "Nie udało się dokończyć sprawdzania",
+    "retry": "Spróbuj ponownie",
+    "choose": "Wybierz inny dysk",
+    "refused": "Test odrzucono ze względów bezpieczeństwa. Testów z wymazaniem nie można uruchomić na dysku systemowym ani bez zgodnego numeru seryjnego.",
+    "engine_failed": "Narzędzie sprawdzające nieoczekiwanie przestało działać.",
+    "engine_missing": "Nie znaleziono narzędzia sprawdzającego. Zainstaluj CheckMyDrive ponownie.",
+    "auth_cancelled": "Nie udzielono zgody, więc dysk nie został sprawdzony.",
+    "elevation_unavailable": "Na tym komputerze nie udało się poprosić o uprawnienia administratora.",
+    "bad_args": "Nie udało się rozpocząć testu z powodu wewnętrznego błędu żądania.",
+    "needs_admin": "Do przetestowania tego dysku potrzebne są uprawnienia administratora.",
+    "drive_not_found": "Nie znaleziono tego dysku. Mógł zostać odłączony.",
+    "system_disk_refused": "To dysk, z którego działa Twój komputer, więc nie można go wymazać. Wybierz inny dysk.",
+    "confirm_required": "Przed pełnym testem, który kasuje dane, potwierdź numer seryjny dysku.",
+    "confirm_mismatch": "Wpisany numer seryjny nie zgadza się z tym dyskiem. Nic nie zostało zmienione.",
+    "cannot_open_device": "Nie udało się otworzyć dysku do testu. Może go używać inny program.",
+    "unmount_failed": "Przed pełnym testem nie udało się bezpiecznie odłączyć woluminów dysku. Zamknij programy, które go używają, i spróbuj ponownie.",
+    "internal": "Wewnątrz silnika testującego wydarzyło się coś nieoczekiwanego."
+  },
+  "common": {
+    "loading": "Wczytywanie…",
+    "close": "Zamknij",
+    "unknown": "Nieznane"
+  }
+}

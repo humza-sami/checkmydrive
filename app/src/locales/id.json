@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Pastikan drive bekas aman sebelum Anda mempercayainya.",
+    "skip": "Lompat ke konten utama"
+  },
+  "nav": {
+    "settings": "Pengaturan",
+    "back": "Kembali",
+    "mockBanner": "Mode demo: menampilkan drive contoh. Tidak ada yang sedang diuji di komputer Anda."
+  },
+  "picker": {
+    "title": "Drive mana yang ingin Anda periksa?",
+    "subtitle": "Colokkan drive yang ingin Anda beli atau pakai, lalu pilih di bawah ini. Pemeriksaan memakan waktu sekitar 3 sampai 4 menit.",
+    "refresh": "Segarkan",
+    "refreshing": "Mencari drive…",
+    "empty": "Tidak ada drive yang ditemukan. Colokkan satu drive lalu tekan Segarkan.",
+    "systemDisk": "Disk sistem",
+    "systemDiskHint": "Komputer Anda berjalan dari drive ini. Drive ini hanya bisa diperiksa dengan mode aman.",
+    "unknownModel": "Drive tidak dikenal",
+    "select": "Periksa drive ini",
+    "kind": {
+      "hdd": "Hard disk (HDD)",
+      "ssd": "Solid-state drive (SSD)",
+      "nvme": "SSD NVMe",
+      "usb": "Flash disk atau drive USB",
+      "sd": "Kartu SD / kartu memori",
+      "unknown": "Drive"
+    },
+    "removable": "Dapat dilepas",
+    "loadFailed": "Kami tidak dapat membaca daftar drive.",
+    "noAdminNote": "Beberapa detail seperti data kesehatan mungkin memerlukan izin administrator dan akan diminta saat pemeriksaan dimulai."
+  },
+  "mode": {
+    "title": "Seberapa teliti pemeriksaannya?",
+    "checking": "Memeriksa",
+    "safe": {
+      "title": "Tes aman cepat (file Anda tetap utuh)",
+      "desc": "Membaca seluruh drive dan menulis satu file sementara yang kecil, sehingga tidak ada milik Anda yang berubah atau hilang.",
+      "badge": "Disarankan",
+      "limit": "Tidak dapat mendeteksi kapasitas palsu."
+    },
+    "wipe": {
+      "title": "Tes hapus penuh (paling teliti, MENGHAPUS semuanya)",
+      "desc": "Juga menulis ke seluruh drive untuk menemukan kapasitas palsu dan kerusakan tersembunyi. Semua file di drive akan dihapus secara permanen.",
+      "dangerTitle": "Zona berbahaya: drive akan dihapus",
+      "dangerBody": "Ini akan menghapus SEMUA data di {{model}} secara permanen. Tindakan ini tidak dapat dibatalkan. Lanjutkan hanya jika drive kosong atau Anda punya cadangan.",
+      "confirmLabel": "Untuk mengonfirmasi, ketik nomor seri drive: {{serial}}",
+      "confirmPlaceholder": "Ketik nomor seri di sini",
+      "noSerial": "Drive ini tidak melaporkan nomor seri, jadi tes hapus penuh tidak tersedia.",
+      "systemBlocked": "Disk sistem Anda tidak akan pernah bisa dihapus. Hanya tes aman yang tersedia.",
+      "mismatch": "Teks yang diketik belum sama dengan nomor seri.",
+      "start": "Hapus dan jalankan tes penuh",
+      "expand": "Tampilkan tes hapus penuh",
+      "collapse": "Sembunyikan tes hapus penuh"
+    },
+    "start": "Mulai tes aman cepat",
+    "back": "Pilih drive lain",
+    "duration": "Memakan waktu sekitar 3 sampai 4 menit. Mohon jangan cabut drive."
+  },
+  "running": {
+    "title": "Memeriksa drive Anda",
+    "subtitle": "Mohon biarkan drive tetap terpasang dan komputer tetap menyala.",
+    "overall": "Kemajuan keseluruhan",
+    "elapsed": "Berlalu",
+    "remaining": "Sekitar {{time}} lagi",
+    "estimating": "Memperkirakan waktu…",
+    "cancel": "Batalkan tes",
+    "cancelling": "Membatalkan…",
+    "cancelConfirm": "Hentikan tes? Tidak ada yang diubah di drive Anda pada mode aman.",
+    "keepGoing": "Lanjutkan",
+    "stop": "Hentikan tes",
+    "checklist": "Yang kami periksa",
+    "waiting": "Menunggu izin…",
+    "adminPrompt": "Komputer Anda mungkin meminta kata sandi. Ini memungkinkan CheckMyDrive membaca drive secara langsung.",
+    "phase": {
+      "prepare": "Bersiap",
+      "finish": "Menghitung skor Anda"
+    },
+    "status": {
+      "pending": "Menunggu",
+      "running": "Memeriksa",
+      "done": "Selesai"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Identitas drive",
+      "desc": "Model, ukuran, dan jenis drive"
+    },
+    "smart_health": {
+      "name": "Laporan kesehatan",
+      "desc": "Catatan drive sendiri tentang masalah dan keausan"
+    },
+    "selftest_short": {
+      "name": "Pemeriksaan mandiri bawaan",
+      "desc": "Drive memeriksa dirinya sendiri"
+    },
+    "surface_read": {
+      "name": "Pemindaian permukaan",
+      "desc": "Membaca titik-titik di seluruh drive"
+    },
+    "write_verify": {
+      "name": "Tulis dan verifikasi",
+      "desc": "Menyimpan data lalu membacanya kembali"
+    },
+    "capacity_check": {
+      "name": "Kapasitas sebenarnya",
+      "desc": "Memastikan ukurannya tidak palsu"
+    },
+    "stability": {
+      "name": "Kestabilan",
+      "desc": "Mengawasi putus koneksi dan kesalahan"
+    }
+  },
+  "status": {
+    "pass": "Lulus",
+    "warn": "Peringatan",
+    "fail": "Gagal",
+    "skipped": "Dilewati"
+  },
+  "results": {
+    "title": "Hasil",
+    "scoreOutOf": "dari 100",
+    "scoreLabel": "Skor {{score}} dari 100",
+    "verdict": {
+      "buy": "Layak dibeli",
+      "caution": "Pakai dengan hati-hati",
+      "avoid": "Hindari"
+    },
+    "summary": {
+      "buy": "{{model}} ini tampak sehat. Kami tidak menemukan masalah serius dan seharusnya aman untuk pemakaian sehari-hari.",
+      "caution": "{{model}} ini masih berfungsi, tetapi kami menemukan beberapa tanda peringatan. Pakai hanya untuk file yang rela hilang, atau nego harga yang lebih murah.",
+      "avoid": "Jangan percayai {{model}} ini. Kami menemukan masalah serius yang membahayakan file Anda.",
+      "fake_capacity": "{{model}} ini berbohong soal ukurannya. Drive ini mengaku {{claimed}} tetapi sebenarnya tidak sanggup menyimpan sebanyak itu. Jangan dibeli atau dipakai.",
+      "failing": "{{model}} ini sedang rusak. Data kesehatannya sendiri dan tes kami menunjukkan file Anda bisa hilang kapan saja."
+    },
+    "can": {
+      "title": "Bisakah saya…",
+      "os": "Memasang sistem operasi di dalamnya?",
+      "storage": "Menyimpan file di dalamnya dalam jangka panjang?",
+      "daily": "Memakainya setiap hari?",
+      "fill": "Mengisinya sampai penuh dengan aman?",
+      "fillYes": "Aman menyimpan hingga {{size}} dari {{total}}",
+      "fillNo": "Kami tidak akan menyimpan hal penting di dalamnya.",
+      "yes": "Ya",
+      "maybe": "Mungkin",
+      "no": "Tidak"
+    },
+    "age": {
+      "title": "Usia drive",
+      "years": "Sekitar {{count}} tahun pemakaian",
+      "yearsLessThanOne": "Pemakaian kurang dari setahun",
+      "hours": "Menyala selama {{hours}} jam",
+      "made": "Dibuat: {{date}}",
+      "cycles": "Dinyalakan {{count}} kali",
+      "unknown": "Drive ini tidak melaporkan sudah berapa lama dipakai.",
+      "note": "Jam dihitung hanya saat drive menyala. Drive yang dipakai 24 jam nonstop menua lebih cepat daripada yang dipakai beberapa jam sehari."
+    },
+    "issues": {
+      "title": "Temuan kami",
+      "none": "Tidak ada masalah.",
+      "critical": "Serius",
+      "warn": "Peringatan",
+      "info": "Catatan"
+    },
+    "matrix": {
+      "title": "Tabel tes",
+      "subtitle": "Detail untuk pengguna mahir",
+      "show": "Tampilkan detail",
+      "hide": "Sembunyikan detail",
+      "test": "Tes",
+      "status": "Status",
+      "score": "Skor",
+      "metrics": "Angka penting",
+      "none": "Tidak ada angka yang dicatat"
+    },
+    "export": "Ekspor laporan",
+    "exportJson": "Simpan sebagai JSON",
+    "exportHtml": "Simpan sebagai halaman web (HTML)",
+    "print": "Cetak atau simpan sebagai PDF",
+    "saved": "Laporan tersimpan.",
+    "saveFailed": "Laporan tidak dapat disimpan.",
+    "another": "Uji drive lain",
+    "mode": {
+      "safe": "Tes aman cepat",
+      "wipe": "Tes hapus penuh"
+    },
+    "tested": "Diuji pada {{date}}",
+    "engine": "Mesin {{version}}",
+    "skippedNote": "Deteksi kapasitas palsu tidak dijalankan. Gunakan tes hapus penuh pada drive kosong untuk jawaban yang lengkap."
+  },
+  "report": {
+    "title": "Laporan CheckMyDrive",
+    "generatedBy": "Dibuat oleh CheckMyDrive (sumber terbuka)"
+  },
+  "settings": {
+    "title": "Pengaturan dan tentang",
+    "language": "Bahasa",
+    "languageHint": "Bahasa selain Inggris dimuat saat sudah tersedia; teks yang belum ada akan tampil dalam bahasa Inggris.",
+    "theme": "Tampilan",
+    "themeSystem": "Ikuti sistem",
+    "themeLight": "Terang",
+    "themeDark": "Gelap",
+    "about": "Tentang",
+    "version": "Versi",
+    "license": "Lisensi",
+    "licenseValue": "Lisensi MIT (gratis dan sumber terbuka)",
+    "github": "Kode sumber di GitHub",
+    "engineVersion": "Mesin",
+    "disclaimer": "CheckMyDrive memberikan perkiraan yang terukur dan tidak dapat menjamin sebuah drive tidak akan pernah rusak. Selalu simpan cadangan file yang penting.",
+    "close": "Selesai"
+  },
+  "metric": {
+    "read_mbps_avg": "Kecepatan baca rata-rata (MB/s)",
+    "write_mbps": "Kecepatan tulis (MB/s)",
+    "latency_ms_p99": "Respons 1% terlambat (ms)",
+    "slow_samples": "Titik lambat",
+    "read_errors": "Kesalahan baca",
+    "reallocated_sectors": "Area rusak yang diganti",
+    "pending_sectors": "Area tidak stabil",
+    "uncorrectable_sectors": "Area tidak terbaca",
+    "temperature_c": "Suhu (°C)",
+    "percent_used": "Keausan terpakai (%)",
+    "media_errors": "Kesalahan media",
+    "written_mb": "Data tertulis (MB)",
+    "mismatches": "Ketidakcocokan",
+    "sectors_checked": "Titik diperiksa",
+    "real_capacity_gb": "Kapasitas sebenarnya (GB)",
+    "claimed_gb": "Kapasitas yang diklaim (GB)",
+    "disconnects": "Putus koneksi",
+    "io_errors": "Kesalahan input/output",
+    "rpm": "Kecepatan putar (RPM)",
+    "interface": "Koneksi",
+    "result": "Hasil"
+  },
+  "issue": {
+    "unknown": "Ditemukan hal yang tidak biasa ({{code}}). Lihat tabel tes untuk detailnya.",
+    "age": {
+      "high_hours": "Drive ini sudah menyala selama sekitar {{years}} tahun ({{hours}} jam), yang berarti pemakaian sangat banyak.",
+      "moderate_hours": "Drive ini sudah menyala selama sekitar {{years}} tahun ({{hours}} jam)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Drive tidak melaporkan ukurannya.",
+      "model_unknown": "Drive tidak melaporkan nama modelnya.",
+      "system_disk": "Ini adalah disk tempat komputer Anda berjalan. Hanya tes aman yang tidak merusak yang dijalankan."
+    },
+    "smart": {
+      "unavailable": "Alat laporan kesehatan (smartmontools) tidak tersedia, sehingga data kesehatan internal drive tidak dapat dibaca.",
+      "needs_admin": "Laporan kesehatan drive tidak dapat dibaca tanpa izin administrator.",
+      "timeout": "Drive tidak menjawab permintaan laporan kesehatan tepat waktu.",
+      "not_supported": "Drive ini tidak menyediakan laporan kesehatan, sehingga kondisi internalnya tidak diketahui.",
+      "usb_bridge_blocked": "Adaptor USB menyembunyikan laporan kesehatan drive, sehingga kondisi internalnya tidak diketahui.",
+      "overall_failed": "Pemeriksaan kesehatan drive sendiri menyatakan drive ini rusak.",
+      "reallocated_sectors": "Drive sudah mengganti {{count}} area yang rusak dengan area cadangan.",
+      "pending_sectors": "{{count}} area drive tidak terbaca dan menunggu diganti.",
+      "uncorrectable_sectors": "{{count}} area drive tidak dapat dibaca atau diperbaiki.",
+      "crc_errors": "{{count}} kesalahan transfer data tercatat, yang sering disebabkan oleh kabel atau konektor yang buruk.",
+      "error_log_entries": "Catatan kesalahan drive berisi {{count}} entri.",
+      "ssd_worn": "SSD ini sudah memakai sekitar {{percent}}% dari umur pakainya.",
+      "ssd_worn_out": "SSD ini sudah memakai sekitar {{percent}}% dari umur pakainya dan hampir habis masa pakainya.",
+      "nvme_critical_warning": "Drive melaporkan peringatan kritis (kode {{value}}).",
+      "nvme_media_errors": "Memori drive mencatat {{count}} kesalahan integritas data.",
+      "spare_low": "Memori cadangan drive tinggal {{percent}}%.",
+      "temperature_high": "Drive berjalan panas ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Tes mandiri cepat drive dilewati karena antarmuka kesehatannya tidak tersedia.",
+      "not_supported": "Drive ini tidak mendukung tes mandiri cepat.",
+      "could_not_start": "Tes mandiri cepat drive tidak dapat dimulai.",
+      "failed": "Drive gagal dalam tes mandiri cepatnya sendiri.",
+      "aborted": "Tes mandiri cepat drive terhenti sebelum selesai.",
+      "timeout": "Tes mandiri cepat drive tidak selesai dalam {{seconds}} detik dan dihentikan."
+    },
+    "surface_read": {
+      "cannot_open": "Drive tidak dapat dibuka untuk dibaca.",
+      "read_errors": "{{count}} bagian drive tidak dapat dibaca.",
+      "slow_areas": "{{count}} area ({{percent}}%) merespons sangat lambat, yang bisa berarti permukaannya mulai aus.",
+      "low_speed": "Drive membaca dengan lambat ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Tes tulis dilewati karena drive tidak memiliki folder yang aman untuk kami tulisi.",
+      "insufficient_space": "Tes tulis dilewati karena ruang kosong di drive terlalu sedikit.",
+      "write_error": "Drive melaporkan kesalahan saat menulis data uji.",
+      "data_mismatch": "{{count}} blok data uji kembali berbeda dari yang ditulis.",
+      "slow_write": "Drive menulis dengan sangat lambat ({{mbps}} MB/s).",
+      "cleanup_failed": "File uji sementara tidak dapat dihapus. Anda bisa menghapus {{path}} sendiri."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Pemeriksaan kapasitas palsu memerlukan tes penuh yang menghapus drive. Pemeriksaan ini dilewati.",
+      "fake_capacity": "Drive ini mengaku menampung {{claimed_bytes}} byte tetapi hanya sekitar {{real_bytes}} byte yang nyata. Ini adalah drive berkapasitas palsu.",
+      "data_corruption": "{{count}} blok uji kembali dalam keadaan rusak.",
+      "io_error": "Drive mengembalikan {{count}} kesalahan selama pemeriksaan kapasitas."
+    },
+    "stability": {
+      "device_disconnected": "Drive menghilang sebanyak {{count}} kali selama tes.",
+      "io_errors": "Drive mengembalikan {{count}} kesalahan baca atau tulis selama tes.",
+      "timeouts": "Drive kehabisan waktu sebanyak {{count}} kali selama tes.",
+      "crc_errors_increased": "Kesalahan transfer data bertambah {{count}} selama tes. Periksa kabelnya.",
+      "new_bad_sectors": "{{count}} area rusak baru muncul saat kami menguji."
+    }
+  },
+  "progress": {
+    "unknown": "Sedang bekerja…",
+    "working": "Sedang bekerja…",
+    "prepare": {
+      "starting": "Bersiap...",
+      "reading_smart": "Membaca laporan kesehatan bawaan drive...",
+      "unmounting": "Memutuskan volume drive dengan aman...",
+      "ready": "Siap diuji."
+    },
+    "drive_info": {
+      "identifying": "Mengenali drive..."
+    },
+    "smart_health": {
+      "analyzing": "Memeriksa laporan kesehatan drive..."
+    },
+    "selftest_short": {
+      "starting": "Memulai tes mandiri cepat bawaan drive...",
+      "running": "Drive sedang menjalankan tes mandiri cepatnya sendiri ({{percent}}% selesai).",
+      "done": "Tes mandiri drive selesai.",
+      "running_seconds": "Drive sedang menjalankan tes mandiri cepatnya sendiri (sudah {{seconds}} detik)."
+    },
+    "surface_read": {
+      "sampling": "Membaca area contoh di seluruh drive ({{done}} dari {{total}}).",
+      "sequential": "Mengukur kecepatan baca ({{mbps}} MB/s).",
+      "done": "Pemindaian permukaan selesai."
+    },
+    "write_verify": {
+      "writing": "Menulis data uji ({{mb}} MB tertulis).",
+      "verifying": "Membaca kembali data untuk memeriksanya ({{mb}} MB diperiksa).",
+      "cleaning": "Menghapus file uji sementara...",
+      "done": "Tes tulis selesai."
+    },
+    "capacity_check": {
+      "writing": "Menandai titik-titik di seluruh ukuran yang diklaim ({{done}} dari {{total}}).",
+      "verifying": "Memeriksa bahwa setiap titik menyimpan datanya sendiri ({{done}} dari {{total}}).",
+      "done": "Pemeriksaan kapasitas selesai."
+    },
+    "stability": {
+      "checking": "Memeriksa apakah drive tetap stabil selama tes..."
+    },
+    "finish": {
+      "scoring": "Menghitung skor Anda...",
+      "done": "Selesai."
+    }
+  },
+  "suitability": {
+    "unknown": "Tidak ada detail.",
+    "fallback": {
+      "os_install": {
+        "good": "Tidak ada masalah yang akan menghalangi sistem operasi berjalan dengan andal.",
+        "caution": "Mungkin bisa berfungsi, tetapi ada sedikit risiko. Simpan cadangan.",
+        "no": "Tidak aman untuk sistem operasi."
+      },
+      "long_term_storage": {
+        "good": "Tampak andal untuk menyimpan file jangka panjang. Tetap simpan salinan kedua.",
+        "caution": "Berisiko untuk penyimpanan jangka panjang. Simpan salinan lain di tempat lain.",
+        "no": "Jangan simpan file penting di sini."
+      },
+      "daily_use": {
+        "good": "Baik untuk pemakaian sehari-hari.",
+        "caution": "Cukup untuk pemakaian sehari-hari, tetapi waspadai masalah baru.",
+        "no": "Tidak cukup andal untuk pemakaian harian."
+      }
+    },
+    "os_install": {
+      "ok": "Cocok untuk memasang sistem operasi.",
+      "bad_sectors": "Tidak disarankan untuk sistem operasi: ada area yang rusak.",
+      "slow_latency": "Tidak disarankan untuk sistem operasi: beberapa pembacaan terlalu lambat.",
+      "score_low": "Tidak disarankan untuk sistem operasi: skor keseluruhan ({{score}}) terlalu rendah."
+    },
+    "long_term_storage": {
+      "ok": "Cocok untuk menyimpan file jangka panjang.",
+      "critical_issues": "Tidak aman untuk penyimpanan jangka panjang: ditemukan masalah serius.",
+      "score_low": "Berisiko untuk penyimpanan jangka panjang: skor keseluruhan ({{score}}) terlalu rendah. Simpan cadangan."
+    },
+    "daily_use": {
+      "ok": "Baik untuk pemakaian sehari-hari.",
+      "caution": "Bisa dipakai untuk file sehari-hari, tetapi simpan cadangan.",
+      "no": "Tidak disarankan untuk pemakaian sehari-hari."
+    }
+  },
+  "error": {
+    "unknown": "Terjadi kesalahan ({{code}}).",
+    "title": "Pemeriksaan tidak dapat diselesaikan",
+    "retry": "Coba lagi",
+    "choose": "Pilih drive lain",
+    "refused": "Tes ditolak demi keamanan. Tes hapus tidak dapat dijalankan pada disk sistem atau tanpa nomor seri yang cocok.",
+    "engine_failed": "Alat pemeriksa berhenti secara tak terduga.",
+    "engine_missing": "Alat pemeriksa tidak ditemukan. Silakan pasang ulang CheckMyDrive.",
+    "auth_cancelled": "Izin tidak diberikan, sehingga drive tidak diperiksa.",
+    "elevation_unavailable": "Tidak dapat meminta izin administrator di komputer ini.",
+    "bad_args": "Tes tidak dapat dimulai karena kesalahan permintaan internal.",
+    "needs_admin": "Izin administrator diperlukan untuk menguji drive ini.",
+    "drive_not_found": "Drive itu tidak ditemukan. Mungkin sudah dicabut.",
+    "system_disk_refused": "Ini adalah disk tempat komputer Anda berjalan, sehingga tidak dapat dihapus. Pilih drive lain.",
+    "confirm_required": "Mohon konfirmasi nomor seri drive sebelum tes penuh yang menghapus data.",
+    "confirm_mismatch": "Nomor seri yang Anda masukkan tidak cocok dengan drive ini. Tidak ada yang diubah.",
+    "cannot_open_device": "Drive tidak dapat dibuka untuk diuji. Mungkin program lain sedang memakainya.",
+    "unmount_failed": "Volume drive tidak dapat diputuskan dengan aman sebelum tes penuh. Tutup program yang memakainya lalu coba lagi.",
+    "internal": "Terjadi kesalahan tak terduga di dalam mesin tes."
+  },
+  "common": {
+    "loading": "Memuat…",
+    "close": "Tutup",
+    "unknown": "Tidak diketahui"
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "在信任二手硬盘之前，先确认它是否安全。",
+    "skip": "跳到主要内容"
+  },
+  "nav": {
+    "settings": "设置",
+    "back": "返回",
+    "mockBanner": "演示模式：显示的是示例硬盘，不会检测您电脑上的任何设备。"
+  },
+  "picker": {
+    "title": "您想检查哪块硬盘？",
+    "subtitle": "请插入您打算购买或使用的硬盘，然后在下方选择它。检查大约需要 3 到 4 分钟。",
+    "refresh": "刷新",
+    "refreshing": "正在查找硬盘…",
+    "empty": "没有找到硬盘。请插入一块硬盘，然后点击“刷新”。",
+    "systemDisk": "系统盘",
+    "systemDiskHint": "您的电脑正在从这块硬盘运行，只能使用安全模式检查。",
+    "unknownModel": "未知硬盘",
+    "select": "检查这块硬盘",
+    "kind": {
+      "hdd": "机械硬盘（HDD）",
+      "ssd": "固态硬盘（SSD）",
+      "nvme": "NVMe 固态硬盘",
+      "usb": "U 盘或 USB 硬盘",
+      "sd": "SD 卡 / 存储卡",
+      "unknown": "硬盘"
+    },
+    "removable": "可移动",
+    "loadFailed": "无法读取硬盘列表。",
+    "noAdminNote": "健康数据等部分信息可能需要管理员权限，检查开始时会请求授权。"
+  },
+  "mode": {
+    "title": "您希望检查到什么程度？",
+    "checking": "正在检查",
+    "safe": {
+      "title": "快速安全检测（保留您的文件）",
+      "desc": "读取整块硬盘并写入一个小的临时文件，不会更改或丢失您的任何内容。",
+      "badge": "推荐",
+      "limit": "无法发现虚假容量。"
+    },
+    "wipe": {
+      "title": "完整擦除检测（最彻底，会清除所有内容）",
+      "desc": "还会写满整块硬盘，以发现虚假容量和隐藏的缺陷。硬盘上的所有文件都会被永久销毁。",
+      "dangerTitle": "危险区域：将清空硬盘",
+      "dangerBody": "这将永久删除 {{model}} 上的所有数据，且无法撤销。只有在硬盘是空的或您已备份时才继续。",
+      "confirmLabel": "为确认操作，请输入硬盘的序列号：{{serial}}",
+      "confirmPlaceholder": "请在此输入序列号",
+      "noSerial": "这块硬盘没有提供序列号，因此无法进行完整擦除检测。",
+      "systemBlocked": "系统盘绝不能被擦除，只能使用安全检测。",
+      "mismatch": "输入的内容与序列号还不一致。",
+      "start": "擦除并运行完整检测",
+      "expand": "显示完整擦除检测",
+      "collapse": "隐藏完整擦除检测"
+    },
+    "start": "开始快速安全检测",
+    "back": "选择其他硬盘",
+    "duration": "大约需要 3 到 4 分钟，请不要拔出硬盘。"
+  },
+  "running": {
+    "title": "正在检查您的硬盘",
+    "subtitle": "请保持硬盘连接，并让电脑保持唤醒状态。",
+    "overall": "总体进度",
+    "elapsed": "已用时间",
+    "remaining": "大约还剩 {{time}}",
+    "estimating": "正在估算时间…",
+    "cancel": "取消检测",
+    "cancelling": "正在取消…",
+    "cancelConfirm": "要停止检测吗？在安全模式下，您硬盘上的内容没有被改动。",
+    "keepGoing": "继续检测",
+    "stop": "停止检测",
+    "checklist": "我们正在检查的项目",
+    "waiting": "正在等待授权…",
+    "adminPrompt": "您的电脑可能会要求输入密码，这样 CheckMyDrive 才能直接读取硬盘。",
+    "phase": {
+      "prepare": "准备中",
+      "finish": "正在计算您的评分"
+    },
+    "status": {
+      "pending": "等待中",
+      "running": "检查中",
+      "done": "完成"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "硬盘身份",
+      "desc": "硬盘的型号、大小和类型"
+    },
+    "smart_health": {
+      "name": "健康报告",
+      "desc": "硬盘自身记录的故障和磨损情况"
+    },
+    "selftest_short": {
+      "name": "内置自检",
+      "desc": "硬盘自己检查自己"
+    },
+    "surface_read": {
+      "name": "表面扫描",
+      "desc": "读取整块硬盘上各处的位置"
+    },
+    "write_verify": {
+      "name": "写入并校验",
+      "desc": "保存数据后再读回来核对"
+    },
+    "capacity_check": {
+      "name": "真实容量",
+      "desc": "确认标称大小不是虚假的"
+    },
+    "stability": {
+      "name": "稳定性",
+      "desc": "留意是否掉线或出错"
+    }
+  },
+  "status": {
+    "pass": "通过",
+    "warn": "警告",
+    "fail": "未通过",
+    "skipped": "已跳过"
+  },
+  "results": {
+    "title": "检测结果",
+    "scoreOutOf": "满分 100",
+    "scoreLabel": "评分 {{score}}（满分 100）",
+    "verdict": {
+      "buy": "值得购买",
+      "caution": "谨慎使用",
+      "avoid": "建议避开"
+    },
+    "summary": {
+      "buy": "这块 {{model}} 看起来很健康。我们没有发现严重问题，日常使用应该没有问题。",
+      "caution": "这块 {{model}} 还能用，但我们发现了一些警告迹象。只用来存放丢了也无所谓的文件，或者争取更低的价格。",
+      "avoid": "请不要信任这块 {{model}}。我们发现了严重问题，会让您的文件面临风险。",
+      "fake_capacity": "这块 {{model}} 谎报了容量。它声称有 {{claimed}}，实际却存不下这么多。请不要购买或使用。",
+      "failing": "这块 {{model}} 正在损坏。它自身的健康数据和我们的检测都表明，它随时可能丢失您的文件。"
+    },
+    "can": {
+      "title": "我可以……",
+      "os": "在上面安装操作系统吗？",
+      "storage": "长期存放文件吗？",
+      "daily": "每天使用吗？",
+      "fill": "放心地把它装满吗？",
+      "fillYes": "可以放心存放最多 {{size}}（共 {{total}}）",
+      "fillNo": "我们不建议在上面存放任何重要的东西。",
+      "yes": "可以",
+      "maybe": "也许可以",
+      "no": "不可以"
+    },
+    "age": {
+      "title": "硬盘的使用年限",
+      "years": "已使用约 {{count}} 年",
+      "yearsLessThanOne": "使用不到一年",
+      "hours": "已通电 {{hours}} 小时",
+      "made": "生产日期：{{date}}",
+      "cycles": "已开关机 {{count}} 次",
+      "unknown": "这块硬盘没有提供已使用多长时间的信息。",
+      "note": "时长只在硬盘通电时计算。全天候运行的硬盘比每天只用几个小时的硬盘老化得更快。"
+    },
+    "issues": {
+      "title": "我们的发现",
+      "none": "没有发现问题。",
+      "critical": "严重",
+      "warn": "警告",
+      "info": "提示"
+    },
+    "matrix": {
+      "title": "检测明细表",
+      "subtitle": "供高级用户查看的详细信息",
+      "show": "显示详情",
+      "hide": "隐藏详情",
+      "test": "检测项目",
+      "status": "状态",
+      "score": "得分",
+      "metrics": "关键数据",
+      "none": "没有记录数据"
+    },
+    "export": "导出报告",
+    "exportJson": "保存为 JSON",
+    "exportHtml": "保存为网页（HTML）",
+    "print": "打印或保存为 PDF",
+    "saved": "报告已保存。",
+    "saveFailed": "无法保存报告。",
+    "another": "检测另一块硬盘",
+    "mode": {
+      "safe": "快速安全检测",
+      "wipe": "完整擦除检测"
+    },
+    "tested": "检测时间：{{date}}",
+    "engine": "引擎 {{version}}",
+    "skippedNote": "未进行虚假容量检测。如需完整结论，请在空硬盘上使用完整擦除检测。"
+  },
+  "report": {
+    "title": "CheckMyDrive 报告",
+    "generatedBy": "由 CheckMyDrive（开源软件）生成"
+  },
+  "settings": {
+    "title": "设置与关于",
+    "language": "语言",
+    "languageHint": "英语以外的语言会在可用时加载；缺少的文字将以英语显示。",
+    "theme": "外观",
+    "themeSystem": "跟随系统",
+    "themeLight": "浅色",
+    "themeDark": "深色",
+    "about": "关于",
+    "version": "版本",
+    "license": "许可证",
+    "licenseValue": "MIT 许可证（免费开源）",
+    "github": "GitHub 上的源代码",
+    "engineVersion": "引擎",
+    "disclaimer": "CheckMyDrive 只能给出有依据的估计，不能保证硬盘永远不会损坏。重要文件请务必做好备份。",
+    "close": "完成"
+  },
+  "metric": {
+    "read_mbps_avg": "平均读取速度（MB/s）",
+    "write_mbps": "写入速度（MB/s）",
+    "latency_ms_p99": "最慢 1% 的响应时间（毫秒）",
+    "slow_samples": "缓慢位置",
+    "read_errors": "读取错误",
+    "reallocated_sectors": "已替换的坏区",
+    "pending_sectors": "不稳定区域",
+    "uncorrectable_sectors": "无法读取的区域",
+    "temperature_c": "温度（°C）",
+    "percent_used": "已用磨损（%）",
+    "media_errors": "介质错误",
+    "written_mb": "已写入数据（MB）",
+    "mismatches": "不一致",
+    "sectors_checked": "已检查位置",
+    "real_capacity_gb": "真实容量（GB）",
+    "claimed_gb": "标称容量（GB）",
+    "disconnects": "断开连接",
+    "io_errors": "输入/输出错误",
+    "rpm": "转速（RPM）",
+    "interface": "连接方式",
+    "result": "结果"
+  },
+  "issue": {
+    "unknown": "发现了一些异常情况（{{code}}）。详情请查看检测明细表。",
+    "age": {
+      "high_hours": "这块硬盘已通电约 {{years}} 年（{{hours}} 小时），使用量很大。",
+      "moderate_hours": "这块硬盘已通电约 {{years}} 年（{{hours}} 小时）。"
+    },
+    "drive_info": {
+      "capacity_unknown": "硬盘没有提供自身的容量大小。",
+      "model_unknown": "硬盘没有提供自身的型号名称。",
+      "system_disk": "这是您的电脑正在运行所用的硬盘，只进行了安全、无破坏的检测。"
+    },
+    "smart": {
+      "unavailable": "健康报告工具（smartmontools）不可用，因此无法读取硬盘内部的健康数据。",
+      "needs_admin": "没有管理员权限，无法读取硬盘的健康报告。",
+      "timeout": "硬盘没有及时响应健康报告请求。",
+      "not_supported": "这块硬盘不提供健康报告，因此其内部状况未知。",
+      "usb_bridge_blocked": "USB 转接器隐藏了硬盘的健康报告，因此其内部状况未知。",
+      "overall_failed": "硬盘自身的健康检查显示它正在损坏。",
+      "reallocated_sectors": "硬盘已经用备用区域替换了 {{count}} 个损坏的区域。",
+      "pending_sectors": "硬盘上有 {{count}} 个区域无法读取，正等待被替换。",
+      "uncorrectable_sectors": "硬盘上有 {{count}} 个区域无法读取，也无法纠正。",
+      "crc_errors": "记录到 {{count}} 次数据传输错误，通常由数据线或接口不良引起。",
+      "error_log_entries": "硬盘的错误日志中有 {{count}} 条记录。",
+      "ssd_worn": "这块固态硬盘已用掉其额定寿命的约 {{percent}}%。",
+      "ssd_worn_out": "这块固态硬盘已用掉其额定寿命的约 {{percent}}%，即将走到寿命的尽头。",
+      "nvme_critical_warning": "硬盘报告了一个严重警告（代码 {{value}}）。",
+      "nvme_media_errors": "硬盘的存储芯片已记录 {{count}} 次数据完整性错误。",
+      "spare_low": "硬盘的备用存储空间只剩 {{percent}}%。",
+      "temperature_high": "硬盘温度很高（{{celsius}} C）。"
+    },
+    "selftest": {
+      "smart_unavailable": "由于硬盘的健康接口不可用，已跳过硬盘的快速自检。",
+      "not_supported": "这块硬盘不支持快速自检。",
+      "could_not_start": "无法启动硬盘的快速自检。",
+      "failed": "硬盘没有通过自身的快速自检。",
+      "aborted": "硬盘的快速自检在完成前被中断。",
+      "timeout": "硬盘的快速自检未能在 {{seconds}} 秒内完成，已被停止。"
+    },
+    "surface_read": {
+      "cannot_open": "无法打开硬盘进行读取。",
+      "read_errors": "硬盘上有 {{count}} 处无法读取。",
+      "slow_areas": "有 {{count}} 个区域（{{percent}}%）响应非常慢，这可能意味着盘面正在磨损。",
+      "low_speed": "硬盘读取速度很慢（{{mbps}} MB/s）。"
+    },
+    "write_verify": {
+      "no_writable_volume": "已跳过写入检测，因为硬盘上没有可以安全写入的文件夹。",
+      "insufficient_space": "已跳过写入检测，因为硬盘的可用空间太小。",
+      "write_error": "硬盘在写入测试数据时报告了错误。",
+      "data_mismatch": "有 {{count}} 个测试数据块读回来的内容与写入的不同。",
+      "slow_write": "硬盘写入速度非常慢（{{mbps}} MB/s）。",
+      "cleanup_failed": "无法删除临时测试文件。您可以自行删除 {{path}}。"
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "虚假容量检查需要使用会清除硬盘的完整检测，因此已跳过。",
+      "fake_capacity": "这块硬盘声称可存放 {{claimed_bytes}} 字节，但真正可用的只有约 {{real_bytes}} 字节。这是一块虚假容量的硬盘。",
+      "data_corruption": "有 {{count}} 个测试数据块读回来时已损坏。",
+      "io_error": "硬盘在容量检查期间返回了 {{count}} 个错误。"
+    },
+    "stability": {
+      "device_disconnected": "检测期间硬盘消失了 {{count}} 次。",
+      "io_errors": "检测期间硬盘返回了 {{count}} 个读取或写入错误。",
+      "timeouts": "检测期间硬盘超时了 {{count}} 次。",
+      "crc_errors_increased": "检测期间数据传输错误增加了 {{count}} 个。请检查数据线。",
+      "new_bad_sectors": "检测期间出现了 {{count}} 个新的损坏区域。"
+    }
+  },
+  "progress": {
+    "unknown": "正在处理…",
+    "working": "正在处理…",
+    "prepare": {
+      "starting": "正在准备...",
+      "reading_smart": "正在读取硬盘内置的健康报告...",
+      "unmounting": "正在安全断开硬盘的分区...",
+      "ready": "已准备好检测。"
+    },
+    "drive_info": {
+      "identifying": "正在识别硬盘..."
+    },
+    "smart_health": {
+      "analyzing": "正在检查硬盘的健康报告..."
+    },
+    "selftest_short": {
+      "starting": "正在启动硬盘内置的快速自检...",
+      "running": "硬盘正在进行自己的快速自检（已完成 {{percent}}%）。",
+      "done": "硬盘自检已完成。",
+      "running_seconds": "硬盘正在进行自己的快速自检（已进行 {{seconds}} 秒）。"
+    },
+    "surface_read": {
+      "sampling": "正在读取整块硬盘上的抽样区域（{{done}} / {{total}}）。",
+      "sequential": "正在测量读取速度（{{mbps}} MB/s）。",
+      "done": "表面扫描已完成。"
+    },
+    "write_verify": {
+      "writing": "正在写入测试数据（已写入 {{mb}} MB）。",
+      "verifying": "正在读回数据进行核对（已核对 {{mb}} MB）。",
+      "cleaning": "正在删除临时测试文件...",
+      "done": "写入检测已完成。"
+    },
+    "capacity_check": {
+      "writing": "正在标称容量的全范围内做标记（{{done}} / {{total}}）。",
+      "verifying": "正在确认每个位置都保存着各自的数据（{{done}} / {{total}}）。",
+      "done": "容量检查已完成。"
+    },
+    "stability": {
+      "checking": "正在确认硬盘在检测期间是否保持稳定..."
+    },
+    "finish": {
+      "scoring": "正在计算您的评分...",
+      "done": "完成。"
+    }
+  },
+  "suitability": {
+    "unknown": "没有可用的详细信息。",
+    "fallback": {
+      "os_install": {
+        "good": "没有会妨碍操作系统稳定运行的问题。",
+        "caution": "可能可以使用，但有一定风险。请做好备份。",
+        "no": "不适合安装操作系统。"
+      },
+      "long_term_storage": {
+        "good": "看起来适合长期保存文件。不过仍请另存一份副本。",
+        "caution": "长期保存有风险。请在别处另存一份副本。",
+        "no": "请不要在这里保存重要文件。"
+      },
+      "daily_use": {
+        "good": "适合日常使用。",
+        "caution": "日常使用尚可，但请留意是否出现新问题。",
+        "no": "不够可靠，不适合日常使用。"
+      }
+    },
+    "os_install": {
+      "ok": "适合用来安装操作系统。",
+      "bad_sectors": "不建议用来安装操作系统：它有损坏的区域。",
+      "slow_latency": "不建议用来安装操作系统：部分读取太慢。",
+      "score_low": "不建议用来安装操作系统：总评分（{{score}}）太低。"
+    },
+    "long_term_storage": {
+      "ok": "适合长期保存文件。",
+      "critical_issues": "不适合长期保存：发现了严重问题。",
+      "score_low": "长期保存有风险：总评分（{{score}}）太低。请做好备份。"
+    },
+    "daily_use": {
+      "ok": "适合日常使用。",
+      "caution": "可用于存放日常文件，但请做好备份。",
+      "no": "不建议日常使用。"
+    }
+  },
+  "error": {
+    "unknown": "出了点问题（{{code}}）。",
+    "title": "检查未能完成",
+    "retry": "重试",
+    "choose": "选择其他硬盘",
+    "refused": "出于安全考虑，检测被拒绝。擦除检测不能在系统盘上运行，也不能在序列号不匹配时运行。",
+    "engine_failed": "检测工具意外停止了。",
+    "engine_missing": "找不到检测工具，请重新安装 CheckMyDrive。",
+    "auth_cancelled": "没有获得授权，因此没有检查这块硬盘。",
+    "elevation_unavailable": "无法在这台电脑上请求管理员权限。",
+    "bad_args": "由于内部请求错误，检测无法开始。",
+    "needs_admin": "检测这块硬盘需要管理员权限。",
+    "drive_not_found": "找不到那块硬盘，它可能已被拔出。",
+    "system_disk_refused": "这是您的电脑正在运行所用的硬盘，因此不能被擦除。请选择其他硬盘。",
+    "confirm_required": "在进行会清除数据的完整检测之前，请先确认硬盘的序列号。",
+    "confirm_mismatch": "您输入的序列号与这块硬盘不符。未做任何更改。",
+    "cannot_open_device": "无法打开硬盘进行检测，可能有其他程序正在使用它。",
+    "unmount_failed": "完整检测之前，无法安全断开硬盘的分区。请关闭所有正在使用它的程序后重试。",
+    "internal": "检测引擎内部出现了意外错误。"
+  },
+  "common": {
+    "loading": "加载中…",
+    "close": "关闭",
+    "unknown": "未知"
+  }
+}

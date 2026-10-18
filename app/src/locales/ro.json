@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Află dacă o unitate second-hand este sigură înainte să te bazezi pe ea.",
+    "skip": "Treci la conținutul principal"
+  },
+  "nav": {
+    "settings": "Setări",
+    "back": "Înapoi",
+    "mockBanner": "Mod demo: sunt afișate unități de exemplu. Nimic de pe calculatorul tău nu este testat."
+  },
+  "picker": {
+    "title": "Ce unitate vrei să verifici?",
+    "subtitle": "Conectează unitatea pe care te gândești să o cumperi sau să o folosești, apoi alege-o mai jos. Verificarea durează aproximativ 3-4 minute.",
+    "refresh": "Reîmprospătează",
+    "refreshing": "Se caută unități…",
+    "empty": "Nu s-a găsit nicio unitate. Conectează una și apasă Reîmprospătează.",
+    "systemDisk": "Discul de sistem",
+    "systemDiskHint": "Calculatorul tău pornește de pe această unitate. Poate fi verificată doar în modul sigur.",
+    "unknownModel": "Unitate necunoscută",
+    "select": "Verifică această unitate",
+    "kind": {
+      "hdd": "Hard disk (HDD)",
+      "ssd": "Unitate SSD",
+      "nvme": "SSD NVMe",
+      "usb": "Stick USB sau unitate USB",
+      "sd": "Card SD / card de memorie",
+      "unknown": "Unitate"
+    },
+    "removable": "Detașabilă",
+    "loadFailed": "Nu am putut citi lista de unități.",
+    "noAdminNote": "Unele detalii, cum ar fi datele despre starea de sănătate, pot necesita permisiune de administrator și vor fi cerute când începe verificarea."
+  },
+  "mode": {
+    "title": "Cât de amănunțită să fie verificarea?",
+    "checking": "Se verifică",
+    "safe": {
+      "title": "Test rapid și sigur (fișierele tale rămân)",
+      "desc": "Citește întreaga unitate și scrie un mic fișier temporar, așa că nimic din ce îți aparține nu este modificat sau pierdut.",
+      "badge": "Recomandat",
+      "limit": "Nu poate detecta capacitatea falsă."
+    },
+    "wipe": {
+      "title": "Test complet cu ștergere (cel mai amănunțit, ȘTERGE tot)",
+      "desc": "Scrie și pe toată unitatea pentru a prinde capacitatea falsă și defectele ascunse. Toate fișierele de pe unitate sunt distruse definitiv.",
+      "dangerTitle": "Zonă periculoasă: unitatea va fi ștearsă",
+      "dangerBody": "Aceasta șterge definitiv TOATE datele de pe {{model}}. Nu poate fi anulată. Continuă doar dacă unitatea este goală sau ai o copie de rezervă.",
+      "confirmLabel": "Pentru confirmare, tastează numărul de serie al unității: {{serial}}",
+      "confirmPlaceholder": "Tastează aici numărul de serie",
+      "noSerial": "Această unitate nu raportează un număr de serie, deci testul complet cu ștergere nu este disponibil.",
+      "systemBlocked": "Discul de sistem nu poate fi șters niciodată. Este disponibil doar testul sigur.",
+      "mismatch": "Textul nu se potrivește încă cu numărul de serie.",
+      "start": "Șterge și rulează testul complet",
+      "expand": "Arată testul complet cu ștergere",
+      "collapse": "Ascunde testul complet cu ștergere"
+    },
+    "start": "Începe testul rapid și sigur",
+    "back": "Alege altă unitate",
+    "duration": "Durează aproximativ 3-4 minute. Te rugăm să nu deconectezi unitatea."
+  },
+  "running": {
+    "title": "Se verifică unitatea ta",
+    "subtitle": "Te rugăm să ții unitatea conectată și calculatorul treaz.",
+    "overall": "Progres general",
+    "elapsed": "Timp scurs",
+    "remaining": "Mai sunt aproximativ {{time}}",
+    "estimating": "Se estimează timpul…",
+    "cancel": "Anulează testul",
+    "cancelling": "Se anulează…",
+    "cancelConfirm": "Oprești testul? În modul sigur, nimic de pe unitatea ta nu a fost modificat.",
+    "keepGoing": "Continuă",
+    "stop": "Oprește testul",
+    "checklist": "Ce verificăm",
+    "waiting": "Se așteaptă permisiunea…",
+    "adminPrompt": "Calculatorul tău ți-ar putea cere parola. Aceasta permite CheckMyDrive să citească direct unitatea.",
+    "phase": {
+      "prepare": "Pregătire",
+      "finish": "Se calculează scorul tău"
+    },
+    "status": {
+      "pending": "În așteptare",
+      "running": "Se verifică",
+      "done": "Gata"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Identitatea unității",
+      "desc": "Modelul, dimensiunea și tipul unității"
+    },
+    "smart_health": {
+      "name": "Raport de sănătate",
+      "desc": "Evidența problemelor și a uzurii ținută chiar de unitate"
+    },
+    "selftest_short": {
+      "name": "Autoverificare încorporată",
+      "desc": "Unitatea se verifică singură"
+    },
+    "surface_read": {
+      "name": "Scanarea suprafeței",
+      "desc": "Citește puncte din toată unitatea"
+    },
+    "write_verify": {
+      "name": "Scriere și verificare",
+      "desc": "Salvează date și le citește înapoi"
+    },
+    "capacity_check": {
+      "name": "Capacitatea reală",
+      "desc": "Se asigură că dimensiunea nu este falsă"
+    },
+    "stability": {
+      "name": "Stabilitate",
+      "desc": "Urmărește deconectările și erorile"
+    }
+  },
+  "status": {
+    "pass": "Trecut",
+    "warn": "Avertisment",
+    "fail": "Eșuat",
+    "skipped": "Omis"
+  },
+  "results": {
+    "title": "Rezultate",
+    "scoreOutOf": "din 100",
+    "scoreLabel": "Scor {{score}} din 100",
+    "verdict": {
+      "buy": "Bună de cumpărat",
+      "caution": "Folosește cu precauție",
+      "avoid": "De evitat"
+    },
+    "summary": {
+      "buy": "Unitatea {{model}} pare sănătoasă. Nu am găsit probleme serioase și ar trebui să meargă bine pentru folosirea de zi cu zi.",
+      "caution": "Unitatea {{model}} funcționează, dar am găsit câteva semne de avertizare. Folosește-o doar pentru fișiere pe care ți-ar fi ușor să le pierzi sau negociază un preț mai mic.",
+      "avoid": "Nu te baza pe unitatea {{model}}. Am găsit probleme serioase care îți pun fișierele în pericol.",
+      "fake_capacity": "Unitatea {{model}} minte în privința dimensiunii. Pretinde că are {{claimed}}, dar nu poate stoca de fapt atât. Nu o cumpăra și nu o folosi.",
+      "failing": "Unitatea {{model}} se defectează. Propriile ei date de sănătate și testele noastre arată că îți poate pierde fișierele în orice moment."
+    },
+    "can": {
+      "title": "Pot să…",
+      "os": "Instalez un sistem de operare pe ea?",
+      "storage": "Păstrez fișiere pe ea pe termen lung?",
+      "daily": "O folosesc zilnic?",
+      "fill": "O umplu în siguranță?",
+      "fillYes": "Poți stoca în siguranță până la {{size}} din {{total}}",
+      "fillNo": "Nu am stoca nimic important pe ea.",
+      "yes": "Da",
+      "maybe": "Poate",
+      "no": "Nu"
+    },
+    "age": {
+      "title": "Vârsta unității",
+      "years": "Ani de utilizare: aproximativ {{count}}",
+      "yearsLessThanOne": "Folosită mai puțin de un an",
+      "hours": "Ore de funcționare: {{hours}}",
+      "made": "Fabricată: {{date}}",
+      "cycles": "Număr de porniri: {{count}}",
+      "unknown": "Această unitate nu raportează cât timp a fost folosită.",
+      "note": "Orele se numără doar cât timp unitatea este pornită. O unitate folosită non-stop îmbătrânește mai repede decât una folosită câteva ore pe zi."
+    },
+    "issues": {
+      "title": "Ce am găsit",
+      "none": "Nu s-au găsit probleme.",
+      "critical": "Grav",
+      "warn": "Avertisment",
+      "info": "Notă"
+    },
+    "matrix": {
+      "title": "Tabelul testelor",
+      "subtitle": "Detalii pentru utilizatori avansați",
+      "show": "Arată detaliile",
+      "hide": "Ascunde detaliile",
+      "test": "Test",
+      "status": "Stare",
+      "score": "Scor",
+      "metrics": "Cifre importante",
+      "none": "Nicio cifră înregistrată"
+    },
+    "export": "Exportă raportul",
+    "exportJson": "Salvează ca JSON",
+    "exportHtml": "Salvează ca pagină web (HTML)",
+    "print": "Tipărește sau salvează ca PDF",
+    "saved": "Raport salvat.",
+    "saveFailed": "Raportul nu a putut fi salvat.",
+    "another": "Testează altă unitate",
+    "mode": {
+      "safe": "Test rapid și sigur",
+      "wipe": "Test complet cu ștergere"
+    },
+    "tested": "Testată la {{date}}",
+    "engine": "Motor {{version}}",
+    "skippedNote": "Detectarea capacității false nu a fost rulată. Folosește testul complet cu ștergere pe o unitate goală pentru un răspuns complet."
+  },
+  "report": {
+    "title": "Raport CheckMyDrive",
+    "generatedBy": "Generat de CheckMyDrive (cod sursă deschis)"
+  },
+  "settings": {
+    "title": "Setări și despre",
+    "language": "Limba",
+    "languageHint": "Limbile în afară de engleză sunt încărcate pe măsură ce devin disponibile; textul lipsă apare în engleză.",
+    "theme": "Aspect",
+    "themeSystem": "Ca în sistem",
+    "themeLight": "Luminos",
+    "themeDark": "Întunecat",
+    "about": "Despre",
+    "version": "Versiune",
+    "license": "Licență",
+    "licenseValue": "Licență MIT (gratuită și cu sursă deschisă)",
+    "github": "Codul sursă pe GitHub",
+    "engineVersion": "Motor",
+    "disclaimer": "CheckMyDrive oferă o estimare întemeiată și nu poate garanta că o unitate nu se va defecta niciodată. Păstrează întotdeauna copii de rezervă ale fișierelor care contează.",
+    "close": "Gata"
+  },
+  "metric": {
+    "read_mbps_avg": "Viteza medie de citire (MB/s)",
+    "write_mbps": "Viteza de scriere (MB/s)",
+    "latency_ms_p99": "Cel mai lent 1% din răspunsuri (ms)",
+    "slow_samples": "Zone lente",
+    "read_errors": "Erori de citire",
+    "reallocated_sectors": "Zone defecte înlocuite",
+    "pending_sectors": "Zone instabile",
+    "uncorrectable_sectors": "Zone ilizibile",
+    "temperature_c": "Temperatură (°C)",
+    "percent_used": "Uzură consumată (%)",
+    "media_errors": "Erori ale suportului",
+    "written_mb": "Date scrise (MB)",
+    "mismatches": "Nepotriviri",
+    "sectors_checked": "Puncte verificate",
+    "real_capacity_gb": "Capacitate reală (GB)",
+    "claimed_gb": "Capacitate declarată (GB)",
+    "disconnects": "Deconectări",
+    "io_errors": "Erori de intrare/ieșire",
+    "rpm": "Viteză de rotație (RPM)",
+    "interface": "Conexiune",
+    "result": "Rezultat"
+  },
+  "issue": {
+    "unknown": "A fost găsit ceva neobișnuit ({{code}}). Vezi tabelul testelor pentru detalii.",
+    "age": {
+      "high_hours": "Această unitate a funcționat {{hours}} de ore (ani, aproximativ: {{years}}), ceea ce înseamnă multă folosire.",
+      "moderate_hours": "Această unitate a funcționat {{hours}} de ore (ani, aproximativ: {{years}})."
+    },
+    "drive_info": {
+      "capacity_unknown": "Unitatea nu a raportat cât de mare este.",
+      "model_unknown": "Unitatea nu a raportat numele modelului.",
+      "system_disk": "Acesta este discul de pe care pornește calculatorul tău. A fost rulat doar testul sigur, care nu distruge nimic."
+    },
+    "smart": {
+      "unavailable": "Instrumentul pentru raportul de sănătate (smartmontools) nu este disponibil, deci datele interne de sănătate ale unității nu au putut fi citite.",
+      "needs_admin": "Raportul de sănătate al unității nu a putut fi citit fără permisiune de administrator.",
+      "timeout": "Unitatea nu a răspuns la timp la cererea raportului de sănătate.",
+      "not_supported": "Această unitate nu oferă un raport de sănătate, deci starea ei internă este necunoscută.",
+      "usb_bridge_blocked": "Adaptorul USB ascunde raportul de sănătate al unității, deci starea ei internă este necunoscută.",
+      "overall_failed": "Propria verificare de sănătate a unității spune că se defectează.",
+      "reallocated_sectors": "Unitatea a înlocuit deja cu rezerve zonele deteriorate (număr: {{count}}).",
+      "pending_sectors": "Zone ale unității care nu pot fi citite și așteaptă să fie înlocuite (număr: {{count}}).",
+      "uncorrectable_sectors": "Zone ale unității care nu au putut fi citite sau corectate (număr: {{count}}).",
+      "crc_errors": "Erori de transfer de date înregistrate, adesea cauzate de un cablu sau un conector defect (număr: {{count}}).",
+      "error_log_entries": "Număr de intrări în jurnalul de erori al unității: {{count}}.",
+      "ssd_worn": "Acest SSD a consumat aproximativ {{percent}}% din durata de viață estimată.",
+      "ssd_worn_out": "Acest SSD a consumat aproximativ {{percent}}% din durata de viață estimată și este aproape de sfârșitul vieții.",
+      "nvme_critical_warning": "Unitatea raportează un avertisment critic (cod {{value}}).",
+      "nvme_media_errors": "Memoria unității a înregistrat erori de integritate a datelor (număr: {{count}}).",
+      "spare_low": "Mai este doar {{percent}}% din memoria de rezervă a unității.",
+      "temperature_high": "Unitatea se încălzește prea tare ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Autotestul rapid al unității a fost omis deoarece interfața ei de sănătate nu este disponibilă.",
+      "not_supported": "Această unitate nu acceptă autotestul rapid.",
+      "could_not_start": "Autotestul rapid al unității nu a putut fi pornit.",
+      "failed": "Unitatea a picat propriul autotest rapid.",
+      "aborted": "Autotestul rapid al unității a fost întrerupt înainte să se termine.",
+      "timeout": "Autotestul rapid al unității nu s-a terminat în {{seconds}} secunde și a fost oprit."
+    },
+    "surface_read": {
+      "cannot_open": "Unitatea nu a putut fi deschisă pentru citire.",
+      "read_errors": "Părți ale unității care nu au putut fi citite (număr: {{count}}).",
+      "slow_areas": "Zone care au răspuns foarte lent (număr: {{count}}, adică {{percent}}%). Asta poate însemna că suprafața se uzează.",
+      "low_speed": "Unitatea citește lent ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Testul de scriere a fost omis deoarece unitatea nu are un dosar în care să putem scrie în siguranță.",
+      "insufficient_space": "Testul de scriere a fost omis deoarece unitatea are prea puțin spațiu liber.",
+      "write_error": "Unitatea a raportat o eroare la scrierea datelor de test.",
+      "data_mismatch": "Blocuri de date de test care s-au întors diferite de cum au fost scrise (număr: {{count}}).",
+      "slow_write": "Unitatea scrie foarte lent ({{mbps}} MB/s).",
+      "cleanup_failed": "Fișierul temporar de test nu a putut fi șters. Poți șterge singur {{path}}."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Verificarea capacității false necesită testul complet, care șterge unitatea. A fost omisă.",
+      "fake_capacity": "Această unitate pretinde că poate stoca {{claimed_bytes}} octeți, dar doar aproximativ {{real_bytes}} octeți sunt reali. Este o unitate cu capacitate falsă.",
+      "data_corruption": "Blocuri de test care s-au întors deteriorate (număr: {{count}}).",
+      "io_error": "Erori returnate de unitate în timpul verificării capacității (număr: {{count}})."
+    },
+    "stability": {
+      "device_disconnected": "Unitatea a dispărut în timpul testelor (de câte ori: {{count}}).",
+      "io_errors": "Erori de citire sau scriere returnate de unitate în timpul testelor (număr: {{count}}).",
+      "timeouts": "Unitatea a încetat să răspundă în timpul testelor (de câte ori: {{count}}).",
+      "crc_errors_increased": "Erorile de transfer de date au crescut în timpul testelor cu {{count}}. Verifică cablul.",
+      "new_bad_sectors": "Zone noi deteriorate, apărute în timp ce testam (număr: {{count}})."
+    }
+  },
+  "progress": {
+    "unknown": "Se lucrează…",
+    "working": "Se lucrează…",
+    "prepare": {
+      "starting": "Se pregătește...",
+      "reading_smart": "Se citește raportul de sănătate încorporat al unității...",
+      "unmounting": "Se deconectează în siguranță volumele unității...",
+      "ready": "Gata de testare."
+    },
+    "drive_info": {
+      "identifying": "Se identifică unitatea..."
+    },
+    "smart_health": {
+      "analyzing": "Se verifică raportul de sănătate al unității..."
+    },
+    "selftest_short": {
+      "starting": "Se pornește autotestul rapid încorporat al unității...",
+      "running": "Unitatea rulează propriul autotest rapid ({{percent}}% terminat).",
+      "done": "Autotestul unității s-a terminat.",
+      "running_seconds": "Unitatea rulează propriul autotest rapid (până acum {{seconds}} secunde)."
+    },
+    "surface_read": {
+      "sampling": "Se citesc zone de probă din toată unitatea ({{done}} din {{total}}).",
+      "sequential": "Se măsoară viteza de citire ({{mbps}} MB/s).",
+      "done": "Scanarea suprafeței s-a terminat."
+    },
+    "write_verify": {
+      "writing": "Se scriu date de test ({{mb}} MB scriși).",
+      "verifying": "Se citesc datele înapoi pentru verificare ({{mb}} MB verificați).",
+      "cleaning": "Se șterge fișierul temporar de test...",
+      "done": "Testul de scriere s-a terminat."
+    },
+    "capacity_check": {
+      "writing": "Se marchează puncte pe toată dimensiunea declarată ({{done}} din {{total}}).",
+      "verifying": "Se verifică dacă fiecare punct păstrează propriile date ({{done}} din {{total}}).",
+      "done": "Verificarea capacității s-a terminat."
+    },
+    "stability": {
+      "checking": "Se verifică dacă unitatea a rămas stabilă pe parcursul testelor..."
+    },
+    "finish": {
+      "scoring": "Se calculează scorul tău...",
+      "done": "Gata."
+    }
+  },
+  "suitability": {
+    "unknown": "Niciun detaliu disponibil.",
+    "fallback": {
+      "os_install": {
+        "good": "Nicio problemă care ar împiedica un sistem de operare să funcționeze fiabil.",
+        "caution": "Poate funcționa, dar există un anumit risc. Fă o copie de rezervă.",
+        "no": "Nesigură pentru un sistem de operare."
+      },
+      "long_term_storage": {
+        "good": "Pare fiabilă pentru păstrarea fișierelor pe termen lung. Ține totuși o a doua copie.",
+        "caution": "Riscantă pentru stocarea pe termen lung. Păstrează o altă copie în alt loc.",
+        "no": "Nu păstra aici fișiere importante."
+      },
+      "daily_use": {
+        "good": "Bună pentru folosirea de zi cu zi.",
+        "caution": "În regulă pentru folosirea de zi cu zi, dar fii atent la probleme noi.",
+        "no": "Nu este suficient de fiabilă pentru folosirea zilnică."
+      }
+    },
+    "os_install": {
+      "ok": "Potrivită pentru instalarea unui sistem de operare.",
+      "bad_sectors": "Nerecomandată pentru un sistem de operare: are zone deteriorate.",
+      "slow_latency": "Nerecomandată pentru un sistem de operare: unele citiri sunt prea lente.",
+      "score_low": "Nerecomandată pentru un sistem de operare: scorul general ({{score}}) este prea mic."
+    },
+    "long_term_storage": {
+      "ok": "Potrivită pentru păstrarea fișierelor pe termen lung.",
+      "critical_issues": "Nesigură pentru stocarea pe termen lung: au fost găsite probleme serioase.",
+      "score_low": "Riscantă pentru stocarea pe termen lung: scorul general ({{score}}) este prea mic. Fă copii de rezervă."
+    },
+    "daily_use": {
+      "ok": "Bună pentru folosirea de zi cu zi.",
+      "caution": "Poate fi folosită pentru fișiere obișnuite, dar fă copii de rezervă.",
+      "no": "Nerecomandată pentru folosirea de zi cu zi."
+    }
+  },
+  "error": {
+    "unknown": "Ceva nu a mers bine ({{code}}).",
+    "title": "Verificarea nu s-a putut termina",
+    "retry": "Încearcă din nou",
+    "choose": "Alege altă unitate",
+    "refused": "Testul a fost refuzat din motive de siguranță. Testele cu ștergere nu pot rula pe discul de sistem sau fără un număr de serie potrivit.",
+    "engine_failed": "Instrumentul de verificare s-a oprit neașteptat.",
+    "engine_missing": "Instrumentul de verificare nu a fost găsit. Te rugăm să reinstalezi CheckMyDrive.",
+    "auth_cancelled": "Permisiunea nu a fost acordată, deci unitatea nu a fost verificată.",
+    "elevation_unavailable": "Nu s-a putut cere permisiunea de administrator pe acest calculator.",
+    "bad_args": "Testul nu a putut porni din cauza unei erori interne de cerere.",
+    "needs_admin": "Este nevoie de permisiunea de administrator pentru a testa această unitate.",
+    "drive_not_found": "Unitatea nu a fost găsită. Poate a fost deconectată.",
+    "system_disk_refused": "Acesta este discul de pe care pornește calculatorul tău, deci nu poate fi șters. Alege altă unitate.",
+    "confirm_required": "Te rugăm să confirmi numărul de serie al unității înainte de un test complet care șterge datele.",
+    "confirm_mismatch": "Numărul de serie introdus nu se potrivește cu această unitate. Nimic nu a fost modificat.",
+    "cannot_open_device": "Unitatea nu a putut fi deschisă pentru testare. Poate o folosește un alt program.",
+    "unmount_failed": "Volumele unității nu au putut fi deconectate în siguranță înainte de testul complet. Închide programele care o folosesc și încearcă din nou.",
+    "internal": "Ceva neașteptat a mers prost în interiorul motorului de testare."
+  },
+  "common": {
+    "loading": "Se încarcă…",
+    "close": "Închide",
+    "unknown": "Necunoscut"
+  }
+}

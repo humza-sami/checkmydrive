@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Finn ut om en brukt disk er trygg før du stoler på den.",
+    "skip": "Hopp til hovedinnholdet"
+  },
+  "nav": {
+    "settings": "Innstillinger",
+    "back": "Tilbake",
+    "mockBanner": "Demomodus: viser eksempeldisker. Ingenting på datamaskinen din blir testet."
+  },
+  "picker": {
+    "title": "Hvilken disk vil du sjekke?",
+    "subtitle": "Koble til disken du vurderer å kjøpe eller bruke, og velg den nedenfor. Sjekken tar omtrent 3 til 4 minutter.",
+    "refresh": "Oppdater",
+    "refreshing": "Leter etter disker…",
+    "empty": "Fant ingen disker. Koble til en og trykk på Oppdater.",
+    "systemDisk": "Systemdisk",
+    "systemDiskHint": "Datamaskinen din kjører fra denne disken. Den kan bare sjekkes i sikker modus.",
+    "unknownModel": "Ukjent disk",
+    "select": "Sjekk denne disken",
+    "kind": {
+      "hdd": "Harddisk (HDD)",
+      "ssd": "SSD-disk",
+      "nvme": "NVMe SSD",
+      "usb": "USB-pinne eller USB-disk",
+      "sd": "SD-/minnekort",
+      "unknown": "Disk"
+    },
+    "removable": "Flyttbar",
+    "loadFailed": "Vi kunne ikke lese listen over disker.",
+    "noAdminNote": "Noen opplysninger, for eksempel helsedata, kan kreve administratortillatelse og blir spurt om når sjekken starter."
+  },
+  "mode": {
+    "title": "Hvor grundig skal sjekken være?",
+    "checking": "Sjekker",
+    "safe": {
+      "title": "Rask sikker test (filene dine beholdes)",
+      "desc": "Leser hele disken og skriver en liten midlertidig fil, slik at ingenting du eier blir endret eller mistet.",
+      "badge": "Anbefalt",
+      "limit": "Kan ikke oppdage falsk kapasitet."
+    },
+    "wipe": {
+      "title": "Full slettetest (mest grundig, SLETTER alt)",
+      "desc": "Skriver også over hele disken for å avsløre falsk kapasitet og skjulte feil. Alle filer på disken blir slettet for godt.",
+      "dangerTitle": "Faresone: disken slettes",
+      "dangerBody": "Dette sletter ALLE data på {{model}} permanent. Det kan ikke angres. Fortsett bare hvis disken er tom eller du har en sikkerhetskopi.",
+      "confirmLabel": "For å bekrefte, skriv inn diskens serienummer: {{serial}}",
+      "confirmPlaceholder": "Skriv serienummeret her",
+      "noSerial": "Denne disken oppgir ikke serienummer, så full slettetest er ikke tilgjengelig.",
+      "systemBlocked": "Systemdisken din kan aldri slettes. Bare den sikre testen er tilgjengelig.",
+      "mismatch": "Teksten stemmer ikke med serienummeret ennå.",
+      "start": "Slett og kjør full test",
+      "expand": "Vis full slettetest",
+      "collapse": "Skjul full slettetest"
+    },
+    "start": "Start rask sikker test",
+    "back": "Velg en annen disk",
+    "duration": "Tar omtrent 3 til 4 minutter. Ikke koble fra disken."
+  },
+  "running": {
+    "title": "Sjekker disken din",
+    "subtitle": "La disken være tilkoblet og datamaskinen våken.",
+    "overall": "Total framdrift",
+    "elapsed": "Brukt tid",
+    "remaining": "Omtrent {{time}} igjen",
+    "estimating": "Beregner tid…",
+    "cancel": "Avbryt testen",
+    "cancelling": "Avbryter…",
+    "cancelConfirm": "Stoppe testen? Ingenting på disken ble endret i sikker modus.",
+    "keepGoing": "Fortsett",
+    "stop": "Stopp testen",
+    "checklist": "Dette sjekker vi",
+    "waiting": "Venter på tillatelse…",
+    "adminPrompt": "Datamaskinen kan be om passordet ditt. Dette lar CheckMyDrive lese disken direkte.",
+    "phase": {
+      "prepare": "Gjør klar",
+      "finish": "Regner ut poengsummen din"
+    },
+    "status": {
+      "pending": "Venter",
+      "running": "Sjekker",
+      "done": "Ferdig"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Diskens identitet",
+      "desc": "Modell, størrelse og type disk"
+    },
+    "smart_health": {
+      "name": "Helserapport",
+      "desc": "Diskens egen logg over problemer og slitasje"
+    },
+    "selftest_short": {
+      "name": "Innebygd selvsjekk",
+      "desc": "Disken sjekker seg selv"
+    },
+    "surface_read": {
+      "name": "Overflateskanning",
+      "desc": "Leser steder over hele disken"
+    },
+    "write_verify": {
+      "name": "Skriv og bekreft",
+      "desc": "Lagrer data og leser dem tilbake"
+    },
+    "capacity_check": {
+      "name": "Reell kapasitet",
+      "desc": "Sørger for at størrelsen ikke er falsk"
+    },
+    "stability": {
+      "name": "Stabilitet",
+      "desc": "Følger med på frakoblinger og feil"
+    }
+  },
+  "status": {
+    "pass": "Bestått",
+    "warn": "Advarsel",
+    "fail": "Feilet",
+    "skipped": "Hoppet over"
+  },
+  "results": {
+    "title": "Resultater",
+    "scoreOutOf": "av 100",
+    "scoreLabel": "Poengsum {{score}} av 100",
+    "verdict": {
+      "buy": "Bra å kjøpe",
+      "caution": "Bruk med forsiktighet",
+      "avoid": "Unngå"
+    },
+    "summary": {
+      "buy": "Denne {{model}} ser frisk ut. Vi fant ingen alvorlige problemer, og den bør fungere fint til vanlig bruk.",
+      "caution": "Denne {{model}} fungerer, men vi fant noen advarselstegn. Bruk den bare til filer du kan miste, eller forhandle om en lavere pris.",
+      "avoid": "Ikke stol på denne {{model}}. Vi fant alvorlige problemer som setter filene dine i fare.",
+      "fake_capacity": "Denne {{model}} lyver om størrelsen sin. Den påstår å ha {{claimed}}, men kan egentlig ikke lagre så mye. Ikke kjøp eller bruk den.",
+      "failing": "Denne {{model}} er i ferd med å gå i stykker. Diskens egne helsedata og testene våre viser at den når som helst kan miste filene dine."
+    },
+    "can": {
+      "title": "Kan jeg…",
+      "os": "Installere et operativsystem på den?",
+      "storage": "Lagre filer på den over lang tid?",
+      "daily": "Bruke den hver dag?",
+      "fill": "Fylle den trygt?",
+      "fillYes": "Lagre trygt opptil {{size}} av {{total}}",
+      "fillNo": "Vi ville ikke lagret noe viktig på den.",
+      "yes": "Ja",
+      "maybe": "Kanskje",
+      "no": "Nei"
+    },
+    "age": {
+      "title": "Diskens alder",
+      "years": "Omtrent {{count}} års bruk",
+      "yearsLessThanOne": "Mindre enn ett års bruk",
+      "hours": "{{hours}} timer påslått",
+      "made": "Produsert: {{date}}",
+      "cycles": "Slått på {{count}} ganger",
+      "unknown": "Denne disken oppgir ikke hvor lenge den har vært brukt.",
+      "note": "Timer telles bare mens disken er påslått. En disk som går døgnet rundt eldes raskere enn en som brukes noen timer om dagen."
+    },
+    "issues": {
+      "title": "Dette fant vi",
+      "none": "Ingen problemer funnet.",
+      "critical": "Alvorlig",
+      "warn": "Advarsel",
+      "info": "Merknad"
+    },
+    "matrix": {
+      "title": "Testoversikt",
+      "subtitle": "Detaljer for avanserte brukere",
+      "show": "Vis detaljer",
+      "hide": "Skjul detaljer",
+      "test": "Test",
+      "status": "Status",
+      "score": "Poeng",
+      "metrics": "Nøkkeltall",
+      "none": "Ingen tall registrert"
+    },
+    "export": "Eksporter rapport",
+    "exportJson": "Lagre som JSON",
+    "exportHtml": "Lagre som nettside (HTML)",
+    "print": "Skriv ut eller lagre som PDF",
+    "saved": "Rapporten er lagret.",
+    "saveFailed": "Kunne ikke lagre rapporten.",
+    "another": "Test en annen disk",
+    "mode": {
+      "safe": "Rask sikker test",
+      "wipe": "Full slettetest"
+    },
+    "tested": "Testet {{date}}",
+    "engine": "Motor {{version}}",
+    "skippedNote": "Oppdagelse av falsk kapasitet ble ikke kjørt. Bruk den fulle slettetesten på en tom disk for et fullstendig svar."
+  },
+  "report": {
+    "title": "CheckMyDrive-rapport",
+    "generatedBy": "Laget av CheckMyDrive (åpen kildekode)"
+  },
+  "settings": {
+    "title": "Innstillinger og om",
+    "language": "Språk",
+    "languageHint": "Andre språk enn engelsk lastes inn etter hvert som de blir tilgjengelige; tekst som mangler vises på engelsk.",
+    "theme": "Utseende",
+    "themeSystem": "Følg systemet",
+    "themeLight": "Lys",
+    "themeDark": "Mørk",
+    "about": "Om",
+    "version": "Versjon",
+    "license": "Lisens",
+    "licenseValue": "MIT-lisens (gratis og åpen kildekode)",
+    "github": "Kildekode på GitHub",
+    "engineVersion": "Motor",
+    "disclaimer": "CheckMyDrive gir et kvalifisert anslag og kan ikke garantere at en disk aldri svikter. Ta alltid sikkerhetskopi av filer som betyr noe.",
+    "close": "Ferdig"
+  },
+  "metric": {
+    "read_mbps_avg": "Gjennomsnittlig lesehastighet (MB/s)",
+    "write_mbps": "Skrivehastighet (MB/s)",
+    "latency_ms_p99": "Tregeste 1 % responstid (ms)",
+    "slow_samples": "Trege steder",
+    "read_errors": "Lesefeil",
+    "reallocated_sectors": "Erstattede dårlige områder",
+    "pending_sectors": "Ustabile områder",
+    "uncorrectable_sectors": "Uleselige områder",
+    "temperature_c": "Temperatur (°C)",
+    "percent_used": "Brukt slitasje (%)",
+    "media_errors": "Mediefeil",
+    "written_mb": "Skrevne data (MB)",
+    "mismatches": "Avvik",
+    "sectors_checked": "Sjekkede steder",
+    "real_capacity_gb": "Reell kapasitet (GB)",
+    "claimed_gb": "Oppgitt kapasitet (GB)",
+    "disconnects": "Frakoblinger",
+    "io_errors": "Inn-/utdatafeil",
+    "rpm": "Rotasjonshastighet (RPM)",
+    "interface": "Tilkobling",
+    "result": "Resultat"
+  },
+  "issue": {
+    "unknown": "Noe uvanlig ble funnet ({{code}}). Se testoversikten for detaljer.",
+    "age": {
+      "high_hours": "Denne disken har vært påslått i omtrent {{years}} år ({{hours}} timer), noe som er mye bruk.",
+      "moderate_hours": "Denne disken har vært påslått i omtrent {{years}} år ({{hours}} timer)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Disken oppga ikke hvor stor den er.",
+      "model_unknown": "Disken oppga ikke modellnavnet sitt.",
+      "system_disk": "Dette er disken datamaskinen din kjører fra. Bare den sikre, ikke-destruktive testen ble kjørt."
+    },
+    "smart": {
+      "unavailable": "Helserapportverktøyet (smartmontools) er ikke tilgjengelig, så diskens interne helsedata kunne ikke leses.",
+      "needs_admin": "Diskens helserapport kunne ikke leses uten administratortillatelse.",
+      "timeout": "Disken svarte ikke på forespørselen om helserapport i tide.",
+      "not_supported": "Denne disken gir ingen helserapport, så den indre tilstanden er ukjent.",
+      "usb_bridge_blocked": "USB-adapteren skjuler diskens helserapport, så den indre tilstanden er ukjent.",
+      "overall_failed": "Diskens egen helsesjekk sier at den er i ferd med å svikte.",
+      "reallocated_sectors": "Disken har allerede byttet ut {{count}} skadde områder med reserver.",
+      "pending_sectors": "{{count}} områder på disken er uleselige og venter på å bli byttet ut.",
+      "uncorrectable_sectors": "{{count}} områder på disken kunne ikke leses eller rettes.",
+      "crc_errors": "{{count}} dataoverføringsfeil ble registrert, ofte forårsaket av en dårlig kabel eller kontakt.",
+      "error_log_entries": "Diskens feillogg inneholder {{count}} oppføringer.",
+      "ssd_worn": "Denne SSD-en har brukt opp omtrent {{percent}} % av den forventede levetiden.",
+      "ssd_worn_out": "Denne SSD-en har brukt opp omtrent {{percent}} % av den forventede levetiden og er nær slutten.",
+      "nvme_critical_warning": "Disken melder en kritisk advarsel (kode {{value}}).",
+      "nvme_media_errors": "Diskens minne har logget {{count}} feil i dataintegriteten.",
+      "spare_low": "Bare {{percent}} % av diskens reserveminne er igjen.",
+      "temperature_high": "Disken går varm ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Diskens raske selvtest ble hoppet over fordi helsegrensesnittet ikke er tilgjengelig.",
+      "not_supported": "Denne disken støtter ikke den raske selvtesten.",
+      "could_not_start": "Diskens raske selvtest kunne ikke startes.",
+      "failed": "Disken besto ikke sin egen raske selvtest.",
+      "aborted": "Diskens raske selvtest ble avbrutt før den ble ferdig.",
+      "timeout": "Diskens raske selvtest ble ikke ferdig innen {{seconds}} sekunder og ble stoppet."
+    },
+    "surface_read": {
+      "cannot_open": "Disken kunne ikke åpnes for lesing.",
+      "read_errors": "{{count}} deler av disken kunne ikke leses.",
+      "slow_areas": "{{count}} områder ({{percent}} %) svarte veldig tregt, noe som kan bety at overflaten slites ut.",
+      "low_speed": "Disken leser tregt ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Skrivetesten ble hoppet over fordi disken ikke har en mappe vi trygt kan skrive til.",
+      "insufficient_space": "Skrivetesten ble hoppet over fordi disken har for lite ledig plass.",
+      "write_error": "Disken meldte en feil under skriving av testdata.",
+      "data_mismatch": "{{count}} blokker med testdata kom tilbake annerledes enn det som ble skrevet.",
+      "slow_write": "Disken skriver veldig tregt ({{mbps}} MB/s).",
+      "cleanup_failed": "Den midlertidige testfilen kunne ikke slettes. Du kan fjerne {{path}} selv."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Sjekken for falsk kapasitet krever den fulle testen, som sletter disken. Den ble hoppet over.",
+      "fake_capacity": "Denne disken påstår å romme {{claimed_bytes}} byte, men bare omtrent {{real_bytes}} byte er ekte. Det er en disk med falsk kapasitet.",
+      "data_corruption": "{{count}} testblokker kom tilbake skadet.",
+      "io_error": "Disken ga {{count}} feil under kapasitetssjekken."
+    },
+    "stability": {
+      "device_disconnected": "Disken forsvant {{count}} gang(er) under testene.",
+      "io_errors": "Disken ga {{count}} lese- eller skrivefeil under testene.",
+      "timeouts": "Disken svarte ikke i tide {{count}} gang(er) under testene.",
+      "crc_errors_increased": "Dataoverføringsfeil økte med {{count}} under testene. Sjekk kabelen.",
+      "new_bad_sectors": "{{count}} nye skadde områder dukket opp mens vi testet."
+    }
+  },
+  "progress": {
+    "unknown": "Jobber…",
+    "working": "Jobber…",
+    "prepare": {
+      "starting": "Gjør klar...",
+      "reading_smart": "Leser diskens innebygde helserapport...",
+      "unmounting": "Kobler trygt fra diskens volumer...",
+      "ready": "Klar til å teste."
+    },
+    "drive_info": {
+      "identifying": "Identifiserer disken..."
+    },
+    "smart_health": {
+      "analyzing": "Sjekker diskens helserapport..."
+    },
+    "selftest_short": {
+      "starting": "Starter diskens innebygde raske selvtest...",
+      "running": "Disken kjører sin egen raske selvtest ({{percent}} % ferdig).",
+      "done": "Diskens selvtest er ferdig.",
+      "running_seconds": "Disken kjører sin egen raske selvtest ({{seconds}} sekunder så langt)."
+    },
+    "surface_read": {
+      "sampling": "Leser stikkprøver over hele disken ({{done}} av {{total}}).",
+      "sequential": "Måler lesehastighet ({{mbps}} MB/s).",
+      "done": "Overflateskanningen er ferdig."
+    },
+    "write_verify": {
+      "writing": "Skriver testdata ({{mb}} MB skrevet).",
+      "verifying": "Leser dataene tilbake for å sjekke dem ({{mb}} MB sjekket).",
+      "cleaning": "Fjerner den midlertidige testfilen...",
+      "done": "Skrivetesten er ferdig."
+    },
+    "capacity_check": {
+      "writing": "Merker steder over hele den oppgitte størrelsen ({{done}} av {{total}}).",
+      "verifying": "Sjekker at hvert sted holder sine egne data ({{done}} av {{total}}).",
+      "done": "Kapasitetssjekken er ferdig."
+    },
+    "stability": {
+      "checking": "Sjekker at disken var stabil under testene..."
+    },
+    "finish": {
+      "scoring": "Regner ut poengsummen din...",
+      "done": "Ferdig."
+    }
+  },
+  "suitability": {
+    "unknown": "Ingen detaljer tilgjengelig.",
+    "fallback": {
+      "os_install": {
+        "good": "Ingen problemer som ville hindret et operativsystem i å kjøre pålitelig.",
+        "caution": "Det kan fungere, men det er en viss risiko. Ta en sikkerhetskopi.",
+        "no": "Ikke trygg for et operativsystem."
+      },
+      "long_term_storage": {
+        "good": "Ser pålitelig ut for langtidslagring av filer. Ha likevel en ekstra kopi.",
+        "caution": "Risikabel for langtidslagring. Ha en kopi et annet sted.",
+        "no": "Ikke oppbevar viktige filer her."
+      },
+      "daily_use": {
+        "good": "Fin til daglig bruk.",
+        "caution": "Greit til daglig bruk, men følg med på nye problemer.",
+        "no": "Ikke pålitelig nok til daglig bruk."
+      }
+    },
+    "os_install": {
+      "ok": "Bra å installere et operativsystem på.",
+      "bad_sectors": "Anbefales ikke for et operativsystem: den har skadde områder.",
+      "slow_latency": "Anbefales ikke for et operativsystem: noen lesinger er for trege.",
+      "score_low": "Anbefales ikke for et operativsystem: den samlede poengsummen ({{score}}) er for lav."
+    },
+    "long_term_storage": {
+      "ok": "Bra for langtidslagring av filer.",
+      "critical_issues": "Ikke trygg for langtidslagring: det ble funnet alvorlige problemer.",
+      "score_low": "Risikabel for langtidslagring: den samlede poengsummen ({{score}}) er for lav. Ta sikkerhetskopier."
+    },
+    "daily_use": {
+      "ok": "Fin til daglig bruk.",
+      "caution": "Kan brukes til vanlige filer, men ta sikkerhetskopier.",
+      "no": "Anbefales ikke til daglig bruk."
+    }
+  },
+  "error": {
+    "unknown": "Noe gikk galt ({{code}}).",
+    "title": "Sjekken kunne ikke fullføres",
+    "retry": "Prøv igjen",
+    "choose": "Velg en annen disk",
+    "refused": "Testen ble avvist av sikkerhetsgrunner. Slettetester kan ikke kjøres på systemdisken eller uten et samsvarende serienummer.",
+    "engine_failed": "Sjekkverktøyet stoppet uventet.",
+    "engine_missing": "Sjekkverktøyet ble ikke funnet. Installer CheckMyDrive på nytt.",
+    "auth_cancelled": "Tillatelse ble ikke gitt, så disken ble ikke sjekket.",
+    "elevation_unavailable": "Kunne ikke be om administratortillatelse på denne datamaskinen.",
+    "bad_args": "Testen kunne ikke starte på grunn av en intern forespørselsfeil.",
+    "needs_admin": "Administratortillatelse trengs for å teste denne disken.",
+    "drive_not_found": "Disken ble ikke funnet. Den kan ha blitt koblet fra.",
+    "system_disk_refused": "Dette er disken datamaskinen din kjører fra, så den kan ikke slettes. Velg en annen disk.",
+    "confirm_required": "Bekreft diskens serienummer før en full test som sletter data.",
+    "confirm_mismatch": "Serienummeret du skrev inn stemmer ikke med denne disken. Ingenting ble endret.",
+    "cannot_open_device": "Disken kunne ikke åpnes for testing. Et annet program kan bruke den.",
+    "unmount_failed": "Diskens volumer kunne ikke kobles trygt fra før den fulle testen. Lukk programmer som bruker den, og prøv igjen.",
+    "internal": "Noe uventet gikk galt inne i testmotoren."
+  },
+  "common": {
+    "loading": "Laster…",
+    "close": "Lukk",
+    "unknown": "Ukjent"
+  }
+}

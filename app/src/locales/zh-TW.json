@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "在信任二手硬碟之前，先確認它是否安全。",
+    "skip": "跳到主要內容"
+  },
+  "nav": {
+    "settings": "設定",
+    "back": "返回",
+    "mockBanner": "示範模式：顯示的是範例硬碟，不會檢測您電腦上的任何裝置。"
+  },
+  "picker": {
+    "title": "您想檢查哪一顆硬碟？",
+    "subtitle": "請插入您打算購買或使用的硬碟，然後在下方選取它。檢查大約需要 3 到 4 分鐘。",
+    "refresh": "重新整理",
+    "refreshing": "正在尋找硬碟…",
+    "empty": "找不到硬碟。請插入一顆硬碟，然後按「重新整理」。",
+    "systemDisk": "系統碟",
+    "systemDiskHint": "您的電腦正從這顆硬碟執行，只能使用安全模式檢查。",
+    "unknownModel": "未知硬碟",
+    "select": "檢查這顆硬碟",
+    "kind": {
+      "hdd": "傳統硬碟（HDD）",
+      "ssd": "固態硬碟（SSD）",
+      "nvme": "NVMe 固態硬碟",
+      "usb": "USB 隨身碟或 USB 硬碟",
+      "sd": "SD 卡 / 記憶卡",
+      "unknown": "硬碟"
+    },
+    "removable": "可移除",
+    "loadFailed": "無法讀取硬碟清單。",
+    "noAdminNote": "健康資料等部分資訊可能需要系統管理員權限，檢查開始時會請求授權。"
+  },
+  "mode": {
+    "title": "您希望檢查到什麼程度？",
+    "checking": "檢查中",
+    "safe": {
+      "title": "快速安全檢測（保留您的檔案）",
+      "desc": "讀取整顆硬碟並寫入一個小型暫存檔，不會更動或遺失您的任何內容。",
+      "badge": "建議",
+      "limit": "無法偵測虛假容量。"
+    },
+    "wipe": {
+      "title": "完整清除檢測（最徹底，會清除所有內容）",
+      "desc": "還會寫滿整顆硬碟，以找出虛假容量和隱藏的瑕疵。硬碟上的所有檔案都會被永久銷毀。",
+      "dangerTitle": "危險區域：將清空硬碟",
+      "dangerBody": "這會永久刪除 {{model}} 上的所有資料，且無法復原。只有在硬碟是空的或您已備份時才繼續。",
+      "confirmLabel": "為了確認，請輸入硬碟的序號：{{serial}}",
+      "confirmPlaceholder": "請在此輸入序號",
+      "noSerial": "這顆硬碟沒有提供序號，因此無法進行完整清除檢測。",
+      "systemBlocked": "系統碟絕對不能被清除，只能使用安全檢測。",
+      "mismatch": "輸入的內容與序號還不相符。",
+      "start": "清除並執行完整檢測",
+      "expand": "顯示完整清除檢測",
+      "collapse": "隱藏完整清除檢測"
+    },
+    "start": "開始快速安全檢測",
+    "back": "選擇其他硬碟",
+    "duration": "大約需要 3 到 4 分鐘，請不要拔除硬碟。"
+  },
+  "running": {
+    "title": "正在檢查您的硬碟",
+    "subtitle": "請保持硬碟連接，並讓電腦保持喚醒狀態。",
+    "overall": "整體進度",
+    "elapsed": "已經過時間",
+    "remaining": "大約還剩 {{time}}",
+    "estimating": "正在估算時間…",
+    "cancel": "取消檢測",
+    "cancelling": "正在取消…",
+    "cancelConfirm": "要停止檢測嗎？在安全模式下，您硬碟上的內容沒有被更動。",
+    "keepGoing": "繼續檢測",
+    "stop": "停止檢測",
+    "checklist": "我們正在檢查的項目",
+    "waiting": "正在等待授權…",
+    "adminPrompt": "您的電腦可能會要求輸入密碼，這樣 CheckMyDrive 才能直接讀取硬碟。",
+    "phase": {
+      "prepare": "準備中",
+      "finish": "正在計算您的分數"
+    },
+    "status": {
+      "pending": "等待中",
+      "running": "檢查中",
+      "done": "完成"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "硬碟身分",
+      "desc": "硬碟的型號、大小和類型"
+    },
+    "smart_health": {
+      "name": "健康報告",
+      "desc": "硬碟自身記錄的故障和耗損情況"
+    },
+    "selftest_short": {
+      "name": "內建自我檢測",
+      "desc": "硬碟自己檢查自己"
+    },
+    "surface_read": {
+      "name": "表面掃描",
+      "desc": "讀取整顆硬碟上各處的位置"
+    },
+    "write_verify": {
+      "name": "寫入並驗證",
+      "desc": "儲存資料後再讀回來核對"
+    },
+    "capacity_check": {
+      "name": "真實容量",
+      "desc": "確認標示的大小不是假的"
+    },
+    "stability": {
+      "name": "穩定性",
+      "desc": "留意是否斷線或出錯"
+    }
+  },
+  "status": {
+    "pass": "通過",
+    "warn": "警告",
+    "fail": "未通過",
+    "skipped": "已略過"
+  },
+  "results": {
+    "title": "檢測結果",
+    "scoreOutOf": "滿分 100",
+    "scoreLabel": "分數 {{score}}（滿分 100）",
+    "verdict": {
+      "buy": "值得購買",
+      "caution": "謹慎使用",
+      "avoid": "建議避開"
+    },
+    "summary": {
+      "buy": "這顆 {{model}} 看起來很健康。我們沒有發現嚴重問題，日常使用應該沒有問題。",
+      "caution": "這顆 {{model}} 還能用，但我們發現了一些警訊。只拿來存放遺失也無妨的檔案，或者爭取更低的價格。",
+      "avoid": "請不要信任這顆 {{model}}。我們發現了嚴重問題，會讓您的檔案面臨風險。",
+      "fake_capacity": "這顆 {{model}} 謊報了容量。它宣稱有 {{claimed}}，實際上卻存不下這麼多。請不要購買或使用。",
+      "failing": "這顆 {{model}} 正在故障。它自身的健康資料和我們的檢測都顯示，它隨時可能遺失您的檔案。"
+    },
+    "can": {
+      "title": "我可以……",
+      "os": "在上面安裝作業系統嗎？",
+      "storage": "長期存放檔案嗎？",
+      "daily": "每天使用嗎？",
+      "fill": "放心地把它裝滿嗎？",
+      "fillYes": "可以放心存放最多 {{size}}（共 {{total}}）",
+      "fillNo": "我們不建議在上面存放任何重要的東西。",
+      "yes": "可以",
+      "maybe": "也許可以",
+      "no": "不可以"
+    },
+    "age": {
+      "title": "硬碟的使用年數",
+      "years": "已使用約 {{count}} 年",
+      "yearsLessThanOne": "使用不到一年",
+      "hours": "已通電 {{hours}} 小時",
+      "made": "製造日期：{{date}}",
+      "cycles": "已開關機 {{count}} 次",
+      "unknown": "這顆硬碟沒有提供已使用多久的資訊。",
+      "note": "時數只在硬碟通電時計算。全天候運作的硬碟比每天只用幾個小時的硬碟老化得更快。"
+    },
+    "issues": {
+      "title": "我們的發現",
+      "none": "沒有發現問題。",
+      "critical": "嚴重",
+      "warn": "警告",
+      "info": "提示"
+    },
+    "matrix": {
+      "title": "檢測明細表",
+      "subtitle": "供進階使用者查看的詳細資訊",
+      "show": "顯示詳細資料",
+      "hide": "隱藏詳細資料",
+      "test": "檢測項目",
+      "status": "狀態",
+      "score": "得分",
+      "metrics": "關鍵數據",
+      "none": "沒有記錄數據"
+    },
+    "export": "匯出報告",
+    "exportJson": "儲存為 JSON",
+    "exportHtml": "儲存為網頁（HTML）",
+    "print": "列印或儲存為 PDF",
+    "saved": "報告已儲存。",
+    "saveFailed": "無法儲存報告。",
+    "another": "檢測另一顆硬碟",
+    "mode": {
+      "safe": "快速安全檢測",
+      "wipe": "完整清除檢測"
+    },
+    "tested": "檢測時間：{{date}}",
+    "engine": "引擎 {{version}}",
+    "skippedNote": "未進行虛假容量偵測。如需完整結論，請在空的硬碟上使用完整清除檢測。"
+  },
+  "report": {
+    "title": "CheckMyDrive 報告",
+    "generatedBy": "由 CheckMyDrive（開放原始碼）產生"
+  },
+  "settings": {
+    "title": "設定與關於",
+    "language": "語言",
+    "languageHint": "英文以外的語言會在可用時載入；缺少的文字將以英文顯示。",
+    "theme": "外觀",
+    "themeSystem": "跟隨系統",
+    "themeLight": "淺色",
+    "themeDark": "深色",
+    "about": "關於",
+    "version": "版本",
+    "license": "授權",
+    "licenseValue": "MIT 授權（免費開放原始碼）",
+    "github": "GitHub 上的原始碼",
+    "engineVersion": "引擎",
+    "disclaimer": "CheckMyDrive 只能提供有根據的估計，無法保證硬碟永遠不會故障。重要的檔案請務必做好備份。",
+    "close": "完成"
+  },
+  "metric": {
+    "read_mbps_avg": "平均讀取速度（MB/s）",
+    "write_mbps": "寫入速度（MB/s）",
+    "latency_ms_p99": "最慢 1% 的回應時間（毫秒）",
+    "slow_samples": "緩慢位置",
+    "read_errors": "讀取錯誤",
+    "reallocated_sectors": "已替換的壞區",
+    "pending_sectors": "不穩定區域",
+    "uncorrectable_sectors": "無法讀取的區域",
+    "temperature_c": "溫度（°C）",
+    "percent_used": "已用耗損（%）",
+    "media_errors": "媒體錯誤",
+    "written_mb": "已寫入資料（MB）",
+    "mismatches": "不一致",
+    "sectors_checked": "已檢查位置",
+    "real_capacity_gb": "真實容量（GB）",
+    "claimed_gb": "標示容量（GB）",
+    "disconnects": "斷線次數",
+    "io_errors": "輸入/輸出錯誤",
+    "rpm": "轉速（RPM）",
+    "interface": "連接方式",
+    "result": "結果"
+  },
+  "issue": {
+    "unknown": "發現了一些異常情況（{{code}}）。詳情請查看檢測明細表。",
+    "age": {
+      "high_hours": "這顆硬碟已通電約 {{years}} 年（{{hours}} 小時），使用量很大。",
+      "moderate_hours": "這顆硬碟已通電約 {{years}} 年（{{hours}} 小時）。"
+    },
+    "drive_info": {
+      "capacity_unknown": "硬碟沒有提供自身的容量大小。",
+      "model_unknown": "硬碟沒有提供自身的型號名稱。",
+      "system_disk": "這是您的電腦正在執行所用的硬碟，只進行了安全、無破壞的檢測。"
+    },
+    "smart": {
+      "unavailable": "健康報告工具（smartmontools）無法使用，因此無法讀取硬碟內部的健康資料。",
+      "needs_admin": "沒有系統管理員權限，無法讀取硬碟的健康報告。",
+      "timeout": "硬碟沒有及時回應健康報告的要求。",
+      "not_supported": "這顆硬碟不提供健康報告，因此其內部狀況未知。",
+      "usb_bridge_blocked": "USB 轉接器隱藏了硬碟的健康報告，因此其內部狀況未知。",
+      "overall_failed": "硬碟自身的健康檢查顯示它正在故障。",
+      "reallocated_sectors": "硬碟已經用備用區域替換了 {{count}} 個損壞的區域。",
+      "pending_sectors": "硬碟上有 {{count}} 個區域無法讀取，正等待被替換。",
+      "uncorrectable_sectors": "硬碟上有 {{count}} 個區域無法讀取，也無法修正。",
+      "crc_errors": "記錄到 {{count}} 次資料傳輸錯誤，通常由傳輸線或接頭不良所引起。",
+      "error_log_entries": "硬碟的錯誤記錄中有 {{count}} 筆資料。",
+      "ssd_worn": "這顆固態硬碟已用掉其額定壽命的約 {{percent}}%。",
+      "ssd_worn_out": "這顆固態硬碟已用掉其額定壽命的約 {{percent}}%，即將走到壽命的盡頭。",
+      "nvme_critical_warning": "硬碟回報了一個嚴重警告（代碼 {{value}}）。",
+      "nvme_media_errors": "硬碟的記憶體已記錄 {{count}} 次資料完整性錯誤。",
+      "spare_low": "硬碟的備用記憶體只剩 {{percent}}%。",
+      "temperature_high": "硬碟溫度很高（{{celsius}} C）。"
+    },
+    "selftest": {
+      "smart_unavailable": "由於硬碟的健康介面無法使用，已略過硬碟的快速自我檢測。",
+      "not_supported": "這顆硬碟不支援快速自我檢測。",
+      "could_not_start": "無法啟動硬碟的快速自我檢測。",
+      "failed": "硬碟沒有通過自身的快速自我檢測。",
+      "aborted": "硬碟的快速自我檢測在完成前被中斷。",
+      "timeout": "硬碟的快速自我檢測未能在 {{seconds}} 秒內完成，已被停止。"
+    },
+    "surface_read": {
+      "cannot_open": "無法開啟硬碟進行讀取。",
+      "read_errors": "硬碟上有 {{count}} 處無法讀取。",
+      "slow_areas": "有 {{count}} 個區域（{{percent}}%）回應非常慢，這可能表示碟面正在耗損。",
+      "low_speed": "硬碟讀取速度很慢（{{mbps}} MB/s）。"
+    },
+    "write_verify": {
+      "no_writable_volume": "已略過寫入檢測，因為硬碟上沒有可以安全寫入的資料夾。",
+      "insufficient_space": "已略過寫入檢測，因為硬碟的可用空間太小。",
+      "write_error": "硬碟在寫入測試資料時回報了錯誤。",
+      "data_mismatch": "有 {{count}} 個測試資料區塊讀回來的內容與寫入的不同。",
+      "slow_write": "硬碟寫入速度非常慢（{{mbps}} MB/s）。",
+      "cleanup_failed": "無法刪除暫存的測試檔案。您可以自行刪除 {{path}}。"
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "虛假容量檢查需要使用會清除硬碟的完整檢測，因此已略過。",
+      "fake_capacity": "這顆硬碟宣稱可存放 {{claimed_bytes}} 位元組，但真正可用的只有約 {{real_bytes}} 位元組。這是一顆虛假容量的硬碟。",
+      "data_corruption": "有 {{count}} 個測試區塊讀回來時已損壞。",
+      "io_error": "硬碟在容量檢查期間回傳了 {{count}} 個錯誤。"
+    },
+    "stability": {
+      "device_disconnected": "檢測期間硬碟消失了 {{count}} 次。",
+      "io_errors": "檢測期間硬碟回傳了 {{count}} 個讀取或寫入錯誤。",
+      "timeouts": "檢測期間硬碟逾時了 {{count}} 次。",
+      "crc_errors_increased": "檢測期間資料傳輸錯誤增加了 {{count}} 個。請檢查傳輸線。",
+      "new_bad_sectors": "檢測期間出現了 {{count}} 個新的損壞區域。"
+    }
+  },
+  "progress": {
+    "unknown": "處理中…",
+    "working": "處理中…",
+    "prepare": {
+      "starting": "正在準備...",
+      "reading_smart": "正在讀取硬碟內建的健康報告...",
+      "unmounting": "正在安全中斷硬碟的磁碟區...",
+      "ready": "已準備好檢測。"
+    },
+    "drive_info": {
+      "identifying": "正在辨識硬碟..."
+    },
+    "smart_health": {
+      "analyzing": "正在檢查硬碟的健康報告..."
+    },
+    "selftest_short": {
+      "starting": "正在啟動硬碟內建的快速自我檢測...",
+      "running": "硬碟正在進行自己的快速自我檢測（已完成 {{percent}}%）。",
+      "done": "硬碟自我檢測已完成。",
+      "running_seconds": "硬碟正在進行自己的快速自我檢測（已進行 {{seconds}} 秒）。"
+    },
+    "surface_read": {
+      "sampling": "正在讀取整顆硬碟上的抽樣區域（{{done}} / {{total}}）。",
+      "sequential": "正在測量讀取速度（{{mbps}} MB/s）。",
+      "done": "表面掃描已完成。"
+    },
+    "write_verify": {
+      "writing": "正在寫入測試資料（已寫入 {{mb}} MB）。",
+      "verifying": "正在讀回資料進行核對（已核對 {{mb}} MB）。",
+      "cleaning": "正在刪除暫存的測試檔案...",
+      "done": "寫入檢測已完成。"
+    },
+    "capacity_check": {
+      "writing": "正在標示容量的全部範圍並做記號（{{done}} / {{total}}）。",
+      "verifying": "正在確認每個位置都保存著各自的資料（{{done}} / {{total}}）。",
+      "done": "容量檢查已完成。"
+    },
+    "stability": {
+      "checking": "正在確認硬碟在檢測期間是否保持穩定..."
+    },
+    "finish": {
+      "scoring": "正在計算您的分數...",
+      "done": "完成。"
+    }
+  },
+  "suitability": {
+    "unknown": "沒有可用的詳細資訊。",
+    "fallback": {
+      "os_install": {
+        "good": "沒有會妨礙作業系統穩定執行的問題。",
+        "caution": "可能可以使用，但有一定風險。請做好備份。",
+        "no": "不適合安裝作業系統。"
+      },
+      "long_term_storage": {
+        "good": "看起來適合長期保存檔案。不過仍請另存一份副本。",
+        "caution": "長期保存有風險。請在別處另存一份副本。",
+        "no": "請不要在這裡保存重要檔案。"
+      },
+      "daily_use": {
+        "good": "適合日常使用。",
+        "caution": "日常使用尚可，但請留意是否出現新問題。",
+        "no": "不夠可靠，不適合日常使用。"
+      }
+    },
+    "os_install": {
+      "ok": "適合用來安裝作業系統。",
+      "bad_sectors": "不建議用來安裝作業系統：它有損壞的區域。",
+      "slow_latency": "不建議用來安裝作業系統：部分讀取太慢。",
+      "score_low": "不建議用來安裝作業系統：整體分數（{{score}}）太低。"
+    },
+    "long_term_storage": {
+      "ok": "適合長期保存檔案。",
+      "critical_issues": "不適合長期保存：發現了嚴重問題。",
+      "score_low": "長期保存有風險：整體分數（{{score}}）太低。請做好備份。"
+    },
+    "daily_use": {
+      "ok": "適合日常使用。",
+      "caution": "可用於存放日常檔案，但請做好備份。",
+      "no": "不建議日常使用。"
+    }
+  },
+  "error": {
+    "unknown": "發生了一些問題（{{code}}）。",
+    "title": "檢查未能完成",
+    "retry": "再試一次",
+    "choose": "選擇其他硬碟",
+    "refused": "基於安全考量，檢測被拒絕。清除檢測不能在系統碟上執行，也不能在序號不相符時執行。",
+    "engine_failed": "檢測工具意外停止了。",
+    "engine_missing": "找不到檢測工具，請重新安裝 CheckMyDrive。",
+    "auth_cancelled": "沒有取得授權，因此沒有檢查這顆硬碟。",
+    "elevation_unavailable": "無法在這台電腦上請求系統管理員權限。",
+    "bad_args": "由於內部要求錯誤，檢測無法開始。",
+    "needs_admin": "檢測這顆硬碟需要系統管理員權限。",
+    "drive_not_found": "找不到那顆硬碟，它可能已被拔除。",
+    "system_disk_refused": "這是您的電腦正在執行所用的硬碟，因此不能被清除。請選擇其他硬碟。",
+    "confirm_required": "在進行會清除資料的完整檢測之前，請先確認硬碟的序號。",
+    "confirm_mismatch": "您輸入的序號與這顆硬碟不符。未做任何更動。",
+    "cannot_open_device": "無法開啟硬碟進行檢測，可能有其他程式正在使用它。",
+    "unmount_failed": "完整檢測之前，無法安全中斷硬碟的磁碟區。請關閉所有正在使用它的程式後再試一次。",
+    "internal": "檢測引擎內部發生了意外的錯誤。"
+  },
+  "common": {
+    "loading": "載入中…",
+    "close": "關閉",
+    "unknown": "未知"
+  }
+}

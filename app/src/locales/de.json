@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Finden Sie heraus, ob ein gebrauchtes Laufwerk sicher ist, bevor Sie ihm vertrauen.",
+    "skip": "Zum Hauptinhalt springen"
+  },
+  "nav": {
+    "settings": "Einstellungen",
+    "back": "Zurück",
+    "mockBanner": "Demomodus: Es werden Beispiel-Laufwerke angezeigt. Auf Ihrem Computer wird nichts getestet."
+  },
+  "picker": {
+    "title": "Welches Laufwerk möchten Sie prüfen?",
+    "subtitle": "Schließen Sie das Laufwerk an, das Sie kaufen oder verwenden möchten, und wählen Sie es unten aus. Die Prüfung dauert etwa 3 bis 4 Minuten.",
+    "refresh": "Aktualisieren",
+    "refreshing": "Laufwerke werden gesucht…",
+    "empty": "Keine Laufwerke gefunden. Schließen Sie eines an und tippen Sie auf „Aktualisieren“.",
+    "systemDisk": "Systemlaufwerk",
+    "systemDiskHint": "Ihr Computer läuft von diesem Laufwerk. Es kann nur im sicheren Modus geprüft werden.",
+    "unknownModel": "Unbekanntes Laufwerk",
+    "select": "Dieses Laufwerk prüfen",
+    "kind": {
+      "hdd": "Festplatte (HDD)",
+      "ssd": "Solid-State-Laufwerk (SSD)",
+      "nvme": "NVMe-SSD",
+      "usb": "USB-Stick oder USB-Laufwerk",
+      "sd": "SD-/Speicherkarte",
+      "unknown": "Laufwerk"
+    },
+    "removable": "Wechseldatenträger",
+    "loadFailed": "Die Liste der Laufwerke konnte nicht gelesen werden.",
+    "noAdminNote": "Für manche Angaben, etwa die Gesundheitsdaten, ist möglicherweise Administratorberechtigung nötig. Sie wird zu Beginn der Prüfung angefragt."
+  },
+  "mode": {
+    "title": "Wie gründlich soll die Prüfung sein?",
+    "checking": "Wird geprüft",
+    "safe": {
+      "title": "Schneller sicherer Test (Ihre Dateien bleiben erhalten)",
+      "desc": "Liest das gesamte Laufwerk und schreibt eine kleine temporäre Datei, sodass nichts von Ihnen verändert oder gelöscht wird.",
+      "badge": "Empfohlen",
+      "limit": "Kann gefälschte Kapazität nicht erkennen."
+    },
+    "wipe": {
+      "title": "Vollständiger Löschtest (am gründlichsten, LÖSCHT alles)",
+      "desc": "Schreibt zusätzlich über das gesamte Laufwerk, um gefälschte Kapazität und versteckte Defekte zu finden. Jede Datei auf dem Laufwerk wird unwiderruflich zerstört.",
+      "dangerTitle": "Gefahrenbereich: löscht das Laufwerk",
+      "dangerBody": "Dadurch werden ALLE Daten auf {{model}} unwiderruflich gelöscht. Das lässt sich nicht rückgängig machen. Fahren Sie nur fort, wenn das Laufwerk leer ist oder Sie eine Sicherung haben.",
+      "confirmLabel": "Geben Sie zur Bestätigung die Seriennummer des Laufwerks ein: {{serial}}",
+      "confirmPlaceholder": "Seriennummer hier eingeben",
+      "noSerial": "Dieses Laufwerk meldet keine Seriennummer, daher ist der vollständige Löschtest nicht verfügbar.",
+      "systemBlocked": "Ihr Systemlaufwerk kann niemals gelöscht werden. Es ist nur der sichere Test verfügbar.",
+      "mismatch": "Der Text stimmt noch nicht mit der Seriennummer überein.",
+      "start": "Löschen und vollständigen Test starten",
+      "expand": "Vollständigen Löschtest anzeigen",
+      "collapse": "Vollständigen Löschtest ausblenden"
+    },
+    "start": "Schnellen sicheren Test starten",
+    "back": "Anderes Laufwerk wählen",
+    "duration": "Dauert etwa 3 bis 4 Minuten. Bitte ziehen Sie das Laufwerk nicht ab."
+  },
+  "running": {
+    "title": "Ihr Laufwerk wird geprüft",
+    "subtitle": "Bitte lassen Sie das Laufwerk angeschlossen und den Computer eingeschaltet.",
+    "overall": "Gesamtfortschritt",
+    "elapsed": "Vergangene Zeit",
+    "remaining": "Noch etwa {{time}}",
+    "estimating": "Zeit wird geschätzt…",
+    "cancel": "Test abbrechen",
+    "cancelling": "Wird abgebrochen…",
+    "cancelConfirm": "Test beenden? Im sicheren Modus wurde auf Ihrem Laufwerk nichts verändert.",
+    "keepGoing": "Weitermachen",
+    "stop": "Test beenden",
+    "checklist": "Was wir prüfen",
+    "waiting": "Warten auf Berechtigung…",
+    "adminPrompt": "Ihr Computer fragt möglicherweise nach Ihrem Passwort. So kann CheckMyDrive das Laufwerk direkt lesen.",
+    "phase": {
+      "prepare": "Vorbereitung",
+      "finish": "Ihre Bewertung wird berechnet"
+    },
+    "status": {
+      "pending": "Wartet",
+      "running": "Wird geprüft",
+      "done": "Fertig"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Laufwerksidentität",
+      "desc": "Modell, Größe und Art des Laufwerks"
+    },
+    "smart_health": {
+      "name": "Gesundheitsbericht",
+      "desc": "Die eigene Aufzeichnung des Laufwerks über Probleme und Verschleiß"
+    },
+    "selftest_short": {
+      "name": "Eingebaute Selbstprüfung",
+      "desc": "Das Laufwerk prüft sich selbst"
+    },
+    "surface_read": {
+      "name": "Oberflächenscan",
+      "desc": "Liest Stellen über das gesamte Laufwerk verteilt"
+    },
+    "write_verify": {
+      "name": "Schreiben und Überprüfen",
+      "desc": "Speichert Daten und liest sie wieder zurück"
+    },
+    "capacity_check": {
+      "name": "Tatsächliche Kapazität",
+      "desc": "Stellt sicher, dass die Größe nicht gefälscht ist"
+    },
+    "stability": {
+      "name": "Stabilität",
+      "desc": "Achtet auf Verbindungsabbrüche und Fehler"
+    }
+  },
+  "status": {
+    "pass": "Bestanden",
+    "warn": "Warnung",
+    "fail": "Fehlgeschlagen",
+    "skipped": "Übersprungen"
+  },
+  "results": {
+    "title": "Ergebnisse",
+    "scoreOutOf": "von 100",
+    "scoreLabel": "Bewertung {{score}} von 100",
+    "verdict": {
+      "buy": "Kaufempfehlung",
+      "caution": "Mit Vorsicht verwenden",
+      "avoid": "Besser nicht"
+    },
+    "summary": {
+      "buy": "Dieses Laufwerk ({{model}}) sieht gesund aus. Wir haben keine ernsthaften Probleme gefunden, und es sollte für den Alltag in Ordnung sein.",
+      "caution": "Dieses Laufwerk ({{model}}) funktioniert, aber wir haben einige Warnzeichen gefunden. Nutzen Sie es nur für Dateien, deren Verlust Sie verkraften können, oder verhandeln Sie einen niedrigeren Preis.",
+      "avoid": "Vertrauen Sie diesem Laufwerk ({{model}}) nicht. Wir haben ernste Probleme gefunden, die Ihre Dateien gefährden.",
+      "fake_capacity": "Dieses Laufwerk ({{model}}) lügt bei seiner Größe. Es gibt {{claimed}} an, kann aber tatsächlich nicht so viel speichern. Kaufen oder verwenden Sie es nicht.",
+      "failing": "Dieses Laufwerk ({{model}}) fällt aus. Seine eigenen Gesundheitsdaten und unsere Tests zeigen, dass es Ihre Dateien jederzeit verlieren kann."
+    },
+    "can": {
+      "title": "Kann ich …",
+      "os": "ein Betriebssystem darauf installieren?",
+      "storage": "Dateien langfristig darauf speichern?",
+      "daily": "es jeden Tag benutzen?",
+      "fill": "es bedenkenlos voll machen?",
+      "fillYes": "Bis zu {{size}} von {{total}} sicher speichern",
+      "fillNo": "Wir würden nichts Wichtiges darauf speichern.",
+      "yes": "Ja",
+      "maybe": "Vielleicht",
+      "no": "Nein"
+    },
+    "age": {
+      "title": "Alter des Laufwerks",
+      "years": "Etwa {{count}} Jahre in Gebrauch",
+      "yearsLessThanOne": "Weniger als ein Jahr in Gebrauch",
+      "hours": "{{hours}} Stunden eingeschaltet",
+      "made": "Hergestellt: {{date}}",
+      "cycles": "{{count}} Mal eingeschaltet",
+      "unknown": "Dieses Laufwerk meldet nicht, wie lange es benutzt wurde.",
+      "note": "Stunden werden nur gezählt, solange das Laufwerk eingeschaltet ist. Ein Laufwerk, das rund um die Uhr läuft, altert schneller als eines, das nur ein paar Stunden am Tag benutzt wird."
+    },
+    "issues": {
+      "title": "Das haben wir gefunden",
+      "none": "Keine Probleme gefunden.",
+      "critical": "Ernst",
+      "warn": "Warnung",
+      "info": "Hinweis"
+    },
+    "matrix": {
+      "title": "Testübersicht",
+      "subtitle": "Details für fortgeschrittene Nutzer",
+      "show": "Details anzeigen",
+      "hide": "Details ausblenden",
+      "test": "Test",
+      "status": "Status",
+      "score": "Bewertung",
+      "metrics": "Wichtige Werte",
+      "none": "Keine Werte aufgezeichnet"
+    },
+    "export": "Bericht exportieren",
+    "exportJson": "Als JSON speichern",
+    "exportHtml": "Als Webseite (HTML) speichern",
+    "print": "Drucken oder als PDF speichern",
+    "saved": "Bericht gespeichert.",
+    "saveFailed": "Der Bericht konnte nicht gespeichert werden.",
+    "another": "Anderes Laufwerk testen",
+    "mode": {
+      "safe": "Schneller sicherer Test",
+      "wipe": "Vollständiger Löschtest"
+    },
+    "tested": "Getestet am {{date}}",
+    "engine": "Engine {{version}}",
+    "skippedNote": "Die Erkennung gefälschter Kapazität wurde nicht ausgeführt. Nutzen Sie für ein vollständiges Ergebnis den vollständigen Löschtest auf einem leeren Laufwerk."
+  },
+  "report": {
+    "title": "CheckMyDrive-Bericht",
+    "generatedBy": "Erstellt mit CheckMyDrive (Open Source)"
+  },
+  "settings": {
+    "title": "Einstellungen und Info",
+    "language": "Sprache",
+    "languageHint": "Andere Sprachen als Englisch werden geladen, sobald sie verfügbar sind. Fehlende Texte erscheinen auf Englisch.",
+    "theme": "Darstellung",
+    "themeSystem": "Wie das System",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel",
+    "about": "Info",
+    "version": "Version",
+    "license": "Lizenz",
+    "licenseValue": "MIT-Lizenz (kostenlos und Open Source)",
+    "github": "Quellcode auf GitHub",
+    "engineVersion": "Engine",
+    "disclaimer": "CheckMyDrive gibt eine fundierte Einschätzung ab und kann nicht garantieren, dass ein Laufwerk nie ausfällt. Sichern Sie wichtige Dateien immer zusätzlich.",
+    "close": "Fertig"
+  },
+  "metric": {
+    "read_mbps_avg": "Durchschnittliche Lesegeschwindigkeit (MB/s)",
+    "write_mbps": "Schreibgeschwindigkeit (MB/s)",
+    "latency_ms_p99": "Antwortzeit der langsamsten 1 % (ms)",
+    "slow_samples": "Langsame Stellen",
+    "read_errors": "Lesefehler",
+    "reallocated_sectors": "Ersetzte defekte Bereiche",
+    "pending_sectors": "Instabile Bereiche",
+    "uncorrectable_sectors": "Nicht lesbare Bereiche",
+    "temperature_c": "Temperatur (°C)",
+    "percent_used": "Verschleiß (%)",
+    "media_errors": "Medienfehler",
+    "written_mb": "Geschriebene Daten (MB)",
+    "mismatches": "Abweichungen",
+    "sectors_checked": "Geprüfte Stellen",
+    "real_capacity_gb": "Tatsächliche Kapazität (GB)",
+    "claimed_gb": "Angegebene Kapazität (GB)",
+    "disconnects": "Verbindungsabbrüche",
+    "io_errors": "Ein-/Ausgabefehler",
+    "rpm": "Drehzahl (RPM)",
+    "interface": "Anschluss",
+    "result": "Ergebnis"
+  },
+  "issue": {
+    "unknown": "Es wurde etwas Ungewöhnliches gefunden ({{code}}). Details finden Sie in der Testübersicht.",
+    "age": {
+      "high_hours": "Dieses Laufwerk war etwa {{years}} Jahre ({{hours}} Stunden) eingeschaltet, das ist sehr viel.",
+      "moderate_hours": "Dieses Laufwerk war etwa {{years}} Jahre ({{hours}} Stunden) eingeschaltet."
+    },
+    "drive_info": {
+      "capacity_unknown": "Das Laufwerk hat seine Größe nicht gemeldet.",
+      "model_unknown": "Das Laufwerk hat seinen Modellnamen nicht gemeldet.",
+      "system_disk": "Dies ist das Laufwerk, von dem Ihr Computer läuft. Es wurde nur der sichere, zerstörungsfreie Test ausgeführt."
+    },
+    "smart": {
+      "unavailable": "Das Werkzeug für den Gesundheitsbericht (smartmontools) ist nicht verfügbar, daher konnten die internen Gesundheitsdaten des Laufwerks nicht gelesen werden.",
+      "needs_admin": "Der Gesundheitsbericht des Laufwerks konnte ohne Administratorberechtigung nicht gelesen werden.",
+      "timeout": "Das Laufwerk hat die Anfrage nach dem Gesundheitsbericht nicht rechtzeitig beantwortet.",
+      "not_supported": "Dieses Laufwerk liefert keinen Gesundheitsbericht, daher ist sein innerer Zustand unbekannt.",
+      "usb_bridge_blocked": "Der USB-Adapter verbirgt den Gesundheitsbericht des Laufwerks, daher ist sein innerer Zustand unbekannt.",
+      "overall_failed": "Die eigene Gesundheitsprüfung des Laufwerks meldet, dass es ausfällt.",
+      "reallocated_sectors": "Das Laufwerk hat bereits {{count}} beschädigte Bereiche durch Reserve ersetzt.",
+      "pending_sectors": "{{count}} Bereiche des Laufwerks sind nicht lesbar und warten auf Ersatz.",
+      "uncorrectable_sectors": "{{count}} Bereiche des Laufwerks konnten weder gelesen noch korrigiert werden.",
+      "crc_errors": "Es wurden {{count}} Datenübertragungsfehler aufgezeichnet, oft verursacht durch ein defektes Kabel oder einen defekten Anschluss.",
+      "error_log_entries": "Das Fehlerprotokoll des Laufwerks enthält {{count}} Einträge.",
+      "ssd_worn": "Diese SSD hat etwa {{percent}} % ihrer Lebensdauer verbraucht.",
+      "ssd_worn_out": "Diese SSD hat etwa {{percent}} % ihrer Lebensdauer verbraucht und ist fast am Ende ihrer Lebenszeit.",
+      "nvme_critical_warning": "Das Laufwerk meldet eine kritische Warnung (Code {{value}}).",
+      "nvme_media_errors": "Der Speicher des Laufwerks hat {{count}} Datenintegritätsfehler protokolliert.",
+      "spare_low": "Vom Reservespeicher des Laufwerks sind nur noch {{percent}} % übrig.",
+      "temperature_high": "Das Laufwerk läuft heiß ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Die schnelle Selbstprüfung des Laufwerks wurde übersprungen, weil seine Gesundheitsschnittstelle nicht verfügbar ist.",
+      "not_supported": "Dieses Laufwerk unterstützt die schnelle Selbstprüfung nicht.",
+      "could_not_start": "Die schnelle Selbstprüfung des Laufwerks konnte nicht gestartet werden.",
+      "failed": "Das Laufwerk hat seine eigene schnelle Selbstprüfung nicht bestanden.",
+      "aborted": "Die schnelle Selbstprüfung des Laufwerks wurde vor dem Ende unterbrochen.",
+      "timeout": "Die schnelle Selbstprüfung des Laufwerks wurde nicht innerhalb von {{seconds}} Sekunden fertig und wurde abgebrochen."
+    },
+    "surface_read": {
+      "cannot_open": "Das Laufwerk konnte nicht zum Lesen geöffnet werden.",
+      "read_errors": "{{count}} Teile des Laufwerks konnten nicht gelesen werden.",
+      "slow_areas": "{{count}} Bereiche ({{percent}} %) haben sehr langsam geantwortet, was bedeuten kann, dass die Oberfläche verschleißt.",
+      "low_speed": "Das Laufwerk liest langsam ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Der Schreibtest wurde übersprungen, weil das Laufwerk keinen Ordner hat, in den wir sicher schreiben können.",
+      "insufficient_space": "Der Schreibtest wurde übersprungen, weil das Laufwerk zu wenig freien Speicherplatz hat.",
+      "write_error": "Das Laufwerk hat beim Schreiben der Testdaten einen Fehler gemeldet.",
+      "data_mismatch": "{{count}} Blöcke mit Testdaten sind anders zurückgekommen, als sie geschrieben wurden.",
+      "slow_write": "Das Laufwerk schreibt sehr langsam ({{mbps}} MB/s).",
+      "cleanup_failed": "Die temporäre Testdatei konnte nicht gelöscht werden. Sie können {{path}} selbst entfernen."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Die Prüfung auf gefälschte Kapazität erfordert den vollständigen Test, der das Laufwerk löscht. Sie wurde übersprungen.",
+      "fake_capacity": "Dieses Laufwerk gibt an, {{claimed_bytes}} Bytes zu fassen, aber nur etwa {{real_bytes}} Bytes sind echt. Es ist ein Laufwerk mit gefälschter Kapazität.",
+      "data_corruption": "{{count}} Testblöcke sind beschädigt zurückgekommen.",
+      "io_error": "Das Laufwerk hat bei der Kapazitätsprüfung {{count}} Fehler gemeldet."
+    },
+    "stability": {
+      "device_disconnected": "Das Laufwerk ist während der Tests {{count}} Mal verschwunden.",
+      "io_errors": "Das Laufwerk hat während der Tests {{count}} Lese- oder Schreibfehler gemeldet.",
+      "timeouts": "Beim Laufwerk gab es während der Tests {{count}} Mal eine Zeitüberschreitung.",
+      "crc_errors_increased": "Die Datenübertragungsfehler haben während der Tests um {{count}} zugenommen. Prüfen Sie das Kabel.",
+      "new_bad_sectors": "Während des Tests sind {{count}} neue beschädigte Bereiche aufgetreten."
+    }
+  },
+  "progress": {
+    "unknown": "Wird bearbeitet…",
+    "working": "Wird bearbeitet…",
+    "prepare": {
+      "starting": "Vorbereitung...",
+      "reading_smart": "Der eingebaute Gesundheitsbericht des Laufwerks wird gelesen...",
+      "unmounting": "Die Volumes des Laufwerks werden sicher getrennt...",
+      "ready": "Bereit zum Testen."
+    },
+    "drive_info": {
+      "identifying": "Das Laufwerk wird erkannt..."
+    },
+    "smart_health": {
+      "analyzing": "Der Gesundheitsbericht des Laufwerks wird geprüft..."
+    },
+    "selftest_short": {
+      "starting": "Die eingebaute schnelle Selbstprüfung des Laufwerks wird gestartet...",
+      "running": "Das Laufwerk führt seine eigene schnelle Selbstprüfung durch ({{percent}} % erledigt).",
+      "done": "Die Selbstprüfung des Laufwerks ist abgeschlossen.",
+      "running_seconds": "Das Laufwerk führt seine eigene schnelle Selbstprüfung durch (bisher {{seconds}} Sekunden)."
+    },
+    "surface_read": {
+      "sampling": "Stichprobenbereiche über das gesamte Laufwerk werden gelesen ({{done}} von {{total}}).",
+      "sequential": "Die Lesegeschwindigkeit wird gemessen ({{mbps}} MB/s).",
+      "done": "Der Oberflächenscan ist abgeschlossen."
+    },
+    "write_verify": {
+      "writing": "Testdaten werden geschrieben ({{mb}} MB geschrieben).",
+      "verifying": "Die Daten werden zur Kontrolle zurückgelesen ({{mb}} MB geprüft).",
+      "cleaning": "Die temporäre Testdatei wird entfernt...",
+      "done": "Der Schreibtest ist abgeschlossen."
+    },
+    "capacity_check": {
+      "writing": "Stellen über die gesamte angegebene Größe werden markiert ({{done}} von {{total}}).",
+      "verifying": "Es wird geprüft, ob jede Stelle ihre eigenen Daten enthält ({{done}} von {{total}}).",
+      "done": "Die Kapazitätsprüfung ist abgeschlossen."
+    },
+    "stability": {
+      "checking": "Es wird geprüft, ob das Laufwerk während der Tests stabil blieb..."
+    },
+    "finish": {
+      "scoring": "Ihre Bewertung wird berechnet...",
+      "done": "Fertig."
+    }
+  },
+  "suitability": {
+    "unknown": "Keine Details verfügbar.",
+    "fallback": {
+      "os_install": {
+        "good": "Keine Probleme, die ein Betriebssystem am zuverlässigen Laufen hindern würden.",
+        "caution": "Es kann funktionieren, birgt aber ein gewisses Risiko. Legen Sie eine Sicherung an.",
+        "no": "Nicht sicher für ein Betriebssystem."
+      },
+      "long_term_storage": {
+        "good": "Wirkt zuverlässig für die langfristige Aufbewahrung von Dateien. Behalten Sie trotzdem eine zweite Kopie.",
+        "caution": "Riskant für die langfristige Speicherung. Bewahren Sie eine weitere Kopie woanders auf.",
+        "no": "Bewahren Sie hier keine wichtigen Dateien auf."
+      },
+      "daily_use": {
+        "good": "In Ordnung für den Alltag.",
+        "caution": "Für den Alltag in Ordnung, aber achten Sie auf neue Probleme.",
+        "no": "Nicht zuverlässig genug für den täglichen Gebrauch."
+      }
+    },
+    "os_install": {
+      "ok": "Gut geeignet, um ein Betriebssystem darauf zu installieren.",
+      "bad_sectors": "Für ein Betriebssystem nicht empfohlen: Es hat beschädigte Bereiche.",
+      "slow_latency": "Für ein Betriebssystem nicht empfohlen: Manche Lesevorgänge sind zu langsam.",
+      "score_low": "Für ein Betriebssystem nicht empfohlen: Die Gesamtbewertung ({{score}}) ist zu niedrig."
+    },
+    "long_term_storage": {
+      "ok": "Gut geeignet für die langfristige Speicherung von Dateien.",
+      "critical_issues": "Nicht sicher für die langfristige Speicherung: Es wurden ernste Probleme gefunden.",
+      "score_low": "Riskant für die langfristige Speicherung: Die Gesamtbewertung ({{score}}) ist zu niedrig. Legen Sie Sicherungen an."
+    },
+    "daily_use": {
+      "ok": "In Ordnung für den Alltag.",
+      "caution": "Für Alltagsdateien nutzbar, aber legen Sie Sicherungen an.",
+      "no": "Für den täglichen Gebrauch nicht empfohlen."
+    }
+  },
+  "error": {
+    "unknown": "Etwas ist schiefgelaufen ({{code}}).",
+    "title": "Die Prüfung konnte nicht abgeschlossen werden",
+    "retry": "Erneut versuchen",
+    "choose": "Anderes Laufwerk wählen",
+    "refused": "Der Test wurde aus Sicherheitsgründen abgelehnt. Löschtests können nicht auf dem Systemlaufwerk oder ohne passende Seriennummer ausgeführt werden.",
+    "engine_failed": "Das Prüfwerkzeug wurde unerwartet beendet.",
+    "engine_missing": "Das Prüfwerkzeug wurde nicht gefunden. Bitte installieren Sie CheckMyDrive neu.",
+    "auth_cancelled": "Die Berechtigung wurde nicht erteilt, daher wurde das Laufwerk nicht geprüft.",
+    "elevation_unavailable": "Auf diesem Computer konnte keine Administratorberechtigung angefragt werden.",
+    "bad_args": "Der Test konnte wegen eines internen Anfragefehlers nicht gestartet werden.",
+    "needs_admin": "Zum Testen dieses Laufwerks ist Administratorberechtigung nötig.",
+    "drive_not_found": "Dieses Laufwerk wurde nicht gefunden. Möglicherweise wurde es abgezogen.",
+    "system_disk_refused": "Dies ist das Laufwerk, von dem Ihr Computer läuft, daher kann es nicht gelöscht werden. Wählen Sie ein anderes Laufwerk.",
+    "confirm_required": "Bitte bestätigen Sie die Seriennummer des Laufwerks, bevor ein vollständiger Test startet, der Daten löscht.",
+    "confirm_mismatch": "Die eingegebene Seriennummer passt nicht zu diesem Laufwerk. Es wurde nichts verändert.",
+    "cannot_open_device": "Das Laufwerk konnte nicht zum Testen geöffnet werden. Möglicherweise verwendet es ein anderes Programm.",
+    "unmount_failed": "Die Volumes des Laufwerks konnten vor dem vollständigen Test nicht sicher getrennt werden. Schließen Sie Programme, die es verwenden, und versuchen Sie es erneut.",
+    "internal": "In der Test-Engine ist etwas Unerwartetes schiefgelaufen."
+  },
+  "common": {
+    "loading": "Wird geladen…",
+    "close": "Schließen",
+    "unknown": "Unbekannt"
+  }
+}

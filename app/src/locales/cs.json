@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Zjistěte, jestli je použitý disk bezpečný, dřív než mu uvěříte.",
+    "skip": "Přeskočit na hlavní obsah"
+  },
+  "nav": {
+    "settings": "Nastavení",
+    "back": "Zpět",
+    "mockBanner": "Ukázkový režim: zobrazují se vzorové disky. Ve vašem počítači se nic netestuje."
+  },
+  "picker": {
+    "title": "Který disk chcete zkontrolovat?",
+    "subtitle": "Připojte disk, který zvažujete koupit nebo používat, a vyberte ho níže. Kontrola trvá asi 3 až 4 minuty.",
+    "refresh": "Obnovit",
+    "refreshing": "Hledám disky…",
+    "empty": "Nenalezen žádný disk. Připojte nějaký a stiskněte Obnovit.",
+    "systemDisk": "Systémový disk",
+    "systemDiskHint": "Z tohoto disku běží váš počítač. Lze ho zkontrolovat jen v bezpečném režimu.",
+    "unknownModel": "Neznámý disk",
+    "select": "Zkontrolovat tento disk",
+    "kind": {
+      "hdd": "Pevný disk (HDD)",
+      "ssd": "Disk SSD",
+      "nvme": "NVMe SSD",
+      "usb": "USB flash disk nebo externí disk",
+      "sd": "SD / paměťová karta",
+      "unknown": "Disk"
+    },
+    "removable": "Výměnný",
+    "loadFailed": "Seznam disků se nepodařilo načíst.",
+    "noAdminNote": "Některé údaje, například zdravotní data, mohou vyžadovat oprávnění správce. Požádáme o ně při spuštění kontroly."
+  },
+  "mode": {
+    "title": "Jak důkladná má kontrola být?",
+    "checking": "Kontroluje se",
+    "safe": {
+      "title": "Rychlý bezpečný test (soubory zůstanou)",
+      "desc": "Přečte celý disk a zapíše malý dočasný soubor, takže se nic z vašeho nezmění ani neztratí.",
+      "badge": "Doporučeno",
+      "limit": "Nepozná falešnou kapacitu."
+    },
+    "wipe": {
+      "title": "Plný test s vymazáním (nejdůkladnější, SMAŽE vše)",
+      "desc": "Zapisuje i po celém disku, aby odhalil falešnou kapacitu a skryté vady. Všechny soubory na disku budou nenávratně zničeny.",
+      "dangerTitle": "Nebezpečná zóna: disk se vymaže",
+      "dangerBody": "Tím se nenávratně smažou VŠECHNA data na disku {{model}}. Nelze to vrátit zpět. Pokračujte jen tehdy, je-li disk prázdný nebo máte zálohu.",
+      "confirmLabel": "Pro potvrzení opište sériové číslo disku: {{serial}}",
+      "confirmPlaceholder": "Sem napište sériové číslo",
+      "noSerial": "Tento disk sériové číslo nehlásí, proto plný test s vymazáním není k dispozici.",
+      "systemBlocked": "Systémový disk nelze nikdy vymazat. K dispozici je jen bezpečný test.",
+      "mismatch": "Text zatím neodpovídá sériovému číslu.",
+      "start": "Vymazat a spustit plný test",
+      "expand": "Zobrazit plný test s vymazáním",
+      "collapse": "Skrýt plný test s vymazáním"
+    },
+    "start": "Spustit rychlý bezpečný test",
+    "back": "Vybrat jiný disk",
+    "duration": "Trvá asi 3 až 4 minuty. Disk prosím neodpojujte."
+  },
+  "running": {
+    "title": "Kontrolujeme váš disk",
+    "subtitle": "Nechte disk připojený a počítač vzhůru.",
+    "overall": "Celkový postup",
+    "elapsed": "Uplynulo",
+    "remaining": "Zbývá asi {{time}}",
+    "estimating": "Odhaduji čas…",
+    "cancel": "Zrušit test",
+    "cancelling": "Ruším…",
+    "cancelConfirm": "Zastavit test? V bezpečném režimu se na disku nic nezměnilo.",
+    "keepGoing": "Pokračovat",
+    "stop": "Zastavit test",
+    "checklist": "Co kontrolujeme",
+    "waiting": "Čekám na oprávnění…",
+    "adminPrompt": "Počítač se vás může zeptat na heslo. Díky tomu může CheckMyDrive číst disk přímo.",
+    "phase": {
+      "prepare": "Příprava",
+      "finish": "Počítáme vaše skóre"
+    },
+    "status": {
+      "pending": "Čeká",
+      "running": "Kontroluje se",
+      "done": "Hotovo"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Totožnost disku",
+      "desc": "Model, velikost a typ disku"
+    },
+    "smart_health": {
+      "name": "Zdravotní zpráva",
+      "desc": "Vlastní záznam disku o problémech a opotřebení"
+    },
+    "selftest_short": {
+      "name": "Vestavěná samokontrola",
+      "desc": "Disk zkontroluje sám sebe"
+    },
+    "surface_read": {
+      "name": "Kontrola povrchu",
+      "desc": "Čte místa po celém disku"
+    },
+    "write_verify": {
+      "name": "Zápis a ověření",
+      "desc": "Uloží data a přečte je zpět"
+    },
+    "capacity_check": {
+      "name": "Skutečná kapacita",
+      "desc": "Ověří, že velikost není falešná"
+    },
+    "stability": {
+      "name": "Stabilita",
+      "desc": "Sleduje odpojení a chyby"
+    }
+  },
+  "status": {
+    "pass": "V pořádku",
+    "warn": "Varování",
+    "fail": "Selhalo",
+    "skipped": "Přeskočeno"
+  },
+  "results": {
+    "title": "Výsledky",
+    "scoreOutOf": "ze 100",
+    "scoreLabel": "Skóre {{score}} ze 100",
+    "verdict": {
+      "buy": "Dá se koupit",
+      "caution": "Používat opatrně",
+      "avoid": "Vyhnout se"
+    },
+    "summary": {
+      "buy": "Tento disk {{model}} vypadá zdravě. Nenašli jsme žádné vážné problémy a pro běžné používání by měl být v pořádku.",
+      "caution": "Tento disk {{model}} funguje, ale našli jsme varovné signály. Používejte ho jen pro soubory, o které se nebojíte přijít, nebo vyjednejte nižší cenu.",
+      "avoid": "Tomuto disku {{model}} nevěřte. Našli jsme vážné problémy, které ohrožují vaše soubory.",
+      "fake_capacity": "Tento disk {{model}} lže o své velikosti. Tvrdí, že má {{claimed}}, ale ve skutečnosti tolik uložit neumí. Nekupujte ho ani nepoužívejte.",
+      "failing": "Tento disk {{model}} selhává. Jeho vlastní zdravotní data i naše testy ukazují, že může kdykoli přijít o vaše soubory."
+    },
+    "can": {
+      "title": "Mohu…",
+      "os": "Nainstalovat na něj operační systém?",
+      "storage": "Ukládat na něj soubory dlouhodobě?",
+      "daily": "Používat ho každý den?",
+      "fill": "Bezpečně ho zaplnit?",
+      "fillYes": "Bezpečně uložit až {{size}} z {{total}}",
+      "fillNo": "Nic důležitého bychom na něj neukládali.",
+      "yes": "Ano",
+      "maybe": "Možná",
+      "no": "Ne"
+    },
+    "age": {
+      "title": "Stáří disku",
+      "years": "Používán přibližně let: {{count}}",
+      "yearsLessThanOne": "Používán méně než rok",
+      "hours": "Hodin zapnutí: {{hours}}",
+      "made": "Vyrobeno: {{date}}",
+      "cycles": "Počet zapnutí: {{count}}",
+      "unknown": "Tento disk nehlásí, jak dlouho byl používán.",
+      "note": "Hodiny se počítají jen po dobu, kdy je disk zapnutý. Disk používaný nonstop stárne rychleji než ten, který běží jen pár hodin denně."
+    },
+    "issues": {
+      "title": "Co jsme zjistili",
+      "none": "Žádné problémy nenalezeny.",
+      "critical": "Vážné",
+      "warn": "Varování",
+      "info": "Poznámka"
+    },
+    "matrix": {
+      "title": "Tabulka testů",
+      "subtitle": "Podrobnosti pro pokročilé uživatele",
+      "show": "Zobrazit podrobnosti",
+      "hide": "Skrýt podrobnosti",
+      "test": "Test",
+      "status": "Stav",
+      "score": "Skóre",
+      "metrics": "Klíčová čísla",
+      "none": "Žádná čísla nebyla zaznamenána"
+    },
+    "export": "Exportovat zprávu",
+    "exportJson": "Uložit jako JSON",
+    "exportHtml": "Uložit jako webovou stránku (HTML)",
+    "print": "Vytisknout nebo uložit jako PDF",
+    "saved": "Zpráva byla uložena.",
+    "saveFailed": "Zprávu se nepodařilo uložit.",
+    "another": "Otestovat další disk",
+    "mode": {
+      "safe": "Rychlý bezpečný test",
+      "wipe": "Plný test s vymazáním"
+    },
+    "tested": "Testováno dne {{date}}",
+    "engine": "Jádro {{version}}",
+    "skippedNote": "Zjišťování falešné kapacity nebylo spuštěno. Pro úplnou odpověď použijte plný test s vymazáním na prázdném disku."
+  },
+  "report": {
+    "title": "Zpráva CheckMyDrive",
+    "generatedBy": "Vytvořeno programem CheckMyDrive (open source)"
+  },
+  "settings": {
+    "title": "Nastavení a informace",
+    "language": "Jazyk",
+    "languageHint": "Jiné jazyky než angličtina se načítají postupně, jak jsou k dispozici; chybějící text se zobrazí anglicky.",
+    "theme": "Vzhled",
+    "themeSystem": "Podle systému",
+    "themeLight": "Světlý",
+    "themeDark": "Tmavý",
+    "about": "O aplikaci",
+    "version": "Verze",
+    "license": "Licence",
+    "licenseValue": "Licence MIT (zdarma a open source)",
+    "github": "Zdrojový kód na GitHubu",
+    "engineVersion": "Jádro",
+    "disclaimer": "CheckMyDrive poskytuje kvalifikovaný odhad a nemůže zaručit, že disk nikdy neselže. Důležité soubory si vždy zálohujte.",
+    "close": "Hotovo"
+  },
+  "metric": {
+    "read_mbps_avg": "Průměrná rychlost čtení (MB/s)",
+    "write_mbps": "Rychlost zápisu (MB/s)",
+    "latency_ms_p99": "Odezva nejpomalejšího 1 % (ms)",
+    "slow_samples": "Pomalá místa",
+    "read_errors": "Chyby čtení",
+    "reallocated_sectors": "Nahrazené vadné oblasti",
+    "pending_sectors": "Nestabilní oblasti",
+    "uncorrectable_sectors": "Nečitelné oblasti",
+    "temperature_c": "Teplota (°C)",
+    "percent_used": "Spotřebované opotřebení (%)",
+    "media_errors": "Chyby média",
+    "written_mb": "Zapsaná data (MB)",
+    "mismatches": "Nesrovnalosti",
+    "sectors_checked": "Zkontrolovaná místa",
+    "real_capacity_gb": "Skutečná kapacita (GB)",
+    "claimed_gb": "Udávaná kapacita (GB)",
+    "disconnects": "Odpojení",
+    "io_errors": "Chyby vstupu/výstupu",
+    "rpm": "Rychlost otáčení (RPM)",
+    "interface": "Připojení",
+    "result": "Výsledek"
+  },
+  "issue": {
+    "unknown": "Bylo nalezeno něco neobvyklého ({{code}}). Podrobnosti najdete v tabulce testů.",
+    "age": {
+      "high_hours": "Tento disk byl zapnutý přibližně {{years}} let ({{hours}} hodin), což je velké využití.",
+      "moderate_hours": "Tento disk byl zapnutý přibližně {{years}} let ({{hours}} hodin)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Disk nesdělil, jak je velký.",
+      "model_unknown": "Disk nesdělil název svého modelu.",
+      "system_disk": "Toto je disk, ze kterého běží váš počítač. Byl spuštěn jen bezpečný test, který nic nemění."
+    },
+    "smart": {
+      "unavailable": "Nástroj pro zdravotní zprávu (smartmontools) není k dispozici, proto nebylo možné přečíst interní zdravotní data disku.",
+      "needs_admin": "Zdravotní zprávu disku nebylo možné přečíst bez oprávnění správce.",
+      "timeout": "Disk neodpověděl na žádost o zdravotní zprávu včas.",
+      "not_supported": "Tento disk zdravotní zprávu neposkytuje, takže jeho vnitřní stav není znám.",
+      "usb_bridge_blocked": "USB adaptér skrývá zdravotní zprávu disku, takže jeho vnitřní stav není znám.",
+      "overall_failed": "Vlastní zdravotní kontrola disku říká, že selhává.",
+      "reallocated_sectors": "Disk už nahradil poškozené oblasti náhradními. Počet: {{count}}.",
+      "pending_sectors": "Nečitelné oblasti disku čekající na výměnu. Počet: {{count}}.",
+      "uncorrectable_sectors": "Oblasti disku, které nešlo přečíst ani opravit. Počet: {{count}}.",
+      "crc_errors": "Zaznamenané chyby přenosu dat, často způsobené špatným kabelem nebo konektorem. Počet: {{count}}.",
+      "error_log_entries": "Záznam chyb disku obsahuje položek: {{count}}.",
+      "ssd_worn": "Tento SSD vyčerpal přibližně {{percent}} % své předpokládané životnosti.",
+      "ssd_worn_out": "Tento SSD vyčerpal přibližně {{percent}} % své předpokládané životnosti a blíží se konci.",
+      "nvme_critical_warning": "Disk hlásí kritické varování (kód {{value}}).",
+      "nvme_media_errors": "Paměť disku zaznamenala chyby integrity dat. Počet: {{count}}.",
+      "spare_low": "Zbývá jen {{percent}} % náhradní paměti disku.",
+      "temperature_high": "Disk je přehřátý ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Rychlá samokontrola disku byla přeskočena, protože jeho zdravotní rozhraní není dostupné.",
+      "not_supported": "Tento disk rychlou samokontrolu nepodporuje.",
+      "could_not_start": "Rychlou samokontrolu disku se nepodařilo spustit.",
+      "failed": "Disk při své rychlé samokontrole selhal.",
+      "aborted": "Rychlá samokontrola disku byla přerušena dříve, než skončila.",
+      "timeout": "Rychlá samokontrola disku neskončila do {{seconds}} s a byla zastavena."
+    },
+    "surface_read": {
+      "cannot_open": "Disk se nepodařilo otevřít ke čtení.",
+      "read_errors": "Části disku, které nešlo přečíst. Počet: {{count}}.",
+      "slow_areas": "Oblasti, které reagovaly velmi pomalu ({{percent}} %), což může znamenat opotřebení povrchu. Počet: {{count}}.",
+      "low_speed": "Disk čte pomalu ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Test zápisu byl přeskočen, protože na disku není složka, do které bychom mohli bezpečně zapisovat.",
+      "insufficient_space": "Test zápisu byl přeskočen, protože na disku je příliš málo volného místa.",
+      "write_error": "Disk při zápisu testovacích dat ohlásil chybu.",
+      "data_mismatch": "Bloky testovacích dat, které se vrátily jiné, než byly zapsány. Počet: {{count}}.",
+      "slow_write": "Disk zapisuje velmi pomalu ({{mbps}} MB/s).",
+      "cleanup_failed": "Dočasný testovací soubor se nepodařilo smazat. Můžete ho odstranit sami: {{path}}."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Kontrola falešné kapacity vyžaduje plný test, který disk vymaže. Byla přeskočena.",
+      "fake_capacity": "Tento disk tvrdí, že pojme {{claimed_bytes}} bajtů, ale skutečných je jen asi {{real_bytes}} bajtů. Je to disk s falešnou kapacitou.",
+      "data_corruption": "Testovací bloky, které se vrátily poškozené. Počet: {{count}}.",
+      "io_error": "Chyby, které disk vrátil při kontrole kapacity. Počet: {{count}}."
+    },
+    "stability": {
+      "device_disconnected": "Disk během testů zmizel. Počet případů: {{count}}.",
+      "io_errors": "Chyby čtení nebo zápisu, které disk během testů vrátil. Počet: {{count}}.",
+      "timeouts": "Disk během testů nereagoval včas. Počet případů: {{count}}.",
+      "crc_errors_increased": "Chyby přenosu dat během testů přibyly o {{count}}. Zkontrolujte kabel.",
+      "new_bad_sectors": "Nové poškozené oblasti, které se objevily během testování. Počet: {{count}}."
+    }
+  },
+  "progress": {
+    "unknown": "Pracuji…",
+    "working": "Pracuji…",
+    "prepare": {
+      "starting": "Připravuji se...",
+      "reading_smart": "Čtu vestavěnou zdravotní zprávu disku...",
+      "unmounting": "Bezpečně odpojuji oddíly disku...",
+      "ready": "Připraveno k testu."
+    },
+    "drive_info": {
+      "identifying": "Zjišťuji, o jaký disk jde..."
+    },
+    "smart_health": {
+      "analyzing": "Kontroluji zdravotní zprávu disku..."
+    },
+    "selftest_short": {
+      "starting": "Spouštím vestavěnou rychlou samokontrolu disku...",
+      "running": "Disk provádí vlastní rychlou samokontrolu (hotovo {{percent}} %).",
+      "done": "Samokontrola disku skončila.",
+      "running_seconds": "Disk provádí vlastní rychlou samokontrolu (zatím {{seconds}} s)."
+    },
+    "surface_read": {
+      "sampling": "Čtu vzorky z celého disku ({{done}} z {{total}}).",
+      "sequential": "Měřím rychlost čtení ({{mbps}} MB/s).",
+      "done": "Kontrola povrchu skončila."
+    },
+    "write_verify": {
+      "writing": "Zapisuji testovací data (zapsáno {{mb}} MB).",
+      "verifying": "Čtu data zpět a ověřuji je (zkontrolováno {{mb}} MB).",
+      "cleaning": "Odstraňuji dočasný testovací soubor...",
+      "done": "Test zápisu skončil."
+    },
+    "capacity_check": {
+      "writing": "Značím místa v celé udávané velikosti ({{done}} z {{total}}).",
+      "verifying": "Ověřuji, že každé místo drží svá vlastní data ({{done}} z {{total}}).",
+      "done": "Kontrola kapacity skončila."
+    },
+    "stability": {
+      "checking": "Kontroluji, zda byl disk během testů stabilní..."
+    },
+    "finish": {
+      "scoring": "Počítám vaše skóre...",
+      "done": "Hotovo."
+    }
+  },
+  "suitability": {
+    "unknown": "Podrobnosti nejsou k dispozici.",
+    "fallback": {
+      "os_install": {
+        "good": "Žádné problémy, které by bránily spolehlivému běhu operačního systému.",
+        "caution": "Může fungovat, ale je tu určité riziko. Mějte zálohu.",
+        "no": "Pro operační systém není bezpečný."
+      },
+      "long_term_storage": {
+        "good": "Vypadá spolehlivě pro dlouhodobé uložení souborů. Přesto mějte druhou kopii.",
+        "caution": "Pro dlouhodobé ukládání je riskantní. Mějte kopii jinde.",
+        "no": "Důležité soubory zde neukládejte."
+      },
+      "daily_use": {
+        "good": "Pro každodenní používání v pořádku.",
+        "caution": "Pro každodenní používání vyhovuje, ale hlídejte nové problémy.",
+        "no": "Pro každodenní používání není dost spolehlivý."
+      }
+    },
+    "os_install": {
+      "ok": "Vhodný pro instalaci operačního systému.",
+      "bad_sectors": "Pro operační systém se nedoporučuje: má poškozené oblasti.",
+      "slow_latency": "Pro operační systém se nedoporučuje: některá čtení jsou příliš pomalá.",
+      "score_low": "Pro operační systém se nedoporučuje: celkové skóre ({{score}}) je příliš nízké."
+    },
+    "long_term_storage": {
+      "ok": "Vhodný pro dlouhodobé ukládání souborů.",
+      "critical_issues": "Pro dlouhodobé ukládání není bezpečný: byly nalezeny vážné problémy.",
+      "score_low": "Pro dlouhodobé ukládání je riskantní: celkové skóre ({{score}}) je příliš nízké. Mějte zálohy."
+    },
+    "daily_use": {
+      "ok": "Pro každodenní používání v pořádku.",
+      "caution": "Použitelný pro běžné soubory, ale mějte zálohy.",
+      "no": "Pro každodenní používání se nedoporučuje."
+    }
+  },
+  "error": {
+    "unknown": "Něco se pokazilo ({{code}}).",
+    "title": "Kontrolu se nepodařilo dokončit",
+    "retry": "Zkusit znovu",
+    "choose": "Vybrat jiný disk",
+    "refused": "Test byl z bezpečnostních důvodů odmítnut. Testy s vymazáním nelze spustit na systémovém disku ani bez odpovídajícího sériového čísla.",
+    "engine_failed": "Kontrolní nástroj se neočekávaně zastavil.",
+    "engine_missing": "Kontrolní nástroj nebyl nalezen. Přeinstalujte prosím CheckMyDrive.",
+    "auth_cancelled": "Oprávnění nebylo uděleno, proto se disk nezkontroloval.",
+    "elevation_unavailable": "V tomto počítači se nepodařilo požádat o oprávnění správce.",
+    "bad_args": "Test se nepodařilo spustit kvůli vnitřní chybě požadavku.",
+    "needs_admin": "K otestování tohoto disku je potřeba oprávnění správce.",
+    "drive_not_found": "Tento disk se nepodařilo najít. Možná byl odpojen.",
+    "system_disk_refused": "Toto je disk, ze kterého běží váš počítač, proto ho nelze vymazat. Vyberte jiný disk.",
+    "confirm_required": "Před plným testem, který maže data, prosím potvrďte sériové číslo disku.",
+    "confirm_mismatch": "Zadané sériové číslo neodpovídá tomuto disku. Nic se nezměnilo.",
+    "cannot_open_device": "Disk se nepodařilo otevřít k testování. Možná ho používá jiný program.",
+    "unmount_failed": "Oddíly disku se před plným testem nepodařilo bezpečně odpojit. Zavřete programy, které ho používají, a zkuste to znovu.",
+    "internal": "Uvnitř testovacího jádra se stalo něco neočekávaného."
+  },
+  "common": {
+    "loading": "Načítání…",
+    "close": "Zavřít",
+    "unknown": "Neznámé"
+  }
+}

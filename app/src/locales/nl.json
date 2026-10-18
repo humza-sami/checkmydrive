@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Weet of een tweedehands schijf veilig is voordat je erop vertrouwt.",
+    "skip": "Ga naar de hoofdinhoud"
+  },
+  "nav": {
+    "settings": "Instellingen",
+    "back": "Terug",
+    "mockBanner": "Demomodus: er worden voorbeeldschijven getoond. Er wordt niets op je computer getest."
+  },
+  "picker": {
+    "title": "Welke schijf wil je controleren?",
+    "subtitle": "Sluit de schijf aan die je wilt kopen of gebruiken en kies hem hieronder. De controle duurt ongeveer 3 tot 4 minuten.",
+    "refresh": "Vernieuwen",
+    "refreshing": "Schijven zoeken…",
+    "empty": "Geen schijven gevonden. Sluit er een aan en druk op Vernieuwen.",
+    "systemDisk": "Systeemschijf",
+    "systemDiskHint": "Je computer draait vanaf deze schijf. Hij kan alleen in de veilige modus worden gecontroleerd.",
+    "unknownModel": "Onbekende schijf",
+    "select": "Deze schijf controleren",
+    "kind": {
+      "hdd": "Harde schijf (HDD)",
+      "ssd": "Solid-state drive (SSD)",
+      "nvme": "NVMe-SSD",
+      "usb": "USB-stick of USB-schijf",
+      "sd": "SD- / geheugenkaart",
+      "unknown": "Schijf"
+    },
+    "removable": "Verwisselbaar",
+    "loadFailed": "We konden de lijst met schijven niet lezen.",
+    "noAdminNote": "Voor sommige gegevens, zoals de gezondheidsinformatie, kan beheerdersrechten nodig zijn. Daar wordt om gevraagd zodra de controle begint."
+  },
+  "mode": {
+    "title": "Hoe grondig moet de controle zijn?",
+    "checking": "Controleren",
+    "safe": {
+      "title": "Snelle veilige test (je bestanden blijven behouden)",
+      "desc": "Leest de hele schijf en schrijft één klein tijdelijk bestand, zodat niets van jou wordt gewijzigd of kwijtraakt.",
+      "badge": "Aanbevolen",
+      "limit": "Kan nepcapaciteit niet opsporen."
+    },
+    "wipe": {
+      "title": "Volledige wistest (meest grondig, WIST alles)",
+      "desc": "Schrijft ook over de hele schijf om nepcapaciteit en verborgen gebreken op te sporen. Elk bestand op de schijf wordt definitief vernietigd.",
+      "dangerTitle": "Gevarenzone: de schijf wordt gewist",
+      "dangerBody": "Hiermee worden ALLE gegevens op {{model}} definitief verwijderd. Dit kan niet ongedaan worden gemaakt. Ga alleen door als de schijf leeg is of je een back-up hebt.",
+      "confirmLabel": "Typ ter bevestiging het serienummer van de schijf: {{serial}}",
+      "confirmPlaceholder": "Typ hier het serienummer",
+      "noSerial": "Deze schijf geeft geen serienummer door, dus een volledige wistest is niet beschikbaar.",
+      "systemBlocked": "Je systeemschijf kan nooit worden gewist. Alleen de veilige test is beschikbaar.",
+      "mismatch": "De tekst komt nog niet overeen met het serienummer.",
+      "start": "Wissen en volledige test uitvoeren",
+      "expand": "Volledige wistest tonen",
+      "collapse": "Volledige wistest verbergen"
+    },
+    "start": "Snelle veilige test starten",
+    "back": "Andere schijf kiezen",
+    "duration": "Duurt ongeveer 3 tot 4 minuten. Haal de schijf niet los."
+  },
+  "running": {
+    "title": "Je schijf wordt gecontroleerd",
+    "subtitle": "Houd de schijf aangesloten en de computer wakker.",
+    "overall": "Totale voortgang",
+    "elapsed": "Verstreken",
+    "remaining": "Nog ongeveer {{time}}",
+    "estimating": "Tijd inschatten…",
+    "cancel": "Test annuleren",
+    "cancelling": "Annuleren…",
+    "cancelConfirm": "De test stoppen? In de veilige modus is er niets op je schijf gewijzigd.",
+    "keepGoing": "Doorgaan",
+    "stop": "Test stoppen",
+    "checklist": "Wat we controleren",
+    "waiting": "Wachten op toestemming…",
+    "adminPrompt": "Je computer vraagt mogelijk om je wachtwoord. Daarmee kan CheckMyDrive de schijf rechtstreeks lezen.",
+    "phase": {
+      "prepare": "Voorbereiden",
+      "finish": "Je score berekenen"
+    },
+    "status": {
+      "pending": "Wachten",
+      "running": "Bezig",
+      "done": "Klaar"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Identiteit van de schijf",
+      "desc": "Model, grootte en soort schijf"
+    },
+    "smart_health": {
+      "name": "Gezondheidsrapport",
+      "desc": "Wat de schijf zelf bijhoudt over problemen en slijtage"
+    },
+    "selftest_short": {
+      "name": "Ingebouwde zelfcontrole",
+      "desc": "De schijf controleert zichzelf"
+    },
+    "surface_read": {
+      "name": "Oppervlaktescan",
+      "desc": "Leest punten verspreid over de hele schijf"
+    },
+    "write_verify": {
+      "name": "Schrijven en controleren",
+      "desc": "Slaat gegevens op en leest ze terug"
+    },
+    "capacity_check": {
+      "name": "Echte capaciteit",
+      "desc": "Controleert of de grootte niet nep is"
+    },
+    "stability": {
+      "name": "Stabiliteit",
+      "desc": "Let op verbrekingen en fouten"
+    }
+  },
+  "status": {
+    "pass": "Geslaagd",
+    "warn": "Waarschuwing",
+    "fail": "Mislukt",
+    "skipped": "Overgeslagen"
+  },
+  "results": {
+    "title": "Resultaten",
+    "scoreOutOf": "van 100",
+    "scoreLabel": "Score {{score}} van 100",
+    "verdict": {
+      "buy": "Goed om te kopen",
+      "caution": "Met voorzichtigheid gebruiken",
+      "avoid": "Vermijden"
+    },
+    "summary": {
+      "buy": "Deze {{model}} ziet er gezond uit. We vonden geen ernstige problemen en hij zou prima moeten werken voor dagelijks gebruik.",
+      "caution": "Deze {{model}} werkt, maar we vonden een paar waarschuwingssignalen. Gebruik hem alleen voor bestanden die je kunt missen, of beding een lagere prijs.",
+      "avoid": "Vertrouw deze {{model}} niet. We vonden ernstige problemen waardoor je bestanden gevaar lopen.",
+      "fake_capacity": "Deze {{model}} liegt over zijn grootte. Hij zegt {{claimed}} te zijn, maar kan in werkelijkheid niet zoveel opslaan. Niet kopen of gebruiken.",
+      "failing": "Deze {{model}} gaat kapot. Zijn eigen gezondheidsgegevens en onze tests laten zien dat hij op elk moment je bestanden kan kwijtraken."
+    },
+    "can": {
+      "title": "Kan ik…",
+      "os": "Er een besturingssysteem op installeren?",
+      "storage": "Er bestanden langdurig op bewaren?",
+      "daily": "Hem elke dag gebruiken?",
+      "fill": "Hem veilig helemaal vullen?",
+      "fillYes": "Veilig tot {{size}} van {{total}} opslaan",
+      "fillNo": "We zouden er niets belangrijks op bewaren.",
+      "yes": "Ja",
+      "maybe": "Misschien",
+      "no": "Nee"
+    },
+    "age": {
+      "title": "Leeftijd van de schijf",
+      "years": "Ongeveer {{count}} jaar gebruikt",
+      "yearsLessThanOne": "Minder dan een jaar gebruikt",
+      "hours": "{{hours}} uur ingeschakeld geweest",
+      "made": "Gemaakt: {{date}}",
+      "cycles": "{{count}} keer aangezet",
+      "unknown": "Deze schijf geeft niet door hoe lang hij is gebruikt.",
+      "note": "Uren worden alleen geteld terwijl de schijf aanstaat. Een schijf die dag en nacht draait, veroudert sneller dan een schijf die een paar uur per dag wordt gebruikt."
+    },
+    "issues": {
+      "title": "Wat we vonden",
+      "none": "Geen problemen gevonden.",
+      "critical": "Ernstig",
+      "warn": "Waarschuwing",
+      "info": "Opmerking"
+    },
+    "matrix": {
+      "title": "Testoverzicht",
+      "subtitle": "Details voor gevorderde gebruikers",
+      "show": "Details tonen",
+      "hide": "Details verbergen",
+      "test": "Test",
+      "status": "Status",
+      "score": "Score",
+      "metrics": "Belangrijkste cijfers",
+      "none": "Geen cijfers vastgelegd"
+    },
+    "export": "Rapport exporteren",
+    "exportJson": "Opslaan als JSON",
+    "exportHtml": "Opslaan als webpagina (HTML)",
+    "print": "Afdrukken of opslaan als pdf",
+    "saved": "Rapport opgeslagen.",
+    "saveFailed": "Het rapport kon niet worden opgeslagen.",
+    "another": "Een andere schijf testen",
+    "mode": {
+      "safe": "Snelle veilige test",
+      "wipe": "Volledige wistest"
+    },
+    "tested": "Getest op {{date}}",
+    "engine": "Engine {{version}}",
+    "skippedNote": "De detectie van nepcapaciteit is niet uitgevoerd. Gebruik de volledige wistest op een lege schijf voor een compleet antwoord."
+  },
+  "report": {
+    "title": "CheckMyDrive-rapport",
+    "generatedBy": "Gemaakt met CheckMyDrive (open source)"
+  },
+  "settings": {
+    "title": "Instellingen en info",
+    "language": "Taal",
+    "languageHint": "Andere talen dan Engels worden geladen zodra ze beschikbaar zijn; ontbrekende tekst verschijnt in het Engels.",
+    "theme": "Weergave",
+    "themeSystem": "Systeem volgen",
+    "themeLight": "Licht",
+    "themeDark": "Donker",
+    "about": "Over",
+    "version": "Versie",
+    "license": "Licentie",
+    "licenseValue": "MIT-licentie (gratis en open source)",
+    "github": "Broncode op GitHub",
+    "engineVersion": "Engine",
+    "disclaimer": "CheckMyDrive geeft een onderbouwde schatting en kan niet garanderen dat een schijf nooit kapotgaat. Bewaar altijd back-ups van bestanden die ertoe doen.",
+    "close": "Klaar"
+  },
+  "metric": {
+    "read_mbps_avg": "Gemiddelde leessnelheid (MB/s)",
+    "write_mbps": "Schrijfsnelheid (MB/s)",
+    "latency_ms_p99": "Traagste 1% van de reacties (ms)",
+    "slow_samples": "Trage plekken",
+    "read_errors": "Leesfouten",
+    "reallocated_sectors": "Vervangen slechte gebieden",
+    "pending_sectors": "Onstabiele gebieden",
+    "uncorrectable_sectors": "Onleesbare gebieden",
+    "temperature_c": "Temperatuur (°C)",
+    "percent_used": "Slijtage (%)",
+    "media_errors": "Mediafouten",
+    "written_mb": "Geschreven gegevens (MB)",
+    "mismatches": "Afwijkingen",
+    "sectors_checked": "Gecontroleerde plekken",
+    "real_capacity_gb": "Echte capaciteit (GB)",
+    "claimed_gb": "Opgegeven capaciteit (GB)",
+    "disconnects": "Verbrekingen",
+    "io_errors": "Invoer-/uitvoerfouten",
+    "rpm": "Draaisnelheid (RPM)",
+    "interface": "Verbinding",
+    "result": "Resultaat"
+  },
+  "issue": {
+    "unknown": "Er is iets ongewoons gevonden ({{code}}). Zie het testoverzicht voor details.",
+    "age": {
+      "high_hours": "Deze schijf heeft ongeveer {{years}} jaar ({{hours}} uur) aangestaan, wat veel gebruik is.",
+      "moderate_hours": "Deze schijf heeft ongeveer {{years}} jaar ({{hours}} uur) aangestaan."
+    },
+    "drive_info": {
+      "capacity_unknown": "De schijf gaf niet door hoe groot hij is.",
+      "model_unknown": "De schijf gaf zijn modelnaam niet door.",
+      "system_disk": "Dit is de schijf waarvan je computer draait. Alleen de veilige test, die niets vernietigt, is uitgevoerd."
+    },
+    "smart": {
+      "unavailable": "Het gezondheidsrapport-programma (smartmontools) is niet beschikbaar, dus de interne gezondheidsgegevens van de schijf konden niet worden gelezen.",
+      "needs_admin": "Het gezondheidsrapport van de schijf kon niet worden gelezen zonder beheerdersrechten.",
+      "timeout": "De schijf reageerde niet op tijd op het verzoek om een gezondheidsrapport.",
+      "not_supported": "Deze schijf biedt geen gezondheidsrapport, dus de interne toestand is onbekend.",
+      "usb_bridge_blocked": "De USB-adapter verbergt het gezondheidsrapport van de schijf, dus de interne toestand is onbekend.",
+      "overall_failed": "De eigen gezondheidscontrole van de schijf zegt dat hij kapotgaat.",
+      "reallocated_sectors": "De schijf heeft al {{count}} beschadigde gebieden vervangen door reserves.",
+      "pending_sectors": "{{count}} gebieden van de schijf zijn onleesbaar en wachten op vervanging.",
+      "uncorrectable_sectors": "{{count}} gebieden van de schijf konden niet worden gelezen of hersteld.",
+      "crc_errors": "Er zijn {{count}} fouten bij gegevensoverdracht vastgelegd, vaak veroorzaakt door een slechte kabel of aansluiting.",
+      "error_log_entries": "Het foutenlogboek van de schijf bevat {{count}} meldingen.",
+      "ssd_worn": "Deze SSD heeft ongeveer {{percent}}% van zijn verwachte levensduur verbruikt.",
+      "ssd_worn_out": "Deze SSD heeft ongeveer {{percent}}% van zijn verwachte levensduur verbruikt en nadert het einde van zijn leven.",
+      "nvme_critical_warning": "De schijf meldt een kritieke waarschuwing (code {{value}}).",
+      "nvme_media_errors": "Het geheugen van de schijf heeft {{count}} fouten in de gegevensintegriteit vastgelegd.",
+      "spare_low": "Er is nog maar {{percent}}% van het reservegeheugen van de schijf over.",
+      "temperature_high": "De schijf wordt erg warm ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "De snelle zelftest van de schijf is overgeslagen omdat de gezondheidsinterface niet beschikbaar is.",
+      "not_supported": "Deze schijf ondersteunt de snelle zelftest niet.",
+      "could_not_start": "De snelle zelftest van de schijf kon niet worden gestart.",
+      "failed": "De schijf is gezakt voor zijn eigen snelle zelftest.",
+      "aborted": "De snelle zelftest van de schijf is onderbroken voordat hij klaar was.",
+      "timeout": "De snelle zelftest van de schijf was niet klaar binnen {{seconds}} seconden en is gestopt."
+    },
+    "surface_read": {
+      "cannot_open": "De schijf kon niet worden geopend om te lezen.",
+      "read_errors": "{{count}} delen van de schijf konden niet worden gelezen.",
+      "slow_areas": "{{count}} gebieden ({{percent}}%) reageerden erg traag, wat kan betekenen dat het oppervlak slijt.",
+      "low_speed": "De schijf leest langzaam ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "De schrijftest is overgeslagen omdat de schijf geen map heeft waarin we veilig kunnen schrijven.",
+      "insufficient_space": "De schrijftest is overgeslagen omdat de schijf te weinig vrije ruimte heeft.",
+      "write_error": "De schijf meldde een fout tijdens het schrijven van testgegevens.",
+      "data_mismatch": "{{count}} blokken testgegevens kwamen anders terug dan ze waren geschreven.",
+      "slow_write": "De schijf schrijft erg langzaam ({{mbps}} MB/s).",
+      "cleanup_failed": "Het tijdelijke testbestand kon niet worden verwijderd. Je kunt {{path}} zelf verwijderen."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "De controle op nepcapaciteit vereist de volledige test, die de schijf wist. Hij is overgeslagen.",
+      "fake_capacity": "Deze schijf beweert {{claimed_bytes}} bytes te kunnen bevatten, maar slechts ongeveer {{real_bytes}} bytes zijn echt. Het is een schijf met nepcapaciteit.",
+      "data_corruption": "{{count}} testblokken kwamen beschadigd terug.",
+      "io_error": "De schijf gaf tijdens de capaciteitscontrole {{count}} fouten terug."
+    },
+    "stability": {
+      "device_disconnected": "De schijf verdween {{count}} keer tijdens de tests.",
+      "io_errors": "De schijf gaf tijdens de tests {{count}} lees- of schrijffouten terug.",
+      "timeouts": "De schijf reageerde tijdens de tests {{count}} keer niet meer op tijd.",
+      "crc_errors_increased": "Fouten bij gegevensoverdracht namen tijdens de tests met {{count}} toe. Controleer de kabel.",
+      "new_bad_sectors": "Er verschenen {{count}} nieuwe beschadigde gebieden terwijl we testten."
+    }
+  },
+  "progress": {
+    "unknown": "Bezig…",
+    "working": "Bezig…",
+    "prepare": {
+      "starting": "Voorbereiden...",
+      "reading_smart": "Het ingebouwde gezondheidsrapport van de schijf lezen...",
+      "unmounting": "De volumes van de schijf veilig loskoppelen...",
+      "ready": "Klaar om te testen."
+    },
+    "drive_info": {
+      "identifying": "De schijf herkennen..."
+    },
+    "smart_health": {
+      "analyzing": "Het gezondheidsrapport van de schijf bekijken..."
+    },
+    "selftest_short": {
+      "starting": "De ingebouwde snelle zelftest van de schijf starten...",
+      "running": "De schijf voert zijn eigen snelle zelftest uit ({{percent}}% klaar).",
+      "done": "De zelftest van de schijf is klaar.",
+      "running_seconds": "De schijf voert zijn eigen snelle zelftest uit (al {{seconds}} seconden bezig)."
+    },
+    "surface_read": {
+      "sampling": "Steekproefgebieden over de hele schijf lezen ({{done}} van {{total}}).",
+      "sequential": "De leessnelheid meten ({{mbps}} MB/s).",
+      "done": "Oppervlaktescan klaar."
+    },
+    "write_verify": {
+      "writing": "Testgegevens schrijven ({{mb}} MB geschreven).",
+      "verifying": "De gegevens terug lezen om ze te controleren ({{mb}} MB gecontroleerd).",
+      "cleaning": "Het tijdelijke testbestand verwijderen...",
+      "done": "Schrijftest klaar."
+    },
+    "capacity_check": {
+      "writing": "Plekken markeren over de volledige opgegeven grootte ({{done}} van {{total}}).",
+      "verifying": "Controleren of elke plek zijn eigen gegevens bevat ({{done}} van {{total}}).",
+      "done": "Capaciteitscontrole klaar."
+    },
+    "stability": {
+      "checking": "Controleren of de schijf tijdens de tests stabiel bleef..."
+    },
+    "finish": {
+      "scoring": "Je score berekenen...",
+      "done": "Klaar."
+    }
+  },
+  "suitability": {
+    "unknown": "Geen details beschikbaar.",
+    "fallback": {
+      "os_install": {
+        "good": "Geen problemen die een besturingssysteem zouden beletten betrouwbaar te draaien.",
+        "caution": "Het kan werken, maar er is enig risico. Maak een back-up.",
+        "no": "Niet veilig voor een besturingssysteem."
+      },
+      "long_term_storage": {
+        "good": "Lijkt betrouwbaar om bestanden langdurig te bewaren. Houd toch een tweede kopie.",
+        "caution": "Riskant voor langdurige opslag. Bewaar nog een kopie elders.",
+        "no": "Bewaar hier geen belangrijke bestanden."
+      },
+      "daily_use": {
+        "good": "Prima voor dagelijks gebruik.",
+        "caution": "Prima voor dagelijks gebruik, maar let op nieuwe problemen.",
+        "no": "Niet betrouwbaar genoeg voor dagelijks gebruik."
+      }
+    },
+    "os_install": {
+      "ok": "Goed geschikt om een besturingssysteem op te installeren.",
+      "bad_sectors": "Niet aan te raden voor een besturingssysteem: er zijn beschadigde gebieden.",
+      "slow_latency": "Niet aan te raden voor een besturingssysteem: sommige leesacties zijn te traag.",
+      "score_low": "Niet aan te raden voor een besturingssysteem: de totaalscore ({{score}}) is te laag."
+    },
+    "long_term_storage": {
+      "ok": "Goed geschikt om bestanden langdurig op te bewaren.",
+      "critical_issues": "Niet veilig voor langdurige opslag: er zijn ernstige problemen gevonden.",
+      "score_low": "Riskant voor langdurige opslag: de totaalscore ({{score}}) is te laag. Maak back-ups."
+    },
+    "daily_use": {
+      "ok": "Prima voor dagelijks gebruik.",
+      "caution": "Bruikbaar voor gewone bestanden, maar maak back-ups.",
+      "no": "Niet aan te raden voor dagelijks gebruik."
+    }
+  },
+  "error": {
+    "unknown": "Er ging iets mis ({{code}}).",
+    "title": "De controle kon niet worden afgerond",
+    "retry": "Opnieuw proberen",
+    "choose": "Andere schijf kiezen",
+    "refused": "De test is om veiligheidsredenen geweigerd. Wistests kunnen niet worden uitgevoerd op de systeemschijf of zonder passend serienummer.",
+    "engine_failed": "Het controleprogramma is onverwacht gestopt.",
+    "engine_missing": "Het controleprogramma is niet gevonden. Installeer CheckMyDrive opnieuw.",
+    "auth_cancelled": "Er is geen toestemming gegeven, dus de schijf is niet gecontroleerd.",
+    "elevation_unavailable": "Er kon op deze computer niet om beheerdersrechten worden gevraagd.",
+    "bad_args": "De test kon niet starten door een interne fout in het verzoek.",
+    "needs_admin": "Beheerdersrechten zijn nodig om deze schijf te testen.",
+    "drive_not_found": "Die schijf is niet gevonden. Hij is misschien losgekoppeld.",
+    "system_disk_refused": "Dit is de schijf waarvan je computer draait, dus hij kan niet worden gewist. Kies een andere schijf.",
+    "confirm_required": "Bevestig het serienummer van de schijf voordat je een volledige test uitvoert die gegevens wist.",
+    "confirm_mismatch": "Het serienummer dat je hebt ingevoerd komt niet overeen met deze schijf. Er is niets gewijzigd.",
+    "cannot_open_device": "De schijf kon niet worden geopend om te testen. Misschien gebruikt een ander programma hem.",
+    "unmount_failed": "De volumes van de schijf konden vóór de volledige test niet veilig worden losgekoppeld. Sluit programma's die de schijf gebruiken en probeer het opnieuw.",
+    "internal": "Er ging iets onverwachts mis in de testengine."
+  },
+  "common": {
+    "loading": "Laden…",
+    "close": "Sluiten",
+    "unknown": "Onbekend"
+  }
+}

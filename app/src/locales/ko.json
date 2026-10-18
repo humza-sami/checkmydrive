@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "중고 드라이브를 믿기 전에 안전한지 먼저 확인하세요.",
+    "skip": "본문으로 건너뛰기"
+  },
+  "nav": {
+    "settings": "설정",
+    "back": "뒤로",
+    "mockBanner": "데모 모드: 샘플 드라이브를 보여 드리고 있어요. 컴퓨터에서는 아무것도 검사하지 않습니다."
+  },
+  "picker": {
+    "title": "어떤 드라이브를 검사할까요?",
+    "subtitle": "구입하거나 사용하려는 드라이브를 연결한 다음 아래에서 선택하세요. 검사는 약 3~4분 걸려요.",
+    "refresh": "새로고침",
+    "refreshing": "드라이브를 찾는 중…",
+    "empty": "드라이브를 찾지 못했어요. 드라이브를 연결하고 새로고침을 눌러 주세요.",
+    "systemDisk": "시스템 디스크",
+    "systemDiskHint": "컴퓨터가 이 드라이브로 실행되고 있어요. 안전 모드로만 검사할 수 있어요.",
+    "unknownModel": "알 수 없는 드라이브",
+    "select": "이 드라이브 검사",
+    "kind": {
+      "hdd": "하드 디스크 (HDD)",
+      "ssd": "솔리드 스테이트 드라이브 (SSD)",
+      "nvme": "NVMe SSD",
+      "usb": "USB 메모리 또는 드라이브",
+      "sd": "SD / 메모리 카드",
+      "unknown": "드라이브"
+    },
+    "removable": "이동식",
+    "loadFailed": "드라이브 목록을 읽지 못했어요.",
+    "noAdminNote": "건강 상태 같은 일부 정보는 관리자 권한이 필요할 수 있으며, 검사를 시작할 때 요청돼요."
+  },
+  "mode": {
+    "title": "얼마나 꼼꼼하게 검사할까요?",
+    "checking": "검사 대상",
+    "safe": {
+      "title": "빠른 안전 검사 (파일이 그대로 유지돼요)",
+      "desc": "드라이브 전체를 읽고 작은 임시 파일 하나만 써서, 가지고 계신 파일이 바뀌거나 사라지지 않아요.",
+      "badge": "추천",
+      "limit": "가짜 용량은 찾아낼 수 없어요."
+    },
+    "wipe": {
+      "title": "전체 삭제 검사 (가장 꼼꼼함, 모든 것을 지워요)",
+      "desc": "가짜 용량과 숨은 결함을 찾기 위해 드라이브 전체에 데이터를 써요. 드라이브의 모든 파일이 영구적으로 사라져요.",
+      "dangerTitle": "위험 구역: 드라이브가 지워져요",
+      "dangerBody": "{{model}}의 모든 데이터가 영구적으로 삭제돼요. 되돌릴 수 없어요. 드라이브가 비어 있거나 백업이 있을 때만 계속하세요.",
+      "confirmLabel": "확인을 위해 드라이브의 일련번호를 입력하세요: {{serial}}",
+      "confirmPlaceholder": "여기에 일련번호를 입력하세요",
+      "noSerial": "이 드라이브는 일련번호를 알려 주지 않아서 전체 삭제 검사를 할 수 없어요.",
+      "systemBlocked": "시스템 디스크는 절대 지울 수 없어요. 안전 검사만 가능해요.",
+      "mismatch": "입력한 내용이 아직 일련번호와 맞지 않아요.",
+      "start": "지우고 전체 검사 실행",
+      "expand": "전체 삭제 검사 보기",
+      "collapse": "전체 삭제 검사 숨기기"
+    },
+    "start": "빠른 안전 검사 시작",
+    "back": "다른 드라이브 선택",
+    "duration": "약 3~4분 걸려요. 드라이브를 뽑지 마세요."
+  },
+  "running": {
+    "title": "드라이브를 검사하는 중",
+    "subtitle": "드라이브를 연결해 두고 컴퓨터가 꺼지지 않게 해 주세요.",
+    "overall": "전체 진행률",
+    "elapsed": "경과 시간",
+    "remaining": "약 {{time}} 남음",
+    "estimating": "시간을 계산하는 중…",
+    "cancel": "검사 취소",
+    "cancelling": "취소하는 중…",
+    "cancelConfirm": "검사를 멈출까요? 안전 모드에서는 드라이브에 아무 변경도 없었어요.",
+    "keepGoing": "계속하기",
+    "stop": "검사 중지",
+    "checklist": "확인하는 항목",
+    "waiting": "권한을 기다리는 중…",
+    "adminPrompt": "컴퓨터가 비밀번호를 물어볼 수 있어요. CheckMyDrive가 드라이브를 직접 읽을 수 있게 하기 위한 거예요.",
+    "phase": {
+      "prepare": "준비 중",
+      "finish": "점수 계산 중"
+    },
+    "status": {
+      "pending": "대기 중",
+      "running": "검사 중",
+      "done": "완료"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "드라이브 정보",
+      "desc": "드라이브의 모델, 크기, 종류"
+    },
+    "smart_health": {
+      "name": "건강 보고서",
+      "desc": "드라이브가 스스로 기록한 문제와 마모 상태"
+    },
+    "selftest_short": {
+      "name": "내장 자가 점검",
+      "desc": "드라이브가 스스로 점검해요"
+    },
+    "surface_read": {
+      "name": "표면 검사",
+      "desc": "드라이브 전체의 여러 지점을 읽어요"
+    },
+    "write_verify": {
+      "name": "쓰기 및 확인",
+      "desc": "데이터를 저장한 뒤 다시 읽어 봐요"
+    },
+    "capacity_check": {
+      "name": "실제 용량",
+      "desc": "표시된 크기가 가짜가 아닌지 확인해요"
+    },
+    "stability": {
+      "name": "안정성",
+      "desc": "연결 끊김과 오류가 있는지 지켜봐요"
+    }
+  },
+  "status": {
+    "pass": "통과",
+    "warn": "경고",
+    "fail": "실패",
+    "skipped": "건너뜀"
+  },
+  "results": {
+    "title": "결과",
+    "scoreOutOf": "/ 100점",
+    "scoreLabel": "100점 만점에 {{score}}점",
+    "verdict": {
+      "buy": "구입해도 좋아요",
+      "caution": "조심해서 사용하세요",
+      "avoid": "피하세요"
+    },
+    "summary": {
+      "buy": "이 {{model}}은(는) 건강해 보여요. 심각한 문제가 발견되지 않았고, 평소 사용에는 문제없을 거예요.",
+      "caution": "이 {{model}}은(는) 작동하지만 몇 가지 경고 신호가 있었어요. 잃어도 괜찮은 파일에만 사용하거나, 가격을 더 깎아 보세요.",
+      "avoid": "이 {{model}}은(는) 믿지 마세요. 파일을 위험에 빠뜨릴 수 있는 심각한 문제가 발견됐어요.",
+      "fake_capacity": "이 {{model}}은(는) 크기를 속이고 있어요. {{claimed}}라고 표시하지만 실제로는 그만큼 저장할 수 없어요. 사지도 쓰지도 마세요.",
+      "failing": "이 {{model}}은(는) 고장 나고 있어요. 드라이브 자체의 건강 데이터와 우리 검사 결과를 보면 언제든 파일이 사라질 수 있어요."
+    },
+    "can": {
+      "title": "이럴 수 있나요…",
+      "os": "운영체제를 설치해도 되나요?",
+      "storage": "파일을 오래 보관해도 되나요?",
+      "daily": "매일 사용해도 되나요?",
+      "fill": "가득 채워도 안전한가요?",
+      "fillYes": "{{total}} 중 {{size}}까지는 안전하게 저장할 수 있어요",
+      "fillNo": "중요한 것은 저장하지 않는 것이 좋아요.",
+      "yes": "네",
+      "maybe": "어쩌면",
+      "no": "아니요"
+    },
+    "age": {
+      "title": "드라이브 사용 기간",
+      "years": "약 {{count}}년 사용",
+      "yearsLessThanOne": "사용 기간 1년 미만",
+      "hours": "전원이 켜진 시간 {{hours}}시간",
+      "made": "제조일: {{date}}",
+      "cycles": "{{count}}번 켜짐",
+      "unknown": "이 드라이브는 얼마나 사용했는지 알려 주지 않아요.",
+      "note": "시간은 드라이브 전원이 켜져 있을 때만 계산돼요. 하루 종일 쓰는 드라이브는 하루에 몇 시간만 쓰는 드라이브보다 더 빨리 낡아요."
+    },
+    "issues": {
+      "title": "발견한 내용",
+      "none": "발견된 문제가 없어요.",
+      "critical": "심각",
+      "warn": "경고",
+      "info": "참고"
+    },
+    "matrix": {
+      "title": "검사 상세표",
+      "subtitle": "고급 사용자를 위한 자세한 정보",
+      "show": "자세히 보기",
+      "hide": "자세히 숨기기",
+      "test": "검사",
+      "status": "상태",
+      "score": "점수",
+      "metrics": "주요 수치",
+      "none": "기록된 수치가 없어요"
+    },
+    "export": "보고서 내보내기",
+    "exportJson": "JSON으로 저장",
+    "exportHtml": "웹 페이지(HTML)로 저장",
+    "print": "인쇄 또는 PDF로 저장",
+    "saved": "보고서를 저장했어요.",
+    "saveFailed": "보고서를 저장하지 못했어요.",
+    "another": "다른 드라이브 검사하기",
+    "mode": {
+      "safe": "빠른 안전 검사",
+      "wipe": "전체 삭제 검사"
+    },
+    "tested": "검사일: {{date}}",
+    "engine": "엔진 {{version}}",
+    "skippedNote": "가짜 용량 검사는 실행되지 않았어요. 정확한 답을 얻으려면 빈 드라이브에서 전체 삭제 검사를 해 보세요."
+  },
+  "report": {
+    "title": "CheckMyDrive 보고서",
+    "generatedBy": "CheckMyDrive(오픈 소스)로 만든 보고서"
+  },
+  "settings": {
+    "title": "설정 및 정보",
+    "language": "언어",
+    "languageHint": "영어 외의 언어는 준비되는 대로 불러오며, 아직 없는 문구는 영어로 표시돼요.",
+    "theme": "화면 모드",
+    "themeSystem": "시스템 설정 따르기",
+    "themeLight": "밝게",
+    "themeDark": "어둡게",
+    "about": "정보",
+    "version": "버전",
+    "license": "라이선스",
+    "licenseValue": "MIT 라이선스 (무료 오픈 소스)",
+    "github": "GitHub의 소스 코드",
+    "engineVersion": "엔진",
+    "disclaimer": "CheckMyDrive는 근거 있는 추정치를 알려 드릴 뿐, 드라이브가 절대 고장 나지 않는다고 보장할 수는 없어요. 중요한 파일은 항상 백업해 두세요.",
+    "close": "완료"
+  },
+  "metric": {
+    "read_mbps_avg": "평균 읽기 속도 (MB/s)",
+    "write_mbps": "쓰기 속도 (MB/s)",
+    "latency_ms_p99": "가장 느린 1% 응답 시간 (ms)",
+    "slow_samples": "느린 지점",
+    "read_errors": "읽기 오류",
+    "reallocated_sectors": "교체된 불량 영역",
+    "pending_sectors": "불안정한 영역",
+    "uncorrectable_sectors": "읽을 수 없는 영역",
+    "temperature_c": "온도 (°C)",
+    "percent_used": "마모율 (%)",
+    "media_errors": "저장 매체 오류",
+    "written_mb": "기록된 데이터 (MB)",
+    "mismatches": "불일치",
+    "sectors_checked": "검사한 지점",
+    "real_capacity_gb": "실제 용량 (GB)",
+    "claimed_gb": "표시된 용량 (GB)",
+    "disconnects": "연결 끊김",
+    "io_errors": "입출력 오류",
+    "rpm": "회전 속도 (RPM)",
+    "interface": "연결 방식",
+    "result": "결과"
+  },
+  "issue": {
+    "unknown": "평소와 다른 점이 발견됐어요 ({{code}}). 자세한 내용은 검사 상세표를 확인하세요.",
+    "age": {
+      "high_hours": "이 드라이브는 약 {{years}}년({{hours}}시간) 동안 전원이 켜져 있었어요. 꽤 많이 쓴 거예요.",
+      "moderate_hours": "이 드라이브는 약 {{years}}년({{hours}}시간) 동안 전원이 켜져 있었어요."
+    },
+    "drive_info": {
+      "capacity_unknown": "드라이브가 크기를 알려 주지 않았어요.",
+      "model_unknown": "드라이브가 모델명을 알려 주지 않았어요.",
+      "system_disk": "컴퓨터가 실행되고 있는 디스크예요. 데이터를 건드리지 않는 안전 검사만 실행했어요."
+    },
+    "smart": {
+      "unavailable": "건강 보고서 도구(smartmontools)를 사용할 수 없어서 드라이브 내부의 건강 데이터를 읽지 못했어요.",
+      "needs_admin": "관리자 권한이 없어서 드라이브의 건강 보고서를 읽지 못했어요.",
+      "timeout": "드라이브가 건강 보고서 요청에 제때 응답하지 않았어요.",
+      "not_supported": "이 드라이브는 건강 보고서를 제공하지 않아서 내부 상태를 알 수 없어요.",
+      "usb_bridge_blocked": "USB 어댑터가 드라이브의 건강 보고서를 가리고 있어서 내부 상태를 알 수 없어요.",
+      "overall_failed": "드라이브 자체 건강 검사에서 고장 나고 있다고 나왔어요.",
+      "reallocated_sectors": "드라이브가 손상된 {{count}}개 영역을 예비 영역으로 이미 교체했어요.",
+      "pending_sectors": "드라이브의 {{count}}개 영역을 읽을 수 없고 교체를 기다리고 있어요.",
+      "uncorrectable_sectors": "드라이브의 {{count}}개 영역을 읽거나 복구할 수 없었어요.",
+      "crc_errors": "데이터 전송 오류가 {{count}}건 기록됐어요. 케이블이나 연결 부위가 나쁠 때 자주 생겨요.",
+      "error_log_entries": "드라이브의 오류 기록에 {{count}}개 항목이 있어요.",
+      "ssd_worn": "이 SSD는 정해진 수명의 약 {{percent}}%를 사용했어요.",
+      "ssd_worn_out": "이 SSD는 정해진 수명의 약 {{percent}}%를 사용해서 수명이 거의 다 됐어요.",
+      "nvme_critical_warning": "드라이브가 심각한 경고를 알리고 있어요 (코드 {{value}}).",
+      "nvme_media_errors": "드라이브 메모리에 데이터 무결성 오류가 {{count}}건 기록됐어요.",
+      "spare_low": "드라이브의 예비 메모리가 {{percent}}%만 남았어요.",
+      "temperature_high": "드라이브가 뜨겁게 작동하고 있어요 ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "건강 정보 인터페이스를 쓸 수 없어서 드라이브의 빠른 자가 점검을 건너뛰었어요.",
+      "not_supported": "이 드라이브는 빠른 자가 점검을 지원하지 않아요.",
+      "could_not_start": "드라이브의 빠른 자가 점검을 시작하지 못했어요.",
+      "failed": "드라이브가 자체 빠른 자가 점검에서 실패했어요.",
+      "aborted": "드라이브의 빠른 자가 점검이 끝나기 전에 중단됐어요.",
+      "timeout": "드라이브의 빠른 자가 점검이 {{seconds}}초 안에 끝나지 않아 중지했어요."
+    },
+    "surface_read": {
+      "cannot_open": "드라이브를 읽기 위해 열 수 없었어요.",
+      "read_errors": "드라이브의 {{count}}곳을 읽을 수 없었어요.",
+      "slow_areas": "{{count}}개 영역({{percent}}%)의 응답이 매우 느렸어요. 표면이 닳고 있다는 뜻일 수 있어요.",
+      "low_speed": "드라이브 읽기 속도가 느려요 ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "드라이브에 안전하게 쓸 수 있는 폴더가 없어서 쓰기 검사를 건너뛰었어요.",
+      "insufficient_space": "드라이브의 여유 공간이 너무 적어서 쓰기 검사를 건너뛰었어요.",
+      "write_error": "검사 데이터를 쓰는 중 드라이브에서 오류가 발생했어요.",
+      "data_mismatch": "검사 데이터 {{count}}블록이 쓴 내용과 다르게 돌아왔어요.",
+      "slow_write": "드라이브 쓰기 속도가 매우 느려요 ({{mbps}} MB/s).",
+      "cleanup_failed": "임시 검사 파일을 삭제하지 못했어요. {{path}} 파일을 직접 지우셔도 돼요."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "가짜 용량 검사는 드라이브를 지우는 전체 검사가 필요해요. 이 검사는 건너뛰었어요.",
+      "fake_capacity": "이 드라이브는 {{claimed_bytes}}바이트를 저장할 수 있다고 하지만 실제로는 약 {{real_bytes}}바이트뿐이에요. 가짜 용량 드라이브예요.",
+      "data_corruption": "검사 블록 {{count}}개가 손상된 채 돌아왔어요.",
+      "io_error": "용량 검사 중 드라이브에서 오류가 {{count}}건 발생했어요."
+    },
+    "stability": {
+      "device_disconnected": "검사 중 드라이브가 {{count}}번 사라졌어요.",
+      "io_errors": "검사 중 드라이브에서 읽기 또는 쓰기 오류가 {{count}}건 발생했어요.",
+      "timeouts": "검사 중 드라이브 응답 시간이 {{count}}번 초과됐어요.",
+      "crc_errors_increased": "검사 중 데이터 전송 오류가 {{count}}건 늘었어요. 케이블을 확인해 보세요.",
+      "new_bad_sectors": "검사하는 동안 새로 손상된 영역이 {{count}}개 생겼어요."
+    }
+  },
+  "progress": {
+    "unknown": "작업 중…",
+    "working": "작업 중…",
+    "prepare": {
+      "starting": "준비 중...",
+      "reading_smart": "드라이브의 내장 건강 보고서를 읽는 중...",
+      "unmounting": "드라이브의 볼륨을 안전하게 분리하는 중...",
+      "ready": "검사할 준비가 됐어요."
+    },
+    "drive_info": {
+      "identifying": "드라이브를 확인하는 중..."
+    },
+    "smart_health": {
+      "analyzing": "드라이브의 건강 보고서를 확인하는 중..."
+    },
+    "selftest_short": {
+      "starting": "드라이브의 내장 빠른 자가 점검을 시작하는 중...",
+      "running": "드라이브가 빠른 자가 점검을 하고 있어요 ({{percent}}% 완료).",
+      "done": "드라이브의 자가 점검이 끝났어요.",
+      "running_seconds": "드라이브가 빠른 자가 점검을 하고 있어요 (지금까지 {{seconds}}초)."
+    },
+    "surface_read": {
+      "sampling": "드라이브 전체의 샘플 영역을 읽는 중 ({{total}}개 중 {{done}}개).",
+      "sequential": "읽기 속도를 재는 중 ({{mbps}} MB/s).",
+      "done": "표면 검사가 끝났어요."
+    },
+    "write_verify": {
+      "writing": "검사 데이터를 쓰는 중 ({{mb}} MB 기록).",
+      "verifying": "데이터를 다시 읽어 확인하는 중 ({{mb}} MB 확인).",
+      "cleaning": "임시 검사 파일을 지우는 중...",
+      "done": "쓰기 검사가 끝났어요."
+    },
+    "capacity_check": {
+      "writing": "표시된 전체 크기에 걸쳐 지점을 표시하는 중 ({{total}}개 중 {{done}}개).",
+      "verifying": "모든 지점이 자기 데이터를 갖고 있는지 확인하는 중 ({{total}}개 중 {{done}}개).",
+      "done": "용량 검사가 끝났어요."
+    },
+    "stability": {
+      "checking": "검사하는 동안 드라이브가 안정적이었는지 확인하는 중..."
+    },
+    "finish": {
+      "scoring": "점수를 계산하는 중...",
+      "done": "완료."
+    }
+  },
+  "suitability": {
+    "unknown": "제공할 정보가 없어요.",
+    "fallback": {
+      "os_install": {
+        "good": "운영체제가 안정적으로 작동하는 데 방해가 될 문제는 없어요.",
+        "caution": "작동할 수는 있지만 위험이 조금 있어요. 백업해 두세요.",
+        "no": "운영체제용으로는 안전하지 않아요."
+      },
+      "long_term_storage": {
+        "good": "파일을 오래 보관하기에 믿을 만해 보여요. 그래도 사본을 하나 더 두세요.",
+        "caution": "오래 보관하기에는 위험해요. 다른 곳에도 사본을 두세요.",
+        "no": "중요한 파일을 여기에 두지 마세요."
+      },
+      "daily_use": {
+        "good": "평소 사용에는 괜찮아요.",
+        "caution": "평소 사용은 가능하지만 새로운 문제가 생기는지 지켜보세요.",
+        "no": "매일 쓰기에는 믿을 수 없어요."
+      }
+    },
+    "os_install": {
+      "ok": "운영체제를 설치하기에 좋아요.",
+      "bad_sectors": "운영체제용으로 권하지 않아요: 손상된 영역이 있어요.",
+      "slow_latency": "운영체제용으로 권하지 않아요: 일부 읽기가 너무 느려요.",
+      "score_low": "운영체제용으로 권하지 않아요: 전체 점수({{score}})가 너무 낮아요."
+    },
+    "long_term_storage": {
+      "ok": "파일을 오래 보관하기에 좋아요.",
+      "critical_issues": "오래 보관하기에 안전하지 않아요: 심각한 문제가 발견됐어요.",
+      "score_low": "오래 보관하기에 위험해요: 전체 점수({{score}})가 너무 낮아요. 백업해 두세요."
+    },
+    "daily_use": {
+      "ok": "평소 사용에는 괜찮아요.",
+      "caution": "일상적인 파일에는 쓸 수 있지만 백업해 두세요.",
+      "no": "평소 사용에는 권하지 않아요."
+    }
+  },
+  "error": {
+    "unknown": "문제가 생겼어요 ({{code}}).",
+    "title": "검사를 끝내지 못했어요",
+    "retry": "다시 시도",
+    "choose": "다른 드라이브 선택",
+    "refused": "안전을 위해 검사가 거부됐어요. 삭제 검사는 시스템 디스크에서, 또는 일치하는 일련번호 없이는 실행할 수 없어요.",
+    "engine_failed": "검사 도구가 예기치 않게 멈췄어요.",
+    "engine_missing": "검사 도구를 찾을 수 없어요. CheckMyDrive를 다시 설치해 주세요.",
+    "auth_cancelled": "권한이 허용되지 않아서 드라이브를 검사하지 않았어요.",
+    "elevation_unavailable": "이 컴퓨터에서 관리자 권한을 요청할 수 없었어요.",
+    "bad_args": "내부 요청 오류로 검사를 시작하지 못했어요.",
+    "needs_admin": "이 드라이브를 검사하려면 관리자 권한이 필요해요.",
+    "drive_not_found": "그 드라이브를 찾을 수 없어요. 뽑혔을 수 있어요.",
+    "system_disk_refused": "컴퓨터가 실행되고 있는 디스크라서 지울 수 없어요. 다른 드라이브를 선택하세요.",
+    "confirm_required": "데이터를 지우는 전체 검사를 하기 전에 드라이브의 일련번호를 확인해 주세요.",
+    "confirm_mismatch": "입력한 일련번호가 이 드라이브와 일치하지 않아요. 아무것도 변경되지 않았어요.",
+    "cannot_open_device": "검사를 위해 드라이브를 열 수 없었어요. 다른 프로그램이 사용 중일 수 있어요.",
+    "unmount_failed": "전체 검사 전에 드라이브의 볼륨을 안전하게 분리하지 못했어요. 드라이브를 쓰는 프로그램을 모두 닫고 다시 시도하세요.",
+    "internal": "검사 엔진 내부에서 예기치 않은 문제가 생겼어요."
+  },
+  "common": {
+    "loading": "불러오는 중…",
+    "close": "닫기",
+    "unknown": "알 수 없음"
+  }
+}

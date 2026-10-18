@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Find ud af, om et brugt drev er sikkert, før du stoler på det.",
+    "skip": "Gå til hovedindholdet"
+  },
+  "nav": {
+    "settings": "Indstillinger",
+    "back": "Tilbage",
+    "mockBanner": "Demotilstand: der vises eksempeldrev. Intet på din computer bliver testet."
+  },
+  "picker": {
+    "title": "Hvilket drev vil du tjekke?",
+    "subtitle": "Tilslut det drev, du overvejer at købe eller bruge, og vælg det nedenfor. Tjekket tager cirka 3 til 4 minutter.",
+    "refresh": "Opdater",
+    "refreshing": "Leder efter drev…",
+    "empty": "Ingen drev fundet. Tilslut et, og tryk på Opdater.",
+    "systemDisk": "Systemdrev",
+    "systemDiskHint": "Din computer kører fra dette drev. Det kan kun tjekkes i sikker tilstand.",
+    "unknownModel": "Ukendt drev",
+    "select": "Tjek dette drev",
+    "kind": {
+      "hdd": "Harddisk (HDD)",
+      "ssd": "SSD-drev",
+      "nvme": "NVMe SSD",
+      "usb": "USB-stik eller USB-drev",
+      "sd": "SD-/hukommelseskort",
+      "unknown": "Drev"
+    },
+    "removable": "Flytbart",
+    "loadFailed": "Vi kunne ikke læse listen over drev.",
+    "noAdminNote": "Nogle oplysninger, f.eks. sundhedsdata, kan kræve administratortilladelse og bliver bedt om, når tjekket starter."
+  },
+  "mode": {
+    "title": "Hvor grundigt skal tjekket være?",
+    "checking": "Tjekker",
+    "safe": {
+      "title": "Hurtig sikker test (dine filer bevares)",
+      "desc": "Læser hele drevet og skriver en lille midlertidig fil, så intet af det, du ejer, bliver ændret eller mistet.",
+      "badge": "Anbefalet",
+      "limit": "Kan ikke opdage falsk kapacitet."
+    },
+    "wipe": {
+      "title": "Fuld sletningstest (mest grundig, SLETTER alt)",
+      "desc": "Skriver også over hele drevet for at afsløre falsk kapacitet og skjulte fejl. Alle filer på drevet bliver slettet for altid.",
+      "dangerTitle": "Farezone: drevet bliver slettet",
+      "dangerBody": "Dette sletter permanent ALLE data på {{model}}. Det kan ikke fortrydes. Fortsæt kun, hvis drevet er tomt, eller du har en sikkerhedskopi.",
+      "confirmLabel": "For at bekræfte skal du skrive drevets serienummer: {{serial}}",
+      "confirmPlaceholder": "Skriv serienummeret her",
+      "noSerial": "Dette drev oplyser ikke et serienummer, så en fuld sletningstest er ikke tilgængelig.",
+      "systemBlocked": "Dit systemdrev kan aldrig slettes. Kun den sikre test er tilgængelig.",
+      "mismatch": "Teksten svarer ikke til serienummeret endnu.",
+      "start": "Slet og kør fuld test",
+      "expand": "Vis fuld sletningstest",
+      "collapse": "Skjul fuld sletningstest"
+    },
+    "start": "Start hurtig sikker test",
+    "back": "Vælg et andet drev",
+    "duration": "Tager cirka 3 til 4 minutter. Træk ikke drevet ud."
+  },
+  "running": {
+    "title": "Tjekker dit drev",
+    "subtitle": "Lad drevet sidde i, og hold computeren vågen.",
+    "overall": "Samlet fremskridt",
+    "elapsed": "Forløbet tid",
+    "remaining": "Cirka {{time}} tilbage",
+    "estimating": "Beregner tid…",
+    "cancel": "Annuller test",
+    "cancelling": "Annullerer…",
+    "cancelConfirm": "Stop testen? Intet på dit drev blev ændret i sikker tilstand.",
+    "keepGoing": "Fortsæt",
+    "stop": "Stop testen",
+    "checklist": "Det her tjekker vi",
+    "waiting": "Venter på tilladelse…",
+    "adminPrompt": "Din computer kan bede om din adgangskode. Det lader CheckMyDrive læse drevet direkte.",
+    "phase": {
+      "prepare": "Gør klar",
+      "finish": "Regner din score ud"
+    },
+    "status": {
+      "pending": "Venter",
+      "running": "Tjekker",
+      "done": "Færdig"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Drevets identitet",
+      "desc": "Model, størrelse og type af drev"
+    },
+    "smart_health": {
+      "name": "Sundhedsrapport",
+      "desc": "Drevets egen logbog over problemer og slid"
+    },
+    "selftest_short": {
+      "name": "Indbygget selvtjek",
+      "desc": "Drevet tjekker sig selv"
+    },
+    "surface_read": {
+      "name": "Overfladescanning",
+      "desc": "Læser steder over hele drevet"
+    },
+    "write_verify": {
+      "name": "Skriv og bekræft",
+      "desc": "Gemmer data og læser dem tilbage"
+    },
+    "capacity_check": {
+      "name": "Reel kapacitet",
+      "desc": "Sikrer, at størrelsen ikke er falsk"
+    },
+    "stability": {
+      "name": "Stabilitet",
+      "desc": "Holder øje med afbrydelser og fejl"
+    }
+  },
+  "status": {
+    "pass": "Bestået",
+    "warn": "Advarsel",
+    "fail": "Fejlet",
+    "skipped": "Sprunget over"
+  },
+  "results": {
+    "title": "Resultater",
+    "scoreOutOf": "ud af 100",
+    "scoreLabel": "Score {{score}} ud af 100",
+    "verdict": {
+      "buy": "Godt at købe",
+      "caution": "Brug med forsigtighed",
+      "avoid": "Undgå"
+    },
+    "summary": {
+      "buy": "Dette {{model}} ser sundt ud. Vi fandt ingen alvorlige problemer, og det bør være fint til almindelig brug.",
+      "caution": "Dette {{model}} virker, men vi fandt nogle advarselstegn. Brug det kun til filer, du kan undvære, eller forhandl en lavere pris.",
+      "avoid": "Stol ikke på dette {{model}}. Vi fandt alvorlige problemer, der sætter dine filer på spil.",
+      "fake_capacity": "Dette {{model}} lyver om sin størrelse. Det påstår at have {{claimed}}, men kan i virkeligheden ikke gemme så meget. Køb eller brug det ikke.",
+      "failing": "Dette {{model}} er ved at gå i stykker. Dets egne sundhedsdata og vores tests viser, at det når som helst kan miste dine filer."
+    },
+    "can": {
+      "title": "Kan jeg…",
+      "os": "Installere et operativsystem på det?",
+      "storage": "Gemme filer på det i lang tid?",
+      "daily": "Bruge det hver dag?",
+      "fill": "Fylde det sikkert op?",
+      "fillYes": "Gemme sikkert op til {{size}} af {{total}}",
+      "fillNo": "Vi ville ikke gemme noget vigtigt på det.",
+      "yes": "Ja",
+      "maybe": "Måske",
+      "no": "Nej"
+    },
+    "age": {
+      "title": "Drevets alder",
+      "years": "Cirka {{count}} års brug",
+      "yearsLessThanOne": "Mindre end et års brug",
+      "hours": "{{hours}} timer tændt",
+      "made": "Fremstillet: {{date}}",
+      "cycles": "Tændt {{count}} gange",
+      "unknown": "Dette drev oplyser ikke, hvor længe det har været brugt.",
+      "note": "Timer tælles kun, mens drevet er tændt. Et drev, der kører døgnet rundt, ældes hurtigere end et, der bruges få timer om dagen."
+    },
+    "issues": {
+      "title": "Det fandt vi",
+      "none": "Ingen problemer fundet.",
+      "critical": "Alvorligt",
+      "warn": "Advarsel",
+      "info": "Bemærkning"
+    },
+    "matrix": {
+      "title": "Testoversigt",
+      "subtitle": "Detaljer for avancerede brugere",
+      "show": "Vis detaljer",
+      "hide": "Skjul detaljer",
+      "test": "Test",
+      "status": "Status",
+      "score": "Score",
+      "metrics": "Nøgletal",
+      "none": "Ingen tal registreret"
+    },
+    "export": "Eksporter rapport",
+    "exportJson": "Gem som JSON",
+    "exportHtml": "Gem som webside (HTML)",
+    "print": "Udskriv eller gem som PDF",
+    "saved": "Rapporten er gemt.",
+    "saveFailed": "Rapporten kunne ikke gemmes.",
+    "another": "Test et andet drev",
+    "mode": {
+      "safe": "Hurtig sikker test",
+      "wipe": "Fuld sletningstest"
+    },
+    "tested": "Testet den {{date}}",
+    "engine": "Motor {{version}}",
+    "skippedNote": "Registrering af falsk kapacitet blev ikke kørt. Brug den fulde sletningstest på et tomt drev for at få et fuldstændigt svar."
+  },
+  "report": {
+    "title": "CheckMyDrive-rapport",
+    "generatedBy": "Oprettet af CheckMyDrive (open source)"
+  },
+  "settings": {
+    "title": "Indstillinger og om",
+    "language": "Sprog",
+    "languageHint": "Andre sprog end engelsk indlæses, efterhånden som de bliver tilgængelige; manglende tekst vises på engelsk.",
+    "theme": "Udseende",
+    "themeSystem": "Følg systemet",
+    "themeLight": "Lyst",
+    "themeDark": "Mørkt",
+    "about": "Om",
+    "version": "Version",
+    "license": "Licens",
+    "licenseValue": "MIT-licens (gratis og open source)",
+    "github": "Kildekode på GitHub",
+    "engineVersion": "Motor",
+    "disclaimer": "CheckMyDrive giver et kvalificeret skøn og kan ikke garantere, at et drev aldrig går i stykker. Tag altid sikkerhedskopier af vigtige filer.",
+    "close": "Færdig"
+  },
+  "metric": {
+    "read_mbps_avg": "Gennemsnitlig læsehastighed (MB/s)",
+    "write_mbps": "Skrivehastighed (MB/s)",
+    "latency_ms_p99": "Langsomste 1 % svartid (ms)",
+    "slow_samples": "Langsomme steder",
+    "read_errors": "Læsefejl",
+    "reallocated_sectors": "Udskiftede dårlige områder",
+    "pending_sectors": "Ustabile områder",
+    "uncorrectable_sectors": "Ulæselige områder",
+    "temperature_c": "Temperatur (°C)",
+    "percent_used": "Brugt slid (%)",
+    "media_errors": "Mediefejl",
+    "written_mb": "Skrevne data (MB)",
+    "mismatches": "Uoverensstemmelser",
+    "sectors_checked": "Tjekkede steder",
+    "real_capacity_gb": "Reel kapacitet (GB)",
+    "claimed_gb": "Oplyst kapacitet (GB)",
+    "disconnects": "Afbrydelser",
+    "io_errors": "Ind-/udlæsningsfejl",
+    "rpm": "Omdrejningshastighed (RPM)",
+    "interface": "Forbindelse",
+    "result": "Resultat"
+  },
+  "issue": {
+    "unknown": "Der blev fundet noget usædvanligt ({{code}}). Se testoversigten for detaljer.",
+    "age": {
+      "high_hours": "Dette drev har været tændt i cirka {{years}} år ({{hours}} timer), hvilket er meget brug.",
+      "moderate_hours": "Dette drev har været tændt i cirka {{years}} år ({{hours}} timer)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Drevet oplyste ikke, hvor stort det er.",
+      "model_unknown": "Drevet oplyste ikke sit modelnavn.",
+      "system_disk": "Dette er det drev, din computer kører fra. Kun den sikre, ikke-destruktive test blev kørt."
+    },
+    "smart": {
+      "unavailable": "Værktøjet til sundhedsrapporten (smartmontools) er ikke tilgængeligt, så drevets interne sundhedsdata kunne ikke læses.",
+      "needs_admin": "Drevets sundhedsrapport kunne ikke læses uden administratortilladelse.",
+      "timeout": "Drevet svarede ikke på anmodningen om sundhedsrapport i tide.",
+      "not_supported": "Dette drev leverer ikke en sundhedsrapport, så dets indre tilstand er ukendt.",
+      "usb_bridge_blocked": "USB-adapteren skjuler drevets sundhedsrapport, så dets indre tilstand er ukendt.",
+      "overall_failed": "Drevets eget sundhedstjek siger, at det er ved at gå i stykker.",
+      "reallocated_sectors": "Drevet har allerede erstattet {{count}} beskadigede områder med reserver.",
+      "pending_sectors": "{{count}} områder på drevet er ulæselige og venter på at blive udskiftet.",
+      "uncorrectable_sectors": "{{count}} områder på drevet kunne ikke læses eller rettes.",
+      "crc_errors": "{{count}} dataoverførselsfejl blev registreret, ofte forårsaget af et dårligt kabel eller stik.",
+      "error_log_entries": "Drevets fejllog indeholder {{count}} poster.",
+      "ssd_worn": "Dette SSD-drev har brugt cirka {{percent}} % af sin forventede levetid.",
+      "ssd_worn_out": "Dette SSD-drev har brugt cirka {{percent}} % af sin forventede levetid og er tæt på enden.",
+      "nvme_critical_warning": "Drevet rapporterer en kritisk advarsel (kode {{value}}).",
+      "nvme_media_errors": "Drevets hukommelse har registreret {{count}} fejl i dataintegriteten.",
+      "spare_low": "Kun {{percent}} % af drevets reservehukommelse er tilbage.",
+      "temperature_high": "Drevet kører varmt ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Drevets hurtige selvtest blev sprunget over, fordi dets sundhedsgrænseflade ikke er tilgængelig.",
+      "not_supported": "Dette drev understøtter ikke den hurtige selvtest.",
+      "could_not_start": "Drevets hurtige selvtest kunne ikke startes.",
+      "failed": "Drevet bestod ikke sin egen hurtige selvtest.",
+      "aborted": "Drevets hurtige selvtest blev afbrudt, før den blev færdig.",
+      "timeout": "Drevets hurtige selvtest blev ikke færdig inden for {{seconds}} sekunder og blev stoppet."
+    },
+    "surface_read": {
+      "cannot_open": "Drevet kunne ikke åbnes til læsning.",
+      "read_errors": "{{count}} dele af drevet kunne ikke læses.",
+      "slow_areas": "{{count}} områder ({{percent}} %) svarede meget langsomt, hvilket kan betyde, at overfladen slides ned.",
+      "low_speed": "Drevet læser langsomt ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Skrivetesten blev sprunget over, fordi drevet ikke har en mappe, vi sikkert kan skrive til.",
+      "insufficient_space": "Skrivetesten blev sprunget over, fordi drevet har for lidt ledig plads.",
+      "write_error": "Drevet rapporterede en fejl under skrivning af testdata.",
+      "data_mismatch": "{{count}} blokke testdata kom tilbage anderledes end det, der blev skrevet.",
+      "slow_write": "Drevet skriver meget langsomt ({{mbps}} MB/s).",
+      "cleanup_failed": "Den midlertidige testfil kunne ikke slettes. Du kan selv fjerne {{path}}."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Tjekket for falsk kapacitet kræver den fulde test, som sletter drevet. Det blev sprunget over.",
+      "fake_capacity": "Dette drev påstår at kunne rumme {{claimed_bytes}} bytes, men kun cirka {{real_bytes}} bytes er ægte. Det er et drev med falsk kapacitet.",
+      "data_corruption": "{{count}} testblokke kom tilbage beskadigede.",
+      "io_error": "Drevet returnerede {{count}} fejl under kapacitetstjekket."
+    },
+    "stability": {
+      "device_disconnected": "Drevet forsvandt {{count}} gang(e) under testene.",
+      "io_errors": "Drevet returnerede {{count}} læse- eller skrivefejl under testene.",
+      "timeouts": "Drevet svarede ikke i tide {{count}} gang(e) under testene.",
+      "crc_errors_increased": "Dataoverførselsfejl steg med {{count}} under testene. Tjek kablet.",
+      "new_bad_sectors": "{{count}} nye beskadigede områder dukkede op, mens vi testede."
+    }
+  },
+  "progress": {
+    "unknown": "Arbejder…",
+    "working": "Arbejder…",
+    "prepare": {
+      "starting": "Gør klar...",
+      "reading_smart": "Læser drevets indbyggede sundhedsrapport...",
+      "unmounting": "Frakobler drevets diske sikkert...",
+      "ready": "Klar til at teste."
+    },
+    "drive_info": {
+      "identifying": "Identificerer drevet..."
+    },
+    "smart_health": {
+      "analyzing": "Tjekker drevets sundhedsrapport..."
+    },
+    "selftest_short": {
+      "starting": "Starter drevets indbyggede hurtige selvtest...",
+      "running": "Drevet kører sin egen hurtige selvtest ({{percent}} % færdig).",
+      "done": "Drevets selvtest er færdig.",
+      "running_seconds": "Drevet kører sin egen hurtige selvtest ({{seconds}} sekunder indtil videre)."
+    },
+    "surface_read": {
+      "sampling": "Læser stikprøver over hele drevet ({{done}} af {{total}}).",
+      "sequential": "Måler læsehastighed ({{mbps}} MB/s).",
+      "done": "Overfladescanningen er færdig."
+    },
+    "write_verify": {
+      "writing": "Skriver testdata ({{mb}} MB skrevet).",
+      "verifying": "Læser dataene tilbage for at tjekke dem ({{mb}} MB tjekket).",
+      "cleaning": "Fjerner den midlertidige testfil...",
+      "done": "Skrivetesten er færdig."
+    },
+    "capacity_check": {
+      "writing": "Markerer steder over hele den oplyste størrelse ({{done}} af {{total}}).",
+      "verifying": "Tjekker, at hvert sted holder sine egne data ({{done}} af {{total}}).",
+      "done": "Kapacitetstjekket er færdigt."
+    },
+    "stability": {
+      "checking": "Tjekker, at drevet var stabilt under testene..."
+    },
+    "finish": {
+      "scoring": "Regner din score ud...",
+      "done": "Færdig."
+    }
+  },
+  "suitability": {
+    "unknown": "Ingen detaljer tilgængelige.",
+    "fallback": {
+      "os_install": {
+        "good": "Ingen problemer, der ville forhindre et operativsystem i at køre pålideligt.",
+        "caution": "Det kan fungere, men der er en vis risiko. Tag en sikkerhedskopi.",
+        "no": "Ikke sikkert til et operativsystem."
+      },
+      "long_term_storage": {
+        "good": "Ser pålideligt ud til langtidsopbevaring af filer. Hav alligevel en ekstra kopi.",
+        "caution": "Risikabelt til langtidsopbevaring. Hav en kopi et andet sted.",
+        "no": "Gem ikke vigtige filer her."
+      },
+      "daily_use": {
+        "good": "Fint til daglig brug.",
+        "caution": "Okay til daglig brug, men hold øje med nye problemer.",
+        "no": "Ikke pålideligt nok til daglig brug."
+      }
+    },
+    "os_install": {
+      "ok": "Godt til at installere et operativsystem på.",
+      "bad_sectors": "Anbefales ikke til et operativsystem: det har beskadigede områder.",
+      "slow_latency": "Anbefales ikke til et operativsystem: nogle læsninger er for langsomme.",
+      "score_low": "Anbefales ikke til et operativsystem: den samlede score ({{score}}) er for lav."
+    },
+    "long_term_storage": {
+      "ok": "Godt til langtidsopbevaring af filer.",
+      "critical_issues": "Ikke sikkert til langtidsopbevaring: der blev fundet alvorlige problemer.",
+      "score_low": "Risikabelt til langtidsopbevaring: den samlede score ({{score}}) er for lav. Tag sikkerhedskopier."
+    },
+    "daily_use": {
+      "ok": "Fint til daglig brug.",
+      "caution": "Kan bruges til almindelige filer, men tag sikkerhedskopier.",
+      "no": "Anbefales ikke til daglig brug."
+    }
+  },
+  "error": {
+    "unknown": "Noget gik galt ({{code}}).",
+    "title": "Tjekket kunne ikke gennemføres",
+    "retry": "Prøv igen",
+    "choose": "Vælg et andet drev",
+    "refused": "Testen blev afvist af sikkerhedshensyn. Sletningstests kan ikke køres på systemdrevet eller uden et matchende serienummer.",
+    "engine_failed": "Tjekværktøjet stoppede uventet.",
+    "engine_missing": "Tjekværktøjet blev ikke fundet. Geninstaller CheckMyDrive.",
+    "auth_cancelled": "Der blev ikke givet tilladelse, så drevet blev ikke tjekket.",
+    "elevation_unavailable": "Kunne ikke bede om administratortilladelse på denne computer.",
+    "bad_args": "Testen kunne ikke starte på grund af en intern anmodningsfejl.",
+    "needs_admin": "Der kræves administratortilladelse for at teste dette drev.",
+    "drive_not_found": "Drevet kunne ikke findes. Det kan være blevet trukket ud.",
+    "system_disk_refused": "Dette er det drev, din computer kører fra, så det kan ikke slettes. Vælg et andet drev.",
+    "confirm_required": "Bekræft drevets serienummer før en fuld test, der sletter data.",
+    "confirm_mismatch": "Det serienummer, du indtastede, svarer ikke til dette drev. Intet blev ændret.",
+    "cannot_open_device": "Drevet kunne ikke åbnes til test. Et andet program bruger det måske.",
+    "unmount_failed": "Drevets diske kunne ikke frakobles sikkert før den fulde test. Luk programmer, der bruger det, og prøv igen.",
+    "internal": "Noget uventet gik galt inde i testmotoren."
+  },
+  "common": {
+    "loading": "Indlæser…",
+    "close": "Luk",
+    "unknown": "Ukendt"
+  }
+}

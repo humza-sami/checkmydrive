@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Ta reda på om en begagnad disk är säker innan du litar på den.",
+    "skip": "Hoppa till huvudinnehållet"
+  },
+  "nav": {
+    "settings": "Inställningar",
+    "back": "Tillbaka",
+    "mockBanner": "Demoläge: exempeldiskar visas. Ingenting på din dator testas."
+  },
+  "picker": {
+    "title": "Vilken disk vill du kontrollera?",
+    "subtitle": "Anslut disken du funderar på att köpa eller använda och välj den nedan. Kontrollen tar ungefär 3 till 4 minuter.",
+    "refresh": "Uppdatera",
+    "refreshing": "Letar efter diskar…",
+    "empty": "Inga diskar hittades. Anslut en och tryck på Uppdatera.",
+    "systemDisk": "Systemdisk",
+    "systemDiskHint": "Din dator startar från den här disken. Den kan bara kontrolleras i säkert läge.",
+    "unknownModel": "Okänd disk",
+    "select": "Kontrollera den här disken",
+    "kind": {
+      "hdd": "Hårddisk (HDD)",
+      "ssd": "SSD-disk",
+      "nvme": "NVMe SSD",
+      "usb": "USB-minne eller USB-disk",
+      "sd": "SD-/minneskort",
+      "unknown": "Disk"
+    },
+    "removable": "Flyttbar",
+    "loadFailed": "Vi kunde inte läsa listan över diskar.",
+    "noAdminNote": "Vissa uppgifter, till exempel hälsodata, kan kräva administratörsbehörighet och begärs när kontrollen startar."
+  },
+  "mode": {
+    "title": "Hur grundlig ska kontrollen vara?",
+    "checking": "Kontrollerar",
+    "safe": {
+      "title": "Snabbt säkert test (dina filer finns kvar)",
+      "desc": "Läser hela disken och skriver en liten tillfällig fil, så ingenting du äger ändras eller försvinner.",
+      "badge": "Rekommenderas",
+      "limit": "Kan inte upptäcka falsk kapacitet."
+    },
+    "wipe": {
+      "title": "Fullständigt raderingstest (mest grundligt, RADERAR allt)",
+      "desc": "Skriver även över hela disken för att hitta falsk kapacitet och dolda fel. Alla filer på disken förstörs permanent.",
+      "dangerTitle": "Farozon: disken raderas",
+      "dangerBody": "Detta raderar permanent ALLA data på {{model}}. Det går inte att ångra. Fortsätt bara om disken är tom eller om du har en säkerhetskopia.",
+      "confirmLabel": "Bekräfta genom att skriva diskens serienummer: {{serial}}",
+      "confirmPlaceholder": "Skriv serienumret här",
+      "noSerial": "Den här disken uppger inget serienummer, så ett fullständigt raderingstest är inte tillgängligt.",
+      "systemBlocked": "Din systemdisk kan aldrig raderas. Bara det säkra testet är tillgängligt.",
+      "mismatch": "Texten stämmer inte med serienumret ännu.",
+      "start": "Radera och kör fullständigt test",
+      "expand": "Visa fullständigt raderingstest",
+      "collapse": "Dölj fullständigt raderingstest"
+    },
+    "start": "Starta snabbt säkert test",
+    "back": "Välj en annan disk",
+    "duration": "Tar ungefär 3 till 4 minuter. Koppla inte ur disken."
+  },
+  "running": {
+    "title": "Kontrollerar din disk",
+    "subtitle": "Låt disken vara ansluten och datorn vaken.",
+    "overall": "Totalt förlopp",
+    "elapsed": "Förflutet",
+    "remaining": "Ungefär {{time}} kvar",
+    "estimating": "Uppskattar tid…",
+    "cancel": "Avbryt testet",
+    "cancelling": "Avbryter…",
+    "cancelConfirm": "Stoppa testet? Ingenting på disken har ändrats i säkert läge.",
+    "keepGoing": "Fortsätt",
+    "stop": "Stoppa testet",
+    "checklist": "Vad vi kontrollerar",
+    "waiting": "Väntar på tillstånd…",
+    "adminPrompt": "Datorn kan fråga efter ditt lösenord. Det gör att CheckMyDrive kan läsa disken direkt.",
+    "phase": {
+      "prepare": "Förbereder",
+      "finish": "Räknar ut ditt betyg"
+    },
+    "status": {
+      "pending": "Väntar",
+      "running": "Kontrollerar",
+      "done": "Klart"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Diskens identitet",
+      "desc": "Modell, storlek och typ av disk"
+    },
+    "smart_health": {
+      "name": "Hälsorapport",
+      "desc": "Diskens egen logg över problem och slitage"
+    },
+    "selftest_short": {
+      "name": "Inbyggd självkontroll",
+      "desc": "Disken kontrollerar sig själv"
+    },
+    "surface_read": {
+      "name": "Ytskanning",
+      "desc": "Läser platser över hela disken"
+    },
+    "write_verify": {
+      "name": "Skriv och verifiera",
+      "desc": "Sparar data och läser tillbaka den"
+    },
+    "capacity_check": {
+      "name": "Verklig kapacitet",
+      "desc": "Säkerställer att storleken inte är falsk"
+    },
+    "stability": {
+      "name": "Stabilitet",
+      "desc": "Bevakar avbrott och fel"
+    }
+  },
+  "status": {
+    "pass": "Godkänd",
+    "warn": "Varning",
+    "fail": "Misslyckades",
+    "skipped": "Hoppades över"
+  },
+  "results": {
+    "title": "Resultat",
+    "scoreOutOf": "av 100",
+    "scoreLabel": "Betyg {{score}} av 100",
+    "verdict": {
+      "buy": "Bra att köpa",
+      "caution": "Använd med försiktighet",
+      "avoid": "Undvik"
+    },
+    "summary": {
+      "buy": "Den här {{model}} ser frisk ut. Vi hittade inga allvarliga problem och den bör fungera bra i vardagen.",
+      "caution": "Den här {{model}} fungerar, men vi hittade några varningssignaler. Använd den bara till filer du har råd att förlora, eller förhandla om ett lägre pris.",
+      "avoid": "Lita inte på den här {{model}}. Vi hittade allvarliga problem som sätter dina filer i fara.",
+      "fake_capacity": "Den här {{model}} ljuger om sin storlek. Den påstår sig rymma {{claimed}} men kan faktiskt inte lagra så mycket. Köp eller använd den inte.",
+      "failing": "Den här {{model}} är på väg att gå sönder. Diskens egna hälsodata och våra tester visar att den när som helst kan förlora dina filer."
+    },
+    "can": {
+      "title": "Kan jag…",
+      "os": "Installera ett operativsystem på den?",
+      "storage": "Lagra filer på den långsiktigt?",
+      "daily": "Använda den varje dag?",
+      "fill": "Fylla den på ett säkert sätt?",
+      "fillYes": "Lagra säkert upp till {{size}} av {{total}}",
+      "fillNo": "Vi skulle inte lagra något viktigt på den.",
+      "yes": "Ja",
+      "maybe": "Kanske",
+      "no": "Nej"
+    },
+    "age": {
+      "title": "Diskens ålder",
+      "years": "Ungefär {{count}} års användning",
+      "yearsLessThanOne": "Mindre än ett års användning",
+      "hours": "{{hours}} timmar påslagen",
+      "made": "Tillverkad: {{date}}",
+      "cycles": "Påslagen {{count}} gånger",
+      "unknown": "Den här disken uppger inte hur länge den har använts.",
+      "note": "Timmar räknas bara när disken är påslagen. En disk som körs dygnet runt åldras snabbare än en som används några timmar om dagen."
+    },
+    "issues": {
+      "title": "Det här hittade vi",
+      "none": "Inga problem hittades.",
+      "critical": "Allvarligt",
+      "warn": "Varning",
+      "info": "Notering"
+    },
+    "matrix": {
+      "title": "Testmatris",
+      "subtitle": "Detaljer för avancerade användare",
+      "show": "Visa detaljer",
+      "hide": "Dölj detaljer",
+      "test": "Test",
+      "status": "Status",
+      "score": "Poäng",
+      "metrics": "Nyckeltal",
+      "none": "Inga siffror registrerades"
+    },
+    "export": "Exportera rapport",
+    "exportJson": "Spara som JSON",
+    "exportHtml": "Spara som webbsida (HTML)",
+    "print": "Skriv ut eller spara som PDF",
+    "saved": "Rapporten sparades.",
+    "saveFailed": "Det gick inte att spara rapporten.",
+    "another": "Testa en annan disk",
+    "mode": {
+      "safe": "Snabbt säkert test",
+      "wipe": "Fullständigt raderingstest"
+    },
+    "tested": "Testad den {{date}}",
+    "engine": "Motor {{version}}",
+    "skippedNote": "Kontrollen av falsk kapacitet kördes inte. Använd det fullständiga raderingstestet på en tom disk för ett komplett svar."
+  },
+  "report": {
+    "title": "CheckMyDrive-rapport",
+    "generatedBy": "Skapad av CheckMyDrive (öppen källkod)"
+  },
+  "settings": {
+    "title": "Inställningar och om",
+    "language": "Språk",
+    "languageHint": "Andra språk än engelska läses in när de blir tillgängliga; text som saknas visas på engelska.",
+    "theme": "Utseende",
+    "themeSystem": "Följ systemet",
+    "themeLight": "Ljust",
+    "themeDark": "Mörkt",
+    "about": "Om",
+    "version": "Version",
+    "license": "Licens",
+    "licenseValue": "MIT-licens (gratis och öppen källkod)",
+    "github": "Källkod på GitHub",
+    "engineVersion": "Motor",
+    "disclaimer": "CheckMyDrive ger en kvalificerad uppskattning och kan inte garantera att en disk aldrig går sönder. Ta alltid säkerhetskopior av filer som är viktiga.",
+    "close": "Klar"
+  },
+  "metric": {
+    "read_mbps_avg": "Genomsnittlig läshastighet (MB/s)",
+    "write_mbps": "Skrivhastighet (MB/s)",
+    "latency_ms_p99": "Långsammaste 1 % svarstid (ms)",
+    "slow_samples": "Långsamma ställen",
+    "read_errors": "Läsfel",
+    "reallocated_sectors": "Ersatta dåliga områden",
+    "pending_sectors": "Instabila områden",
+    "uncorrectable_sectors": "Oläsliga områden",
+    "temperature_c": "Temperatur (°C)",
+    "percent_used": "Förbrukat slitage (%)",
+    "media_errors": "Mediefel",
+    "written_mb": "Skriven data (MB)",
+    "mismatches": "Avvikelser",
+    "sectors_checked": "Kontrollerade ställen",
+    "real_capacity_gb": "Verklig kapacitet (GB)",
+    "claimed_gb": "Angiven kapacitet (GB)",
+    "disconnects": "Frånkopplingar",
+    "io_errors": "In-/utmatningsfel",
+    "rpm": "Varvhastighet (RPM)",
+    "interface": "Anslutning",
+    "result": "Resultat"
+  },
+  "issue": {
+    "unknown": "Något ovanligt hittades ({{code}}). Se testmatrisen för detaljer.",
+    "age": {
+      "high_hours": "Den här disken har varit påslagen i ungefär {{years}} år ({{hours}} timmar), vilket är mycket användning.",
+      "moderate_hours": "Den här disken har varit påslagen i ungefär {{years}} år ({{hours}} timmar)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Disken uppgav inte hur stor den är.",
+      "model_unknown": "Disken uppgav inte sitt modellnamn.",
+      "system_disk": "Det här är disken som din dator startar från. Bara det säkra, icke-destruktiva testet kördes."
+    },
+    "smart": {
+      "unavailable": "Hälsorapportverktyget (smartmontools) är inte tillgängligt, så diskens interna hälsodata kunde inte läsas.",
+      "needs_admin": "Diskens hälsorapport kunde inte läsas utan administratörsbehörighet.",
+      "timeout": "Disken svarade inte på hälsorapportbegäran i tid.",
+      "not_supported": "Den här disken ger ingen hälsorapport, så dess inre skick är okänt.",
+      "usb_bridge_blocked": "USB-adaptern döljer diskens hälsorapport, så dess inre skick är okänt.",
+      "overall_failed": "Diskens egen hälsokontroll säger att den är på väg att gå sönder.",
+      "reallocated_sectors": "Disken har redan ersatt {{count}} skadade områden med reserver.",
+      "pending_sectors": "{{count}} områden på disken är oläsliga och väntar på att bytas ut.",
+      "uncorrectable_sectors": "{{count}} områden på disken gick inte att läsa eller rätta till.",
+      "crc_errors": "{{count}} dataöverföringsfel registrerades, ofta orsakade av en dålig kabel eller kontakt.",
+      "error_log_entries": "Diskens fellogg innehåller {{count}} poster.",
+      "ssd_worn": "Den här SSD:n har förbrukat ungefär {{percent}} % av sin beräknade livslängd.",
+      "ssd_worn_out": "Den här SSD:n har förbrukat ungefär {{percent}} % av sin beräknade livslängd och är nära slutet.",
+      "nvme_critical_warning": "Disken rapporterar en kritisk varning (kod {{value}}).",
+      "nvme_media_errors": "Diskens minne har loggat {{count}} dataintegritetsfel.",
+      "spare_low": "Bara {{percent}} % av diskens reservminne är kvar.",
+      "temperature_high": "Disken går varm ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Diskens snabba självtest hoppades över eftersom dess hälsogränssnitt inte är tillgängligt.",
+      "not_supported": "Den här disken stöder inte det snabba självtestet.",
+      "could_not_start": "Diskens snabba självtest kunde inte startas.",
+      "failed": "Disken misslyckades med sitt eget snabba självtest.",
+      "aborted": "Diskens snabba självtest avbröts innan det blev klart.",
+      "timeout": "Diskens snabba självtest blev inte klart inom {{seconds}} sekunder och stoppades."
+    },
+    "surface_read": {
+      "cannot_open": "Disken kunde inte öppnas för läsning.",
+      "read_errors": "{{count}} delar av disken gick inte att läsa.",
+      "slow_areas": "{{count}} områden ({{percent}} %) svarade mycket långsamt, vilket kan betyda att ytan slits ut.",
+      "low_speed": "Disken läser långsamt ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Skrivtestet hoppades över eftersom disken saknar en mapp vi säkert kan skriva till.",
+      "insufficient_space": "Skrivtestet hoppades över eftersom disken har för lite ledigt utrymme.",
+      "write_error": "Disken rapporterade ett fel när testdata skrevs.",
+      "data_mismatch": "{{count}} block med testdata kom tillbaka annorlunda än det som skrevs.",
+      "slow_write": "Disken skriver mycket långsamt ({{mbps}} MB/s).",
+      "cleanup_failed": "Den tillfälliga testfilen kunde inte raderas. Du kan ta bort {{path}} själv."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Kontrollen av falsk kapacitet kräver det fullständiga testet, som raderar disken. Den hoppades över.",
+      "fake_capacity": "Den här disken påstår sig rymma {{claimed_bytes}} byte men bara ungefär {{real_bytes}} byte är verkliga. Det är en disk med falsk kapacitet.",
+      "data_corruption": "{{count}} testblock kom tillbaka skadade.",
+      "io_error": "Disken returnerade {{count}} fel under kapacitetskontrollen."
+    },
+    "stability": {
+      "device_disconnected": "Disken försvann {{count}} gång(er) under testerna.",
+      "io_errors": "Disken returnerade {{count}} läs- eller skrivfel under testerna.",
+      "timeouts": "Disken tog för lång tid {{count}} gång(er) under testerna.",
+      "crc_errors_increased": "Dataöverföringsfel ökade med {{count}} under testerna. Kontrollera kabeln.",
+      "new_bad_sectors": "{{count}} nya skadade områden dök upp medan vi testade."
+    }
+  },
+  "progress": {
+    "unknown": "Arbetar…",
+    "working": "Arbetar…",
+    "prepare": {
+      "starting": "Förbereder...",
+      "reading_smart": "Läser diskens inbyggda hälsorapport...",
+      "unmounting": "Kopplar säkert från diskens volymer...",
+      "ready": "Redo att testa."
+    },
+    "drive_info": {
+      "identifying": "Identifierar disken..."
+    },
+    "smart_health": {
+      "analyzing": "Kontrollerar diskens hälsorapport..."
+    },
+    "selftest_short": {
+      "starting": "Startar diskens inbyggda snabba självtest...",
+      "running": "Disken kör sitt eget snabba självtest ({{percent}} % klart).",
+      "done": "Diskens självtest är klart.",
+      "running_seconds": "Disken kör sitt eget snabba självtest ({{seconds}} sekunder hittills)."
+    },
+    "surface_read": {
+      "sampling": "Läser stickprov över hela disken ({{done}} av {{total}}).",
+      "sequential": "Mäter läshastighet ({{mbps}} MB/s).",
+      "done": "Ytskanningen är klar."
+    },
+    "write_verify": {
+      "writing": "Skriver testdata ({{mb}} MB skrivet).",
+      "verifying": "Läser tillbaka datan för kontroll ({{mb}} MB kontrollerat).",
+      "cleaning": "Tar bort den tillfälliga testfilen...",
+      "done": "Skrivtestet är klart."
+    },
+    "capacity_check": {
+      "writing": "Markerar ställen över hela den angivna storleken ({{done}} av {{total}}).",
+      "verifying": "Kontrollerar att varje ställe håller sin egen data ({{done}} av {{total}}).",
+      "done": "Kapacitetskontrollen är klar."
+    },
+    "stability": {
+      "checking": "Kontrollerar att disken var stabil under testerna..."
+    },
+    "finish": {
+      "scoring": "Räknar ut ditt betyg...",
+      "done": "Klart."
+    }
+  },
+  "suitability": {
+    "unknown": "Inga detaljer tillgängliga.",
+    "fallback": {
+      "os_install": {
+        "good": "Inga problem som skulle hindra ett operativsystem från att köra pålitligt.",
+        "caution": "Det kan fungera, men det finns viss risk. Ta en säkerhetskopia.",
+        "no": "Inte säker för ett operativsystem."
+      },
+      "long_term_storage": {
+        "good": "Ser pålitlig ut för långsiktig lagring av filer. Ha ändå en andra kopia.",
+        "caution": "Riskabel för långsiktig lagring. Ha en kopia på annat håll.",
+        "no": "Förvara inte viktiga filer här."
+      },
+      "daily_use": {
+        "good": "Bra för vardagligt bruk.",
+        "caution": "Duger för vardagligt bruk, men håll utkik efter nya problem.",
+        "no": "Inte pålitlig nog för daglig användning."
+      }
+    },
+    "os_install": {
+      "ok": "Bra att installera ett operativsystem på.",
+      "bad_sectors": "Rekommenderas inte för ett operativsystem: den har skadade områden.",
+      "slow_latency": "Rekommenderas inte för ett operativsystem: vissa läsningar är för långsamma.",
+      "score_low": "Rekommenderas inte för ett operativsystem: det totala betyget ({{score}}) är för lågt."
+    },
+    "long_term_storage": {
+      "ok": "Bra för långsiktig lagring av filer.",
+      "critical_issues": "Inte säker för långsiktig lagring: allvarliga problem hittades.",
+      "score_low": "Riskabel för långsiktig lagring: det totala betyget ({{score}}) är för lågt. Ta säkerhetskopior."
+    },
+    "daily_use": {
+      "ok": "Bra för vardagligt bruk.",
+      "caution": "Går att använda för vardagliga filer, men ta säkerhetskopior.",
+      "no": "Rekommenderas inte för vardagligt bruk."
+    }
+  },
+  "error": {
+    "unknown": "Något gick fel ({{code}}).",
+    "title": "Kontrollen kunde inte slutföras",
+    "retry": "Försök igen",
+    "choose": "Välj en annan disk",
+    "refused": "Testet nekades av säkerhetsskäl. Raderingstester kan inte köras på systemdisken eller utan ett matchande serienummer.",
+    "engine_failed": "Kontrollverktyget stannade oväntat.",
+    "engine_missing": "Kontrollverktyget hittades inte. Installera om CheckMyDrive.",
+    "auth_cancelled": "Tillstånd gavs inte, så disken kontrollerades inte.",
+    "elevation_unavailable": "Det gick inte att be om administratörsbehörighet på den här datorn.",
+    "bad_args": "Testet kunde inte starta på grund av ett internt förfrågningsfel.",
+    "needs_admin": "Administratörsbehörighet krävs för att testa den här disken.",
+    "drive_not_found": "Disken hittades inte. Den kan ha kopplats ur.",
+    "system_disk_refused": "Det här är disken som din dator startar från, så den kan inte raderas. Välj en annan disk.",
+    "confirm_required": "Bekräfta diskens serienummer före ett fullständigt test som raderar data.",
+    "confirm_mismatch": "Serienumret du angav stämmer inte med den här disken. Ingenting ändrades.",
+    "cannot_open_device": "Disken kunde inte öppnas för testning. Ett annat program kanske använder den.",
+    "unmount_failed": "Diskens volymer kunde inte kopplas från säkert före det fullständiga testet. Stäng program som använder den och försök igen.",
+    "internal": "Något oväntat gick fel inuti testmotorn."
+  },
+  "common": {
+    "loading": "Laddar…",
+    "close": "Stäng",
+    "unknown": "Okänd"
+  }
+}

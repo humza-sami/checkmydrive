@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Tudja meg, biztonságos-e egy használt meghajtó, mielőtt megbízna benne.",
+    "skip": "Ugrás a fő tartalomra"
+  },
+  "nav": {
+    "settings": "Beállítások",
+    "back": "Vissza",
+    "mockBanner": "Bemutató mód: mintameghajtók látszanak. A számítógépén semmi sincs tesztelve."
+  },
+  "picker": {
+    "title": "Melyik meghajtót szeretné ellenőrizni?",
+    "subtitle": "Csatlakoztassa a megvásárolni vagy használni kívánt meghajtót, majd válassza ki lent. Az ellenőrzés körülbelül 3–4 percig tart.",
+    "refresh": "Frissítés",
+    "refreshing": "Meghajtók keresése…",
+    "empty": "Nem található meghajtó. Csatlakoztasson egyet, és nyomja meg a Frissítés gombot.",
+    "systemDisk": "Rendszermeghajtó",
+    "systemDiskHint": "A számítógépe erről a meghajtóról fut. Csak biztonságos módban ellenőrizhető.",
+    "unknownModel": "Ismeretlen meghajtó",
+    "select": "Ennek a meghajtónak az ellenőrzése",
+    "kind": {
+      "hdd": "Merevlemez (HDD)",
+      "ssd": "SSD meghajtó",
+      "nvme": "NVMe SSD",
+      "usb": "USB-pendrive vagy USB-meghajtó",
+      "sd": "SD / memóriakártya",
+      "unknown": "Meghajtó"
+    },
+    "removable": "Cserélhető",
+    "loadFailed": "Nem sikerült beolvasni a meghajtók listáját.",
+    "noAdminNote": "Egyes adatok, például az állapotadatok, rendszergazdai engedélyt kérhetnek, amit az ellenőrzés indításakor fog kérni a program."
+  },
+  "mode": {
+    "title": "Mennyire alapos legyen az ellenőrzés?",
+    "checking": "Ellenőrzés",
+    "safe": {
+      "title": "Gyors biztonságos teszt (a fájlok megmaradnak)",
+      "desc": "Végigolvassa a teljes meghajtót, és ír egy kis ideiglenes fájlt, így semmi sem változik és semmi sem vész el abból, ami az Öné.",
+      "badge": "Ajánlott",
+      "limit": "Nem tudja felismerni a hamis kapacitást."
+    },
+    "wipe": {
+      "title": "Teljes törléses teszt (legalaposabb, MINDENT töröl)",
+      "desc": "A teljes meghajtóra is ír, hogy kiszúrja a hamis kapacitást és a rejtett hibákat. A meghajtón lévő összes fájl véglegesen megsemmisül.",
+      "dangerTitle": "Veszélyzóna: a meghajtó törlődik",
+      "dangerBody": "Ez véglegesen töröl MINDEN adatot a(z) {{model}} meghajtóról. Nem vonható vissza. Csak akkor folytassa, ha a meghajtó üres, vagy van biztonsági mentése.",
+      "confirmLabel": "A megerősítéshez írja be a meghajtó sorozatszámát: {{serial}}",
+      "confirmPlaceholder": "Írja ide a sorozatszámot",
+      "noSerial": "Ez a meghajtó nem közöl sorozatszámot, ezért a teljes törléses teszt nem érhető el.",
+      "systemBlocked": "A rendszermeghajtó soha nem törölhető. Csak a biztonságos teszt érhető el.",
+      "mismatch": "A szöveg még nem egyezik a sorozatszámmal.",
+      "start": "Törlés és teljes teszt indítása",
+      "expand": "Teljes törléses teszt megjelenítése",
+      "collapse": "Teljes törléses teszt elrejtése"
+    },
+    "start": "Gyors biztonságos teszt indítása",
+    "back": "Másik meghajtó választása",
+    "duration": "Körülbelül 3–4 percig tart. Kérjük, ne húzza ki a meghajtót."
+  },
+  "running": {
+    "title": "A meghajtó ellenőrzése folyamatban",
+    "subtitle": "Hagyja csatlakoztatva a meghajtót, és ne hagyja elaludni a számítógépet.",
+    "overall": "Teljes előrehaladás",
+    "elapsed": "Eltelt idő",
+    "remaining": "Körülbelül {{time}} van hátra",
+    "estimating": "Idő becslése…",
+    "cancel": "Teszt megszakítása",
+    "cancelling": "Megszakítás…",
+    "cancelConfirm": "Leállítja a tesztet? Biztonságos módban semmi sem változott a meghajtón.",
+    "keepGoing": "Folytatás",
+    "stop": "Teszt leállítása",
+    "checklist": "Mit ellenőrzünk",
+    "waiting": "Várakozás az engedélyre…",
+    "adminPrompt": "A számítógép elkérheti a jelszavát. Ennek segítségével a CheckMyDrive közvetlenül olvashatja a meghajtót.",
+    "phase": {
+      "prepare": "Előkészítés",
+      "finish": "Pontszám kiszámítása"
+    },
+    "status": {
+      "pending": "Várakozik",
+      "running": "Ellenőrzés",
+      "done": "Kész"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "A meghajtó azonosítása",
+      "desc": "A meghajtó modellje, mérete és típusa"
+    },
+    "smart_health": {
+      "name": "Állapotjelentés",
+      "desc": "A meghajtó saját feljegyzései a hibákról és a kopásról"
+    },
+    "selftest_short": {
+      "name": "Beépített önellenőrzés",
+      "desc": "A meghajtó magát ellenőrzi"
+    },
+    "surface_read": {
+      "name": "Felületvizsgálat",
+      "desc": "Pontokat olvas a teljes meghajtón"
+    },
+    "write_verify": {
+      "name": "Írás és ellenőrzés",
+      "desc": "Adatot ment, majd visszaolvassa"
+    },
+    "capacity_check": {
+      "name": "Valódi kapacitás",
+      "desc": "Meggyőződik róla, hogy a méret nem hamis"
+    },
+    "stability": {
+      "name": "Stabilitás",
+      "desc": "Figyeli a lecsatlakozásokat és a hibákat"
+    }
+  },
+  "status": {
+    "pass": "Megfelelt",
+    "warn": "Figyelmeztetés",
+    "fail": "Sikertelen",
+    "skipped": "Kihagyva"
+  },
+  "results": {
+    "title": "Eredmények",
+    "scoreOutOf": "a 100-ból",
+    "scoreLabel": "Pontszám: {{score}} a 100-ból",
+    "verdict": {
+      "buy": "Megvehető",
+      "caution": "Óvatosan használja",
+      "avoid": "Kerülje"
+    },
+    "summary": {
+      "buy": "Ez a(z) {{model}} egészségesnek tűnik. Nem találtunk komoly problémát, és a mindennapi használatra megfelelő.",
+      "caution": "Ez a(z) {{model}} működik, de figyelmeztető jeleket találtunk. Csak olyan fájlokhoz használja, amelyek elvesztését vállalni tudja, vagy alkudjon az árból.",
+      "avoid": "Ne bízzon ebben a(z) {{model}} meghajtóban. Komoly problémákat találtunk, amelyek veszélyeztetik a fájljait.",
+      "fake_capacity": "Ez a(z) {{model}} hazudik a méretéről. {{claimed}} kapacitást állít, de valójában ennyit nem tud tárolni. Ne vegye meg és ne használja.",
+      "failing": "Ez a(z) {{model}} meghibásodóban van. Saját állapotadatai és a tesztjeink is azt mutatják, hogy bármikor elveszítheti a fájljait."
+    },
+    "can": {
+      "title": "Lehet…",
+      "os": "Operációs rendszert telepíteni rá?",
+      "storage": "Hosszú távon fájlokat tárolni rajta?",
+      "daily": "Naponta használni?",
+      "fill": "Biztonságosan megtölteni?",
+      "fillYes": "Biztonságosan tárolhat rajta akár {{size}}-ot a(z) {{total}}-ból",
+      "fillNo": "Nem tárolnánk rajta semmi fontosat.",
+      "yes": "Igen",
+      "maybe": "Talán",
+      "no": "Nem"
+    },
+    "age": {
+      "title": "A meghajtó kora",
+      "years": "Körülbelül {{count}} év használat",
+      "yearsLessThanOne": "Egy évnél kevesebb használat",
+      "hours": "{{hours}} órát volt bekapcsolva",
+      "made": "Gyártva: {{date}}",
+      "cycles": "{{count}}-szor kapcsolták be",
+      "unknown": "Ez a meghajtó nem közli, mennyi ideig használták.",
+      "note": "Az órák csak a bekapcsolt állapotot számolják. Az éjjel-nappal használt meghajtó gyorsabban öregszik, mint az, amelyet naponta néhány órán át használnak."
+    },
+    "issues": {
+      "title": "Amit találtunk",
+      "none": "Nem találtunk problémát.",
+      "critical": "Komoly",
+      "warn": "Figyelmeztetés",
+      "info": "Megjegyzés"
+    },
+    "matrix": {
+      "title": "Tesztmátrix",
+      "subtitle": "Részletek haladó felhasználóknak",
+      "show": "Részletek megjelenítése",
+      "hide": "Részletek elrejtése",
+      "test": "Teszt",
+      "status": "Állapot",
+      "score": "Pontszám",
+      "metrics": "Fő számok",
+      "none": "Nincs rögzített szám"
+    },
+    "export": "Jelentés exportálása",
+    "exportJson": "Mentés JSON-ként",
+    "exportHtml": "Mentés weboldalként (HTML)",
+    "print": "Nyomtatás vagy mentés PDF-ként",
+    "saved": "A jelentés elmentve.",
+    "saveFailed": "A jelentést nem sikerült elmenteni.",
+    "another": "Másik meghajtó tesztelése",
+    "mode": {
+      "safe": "Gyors biztonságos teszt",
+      "wipe": "Teljes törléses teszt"
+    },
+    "tested": "Tesztelve: {{date}}",
+    "engine": "Motor: {{version}}",
+    "skippedNote": "A hamis kapacitás felismerése nem futott le. A teljes válaszhoz használja a teljes törléses tesztet egy üres meghajtón."
+  },
+  "report": {
+    "title": "CheckMyDrive jelentés",
+    "generatedBy": "Készítette: CheckMyDrive (nyílt forráskódú)"
+  },
+  "settings": {
+    "title": "Beállítások és névjegy",
+    "language": "Nyelv",
+    "languageHint": "Az angolon kívüli nyelvek akkor töltődnek be, amikor elérhetővé válnak; a hiányzó szöveg angolul jelenik meg.",
+    "theme": "Megjelenés",
+    "themeSystem": "A rendszer szerint",
+    "themeLight": "Világos",
+    "themeDark": "Sötét",
+    "about": "Névjegy",
+    "version": "Verzió",
+    "license": "Licenc",
+    "licenseValue": "MIT licenc (ingyenes és nyílt forráskódú)",
+    "github": "Forráskód a GitHubon",
+    "engineVersion": "Motor",
+    "disclaimer": "A CheckMyDrive megalapozott becslést ad, és nem garantálhatja, hogy a meghajtó soha nem fog meghibásodni. A fontos fájlokról mindig készítsen biztonsági mentést.",
+    "close": "Kész"
+  },
+  "metric": {
+    "read_mbps_avg": "Átlagos olvasási sebesség (MB/s)",
+    "write_mbps": "Írási sebesség (MB/s)",
+    "latency_ms_p99": "Leglassabb 1% válaszideje (ms)",
+    "slow_samples": "Lassú pontok",
+    "read_errors": "Olvasási hibák",
+    "reallocated_sectors": "Kicserélt rossz területek",
+    "pending_sectors": "Instabil területek",
+    "uncorrectable_sectors": "Olvashatatlan területek",
+    "temperature_c": "Hőmérséklet (°C)",
+    "percent_used": "Elhasznált kopás (%)",
+    "media_errors": "Adathordozó-hibák",
+    "written_mb": "Írt adatmennyiség (MB)",
+    "mismatches": "Eltérések",
+    "sectors_checked": "Ellenőrzött pontok",
+    "real_capacity_gb": "Valódi kapacitás (GB)",
+    "claimed_gb": "Megadott kapacitás (GB)",
+    "disconnects": "Lecsatlakozások",
+    "io_errors": "Bemeneti/kimeneti hibák",
+    "rpm": "Fordulatszám (RPM)",
+    "interface": "Csatlakozás",
+    "result": "Eredmény"
+  },
+  "issue": {
+    "unknown": "Szokatlan dolgot találtunk ({{code}}). A részleteket lásd a tesztmátrixban.",
+    "age": {
+      "high_hours": "Ez a meghajtó körülbelül {{years}} évig volt bekapcsolva ({{hours}} óra), ami nagy használatot jelent.",
+      "moderate_hours": "Ez a meghajtó körülbelül {{years}} évig volt bekapcsolva ({{hours}} óra)."
+    },
+    "drive_info": {
+      "capacity_unknown": "A meghajtó nem közölte, mekkora.",
+      "model_unknown": "A meghajtó nem közölte a modellnevét.",
+      "system_disk": "Ez az a meghajtó, amelyről a számítógépe fut. Csak a biztonságos, nem romboló tesztet futtattuk."
+    },
+    "smart": {
+      "unavailable": "Az állapotjelentő eszköz (smartmontools) nem érhető el, ezért a meghajtó belső állapotadatait nem lehetett beolvasni.",
+      "needs_admin": "A meghajtó állapotjelentését nem lehetett rendszergazdai engedély nélkül beolvasni.",
+      "timeout": "A meghajtó időben nem válaszolt az állapotjelentés kérésére.",
+      "not_supported": "Ez a meghajtó nem ad állapotjelentést, ezért a belső állapota ismeretlen.",
+      "usb_bridge_blocked": "Az USB-adapter elrejti a meghajtó állapotjelentését, ezért a belső állapota ismeretlen.",
+      "overall_failed": "A meghajtó saját állapotellenőrzése szerint meghibásodóban van.",
+      "reallocated_sectors": "A meghajtó már {{count}} sérült területet cserélt le tartalékra.",
+      "pending_sectors": "A meghajtó {{count}} területe olvashatatlan, és cserére vár.",
+      "uncorrectable_sectors": "A meghajtó {{count}} területét nem lehetett beolvasni vagy kijavítani.",
+      "crc_errors": "{{count}} adatátviteli hibát jegyeztek fel, amit gyakran rossz kábel vagy csatlakozó okoz.",
+      "error_log_entries": "A meghajtó hibanaplója {{count}} bejegyzést tartalmaz.",
+      "ssd_worn": "Ez az SSD a névleges élettartamának körülbelül {{percent}}%-át elhasználta.",
+      "ssd_worn_out": "Ez az SSD a névleges élettartamának körülbelül {{percent}}%-át elhasználta, és közel van az élettartama végéhez.",
+      "nvme_critical_warning": "A meghajtó kritikus figyelmeztetést jelez (kód: {{value}}).",
+      "nvme_media_errors": "A meghajtó memóriája {{count}} adatintegritási hibát naplózott.",
+      "spare_low": "A meghajtó tartalékmemóriájából már csak {{percent}}% maradt.",
+      "temperature_high": "A meghajtó forró ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "A meghajtó gyors önellenőrzése kimaradt, mert az állapotfelülete nem érhető el.",
+      "not_supported": "Ez a meghajtó nem támogatja a gyors önellenőrzést.",
+      "could_not_start": "A meghajtó gyors önellenőrzését nem sikerült elindítani.",
+      "failed": "A meghajtó megbukott a saját gyors önellenőrzésén.",
+      "aborted": "A meghajtó gyors önellenőrzése megszakadt, mielőtt befejeződött volna.",
+      "timeout": "A meghajtó gyors önellenőrzése {{seconds}} másodpercen belül nem fejeződött be, ezért leállítottuk."
+    },
+    "surface_read": {
+      "cannot_open": "A meghajtót nem lehetett megnyitni olvasásra.",
+      "read_errors": "A meghajtó {{count}} részét nem lehetett beolvasni.",
+      "slow_areas": "{{count}} terület ({{percent}}%) nagyon lassan válaszolt, ami a felület kopására utalhat.",
+      "low_speed": "A meghajtó lassan olvas ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Az írási teszt kimaradt, mert a meghajtón nincs olyan mappa, ahová biztonságosan írhatnánk.",
+      "insufficient_space": "Az írási teszt kimaradt, mert a meghajtón túl kevés a szabad hely.",
+      "write_error": "A meghajtó hibát jelzett a tesztadatok írása közben.",
+      "data_mismatch": "{{count}} tesztadatblokk másképp jött vissza, mint ahogy írtuk.",
+      "slow_write": "A meghajtó nagyon lassan ír ({{mbps}} MB/s).",
+      "cleanup_failed": "Az ideiglenes tesztfájlt nem sikerült törölni. A(z) {{path}} fájlt Ön is eltávolíthatja."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "A hamis kapacitás ellenőrzéséhez a teljes teszt kell, amely törli a meghajtót. Ezt kihagytuk.",
+      "fake_capacity": "Ez a meghajtó {{claimed_bytes}} bájtot állít magáról, de csak körülbelül {{real_bytes}} bájt valódi. Hamis kapacitású meghajtó.",
+      "data_corruption": "{{count}} tesztblokk sérülten jött vissza.",
+      "io_error": "A meghajtó {{count}} hibát jelzett a kapacitásellenőrzés során."
+    },
+    "stability": {
+      "device_disconnected": "A meghajtó {{count}} alkalommal eltűnt a tesztek alatt.",
+      "io_errors": "A meghajtó {{count}} olvasási vagy írási hibát jelzett a tesztek alatt.",
+      "timeouts": "A meghajtó {{count}} alkalommal nem válaszolt időben a tesztek alatt.",
+      "crc_errors_increased": "Az adatátviteli hibák száma {{count}}-val nőtt a tesztek alatt. Ellenőrizze a kábelt.",
+      "new_bad_sectors": "{{count}} új sérült terület jelent meg a tesztelés közben."
+    }
+  },
+  "progress": {
+    "unknown": "Dolgozom…",
+    "working": "Dolgozom…",
+    "prepare": {
+      "starting": "Előkészítés...",
+      "reading_smart": "A meghajtó beépített állapotjelentésének olvasása...",
+      "unmounting": "A meghajtó kötetei biztonságos leválasztása...",
+      "ready": "Készen áll a tesztelésre."
+    },
+    "drive_info": {
+      "identifying": "A meghajtó azonosítása..."
+    },
+    "smart_health": {
+      "analyzing": "A meghajtó állapotjelentésének ellenőrzése..."
+    },
+    "selftest_short": {
+      "starting": "A meghajtó beépített gyors önellenőrzésének indítása...",
+      "running": "A meghajtó a saját gyors önellenőrzését futtatja ({{percent}}% kész).",
+      "done": "A meghajtó önellenőrzése befejeződött.",
+      "running_seconds": "A meghajtó a saját gyors önellenőrzését futtatja (eddig {{seconds}} másodperc)."
+    },
+    "surface_read": {
+      "sampling": "Mintaterületek olvasása a teljes meghajtón ({{done}} / {{total}}).",
+      "sequential": "Olvasási sebesség mérése ({{mbps}} MB/s).",
+      "done": "A felületvizsgálat befejeződött."
+    },
+    "write_verify": {
+      "writing": "Tesztadatok írása ({{mb}} MB megírva).",
+      "verifying": "Az adatok visszaolvasása ellenőrzésre ({{mb}} MB ellenőrizve).",
+      "cleaning": "Az ideiglenes tesztfájl eltávolítása...",
+      "done": "Az írási teszt befejeződött."
+    },
+    "capacity_check": {
+      "writing": "Pontok megjelölése a teljes megadott méreten ({{done}} / {{total}}).",
+      "verifying": "Ellenőrzés, hogy minden pont a saját adatát tartja ({{done}} / {{total}}).",
+      "done": "A kapacitásellenőrzés befejeződött."
+    },
+    "stability": {
+      "checking": "Ellenőrzés, hogy a meghajtó stabil maradt-e a tesztek alatt..."
+    },
+    "finish": {
+      "scoring": "Pontszám kiszámítása...",
+      "done": "Kész."
+    }
+  },
+  "suitability": {
+    "unknown": "Nincsenek elérhető részletek.",
+    "fallback": {
+      "os_install": {
+        "good": "Nincs olyan probléma, amely megakadályozná az operációs rendszer megbízható futását.",
+        "caution": "Működhet, de van némi kockázat. Készítsen biztonsági mentést.",
+        "no": "Operációs rendszerhez nem biztonságos."
+      },
+      "long_term_storage": {
+        "good": "Megbízhatónak tűnik fájlok hosszú távú tárolására. Ettől még tartson egy másodpéldányt.",
+        "caution": "Kockázatos hosszú távú tárolásra. Tartson másolatot máshol is.",
+        "no": "Ne tároljon itt fontos fájlokat."
+      },
+      "daily_use": {
+        "good": "Jó mindennapi használatra.",
+        "caution": "Mindennapi használatra megfelel, de figyeljen az új problémákra.",
+        "no": "Nem elég megbízható a mindennapi használatra."
+      }
+    },
+    "os_install": {
+      "ok": "Jó operációs rendszer telepítésére.",
+      "bad_sectors": "Operációs rendszerhez nem ajánlott: sérült területei vannak.",
+      "slow_latency": "Operációs rendszerhez nem ajánlott: egyes olvasások túl lassúak.",
+      "score_low": "Operációs rendszerhez nem ajánlott: az összpontszám ({{score}}) túl alacsony."
+    },
+    "long_term_storage": {
+      "ok": "Jó fájlok hosszú távú tárolására.",
+      "critical_issues": "Hosszú távú tárolásra nem biztonságos: komoly problémákat találtunk.",
+      "score_low": "Hosszú távú tárolásra kockázatos: az összpontszám ({{score}}) túl alacsony. Készítsen biztonsági mentést."
+    },
+    "daily_use": {
+      "ok": "Jó mindennapi használatra.",
+      "caution": "Hétköznapi fájlokhoz használható, de készítsen biztonsági mentést.",
+      "no": "Mindennapi használatra nem ajánlott."
+    }
+  },
+  "error": {
+    "unknown": "Valami elromlott ({{code}}).",
+    "title": "Az ellenőrzést nem sikerült befejezni",
+    "retry": "Próbálja újra",
+    "choose": "Másik meghajtó választása",
+    "refused": "A tesztet biztonsági okokból elutasítottuk. Törléses teszt nem futtatható a rendszermeghajtón, sem egyező sorozatszám nélkül.",
+    "engine_failed": "Az ellenőrző eszköz váratlanul leállt.",
+    "engine_missing": "Az ellenőrző eszköz nem található. Telepítse újra a CheckMyDrive-ot.",
+    "auth_cancelled": "Az engedélyt nem adták meg, ezért a meghajtót nem ellenőriztük.",
+    "elevation_unavailable": "Ezen a számítógépen nem lehetett rendszergazdai engedélyt kérni.",
+    "bad_args": "A tesztet belső kérési hiba miatt nem sikerült elindítani.",
+    "needs_admin": "A meghajtó teszteléséhez rendszergazdai engedély kell.",
+    "drive_not_found": "A meghajtó nem található. Lehet, hogy kihúzták.",
+    "system_disk_refused": "Ez az a meghajtó, amelyről a számítógépe fut, ezért nem törölhető. Válasszon másik meghajtót.",
+    "confirm_required": "Az adatokat törlő teljes teszt előtt erősítse meg a meghajtó sorozatszámát.",
+    "confirm_mismatch": "A megadott sorozatszám nem egyezik ezzel a meghajtóval. Semmi sem változott.",
+    "cannot_open_device": "A meghajtót nem lehetett megnyitni teszteléshez. Lehet, hogy egy másik program használja.",
+    "unmount_failed": "A meghajtó köteteit nem lehetett biztonságosan leválasztani a teljes teszt előtt. Zárja be a használó programokat, és próbálja újra.",
+    "internal": "Valami váratlan hiba történt a tesztmotoron belül."
+  },
+  "common": {
+    "loading": "Betöltés…",
+    "close": "Bezárás",
+    "unknown": "Ismeretlen"
+  }
+}

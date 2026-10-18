@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Sepa si un disco usado es seguro antes de confiar en él.",
+    "skip": "Saltar al contenido principal"
+  },
+  "nav": {
+    "settings": "Ajustes",
+    "back": "Atrás",
+    "mockBanner": "Modo demostración: se muestran discos de ejemplo. No se está probando nada en su ordenador."
+  },
+  "picker": {
+    "title": "¿Qué disco quiere comprobar?",
+    "subtitle": "Conecte el disco que está pensando en comprar o usar y elíjalo abajo. La comprobación dura unos 3 o 4 minutos.",
+    "refresh": "Actualizar",
+    "refreshing": "Buscando discos…",
+    "empty": "No se encontró ningún disco. Conecte uno y pulse Actualizar.",
+    "systemDisk": "Disco del sistema",
+    "systemDiskHint": "Su ordenador funciona desde este disco. Solo se puede comprobar en modo seguro.",
+    "unknownModel": "Disco desconocido",
+    "select": "Comprobar este disco",
+    "kind": {
+      "hdd": "Disco duro (HDD)",
+      "ssd": "Unidad de estado sólido (SSD)",
+      "nvme": "SSD NVMe",
+      "usb": "Memoria o disco USB",
+      "sd": "Tarjeta SD / de memoria",
+      "unknown": "Disco"
+    },
+    "removable": "Extraíble",
+    "loadFailed": "No pudimos leer la lista de discos.",
+    "noAdminNote": "Algunos datos, como el estado de salud, pueden requerir permiso de administrador y se pedirá al iniciar la comprobación."
+  },
+  "mode": {
+    "title": "¿Qué tan a fondo quiere hacer la comprobación?",
+    "checking": "Comprobando",
+    "safe": {
+      "title": "Prueba rápida y segura (conserva sus archivos)",
+      "desc": "Lee todo el disco y escribe un pequeño archivo temporal, así que no se cambia ni se pierde nada suyo.",
+      "badge": "Recomendada",
+      "limit": "No puede detectar capacidad falsa."
+    },
+    "wipe": {
+      "title": "Prueba completa con borrado (la más a fondo, BORRA todo)",
+      "desc": "También escribe en todo el disco para detectar capacidad falsa y defectos ocultos. Todos los archivos del disco se destruyen para siempre.",
+      "dangerTitle": "Zona de peligro: borra el disco",
+      "dangerBody": "Esto elimina para siempre TODOS los datos de {{model}}. No se puede deshacer. Continúe solo si el disco está vacío o tiene una copia de seguridad.",
+      "confirmLabel": "Para confirmar, escriba el número de serie del disco: {{serial}}",
+      "confirmPlaceholder": "Escriba aquí el número de serie",
+      "noSerial": "Este disco no informa de su número de serie, por lo que no se puede hacer la prueba completa con borrado.",
+      "systemBlocked": "El disco del sistema nunca se puede borrar. Solo está disponible la prueba segura.",
+      "mismatch": "El texto todavía no coincide con el número de serie.",
+      "start": "Borrar y hacer la prueba completa",
+      "expand": "Mostrar la prueba completa con borrado",
+      "collapse": "Ocultar la prueba completa con borrado"
+    },
+    "start": "Iniciar prueba rápida y segura",
+    "back": "Elegir otro disco",
+    "duration": "Dura unos 3 o 4 minutos. Por favor, no desconecte el disco."
+  },
+  "running": {
+    "title": "Comprobando su disco",
+    "subtitle": "Mantenga el disco conectado y el ordenador encendido.",
+    "overall": "Progreso total",
+    "elapsed": "Transcurrido",
+    "remaining": "Quedan unos {{time}}",
+    "estimating": "Calculando el tiempo…",
+    "cancel": "Cancelar prueba",
+    "cancelling": "Cancelando…",
+    "cancelConfirm": "¿Detener la prueba? En modo seguro no se cambió nada en su disco.",
+    "keepGoing": "Seguir",
+    "stop": "Detener prueba",
+    "checklist": "Qué estamos comprobando",
+    "waiting": "Esperando el permiso…",
+    "adminPrompt": "Es posible que su ordenador le pida la contraseña. Así CheckMyDrive puede leer el disco directamente.",
+    "phase": {
+      "prepare": "Preparando",
+      "finish": "Calculando su puntuación"
+    },
+    "status": {
+      "pending": "En espera",
+      "running": "Comprobando",
+      "done": "Listo"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Identidad del disco",
+      "desc": "Modelo, tamaño y tipo de disco"
+    },
+    "smart_health": {
+      "name": "Informe de salud",
+      "desc": "El registro del propio disco sobre problemas y desgaste"
+    },
+    "selftest_short": {
+      "name": "Autocomprobación integrada",
+      "desc": "El disco se revisa a sí mismo"
+    },
+    "surface_read": {
+      "name": "Análisis de la superficie",
+      "desc": "Lee puntos de todo el disco"
+    },
+    "write_verify": {
+      "name": "Escribir y verificar",
+      "desc": "Guarda datos y los vuelve a leer"
+    },
+    "capacity_check": {
+      "name": "Capacidad real",
+      "desc": "Comprueba que el tamaño no sea falso"
+    },
+    "stability": {
+      "name": "Estabilidad",
+      "desc": "Vigila desconexiones y errores"
+    }
+  },
+  "status": {
+    "pass": "Superada",
+    "warn": "Aviso",
+    "fail": "Fallida",
+    "skipped": "Omitida"
+  },
+  "results": {
+    "title": "Resultados",
+    "scoreOutOf": "de 100",
+    "scoreLabel": "Puntuación {{score}} de 100",
+    "verdict": {
+      "buy": "Buena para comprar",
+      "caution": "Usar con precaución",
+      "avoid": "Evitar"
+    },
+    "summary": {
+      "buy": "Este {{model}} se ve sano. No encontramos problemas graves y debería servir para el uso diario.",
+      "caution": "Este {{model}} funciona, pero encontramos algunas señales de alerta. Úselo solo para archivos que pueda permitirse perder, o negocie un precio más bajo.",
+      "avoid": "No confíe en este {{model}}. Encontramos problemas graves que ponen en riesgo sus archivos.",
+      "fake_capacity": "Este {{model}} miente sobre su tamaño. Dice tener {{claimed}}, pero en realidad no puede guardar tanto. No lo compre ni lo use.",
+      "failing": "Este {{model}} está fallando. Sus propios datos de salud y nuestras pruebas muestran que puede perder sus archivos en cualquier momento."
+    },
+    "can": {
+      "title": "¿Puedo…",
+      "os": "instalar un sistema operativo en él?",
+      "storage": "guardar archivos en él a largo plazo?",
+      "daily": "usarlo todos los días?",
+      "fill": "llenarlo con seguridad?",
+      "fillYes": "Se pueden guardar con seguridad hasta {{size}} de {{total}}",
+      "fillNo": "No guardaríamos nada importante en él.",
+      "yes": "Sí",
+      "maybe": "Quizá",
+      "no": "No"
+    },
+    "age": {
+      "title": "Antigüedad del disco",
+      "years": "Unos {{count}} años de uso",
+      "yearsLessThanOne": "Menos de un año de uso",
+      "hours": "{{hours}} horas encendido",
+      "made": "Fabricado: {{date}}",
+      "cycles": "Encendido {{count}} veces",
+      "unknown": "Este disco no informa de cuánto tiempo se ha usado.",
+      "note": "Las horas se cuentan solo mientras el disco está encendido. Un disco que funciona las 24 horas envejece más rápido que uno que se usa unas pocas horas al día."
+    },
+    "issues": {
+      "title": "Lo que encontramos",
+      "none": "No se encontraron problemas.",
+      "critical": "Grave",
+      "warn": "Aviso",
+      "info": "Nota"
+    },
+    "matrix": {
+      "title": "Tabla de pruebas",
+      "subtitle": "Detalles para usuarios avanzados",
+      "show": "Mostrar detalles",
+      "hide": "Ocultar detalles",
+      "test": "Prueba",
+      "status": "Estado",
+      "score": "Puntuación",
+      "metrics": "Cifras clave",
+      "none": "No se registraron cifras"
+    },
+    "export": "Exportar informe",
+    "exportJson": "Guardar como JSON",
+    "exportHtml": "Guardar como página web (HTML)",
+    "print": "Imprimir o guardar como PDF",
+    "saved": "Informe guardado.",
+    "saveFailed": "No se pudo guardar el informe.",
+    "another": "Probar otro disco",
+    "mode": {
+      "safe": "Prueba rápida y segura",
+      "wipe": "Prueba completa con borrado"
+    },
+    "tested": "Probado el {{date}}",
+    "engine": "Motor {{version}}",
+    "skippedNote": "No se hizo la detección de capacidad falsa. Use la prueba completa con borrado en un disco vacío para una respuesta completa."
+  },
+  "report": {
+    "title": "Informe de CheckMyDrive",
+    "generatedBy": "Generado por CheckMyDrive (código abierto)"
+  },
+  "settings": {
+    "title": "Ajustes e información",
+    "language": "Idioma",
+    "languageHint": "Los idiomas distintos del inglés se cargan a medida que están disponibles; el texto que falte aparece en inglés.",
+    "theme": "Apariencia",
+    "themeSystem": "Igual que el sistema",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "about": "Acerca de",
+    "version": "Versión",
+    "license": "Licencia",
+    "licenseValue": "Licencia MIT (libre y de código abierto)",
+    "github": "Código fuente en GitHub",
+    "engineVersion": "Motor",
+    "disclaimer": "CheckMyDrive ofrece una estimación fundamentada y no puede garantizar que un disco nunca vaya a fallar. Haga siempre copias de seguridad de los archivos importantes.",
+    "close": "Listo"
+  },
+  "metric": {
+    "read_mbps_avg": "Velocidad media de lectura (MB/s)",
+    "write_mbps": "Velocidad de escritura (MB/s)",
+    "latency_ms_p99": "Respuesta del 1 % más lento (ms)",
+    "slow_samples": "Puntos lentos",
+    "read_errors": "Errores de lectura",
+    "reallocated_sectors": "Zonas defectuosas reemplazadas",
+    "pending_sectors": "Zonas inestables",
+    "uncorrectable_sectors": "Zonas ilegibles",
+    "temperature_c": "Temperatura (°C)",
+    "percent_used": "Desgaste usado (%)",
+    "media_errors": "Errores del soporte",
+    "written_mb": "Datos escritos (MB)",
+    "mismatches": "Diferencias",
+    "sectors_checked": "Puntos comprobados",
+    "real_capacity_gb": "Capacidad real (GB)",
+    "claimed_gb": "Capacidad declarada (GB)",
+    "disconnects": "Desconexiones",
+    "io_errors": "Errores de entrada/salida",
+    "rpm": "Velocidad de giro (RPM)",
+    "interface": "Conexión",
+    "result": "Resultado"
+  },
+  "issue": {
+    "unknown": "Se encontró algo inusual ({{code}}). Consulte la tabla de pruebas para ver los detalles.",
+    "age": {
+      "high_hours": "Este disco ha estado encendido unos {{years}} años ({{hours}} horas), lo que es mucho uso.",
+      "moderate_hours": "Este disco ha estado encendido unos {{years}} años ({{hours}} horas)."
+    },
+    "drive_info": {
+      "capacity_unknown": "El disco no informó de su tamaño.",
+      "model_unknown": "El disco no informó del nombre de su modelo.",
+      "system_disk": "Este es el disco desde el que funciona su ordenador. Solo se hizo la prueba segura, que no destruye nada."
+    },
+    "smart": {
+      "unavailable": "La herramienta de informe de salud (smartmontools) no está disponible, así que no se pudieron leer los datos internos de salud del disco.",
+      "needs_admin": "No se pudo leer el informe de salud del disco sin permiso de administrador.",
+      "timeout": "El disco no respondió a tiempo a la solicitud del informe de salud.",
+      "not_supported": "Este disco no ofrece informe de salud, así que se desconoce su estado interno.",
+      "usb_bridge_blocked": "El adaptador USB oculta el informe de salud del disco, así que se desconoce su estado interno.",
+      "overall_failed": "La propia comprobación de salud del disco dice que está fallando.",
+      "reallocated_sectors": "El disco ya ha reemplazado {{count}} zonas dañadas por otras de repuesto.",
+      "pending_sectors": "{{count}} zonas del disco son ilegibles y están pendientes de reemplazo.",
+      "uncorrectable_sectors": "{{count}} zonas del disco no se pudieron leer ni corregir.",
+      "crc_errors": "Se registraron {{count}} errores de transferencia de datos, a menudo causados por un cable o conector defectuoso.",
+      "error_log_entries": "El registro de errores del disco contiene {{count}} entradas.",
+      "ssd_worn": "Este SSD ha consumido aproximadamente el {{percent}} % de su vida útil prevista.",
+      "ssd_worn_out": "Este SSD ha consumido aproximadamente el {{percent}} % de su vida útil prevista y está cerca del final de su vida.",
+      "nvme_critical_warning": "El disco informa de una advertencia crítica (código {{value}}).",
+      "nvme_media_errors": "La memoria del disco ha registrado {{count}} errores de integridad de datos.",
+      "spare_low": "Solo queda el {{percent}} % de la memoria de reserva del disco.",
+      "temperature_high": "El disco está muy caliente ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Se omitió la autocomprobación rápida del disco porque su interfaz de salud no está disponible.",
+      "not_supported": "Este disco no admite la autocomprobación rápida.",
+      "could_not_start": "No se pudo iniciar la autocomprobación rápida del disco.",
+      "failed": "El disco no superó su propia autocomprobación rápida.",
+      "aborted": "La autocomprobación rápida del disco se interrumpió antes de terminar.",
+      "timeout": "La autocomprobación rápida del disco no terminó en {{seconds}} segundos y se detuvo."
+    },
+    "surface_read": {
+      "cannot_open": "No se pudo abrir el disco para leerlo.",
+      "read_errors": "No se pudieron leer {{count}} partes del disco.",
+      "slow_areas": "{{count}} zonas ({{percent}} %) respondieron muy despacio, lo que puede significar que la superficie se está desgastando.",
+      "low_speed": "El disco lee despacio ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Se omitió la prueba de escritura porque el disco no tiene una carpeta donde se pueda escribir con seguridad.",
+      "insufficient_space": "Se omitió la prueba de escritura porque el disco tiene muy poco espacio libre.",
+      "write_error": "El disco informó de un error al escribir los datos de prueba.",
+      "data_mismatch": "{{count}} bloques de datos de prueba volvieron distintos de lo que se escribió.",
+      "slow_write": "El disco escribe muy despacio ({{mbps}} MB/s).",
+      "cleanup_failed": "No se pudo eliminar el archivo temporal de prueba. Puede borrar {{path}} usted mismo."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "La comprobación de capacidad falsa necesita la prueba completa, que borra el disco. Se omitió.",
+      "fake_capacity": "Este disco dice tener {{claimed_bytes}} bytes, pero solo unos {{real_bytes}} bytes son reales. Es un disco con capacidad falsa.",
+      "data_corruption": "{{count}} bloques de prueba volvieron dañados.",
+      "io_error": "El disco devolvió {{count}} errores durante la comprobación de capacidad."
+    },
+    "stability": {
+      "device_disconnected": "El disco desapareció {{count}} vez/veces durante las pruebas.",
+      "io_errors": "El disco devolvió {{count}} errores de lectura o escritura durante las pruebas.",
+      "timeouts": "El disco agotó el tiempo de espera {{count}} vez/veces durante las pruebas.",
+      "crc_errors_increased": "Los errores de transferencia de datos aumentaron en {{count}} durante las pruebas. Revise el cable.",
+      "new_bad_sectors": "Aparecieron {{count}} zonas dañadas nuevas mientras probábamos."
+    }
+  },
+  "progress": {
+    "unknown": "Trabajando…",
+    "working": "Trabajando…",
+    "prepare": {
+      "starting": "Preparando...",
+      "reading_smart": "Leyendo el informe de salud integrado del disco...",
+      "unmounting": "Desconectando con seguridad los volúmenes del disco...",
+      "ready": "Listo para probar."
+    },
+    "drive_info": {
+      "identifying": "Identificando el disco..."
+    },
+    "smart_health": {
+      "analyzing": "Revisando el informe de salud del disco..."
+    },
+    "selftest_short": {
+      "starting": "Iniciando la autocomprobación rápida integrada del disco...",
+      "running": "El disco está haciendo su propia autocomprobación rápida ({{percent}} % completado).",
+      "done": "La autocomprobación del disco terminó.",
+      "running_seconds": "El disco está haciendo su propia autocomprobación rápida ({{seconds}} segundos hasta ahora)."
+    },
+    "surface_read": {
+      "sampling": "Leyendo zonas de muestra de todo el disco ({{done}} de {{total}}).",
+      "sequential": "Midiendo la velocidad de lectura ({{mbps}} MB/s).",
+      "done": "El análisis de la superficie terminó."
+    },
+    "write_verify": {
+      "writing": "Escribiendo datos de prueba ({{mb}} MB escritos).",
+      "verifying": "Volviendo a leer los datos para comprobarlos ({{mb}} MB comprobados).",
+      "cleaning": "Eliminando el archivo temporal de prueba...",
+      "done": "La prueba de escritura terminó."
+    },
+    "capacity_check": {
+      "writing": "Marcando puntos en todo el tamaño declarado ({{done}} de {{total}}).",
+      "verifying": "Comprobando que cada punto guarde sus propios datos ({{done}} de {{total}}).",
+      "done": "La comprobación de capacidad terminó."
+    },
+    "stability": {
+      "checking": "Comprobando que el disco se mantuvo estable durante las pruebas..."
+    },
+    "finish": {
+      "scoring": "Calculando su puntuación...",
+      "done": "Listo."
+    }
+  },
+  "suitability": {
+    "unknown": "No hay detalles disponibles.",
+    "fallback": {
+      "os_install": {
+        "good": "No hay problemas que impidan que un sistema operativo funcione de forma fiable.",
+        "caution": "Puede funcionar, pero hay cierto riesgo. Haga una copia de seguridad.",
+        "no": "No es seguro para un sistema operativo."
+      },
+      "long_term_storage": {
+        "good": "Parece fiable para guardar archivos a largo plazo. Aun así, conserve una segunda copia.",
+        "caution": "Arriesgado para guardar a largo plazo. Conserve otra copia en otro lugar.",
+        "no": "No guarde aquí archivos importantes."
+      },
+      "daily_use": {
+        "good": "Bien para el uso diario.",
+        "caution": "Aceptable para el uso diario, pero esté atento a nuevos problemas.",
+        "no": "No es lo bastante fiable para el uso diario."
+      }
+    },
+    "os_install": {
+      "ok": "Bueno para instalar un sistema operativo.",
+      "bad_sectors": "No recomendado para un sistema operativo: tiene zonas dañadas.",
+      "slow_latency": "No recomendado para un sistema operativo: algunas lecturas son demasiado lentas.",
+      "score_low": "No recomendado para un sistema operativo: la puntuación general ({{score}}) es demasiado baja."
+    },
+    "long_term_storage": {
+      "ok": "Bueno para guardar archivos a largo plazo.",
+      "critical_issues": "No es seguro para guardar a largo plazo: se encontraron problemas graves.",
+      "score_low": "Arriesgado para guardar a largo plazo: la puntuación general ({{score}}) es demasiado baja. Haga copias de seguridad."
+    },
+    "daily_use": {
+      "ok": "Bien para el uso diario.",
+      "caution": "Se puede usar para archivos cotidianos, pero haga copias de seguridad.",
+      "no": "No recomendado para el uso diario."
+    }
+  },
+  "error": {
+    "unknown": "Algo salió mal ({{code}}).",
+    "title": "No se pudo terminar la comprobación",
+    "retry": "Intentar de nuevo",
+    "choose": "Elegir otro disco",
+    "refused": "La prueba se rechazó por seguridad. Las pruebas con borrado no se pueden hacer en el disco del sistema ni sin un número de serie que coincida.",
+    "engine_failed": "La herramienta de comprobación se detuvo de forma inesperada.",
+    "engine_missing": "No se encontró la herramienta de comprobación. Vuelva a instalar CheckMyDrive.",
+    "auth_cancelled": "No se concedió el permiso, así que no se comprobó el disco.",
+    "elevation_unavailable": "No se pudo pedir permiso de administrador en este ordenador.",
+    "bad_args": "La prueba no pudo iniciarse por un error interno en la solicitud.",
+    "needs_admin": "Se necesita permiso de administrador para probar este disco.",
+    "drive_not_found": "No se encontró ese disco. Puede que lo hayan desconectado.",
+    "system_disk_refused": "Este es el disco desde el que funciona su ordenador, así que no se puede borrar. Elija otro disco.",
+    "confirm_required": "Confirme el número de serie del disco antes de una prueba completa que borra datos.",
+    "confirm_mismatch": "El número de serie que escribió no coincide con este disco. No se cambió nada.",
+    "cannot_open_device": "No se pudo abrir el disco para probarlo. Puede que otro programa lo esté usando.",
+    "unmount_failed": "No se pudieron desconectar con seguridad los volúmenes del disco antes de la prueba completa. Cierre los programas que lo usen e inténtelo de nuevo.",
+    "internal": "Algo inesperado salió mal dentro del motor de pruebas."
+  },
+  "common": {
+    "loading": "Cargando…",
+    "close": "Cerrar",
+    "unknown": "Desconocido"
+  }
+}

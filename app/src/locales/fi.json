@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Selvitä, onko käytetty asema turvallinen, ennen kuin luotat siihen.",
+    "skip": "Siirry pääsisältöön"
+  },
+  "nav": {
+    "settings": "Asetukset",
+    "back": "Takaisin",
+    "mockBanner": "Esittelytila: näytetään esimerkkiasemia. Tietokoneellasi ei testata mitään."
+  },
+  "picker": {
+    "title": "Minkä aseman haluat tarkistaa?",
+    "subtitle": "Liitä asema, jonka aiot ostaa tai ottaa käyttöön, ja valitse se alta. Tarkistus kestää noin 3–4 minuuttia.",
+    "refresh": "Päivitä",
+    "refreshing": "Etsitään asemia…",
+    "empty": "Asemia ei löytynyt. Liitä asema ja paina Päivitä.",
+    "systemDisk": "Järjestelmälevy",
+    "systemDiskHint": "Tietokoneesi toimii tältä asemalta. Sen voi tarkistaa vain turvallisessa tilassa.",
+    "unknownModel": "Tuntematon asema",
+    "select": "Tarkista tämä asema",
+    "kind": {
+      "hdd": "Kiintolevy (HDD)",
+      "ssd": "SSD-asema",
+      "nvme": "NVMe SSD",
+      "usb": "USB-tikku tai USB-asema",
+      "sd": "SD- / muistikortti",
+      "unknown": "Asema"
+    },
+    "removable": "Irrotettava",
+    "loadFailed": "Asemien luetteloa ei voitu lukea.",
+    "noAdminNote": "Jotkin tiedot, kuten kuntotiedot, voivat vaatia järjestelmänvalvojan luvan. Lupaa pyydetään, kun tarkistus alkaa."
+  },
+  "mode": {
+    "title": "Kuinka perusteellinen tarkistuksen pitää olla?",
+    "checking": "Tarkistetaan",
+    "safe": {
+      "title": "Nopea turvallinen testi (tiedostosi säilyvät)",
+      "desc": "Lukee koko aseman ja kirjoittaa pienen väliaikaisen tiedoston, joten mikään omistamasi ei muutu tai katoa.",
+      "badge": "Suositeltu",
+      "limit": "Ei tunnista väärennettyä kapasiteettia."
+    },
+    "wipe": {
+      "title": "Täysi tyhjennystesti (perusteellisin, POISTAA kaiken)",
+      "desc": "Kirjoittaa myös koko aseman läpi paljastaakseen väärennetyn kapasiteetin ja piilevät viat. Kaikki aseman tiedostot tuhoutuvat pysyvästi.",
+      "dangerTitle": "Vaaravyöhyke: asema tyhjennetään",
+      "dangerBody": "Tämä poistaa pysyvästi KAIKEN aseman {{model}} tiedon. Sitä ei voi perua. Jatka vain, jos asema on tyhjä tai sinulla on varmuuskopio.",
+      "confirmLabel": "Vahvista kirjoittamalla aseman sarjanumero: {{serial}}",
+      "confirmPlaceholder": "Kirjoita sarjanumero tähän",
+      "noSerial": "Tämä asema ei ilmoita sarjanumeroa, joten täyttä tyhjennystestiä ei voi käyttää.",
+      "systemBlocked": "Järjestelmälevyä ei voi koskaan tyhjentää. Vain turvallinen testi on käytettävissä.",
+      "mismatch": "Teksti ei vielä vastaa sarjanumeroa.",
+      "start": "Tyhjennä ja suorita täysi testi",
+      "expand": "Näytä täysi tyhjennystesti",
+      "collapse": "Piilota täysi tyhjennystesti"
+    },
+    "start": "Aloita nopea turvallinen testi",
+    "back": "Valitse toinen asema",
+    "duration": "Kestää noin 3–4 minuuttia. Älä irrota asemaa."
+  },
+  "running": {
+    "title": "Tarkistetaan asemaasi",
+    "subtitle": "Pidä asema liitettynä ja tietokone hereillä.",
+    "overall": "Kokonaisedistyminen",
+    "elapsed": "Kulunut aika",
+    "remaining": "Noin {{time}} jäljellä",
+    "estimating": "Arvioidaan aikaa…",
+    "cancel": "Peruuta testi",
+    "cancelling": "Peruutetaan…",
+    "cancelConfirm": "Pysäytetäänkö testi? Asemallasi ei muutettu mitään turvallisessa tilassa.",
+    "keepGoing": "Jatka",
+    "stop": "Pysäytä testi",
+    "checklist": "Mitä tarkistamme",
+    "waiting": "Odotetaan lupaa…",
+    "adminPrompt": "Tietokone saattaa pyytää salasanaasi. Näin CheckMyDrive voi lukea aseman suoraan.",
+    "phase": {
+      "prepare": "Valmistaudutaan",
+      "finish": "Lasketaan pisteitäsi"
+    },
+    "status": {
+      "pending": "Odottaa",
+      "running": "Tarkistetaan",
+      "done": "Valmis"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Aseman tiedot",
+      "desc": "Aseman malli, koko ja tyyppi"
+    },
+    "smart_health": {
+      "name": "Kuntoraportti",
+      "desc": "Aseman oma kirjaus ongelmista ja kulumisesta"
+    },
+    "selftest_short": {
+      "name": "Sisäänrakennettu omatarkistus",
+      "desc": "Asema tarkistaa itsensä"
+    },
+    "surface_read": {
+      "name": "Pintaskannaus",
+      "desc": "Lukee kohtia koko asemalta"
+    },
+    "write_verify": {
+      "name": "Kirjoita ja varmista",
+      "desc": "Tallentaa tietoa ja lukee sen takaisin"
+    },
+    "capacity_check": {
+      "name": "Todellinen kapasiteetti",
+      "desc": "Varmistaa, ettei koko ole väärennetty"
+    },
+    "stability": {
+      "name": "Vakaus",
+      "desc": "Seuraa katkoksia ja virheitä"
+    }
+  },
+  "status": {
+    "pass": "Läpäisty",
+    "warn": "Varoitus",
+    "fail": "Epäonnistui",
+    "skipped": "Ohitettu"
+  },
+  "results": {
+    "title": "Tulokset",
+    "scoreOutOf": "/ 100",
+    "scoreLabel": "Pisteet {{score}} / 100",
+    "verdict": {
+      "buy": "Hyvä ostaa",
+      "caution": "Käytä varoen",
+      "avoid": "Vältä"
+    },
+    "summary": {
+      "buy": "Tämä {{model}} vaikuttaa terveeltä. Emme löytäneet vakavia ongelmia, ja sen pitäisi sopia hyvin tavalliseen käyttöön.",
+      "caution": "Tämä {{model}} toimii, mutta löysimme varoitusmerkkejä. Käytä sitä vain tiedostoille, joiden menetyksen kestät, tai neuvottele alempi hinta.",
+      "avoid": "Älä luota tähän {{model}}-asemaan. Löysimme vakavia ongelmia, jotka vaarantavat tiedostosi.",
+      "fake_capacity": "Tämä {{model}} valehtelee kokonsa. Se väittää olevansa {{claimed}}, mutta ei oikeasti pysty tallentamaan niin paljon. Älä osta tai käytä sitä.",
+      "failing": "Tämä {{model}} on hajoamassa. Sen oma kuntotieto ja testimme osoittavat, että se voi menettää tiedostosi milloin tahansa."
+    },
+    "can": {
+      "title": "Voinko…",
+      "os": "Asentaa siihen käyttöjärjestelmän?",
+      "storage": "Säilyttää siinä tiedostoja pitkään?",
+      "daily": "Käyttää sitä joka päivä?",
+      "fill": "Täyttää sen turvallisesti?",
+      "fillYes": "Tallentaa turvallisesti jopa {{size}} / {{total}}",
+      "fillNo": "Emme tallentaisi siihen mitään tärkeää.",
+      "yes": "Kyllä",
+      "maybe": "Ehkä",
+      "no": "Ei"
+    },
+    "age": {
+      "title": "Aseman ikä",
+      "years": "Noin {{count}} vuoden käyttö",
+      "yearsLessThanOne": "Alle vuoden käyttö",
+      "hours": "{{hours}} tuntia käynnissä",
+      "made": "Valmistettu: {{date}}",
+      "cycles": "Kytketty päälle {{count}} kertaa",
+      "unknown": "Tämä asema ei ilmoita, kuinka kauan sitä on käytetty.",
+      "note": "Tunnit lasketaan vain, kun asema on päällä. Ympäri vuorokauden käytössä oleva asema vanhenee nopeammin kuin muutaman tunnin päivässä käytetty."
+    },
+    "issues": {
+      "title": "Mitä löysimme",
+      "none": "Ongelmia ei löytynyt.",
+      "critical": "Vakava",
+      "warn": "Varoitus",
+      "info": "Huomautus"
+    },
+    "matrix": {
+      "title": "Testitaulukko",
+      "subtitle": "Tietoja edistyneille käyttäjille",
+      "show": "Näytä tiedot",
+      "hide": "Piilota tiedot",
+      "test": "Testi",
+      "status": "Tila",
+      "score": "Pisteet",
+      "metrics": "Avainluvut",
+      "none": "Lukuja ei tallennettu"
+    },
+    "export": "Vie raportti",
+    "exportJson": "Tallenna JSON-tiedostona",
+    "exportHtml": "Tallenna verkkosivuna (HTML)",
+    "print": "Tulosta tai tallenna PDF-tiedostona",
+    "saved": "Raportti tallennettu.",
+    "saveFailed": "Raporttia ei voitu tallentaa.",
+    "another": "Testaa toinen asema",
+    "mode": {
+      "safe": "Nopea turvallinen testi",
+      "wipe": "Täysi tyhjennystesti"
+    },
+    "tested": "Testattu {{date}}",
+    "engine": "Moottori {{version}}",
+    "skippedNote": "Väärennetyn kapasiteetin tunnistusta ei suoritettu. Käytä täyttä tyhjennystestiä tyhjällä asemalla saadaksesi täydellisen vastauksen."
+  },
+  "report": {
+    "title": "CheckMyDrive-raportti",
+    "generatedBy": "Luonut CheckMyDrive (avoin lähdekoodi)"
+  },
+  "settings": {
+    "title": "Asetukset ja tietoja",
+    "language": "Kieli",
+    "languageHint": "Muut kielet kuin englanti ladataan sitä mukaa kuin ne ovat saatavilla; puuttuva teksti näkyy englanniksi.",
+    "theme": "Ulkoasu",
+    "themeSystem": "Seuraa järjestelmää",
+    "themeLight": "Vaalea",
+    "themeDark": "Tumma",
+    "about": "Tietoja",
+    "version": "Versio",
+    "license": "Lisenssi",
+    "licenseValue": "MIT-lisenssi (ilmainen ja avoin lähdekoodi)",
+    "github": "Lähdekoodi GitHubissa",
+    "engineVersion": "Moottori",
+    "disclaimer": "CheckMyDrive antaa perustellun arvion, eikä voi taata, ettei asema koskaan hajoa. Varmuuskopioi aina tärkeät tiedostot.",
+    "close": "Valmis"
+  },
+  "metric": {
+    "read_mbps_avg": "Keskimääräinen lukunopeus (MB/s)",
+    "write_mbps": "Kirjoitusnopeus (MB/s)",
+    "latency_ms_p99": "Hitain 1 % vasteaika (ms)",
+    "slow_samples": "Hitaat kohdat",
+    "read_errors": "Lukuvirheet",
+    "reallocated_sectors": "Korvatut huonot alueet",
+    "pending_sectors": "Epävakaat alueet",
+    "uncorrectable_sectors": "Lukukelvottomat alueet",
+    "temperature_c": "Lämpötila (°C)",
+    "percent_used": "Käytetty kuluma (%)",
+    "media_errors": "Median virheet",
+    "written_mb": "Kirjoitettu tieto (MB)",
+    "mismatches": "Poikkeamat",
+    "sectors_checked": "Tarkistetut kohdat",
+    "real_capacity_gb": "Todellinen kapasiteetti (GB)",
+    "claimed_gb": "Ilmoitettu kapasiteetti (GB)",
+    "disconnects": "Katkokset",
+    "io_errors": "Syöttö- ja tulostusvirheet",
+    "rpm": "Pyörimisnopeus (RPM)",
+    "interface": "Liitäntä",
+    "result": "Tulos"
+  },
+  "issue": {
+    "unknown": "Löytyi jotain epätavallista ({{code}}). Katso lisätietoja testitaulukosta.",
+    "age": {
+      "high_hours": "Tämä asema on ollut päällä noin {{years}} vuotta ({{hours}} tuntia), mikä on paljon käyttöä.",
+      "moderate_hours": "Tämä asema on ollut päällä noin {{years}} vuotta ({{hours}} tuntia)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Asema ei ilmoittanut kokoaan.",
+      "model_unknown": "Asema ei ilmoittanut mallinimeään.",
+      "system_disk": "Tämä on asema, jolta tietokoneesi toimii. Vain turvallinen, mitään tuhoamaton testi suoritettiin."
+    },
+    "smart": {
+      "unavailable": "Kuntoraporttityökalu (smartmontools) ei ole käytettävissä, joten aseman sisäisiä kuntotietoja ei voitu lukea.",
+      "needs_admin": "Aseman kuntoraporttia ei voitu lukea ilman järjestelmänvalvojan lupaa.",
+      "timeout": "Asema ei vastannut kuntoraporttipyyntöön ajoissa.",
+      "not_supported": "Tämä asema ei tarjoa kuntoraporttia, joten sen sisäinen kunto on tuntematon.",
+      "usb_bridge_blocked": "USB-sovitin piilottaa aseman kuntoraportin, joten sen sisäinen kunto on tuntematon.",
+      "overall_failed": "Aseman oman kuntotarkistuksen mukaan se on hajoamassa.",
+      "reallocated_sectors": "Asema on jo korvannut {{count}} vaurioitunutta aluetta varaosilla.",
+      "pending_sectors": "{{count}} aluetta asemalla on lukukelvottomia ja odottaa korvaamista.",
+      "uncorrectable_sectors": "{{count}} aluetta asemalla ei voitu lukea tai korjata.",
+      "crc_errors": "Tiedonsiirtovirheitä kirjattiin {{count}}, usein huonon kaapelin tai liittimen vuoksi.",
+      "error_log_entries": "Aseman virheloki sisältää {{count}} merkintää.",
+      "ssd_worn": "Tämä SSD on käyttänyt noin {{percent}} % arvioidusta käyttöiästään.",
+      "ssd_worn_out": "Tämä SSD on käyttänyt noin {{percent}} % arvioidusta käyttöiästään ja on lähellä elinkaarensa loppua.",
+      "nvme_critical_warning": "Asema ilmoittaa kriittisestä varoituksesta (koodi {{value}}).",
+      "nvme_media_errors": "Aseman muisti on kirjannut {{count}} tietojen eheysvirhettä.",
+      "spare_low": "Aseman varamuistista on jäljellä vain {{percent}} %.",
+      "temperature_high": "Asema käy kuumana ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Aseman nopea omatesti ohitettiin, koska sen kuntorajapinta ei ole käytettävissä.",
+      "not_supported": "Tämä asema ei tue nopeaa omatestiä.",
+      "could_not_start": "Aseman nopeaa omatestiä ei voitu käynnistää.",
+      "failed": "Asema ei läpäissyt omaa nopeaa omatestiään.",
+      "aborted": "Aseman nopea omatesti keskeytyi ennen valmistumista.",
+      "timeout": "Aseman nopea omatesti ei valmistunut {{seconds}} sekunnissa ja se pysäytettiin."
+    },
+    "surface_read": {
+      "cannot_open": "Asemaa ei voitu avata lukemista varten.",
+      "read_errors": "{{count}} aseman osaa ei voitu lukea.",
+      "slow_areas": "{{count}} aluetta ({{percent}} %) vastasi erittäin hitaasti, mikä voi tarkoittaa pinnan kulumista.",
+      "low_speed": "Asema lukee hitaasti ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Kirjoitustesti ohitettiin, koska asemalla ei ole kansiota, johon voisimme kirjoittaa turvallisesti.",
+      "insufficient_space": "Kirjoitustesti ohitettiin, koska asemalla on liian vähän vapaata tilaa.",
+      "write_error": "Asema ilmoitti virheestä testitietoja kirjoitettaessa.",
+      "data_mismatch": "{{count}} testitietolohkoa palasi erilaisina kuin ne kirjoitettiin.",
+      "slow_write": "Asema kirjoittaa erittäin hitaasti ({{mbps}} MB/s).",
+      "cleanup_failed": "Väliaikaista testitiedostoa ei voitu poistaa. Voit poistaa tiedoston {{path}} itse."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Väärennetyn kapasiteetin tarkistus vaatii täyden testin, joka tyhjentää aseman. Se ohitettiin.",
+      "fake_capacity": "Tämä asema väittää mahtuvansa {{claimed_bytes}} tavua, mutta vain noin {{real_bytes}} tavua on todellista. Se on väärennetyn kapasiteetin asema.",
+      "data_corruption": "{{count}} testilohkoa palasi vaurioituneina.",
+      "io_error": "Asema palautti {{count}} virhettä kapasiteettitarkistuksen aikana."
+    },
+    "stability": {
+      "device_disconnected": "Asema katosi {{count}} kertaa testien aikana.",
+      "io_errors": "Asema palautti {{count}} luku- tai kirjoitusvirhettä testien aikana.",
+      "timeouts": "Asema ei vastannut ajoissa {{count}} kertaa testien aikana.",
+      "crc_errors_increased": "Tiedonsiirtovirheet lisääntyivät {{count}} testien aikana. Tarkista kaapeli.",
+      "new_bad_sectors": "{{count}} uutta vaurioitunutta aluetta ilmestyi testauksen aikana."
+    }
+  },
+  "progress": {
+    "unknown": "Työskennellään…",
+    "working": "Työskennellään…",
+    "prepare": {
+      "starting": "Valmistaudutaan...",
+      "reading_smart": "Luetaan aseman sisäänrakennettua kuntoraporttia...",
+      "unmounting": "Irrotetaan aseman osiot turvallisesti...",
+      "ready": "Valmis testaamaan."
+    },
+    "drive_info": {
+      "identifying": "Tunnistetaan asemaa..."
+    },
+    "smart_health": {
+      "analyzing": "Tarkistetaan aseman kuntoraporttia..."
+    },
+    "selftest_short": {
+      "starting": "Käynnistetään aseman sisäänrakennettu nopea omatesti...",
+      "running": "Asema suorittaa omaa nopeaa omatestiään ({{percent}} % valmis).",
+      "done": "Aseman omatesti valmistui.",
+      "running_seconds": "Asema suorittaa omaa nopeaa omatestiään ({{seconds}} sekuntia tähän mennessä)."
+    },
+    "surface_read": {
+      "sampling": "Luetaan näytealueita koko asemalta ({{done}} / {{total}}).",
+      "sequential": "Mitataan lukunopeutta ({{mbps}} MB/s).",
+      "done": "Pintaskannaus valmistui."
+    },
+    "write_verify": {
+      "writing": "Kirjoitetaan testitietoja ({{mb}} MB kirjoitettu).",
+      "verifying": "Luetaan tiedot takaisin tarkistusta varten ({{mb}} MB tarkistettu).",
+      "cleaning": "Poistetaan väliaikaista testitiedostoa...",
+      "done": "Kirjoitustesti valmistui."
+    },
+    "capacity_check": {
+      "writing": "Merkitään kohtia koko ilmoitetun koon alueelle ({{done}} / {{total}}).",
+      "verifying": "Tarkistetaan, että jokainen kohta pitää oman tietonsa ({{done}} / {{total}}).",
+      "done": "Kapasiteettitarkistus valmistui."
+    },
+    "stability": {
+      "checking": "Tarkistetaan, pysyikö asema vakaana testien aikana..."
+    },
+    "finish": {
+      "scoring": "Lasketaan pisteitäsi...",
+      "done": "Valmis."
+    }
+  },
+  "suitability": {
+    "unknown": "Tietoja ei ole saatavilla.",
+    "fallback": {
+      "os_install": {
+        "good": "Ei ongelmia, jotka estäisivät käyttöjärjestelmää toimimasta luotettavasti.",
+        "caution": "Se voi toimia, mutta siihen liittyy riski. Tee varmuuskopio.",
+        "no": "Ei turvallinen käyttöjärjestelmälle."
+      },
+      "long_term_storage": {
+        "good": "Vaikuttaa luotettavalta tiedostojen pitkäaikaiseen säilytykseen. Pidä silti toinen kopio.",
+        "caution": "Riskialtis pitkäaikaiseen säilytykseen. Pidä kopio muualla.",
+        "no": "Älä säilytä tärkeitä tiedostoja täällä."
+      },
+      "daily_use": {
+        "good": "Sopii päivittäiseen käyttöön.",
+        "caution": "Kelpaa päivittäiseen käyttöön, mutta tarkkaile uusia ongelmia.",
+        "no": "Ei riittävän luotettava päivittäiseen käyttöön."
+      }
+    },
+    "os_install": {
+      "ok": "Hyvä käyttöjärjestelmän asentamiseen.",
+      "bad_sectors": "Ei suositella käyttöjärjestelmälle: siinä on vaurioituneita alueita.",
+      "slow_latency": "Ei suositella käyttöjärjestelmälle: osa lukuoperaatioista on liian hitaita.",
+      "score_low": "Ei suositella käyttöjärjestelmälle: kokonaispisteet ({{score}}) ovat liian alhaiset."
+    },
+    "long_term_storage": {
+      "ok": "Hyvä tiedostojen pitkäaikaiseen säilytykseen.",
+      "critical_issues": "Ei turvallinen pitkäaikaiseen säilytykseen: löytyi vakavia ongelmia.",
+      "score_low": "Riskialtis pitkäaikaiseen säilytykseen: kokonaispisteet ({{score}}) ovat liian alhaiset. Tee varmuuskopiot."
+    },
+    "daily_use": {
+      "ok": "Sopii päivittäiseen käyttöön.",
+      "caution": "Käyttökelpoinen tavallisille tiedostoille, mutta tee varmuuskopiot.",
+      "no": "Ei suositella päivittäiseen käyttöön."
+    }
+  },
+  "error": {
+    "unknown": "Jokin meni pieleen ({{code}}).",
+    "title": "Tarkistusta ei voitu saada valmiiksi",
+    "retry": "Yritä uudelleen",
+    "choose": "Valitse toinen asema",
+    "refused": "Testi evättiin turvallisuussyistä. Tyhjennystestejä ei voi ajaa järjestelmälevyllä tai ilman täsmäävää sarjanumeroa.",
+    "engine_failed": "Tarkistustyökalu pysähtyi odottamatta.",
+    "engine_missing": "Tarkistustyökalua ei löytynyt. Asenna CheckMyDrive uudelleen.",
+    "auth_cancelled": "Lupaa ei annettu, joten asemaa ei tarkistettu.",
+    "elevation_unavailable": "Järjestelmänvalvojan lupaa ei voitu pyytää tällä tietokoneella.",
+    "bad_args": "Testiä ei voitu käynnistää sisäisen pyyntövirheen vuoksi.",
+    "needs_admin": "Tämän aseman testaaminen vaatii järjestelmänvalvojan luvan.",
+    "drive_not_found": "Asemaa ei löytynyt. Se on voitu irrottaa.",
+    "system_disk_refused": "Tämä on asema, jolta tietokoneesi toimii, joten sitä ei voi tyhjentää. Valitse toinen asema.",
+    "confirm_required": "Vahvista aseman sarjanumero ennen täyttä testiä, joka poistaa tietoja.",
+    "confirm_mismatch": "Antamasi sarjanumero ei vastaa tätä asemaa. Mitään ei muutettu.",
+    "cannot_open_device": "Asemaa ei voitu avata testausta varten. Jokin toinen ohjelma voi käyttää sitä.",
+    "unmount_failed": "Aseman osioita ei voitu irrottaa turvallisesti ennen täyttä testiä. Sulje sitä käyttävät ohjelmat ja yritä uudelleen.",
+    "internal": "Testimoottorissa tapahtui jotain odottamatonta."
+  },
+  "common": {
+    "loading": "Ladataan…",
+    "close": "Sulje",
+    "unknown": "Tuntematon"
+  }
+}

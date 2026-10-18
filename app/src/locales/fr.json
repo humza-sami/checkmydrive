@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Sachez si un disque d'occasion est sûr avant de lui faire confiance.",
+    "skip": "Aller au contenu principal"
+  },
+  "nav": {
+    "settings": "Réglages",
+    "back": "Retour",
+    "mockBanner": "Mode démo : des disques d'exemple sont affichés. Rien n'est testé sur votre ordinateur."
+  },
+  "picker": {
+    "title": "Quel disque voulez-vous vérifier ?",
+    "subtitle": "Branchez le disque que vous envisagez d'acheter ou d'utiliser, puis choisissez-le ci-dessous. La vérification dure environ 3 à 4 minutes.",
+    "refresh": "Actualiser",
+    "refreshing": "Recherche des disques…",
+    "empty": "Aucun disque trouvé. Branchez-en un et appuyez sur Actualiser.",
+    "systemDisk": "Disque système",
+    "systemDiskHint": "Votre ordinateur fonctionne à partir de ce disque. Il ne peut être vérifié qu'en mode sûr.",
+    "unknownModel": "Disque inconnu",
+    "select": "Vérifier ce disque",
+    "kind": {
+      "hdd": "Disque dur (HDD)",
+      "ssd": "Disque SSD (mémoire flash)",
+      "nvme": "SSD NVMe",
+      "usb": "Clé USB ou disque USB",
+      "sd": "Carte SD / carte mémoire",
+      "unknown": "Disque"
+    },
+    "removable": "Amovible",
+    "loadFailed": "Nous n'avons pas pu lire la liste des disques.",
+    "noAdminNote": "Certaines informations, comme les données de santé, peuvent nécessiter l'autorisation de l'administrateur, qui sera demandée au début de la vérification."
+  },
+  "mode": {
+    "title": "Quel niveau de précision souhaitez-vous ?",
+    "checking": "Vérification",
+    "safe": {
+      "title": "Test rapide et sûr (vos fichiers sont conservés)",
+      "desc": "Lit tout le disque et écrit un petit fichier temporaire : rien de ce qui vous appartient n'est modifié ni perdu.",
+      "badge": "Recommandé",
+      "limit": "Ne peut pas détecter une fausse capacité."
+    },
+    "wipe": {
+      "title": "Test complet avec effacement (le plus approfondi, EFFACE tout)",
+      "desc": "Écrit aussi sur tout le disque pour repérer une fausse capacité et des défauts cachés. Tous les fichiers du disque sont détruits définitivement.",
+      "dangerTitle": "Zone de danger : le disque sera effacé",
+      "dangerBody": "Cela supprime définitivement TOUTES les données de {{model}}. Cette action est irréversible. Ne continuez que si le disque est vide ou si vous avez une sauvegarde.",
+      "confirmLabel": "Pour confirmer, saisissez le numéro de série du disque : {{serial}}",
+      "confirmPlaceholder": "Saisissez ici le numéro de série",
+      "noSerial": "Ce disque ne communique pas de numéro de série, le test complet avec effacement n'est donc pas disponible.",
+      "systemBlocked": "Votre disque système ne peut jamais être effacé. Seul le test sûr est disponible.",
+      "mismatch": "Le texte ne correspond pas encore au numéro de série.",
+      "start": "Effacer et lancer le test complet",
+      "expand": "Afficher le test complet avec effacement",
+      "collapse": "Masquer le test complet avec effacement"
+    },
+    "start": "Lancer le test rapide et sûr",
+    "back": "Choisir un autre disque",
+    "duration": "Dure environ 3 à 4 minutes. Veuillez ne pas débrancher le disque."
+  },
+  "running": {
+    "title": "Vérification de votre disque",
+    "subtitle": "Veuillez laisser le disque branché et l'ordinateur allumé.",
+    "overall": "Progression globale",
+    "elapsed": "Temps écoulé",
+    "remaining": "Environ {{time}} restantes",
+    "estimating": "Estimation du temps…",
+    "cancel": "Annuler le test",
+    "cancelling": "Annulation…",
+    "cancelConfirm": "Arrêter le test ? En mode sûr, rien n'a été modifié sur votre disque.",
+    "keepGoing": "Continuer",
+    "stop": "Arrêter le test",
+    "checklist": "Ce que nous vérifions",
+    "waiting": "En attente de l'autorisation…",
+    "adminPrompt": "Votre ordinateur peut vous demander votre mot de passe. Cela permet à CheckMyDrive de lire directement le disque.",
+    "phase": {
+      "prepare": "Préparation",
+      "finish": "Calcul de votre note"
+    },
+    "status": {
+      "pending": "En attente",
+      "running": "Vérification",
+      "done": "Terminé"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Identité du disque",
+      "desc": "Modèle, taille et type de disque"
+    },
+    "smart_health": {
+      "name": "Rapport de santé",
+      "desc": "Le relevé du disque lui-même sur ses problèmes et son usure"
+    },
+    "selftest_short": {
+      "name": "Auto-vérification intégrée",
+      "desc": "Le disque se vérifie lui-même"
+    },
+    "surface_read": {
+      "name": "Analyse de la surface",
+      "desc": "Lit des zones réparties sur tout le disque"
+    },
+    "write_verify": {
+      "name": "Écriture et vérification",
+      "desc": "Enregistre des données et les relit"
+    },
+    "capacity_check": {
+      "name": "Capacité réelle",
+      "desc": "S'assure que la taille annoncée n'est pas fausse"
+    },
+    "stability": {
+      "name": "Stabilité",
+      "desc": "Surveille les déconnexions et les erreurs"
+    }
+  },
+  "status": {
+    "pass": "Réussi",
+    "warn": "Avertissement",
+    "fail": "Échec",
+    "skipped": "Ignoré"
+  },
+  "results": {
+    "title": "Résultats",
+    "scoreOutOf": "sur 100",
+    "scoreLabel": "Note : {{score}} sur 100",
+    "verdict": {
+      "buy": "Bon à acheter",
+      "caution": "À utiliser avec prudence",
+      "avoid": "À éviter"
+    },
+    "summary": {
+      "buy": "Ce disque ({{model}}) semble en bonne santé. Nous n'avons trouvé aucun problème sérieux et il devrait convenir à un usage quotidien.",
+      "caution": "Ce disque ({{model}}) fonctionne, mais nous avons relevé quelques signes d'alerte. Ne l'utilisez que pour des fichiers que vous pouvez vous permettre de perdre, ou négociez un prix plus bas.",
+      "avoid": "Ne faites pas confiance à ce disque ({{model}}). Nous avons trouvé de sérieux problèmes qui mettent vos fichiers en danger.",
+      "fake_capacity": "Ce disque ({{model}}) ment sur sa taille. Il annonce {{claimed}}, mais ne peut pas en stocker autant. Ne l'achetez pas et ne l'utilisez pas.",
+      "failing": "Ce disque ({{model}}) est en train de lâcher. Ses propres données de santé et nos tests montrent qu'il peut perdre vos fichiers à tout moment."
+    },
+    "can": {
+      "title": "Puis-je…",
+      "os": "y installer un système d'exploitation ?",
+      "storage": "y conserver des fichiers à long terme ?",
+      "daily": "l'utiliser tous les jours ?",
+      "fill": "le remplir en toute sécurité ?",
+      "fillYes": "Stockage sûr jusqu'à {{size}} sur {{total}}",
+      "fillNo": "Nous n'y stockerions rien d'important.",
+      "yes": "Oui",
+      "maybe": "Peut-être",
+      "no": "Non"
+    },
+    "age": {
+      "title": "Âge du disque",
+      "years": "Environ {{count}} ans d'utilisation",
+      "yearsLessThanOne": "Moins d'un an d'utilisation",
+      "hours": "{{hours}} heures sous tension",
+      "made": "Fabriqué : {{date}}",
+      "cycles": "Allumé {{count}} fois",
+      "unknown": "Ce disque ne communique pas sa durée d'utilisation.",
+      "note": "Les heures ne sont comptées que lorsque le disque est sous tension. Un disque utilisé 24 h/24 vieillit plus vite qu'un disque utilisé quelques heures par jour."
+    },
+    "issues": {
+      "title": "Ce que nous avons trouvé",
+      "none": "Aucun problème trouvé.",
+      "critical": "Grave",
+      "warn": "Avertissement",
+      "info": "Remarque"
+    },
+    "matrix": {
+      "title": "Tableau des tests",
+      "subtitle": "Détails pour utilisateurs avancés",
+      "show": "Afficher les détails",
+      "hide": "Masquer les détails",
+      "test": "Test",
+      "status": "État",
+      "score": "Note",
+      "metrics": "Chiffres clés",
+      "none": "Aucun chiffre enregistré"
+    },
+    "export": "Exporter le rapport",
+    "exportJson": "Enregistrer au format JSON",
+    "exportHtml": "Enregistrer comme page web (HTML)",
+    "print": "Imprimer ou enregistrer en PDF",
+    "saved": "Rapport enregistré.",
+    "saveFailed": "Impossible d'enregistrer le rapport.",
+    "another": "Tester un autre disque",
+    "mode": {
+      "safe": "Test rapide et sûr",
+      "wipe": "Test complet avec effacement"
+    },
+    "tested": "Testé le {{date}}",
+    "engine": "Moteur {{version}}",
+    "skippedNote": "La détection de fausse capacité n'a pas été effectuée. Pour une réponse complète, utilisez le test complet avec effacement sur un disque vide."
+  },
+  "report": {
+    "title": "Rapport CheckMyDrive",
+    "generatedBy": "Généré par CheckMyDrive (open source)"
+  },
+  "settings": {
+    "title": "Réglages et à propos",
+    "language": "Langue",
+    "languageHint": "Les langues autres que l'anglais sont chargées au fur et à mesure de leur disponibilité ; les textes manquants s'affichent en anglais.",
+    "theme": "Apparence",
+    "themeSystem": "Suivre le système",
+    "themeLight": "Clair",
+    "themeDark": "Sombre",
+    "about": "À propos",
+    "version": "Version",
+    "license": "Licence",
+    "licenseValue": "Licence MIT (libre et open source)",
+    "github": "Code source sur GitHub",
+    "engineVersion": "Moteur",
+    "disclaimer": "CheckMyDrive fournit une estimation éclairée et ne peut pas garantir qu'un disque ne tombera jamais en panne. Conservez toujours des sauvegardes des fichiers importants.",
+    "close": "Terminé"
+  },
+  "metric": {
+    "read_mbps_avg": "Vitesse de lecture moyenne (MB/s)",
+    "write_mbps": "Vitesse d'écriture (MB/s)",
+    "latency_ms_p99": "Réponse des 1 % les plus lents (ms)",
+    "slow_samples": "Zones lentes",
+    "read_errors": "Erreurs de lecture",
+    "reallocated_sectors": "Zones défectueuses remplacées",
+    "pending_sectors": "Zones instables",
+    "uncorrectable_sectors": "Zones illisibles",
+    "temperature_c": "Température (°C)",
+    "percent_used": "Usure (%)",
+    "media_errors": "Erreurs de support",
+    "written_mb": "Données écrites (MB)",
+    "mismatches": "Écarts",
+    "sectors_checked": "Zones vérifiées",
+    "real_capacity_gb": "Capacité réelle (GB)",
+    "claimed_gb": "Capacité annoncée (GB)",
+    "disconnects": "Déconnexions",
+    "io_errors": "Erreurs d'entrée/sortie",
+    "rpm": "Vitesse de rotation (RPM)",
+    "interface": "Connexion",
+    "result": "Résultat"
+  },
+  "issue": {
+    "unknown": "Quelque chose d'inhabituel a été trouvé ({{code}}). Consultez le tableau des tests pour plus de détails.",
+    "age": {
+      "high_hours": "Ce disque a été sous tension pendant environ {{years}} ans ({{hours}} heures), ce qui représente beaucoup d'usage.",
+      "moderate_hours": "Ce disque a été sous tension pendant environ {{years}} ans ({{hours}} heures)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Le disque n'a pas communiqué sa taille.",
+      "model_unknown": "Le disque n'a pas communiqué le nom de son modèle.",
+      "system_disk": "C'est le disque à partir duquel votre ordinateur fonctionne. Seul le test sûr, sans destruction de données, a été effectué."
+    },
+    "smart": {
+      "unavailable": "L'outil de rapport de santé (smartmontools) n'est pas disponible, les données de santé internes du disque n'ont donc pas pu être lues.",
+      "needs_admin": "Le rapport de santé du disque n'a pas pu être lu sans l'autorisation de l'administrateur.",
+      "timeout": "Le disque n'a pas répondu à temps à la demande de rapport de santé.",
+      "not_supported": "Ce disque ne fournit pas de rapport de santé, son état interne est donc inconnu.",
+      "usb_bridge_blocked": "L'adaptateur USB masque le rapport de santé du disque, son état interne est donc inconnu.",
+      "overall_failed": "La vérification de santé du disque lui-même indique qu'il est en train de lâcher.",
+      "reallocated_sectors": "Le disque a déjà remplacé {{count}} zones endommagées par des zones de rechange.",
+      "pending_sectors": "{{count}} zones du disque sont illisibles et attendent d'être remplacées.",
+      "uncorrectable_sectors": "{{count}} zones du disque n'ont pas pu être lues ni corrigées.",
+      "crc_errors": "{{count}} erreurs de transfert de données ont été enregistrées, souvent dues à un câble ou un connecteur défectueux.",
+      "error_log_entries": "Le journal d'erreurs du disque contient {{count}} entrées.",
+      "ssd_worn": "Ce SSD a utilisé environ {{percent}} % de sa durée de vie prévue.",
+      "ssd_worn_out": "Ce SSD a utilisé environ {{percent}} % de sa durée de vie prévue et approche de la fin de sa vie.",
+      "nvme_critical_warning": "Le disque signale un avertissement critique (code {{value}}).",
+      "nvme_media_errors": "La mémoire du disque a enregistré {{count}} erreurs d'intégrité des données.",
+      "spare_low": "Il ne reste que {{percent}} % de la mémoire de réserve du disque.",
+      "temperature_high": "Le disque chauffe beaucoup ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "L'auto-vérification rapide du disque a été ignorée car son interface de santé n'est pas disponible.",
+      "not_supported": "Ce disque ne prend pas en charge l'auto-vérification rapide.",
+      "could_not_start": "L'auto-vérification rapide du disque n'a pas pu démarrer.",
+      "failed": "Le disque a échoué à sa propre auto-vérification rapide.",
+      "aborted": "L'auto-vérification rapide du disque a été interrompue avant la fin.",
+      "timeout": "L'auto-vérification rapide du disque ne s'est pas terminée en {{seconds}} secondes et a été arrêtée."
+    },
+    "surface_read": {
+      "cannot_open": "Le disque n'a pas pu être ouvert en lecture.",
+      "read_errors": "{{count}} parties du disque n'ont pas pu être lues.",
+      "slow_areas": "{{count}} zones ({{percent}} %) ont répondu très lentement, ce qui peut signifier que la surface s'use.",
+      "low_speed": "Le disque lit lentement ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Le test d'écriture a été ignoré car le disque n'a aucun dossier dans lequel nous puissions écrire en toute sécurité.",
+      "insufficient_space": "Le test d'écriture a été ignoré car le disque a trop peu d'espace libre.",
+      "write_error": "Le disque a signalé une erreur lors de l'écriture des données de test.",
+      "data_mismatch": "{{count}} blocs de données de test sont revenus différents de ce qui avait été écrit.",
+      "slow_write": "Le disque écrit très lentement ({{mbps}} MB/s).",
+      "cleanup_failed": "Le fichier temporaire de test n'a pas pu être supprimé. Vous pouvez supprimer {{path}} vous-même."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "La vérification de fausse capacité nécessite le test complet, qui efface le disque. Elle a été ignorée.",
+      "fake_capacity": "Ce disque prétend contenir {{claimed_bytes}} octets, mais seuls environ {{real_bytes}} octets sont réels. C'est un disque à fausse capacité.",
+      "data_corruption": "{{count}} blocs de test sont revenus endommagés.",
+      "io_error": "Le disque a renvoyé {{count}} erreurs pendant la vérification de capacité."
+    },
+    "stability": {
+      "device_disconnected": "Le disque a disparu {{count}} fois pendant les tests.",
+      "io_errors": "Le disque a renvoyé {{count}} erreurs de lecture ou d'écriture pendant les tests.",
+      "timeouts": "Le disque a dépassé le délai {{count}} fois pendant les tests.",
+      "crc_errors_increased": "Les erreurs de transfert de données ont augmenté de {{count}} pendant les tests. Vérifiez le câble.",
+      "new_bad_sectors": "{{count}} nouvelles zones endommagées sont apparues pendant le test."
+    }
+  },
+  "progress": {
+    "unknown": "En cours…",
+    "working": "En cours…",
+    "prepare": {
+      "starting": "Préparation...",
+      "reading_smart": "Lecture du rapport de santé intégré du disque...",
+      "unmounting": "Déconnexion sécurisée des volumes du disque...",
+      "ready": "Prêt à tester."
+    },
+    "drive_info": {
+      "identifying": "Identification du disque..."
+    },
+    "smart_health": {
+      "analyzing": "Examen du rapport de santé du disque..."
+    },
+    "selftest_short": {
+      "starting": "Démarrage de l'auto-vérification rapide intégrée du disque...",
+      "running": "Le disque effectue sa propre auto-vérification rapide ({{percent}} % effectué).",
+      "done": "L'auto-vérification du disque est terminée.",
+      "running_seconds": "Le disque effectue sa propre auto-vérification rapide ({{seconds}} secondes écoulées)."
+    },
+    "surface_read": {
+      "sampling": "Lecture de zones d'échantillon sur tout le disque ({{done}} sur {{total}}).",
+      "sequential": "Mesure de la vitesse de lecture ({{mbps}} MB/s).",
+      "done": "L'analyse de la surface est terminée."
+    },
+    "write_verify": {
+      "writing": "Écriture des données de test ({{mb}} MB écrits).",
+      "verifying": "Relecture des données pour les vérifier ({{mb}} MB vérifiés).",
+      "cleaning": "Suppression du fichier temporaire de test...",
+      "done": "Le test d'écriture est terminé."
+    },
+    "capacity_check": {
+      "writing": "Marquage de zones sur toute la taille annoncée ({{done}} sur {{total}}).",
+      "verifying": "Vérification que chaque zone contient bien ses propres données ({{done}} sur {{total}}).",
+      "done": "La vérification de capacité est terminée."
+    },
+    "stability": {
+      "checking": "Vérification que le disque est resté stable pendant les tests..."
+    },
+    "finish": {
+      "scoring": "Calcul de votre note...",
+      "done": "Terminé."
+    }
+  },
+  "suitability": {
+    "unknown": "Aucun détail disponible.",
+    "fallback": {
+      "os_install": {
+        "good": "Aucun problème qui empêcherait un système d'exploitation de fonctionner de façon fiable.",
+        "caution": "Cela peut fonctionner, mais il y a un certain risque. Faites une sauvegarde.",
+        "no": "Pas sûr pour un système d'exploitation."
+      },
+      "long_term_storage": {
+        "good": "Semble fiable pour conserver des fichiers à long terme. Gardez quand même une seconde copie.",
+        "caution": "Risqué pour un stockage à long terme. Gardez une autre copie ailleurs.",
+        "no": "Ne conservez pas de fichiers importants ici."
+      },
+      "daily_use": {
+        "good": "Convient pour un usage quotidien.",
+        "caution": "Correct pour un usage quotidien, mais surveillez l'apparition de nouveaux problèmes.",
+        "no": "Pas assez fiable pour un usage quotidien."
+      }
+    },
+    "os_install": {
+      "ok": "Convient pour y installer un système d'exploitation.",
+      "bad_sectors": "Déconseillé pour un système d'exploitation : il présente des zones endommagées.",
+      "slow_latency": "Déconseillé pour un système d'exploitation : certaines lectures sont trop lentes.",
+      "score_low": "Déconseillé pour un système d'exploitation : la note globale ({{score}}) est trop basse."
+    },
+    "long_term_storage": {
+      "ok": "Convient pour conserver des fichiers à long terme.",
+      "critical_issues": "Pas sûr pour un stockage à long terme : de sérieux problèmes ont été trouvés.",
+      "score_low": "Risqué pour un stockage à long terme : la note globale ({{score}}) est trop basse. Faites des sauvegardes."
+    },
+    "daily_use": {
+      "ok": "Convient pour un usage quotidien.",
+      "caution": "Utilisable pour des fichiers courants, mais faites des sauvegardes.",
+      "no": "Déconseillé pour un usage quotidien."
+    }
+  },
+  "error": {
+    "unknown": "Un problème est survenu ({{code}}).",
+    "title": "La vérification n'a pas pu se terminer",
+    "retry": "Réessayer",
+    "choose": "Choisir un autre disque",
+    "refused": "Le test a été refusé par sécurité. Les tests avec effacement ne peuvent pas être lancés sur le disque système ni sans numéro de série correspondant.",
+    "engine_failed": "L'outil de vérification s'est arrêté de façon inattendue.",
+    "engine_missing": "L'outil de vérification est introuvable. Veuillez réinstaller CheckMyDrive.",
+    "auth_cancelled": "L'autorisation n'a pas été accordée, le disque n'a donc pas été vérifié.",
+    "elevation_unavailable": "Impossible de demander l'autorisation de l'administrateur sur cet ordinateur.",
+    "bad_args": "Le test n'a pas pu démarrer à cause d'une erreur interne de requête.",
+    "needs_admin": "L'autorisation de l'administrateur est nécessaire pour tester ce disque.",
+    "drive_not_found": "Ce disque est introuvable. Il a peut-être été débranché.",
+    "system_disk_refused": "C'est le disque à partir duquel votre ordinateur fonctionne, il ne peut donc pas être effacé. Choisissez un autre disque.",
+    "confirm_required": "Veuillez confirmer le numéro de série du disque avant un test complet qui efface les données.",
+    "confirm_mismatch": "Le numéro de série saisi ne correspond pas à ce disque. Rien n'a été modifié.",
+    "cannot_open_device": "Le disque n'a pas pu être ouvert pour le test. Un autre programme l'utilise peut-être.",
+    "unmount_failed": "Les volumes du disque n'ont pas pu être déconnectés en toute sécurité avant le test complet. Fermez les programmes qui l'utilisent et réessayez.",
+    "internal": "Un problème inattendu est survenu dans le moteur de test."
+  },
+  "common": {
+    "loading": "Chargement…",
+    "close": "Fermer",
+    "unknown": "Inconnu"
+  }
+}

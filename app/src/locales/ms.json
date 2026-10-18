@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Ketahui sama ada pemacu terpakai itu selamat sebelum anda mempercayainya.",
+    "skip": "Langkau ke kandungan utama"
+  },
+  "nav": {
+    "settings": "Tetapan",
+    "back": "Kembali",
+    "mockBanner": "Mod demo: memaparkan pemacu contoh. Tiada apa-apa pada komputer anda sedang diuji."
+  },
+  "picker": {
+    "title": "Pemacu manakah yang anda mahu periksa?",
+    "subtitle": "Sambungkan pemacu yang anda fikir untuk beli atau guna, kemudian pilih di bawah. Pemeriksaan mengambil masa kira-kira 3 hingga 4 minit.",
+    "refresh": "Muat semula",
+    "refreshing": "Mencari pemacu…",
+    "empty": "Tiada pemacu ditemui. Sambungkan satu dan tekan Muat semula.",
+    "systemDisk": "Cakera sistem",
+    "systemDiskHint": "Komputer anda berjalan dari pemacu ini. Ia hanya boleh diperiksa dalam mod selamat.",
+    "unknownModel": "Pemacu tidak dikenali",
+    "select": "Periksa pemacu ini",
+    "kind": {
+      "hdd": "Cakera keras (HDD)",
+      "ssd": "Pemacu keadaan pepejal (SSD)",
+      "nvme": "SSD NVMe",
+      "usb": "Pemacu pena atau pemacu USB",
+      "sd": "Kad SD / kad memori",
+      "unknown": "Pemacu"
+    },
+    "removable": "Boleh dikeluarkan",
+    "loadFailed": "Kami tidak dapat membaca senarai pemacu.",
+    "noAdminNote": "Sesetengah butiran seperti data kesihatan mungkin memerlukan kebenaran pentadbir dan akan diminta apabila pemeriksaan bermula."
+  },
+  "mode": {
+    "title": "Setakat mana pemeriksaan itu perlu menyeluruh?",
+    "checking": "Memeriksa",
+    "safe": {
+      "title": "Ujian selamat pantas (fail anda kekal)",
+      "desc": "Membaca seluruh pemacu dan menulis satu fail sementara yang kecil, jadi tiada apa-apa milik anda diubah atau hilang.",
+      "badge": "Disyorkan",
+      "limit": "Tidak dapat mengesan kapasiti palsu."
+    },
+    "wipe": {
+      "title": "Ujian padam penuh (paling menyeluruh, MEMADAM semuanya)",
+      "desc": "Turut menulis ke seluruh pemacu untuk mengesan kapasiti palsu dan kecacatan tersembunyi. Setiap fail pada pemacu akan dimusnahkan secara kekal.",
+      "dangerTitle": "Zon bahaya: pemacu akan dipadam",
+      "dangerBody": "Ini akan memadam SEMUA data pada {{model}} secara kekal. Ia tidak boleh dibuat asal. Teruskan hanya jika pemacu itu kosong atau anda mempunyai sandaran.",
+      "confirmLabel": "Untuk mengesahkan, taip nombor siri pemacu: {{serial}}",
+      "confirmPlaceholder": "Taip nombor siri di sini",
+      "noSerial": "Pemacu ini tidak melaporkan nombor siri, jadi ujian padam penuh tidak tersedia.",
+      "systemBlocked": "Cakera sistem anda tidak boleh dipadam sama sekali. Hanya ujian selamat tersedia.",
+      "mismatch": "Teks itu belum sepadan dengan nombor siri.",
+      "start": "Padam dan jalankan ujian penuh",
+      "expand": "Tunjukkan ujian padam penuh",
+      "collapse": "Sembunyikan ujian padam penuh"
+    },
+    "start": "Mulakan ujian selamat pantas",
+    "back": "Pilih pemacu lain",
+    "duration": "Mengambil masa kira-kira 3 hingga 4 minit. Sila jangan cabut pemacu."
+  },
+  "running": {
+    "title": "Memeriksa pemacu anda",
+    "subtitle": "Sila biarkan pemacu bersambung dan komputer terus berjaga.",
+    "overall": "Kemajuan keseluruhan",
+    "elapsed": "Masa berlalu",
+    "remaining": "Kira-kira {{time}} lagi",
+    "estimating": "Menganggar masa…",
+    "cancel": "Batalkan ujian",
+    "cancelling": "Membatalkan…",
+    "cancelConfirm": "Hentikan ujian? Dalam mod selamat, tiada apa-apa pada pemacu anda diubah.",
+    "keepGoing": "Teruskan",
+    "stop": "Hentikan ujian",
+    "checklist": "Apa yang kami periksa",
+    "waiting": "Menunggu kebenaran…",
+    "adminPrompt": "Komputer anda mungkin meminta kata laluan anda. Ini membolehkan CheckMyDrive membaca pemacu secara terus.",
+    "phase": {
+      "prepare": "Bersiap sedia",
+      "finish": "Mengira skor anda"
+    },
+    "status": {
+      "pending": "Menunggu",
+      "running": "Memeriksa",
+      "done": "Selesai"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Identiti pemacu",
+      "desc": "Model, saiz dan jenis pemacu"
+    },
+    "smart_health": {
+      "name": "Laporan kesihatan",
+      "desc": "Rekod masalah dan kehausan yang disimpan oleh pemacu itu sendiri"
+    },
+    "selftest_short": {
+      "name": "Semakan kendiri terbina dalam",
+      "desc": "Pemacu memeriksa dirinya sendiri"
+    },
+    "surface_read": {
+      "name": "Imbasan permukaan",
+      "desc": "Membaca titik-titik merentasi seluruh pemacu"
+    },
+    "write_verify": {
+      "name": "Tulis dan sahkan",
+      "desc": "Menyimpan data dan membacanya semula"
+    },
+    "capacity_check": {
+      "name": "Kapasiti sebenar",
+      "desc": "Memastikan saiznya bukan palsu"
+    },
+    "stability": {
+      "name": "Kestabilan",
+      "desc": "Memerhatikan sambungan terputus dan ralat"
+    }
+  },
+  "status": {
+    "pass": "Lulus",
+    "warn": "Amaran",
+    "fail": "Gagal",
+    "skipped": "Dilangkau"
+  },
+  "results": {
+    "title": "Keputusan",
+    "scoreOutOf": "daripada 100",
+    "scoreLabel": "Skor {{score}} daripada 100",
+    "verdict": {
+      "buy": "Elok dibeli",
+      "caution": "Guna dengan berhati-hati",
+      "avoid": "Elakkan"
+    },
+    "summary": {
+      "buy": "{{model}} ini nampak sihat. Kami tidak menemui masalah serius dan ia sepatutnya sesuai untuk kegunaan harian.",
+      "caution": "{{model}} ini berfungsi, tetapi kami menemui beberapa tanda amaran. Guna hanya untuk fail yang anda sanggup hilang, atau runding harga yang lebih rendah.",
+      "avoid": "Jangan percayai {{model}} ini. Kami menemui masalah serius yang meletakkan fail anda dalam risiko.",
+      "fake_capacity": "{{model}} ini berbohong tentang saiznya. Ia mendakwa {{claimed}} tetapi sebenarnya tidak dapat menyimpan sebanyak itu. Jangan beli atau guna.",
+      "failing": "{{model}} ini semakin rosak. Data kesihatannya sendiri dan ujian kami menunjukkan ia boleh menghilangkan fail anda pada bila-bila masa."
+    },
+    "can": {
+      "title": "Bolehkah saya…",
+      "os": "Memasang sistem pengendalian padanya?",
+      "storage": "Menyimpan fail padanya dalam jangka panjang?",
+      "daily": "Menggunakannya setiap hari?",
+      "fill": "Mengisinya sehingga penuh dengan selamat?",
+      "fillYes": "Simpan dengan selamat sehingga {{size}} daripada {{total}}",
+      "fillNo": "Kami tidak akan menyimpan apa-apa yang penting padanya.",
+      "yes": "Ya",
+      "maybe": "Mungkin",
+      "no": "Tidak"
+    },
+    "age": {
+      "title": "Usia pemacu",
+      "years": "Kira-kira {{count}} tahun penggunaan",
+      "yearsLessThanOne": "Penggunaan kurang daripada setahun",
+      "hours": "Dihidupkan selama {{hours}} jam",
+      "made": "Dibuat: {{date}}",
+      "cycles": "Dihidupkan {{count}} kali",
+      "unknown": "Pemacu ini tidak melaporkan sudah berapa lama ia digunakan.",
+      "note": "Jam hanya dikira ketika pemacu dihidupkan. Pemacu yang digunakan 24/7 menjadi usang lebih cepat daripada yang digunakan beberapa jam sehari."
+    },
+    "issues": {
+      "title": "Apa yang kami temui",
+      "none": "Tiada masalah ditemui.",
+      "critical": "Serius",
+      "warn": "Amaran",
+      "info": "Nota"
+    },
+    "matrix": {
+      "title": "Jadual ujian",
+      "subtitle": "Butiran untuk pengguna mahir",
+      "show": "Tunjukkan butiran",
+      "hide": "Sembunyikan butiran",
+      "test": "Ujian",
+      "status": "Status",
+      "score": "Skor",
+      "metrics": "Angka utama",
+      "none": "Tiada angka direkodkan"
+    },
+    "export": "Eksport laporan",
+    "exportJson": "Simpan sebagai JSON",
+    "exportHtml": "Simpan sebagai laman web (HTML)",
+    "print": "Cetak atau simpan sebagai PDF",
+    "saved": "Laporan disimpan.",
+    "saveFailed": "Laporan tidak dapat disimpan.",
+    "another": "Uji pemacu lain",
+    "mode": {
+      "safe": "Ujian selamat pantas",
+      "wipe": "Ujian padam penuh"
+    },
+    "tested": "Diuji pada {{date}}",
+    "engine": "Enjin {{version}}",
+    "skippedNote": "Pengesanan kapasiti palsu tidak dijalankan. Gunakan ujian padam penuh pada pemacu kosong untuk jawapan yang lengkap."
+  },
+  "report": {
+    "title": "Laporan CheckMyDrive",
+    "generatedBy": "Dijana oleh CheckMyDrive (sumber terbuka)"
+  },
+  "settings": {
+    "title": "Tetapan dan perihal",
+    "language": "Bahasa",
+    "languageHint": "Bahasa selain Inggeris dimuatkan apabila tersedia; teks yang tiada akan dipaparkan dalam bahasa Inggeris.",
+    "theme": "Penampilan",
+    "themeSystem": "Ikut sistem",
+    "themeLight": "Cerah",
+    "themeDark": "Gelap",
+    "about": "Perihal",
+    "version": "Versi",
+    "license": "Lesen",
+    "licenseValue": "Lesen MIT (percuma dan sumber terbuka)",
+    "github": "Kod sumber di GitHub",
+    "engineVersion": "Enjin",
+    "disclaimer": "CheckMyDrive memberikan anggaran yang berasas dan tidak dapat menjamin sesebuah pemacu tidak akan rosak. Sentiasa simpan sandaran untuk fail yang penting.",
+    "close": "Selesai"
+  },
+  "metric": {
+    "read_mbps_avg": "Kelajuan baca purata (MB/s)",
+    "write_mbps": "Kelajuan tulis (MB/s)",
+    "latency_ms_p99": "Tindak balas 1% paling perlahan (ms)",
+    "slow_samples": "Tempat perlahan",
+    "read_errors": "Ralat baca",
+    "reallocated_sectors": "Kawasan rosak yang diganti",
+    "pending_sectors": "Kawasan tidak stabil",
+    "uncorrectable_sectors": "Kawasan tidak boleh dibaca",
+    "temperature_c": "Suhu (°C)",
+    "percent_used": "Kehausan digunakan (%)",
+    "media_errors": "Ralat media",
+    "written_mb": "Data ditulis (MB)",
+    "mismatches": "Ketidakpadanan",
+    "sectors_checked": "Titik diperiksa",
+    "real_capacity_gb": "Kapasiti sebenar (GB)",
+    "claimed_gb": "Kapasiti didakwa (GB)",
+    "disconnects": "Sambungan terputus",
+    "io_errors": "Ralat input/output",
+    "rpm": "Kelajuan putaran (RPM)",
+    "interface": "Sambungan",
+    "result": "Keputusan"
+  },
+  "issue": {
+    "unknown": "Sesuatu yang luar biasa ditemui ({{code}}). Lihat jadual ujian untuk butiran.",
+    "age": {
+      "high_hours": "Pemacu ini telah dihidupkan selama kira-kira {{years}} tahun ({{hours}} jam), iaitu penggunaan yang banyak.",
+      "moderate_hours": "Pemacu ini telah dihidupkan selama kira-kira {{years}} tahun ({{hours}} jam)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Pemacu tidak melaporkan saiznya.",
+      "model_unknown": "Pemacu tidak melaporkan nama modelnya.",
+      "system_disk": "Ini ialah cakera tempat komputer anda berjalan. Hanya ujian selamat yang tidak memusnahkan data dijalankan."
+    },
+    "smart": {
+      "unavailable": "Alat laporan kesihatan (smartmontools) tidak tersedia, jadi data kesihatan dalaman pemacu tidak dapat dibaca.",
+      "needs_admin": "Laporan kesihatan pemacu tidak dapat dibaca tanpa kebenaran pentadbir.",
+      "timeout": "Pemacu tidak menjawab permintaan laporan kesihatan tepat pada masanya.",
+      "not_supported": "Pemacu ini tidak menyediakan laporan kesihatan, jadi keadaan dalamannya tidak diketahui.",
+      "usb_bridge_blocked": "Penyesuai USB menyembunyikan laporan kesihatan pemacu, jadi keadaan dalamannya tidak diketahui.",
+      "overall_failed": "Pemeriksaan kesihatan pemacu itu sendiri menyatakan ia semakin rosak.",
+      "reallocated_sectors": "Pemacu telah menggantikan {{count}} kawasan rosak dengan kawasan simpanan.",
+      "pending_sectors": "{{count}} kawasan pemacu tidak boleh dibaca dan menunggu untuk diganti.",
+      "uncorrectable_sectors": "{{count}} kawasan pemacu tidak dapat dibaca atau dibetulkan.",
+      "crc_errors": "{{count}} ralat pemindahan data direkodkan, yang selalunya disebabkan oleh kabel atau penyambung yang rosak.",
+      "error_log_entries": "Log ralat pemacu mengandungi {{count}} catatan.",
+      "ssd_worn": "SSD ini telah menggunakan kira-kira {{percent}}% daripada jangka hayat yang dijangkakan.",
+      "ssd_worn_out": "SSD ini telah menggunakan kira-kira {{percent}}% daripada jangka hayat yang dijangkakan dan hampir tamat hayatnya.",
+      "nvme_critical_warning": "Pemacu melaporkan amaran kritikal (kod {{value}}).",
+      "nvme_media_errors": "Memori pemacu telah merekodkan {{count}} ralat integriti data.",
+      "spare_low": "Hanya {{percent}}% memori simpanan pemacu yang tinggal.",
+      "temperature_high": "Pemacu berjalan panas ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Ujian kendiri pantas pemacu dilangkau kerana antara muka kesihatannya tidak tersedia.",
+      "not_supported": "Pemacu ini tidak menyokong ujian kendiri pantas.",
+      "could_not_start": "Ujian kendiri pantas pemacu tidak dapat dimulakan.",
+      "failed": "Pemacu gagal dalam ujian kendiri pantasnya sendiri.",
+      "aborted": "Ujian kendiri pantas pemacu terganggu sebelum selesai.",
+      "timeout": "Ujian kendiri pantas pemacu tidak selesai dalam {{seconds}} saat dan telah dihentikan."
+    },
+    "surface_read": {
+      "cannot_open": "Pemacu tidak dapat dibuka untuk dibaca.",
+      "read_errors": "{{count}} bahagian pemacu tidak dapat dibaca.",
+      "slow_areas": "{{count}} kawasan ({{percent}}%) bertindak balas dengan sangat perlahan, yang boleh bermakna permukaannya semakin haus.",
+      "low_speed": "Pemacu membaca dengan perlahan ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Ujian tulis dilangkau kerana pemacu tidak mempunyai folder yang boleh kami tulis dengan selamat.",
+      "insufficient_space": "Ujian tulis dilangkau kerana pemacu mempunyai terlalu sedikit ruang kosong.",
+      "write_error": "Pemacu melaporkan ralat semasa menulis data ujian.",
+      "data_mismatch": "{{count}} blok data ujian kembali berbeza daripada yang ditulis.",
+      "slow_write": "Pemacu menulis dengan sangat perlahan ({{mbps}} MB/s).",
+      "cleanup_failed": "Fail ujian sementara tidak dapat dipadam. Anda boleh memadam {{path}} sendiri."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Pemeriksaan kapasiti palsu memerlukan ujian penuh yang memadam pemacu. Ia dilangkau.",
+      "fake_capacity": "Pemacu ini mendakwa boleh memuatkan {{claimed_bytes}} bait tetapi hanya kira-kira {{real_bytes}} bait yang sebenar. Ia ialah pemacu berkapasiti palsu.",
+      "data_corruption": "{{count}} blok ujian kembali dalam keadaan rosak.",
+      "io_error": "Pemacu memulangkan {{count}} ralat semasa pemeriksaan kapasiti."
+    },
+    "stability": {
+      "device_disconnected": "Pemacu hilang sebanyak {{count}} kali semasa ujian.",
+      "io_errors": "Pemacu memulangkan {{count}} ralat baca atau tulis semasa ujian.",
+      "timeouts": "Pemacu tamat masa sebanyak {{count}} kali semasa ujian.",
+      "crc_errors_increased": "Ralat pemindahan data meningkat sebanyak {{count}} semasa ujian. Periksa kabel.",
+      "new_bad_sectors": "{{count}} kawasan rosak baharu muncul semasa kami menguji."
+    }
+  },
+  "progress": {
+    "unknown": "Sedang berfungsi…",
+    "working": "Sedang berfungsi…",
+    "prepare": {
+      "starting": "Bersiap sedia...",
+      "reading_smart": "Membaca laporan kesihatan terbina dalam pemacu...",
+      "unmounting": "Memutuskan volum pemacu dengan selamat...",
+      "ready": "Sedia untuk diuji."
+    },
+    "drive_info": {
+      "identifying": "Mengenal pasti pemacu..."
+    },
+    "smart_health": {
+      "analyzing": "Memeriksa laporan kesihatan pemacu..."
+    },
+    "selftest_short": {
+      "starting": "Memulakan ujian kendiri pantas terbina dalam pemacu...",
+      "running": "Pemacu sedang menjalankan ujian kendiri pantasnya sendiri ({{percent}}% selesai).",
+      "done": "Ujian kendiri pemacu selesai.",
+      "running_seconds": "Pemacu sedang menjalankan ujian kendiri pantasnya sendiri ({{seconds}} saat setakat ini)."
+    },
+    "surface_read": {
+      "sampling": "Membaca kawasan sampel merentasi seluruh pemacu ({{done}} daripada {{total}}).",
+      "sequential": "Mengukur kelajuan baca ({{mbps}} MB/s).",
+      "done": "Imbasan permukaan selesai."
+    },
+    "write_verify": {
+      "writing": "Menulis data ujian ({{mb}} MB ditulis).",
+      "verifying": "Membaca semula data untuk menyemaknya ({{mb}} MB disemak).",
+      "cleaning": "Memadam fail ujian sementara...",
+      "done": "Ujian tulis selesai."
+    },
+    "capacity_check": {
+      "writing": "Menandakan titik merentasi keseluruhan saiz yang didakwa ({{done}} daripada {{total}}).",
+      "verifying": "Memastikan setiap titik menyimpan datanya sendiri ({{done}} daripada {{total}}).",
+      "done": "Pemeriksaan kapasiti selesai."
+    },
+    "stability": {
+      "checking": "Memeriksa sama ada pemacu kekal stabil semasa ujian..."
+    },
+    "finish": {
+      "scoring": "Mengira skor anda...",
+      "done": "Selesai."
+    }
+  },
+  "suitability": {
+    "unknown": "Tiada butiran tersedia.",
+    "fallback": {
+      "os_install": {
+        "good": "Tiada masalah yang akan menghalang sistem pengendalian daripada berjalan dengan stabil.",
+        "caution": "Mungkin berfungsi, tetapi ada sedikit risiko. Simpan sandaran.",
+        "no": "Tidak selamat untuk sistem pengendalian."
+      },
+      "long_term_storage": {
+        "good": "Nampak boleh dipercayai untuk menyimpan fail dalam jangka panjang. Tetap simpan satu salinan lagi.",
+        "caution": "Berisiko untuk penyimpanan jangka panjang. Simpan salinan lain di tempat lain.",
+        "no": "Jangan simpan fail penting di sini."
+      },
+      "daily_use": {
+        "good": "Sesuai untuk kegunaan harian.",
+        "caution": "Boleh untuk kegunaan harian, tetapi awasi masalah baharu.",
+        "no": "Tidak cukup boleh dipercayai untuk kegunaan harian."
+      }
+    },
+    "os_install": {
+      "ok": "Sesuai untuk memasang sistem pengendalian.",
+      "bad_sectors": "Tidak disyorkan untuk sistem pengendalian: ia mempunyai kawasan rosak.",
+      "slow_latency": "Tidak disyorkan untuk sistem pengendalian: sesetengah bacaan terlalu perlahan.",
+      "score_low": "Tidak disyorkan untuk sistem pengendalian: skor keseluruhan ({{score}}) terlalu rendah."
+    },
+    "long_term_storage": {
+      "ok": "Sesuai untuk menyimpan fail dalam jangka panjang.",
+      "critical_issues": "Tidak selamat untuk penyimpanan jangka panjang: masalah serius ditemui.",
+      "score_low": "Berisiko untuk penyimpanan jangka panjang: skor keseluruhan ({{score}}) terlalu rendah. Simpan sandaran."
+    },
+    "daily_use": {
+      "ok": "Sesuai untuk kegunaan harian.",
+      "caution": "Boleh digunakan untuk fail harian, tetapi simpan sandaran.",
+      "no": "Tidak disyorkan untuk kegunaan harian."
+    }
+  },
+  "error": {
+    "unknown": "Sesuatu telah berlaku ({{code}}).",
+    "title": "Pemeriksaan tidak dapat diselesaikan",
+    "retry": "Cuba lagi",
+    "choose": "Pilih pemacu lain",
+    "refused": "Ujian ditolak demi keselamatan. Ujian padam tidak boleh dijalankan pada cakera sistem atau tanpa nombor siri yang sepadan.",
+    "engine_failed": "Alat pemeriksaan berhenti dengan tidak dijangka.",
+    "engine_missing": "Alat pemeriksaan tidak ditemui. Sila pasang semula CheckMyDrive.",
+    "auth_cancelled": "Kebenaran tidak diberikan, jadi pemacu tidak diperiksa.",
+    "elevation_unavailable": "Tidak dapat meminta kebenaran pentadbir pada komputer ini.",
+    "bad_args": "Ujian tidak dapat dimulakan kerana ralat permintaan dalaman.",
+    "needs_admin": "Kebenaran pentadbir diperlukan untuk menguji pemacu ini.",
+    "drive_not_found": "Pemacu itu tidak ditemui. Ia mungkin telah dicabut.",
+    "system_disk_refused": "Ini ialah cakera tempat komputer anda berjalan, jadi ia tidak boleh dipadam. Pilih pemacu lain.",
+    "confirm_required": "Sila sahkan nombor siri pemacu sebelum ujian penuh yang memadam data.",
+    "confirm_mismatch": "Nombor siri yang anda masukkan tidak sepadan dengan pemacu ini. Tiada apa-apa diubah.",
+    "cannot_open_device": "Pemacu tidak dapat dibuka untuk diuji. Program lain mungkin sedang menggunakannya.",
+    "unmount_failed": "Volum pemacu tidak dapat diputuskan dengan selamat sebelum ujian penuh. Tutup mana-mana program yang menggunakannya dan cuba lagi.",
+    "internal": "Sesuatu yang tidak dijangka berlaku di dalam enjin ujian."
+  },
+  "common": {
+    "loading": "Memuatkan…",
+    "close": "Tutup",
+    "unknown": "Tidak diketahui"
+  }
+}

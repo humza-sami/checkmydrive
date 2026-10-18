@@ -1,0 +1,409 @@
+{
+  "app": {
+    "name": "CheckMyDrive",
+    "tagline": "Biết ổ đĩa cũ có an toàn không trước khi bạn tin dùng.",
+    "skip": "Chuyển đến nội dung chính"
+  },
+  "nav": {
+    "settings": "Cài đặt",
+    "back": "Quay lại",
+    "mockBanner": "Chế độ demo: đang hiển thị các ổ đĩa mẫu. Không có gì trên máy tính của bạn đang được kiểm tra."
+  },
+  "picker": {
+    "title": "Bạn muốn kiểm tra ổ đĩa nào?",
+    "subtitle": "Cắm ổ đĩa bạn định mua hoặc sử dụng, rồi chọn nó bên dưới. Việc kiểm tra mất khoảng 3 đến 4 phút.",
+    "refresh": "Làm mới",
+    "refreshing": "Đang tìm ổ đĩa…",
+    "empty": "Không tìm thấy ổ đĩa nào. Hãy cắm một ổ đĩa vào rồi nhấn Làm mới.",
+    "systemDisk": "Ổ đĩa hệ thống",
+    "systemDiskHint": "Máy tính của bạn đang chạy từ ổ đĩa này. Chỉ có thể kiểm tra ở chế độ an toàn.",
+    "unknownModel": "Ổ đĩa không xác định",
+    "select": "Kiểm tra ổ đĩa này",
+    "kind": {
+      "hdd": "Ổ cứng (HDD)",
+      "ssd": "Ổ thể rắn (SSD)",
+      "nvme": "SSD NVMe",
+      "usb": "USB hoặc ổ đĩa USB",
+      "sd": "Thẻ nhớ SD",
+      "unknown": "Ổ đĩa"
+    },
+    "removable": "Có thể tháo rời",
+    "loadFailed": "Chúng tôi không đọc được danh sách ổ đĩa.",
+    "noAdminNote": "Một số thông tin như dữ liệu sức khỏe có thể cần quyền quản trị viên và sẽ được yêu cầu khi bắt đầu kiểm tra."
+  },
+  "mode": {
+    "title": "Bạn muốn kiểm tra kỹ đến mức nào?",
+    "checking": "Đang kiểm tra",
+    "safe": {
+      "title": "Kiểm tra an toàn nhanh (giữ nguyên tệp của bạn)",
+      "desc": "Đọc toàn bộ ổ đĩa và ghi một tệp tạm nhỏ, nên không có gì của bạn bị thay đổi hay mất đi.",
+      "badge": "Nên dùng",
+      "limit": "Không phát hiện được dung lượng giả."
+    },
+    "wipe": {
+      "title": "Kiểm tra xóa toàn bộ (kỹ nhất, XÓA SẠCH mọi thứ)",
+      "desc": "Ghi dữ liệu lên toàn bộ ổ đĩa để phát hiện dung lượng giả và lỗi ẩn. Mọi tệp trên ổ đĩa sẽ bị xóa vĩnh viễn.",
+      "dangerTitle": "Vùng nguy hiểm: ổ đĩa sẽ bị xóa",
+      "dangerBody": "Thao tác này xóa vĩnh viễn TOÀN BỘ dữ liệu trên {{model}}. Không thể hoàn tác. Chỉ tiếp tục nếu ổ đĩa trống hoặc bạn đã có bản sao lưu.",
+      "confirmLabel": "Để xác nhận, hãy nhập số sê-ri của ổ đĩa: {{serial}}",
+      "confirmPlaceholder": "Nhập số sê-ri vào đây",
+      "noSerial": "Ổ đĩa này không cung cấp số sê-ri, nên không thể kiểm tra xóa toàn bộ.",
+      "systemBlocked": "Ổ đĩa hệ thống của bạn không bao giờ được phép xóa. Chỉ có kiểm tra an toàn.",
+      "mismatch": "Nội dung bạn nhập chưa khớp với số sê-ri.",
+      "start": "Xóa và chạy kiểm tra đầy đủ",
+      "expand": "Hiện kiểm tra xóa toàn bộ",
+      "collapse": "Ẩn kiểm tra xóa toàn bộ"
+    },
+    "start": "Bắt đầu kiểm tra an toàn nhanh",
+    "back": "Chọn ổ đĩa khác",
+    "duration": "Mất khoảng 3 đến 4 phút. Vui lòng không rút ổ đĩa."
+  },
+  "running": {
+    "title": "Đang kiểm tra ổ đĩa của bạn",
+    "subtitle": "Vui lòng giữ ổ đĩa được cắm và máy tính không chuyển sang chế độ ngủ.",
+    "overall": "Tiến độ tổng thể",
+    "elapsed": "Đã qua",
+    "remaining": "Còn khoảng {{time}}",
+    "estimating": "Đang ước tính thời gian…",
+    "cancel": "Hủy kiểm tra",
+    "cancelling": "Đang hủy…",
+    "cancelConfirm": "Dừng kiểm tra? Ở chế độ an toàn, không có gì trên ổ đĩa của bạn bị thay đổi.",
+    "keepGoing": "Tiếp tục",
+    "stop": "Dừng kiểm tra",
+    "checklist": "Những gì chúng tôi kiểm tra",
+    "waiting": "Đang chờ cấp quyền…",
+    "adminPrompt": "Máy tính có thể hỏi mật khẩu của bạn. Điều này cho phép CheckMyDrive đọc trực tiếp ổ đĩa.",
+    "phase": {
+      "prepare": "Đang chuẩn bị",
+      "finish": "Đang tính điểm của bạn"
+    },
+    "status": {
+      "pending": "Đang chờ",
+      "running": "Đang kiểm tra",
+      "done": "Xong"
+    }
+  },
+  "tests": {
+    "drive_info": {
+      "name": "Nhận dạng ổ đĩa",
+      "desc": "Kiểu máy, dung lượng và loại ổ đĩa"
+    },
+    "smart_health": {
+      "name": "Báo cáo sức khỏe",
+      "desc": "Nhật ký lỗi và độ hao mòn do chính ổ đĩa ghi lại"
+    },
+    "selftest_short": {
+      "name": "Tự kiểm tra tích hợp",
+      "desc": "Ổ đĩa tự kiểm tra chính nó"
+    },
+    "surface_read": {
+      "name": "Quét bề mặt",
+      "desc": "Đọc các điểm rải khắp ổ đĩa"
+    },
+    "write_verify": {
+      "name": "Ghi và xác minh",
+      "desc": "Lưu dữ liệu rồi đọc lại"
+    },
+    "capacity_check": {
+      "name": "Dung lượng thật",
+      "desc": "Đảm bảo dung lượng không phải giả"
+    },
+    "stability": {
+      "name": "Độ ổn định",
+      "desc": "Theo dõi việc mất kết nối và lỗi"
+    }
+  },
+  "status": {
+    "pass": "Đạt",
+    "warn": "Cảnh báo",
+    "fail": "Không đạt",
+    "skipped": "Bỏ qua"
+  },
+  "results": {
+    "title": "Kết quả",
+    "scoreOutOf": "trên 100",
+    "scoreLabel": "Điểm {{score}} trên 100",
+    "verdict": {
+      "buy": "Nên mua",
+      "caution": "Dùng thận trọng",
+      "avoid": "Nên tránh"
+    },
+    "summary": {
+      "buy": "{{model}} này trông khỏe mạnh. Chúng tôi không thấy vấn đề nghiêm trọng nào và nó nên dùng tốt hằng ngày.",
+      "caution": "{{model}} này vẫn hoạt động, nhưng chúng tôi thấy vài dấu hiệu cảnh báo. Chỉ nên dùng cho các tệp mà bạn có thể chấp nhận mất, hoặc hãy mặc cả giá thấp hơn.",
+      "avoid": "Đừng tin {{model}} này. Chúng tôi thấy những vấn đề nghiêm trọng khiến tệp của bạn gặp rủi ro.",
+      "fake_capacity": "{{model}} này nói dối về dung lượng. Nó khai là {{claimed}} nhưng thực tế không thể lưu được nhiều như vậy. Đừng mua hay sử dụng.",
+      "failing": "{{model}} này đang hỏng. Dữ liệu sức khỏe của chính nó và các bài kiểm tra của chúng tôi cho thấy nó có thể làm mất tệp của bạn bất cứ lúc nào."
+    },
+    "can": {
+      "title": "Tôi có thể…",
+      "os": "Cài hệ điều hành lên đó không?",
+      "storage": "Lưu tệp lâu dài trên đó không?",
+      "daily": "Dùng mỗi ngày không?",
+      "fill": "Lấp đầy một cách an toàn không?",
+      "fillYes": "Lưu an toàn tối đa {{size}} trên {{total}}",
+      "fillNo": "Chúng tôi sẽ không lưu thứ gì quan trọng trên đó.",
+      "yes": "Có",
+      "maybe": "Có thể",
+      "no": "Không"
+    },
+    "age": {
+      "title": "Tuổi của ổ đĩa",
+      "years": "Đã dùng khoảng {{count}} năm",
+      "yearsLessThanOne": "Đã dùng chưa đến một năm",
+      "hours": "Đã bật nguồn {{hours}} giờ",
+      "made": "Sản xuất: {{date}}",
+      "cycles": "Đã bật {{count}} lần",
+      "unknown": "Ổ đĩa này không cho biết nó đã được dùng bao lâu.",
+      "note": "Số giờ chỉ được tính khi ổ đĩa đang bật nguồn. Ổ đĩa chạy 24/7 sẽ xuống cấp nhanh hơn ổ đĩa chỉ dùng vài giờ mỗi ngày."
+    },
+    "issues": {
+      "title": "Những gì chúng tôi tìm thấy",
+      "none": "Không tìm thấy vấn đề nào.",
+      "critical": "Nghiêm trọng",
+      "warn": "Cảnh báo",
+      "info": "Ghi chú"
+    },
+    "matrix": {
+      "title": "Bảng kiểm tra",
+      "subtitle": "Chi tiết dành cho người dùng nâng cao",
+      "show": "Hiện chi tiết",
+      "hide": "Ẩn chi tiết",
+      "test": "Bài kiểm tra",
+      "status": "Trạng thái",
+      "score": "Điểm",
+      "metrics": "Các con số chính",
+      "none": "Không có số liệu được ghi lại"
+    },
+    "export": "Xuất báo cáo",
+    "exportJson": "Lưu dưới dạng JSON",
+    "exportHtml": "Lưu dưới dạng trang web (HTML)",
+    "print": "In hoặc lưu thành PDF",
+    "saved": "Đã lưu báo cáo.",
+    "saveFailed": "Không thể lưu báo cáo.",
+    "another": "Kiểm tra ổ đĩa khác",
+    "mode": {
+      "safe": "Kiểm tra an toàn nhanh",
+      "wipe": "Kiểm tra xóa toàn bộ"
+    },
+    "tested": "Kiểm tra vào {{date}}",
+    "engine": "Bộ máy {{version}}",
+    "skippedNote": "Chưa chạy phát hiện dung lượng giả. Hãy dùng kiểm tra xóa toàn bộ trên ổ đĩa trống để có câu trả lời đầy đủ."
+  },
+  "report": {
+    "title": "Báo cáo CheckMyDrive",
+    "generatedBy": "Được tạo bởi CheckMyDrive (mã nguồn mở)"
+  },
+  "settings": {
+    "title": "Cài đặt và giới thiệu",
+    "language": "Ngôn ngữ",
+    "languageHint": "Các ngôn ngữ khác ngoài tiếng Anh sẽ được tải khi có sẵn; phần chữ còn thiếu sẽ hiển thị bằng tiếng Anh.",
+    "theme": "Giao diện",
+    "themeSystem": "Theo hệ thống",
+    "themeLight": "Sáng",
+    "themeDark": "Tối",
+    "about": "Giới thiệu",
+    "version": "Phiên bản",
+    "license": "Giấy phép",
+    "licenseValue": "Giấy phép MIT (miễn phí và mã nguồn mở)",
+    "github": "Mã nguồn trên GitHub",
+    "engineVersion": "Bộ máy",
+    "disclaimer": "CheckMyDrive đưa ra ước tính có cơ sở và không thể đảm bảo ổ đĩa sẽ không bao giờ hỏng. Hãy luôn sao lưu những tệp quan trọng.",
+    "close": "Xong"
+  },
+  "metric": {
+    "read_mbps_avg": "Tốc độ đọc trung bình (MB/s)",
+    "write_mbps": "Tốc độ ghi (MB/s)",
+    "latency_ms_p99": "Phản hồi chậm nhất 1% (ms)",
+    "slow_samples": "Điểm chậm",
+    "read_errors": "Lỗi đọc",
+    "reallocated_sectors": "Vùng hỏng đã thay thế",
+    "pending_sectors": "Vùng không ổn định",
+    "uncorrectable_sectors": "Vùng không đọc được",
+    "temperature_c": "Nhiệt độ (°C)",
+    "percent_used": "Mức hao mòn (%)",
+    "media_errors": "Lỗi phương tiện lưu trữ",
+    "written_mb": "Dữ liệu đã ghi (MB)",
+    "mismatches": "Chỗ không khớp",
+    "sectors_checked": "Điểm đã kiểm tra",
+    "real_capacity_gb": "Dung lượng thật (GB)",
+    "claimed_gb": "Dung lượng khai báo (GB)",
+    "disconnects": "Lần mất kết nối",
+    "io_errors": "Lỗi vào/ra",
+    "rpm": "Tốc độ quay (RPM)",
+    "interface": "Kết nối",
+    "result": "Kết quả"
+  },
+  "issue": {
+    "unknown": "Phát hiện điều bất thường ({{code}}). Xem bảng kiểm tra để biết chi tiết.",
+    "age": {
+      "high_hours": "Ổ đĩa này đã bật nguồn khoảng {{years}} năm ({{hours}} giờ), tức là đã dùng rất nhiều.",
+      "moderate_hours": "Ổ đĩa này đã bật nguồn khoảng {{years}} năm ({{hours}} giờ)."
+    },
+    "drive_info": {
+      "capacity_unknown": "Ổ đĩa không cho biết dung lượng của nó.",
+      "model_unknown": "Ổ đĩa không cho biết tên kiểu máy.",
+      "system_disk": "Đây là ổ đĩa mà máy tính của bạn đang chạy. Chỉ chạy bài kiểm tra an toàn, không phá hủy dữ liệu."
+    },
+    "smart": {
+      "unavailable": "Công cụ báo cáo sức khỏe (smartmontools) không có sẵn, nên không đọc được dữ liệu sức khỏe bên trong ổ đĩa.",
+      "needs_admin": "Không thể đọc báo cáo sức khỏe của ổ đĩa nếu không có quyền quản trị viên.",
+      "timeout": "Ổ đĩa không trả lời yêu cầu báo cáo sức khỏe kịp thời.",
+      "not_supported": "Ổ đĩa này không cung cấp báo cáo sức khỏe, nên không biết tình trạng bên trong của nó.",
+      "usb_bridge_blocked": "Bộ chuyển USB che mất báo cáo sức khỏe của ổ đĩa, nên không biết tình trạng bên trong của nó.",
+      "overall_failed": "Chính phần tự kiểm tra sức khỏe của ổ đĩa báo rằng nó đang hỏng.",
+      "reallocated_sectors": "Ổ đĩa đã thay {{count}} vùng bị hỏng bằng vùng dự phòng.",
+      "pending_sectors": "{{count}} vùng của ổ đĩa không đọc được và đang chờ được thay thế.",
+      "uncorrectable_sectors": "{{count}} vùng của ổ đĩa không thể đọc hoặc sửa được.",
+      "crc_errors": "Đã ghi nhận {{count}} lỗi truyền dữ liệu, thường do cáp hoặc đầu nối kém.",
+      "error_log_entries": "Nhật ký lỗi của ổ đĩa có {{count}} mục.",
+      "ssd_worn": "SSD này đã dùng hết khoảng {{percent}}% tuổi thọ định mức.",
+      "ssd_worn_out": "SSD này đã dùng hết khoảng {{percent}}% tuổi thọ định mức và sắp hết tuổi thọ.",
+      "nvme_critical_warning": "Ổ đĩa đang báo một cảnh báo nghiêm trọng (mã {{value}}).",
+      "nvme_media_errors": "Bộ nhớ của ổ đĩa đã ghi {{count}} lỗi toàn vẹn dữ liệu.",
+      "spare_low": "Bộ nhớ dự phòng của ổ đĩa chỉ còn {{percent}}%.",
+      "temperature_high": "Ổ đĩa đang chạy nóng ({{celsius}} C)."
+    },
+    "selftest": {
+      "smart_unavailable": "Bài tự kiểm tra nhanh của ổ đĩa bị bỏ qua vì giao diện sức khỏe không có sẵn.",
+      "not_supported": "Ổ đĩa này không hỗ trợ tự kiểm tra nhanh.",
+      "could_not_start": "Không thể bắt đầu bài tự kiểm tra nhanh của ổ đĩa.",
+      "failed": "Ổ đĩa không đạt bài tự kiểm tra nhanh của chính nó.",
+      "aborted": "Bài tự kiểm tra nhanh của ổ đĩa bị gián đoạn trước khi xong.",
+      "timeout": "Bài tự kiểm tra nhanh của ổ đĩa không xong trong {{seconds}} giây nên đã bị dừng."
+    },
+    "surface_read": {
+      "cannot_open": "Không thể mở ổ đĩa để đọc.",
+      "read_errors": "{{count}} phần của ổ đĩa không thể đọc được.",
+      "slow_areas": "{{count}} vùng ({{percent}}%) phản hồi rất chậm, có thể do bề mặt đang bị mòn.",
+      "low_speed": "Ổ đĩa đọc chậm ({{mbps}} MB/s)."
+    },
+    "write_verify": {
+      "no_writable_volume": "Bài kiểm tra ghi bị bỏ qua vì ổ đĩa không có thư mục nào chúng tôi có thể ghi an toàn.",
+      "insufficient_space": "Bài kiểm tra ghi bị bỏ qua vì ổ đĩa còn quá ít chỗ trống.",
+      "write_error": "Ổ đĩa báo lỗi khi ghi dữ liệu kiểm tra.",
+      "data_mismatch": "{{count}} khối dữ liệu kiểm tra khi đọc lại khác với dữ liệu đã ghi.",
+      "slow_write": "Ổ đĩa ghi rất chậm ({{mbps}} MB/s).",
+      "cleanup_failed": "Không thể xóa tệp kiểm tra tạm. Bạn có thể tự xóa {{path}}."
+    },
+    "capacity_check": {
+      "needs_wipe_mode": "Việc kiểm tra dung lượng giả cần bài kiểm tra đầy đủ, vốn sẽ xóa ổ đĩa. Bài này đã bị bỏ qua.",
+      "fake_capacity": "Ổ đĩa này khai chứa được {{claimed_bytes}} byte nhưng chỉ có khoảng {{real_bytes}} byte là thật. Đây là ổ đĩa giả dung lượng.",
+      "data_corruption": "{{count}} khối kiểm tra khi đọc lại bị hỏng.",
+      "io_error": "Ổ đĩa trả về {{count}} lỗi trong lúc kiểm tra dung lượng."
+    },
+    "stability": {
+      "device_disconnected": "Ổ đĩa biến mất {{count}} lần trong lúc kiểm tra.",
+      "io_errors": "Ổ đĩa trả về {{count}} lỗi đọc hoặc ghi trong lúc kiểm tra.",
+      "timeouts": "Ổ đĩa quá thời gian chờ {{count}} lần trong lúc kiểm tra.",
+      "crc_errors_increased": "Lỗi truyền dữ liệu tăng thêm {{count}} trong lúc kiểm tra. Hãy kiểm tra cáp.",
+      "new_bad_sectors": "Có {{count}} vùng hỏng mới xuất hiện trong lúc chúng tôi kiểm tra."
+    }
+  },
+  "progress": {
+    "unknown": "Đang xử lý…",
+    "working": "Đang xử lý…",
+    "prepare": {
+      "starting": "Đang chuẩn bị...",
+      "reading_smart": "Đang đọc báo cáo sức khỏe tích hợp của ổ đĩa...",
+      "unmounting": "Đang ngắt kết nối an toàn các phân vùng của ổ đĩa...",
+      "ready": "Sẵn sàng kiểm tra."
+    },
+    "drive_info": {
+      "identifying": "Đang nhận dạng ổ đĩa..."
+    },
+    "smart_health": {
+      "analyzing": "Đang xem báo cáo sức khỏe của ổ đĩa..."
+    },
+    "selftest_short": {
+      "starting": "Đang bắt đầu bài tự kiểm tra nhanh tích hợp của ổ đĩa...",
+      "running": "Ổ đĩa đang chạy bài tự kiểm tra nhanh của chính nó (xong {{percent}}%).",
+      "done": "Ổ đĩa đã tự kiểm tra xong.",
+      "running_seconds": "Ổ đĩa đang chạy bài tự kiểm tra nhanh của chính nó (đã {{seconds}} giây)."
+    },
+    "surface_read": {
+      "sampling": "Đang đọc các vùng mẫu trên toàn bộ ổ đĩa ({{done}} trên {{total}}).",
+      "sequential": "Đang đo tốc độ đọc ({{mbps}} MB/s).",
+      "done": "Đã quét xong bề mặt."
+    },
+    "write_verify": {
+      "writing": "Đang ghi dữ liệu kiểm tra (đã ghi {{mb}} MB).",
+      "verifying": "Đang đọc lại dữ liệu để kiểm tra (đã kiểm tra {{mb}} MB).",
+      "cleaning": "Đang xóa tệp kiểm tra tạm...",
+      "done": "Đã xong bài kiểm tra ghi."
+    },
+    "capacity_check": {
+      "writing": "Đang đánh dấu các điểm trên toàn bộ dung lượng khai báo ({{done}} trên {{total}}).",
+      "verifying": "Đang kiểm tra mỗi điểm đều giữ đúng dữ liệu của nó ({{done}} trên {{total}}).",
+      "done": "Đã kiểm tra xong dung lượng."
+    },
+    "stability": {
+      "checking": "Đang kiểm tra xem ổ đĩa có ổn định trong suốt các bài kiểm tra..."
+    },
+    "finish": {
+      "scoring": "Đang tính điểm của bạn...",
+      "done": "Xong."
+    }
+  },
+  "suitability": {
+    "unknown": "Không có thông tin chi tiết.",
+    "fallback": {
+      "os_install": {
+        "good": "Không có vấn đề nào cản trở hệ điều hành chạy ổn định.",
+        "caution": "Có thể dùng được, nhưng có chút rủi ro. Hãy sao lưu.",
+        "no": "Không an toàn để cài hệ điều hành."
+      },
+      "long_term_storage": {
+        "good": "Có vẻ đáng tin để lưu tệp lâu dài. Dù vậy vẫn nên giữ thêm một bản sao.",
+        "caution": "Rủi ro khi lưu trữ lâu dài. Hãy giữ một bản sao ở nơi khác.",
+        "no": "Đừng lưu tệp quan trọng ở đây."
+      },
+      "daily_use": {
+        "good": "Dùng hằng ngày được.",
+        "caution": "Dùng hằng ngày được, nhưng hãy chú ý các vấn đề mới.",
+        "no": "Không đủ tin cậy để dùng hằng ngày."
+      }
+    },
+    "os_install": {
+      "ok": "Phù hợp để cài hệ điều hành.",
+      "bad_sectors": "Không khuyến nghị cài hệ điều hành: ổ đĩa có vùng bị hỏng.",
+      "slow_latency": "Không khuyến nghị cài hệ điều hành: một số lần đọc quá chậm.",
+      "score_low": "Không khuyến nghị cài hệ điều hành: điểm tổng thể ({{score}}) quá thấp."
+    },
+    "long_term_storage": {
+      "ok": "Phù hợp để lưu tệp lâu dài.",
+      "critical_issues": "Không an toàn để lưu trữ lâu dài: đã phát hiện vấn đề nghiêm trọng.",
+      "score_low": "Rủi ro khi lưu trữ lâu dài: điểm tổng thể ({{score}}) quá thấp. Hãy sao lưu."
+    },
+    "daily_use": {
+      "ok": "Dùng hằng ngày được.",
+      "caution": "Dùng được cho các tệp thông thường, nhưng hãy sao lưu.",
+      "no": "Không khuyến nghị dùng hằng ngày."
+    }
+  },
+  "error": {
+    "unknown": "Đã xảy ra sự cố ({{code}}).",
+    "title": "Không thể hoàn tất việc kiểm tra",
+    "retry": "Thử lại",
+    "choose": "Chọn ổ đĩa khác",
+    "refused": "Bài kiểm tra bị từ chối vì lý do an toàn. Không thể chạy kiểm tra xóa trên ổ đĩa hệ thống hoặc khi không có số sê-ri khớp.",
+    "engine_failed": "Công cụ kiểm tra đã dừng đột ngột.",
+    "engine_missing": "Không tìm thấy công cụ kiểm tra. Vui lòng cài đặt lại CheckMyDrive.",
+    "auth_cancelled": "Quyền chưa được cấp, nên ổ đĩa chưa được kiểm tra.",
+    "elevation_unavailable": "Không thể yêu cầu quyền quản trị viên trên máy tính này.",
+    "bad_args": "Không thể bắt đầu kiểm tra vì lỗi yêu cầu nội bộ.",
+    "needs_admin": "Cần quyền quản trị viên để kiểm tra ổ đĩa này.",
+    "drive_not_found": "Không tìm thấy ổ đĩa đó. Có thể nó đã bị rút ra.",
+    "system_disk_refused": "Đây là ổ đĩa mà máy tính của bạn đang chạy, nên không thể xóa. Hãy chọn ổ đĩa khác.",
+    "confirm_required": "Vui lòng xác nhận số sê-ri của ổ đĩa trước khi chạy bài kiểm tra đầy đủ có xóa dữ liệu.",
+    "confirm_mismatch": "Số sê-ri bạn nhập không khớp với ổ đĩa này. Không có gì bị thay đổi.",
+    "cannot_open_device": "Không thể mở ổ đĩa để kiểm tra. Có thể một chương trình khác đang dùng nó.",
+    "unmount_failed": "Không thể ngắt kết nối an toàn các phân vùng của ổ đĩa trước bài kiểm tra đầy đủ. Hãy đóng các chương trình đang dùng nó rồi thử lại.",
+    "internal": "Đã xảy ra sự cố bất ngờ bên trong bộ máy kiểm tra."
+  },
+  "common": {
+    "loading": "Đang tải…",
+    "close": "Đóng",
+    "unknown": "Không rõ"
+  }
+}
