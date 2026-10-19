@@ -56,7 +56,7 @@
     "linux": {
       "deb": {
         "depends": [
-          "policykit-1",
+          "pkexec | policykit-1",
           "smartmontools"
         ]
       }
