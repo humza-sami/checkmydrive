@@ -49,7 +49,8 @@ Get the latest build from the [Releases page](https://github.com/humza-sami/chec
 |---|---|---|
 | macOS | `.dmg` (universal: Apple Silicon and Intel) | Open it and drag the app to Applications. Releases are signed and notarized when the signing credentials are available. If macOS says it can't verify the developer, right-click the app and choose **Open**. |
 | Windows | `.exe` installer or `.msi` | If SmartScreen warns you, choose **More info**, then **Run anyway**. |
-| Linux (Debian/Ubuntu) | `.deb` | `sudo apt install ./CheckMyDrive_*.deb` (pulls in `smartmontools` and PolicyKit). |
+| Linux x64 (Debian/Ubuntu) | `CheckMyDrive_*_amd64.deb` | `sudo apt install ./CheckMyDrive_*_amd64.deb` (pulls in `smartmontools` and PolicyKit). |
+| Linux ARM64 (ARM laptops, Raspberry Pi, ARM VMs) | `CheckMyDrive_*_arm64.deb` | `sudo apt install ./CheckMyDrive_*_arm64.deb` |
 
 **Why it asks for your password or admin rights:** reading a drive's SMART health data and reading raw disk sectors are privileged operations on every operating system. On macOS you get a password prompt when a test starts, on Linux a PolicyKit prompt, and on Windows the app starts as administrator.
 

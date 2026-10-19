@@ -31,6 +31,10 @@ jobs:
             os: ubuntu-22.04
             rust_targets: x86_64-unknown-linux-gnu
             tauri_args: --target x86_64-unknown-linux-gnu --bundles deb
+          - name: Linux (arm64)
+            os: ubuntu-22.04-arm
+            rust_targets: aarch64-unknown-linux-gnu
+            tauri_args: --target aarch64-unknown-linux-gnu --bundles deb
     steps:
       - uses: actions/checkout@v4
 
@@ -139,7 +143,7 @@ jobs:
       # ---------------- Linux ----------------
       - name: Build engine sidecar (Linux)
         if: runner.os == 'Linux'
-        run: bash scripts/build-sidecar.sh x86_64-unknown-linux-gnu
+        run: bash scripts/build-sidecar.sh ${{ matrix.rust_targets }}
 
       # smartctl on Linux comes from the .deb "smartmontools" dependency.
       # tauri.conf.json bundle.resources must tolerate the missing file there (see report).

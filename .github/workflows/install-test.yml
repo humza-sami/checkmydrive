@@ -237,20 +237,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, ubuntu-24.04]
+        os: [ubuntu-22.04, ubuntu-24.04, ubuntu-24.04-arm]
     steps:
       - uses: actions/checkout@v4
 
       - name: Download and install .deb
         run: |
           mkdir -p dl artifacts
-          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -D dl -p '*_amd64.deb'
+          ARCH=$(dpkg --print-architecture)
+          echo "architecture: $ARCH"
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -D dl -p "*_${ARCH}.deb"
           ls -la dl
           sudo apt-get update
-          PKG=$(dpkg-deb -f dl/CheckMyDrive_*_amd64.deb Package)
+          PKG=$(dpkg-deb -f dl/CheckMyDrive_*.deb Package)
           echo "PKG=$PKG" >> "$GITHUB_ENV"
           echo "package name: $PKG"
-          sudo apt-get install -y ./dl/CheckMyDrive_*_amd64.deb
+          sudo apt-get install -y ./dl/CheckMyDrive_*.deb
           command -v checkmydrive checkmydrive-engine smartctl
 
       - name: Engine version and list
