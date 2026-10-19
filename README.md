@@ -13,7 +13,7 @@
 
 ## Why this exists
 
-I bought a used 2 TB drive for a home server. It looked fine, but it kept disconnecting, and every big transfer failed halfway. By the time I understood why, I had lost days of work. Nothing in a normal file manager tells you a drive is quietly dying. CheckMyDrive runs the checks I wish I had run before paying, and gives you a plain answer: buy it, be careful, or walk away.
+I have a faulty 2 TB drive sitting on my desk. When I went looking for a simple way to check drives before buying, the tools were Windows-only, too technical (raw SMART tables), or took hours. Fake-capacity USB sticks make it worse, because they look normal until you actually fill them. I wanted one app that gives a plain answer in minutes on any OS.
 
 ## What it checks
 
