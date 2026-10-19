@@ -47,7 +47,7 @@ Get the latest build from the [Releases page](https://github.com/humza-sami/chec
 
 | System | File | Notes |
 |---|---|---|
-| macOS | `.dmg` (universal: Apple Silicon and Intel) | Open it and drag the app to Applications. Releases are signed and notarized when the signing credentials are available. If macOS says it can't verify the developer, right-click the app and choose **Open**. |
+| macOS | `.dmg` (universal: Apple Silicon and Intel) | Open it and drag the app to Applications. macOS builds are signed with a Developer ID. Notarization is coming; for now, on first launch right-click the app and choose **Open**. |
 | Windows | `.exe` installer or `.msi` | If SmartScreen warns you, choose **More info**, then **Run anyway**. |
 | Linux x64 (Debian/Ubuntu) | `CheckMyDrive_*_amd64.deb` | `sudo apt install ./CheckMyDrive_*_amd64.deb` (pulls in `smartmontools` and PolicyKit). |
 | Linux ARM64 (ARM laptops, Raspberry Pi, ARM VMs) | `CheckMyDrive_*_arm64.deb` | `sudo apt install ./CheckMyDrive_*_arm64.deb` |
