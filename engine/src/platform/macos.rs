@@ -119,7 +119,7 @@ pub fn parse_drives(list: &Value, infos: &HashMap<String, Value>, profiler: &Val
             continue;
         }
         let Some(info) = infos.get(&id) else { continue };
-        if s(info, "BusProtocol").as_deref() == Some("Disk Image") || s(info, "VirtualOrPhysical").as_deref() == Some("Virtual") {
+        if (s(info, "BusProtocol").as_deref() == Some("Disk Image") || s(info, "VirtualOrPhysical").as_deref() == Some("Virtual")) && !super::allow_virtual() {
             continue;
         }
         let mut mounts: Vec<String> = Vec::new();

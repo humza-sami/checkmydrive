@@ -30,6 +30,13 @@ use std::os::unix::fs::FileExt;
 #[cfg(windows)]
 use std::os::windows::fs::FileExt;
 
+/// Virtual disks (loop devices, RAM disks, disk images, VHD/VHDX) are hidden by default because
+/// they are not real drives. Setting `CHECKMYDRIVE_ALLOW_VIRTUAL=1` lists them too; CI uses this to
+/// exercise the full test pipeline on hosted runners that have no physical spare disk.
+pub fn allow_virtual() -> bool {
+    std::env::var("CHECKMYDRIVE_ALLOW_VIRTUAL").map(|v| !v.is_empty() && v != "0").unwrap_or(false)
+}
+
 /// Enumerate physical drives using only unprivileged OS tools (no SMART).
 pub fn list_drives() -> Vec<DriveInfo> {
     let mut v = imp::list_drives();

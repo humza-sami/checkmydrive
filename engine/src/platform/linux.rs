@@ -45,11 +45,13 @@ pub fn parse_lsblk(root: &Value) -> Vec<DriveInfo> {
     let mut out = Vec::new();
     let Some(devs) = root.get("blockdevices").and_then(|x| x.as_array()) else { return out };
     for d in devs {
-        if st(d, "type").as_deref() != Some("disk") {
+        let ty = st(d, "type");
+        let virt_ok = super::allow_virtual();
+        if ty.as_deref() != Some("disk") && !(virt_ok && ty.as_deref() == Some("loop")) {
             continue;
         }
         let Some(name) = st(d, "name") else { continue };
-        if name.starts_with("zram") || name.starts_with("ram") || name.starts_with("loop") || name.starts_with("nbd") {
+        if name.starts_with("zram") || name.starts_with("ram") || name.starts_with("nbd") || (name.starts_with("loop") && !virt_ok) {
             continue;
         }
         let path = st(d, "path").unwrap_or_else(|| format!("/dev/{}", name));
@@ -106,7 +108,8 @@ fn list_sysfs() -> Vec<DriveInfo> {
     let Ok(rd) = std::fs::read_dir("/sys/block") else { return out };
     for e in rd.flatten() {
         let name = e.file_name().to_string_lossy().to_string();
-        if ["loop", "ram", "zram", "sr", "fd", "dm-", "md", "nbd"].iter().any(|p| name.starts_with(p)) {
+        let skip: &[&str] = if super::allow_virtual() { &["ram", "zram", "sr", "fd", "dm-", "md", "nbd"] } else { &["loop", "ram", "zram", "sr", "fd", "dm-", "md", "nbd"] };
+        if skip.iter().any(|p| name.starts_with(p)) {
             continue;
         }
         let base = format!("/sys/block/{}", name);

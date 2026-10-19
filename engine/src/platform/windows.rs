@@ -63,7 +63,7 @@ pub fn parse_ps(v: &Value) -> Vec<DriveInfo> {
         let Some(n) = d.get("Number").and_then(|x| x.as_u64()) else { continue };
         let bus_raw = st(d, "BusType").unwrap_or_default();
         let size = d.get("Size").and_then(|x| x.as_u64()).unwrap_or(0);
-        if size == 0 || bus_raw.contains("Virtual") || bus_raw == "Spaces" {
+        if size == 0 || ((bus_raw.contains("Virtual") || bus_raw == "Spaces") && !super::allow_virtual()) {
             continue;
         }
         let media = st(d, "MediaType").unwrap_or_default();
