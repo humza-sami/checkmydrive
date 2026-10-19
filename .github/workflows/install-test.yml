@@ -103,7 +103,7 @@ jobs:
       - name: Launch GUI and screenshot
         run: |
           $p = Start-Process $env:APP_EXE -PassThru
-          Start-Sleep -Seconds 10
+          Start-Sleep -Seconds 20
           Add-Type -AssemblyName System.Windows.Forms, System.Drawing
           $b = [System.Windows.Forms.SystemInformation]::VirtualScreen
           $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
@@ -214,7 +214,7 @@ jobs:
       - name: Launch GUI and screenshot
         run: |
           open /Applications/CheckMyDrive.app
-          sleep 12
+          sleep 20
           pgrep -fl 'CheckMyDrive.app/Contents/MacOS' || true
           screencapture -x artifacts/gui.png || echo "::warning::screencapture failed"
           ls -la artifacts/gui.png
@@ -280,12 +280,15 @@ jobs:
         env:
           WEBKIT_DISABLE_COMPOSITING_MODE: '1'
           WEBKIT_DISABLE_DMABUF_RENDERER: '1'
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          GDK_BACKEND: x11
         run: |
-          sudo apt-get install -y xvfb imagemagick
+          sudo apt-get install -y xvfb imagemagick x11-utils dbus-x11
           xvfb-run -a -s '-screen 0 1280x800x24' bash -c '
-            checkmydrive > artifacts/gui.log 2>&1 &
+            dbus-run-session -- checkmydrive > artifacts/gui.log 2>&1 &
             PID=$!
-            sleep 12
+            sleep 20
+            xwininfo -root -tree | tee artifacts/xwininfo.txt
             import -window root artifacts/gui.png
             if kill -0 $PID 2>/dev/null; then echo "GUI alive (pid $PID)"; kill $PID; else echo "::error::GUI process died"; exit 1; fi
           '
