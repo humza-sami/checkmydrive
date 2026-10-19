@@ -1,0 +1,299 @@
+name: Install test
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag whose assets are installed
+        default: v0.1.0
+  workflow_run:
+    workflows: [Release]
+    types: [completed]
+
+permissions:
+  contents: write # reading draft releases needs write access
+
+env:
+  TAG: ${{ inputs.tag || 'v0.1.0' }}
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  windows:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, windows-2025]
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download release assets
+        run: |
+          New-Item -ItemType Directory -Force dl, artifacts | Out-Null
+          gh release download $env:TAG -R $env:GITHUB_REPOSITORY -D dl -p '*-setup.exe' -p '*.msi'
+          Get-ChildItem dl | Format-Table Name, Length
+
+      - name: Install NSIS (silent)
+        run: |
+          $setup = (Get-ChildItem dl -Filter '*-setup.exe' | Select-Object -First 1).FullName
+          $p = Start-Process $setup -ArgumentList '/S' -Wait -PassThru
+          "setup exit code: $($p.ExitCode)"
+          if ($p.ExitCode -ne 0) { throw 'NSIS install failed' }
+          $engine = Get-ChildItem $env:ProgramFiles, ${env:ProgramFiles(x86)}, $env:LOCALAPPDATA -Recurse -Filter checkmydrive-engine.exe -File -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $engine) { throw 'checkmydrive-engine.exe not found after install' }
+          $dir = $engine.DirectoryName
+          "INSTALL_DIR=$dir" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          Get-ChildItem $dir -Recurse | Select-Object FullName, Length | Format-Table -AutoSize | Out-String -Width 300
+          $exes = Get-ChildItem $dir -Filter *.exe | Where-Object { $_.Name -notmatch '^(checkmydrive-engine|smartctl|uninstall)' }
+          if (-not $exes) { throw 'app exe missing' }
+          "APP_EXE=$($exes[0].FullName)" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          if (-not (Get-ChildItem $dir -Recurse -Filter smartctl.exe)) { throw 'smartctl.exe missing' }
+
+      - name: Engine version and list
+        run: |
+          $engine = Join-Path $env:INSTALL_DIR 'checkmydrive-engine.exe'
+          $v = & $engine version
+          $v | Tee-Object artifacts/version.json
+          $vj = $v | ConvertFrom-Json
+          if (-not $vj.version) { throw 'no version' }
+          if (-not $vj.smartctl) { Write-Warning 'engine did not find smartctl' }
+          $raw = & $engine list
+          $raw | Tee-Object artifacts/list.json
+          $drives = @($raw | ConvertFrom-Json)
+          if ($drives.Count -eq 1 -and $drives[0] -is [array]) { $drives = $drives[0] }
+          "drives listed: $($drives.Count)"
+          if ($drives.Count -lt 1) { throw 'list returned no drives' }
+
+      - name: Virtual disk (VHDX) safe test
+        run: |
+          $vhd = Join-Path $env:RUNNER_TEMP 'cmd.vhdx'
+          $script = @"
+          create vdisk file="$vhd" maximum=2048 type=expandable
+          select vdisk file="$vhd"
+          attach vdisk
+          create partition primary
+          format fs=ntfs quick label=CMDTEST
+          assign letter=V
+          "@
+          $script | Set-Content -Encoding ascii dp.txt
+          diskpart /s dp.txt
+          if ($LASTEXITCODE -ne 0) { throw 'diskpart failed' }
+          $env:CHECKMYDRIVE_ALLOW_VIRTUAL = '1'
+          $engine = Join-Path $env:INSTALL_DIR 'checkmydrive-engine.exe'
+          $raw = & $engine list
+          $raw | Out-File artifacts/list-virtual.json
+          $id = $raw | python scripts/ci/pick_drive.py 2147483648
+          if ($LASTEXITCODE -ne 0) { throw 'VHDX not found in list output' }
+          "testing $id"
+          $out = Join-Path $PWD 'artifacts/test-report.ndjson'
+          $err = Join-Path $PWD 'artifacts/test-stderr.log'
+          $p = Start-Process $engine -ArgumentList 'test','--drive',$id,'--mode','safe' -RedirectStandardOutput $out -RedirectStandardError $err -NoNewWindow -PassThru
+          if (-not $p.WaitForExit(600000)) { $p.Kill(); throw 'engine test timed out after 10 min' }
+          "engine exit code: $($p.ExitCode)"
+          Get-Content $err -ErrorAction SilentlyContinue | Select-Object -Last 30
+          python scripts/ci/assert_report.py $out
+          if ($LASTEXITCODE -ne 0) { throw 'report assertion failed' }
+
+      - name: Launch GUI and screenshot
+        run: |
+          $p = Start-Process $env:APP_EXE -PassThru
+          Start-Sleep -Seconds 10
+          Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+          $b = [System.Windows.Forms.SystemInformation]::VirtualScreen
+          $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
+          $g = [System.Drawing.Graphics]::FromImage($bmp)
+          $g.CopyFromScreen($b.Left, $b.Top, 0, 0, $bmp.Size)
+          $bmp.Save((Join-Path $PWD 'artifacts/gui-nsis.png'))
+          $p.Refresh()
+          $alive = -not $p.HasExited
+          Get-Process | Where-Object { $_.Name -match 'checkmydrive|msedgewebview2' } | Select-Object Name, Id | Format-Table
+          Get-Process | Where-Object { $_.Name -match 'checkmydrive' } | Stop-Process -Force -ErrorAction SilentlyContinue
+          if (-not $alive) { throw 'GUI process exited before screenshot' }
+
+      - name: Uninstall NSIS and verify removal
+        run: |
+          $dir = $env:INSTALL_DIR
+          $un = Join-Path $dir 'uninstall.exe'
+          if (-not (Test-Path $un)) { throw 'uninstall.exe missing' }
+          $p = Start-Process $un -ArgumentList '/S', "_?=$dir" -Wait -PassThru
+          "uninstall exit code: $($p.ExitCode)"
+          Remove-Item $un -Force -ErrorAction SilentlyContinue
+          if (Test-Path (Join-Path $dir 'checkmydrive-engine.exe')) { throw 'engine exe still present' }
+          if (Get-ChildItem $dir -Filter *.exe -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch 'uninstall' }) { throw 'exe files remain after uninstall' }
+
+      - name: MSI install, version, uninstall
+        run: |
+          $msi = (Get-ChildItem dl -Filter '*.msi' | Select-Object -First 1).FullName
+          $p = Start-Process msiexec -ArgumentList '/i', "`"$msi`"", '/qn', '/l*v', "`"$PWD\artifacts\msi-install.log`"" -Wait -PassThru
+          "msi install exit code: $($p.ExitCode)"
+          if ($p.ExitCode -ne 0) { throw 'MSI install failed' }
+          $engine = Get-ChildItem $env:ProgramFiles, ${env:ProgramFiles(x86)}, $env:LOCALAPPDATA -Recurse -Filter checkmydrive-engine.exe -File -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $engine) { throw 'engine not found after MSI install' }
+          $v = & $engine.FullName version
+          $v
+          if (-not (($v | ConvertFrom-Json).version)) { throw 'no version' }
+          $dir = $engine.DirectoryName
+          $p = Start-Process msiexec -ArgumentList '/x', "`"$msi`"", '/qn', '/l*v', "`"$PWD\artifacts\msi-uninstall.log`"" -Wait -PassThru
+          "msi uninstall exit code: $($p.ExitCode)"
+          if ($p.ExitCode -ne 0) { throw 'MSI uninstall failed' }
+          if (Test-Path $engine.FullName) { throw 'engine exe still present after MSI uninstall' }
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: install-test-${{ matrix.os }}
+          path: artifacts/
+          if-no-files-found: warn
+
+  macos:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14, macos-15]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download and install from .dmg
+        run: |
+          mkdir -p dl artifacts
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -D dl -p '*.dmg'
+          ls -la dl
+          hdiutil attach -nobrowse -readonly -mountpoint /Volumes/cmd-install dl/*.dmg
+          ls -la /Volumes/cmd-install
+          sudo ditto /Volumes/cmd-install/CheckMyDrive.app /Applications/CheckMyDrive.app
+          hdiutil detach /Volumes/cmd-install
+
+      - name: Verify signature (report only)
+        run: |
+          APP=/Applications/CheckMyDrive.app
+          codesign --verify --deep --strict --verbose=2 "$APP" 2>&1 | tee artifacts/codesign.log || echo "::warning::codesign verification failed (unsigned build?)"
+          codesign -dv --verbose=2 "$APP" 2>&1 | tee -a artifacts/codesign.log || true
+          spctl -a -vv "$APP" 2>&1 | tee -a artifacts/codesign.log || echo "::warning::spctl rejected app (expected when not notarized)"
+
+      - name: Engine version and list
+        run: |
+          ENGINE=/Applications/CheckMyDrive.app/Contents/MacOS/checkmydrive-engine
+          ls -la "$ENGINE" /Applications/CheckMyDrive.app/Contents/Resources/smartctl
+          "$ENGINE" version | tee artifacts/version.json
+          python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));assert d["version"]' artifacts/version.json
+          sudo "$ENGINE" list | tee artifacts/list.json
+          python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));print(len(d),"drives");assert len(d)>=1' artifacts/list.json
+
+      - name: RAM disk safe test
+        run: |
+          ENGINE=/Applications/CheckMyDrive.app/Contents/MacOS/checkmydrive-engine
+          DEV=$(hdiutil attach -nomount ram://2097152 | awk '{print $1}')
+          echo "ram disk: $DEV"
+          diskutil eraseDisk JHFS+ CMDTEST "$DEV"
+          ID=$(basename "$DEV")
+          sudo env CHECKMYDRIVE_ALLOW_VIRTUAL=1 "$ENGINE" list > artifacts/list-virtual.json
+          python3 scripts/ci/pick_drive.py 1073741824 < artifacts/list-virtual.json | tee artifacts/picked-id.txt
+          ID=$(cat artifacts/picked-id.txt)
+          set +e
+          sudo env CHECKMYDRIVE_ALLOW_VIRTUAL=1 timeout 600 "$ENGINE" test --drive "$ID" --mode safe > artifacts/test-report.ndjson 2> artifacts/test-stderr.log
+          echo "engine exit code: $?"
+          tail -n 30 artifacts/test-stderr.log
+          python3 scripts/ci/assert_report.py artifacts/test-report.ndjson
+
+      - name: Launch GUI and screenshot
+        run: |
+          open /Applications/CheckMyDrive.app
+          sleep 12
+          pgrep -fl 'CheckMyDrive.app/Contents/MacOS' || true
+          screencapture -x artifacts/gui.png || echo "::warning::screencapture failed"
+          ls -la artifacts/gui.png
+          pgrep -f 'CheckMyDrive.app/Contents/MacOS/(checkmydrive|CheckMyDrive)$' > /dev/null || { echo "::error::GUI process not running"; exit 1; }
+          osascript -e 'tell application "CheckMyDrive" to quit' || pkill -f 'CheckMyDrive.app/Contents/MacOS' || true
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: install-test-${{ matrix.os }}
+          path: artifacts/
+          if-no-files-found: warn
+
+  linux:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download and install .deb
+        run: |
+          mkdir -p dl artifacts
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -D dl -p '*_amd64.deb'
+          ls -la dl
+          sudo apt-get update
+          sudo apt-get install -y ./dl/CheckMyDrive_*_amd64.deb
+          command -v checkmydrive checkmydrive-engine smartctl
+
+      - name: Engine version and list
+        run: |
+          checkmydrive-engine version | tee artifacts/version.json
+          python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));assert d["version"]' artifacts/version.json
+          sudo checkmydrive-engine list | tee artifacts/list.json
+          python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));print(len(d),"drives");assert len(d)>=1' artifacts/list.json
+
+      - name: Loop device safe test
+        run: |
+          truncate -s 1G /tmp/cmd.img
+          DEV=$(sudo losetup -fP --show /tmp/cmd.img)
+          echo "loop device: $DEV"
+          sudo mkfs.ext4 -q "$DEV"
+          sudo mkdir -p /mnt/cmdtest && sudo mount "$DEV" /mnt/cmdtest
+          sudo env CHECKMYDRIVE_ALLOW_VIRTUAL=1 "$(command -v checkmydrive-engine)" list > artifacts/list-virtual.json
+          python3 scripts/ci/pick_drive.py 1073741824 < artifacts/list-virtual.json | tee artifacts/picked-id.txt
+          ID=$(cat artifacts/picked-id.txt)
+          set +e
+          sudo env CHECKMYDRIVE_ALLOW_VIRTUAL=1 timeout 600 "$(command -v checkmydrive-engine)" test --drive "$ID" --mode safe > artifacts/test-report.ndjson 2> artifacts/test-stderr.log
+          echo "engine exit code: $?"
+          tail -n 30 artifacts/test-stderr.log
+          python3 scripts/ci/assert_report.py artifacts/test-report.ndjson
+
+      - name: Launch GUI under Xvfb and screenshot
+        env:
+          WEBKIT_DISABLE_COMPOSITING_MODE: '1'
+          WEBKIT_DISABLE_DMABUF_RENDERER: '1'
+        run: |
+          sudo apt-get install -y xvfb imagemagick
+          xvfb-run -a -s '-screen 0 1280x800x24' bash -c '
+            checkmydrive > artifacts/gui.log 2>&1 &
+            PID=$!
+            sleep 12
+            import -window root artifacts/gui.png
+            if kill -0 $PID 2>/dev/null; then echo "GUI alive (pid $PID)"; kill $PID; else echo "::error::GUI process died"; exit 1; fi
+          '
+          tail -n 30 artifacts/gui.log || true
+          ls -la artifacts/gui.png
+
+      - name: Uninstall and verify removal
+        run: |
+          sudo apt-get remove -y checkmydrive
+          if command -v checkmydrive; then echo "::error::binary still present"; exit 1; fi
+          test ! -e /usr/bin/checkmydrive-engine
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: install-test-${{ matrix.os }}
+          path: artifacts/
+          if-no-files-found: warn
