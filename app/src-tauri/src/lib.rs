@@ -92,6 +92,8 @@ async fn engine_version(app: AppHandle) -> Result<Value, String> {
     if let Some(sc) = bundled_smartctl(&app) {
         cmd.env("CHECKMYDRIVE_SMARTCTL", sc);
     }
+    #[cfg(windows)]
+    cmd.creation_flags(0x0800_0000); // CREATE_NO_WINDOW: no console flash from the GUI
     let out = cmd
         .arg("version")
         .stdin(Stdio::null())
@@ -114,6 +116,8 @@ async fn list_drives_impl(engine: PathBuf, smartctl: Option<PathBuf>) -> Result<
     if let Some(sc) = smartctl {
         cmd.env("CHECKMYDRIVE_SMARTCTL", sc);
     }
+    #[cfg(windows)]
+    cmd.creation_flags(0x0800_0000); // CREATE_NO_WINDOW: no console flash from the GUI
     let out = cmd
         .arg("list")
         .stdin(Stdio::null())
