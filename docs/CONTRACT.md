@@ -148,6 +148,8 @@ Drive class: `hdd` (rotational), `flash` (kind `usb` or `sd`), `ssd` (everything
 - `p99_latency_ok` = p99 ≤ max(class p99 allowance, 40 × p50). It only affects the os_install suitability (`slow_latency`), never the test status.
 - `issue.surface_read.slow_drive` (sequential read): info/warn per the table. It never fails the test, never blocks long-term storage / daily use / safe-fill.
 - Extra metrics: `drive_class`, `hard_stalls`, `os_speed_ok`.
+- **Speed measurements must be valid.** `write_mbps` / `read_mbps` (write_verify) are computed from the actual elapsed time including the flush, and are `null` when fewer than 4 MiB were moved or the elapsed time is < 50 ms; `slow_write` is never emitted for a `null` measurement. Wipe mode splits the 14 s write budget evenly over its 4 regions and writes at least 4 chunks to each (budget permitting), so the figure averages several areas of the drive.
+- **surface_read progress**: `progress.surface_read.sampling` carries `{done, total}`. `total` is the planned sample count (576) while the drive's pace fits the 40 s sampling budget, and otherwise the projected number that will actually be attempted; the last sampling event has `total == done == samples_total`. The plan size itself is reported as `samples_planned`.
 
 ### Suitability
 

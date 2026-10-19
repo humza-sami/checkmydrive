@@ -15,6 +15,35 @@ pub const MAX_FILE: u64 = 1024 * MIB;
 pub const MIN_FILE: u64 = 8 * MIB;
 const WRITE_LIMIT: Duration = Duration::from_secs(14);
 const VERIFY_LIMIT: Duration = Duration::from_secs(14);
+/// Below this many bytes (or this little time) a throughput figure is noise, not a measurement.
+pub const MIN_MEASURE_BYTES: u64 = 4 * MIB;
+pub const MIN_MEASURE_SECS: f64 = 0.05;
+/// Wipe mode writes at least this many chunks to every region (time budget permitting) so the speed
+/// is averaged over several areas of the drive instead of one.
+const MIN_CHUNKS_PER_REGION: u64 = 4;
+
+/// MB/s for `bytes` moved in `secs` (flush included), or None when the sample is too small / too short to mean anything.
+pub fn measure_mbps(bytes: u64, secs: f64) -> Option<f64> {
+    if bytes < MIN_MEASURE_BYTES || !secs.is_finite() || secs < MIN_MEASURE_SECS {
+        return None;
+    }
+    Some(bytes as f64 / MIB as f64 / secs)
+}
+
+/// Speed issues (pure; unit-tested). A missing measurement never produces an issue.
+pub fn speed_issues(class: super::surface_read::DriveClass, write_mbps: Option<f64>) -> Vec<Issue> {
+    use super::surface_read::DriveClass;
+    // Class-aware: cheap USB flash legitimately writes at 1-5 MB/s; only far below that is worth a warning.
+    let min_write = match class {
+        DriveClass::Flash => 1.0,
+        DriveClass::Hdd => 5.0,
+        DriveClass::Ssd => 3.0,
+    };
+    match write_mbps {
+        Some(w) if w < min_write => vec![Issue::warn("issue.write_verify.slow_write").with("mbps", round1(w))],
+        _ => vec![],
+    }
+}
 
 pub fn temp_file_size(free: u64, max_file: u64) -> u64 {
     let want = (free / 20).min(max_file);
@@ -60,8 +89,8 @@ struct Outcome {
     bytes_verified: u64,
     mismatches: u64,
     write_error: bool,
-    write_mbps: f64,
-    read_mbps: f64,
+    write_mbps: Option<f64>,
+    read_mbps: Option<f64>,
     first_mismatch: Option<u64>,
     bypass: bool,
 }
@@ -72,8 +101,8 @@ fn finish(ctx: &Ctx, t0: Instant, o: Outcome, extra: Metrics, mut issues: Vec<Is
     m.insert("bytes_verified".into(), mval(o.bytes_verified));
     m.insert("verify_mismatches".into(), mval(o.mismatches));
     m.insert("write_errors".into(), mval(o.write_error as u64));
-    m.insert("write_mbps".into(), mval(round1(o.write_mbps)));
-    m.insert("read_mbps".into(), mval(round1(o.read_mbps)));
+    m.insert("write_mbps".into(), mval(o.write_mbps.map(round1)));
+    m.insert("read_mbps".into(), mval(o.read_mbps.map(round1)));
     m.insert("cache_bypass".into(), mval(o.bypass));
     m.insert("first_mismatch_offset".into(), mval(o.first_mismatch));
     if o.write_error {
@@ -82,15 +111,7 @@ fn finish(ctx: &Ctx, t0: Instant, o: Outcome, extra: Metrics, mut issues: Vec<Is
     if o.mismatches > 0 {
         issues.push(Issue::critical("issue.write_verify.data_mismatch").with("count", o.mismatches));
     }
-    // Class-aware: cheap USB flash legitimately writes at 1-5 MB/s; only far below that is worth a warning.
-    let min_write = match super::surface_read::DriveClass::of(&ctx.drive) {
-        super::surface_read::DriveClass::Flash => 1.0,
-        super::surface_read::DriveClass::Hdd => 5.0,
-        super::surface_read::DriveClass::Ssd => 3.0,
-    };
-    if o.bytes_written > 0 && o.write_mbps < min_write {
-        issues.push(Issue::warn("issue.write_verify.slow_write").with("mbps", round1(o.write_mbps)));
-    }
+    issues.extend(speed_issues(super::surface_read::DriveClass::of(&ctx.drive), o.write_mbps));
     ctx.progress(Phase::WriteVerify, 100.0, "progress.write_verify.done", None);
     TestResult::from_issues(TestId::WriteVerify, t0.elapsed().as_millis() as u64, m, issues)
 }
@@ -142,7 +163,7 @@ fn run_file(ctx: &Ctx, max_file: u64) -> TestResult {
     let seed: u64 = rand::random();
     let n_chunks = size / CHUNK as u64;
     let mut buf = AlignedBuf::new(CHUNK);
-    let mut o = Outcome { bytes_written: 0, bytes_verified: 0, mismatches: 0, write_error: false, write_mbps: 0.0, read_mbps: 0.0, first_mismatch: None, bypass: false };
+    let mut o = Outcome { bytes_written: 0, bytes_verified: 0, mismatches: 0, write_error: false, write_mbps: None, read_mbps: None, first_mismatch: None, bypass: false };
     let mut issues = Vec::new();
 
     // ---- write
@@ -172,7 +193,7 @@ fn run_file(ctx: &Ctx, max_file: u64) -> TestResult {
         o.write_error = true;
     }
     platform::drop_cache(&file);
-    o.write_mbps = o.bytes_written as f64 / MIB as f64 / w0.elapsed().as_secs_f64().max(0.001);
+    o.write_mbps = measure_mbps(o.bytes_written, w0.elapsed().as_secs_f64());
     drop(file);
 
     // ---- cache-bypassing read-back + verify
@@ -223,7 +244,7 @@ fn run_file(ctx: &Ctx, max_file: u64) -> TestResult {
                 ctx.progress(Phase::WriteVerify, 50.0 + i as f64 / total.max(1) as f64 * 45.0, "progress.write_verify.verifying", params([("mb", mval(o.bytes_verified / MIB))]));
             }
         }
-        o.read_mbps = o.bytes_verified as f64 / MIB as f64 / r0.elapsed().as_secs_f64().max(0.001);
+        o.read_mbps = measure_mbps(o.bytes_verified, r0.elapsed().as_secs_f64());
         break;
     }
 
@@ -272,16 +293,23 @@ fn run_raw(ctx: &Ctx) -> TestResult {
 
     let seed: u64 = rand::random();
     let mut buf = AlignedBuf::new(CHUNK);
-    let mut o = Outcome { bytes_written: 0, bytes_verified: 0, mismatches: 0, write_error: false, write_mbps: 0.0, read_mbps: 0.0, first_mismatch: None, bypass: true };
+    let mut o = Outcome { bytes_written: 0, bytes_verified: 0, mismatches: 0, write_error: false, write_mbps: None, read_mbps: None, first_mismatch: None, bypass: true };
     let mut last_emit = Instant::now() - Duration::from_secs(1);
     let chunks_per_region = region_len / CHUNK as u64;
     let total = chunks_per_region * REGIONS;
     let w0 = Instant::now();
     let mut written: Vec<(u64, u64)> = Vec::new(); // (device offset, global idx)
+    // Each region gets an equal share of the write budget, so a slow drive is sampled in every region
+    // rather than spending the whole budget in the first one.
+    let region_budget = WRITE_LIMIT / REGIONS as u32;
     'w: for (r, start) in starts.iter().enumerate() {
+        let region_deadline = region_budget * (r as u32 + 1);
         for c in 0..chunks_per_region {
-            if w0.elapsed() > WRITE_LIMIT || ctx.stab.is_gone() {
+            if ctx.stab.is_gone() || w0.elapsed() > WRITE_LIMIT * 2 {
                 break 'w;
+            }
+            if c >= MIN_CHUNKS_PER_REGION && w0.elapsed() > region_deadline {
+                break;
             }
             let idx = r as u64 * chunks_per_region + c;
             let off = start + c * CHUNK as u64;
@@ -303,7 +331,7 @@ fn run_raw(ctx: &Ctx) -> TestResult {
         ctx.stab.report_io_error(&e);
         o.write_error = true;
     }
-    o.write_mbps = o.bytes_written as f64 / MIB as f64 / w0.elapsed().as_secs_f64().max(0.001);
+    o.write_mbps = measure_mbps(o.bytes_written, w0.elapsed().as_secs_f64());
 
     let r0 = Instant::now();
     let mut exp = AlignedBuf::new(CHUNK);
@@ -331,7 +359,7 @@ fn run_raw(ctx: &Ctx) -> TestResult {
             ctx.progress(Phase::WriteVerify, 50.0 + n as f64 / written.len().max(1) as f64 * 50.0, "progress.write_verify.verifying", params([("mb", mval(o.bytes_verified / MIB))]));
         }
     }
-    o.read_mbps = o.bytes_verified as f64 / MIB as f64 / r0.elapsed().as_secs_f64().max(0.001);
+    o.read_mbps = measure_mbps(o.bytes_verified, r0.elapsed().as_secs_f64());
     let mut extra = Metrics::new();
     extra.insert("mode".into(), mval("raw"));
     extra.insert("regions".into(), mval(REGIONS));
@@ -346,6 +374,26 @@ mod tests {
         assert_eq!(temp_file_size(100 * 1024 * MIB, MAX_FILE), MAX_FILE);
         assert_eq!(temp_file_size(100 * MIB, MAX_FILE), 5 * MIB);
         assert_eq!(temp_file_size(10 * 1024 * MIB, MAX_FILE), 512 * MIB);
+    }
+    #[test]
+    fn invalid_measurements_are_not_speeds() {
+        assert_eq!(measure_mbps(0, 5.0), None);
+        assert_eq!(measure_mbps(MIB, 20.0), None); // the real-stick case: 1 MiB only
+        assert_eq!(measure_mbps(64 * MIB, 0.0), None);
+        assert_eq!(measure_mbps(64 * MIB, 0.01), None);
+        assert_eq!(measure_mbps(64 * MIB, f64::NAN), None);
+        let v = measure_mbps(64 * MIB, 16.0).unwrap();
+        assert!((v - 4.0).abs() < 1e-9);
+    }
+    #[test]
+    fn slow_write_only_when_measured() {
+        use super::super::surface_read::DriveClass;
+        assert!(speed_issues(DriveClass::Flash, None).is_empty());
+        assert!(speed_issues(DriveClass::Flash, Some(3.9)).is_empty());
+        let i = speed_issues(DriveClass::Flash, Some(0.4));
+        assert_eq!(i.len(), 1);
+        assert_eq!(i[0].code, "issue.write_verify.slow_write");
+        assert!(!speed_issues(DriveClass::Hdd, Some(4.0)).is_empty());
     }
     #[test]
     fn name_format() {

@@ -186,6 +186,17 @@ pub fn summarize(lat_ms: &[f64], threshold_ms: f64) -> (f64, f64, f64, f64, u64)
     (avg, percentile(&s, 0.5), percentile(&s, 0.99), s.last().copied().unwrap_or(0.0), slow)
 }
 
+/// Total shown in progress: the planned count while the pace fits the sampling budget, otherwise the
+/// number that will actually be attempted at the current pace (never below what is already done).
+pub fn projected_total(planned: usize, attempted: usize, elapsed: Duration, budget: Duration) -> usize {
+    if attempted == 0 || elapsed.is_zero() {
+        return planned;
+    }
+    let per = elapsed.as_secs_f64() / attempted as f64;
+    let fit = (budget.as_secs_f64() / per).floor() as usize;
+    planned.min(fit.max(attempted))
+}
+
 pub fn run(ctx: &Ctx) -> TestResult {
     run_with(ctx, SEQ_DURATION)
 }
@@ -254,10 +265,14 @@ pub fn run_with(ctx: &Ctx, seq_duration: Duration) -> TestResult {
         }
         if last_emit.elapsed() >= Duration::from_millis(250) {
             last_emit = Instant::now();
-            let pp = attempted as f64 / total as f64 * 70.0;
-            ctx.progress(Phase::SurfaceRead, pp, "progress.surface_read.sampling", params([("done", mval(attempted)), ("total", mval(total))]));
+            let shown = projected_total(total, attempted, phase_start.elapsed(), SAMPLE_PHASE_MAX);
+            let pp = attempted as f64 / shown as f64 * 70.0;
+            ctx.progress(Phase::SurfaceRead, pp, "progress.surface_read.sampling", params([("done", mval(attempted)), ("total", mval(shown))]));
         }
     }
+
+    // Final sampling update: the total now equals the report's `samples_total`.
+    ctx.progress(Phase::SurfaceRead, 70.0, "progress.surface_read.sampling", params([("done", mval(attempted)), ("total", mval(attempted))]));
 
     // ---- sequential pass
     let mut seq_bytes: u64 = 0;
@@ -312,6 +327,7 @@ pub fn run_with(ctx: &Ctx, seq_duration: Duration) -> TestResult {
 
     let (mut m, issues) = assess(class, len, &lat, errors, seq_bytes, seq_mbps_avg);
     m.insert("samples_total".into(), mval(attempted));
+    m.insert("samples_planned".into(), mval(total));
     m.insert("samples_ok".into(), mval(lat.len()));
     m.insert("read_errors".into(), mval(errors));
     m.insert("read_mbps_avg".into(), mval(round1(seq_mbps_avg)));
@@ -336,6 +352,17 @@ pub(crate) mod tests {
         assert_eq!(v[0], 0);
         assert!(v[511] >= cap - (1 << 20) - 4096);
         assert!(v[..512].windows(2).all(|w| w[0] <= w[1]));
+    }
+    #[test]
+    fn progress_total_tracks_actual_plan() {
+        let b = SAMPLE_PHASE_MAX;
+        // fast drive: whole plan fits
+        assert_eq!(projected_total(576, 10, Duration::from_millis(100), b), 576);
+        // 40 s budget at ~151 ms per sample -> 264 fit, as in the real report
+        assert_eq!(projected_total(576, 100, Duration::from_millis(15_150), b), 264);
+        // never below what is already done, never above the plan
+        assert_eq!(projected_total(576, 300, Duration::from_secs(60), b), 300);
+        assert_eq!(projected_total(576, 0, Duration::ZERO, b), 576);
     }
     #[test]
     fn tiny_device() {
