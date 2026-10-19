@@ -398,7 +398,7 @@
     "elevation_unavailable": "Haikuwezekana kuomba ruhusa ya msimamizi kwenye kompyuta hii.",
     "bad_args": "Jaribio halikuweza kuanza kwa sababu ya hitilafu ya ndani ya ombi.",
     "needs_admin": "Ruhusa ya msimamizi inahitajika ili kujaribu diski hii.",
-    "needs_full_disk_access": "macOS inahitaji ruhusa yako kabla CheckMyDrive haijaweza kusoma hifadhi hii. Washa “Ufikiaji Kamili wa Diski” kwa CheckMyDrive katika Mipangilio ya Mfumo, kisha fungua programu tena.",
+    "needs_full_disk_access": "macOS inahitaji ruhusa yako kabla CheckMyDrive haijaweza kusoma hifadhi hii. Katika Mipangilio ya Mfumo, washa “Ufikiaji Kamili wa Diski” kwa “checkmydrive-engine”, kisha jaribu tena.",
     "drive_not_found": "Diski hiyo haikupatikana. Huenda iliondolewa.",
     "system_disk_refused": "Hii ndiyo diski ambayo kompyuta yako huwaka kutoka kwake, kwa hivyo haiwezi kufutwa. Chagua diski nyingine.",
     "confirm_required": "Tafadhali thibitisha nambari ya ufuatiliaji ya diski kabla ya jaribio kamili linalofuta data.",
@@ -412,8 +412,8 @@
     "intro": "macOS hulinda faragha yako kwa kuzuia CheckMyDrive kusoma hifadhi hii moja kwa moja. Hakuna tatizo kwenye hifadhi. Unahitaji kuruhusu mara moja tu.",
     "step1": "Bofya “Fungua Mipangilio” hapa chini.",
     "step2": "Katika Mipangilio ya Mfumo, nenda kwenye “Faragha na Usalama”, kisha “Ufikiaji Kamili wa Diski”.",
-    "step3": "Washa CheckMyDrive. Ikiwa haipo kwenye orodha, bofya kitufe cha + na uiongeze.",
-    "step4": "Funga CheckMyDrive, ifungue tena, kisha jaribu ukaguzi tena.",
+    "step3": "Washa “checkmydrive-engine” (na CheckMyDrive pia, ikiwa ipo kwenye orodha). Ikiwa haipo kwenye orodha, bofya kitufe cha + na uiongeze.",
+    "step4": "Rudi hapa na ubonyeze “Jaribu tena”. Huhitaji kuanzisha upya programu.",
     "openSettings": "Fungua Mipangilio"
   },
   "common": {

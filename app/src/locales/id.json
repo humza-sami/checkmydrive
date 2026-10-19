@@ -376,7 +376,7 @@
     "elevation_unavailable": "Tidak dapat meminta izin administrator di komputer ini.",
     "bad_args": "Tes tidak dapat dimulai karena kesalahan permintaan internal.",
     "needs_admin": "Izin administrator diperlukan untuk menguji drive ini.",
-    "needs_full_disk_access": "macOS memerlukan izin Anda sebelum CheckMyDrive dapat membaca drive ini. Aktifkan “Akses Disk Penuh” untuk CheckMyDrive di Pengaturan Sistem, lalu buka kembali aplikasinya.",
+    "needs_full_disk_access": "macOS memerlukan izin Anda sebelum CheckMyDrive dapat membaca drive ini. Di Pengaturan Sistem, aktifkan “Akses Disk Penuh” untuk “checkmydrive-engine”, lalu coba lagi.",
     "drive_not_found": "Drive itu tidak ditemukan. Mungkin sudah dicabut.",
     "system_disk_refused": "Ini adalah disk tempat komputer Anda berjalan, sehingga tidak dapat dihapus. Pilih drive lain.",
     "confirm_required": "Mohon konfirmasi nomor seri drive sebelum tes penuh yang menghapus data.",
@@ -390,8 +390,8 @@
     "intro": "macOS melindungi privasi Anda dengan mencegah CheckMyDrive membaca drive ini secara langsung. Tidak ada masalah pada drive. Anda hanya perlu mengizinkannya sekali.",
     "step1": "Klik “Buka Pengaturan” di bawah.",
     "step2": "Di Pengaturan Sistem, buka “Privasi & Keamanan”, lalu “Akses Disk Penuh”.",
-    "step3": "Aktifkan CheckMyDrive. Jika tidak ada dalam daftar, klik tombol + dan tambahkan.",
-    "step4": "Tutup CheckMyDrive, buka kembali, lalu ulangi pemeriksaan.",
+    "step3": "Aktifkan “checkmydrive-engine” (dan juga CheckMyDrive, jika ada dalam daftar). Jika tidak ada dalam daftar, klik tombol + dan tambahkan.",
+    "step4": "Kembali ke sini dan tekan “Coba lagi”. Anda tidak perlu memulai ulang aplikasi.",
     "openSettings": "Buka Pengaturan"
   },
   "common": {

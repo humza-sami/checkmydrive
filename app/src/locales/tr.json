@@ -398,7 +398,7 @@
     "elevation_unavailable": "Bu bilgisayarda yönetici izni istenemedi.",
     "bad_args": "Dahili bir istek hatası nedeniyle test başlatılamadı.",
     "needs_admin": "Bu sürücüyü test etmek için yönetici izni gerekli.",
-    "needs_full_disk_access": "CheckMyDrive'ın bu sürücüyü okuyabilmesi için macOS'in izninize ihtiyacı var. Sistem Ayarları'nda CheckMyDrive için “Tam Disk Erişimi”ni açın, ardından uygulamayı yeniden başlatın.",
+    "needs_full_disk_access": "CheckMyDrive'ın bu sürücüyü okuyabilmesi için macOS'in izninize ihtiyacı var. Sistem Ayarları'nda “checkmydrive-engine” için “Tam Disk Erişimi”ni açın ve yeniden deneyin.",
     "drive_not_found": "Bu sürücü bulunamadı. Çıkarılmış olabilir.",
     "system_disk_refused": "Bu, bilgisayarınızın üzerinden çalıştığı disk, bu yüzden silinemez. Başka bir sürücü seçin.",
     "confirm_required": "Verileri silen tam testten önce lütfen sürücünün seri numarasını onaylayın.",
@@ -412,8 +412,8 @@
     "intro": "macOS, gizliliğinizi korumak için CheckMyDrive'ın bu sürücüyü doğrudan okumasını engelliyor. Sürücüde bir sorun yok. İzni yalnızca bir kez vermeniz yeterli.",
     "step1": "Aşağıdaki “Ayarları Aç” düğmesine tıklayın.",
     "step2": "Sistem Ayarları'nda “Gizlilik ve Güvenlik”e, ardından “Tam Disk Erişimi”ne gidin.",
-    "step3": "CheckMyDrive'ı açın. Listede yoksa + düğmesine tıklayıp ekleyin.",
-    "step4": "CheckMyDrive'ı kapatıp yeniden açın ve kontrolü tekrar deneyin.",
+    "step3": "“checkmydrive-engine” öğesini açın (listedeyse CheckMyDrive'ı da). Listede yoksa + düğmesine tıklayıp ekleyin.",
+    "step4": "Buraya dönün ve “Yeniden dene”ye basın. Uygulamayı yeniden başlatmanız gerekmez.",
     "openSettings": "Ayarları Aç"
   },
   "common": {

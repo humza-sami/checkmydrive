@@ -420,7 +420,7 @@
     "elevation_unavailable": "Impossible de demander l'autorisation de l'administrateur sur cet ordinateur.",
     "bad_args": "Le test n'a pas pu démarrer à cause d'une erreur interne de requête.",
     "needs_admin": "L'autorisation de l'administrateur est nécessaire pour tester ce disque.",
-    "needs_full_disk_access": "macOS doit d’abord obtenir votre autorisation pour que CheckMyDrive puisse lire ce disque. Activez « Accès complet au disque » pour CheckMyDrive dans les Réglages Système, puis rouvrez l’app.",
+    "needs_full_disk_access": "macOS doit d’abord obtenir votre autorisation pour que CheckMyDrive puisse lire ce disque. Dans Réglages Système, activez « Accès complet au disque » pour « checkmydrive-engine », puis réessayez.",
     "drive_not_found": "Ce disque est introuvable. Il a peut-être été débranché.",
     "system_disk_refused": "C'est le disque à partir duquel votre ordinateur fonctionne, il ne peut donc pas être effacé. Choisissez un autre disque.",
     "confirm_required": "Veuillez confirmer le numéro de série du disque avant un test complet qui efface les données.",
@@ -434,8 +434,8 @@
     "intro": "macOS protège votre vie privée en empêchant CheckMyDrive de lire ce disque directement. Il n’y a aucun problème avec le disque. Vous ne devez l’autoriser qu’une seule fois.",
     "step1": "Cliquez sur « Ouvrir les réglages » ci-dessous.",
     "step2": "Dans Réglages Système, allez dans « Confidentialité et sécurité », puis « Accès complet au disque ».",
-    "step3": "Activez CheckMyDrive. S’il ne figure pas dans la liste, cliquez sur le bouton + pour l’ajouter.",
-    "step4": "Fermez CheckMyDrive, rouvrez-le, puis relancez la vérification.",
+    "step3": "Activez « checkmydrive-engine » (et aussi CheckMyDrive, s’il figure dans la liste). S’il n’y figure pas, cliquez sur le bouton + pour l’ajouter.",
+    "step4": "Revenez ici et appuyez sur « Réessayer ». Il n’est pas nécessaire de redémarrer l’app.",
     "openSettings": "Ouvrir les réglages"
   },
   "common": {

@@ -398,7 +398,7 @@
     "elevation_unavailable": "Kunne ikke be om administratortillatelse på denne datamaskinen.",
     "bad_args": "Testen kunne ikke starte på grunn av en intern forespørselsfeil.",
     "needs_admin": "Administratortillatelse trengs for å teste denne disken.",
-    "needs_full_disk_access": "macOS trenger tillatelsen din før CheckMyDrive kan lese denne stasjonen. Slå på Full disktilgang for CheckMyDrive i Systeminnstillinger, og åpne deretter appen på nytt.",
+    "needs_full_disk_access": "macOS trenger tillatelsen din før CheckMyDrive kan lese denne stasjonen. Slå på Full disktilgang for «checkmydrive-engine» i Systeminnstillinger, og prøv igjen.",
     "drive_not_found": "Disken ble ikke funnet. Den kan ha blitt koblet fra.",
     "system_disk_refused": "Dette er disken datamaskinen din kjører fra, så den kan ikke slettes. Velg en annen disk.",
     "confirm_required": "Bekreft diskens serienummer før en full test som sletter data.",
@@ -412,8 +412,8 @@
     "intro": "macOS beskytter personvernet ditt ved å hindre CheckMyDrive i å lese denne stasjonen direkte. Det er ikke noe galt med stasjonen. Du trenger bare å tillate det én gang.",
     "step1": "Klikk på «Åpne innstillinger» nedenfor.",
     "step2": "Gå til Personvern og sikkerhet i Systeminnstillinger, og deretter til Full disktilgang.",
-    "step3": "Slå på CheckMyDrive. Hvis den ikke står i listen, klikker du på +-knappen og legger den til.",
-    "step4": "Lukk CheckMyDrive, åpne den på nytt og prøv sjekken igjen.",
+    "step3": "Slå på «checkmydrive-engine» (og også CheckMyDrive hvis den står i listen). Hvis den ikke står i listen, klikker du på +-knappen og legger den til.",
+    "step4": "Kom tilbake hit og trykk på «Prøv igjen». Du trenger ikke å starte appen på nytt.",
     "openSettings": "Åpne innstillinger"
   },
   "common": {

@@ -8,10 +8,12 @@ export const FULL_DISK_ACCESS_URL = "x-apple.systempreferences:com.apple.prefere
 
 interface Props {
   onClose: () => void;
+  /** run the same test again (the elevated helper is a fresh process, so no app restart is needed) */
+  onRetry: () => void;
 }
 
 /** Shown when the engine reports `error.needs_full_disk_access` (macOS privacy protection blocks raw disk access). */
-export function FullDiskAccessDialog({ onClose }: Props) {
+export function FullDiskAccessDialog({ onClose, onRetry }: Props) {
   const { t } = useTranslation();
   return (
     <Dialog title={t("fda.title")} role="alertdialog" width={440} onClose={onClose}>
@@ -26,6 +28,7 @@ export function FullDiskAccessDialog({ onClose }: Props) {
       </div>
       <div className="dlg-buttons">
         <button type="button" className="default" data-autofocus onClick={() => { void openExternal(FULL_DISK_ACCESS_URL); }}>{t("fda.openSettings")}</button>
+        <button type="button" onClick={onRetry}>{t("error.retry")}</button>
         <button type="button" onClick={onClose}>{t("common.close")}</button>
       </div>
     </Dialog>

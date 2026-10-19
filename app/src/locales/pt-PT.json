@@ -420,7 +420,7 @@
     "elevation_unavailable": "Não foi possível pedir permissão de administrador neste computador.",
     "bad_args": "O teste não pôde começar por causa de um erro interno na solicitação.",
     "needs_admin": "É preciso permissão de administrador para testar este disco.",
-    "needs_full_disk_access": "O macOS precisa da sua autorização para que o CheckMyDrive possa ler esta unidade. Ative “Acesso Total ao Disco” para o CheckMyDrive nas Definições do Sistema e volte a abrir a aplicação.",
+    "needs_full_disk_access": "O macOS precisa da sua autorização para que o CheckMyDrive possa ler esta unidade. Nas Definições do Sistema, ative “Acesso Total ao Disco” para “checkmydrive-engine” e tente novamente.",
     "drive_not_found": "Não foi possível encontrar esse disco. Pode ter sido desligado.",
     "system_disk_refused": "Este é o disco em que o seu computador funciona, por isso não pode ser apagado. Escolha outro disco.",
     "confirm_required": "Confirme o número de série do disco antes de um teste completo que apaga dados.",
@@ -434,8 +434,8 @@
     "intro": "O macOS protege a sua privacidade ao impedir que o CheckMyDrive leia esta unidade diretamente. Não há nada de errado com a unidade. Só precisa de permitir uma vez.",
     "step1": "Clique em “Abrir Definições” abaixo.",
     "step2": "Nas Definições do Sistema, aceda a “Privacidade e Segurança” e depois a “Acesso Total ao Disco”.",
-    "step3": "Ative o CheckMyDrive. Se não estiver na lista, clique no botão + e adicione-o.",
-    "step4": "Feche o CheckMyDrive, volte a abri-lo e repita a verificação.",
+    "step3": "Ative “checkmydrive-engine” (e também o CheckMyDrive, se estiver na lista). Se não estiver na lista, clique no botão + e adicione-o.",
+    "step4": "Volte aqui e clique em “Tentar novamente”. Não precisa de reiniciar a aplicação.",
     "openSettings": "Abrir Definições"
   },
   "common": {

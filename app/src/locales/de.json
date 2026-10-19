@@ -398,7 +398,7 @@
     "elevation_unavailable": "Auf diesem Computer konnte keine Administratorberechtigung angefragt werden.",
     "bad_args": "Der Test konnte wegen eines internen Anfragefehlers nicht gestartet werden.",
     "needs_admin": "Zum Testen dieses Laufwerks ist Administratorberechtigung nötig.",
-    "needs_full_disk_access": "macOS benötigt Ihre Erlaubnis, bevor CheckMyDrive dieses Laufwerk lesen kann. Aktivieren Sie in den Systemeinstellungen den „Festplattenvollzugriff“ für CheckMyDrive und öffnen Sie die App danach erneut.",
+    "needs_full_disk_access": "macOS benötigt Ihre Erlaubnis, bevor CheckMyDrive dieses Laufwerk lesen kann. Aktivieren Sie in den Systemeinstellungen den „Festplattenvollzugriff“ für „checkmydrive-engine“ und versuchen Sie es dann erneut.",
     "drive_not_found": "Dieses Laufwerk wurde nicht gefunden. Möglicherweise wurde es abgezogen.",
     "system_disk_refused": "Dies ist das Laufwerk, von dem Ihr Computer läuft, daher kann es nicht gelöscht werden. Wählen Sie ein anderes Laufwerk.",
     "confirm_required": "Bitte bestätigen Sie die Seriennummer des Laufwerks, bevor ein vollständiger Test startet, der Daten löscht.",
@@ -412,8 +412,8 @@
     "intro": "macOS schützt Ihre Privatsphäre und hindert CheckMyDrive daran, dieses Laufwerk direkt zu lesen. Mit dem Laufwerk ist alles in Ordnung. Sie müssen dies nur einmal erlauben.",
     "step1": "Klicken Sie unten auf „Einstellungen öffnen“.",
     "step2": "Gehen Sie in den Systemeinstellungen zu „Datenschutz & Sicherheit“ und dann zu „Festplattenvollzugriff“.",
-    "step3": "Aktivieren Sie CheckMyDrive. Falls es nicht in der Liste steht, klicken Sie auf die Schaltfläche + und fügen Sie es hinzu.",
-    "step4": "Beenden Sie CheckMyDrive, öffnen Sie es erneut und wiederholen Sie die Prüfung.",
+    "step3": "Aktivieren Sie „checkmydrive-engine“ (und auch CheckMyDrive, falls aufgeführt). Falls es nicht in der Liste steht, klicken Sie auf die Schaltfläche + und fügen Sie es hinzu.",
+    "step4": "Kehren Sie hierher zurück und klicken Sie auf „Erneut versuchen“. Die App muss nicht neu gestartet werden.",
     "openSettings": "Einstellungen öffnen"
   },
   "common": {

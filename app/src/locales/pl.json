@@ -442,7 +442,7 @@
     "elevation_unavailable": "Na tym komputerze nie udało się poprosić o uprawnienia administratora.",
     "bad_args": "Nie udało się rozpocząć testu z powodu wewnętrznego błędu żądania.",
     "needs_admin": "Do przetestowania tego dysku potrzebne są uprawnienia administratora.",
-    "needs_full_disk_access": "macOS potrzebuje Twojej zgody, zanim CheckMyDrive będzie mógł odczytać ten dysk. W Ustawieniach systemowych włącz dla CheckMyDrive opcję „Pełny dostęp do dysku”, a następnie otwórz aplikację ponownie.",
+    "needs_full_disk_access": "macOS potrzebuje Twojej zgody, zanim CheckMyDrive będzie mógł odczytać ten dysk. W Ustawieniach systemowych włącz opcję „Pełny dostęp do dysku” dla „checkmydrive-engine”, a następnie spróbuj ponownie.",
     "drive_not_found": "Nie znaleziono tego dysku. Mógł zostać odłączony.",
     "system_disk_refused": "To dysk, z którego działa Twój komputer, więc nie można go wymazać. Wybierz inny dysk.",
     "confirm_required": "Przed pełnym testem, który kasuje dane, potwierdź numer seryjny dysku.",
@@ -456,8 +456,8 @@
     "intro": "macOS chroni Twoją prywatność, blokując CheckMyDrive przed bezpośrednim odczytem tego dysku. Z dyskiem wszystko jest w porządku. Zgodę wystarczy wyrazić tylko raz.",
     "step1": "Kliknij poniżej „Otwórz ustawienia”.",
     "step2": "W Ustawieniach systemowych przejdź do „Prywatność i ochrona”, a następnie do „Pełny dostęp do dysku”.",
-    "step3": "Włącz CheckMyDrive. Jeśli nie ma go na liście, kliknij przycisk + i dodaj go.",
-    "step4": "Zamknij CheckMyDrive, otwórz go ponownie i powtórz sprawdzanie.",
+    "step3": "Włącz „checkmydrive-engine” (oraz CheckMyDrive, jeśli jest na liście). Jeśli nie ma go na liście, kliknij przycisk + i dodaj go.",
+    "step4": "Wróć tutaj i naciśnij „Spróbuj ponownie”. Nie trzeba restartować aplikacji.",
     "openSettings": "Otwórz ustawienia"
   },
   "common": {

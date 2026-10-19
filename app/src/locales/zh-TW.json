@@ -376,7 +376,7 @@
     "elevation_unavailable": "無法在這台電腦上請求系統管理員權限。",
     "bad_args": "由於內部要求錯誤，檢測無法開始。",
     "needs_admin": "檢測這顆硬碟需要系統管理員權限。",
-    "needs_full_disk_access": "CheckMyDrive 需要先取得 macOS 的許可才能讀取此磁碟機。請在「系統設定」中為 CheckMyDrive 開啟「完整磁碟取用權限」，然後重新開啟 App。",
+    "needs_full_disk_access": "CheckMyDrive 需要先取得 macOS 的許可才能讀取此磁碟機。請在「系統設定」中為「checkmydrive-engine」開啟「完整磁碟取用權限」，然後再試一次。",
     "drive_not_found": "找不到那顆硬碟，它可能已被拔除。",
     "system_disk_refused": "這是您的電腦正在執行所用的硬碟，因此不能被清除。請選擇其他硬碟。",
     "confirm_required": "在進行會清除資料的完整檢測之前，請先確認硬碟的序號。",
@@ -390,8 +390,8 @@
     "intro": "macOS 為保護您的隱私，會阻止 CheckMyDrive 直接讀取此磁碟機。磁碟機本身沒有問題。您只需允許一次即可。",
     "step1": "按一下下方的「打開設定」。",
     "step2": "在「系統設定」中，前往「隱私權與安全性」，然後選擇「完整磁碟取用權限」。",
-    "step3": "開啟 CheckMyDrive 的開關。如果清單中沒有，請按一下 + 按鈕加入。",
-    "step4": "結束 CheckMyDrive，重新開啟，然後再次進行檢測。",
+    "step3": "開啟「checkmydrive-engine」的開關（如果清單中有 CheckMyDrive，也一併開啟）。如果清單中沒有，請按一下 + 按鈕加入。",
+    "step4": "回到這裡並按一下「再試一次」。不需要重新啟動 App。",
     "openSettings": "打開設定"
   },
   "common": {

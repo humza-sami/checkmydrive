@@ -66,7 +66,7 @@ export function ModeChoice({ drive, onStart, onCancel }: Props) {
                 placeholder={t(byId ? "mode.wipe.confirmPlaceholderId" : "mode.wipe.confirmPlaceholder")} autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
                 aria-invalid={typed !== "" && !matches} aria-describedby={`${uid}-hint`} dir="ltr"
               />
-              <p id={`${uid}-hint`} className="serial-hint" aria-live="polite">{typed && !matches ? t("mode.wipe.mismatch") : " "}</p>
+              <p id={`${uid}-hint`} className="serial-hint" aria-live="polite">{typed && !matches ? t(byId ? "mode.wipe.mismatchId" : "mode.wipe.mismatch") : " "}</p>
             </div>
           </div>
         )}

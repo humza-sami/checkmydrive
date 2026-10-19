@@ -376,7 +376,7 @@
     "elevation_unavailable": "이 컴퓨터에서 관리자 권한을 요청할 수 없었어요.",
     "bad_args": "내부 요청 오류로 검사를 시작하지 못했어요.",
     "needs_admin": "이 드라이브를 검사하려면 관리자 권한이 필요해요.",
-    "needs_full_disk_access": "CheckMyDrive가 이 드라이브를 읽으려면 macOS의 허용이 필요합니다. 시스템 설정에서 CheckMyDrive의 '전체 디스크 접근 권한'을 켠 다음 앱을 다시 여세요.",
+    "needs_full_disk_access": "CheckMyDrive가 이 드라이브를 읽으려면 macOS의 허용이 필요합니다. 시스템 설정에서 'checkmydrive-engine'의 '전체 디스크 접근 권한'을 켠 다음 다시 시도하세요.",
     "drive_not_found": "그 드라이브를 찾을 수 없어요. 뽑혔을 수 있어요.",
     "system_disk_refused": "컴퓨터가 실행되고 있는 디스크라서 지울 수 없어요. 다른 드라이브를 선택하세요.",
     "confirm_required": "데이터를 지우는 전체 검사를 하기 전에 드라이브의 일련번호를 확인해 주세요.",
@@ -390,8 +390,8 @@
     "intro": "macOS는 개인정보 보호를 위해 CheckMyDrive가 이 드라이브를 직접 읽지 못하게 막고 있습니다. 드라이브에는 아무 문제가 없습니다. 한 번만 허용하면 됩니다.",
     "step1": "아래의 '설정 열기'를 클릭하세요.",
     "step2": "시스템 설정에서 '개인정보 보호 및 보안'으로 이동한 다음 '전체 디스크 접근 권한'을 선택하세요.",
-    "step3": "CheckMyDrive를 켜세요. 목록에 없으면 + 버튼을 클릭하여 추가하세요.",
-    "step4": "CheckMyDrive를 종료한 뒤 다시 열고 검사를 다시 시도하세요.",
+    "step3": "'checkmydrive-engine'를 켜세요(목록에 CheckMyDrive가 있으면 함께 켜세요). 목록에 없으면 + 버튼을 클릭하여 추가하세요.",
+    "step4": "여기로 돌아와 '다시 시도'를 누르세요. 앱을 다시 시작할 필요는 없습니다.",
     "openSettings": "설정 열기"
   },
   "common": {

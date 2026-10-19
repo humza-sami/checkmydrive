@@ -174,7 +174,7 @@ export default function App() {
 
       {dialog === "mode" && selected && <ModeChoice drive={selected} onStart={doStart} onCancel={() => setDialog(null)} />}
       {dialog === "about" && <AboutDialog onClose={() => setDialog(null)} />}
-      {failed?.status === "error" && failed.code === "error.needs_full_disk_access" && <FullDiskAccessDialog onClose={another} />}
+      {failed?.status === "error" && failed.code === "error.needs_full_disk_access" && <FullDiskAccessDialog onClose={another} onRetry={() => { const { drive: d, mode: m } = failed; setSelectedId(d.id); if (m === "safe") start(d, "safe"); else { reset(); setDialog("mode"); } }} />}
       {failed && !(failed.status === "error" && failed.code === "error.needs_full_disk_access") && (
         <Dialog title={failed.status === "error" ? t("error.title") : t("running.cancel")} role="alertdialog" width={400} onClose={another}>
           <div className="msgbox">

@@ -398,7 +398,7 @@
     "elevation_unavailable": "Det gick inte att be om administratörsbehörighet på den här datorn.",
     "bad_args": "Testet kunde inte starta på grund av ett internt förfrågningsfel.",
     "needs_admin": "Administratörsbehörighet krävs för att testa den här disken.",
-    "needs_full_disk_access": "macOS behöver ditt tillstånd innan CheckMyDrive kan läsa den här enheten. Slå på Full skivåtkomst för CheckMyDrive i Systeminställningar och öppna sedan appen igen.",
+    "needs_full_disk_access": "macOS behöver ditt tillstånd innan CheckMyDrive kan läsa den här enheten. Slå på Full skivåtkomst för ”checkmydrive-engine” i Systeminställningar och försök igen.",
     "drive_not_found": "Disken hittades inte. Den kan ha kopplats ur.",
     "system_disk_refused": "Det här är disken som din dator startar från, så den kan inte raderas. Välj en annan disk.",
     "confirm_required": "Bekräfta diskens serienummer före ett fullständigt test som raderar data.",
@@ -412,8 +412,8 @@
     "intro": "macOS skyddar din integritet genom att hindra CheckMyDrive från att läsa den här enheten direkt. Det är inget fel på enheten. Du behöver bara tillåta det en gång.",
     "step1": "Klicka på ”Öppna inställningar” nedan.",
     "step2": "Gå till Integritet och säkerhet i Systeminställningar och sedan till Full skivåtkomst.",
-    "step3": "Slå på CheckMyDrive. Om den inte finns i listan klickar du på knappen + och lägger till den.",
-    "step4": "Stäng CheckMyDrive, öppna den igen och gör om kontrollen.",
+    "step3": "Slå på ”checkmydrive-engine” (och även CheckMyDrive om den finns i listan). Om den inte finns i listan klickar du på knappen + och lägger till den.",
+    "step4": "Kom tillbaka hit och tryck på ”Försök igen”. Du behöver inte starta om appen.",
     "openSettings": "Öppna inställningar"
   },
   "common": {

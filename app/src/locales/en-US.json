@@ -398,7 +398,7 @@
     "elevation_unavailable": "Could not ask for administrator permission on this computer.",
     "bad_args": "The test could not start because of an internal request error.",
     "needs_admin": "Administrator permission is needed to test this drive.",
-    "needs_full_disk_access": "macOS needs your permission before CheckMyDrive can read this drive. Turn on Full Disk Access for CheckMyDrive in System Settings, then reopen the app.",
+    "needs_full_disk_access": "macOS needs your permission before CheckMyDrive can read this drive. In System Settings, turn on Full Disk Access for “checkmydrive-engine”, then try again.",
     "drive_not_found": "That drive could not be found. It may have been unplugged.",
     "system_disk_refused": "This is the disk your computer runs from, so it cannot be erased. Choose another drive.",
     "confirm_required": "Please confirm the drive's serial number before a full test that erases data.",
@@ -412,8 +412,8 @@
     "intro": "macOS protects your privacy by blocking CheckMyDrive from reading this drive directly. Nothing is wrong with the drive. You only need to allow it once.",
     "step1": "Click \"Open Settings\" below.",
     "step2": "In System Settings, go to Privacy & Security, then Full Disk Access.",
-    "step3": "Turn on CheckMyDrive. If it is not in the list, click the + button and add it.",
-    "step4": "Close CheckMyDrive, open it again, and retry the check.",
+    "step3": "Turn on “checkmydrive-engine” (and CheckMyDrive too, if it is listed). If it is not in the list, click the + button and add it.",
+    "step4": "Come back here and press “Try again”. You do not need to restart the app.",
     "openSettings": "Open Settings"
   },
   "common": {

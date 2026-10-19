@@ -14,7 +14,7 @@ Params are JSON numbers or strings. Severity is in brackets for issues. `en-US` 
 |---|---|---|
 | `error.bad_args` (2) | - | The test could not start because of an internal request error. |
 | `error.needs_admin` (3) | - | Administrator permission is needed to test this drive. |
-| `error.needs_full_disk_access` (6) | - | macOS needs your permission before CheckMyDrive can read this drive. Turn on Full Disk Access for CheckMyDrive in System Settings, then reopen the app. |
+| `error.needs_full_disk_access` (6) | - | macOS needs your permission before CheckMyDrive can read this drive. In System Settings, turn on Full Disk Access for “checkmydrive-engine”, then try again. |
 | `error.drive_not_found` (4) | - | That drive could not be found. It may have been unplugged. |
 | `error.system_disk_refused` (5) | - | This is the disk your computer runs from, so it cannot be erased. Choose another drive. |
 | `error.confirm_required` (5) | - | Please confirm the drive's serial number before a full test that erases data. |

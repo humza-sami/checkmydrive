@@ -442,7 +442,7 @@
     "elevation_unavailable": "V tomto počítači sa nepodarilo požiadať o povolenie správcu.",
     "bad_args": "Test sa nepodarilo spustiť kvôli vnútornej chybe požiadavky.",
     "needs_admin": "Na otestovanie tohto disku je potrebné povolenie správcu.",
-    "needs_full_disk_access": "macOS potrebuje vaše povolenie, aby mohol CheckMyDrive čítať tento disk. V Nastaveniach systému zapnite pre CheckMyDrive „Úplný prístup k disku“ a potom aplikáciu znova otvorte.",
+    "needs_full_disk_access": "macOS potrebuje vaše povolenie, aby mohol CheckMyDrive čítať tento disk. V Nastaveniach systému zapnite pre „checkmydrive-engine“ „Úplný prístup k disku“ a skúste to znova.",
     "drive_not_found": "Tento disk sa nepodarilo nájsť. Možno bol odpojený.",
     "system_disk_refused": "Toto je disk, z ktorého beží váš počítač, preto sa nedá vymazať. Vyberte iný disk.",
     "confirm_required": "Pred plným testom, ktorý maže dáta, prosím potvrďte sériové číslo disku.",
@@ -456,8 +456,8 @@
     "intro": "macOS chráni vaše súkromie tým, že CheckMyDrive bráni v priamom čítaní tohto disku. S diskom je všetko v poriadku. Povoliť to stačí iba raz.",
     "step1": "Kliknite nižšie na „Otvoriť nastavenia“.",
     "step2": "V Nastaveniach systému prejdite na „Súkromie a zabezpečenie“ a potom na „Úplný prístup k disku“.",
-    "step3": "Zapnite CheckMyDrive. Ak nie je v zozname, kliknite na tlačidlo + a pridajte ho.",
-    "step4": "Zatvorte CheckMyDrive, znova ho otvorte a kontrolu zopakujte.",
+    "step3": "Zapnite „checkmydrive-engine“ (a aj CheckMyDrive, ak je v zozname). Ak nie je v zozname, kliknite na tlačidlo + a pridajte ho.",
+    "step4": "Vráťte sa sem a stlačte „Skúsiť znova“. Aplikáciu nemusíte reštartovať.",
     "openSettings": "Otvoriť nastavenia"
   },
   "common": {

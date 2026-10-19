@@ -376,7 +376,7 @@
     "elevation_unavailable": "Không thể yêu cầu quyền quản trị viên trên máy tính này.",
     "bad_args": "Không thể bắt đầu kiểm tra vì lỗi yêu cầu nội bộ.",
     "needs_admin": "Cần quyền quản trị viên để kiểm tra ổ đĩa này.",
-    "needs_full_disk_access": "macOS cần bạn cho phép trước khi CheckMyDrive có thể đọc ổ đĩa này. Hãy bật “Quyền truy cập toàn bộ ổ đĩa” cho CheckMyDrive trong Cài đặt hệ thống, rồi mở lại ứng dụng.",
+    "needs_full_disk_access": "macOS cần bạn cho phép trước khi CheckMyDrive có thể đọc ổ đĩa này. Trong Cài đặt hệ thống, hãy bật “Quyền truy cập toàn bộ ổ đĩa” cho “checkmydrive-engine”, rồi thử lại.",
     "drive_not_found": "Không tìm thấy ổ đĩa đó. Có thể nó đã bị rút ra.",
     "system_disk_refused": "Đây là ổ đĩa mà máy tính của bạn đang chạy, nên không thể xóa. Hãy chọn ổ đĩa khác.",
     "confirm_required": "Vui lòng xác nhận số sê-ri của ổ đĩa trước khi chạy bài kiểm tra đầy đủ có xóa dữ liệu.",
@@ -390,8 +390,8 @@
     "intro": "macOS bảo vệ quyền riêng tư của bạn bằng cách chặn CheckMyDrive đọc trực tiếp ổ đĩa này. Ổ đĩa không có vấn đề gì. Bạn chỉ cần cho phép một lần.",
     "step1": "Nhấp vào “Mở Cài đặt” bên dưới.",
     "step2": "Trong Cài đặt hệ thống, vào “Quyền riêng tư & Bảo mật”, rồi chọn “Quyền truy cập toàn bộ ổ đĩa”.",
-    "step3": "Bật CheckMyDrive. Nếu chưa có trong danh sách, hãy nhấp nút + và thêm vào.",
-    "step4": "Đóng CheckMyDrive, mở lại và kiểm tra lần nữa.",
+    "step3": "Bật “checkmydrive-engine” (và cả CheckMyDrive nếu có trong danh sách). Nếu chưa có trong danh sách, hãy nhấp nút + và thêm vào.",
+    "step4": "Quay lại đây và nhấn “Thử lại”. Bạn không cần khởi động lại ứng dụng.",
     "openSettings": "Mở Cài đặt"
   },
   "common": {

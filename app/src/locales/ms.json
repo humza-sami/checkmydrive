@@ -376,7 +376,7 @@
     "elevation_unavailable": "Tidak dapat meminta kebenaran pentadbir pada komputer ini.",
     "bad_args": "Ujian tidak dapat dimulakan kerana ralat permintaan dalaman.",
     "needs_admin": "Kebenaran pentadbir diperlukan untuk menguji pemacu ini.",
-    "needs_full_disk_access": "macOS memerlukan kebenaran anda sebelum CheckMyDrive boleh membaca pemacu ini. Hidupkan “Capaian Cakera Penuh” untuk CheckMyDrive dalam Tetapan Sistem, kemudian buka semula apl.",
+    "needs_full_disk_access": "macOS memerlukan kebenaran anda sebelum CheckMyDrive boleh membaca pemacu ini. Dalam Tetapan Sistem, hidupkan “Capaian Cakera Penuh” untuk “checkmydrive-engine”, kemudian cuba lagi.",
     "drive_not_found": "Pemacu itu tidak ditemui. Ia mungkin telah dicabut.",
     "system_disk_refused": "Ini ialah cakera tempat komputer anda berjalan, jadi ia tidak boleh dipadam. Pilih pemacu lain.",
     "confirm_required": "Sila sahkan nombor siri pemacu sebelum ujian penuh yang memadam data.",
@@ -390,8 +390,8 @@
     "intro": "macOS melindungi privasi anda dengan menghalang CheckMyDrive daripada membaca pemacu ini secara terus. Tiada masalah pada pemacu. Anda hanya perlu membenarkannya sekali.",
     "step1": "Klik “Buka Tetapan” di bawah.",
     "step2": "Dalam Tetapan Sistem, pergi ke “Privasi & Keselamatan”, kemudian “Capaian Cakera Penuh”.",
-    "step3": "Hidupkan CheckMyDrive. Jika tiada dalam senarai, klik butang + dan tambahkannya.",
-    "step4": "Tutup CheckMyDrive, buka semula, dan cuba semakan sekali lagi.",
+    "step3": "Hidupkan “checkmydrive-engine” (dan juga CheckMyDrive, jika ada dalam senarai). Jika tiada dalam senarai, klik butang + dan tambahkannya.",
+    "step4": "Kembali ke sini dan tekan “Cuba lagi”. Anda tidak perlu memulakan semula apl.",
     "openSettings": "Buka Tetapan"
   },
   "common": {

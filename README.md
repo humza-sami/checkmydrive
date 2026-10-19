@@ -54,10 +54,20 @@ Get the latest build from the [Releases page](https://github.com/humza-sami/chec
 
 **Why it asks for your password or admin rights:** reading a drive's SMART health data and reading raw disk sectors are privileged operations on every operating system. On macOS you get a password prompt when a test starts, on Linux a PolicyKit prompt, and on Windows the app starts as administrator.
 
+### macOS: Full Disk Access
+
+On macOS the password prompt is not enough: privacy protection (TCC) also blocks raw access to external drives. The elevated helper that does the reading is its own process, so the permission has to be given to **`checkmydrive-engine`**, not only to the app. If a test stops with a "Permission needed" window:
+
+1. Click **Open Settings** (or open System Settings, then Privacy & Security, then Full Disk Access).
+2. Turn on **checkmydrive-engine** (and CheckMyDrive too, if it is listed). macOS adds the entry after the first blocked attempt; if it is missing, click **+** and add it from `CheckMyDrive.app/Contents/MacOS/`.
+3. Return to CheckMyDrive and press **Try again**. No app restart is needed.
+
+macOS ties the grant to the helper's code signature (Developer ID team plus signing identifier), so it survives app updates as long as releases keep being signed with the same identity. Unsigned or ad-hoc builds get a new identity on every build, so the permission must be granted again after each rebuild.
+
 ## Is it safe?
 
 - **Quick safe test** (the default) never touches your files. It reads the drive read-only, and writes exactly one temporary file (`.checkmydrive-*.tmp`, at most 1 GiB or 5% of free space) into free space, then deletes it, including if you cancel.
-- **Full wipe test** is for drives you have just bought or have no data on. It **destroys data on the drive**, so back up first. It unmounts the drive, requires you to type the drive's serial number, and **always refuses your system disk**. It overwrites a limited set of regions rather than every sector, but treat the drive as erased afterwards.
+- **Full wipe test** is for drives you have just bought or have no data on. It **destroys data on the drive**, so back up first. It unmounts the drive, requires you to type the drive's serial number (or its device name, such as `disk6`, when the drive reports no serial number), and **always refuses your system disk**. It overwrites a limited set of regions rather than every sector, but treat the drive as erased afterwards.
 - **Nothing leaves your computer.** There is no telemetry, no analytics and no network access. The code contains no HTTP client, and the app's content security policy allows only local connections. The only URL in the interface is a link to this repository's page. You can check with `grep -rnE "fetch\(|https?://" app/src app/src-tauri/src engine/src`.
 
 ## How the score works

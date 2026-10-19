@@ -398,7 +398,7 @@
     "elevation_unavailable": "Kunne ikke bede om administratortilladelse på denne computer.",
     "bad_args": "Testen kunne ikke starte på grund af en intern anmodningsfejl.",
     "needs_admin": "Der kræves administratortilladelse for at teste dette drev.",
-    "needs_full_disk_access": "macOS skal have din tilladelse, før CheckMyDrive kan læse dette drev. Slå Fuld diskadgang til for CheckMyDrive i Systemindstillinger, og åbn derefter appen igen.",
+    "needs_full_disk_access": "macOS skal have din tilladelse, før CheckMyDrive kan læse dette drev. Slå Fuld diskadgang til for “checkmydrive-engine” i Systemindstillinger, og prøv igen.",
     "drive_not_found": "Drevet kunne ikke findes. Det kan være blevet trukket ud.",
     "system_disk_refused": "Dette er det drev, din computer kører fra, så det kan ikke slettes. Vælg et andet drev.",
     "confirm_required": "Bekræft drevets serienummer før en fuld test, der sletter data.",
@@ -412,8 +412,8 @@
     "intro": "macOS beskytter dit privatliv ved at forhindre CheckMyDrive i at læse dette drev direkte. Der er ikke noget galt med drevet. Du skal kun give tilladelsen én gang.",
     "step1": "Klik på “Åbn indstillinger” nedenfor.",
     "step2": "I Systemindstillinger skal du gå til Anonymitet og sikkerhed og derefter Fuld diskadgang.",
-    "step3": "Slå CheckMyDrive til. Hvis det ikke står på listen, skal du klikke på knappen + og tilføje det.",
-    "step4": "Luk CheckMyDrive, åbn det igen, og prøv kontrollen igen.",
+    "step3": "Slå “checkmydrive-engine” til (og også CheckMyDrive, hvis det står på listen). Hvis det ikke står på listen, skal du klikke på knappen + og tilføje det.",
+    "step4": "Kom tilbage hertil, og tryk på “Prøv igen”. Du behøver ikke genstarte appen.",
     "openSettings": "Åbn indstillinger"
   },
   "common": {

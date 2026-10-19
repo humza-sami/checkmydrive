@@ -376,7 +376,7 @@
     "elevation_unavailable": "无法在这台电脑上请求管理员权限。",
     "bad_args": "由于内部请求错误，检测无法开始。",
     "needs_admin": "检测这块硬盘需要管理员权限。",
-    "needs_full_disk_access": "CheckMyDrive 需要先获得 macOS 的许可才能读取此驱动器。请在“系统设置”中为 CheckMyDrive 打开“完全磁盘访问权限”，然后重新打开应用。",
+    "needs_full_disk_access": "CheckMyDrive 需要先获得 macOS 的许可才能读取此驱动器。请在“系统设置”中为“checkmydrive-engine”打开“完全磁盘访问权限”，然后重试。",
     "drive_not_found": "找不到那块硬盘，它可能已被拔出。",
     "system_disk_refused": "这是您的电脑正在运行所用的硬盘，因此不能被擦除。请选择其他硬盘。",
     "confirm_required": "在进行会清除数据的完整检测之前，请先确认硬盘的序列号。",
@@ -390,8 +390,8 @@
     "intro": "macOS 为保护您的隐私，会阻止 CheckMyDrive 直接读取此驱动器。驱动器本身没有问题。您只需允许一次即可。",
     "step1": "点击下方的“打开设置”。",
     "step2": "在“系统设置”中，前往“隐私与安全性”，然后选择“完全磁盘访问权限”。",
-    "step3": "打开 CheckMyDrive 的开关。如果列表中没有，请点击 + 按钮添加。",
-    "step4": "退出 CheckMyDrive，重新打开，然后再次进行检测。",
+    "step3": "打开“checkmydrive-engine”的开关（如果列表中有 CheckMyDrive，也一并打开）。如果列表中没有，请点击 + 按钮添加。",
+    "step4": "回到这里并点击“重试”。无需重新启动应用。",
     "openSettings": "打开设置"
   },
   "common": {

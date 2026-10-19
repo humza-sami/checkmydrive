@@ -398,7 +398,7 @@
     "elevation_unavailable": "Järjestelmänvalvojan lupaa ei voitu pyytää tällä tietokoneella.",
     "bad_args": "Testiä ei voitu käynnistää sisäisen pyyntövirheen vuoksi.",
     "needs_admin": "Tämän aseman testaaminen vaatii järjestelmänvalvojan luvan.",
-    "needs_full_disk_access": "macOS tarvitsee lupasi, ennen kuin CheckMyDrive voi lukea tätä asemaa. Ota CheckMyDrivelle käyttöön ”Täysi levyn käyttöoikeus” Järjestelmäasetuksissa ja avaa sovellus sitten uudelleen.",
+    "needs_full_disk_access": "macOS tarvitsee lupasi, ennen kuin CheckMyDrive voi lukea tätä asemaa. Ota Järjestelmäasetuksissa käyttöön ”Täysi levyn käyttöoikeus” kohteelle ”checkmydrive-engine” ja yritä sitten uudelleen.",
     "drive_not_found": "Asemaa ei löytynyt. Se on voitu irrottaa.",
     "system_disk_refused": "Tämä on asema, jolta tietokoneesi toimii, joten sitä ei voi tyhjentää. Valitse toinen asema.",
     "confirm_required": "Vahvista aseman sarjanumero ennen täyttä testiä, joka poistaa tietoja.",
@@ -412,8 +412,8 @@
     "intro": "macOS suojaa yksityisyyttäsi estämällä CheckMyDrivea lukemasta tätä asemaa suoraan. Asemassa ei ole mitään vikaa. Lupa tarvitsee antaa vain kerran.",
     "step1": "Napsauta alla olevaa ”Avaa asetukset” -painiketta.",
     "step2": "Siirry Järjestelmäasetuksissa kohtaan ”Yksityisyys ja turvallisuus” ja sitten ”Täysi levyn käyttöoikeus”.",
-    "step3": "Ota CheckMyDrive käyttöön. Jos sovellusta ei ole luettelossa, napsauta + -painiketta ja lisää se.",
-    "step4": "Sulje CheckMyDrive, avaa se uudelleen ja yritä tarkistusta uudelleen.",
+    "step3": "Ota ”checkmydrive-engine” käyttöön (ja myös CheckMyDrive, jos se on luettelossa). Jos sitä ei ole luettelossa, napsauta + -painiketta ja lisää se.",
+    "step4": "Palaa tänne ja paina ”Yritä uudelleen”. Sovellusta ei tarvitse käynnistää uudelleen.",
     "openSettings": "Avaa asetukset"
   },
   "common": {

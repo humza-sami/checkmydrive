@@ -420,7 +420,7 @@
     "elevation_unavailable": "Nu s-a putut cere permisiunea de administrator pe acest calculator.",
     "bad_args": "Testul nu a putut porni din cauza unei erori interne de cerere.",
     "needs_admin": "Este nevoie de permisiunea de administrator pentru a testa această unitate.",
-    "needs_full_disk_access": "macOS are nevoie de permisiunea ta înainte ca CheckMyDrive să poată citi această unitate. Activează „Acces complet la disc” pentru CheckMyDrive în Setări de sistem, apoi redeschide aplicația.",
+    "needs_full_disk_access": "macOS are nevoie de permisiunea ta înainte ca CheckMyDrive să poată citi această unitate. În Setări de sistem, activează „Acces complet la disc” pentru „checkmydrive-engine”, apoi încearcă din nou.",
     "drive_not_found": "Unitatea nu a fost găsită. Poate a fost deconectată.",
     "system_disk_refused": "Acesta este discul de pe care pornește calculatorul tău, deci nu poate fi șters. Alege altă unitate.",
     "confirm_required": "Te rugăm să confirmi numărul de serie al unității înainte de un test complet care șterge datele.",
@@ -434,8 +434,8 @@
     "intro": "macOS îți protejează confidențialitatea, împiedicând CheckMyDrive să citească direct această unitate. Unitatea nu are nicio problemă. Trebuie să permiți acest lucru o singură dată.",
     "step1": "Fă clic pe „Deschide setările” de mai jos.",
     "step2": "În Setări de sistem, mergi la „Confidențialitate și securitate”, apoi la „Acces complet la disc”.",
-    "step3": "Activează CheckMyDrive. Dacă nu apare în listă, fă clic pe butonul + și adaug-o.",
-    "step4": "Închide CheckMyDrive, deschide-l din nou și repetă verificarea.",
+    "step3": "Activează „checkmydrive-engine” (și CheckMyDrive, dacă apare în listă). Dacă nu apare în listă, fă clic pe butonul + și adaug-o.",
+    "step4": "Revino aici și apasă „Încearcă din nou”. Nu este nevoie să repornești aplicația.",
     "openSettings": "Deschide setările"
   },
   "common": {

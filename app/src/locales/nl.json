@@ -398,7 +398,7 @@
     "elevation_unavailable": "Er kon op deze computer niet om beheerdersrechten worden gevraagd.",
     "bad_args": "De test kon niet starten door een interne fout in het verzoek.",
     "needs_admin": "Beheerdersrechten zijn nodig om deze schijf te testen.",
-    "needs_full_disk_access": "macOS heeft uw toestemming nodig voordat CheckMyDrive deze schijf kan lezen. Schakel ‘Volledige schijftoegang’ in voor CheckMyDrive in Systeeminstellingen en open de app daarna opnieuw.",
+    "needs_full_disk_access": "macOS heeft uw toestemming nodig voordat CheckMyDrive deze schijf kan lezen. Schakel in Systeeminstellingen ‘Volledige schijftoegang’ in voor ‘checkmydrive-engine’ en probeer het opnieuw.",
     "drive_not_found": "Die schijf is niet gevonden. Hij is misschien losgekoppeld.",
     "system_disk_refused": "Dit is de schijf waarvan je computer draait, dus hij kan niet worden gewist. Kies een andere schijf.",
     "confirm_required": "Bevestig het serienummer van de schijf voordat je een volledige test uitvoert die gegevens wist.",
@@ -412,8 +412,8 @@
     "intro": "macOS beschermt uw privacy door te voorkomen dat CheckMyDrive deze schijf rechtstreeks leest. Er is niets mis met de schijf. U hoeft dit maar één keer toe te staan.",
     "step1": "Klik hieronder op ‘Open instellingen’.",
     "step2": "Ga in Systeeminstellingen naar ‘Privacy en beveiliging’ en daarna naar ‘Volledige schijftoegang’.",
-    "step3": "Schakel CheckMyDrive in. Staat het niet in de lijst, klik dan op de knop + en voeg het toe.",
-    "step4": "Sluit CheckMyDrive, open het opnieuw en probeer de controle nogmaals.",
+    "step3": "Schakel ‘checkmydrive-engine’ in (en ook CheckMyDrive, als het in de lijst staat). Staat het niet in de lijst, klik dan op de knop + en voeg het toe.",
+    "step4": "Kom hier terug en druk op ‘Opnieuw proberen’. U hoeft de app niet opnieuw te starten.",
     "openSettings": "Open instellingen"
   },
   "common": {
