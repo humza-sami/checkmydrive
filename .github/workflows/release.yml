@@ -68,11 +68,20 @@ jobs:
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
         run: |
           if [ -z "$APPLE_CERTIFICATE" ]; then
             echo "APPLE_CERTIFICATE not set; building UNSIGNED."
             echo "signed=false" >> "$GITHUB_OUTPUT"
+            echo "notarize=false" >> "$GITHUB_OUTPUT"
             exit 0
+          fi
+          if [ -z "$APPLE_PASSWORD" ]; then
+            echo "APPLE_PASSWORD not set; app will be code-signed but NOT notarized."
+            echo "notarize=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "APPLE_PASSWORD set; app will be code-signed and notarized."
+            echo "notarize=true" >> "$GITHUB_OUTPUT"
           fi
           KEYCHAIN="$RUNNER_TEMP/build.keychain-db"
           KEYCHAIN_PW="$(uuidgen)"
@@ -135,9 +144,9 @@ jobs:
       # smartctl on Linux comes from the .deb "smartmontools" dependency.
       # tauri.conf.json bundle.resources must tolerate the missing file there (see report).
 
-      # Signed + notarized build (macOS only, when APPLE_CERTIFICATE secret is set).
-      - name: Build and release (signed)
-        if: steps.apple_cert.outputs.signed == 'true'
+      # Signed + notarized build (macOS only, when APPLE_CERTIFICATE and APPLE_PASSWORD are set).
+      - name: Build and release (signed + notarized)
+        if: steps.apple_cert.outputs.signed == 'true' && steps.apple_cert.outputs.notarize == 'true'
         uses: tauri-apps/tauri-action@v0.6.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -147,6 +156,24 @@ jobs:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        with:
+          projectPath: app
+          tagName: v__VERSION__
+          releaseName: CheckMyDrive v__VERSION__
+          releaseBody: See the assets below to download CheckMyDrive for your platform.
+          releaseDraft: true
+          prerelease: false
+          args: ${{ matrix.tauri_args }}
+
+      # Signed only (no notarization): certificate present but APPLE_PASSWORD missing. No APPLE_ID/PASSWORD/TEAM_ID passed.
+      - name: Build and release (signed, not notarized)
+        if: steps.apple_cert.outputs.signed == 'true' && steps.apple_cert.outputs.notarize != 'true'
+        uses: tauri-apps/tauri-action@v0.6.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
         with:
           projectPath: app
           tagName: v__VERSION__
@@ -176,6 +203,7 @@ jobs:
         if: runner.os == 'macOS'
         env:
           SIGNED: ${{ steps.apple_cert.outputs.signed }}
+          NOTARIZED: ${{ steps.apple_cert.outputs.notarize }}
         run: |
           set -euo pipefail
           APP="$(find app/src-tauri/target -type d -name 'CheckMyDrive.app' -path '*/release/bundle/macos/*' | head -n1)"
@@ -197,7 +225,12 @@ jobs:
           "$ENGINE" version
           if [ "$SIGNED" = "true" ]; then
             codesign --verify --deep --strict --verbose=2 "$APP"
-            spctl -a -vv "$APP" || echo "::warning::spctl assessment failed for $APP"
+            if [ "$NOTARIZED" = "true" ]; then
+              spctl -a -vv "$APP" || echo "::warning::spctl assessment failed for $APP"
+              xcrun stapler validate "$APP" || echo "::warning::stapler validate failed for $APP"
+            else
+              echo "Not notarized (APPLE_PASSWORD absent): skipping spctl/stapler checks."
+            fi
           fi
 
       - name: Verify bundle (Windows)
