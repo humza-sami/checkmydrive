@@ -297,6 +297,14 @@ jobs:
           tail -n 30 artifacts/gui.log || true
           ls -la artifacts/gui.png
 
+      - name: Debian 13 container smoke test
+        run: |
+          docker run --rm -v "$PWD/dl:/dl:ro" debian:13 bash -euxc '
+            apt-get update
+            apt-get install -y /dl/CheckMyDrive_*.deb
+            checkmydrive-engine version
+          ' 2>&1 | tee artifacts/debian13-smoke.log
+
       - name: Uninstall and verify removal
         run: |
           sudo apt-get remove -y "$PKG"

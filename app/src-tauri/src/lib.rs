@@ -156,6 +156,7 @@ fn fail(app: &AppHandle, code: &str) {
 fn exit_code_to_error(code: Option<i32>) -> &'static str {
     match code {
         Some(3) => "error.needs_admin",
+        Some(6) => "error.needs_full_disk_access",
         Some(4) => "error.drive_not_found",
         Some(5) => "error.refused",
         Some(2) => "error.bad_args",

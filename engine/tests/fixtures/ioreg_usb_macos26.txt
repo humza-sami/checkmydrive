@@ -1,0 +1,188 @@
++-o USB2 Hub@02100000  <class IOUSBHostDevice, id 0x1000009b2, registered, matched, active, busy 0 (1208546 ms), retain 38>
+  | {
+  |   "kUSBSerialNumberString" = "7423J07"
+  |   "bDeviceClass" = 9
+  |   "bDeviceSubClass" = 0
+  |   "iSerialNumber" = 3
+  |   "kUSBHubPowerSupply" = 4500
+  |   "IOServiceDEXTEntitlements" = (("com.apple.developer.driverkit.transport.usb","com.apple.developer.driverkit.builtin"))
+  |   "iProduct" = 2
+  |   "USB Serial Number" = "7423J07"
+  |   "USB Vendor Name" = "Apple"
+  |   "USBSpeed" = 3
+  |   "IOPowerManagement" = {"PowerOverrideOn"=Yes,"CapabilityFlags"=32768,"MaxPowerState"=2,"DevicePowerState"=2,"DriverPowerState"=0,"ChildrenPowerState"=2,"CurrentPowerState"=2}
+  |   "bNumConfigurations" = 1
+  |   "kUSBProductString" = "USB2 Hub"
+  |   "kUSBVendorString" = "Apple"
+  |   "USB Product Name" = "USB2 Hub"
+  |   "iManufacturer" = 1
+  |   "idVendor" = 1452
+  |   "Device Speed" = 2
+  |   "kUSBCurrentConfiguration" = 1
+  |   "idProduct" = 32779
+  |   "bcdDevice" = 22037
+  |   "UsbDeviceSignature" = <ac050b801556373432334a3037090002090001090002>
+  |   "kUSBContainerID" = "688a9dfb-5ded-4358-ab64-909679624b06"
+  |   "sessionID" = 157313283
+  |   "USB Address" = 2
+  |   "IOCFPlugInTypes" = {"9dc7b780-9ec0-11d4-a54f-000a27052861"="IOUSBHostFamily.kext/Contents/PlugIns/IOUSBLib.bundle"}
+  |   "kUSBWakePortCurrentLimit" = 1500
+  |   "UsbExclusiveOwner" = "AppleUSB20Hub"
+  |   "USBPortType" = 2
+  |   "bDeviceProtocol" = 2
+  |   "locationID" = 34603008
+  |   "kUSBAddress" = 2
+  |   "bcdUSB" = 528
+  |   "kUSBSleepPortCurrentLimit" = 1500
+  |   "bMaxPacketSize0" = 64
+  |   "kUSBHubIdlePolicy" = 1000
+  | }
+  | 
+  +-o AppleUSB20Hub@02100000  <class AppleUSB20Hub, id 0x1000009b5, registered, matched, active, busy 0 (1209250 ms), retain 15>
+  | +-o usb2-hub-port1@02110000  <class AppleUSB20HubPort, id 0x1000009b7, registered, matched, active, busy 0 (436806 ms), retain 31>
+  | | +-o Disk 2.0@02110000  <class IOUSBHostDevice, id 0x10031ed67, registered, matched, active, busy 0 (293 ms), retain 36>
+  | |   | {
+  | |   |   "sessionID" = 21797250850947
+  | |   |   "USBSpeed" = 3
+  | |   |   "idProduct" = 22136
+  | |   |   "iManufacturer" = 1
+  | |   |   "bDeviceClass" = 0
+  | |   |   "IOPowerManagement" = {"PowerOverrideOn"=Yes,"CapabilityFlags"=32768,"MaxPowerState"=2,"DevicePowerState"=2,"DriverPowerState"=0,"ChildrenPowerState"=2,"CurrentPowerState"=2}
+  | |   |   "bcdDevice" = 512
+  | |   |   "bMaxPacketSize0" = 64
+  | |   |   "iProduct" = 2
+  | |   |   "iSerialNumber" = 3
+  | |   |   "bNumConfigurations" = 1
+  | |   |   "UsbDeviceSignature" = <6d347856000234313434323231313831303634303331303134000000080650>
+  | |   |   "USB Product Name" = "Disk 2.0"
+  | |   |   "locationID" = 34668544
+  | |   |   "bDeviceSubClass" = 0
+  | |   |   "bcdUSB" = 512
+  | |   |   "kUSBSerialNumberString" = "4144221181064031014"
+  | |   |   "USB Address" = 4
+  | |   |   "IOCFPlugInTypes" = {"9dc7b780-9ec0-11d4-a54f-000a27052861"="IOUSBHostFamily.kext/Contents/PlugIns/IOUSBLib.bundle"}
+  | |   |   "kUSBCurrentConfiguration" = 1
+  | |   |   "bDeviceProtocol" = 0
+  | |   |   "USBPortType" = 5
+  | |   |   "IOServiceDEXTEntitlements" = (("com.apple.developer.driverkit.transport.usb"))
+  | |   |   "USB Vendor Name" = "USB"
+  | |   |   "Device Speed" = 2
+  | |   |   "idVendor" = 13421
+  | |   |   "kUSBProductString" = "Disk 2.0"
+  | |   |   "USB Serial Number" = "4144221181064031014"
+  | |   |   "kUSBAddress" = 4
+  | |   |   "kUSBVendorString" = "USB"
+  | |   | }
+  | |   | 
+  | |   +-o AppleUSBHostCompositeDevice  <class AppleUSBHostCompositeDevice, id 0x10031ed6b, !registered, !matched, active, busy 0, retain 4>
+  | |   +-o IOUSBHostInterface@0  <class IOUSBHostInterface, id 0x10031ed6c, registered, matched, active, busy 0 (290 ms), retain 12>
+  | |   | +-o IOUSBMassStorageInterfaceNub  <class IOUSBMassStorageInterfaceNub, id 0x10031ed72, registered, matched, active, busy 0 (148 ms), retain 10>
+  | |   |   +-o IOUSBMassStorageDriverNub  <class IOUSBMassStorageDriverNub, id 0x10031ed75, registered, matched, active, busy 0 (146 ms), retain 13>
+  | |   |     +-o IOUSBMassStorageDriver  <class IOUSBMassStorageDriver, id 0x10031ed77, !registered, !matched, active, busy 0 (144 ms), retain 9>
+  | |   |       +-o IOSCSILogicalUnitNub@0  <class IOSCSILogicalUnitNub, id 0x10031ed79, registered, matched, active, busy 0 (42 ms), retain 8>
+  | |   |         +-o IOSCSIPeripheralDeviceType00  <class IOSCSIPeripheralDeviceType00, id 0x10031ed7c, !registered, !matched, active, busy 0 (36 ms), retain 9>
+  | |   |           +-o IOBlockStorageServices  <class IOBlockStorageServices, id 0x10031ed7f, registered, matched, active, busy 0 (36 ms), retain 6>
+  | |   |             +-o IOBlockStorageDriver  <class IOBlockStorageDriver, id 0x10031ed80, registered, matched, active, busy 0 (35 ms), retain 9>
+  | |   |               +-o VendorCo ProductCode Media  <class IOMedia, id 0x10031ed84, registered, matched, active, busy 0 (34 ms), retain 12>
+  | |   |                 | {
+  | |   |                 |   "Content" = "GUID_partition_scheme"
+  | |   |                 |   "Removable" = Yes
+  | |   |                 |   "Whole" = Yes
+  | |   |                 |   "Leaf" = No
+  | |   |                 |   "BSD Name" = "disk6"
+  | |   |                 |   "Ejectable" = Yes
+  | |   |                 |   "Preferred Block Size" = 512
+  | |   |                 |   "IOMediaIcon" = {"IOBundleResourceFile"="Removable.icns","CFBundleIdentifier"="com.apple.iokit.IOStorageFamily"}
+  | |   |                 |   "BSD Minor" = 24
+  | |   |                 |   "IOGeneralInterest" = "IOCommand is not serializable"
+  | |   |                 |   "Writable" = Yes
+  | |   |                 |   "BSD Major" = 1
+  | |   |                 |   "Size" = 15728640000
+  | |   |                 |   "IOBusyInterest" = "IOCommand is not serializable"
+  | |   |                 |   "Open" = Yes
+  | |   |                 |   "Content Hint" = ""
+  | |   |                 |   "BSD Unit" = 6
+  | |   |                 | }
+  | |   |                 | 
+  | |   |                   +-o EFI System Partition@1  <class IOMedia, id 0x10031f33d, registered, matched, active, busy 0 (3 ms), retain 10>
+  | |   |                   | | {
+  | |   |                   | |   "Open" = No
+  | |   |                   | |   "Preferred Block Size" = 512
+  | |   |                   | |   "Base" = 20480
+  | |   |                   | |   "Writable" = Yes
+  | |   |                   | |   "IOBusyInterest" = "IOCommand is not serializable"
+  | |   |                   | |   "Size" = 209715200
+  | |   |                   | |   "Content" = "C12A7328-F81F-11D2-BA4B-00A0C93EC93B"
+  | |   |                   | |   "BSD Minor" = 25
+  | |   |                   | |   "Whole" = No
+  | |   |                   | |   "Removable" = Yes
+  | |   |                   | |   "UUID" = "6926F801-8BC3-41CD-9DD4-74662D7C948A"
+  | |   |                   | |   "BSD Unit" = 6
+  | |   |                   | |   "BSD Major" = 1
+  | |   |                   | |   "Ejectable" = Yes
+  | |   |                   | |   "BSD Name" = "disk6s1"
+  | |   |                   | |   "Partition ID" = 1
+  | |   |                   | |   "IOGeneralInterest" = "IOCommand is not serializable"
+  | |   |                   | |   "GPT Attributes" = 0
+  | |   |                   | |   "Content Hint" = "C12A7328-F81F-11D2-BA4B-00A0C93EC93B"
+  | |   |                   | |   "Leaf" = Yes
+  | |   |                   | | }
+  | |   |                   | | 
+  | +-o usb2-hub-port2@02120000  <class AppleUSB20HubPort, id 0x1000009b9, registered, matched, active, busy 0 (774227 ms), retain 18>
+  |   | {
+  |   |   "PortNumber" = 6
+  |   |   "AAPL,phandle" = <1d010000>
+  |   |   "UsbProtocol (1.x)" = Yes
+  |   |   "UsbIOPort" = "IOService:/AppleARMPE/port-usb-c-6/Port-USB-C@6"
+  |   |   "UsbProtocolCompanion (3.x)" = "IOService:/AppleARMPE/arm-io@10F00000/AppleH16GFamilyIO/usb-drd2@12280000/AppleT8132USBXHCI@02000000/usb-drd2-port-ss@02200000/USB3 Gen2 Hub@02200000/AppleUSB
+  |   |   "kUSBSleepPortCurrentLimit" = 1500
+  |   |   "IOPowerManagement" = {"ChildrenPowerState"=3,"DevicePowerState"=1,"CurrentPowerState"=3,"CapabilityFlags"=32768,"MaxPowerState"=3,"DriverPowerState"=0}
+  |   |   "PortType" = 2
+  |   |   "port-statistics" = {"kPortStatEOF2ViolationCurrentConnectCount"=0,"kPortStatEOF2ViolationDuringResetCount"=0,"kPortStatPowerStateTime"={"kPowerStateOff"="0ms (0%)","kPowerStateSleep"="16393
+  |   |   "locationID" = 34734080
+  |   |   "name" = <"usb2-hub-port2">
+  |   |   "usb-port-number" = <02000000>
+  |   |   "port-type" = <02000000>
+  |   |   "kUSBWakePortCurrentLimit" = 1500
+  |   |   "UsbProtocol (2.0)" = Yes
+  |   |   "port" = <02000000>
+  |   |   "usb-port-current-policy" = <01000000>
+  |   |   "port-status" = 4357
+  |   |   "port-number" = <06000000>
+  |   |   "device_type" = <"usb2-hub-port">
+  |   |   "kUSBBusCurrentAllocation" = 500
+  |   | }
+  |   | 
+  |   +-o Gaming KB@02120000  <class IOUSBHostDevice, id 0x100040b04, registered, matched, active, busy 0 (774163 ms), retain 77>
+  |     | {
+  |     |   "sessionID" = 3934694276070
+  |     |   "USBSpeed" = 1
+  |     |   "idProduct" = 336
+  |     |   "iManufacturer" = 1
+  |     |   "bDeviceClass" = 0
+  |     |   "IOPowerManagement" = {"PowerOverrideOn"=Yes,"CapabilityFlags"=32768,"MaxPowerState"=2,"DevicePowerState"=2,"DriverPowerState"=0,"ChildrenPowerState"=2,"CurrentPowerState"=2}
+  |     |   "bcdDevice" = 531
+  |     |   "bMaxPacketSize0" = 8
+  |     |   "iProduct" = 2
+  |     |   "iSerialNumber" = 0
+  |     |   "bNumConfigurations" = 1
+  |     |   "UsbDeviceSignature" = <8a2550011302000000030101030001>
+  |     |   "USB Product Name" = "Gaming KB"
+  |     |   "locationID" = 34734080
+  |     |   "bDeviceSubClass" = 0
+  |     |   "bcdUSB" = 512
+  |     |   "USB Address" = 3
+  |     |   "kUSBCurrentConfiguration" = 1
+  |     |   "IOCFPlugInTypes" = {"9dc7b780-9ec0-11d4-a54f-000a27052861"="IOUSBHostFamily.kext/Contents/PlugIns/IOUSBLib.bundle"}
+  |     |   "UsbPowerSinkAllocation" = 500
+  |     |   "bDeviceProtocol" = 0
+  |     |   "USBPortType" = 5
+  |     |   "IOServiceDEXTEntitlements" = (("com.apple.developer.driverkit.transport.usb"))
+  |     |   "USB Vendor Name" = "SINOWEALTH"
+  |     |   "Device Speed" = 1
+  |     |   "idVendor" = 9610
+  |     |   "kUSBProductString" = "Gaming KB"
+  |     |   "kUSBAddress" = 3
+  |     |   "kUSBVendorString" = "SINOWEALTH"
+  |     | }
+  |     | 

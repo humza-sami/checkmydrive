@@ -42,10 +42,12 @@
       "dangerBody": "Isso exclui permanentemente TODOS os dados de {{model}}. Não dá para desfazer. Só continue se o disco estiver vazio ou se você tiver um backup.",
       "confirmLabel": "Para confirmar, digite o número de série do disco: {{serial}}",
       "confirmPlaceholder": "Digite o número de série aqui",
-      "noSerial": "Este disco não informa o número de série, então o teste completo com apagamento não está disponível.",
       "systemBlocked": "O disco do sistema nunca pode ser apagado. Só o teste seguro está disponível.",
       "mismatch": "O texto ainda não corresponde ao número de série.",
-      "start": "Apagar e executar o teste completo"
+      "start": "Apagar e executar o teste completo",
+      "confirmLabelId": "Esta unidade não informa um número de série. Para confirmar, digite o nome do dispositivo: {{id}}",
+      "confirmPlaceholderId": "Digite o nome do dispositivo aqui",
+      "mismatchId": "O texto ainda não corresponde ao nome do dispositivo."
     },
     "duration": "Leva cerca de 3 a 4 minutos. Por favor, não desconecte o disco."
   },
@@ -418,6 +420,7 @@
     "elevation_unavailable": "Não foi possível pedir permissão de administrador neste computador.",
     "bad_args": "O teste não pôde começar por causa de um erro interno na solicitação.",
     "needs_admin": "É preciso permissão de administrador para testar este disco.",
+    "needs_full_disk_access": "O macOS precisa da sua permissão para que o CheckMyDrive possa ler esta unidade. Ative “Acesso Total ao Disco” para o CheckMyDrive em Ajustes do Sistema e abra o app novamente.",
     "drive_not_found": "Não foi possível encontrar esse disco. Ele pode ter sido desconectado.",
     "system_disk_refused": "Este é o disco em que seu computador funciona, então ele não pode ser apagado. Escolha outro disco.",
     "confirm_required": "Confirme o número de série do disco antes de um teste completo que apaga dados.",
@@ -425,6 +428,15 @@
     "cannot_open_device": "Não foi possível abrir o disco para o teste. Outro programa pode estar usando-o.",
     "unmount_failed": "Não foi possível desconectar com segurança os volumes do disco antes do teste completo. Feche os programas que o estiverem usando e tente de novo.",
     "internal": "Algo inesperado deu errado dentro do mecanismo de testes."
+  },
+  "fda": {
+    "title": "Permissão necessária",
+    "intro": "O macOS protege sua privacidade impedindo que o CheckMyDrive leia esta unidade diretamente. Não há nada de errado com a unidade. Você só precisa permitir uma vez.",
+    "step1": "Clique em “Abrir Ajustes” abaixo.",
+    "step2": "Em Ajustes do Sistema, vá em “Privacidade e Segurança” e depois em “Acesso Total ao Disco”.",
+    "step3": "Ative o CheckMyDrive. Se ele não estiver na lista, clique no botão + e adicione-o.",
+    "step4": "Feche o CheckMyDrive, abra-o novamente e repita a verificação.",
+    "openSettings": "Abrir Ajustes"
   },
   "common": {
     "loading": "Carregando…",

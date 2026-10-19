@@ -13,6 +13,8 @@ mod unix_common;
 #[cfg(target_os = "macos")]
 mod macos;
 #[cfg(target_os = "macos")]
+mod macos_usb;
+#[cfg(target_os = "macos")]
 use macos as imp;
 
 #[cfg(all(unix, not(target_os = "macos")))]

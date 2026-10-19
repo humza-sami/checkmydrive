@@ -42,10 +42,12 @@
       "dangerBody": "Questo elimina in modo permanente TUTTI i dati su {{model}}. Non si può annullare. Continua solo se il disco è vuoto o hai un backup.",
       "confirmLabel": "Per confermare, scrivi il numero di serie del disco: {{serial}}",
       "confirmPlaceholder": "Scrivi qui il numero di serie",
-      "noSerial": "Questo disco non comunica un numero di serie, quindi il test completo con cancellazione non è disponibile.",
       "systemBlocked": "Il disco di sistema non può mai essere cancellato. È disponibile solo il test sicuro.",
       "mismatch": "Il testo non corrisponde ancora al numero di serie.",
-      "start": "Cancella ed esegui il test completo"
+      "start": "Cancella ed esegui il test completo",
+      "confirmLabelId": "Questa unità non riporta un numero di serie. Per confermare, digita il nome del dispositivo: {{id}}",
+      "confirmPlaceholderId": "Digita qui il nome del dispositivo",
+      "mismatchId": "Il testo non corrisponde ancora al nome del dispositivo."
     },
     "duration": "Richiede circa 3-4 minuti. Non scollegare il disco."
   },
@@ -418,6 +420,7 @@
     "elevation_unavailable": "Non è stato possibile chiedere i permessi di amministratore su questo computer.",
     "bad_args": "Il test non è partito a causa di un errore interno nella richiesta.",
     "needs_admin": "Servono i permessi di amministratore per testare questo disco.",
+    "needs_full_disk_access": "macOS ha bisogno del tuo permesso prima che CheckMyDrive possa leggere questa unità. Attiva «Accesso completo al disco» per CheckMyDrive in Impostazioni di Sistema, poi riapri l’app.",
     "drive_not_found": "Quel disco non è stato trovato. Potrebbe essere stato scollegato.",
     "system_disk_refused": "Questo è il disco da cui funziona il tuo computer, quindi non può essere cancellato. Scegli un altro disco.",
     "confirm_required": "Conferma il numero di serie del disco prima di un test completo che cancella i dati.",
@@ -425,6 +428,15 @@
     "cannot_open_device": "Non è stato possibile aprire il disco per il test. Un altro programma potrebbe starlo usando.",
     "unmount_failed": "Non è stato possibile scollegare in sicurezza i volumi del disco prima del test completo. Chiudi i programmi che lo usano e riprova.",
     "internal": "Qualcosa di inatteso è andato storto all'interno del motore di test."
+  },
+  "fda": {
+    "title": "Serve un’autorizzazione",
+    "intro": "macOS protegge la tua privacy impedendo a CheckMyDrive di leggere direttamente questa unità. L’unità non ha alcun problema. Devi consentirlo solo una volta.",
+    "step1": "Fai clic su «Apri Impostazioni» qui sotto.",
+    "step2": "In Impostazioni di Sistema, vai a «Privacy e sicurezza» e poi a «Accesso completo al disco».",
+    "step3": "Attiva CheckMyDrive. Se non è nell’elenco, fai clic sul pulsante + e aggiungilo.",
+    "step4": "Chiudi CheckMyDrive, riaprilo e ripeti il controllo.",
+    "openSettings": "Apri Impostazioni"
   },
   "common": {
     "loading": "Caricamento…",

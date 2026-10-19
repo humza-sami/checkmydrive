@@ -42,10 +42,12 @@
       "dangerBody": "Hii itafuta kabisa data ZOTE kwenye {{model}}. Haiwezi kutenduliwa. Endelea tu ikiwa diski ni tupu au una nakala rudufu.",
       "confirmLabel": "Ili kuthibitisha, andika nambari ya ufuatiliaji ya diski: {{serial}}",
       "confirmPlaceholder": "Andika nambari ya ufuatiliaji hapa",
-      "noSerial": "Diski hii haitoi nambari ya ufuatiliaji, kwa hivyo jaribio kamili la kufuta halipatikani.",
       "systemBlocked": "Diski yako ya mfumo haiwezi kufutwa kamwe. Jaribio salama pekee ndilo linapatikana.",
       "mismatch": "Maandishi bado hayalingani na nambari ya ufuatiliaji.",
-      "start": "Futa na uendeshe jaribio kamili"
+      "start": "Futa na uendeshe jaribio kamili",
+      "confirmLabelId": "Hifadhi hii haitoi nambari ya serial. Ili kuthibitisha, andika jina la kifaa: {{id}}",
+      "confirmPlaceholderId": "Andika jina la kifaa hapa",
+      "mismatchId": "Maandishi bado hayalingani na jina la kifaa."
     },
     "duration": "Huchukua takriban dakika 3 hadi 4. Tafadhali usitoe diski."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Haikuwezekana kuomba ruhusa ya msimamizi kwenye kompyuta hii.",
     "bad_args": "Jaribio halikuweza kuanza kwa sababu ya hitilafu ya ndani ya ombi.",
     "needs_admin": "Ruhusa ya msimamizi inahitajika ili kujaribu diski hii.",
+    "needs_full_disk_access": "macOS inahitaji ruhusa yako kabla CheckMyDrive haijaweza kusoma hifadhi hii. Washa “Ufikiaji Kamili wa Diski” kwa CheckMyDrive katika Mipangilio ya Mfumo, kisha fungua programu tena.",
     "drive_not_found": "Diski hiyo haikupatikana. Huenda iliondolewa.",
     "system_disk_refused": "Hii ndiyo diski ambayo kompyuta yako huwaka kutoka kwake, kwa hivyo haiwezi kufutwa. Chagua diski nyingine.",
     "confirm_required": "Tafadhali thibitisha nambari ya ufuatiliaji ya diski kabla ya jaribio kamili linalofuta data.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "Diski haikuweza kufunguliwa kwa ajili ya kujaribiwa. Huenda programu nyingine inaitumia.",
     "unmount_failed": "Sehemu za diski hazikuweza kutenganishwa kwa usalama kabla ya jaribio kamili. Funga programu zinazoitumia kisha ujaribu tena.",
     "internal": "Kitu kisichotarajiwa kimeharibika ndani ya injini ya majaribio."
+  },
+  "fda": {
+    "title": "Ruhusa inahitajika",
+    "intro": "macOS hulinda faragha yako kwa kuzuia CheckMyDrive kusoma hifadhi hii moja kwa moja. Hakuna tatizo kwenye hifadhi. Unahitaji kuruhusu mara moja tu.",
+    "step1": "Bofya “Fungua Mipangilio” hapa chini.",
+    "step2": "Katika Mipangilio ya Mfumo, nenda kwenye “Faragha na Usalama”, kisha “Ufikiaji Kamili wa Diski”.",
+    "step3": "Washa CheckMyDrive. Ikiwa haipo kwenye orodha, bofya kitufe cha + na uiongeze.",
+    "step4": "Funga CheckMyDrive, ifungue tena, kisha jaribu ukaguzi tena.",
+    "openSettings": "Fungua Mipangilio"
   },
   "common": {
     "loading": "Inapakia…",

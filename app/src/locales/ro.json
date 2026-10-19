@@ -42,10 +42,12 @@
       "dangerBody": "Aceasta șterge definitiv TOATE datele de pe {{model}}. Nu poate fi anulată. Continuă doar dacă unitatea este goală sau ai o copie de rezervă.",
       "confirmLabel": "Pentru confirmare, tastează numărul de serie al unității: {{serial}}",
       "confirmPlaceholder": "Tastează aici numărul de serie",
-      "noSerial": "Această unitate nu raportează un număr de serie, deci testul complet cu ștergere nu este disponibil.",
       "systemBlocked": "Discul de sistem nu poate fi șters niciodată. Este disponibil doar testul sigur.",
       "mismatch": "Textul nu se potrivește încă cu numărul de serie.",
-      "start": "Șterge și rulează testul complet"
+      "start": "Șterge și rulează testul complet",
+      "confirmLabelId": "Această unitate nu raportează un număr de serie. Pentru confirmare, tastează numele dispozitivului: {{id}}",
+      "confirmPlaceholderId": "Tastează aici numele dispozitivului",
+      "mismatchId": "Textul nu se potrivește încă cu numele dispozitivului."
     },
     "duration": "Durează aproximativ 3-4 minute. Te rugăm să nu deconectezi unitatea."
   },
@@ -418,6 +420,7 @@
     "elevation_unavailable": "Nu s-a putut cere permisiunea de administrator pe acest calculator.",
     "bad_args": "Testul nu a putut porni din cauza unei erori interne de cerere.",
     "needs_admin": "Este nevoie de permisiunea de administrator pentru a testa această unitate.",
+    "needs_full_disk_access": "macOS are nevoie de permisiunea ta înainte ca CheckMyDrive să poată citi această unitate. Activează „Acces complet la disc” pentru CheckMyDrive în Setări de sistem, apoi redeschide aplicația.",
     "drive_not_found": "Unitatea nu a fost găsită. Poate a fost deconectată.",
     "system_disk_refused": "Acesta este discul de pe care pornește calculatorul tău, deci nu poate fi șters. Alege altă unitate.",
     "confirm_required": "Te rugăm să confirmi numărul de serie al unității înainte de un test complet care șterge datele.",
@@ -425,6 +428,15 @@
     "cannot_open_device": "Unitatea nu a putut fi deschisă pentru testare. Poate o folosește un alt program.",
     "unmount_failed": "Volumele unității nu au putut fi deconectate în siguranță înainte de testul complet. Închide programele care o folosesc și încearcă din nou.",
     "internal": "Ceva neașteptat a mers prost în interiorul motorului de testare."
+  },
+  "fda": {
+    "title": "Este necesară permisiunea",
+    "intro": "macOS îți protejează confidențialitatea, împiedicând CheckMyDrive să citească direct această unitate. Unitatea nu are nicio problemă. Trebuie să permiți acest lucru o singură dată.",
+    "step1": "Fă clic pe „Deschide setările” de mai jos.",
+    "step2": "În Setări de sistem, mergi la „Confidențialitate și securitate”, apoi la „Acces complet la disc”.",
+    "step3": "Activează CheckMyDrive. Dacă nu apare în listă, fă clic pe butonul + și adaug-o.",
+    "step4": "Închide CheckMyDrive, deschide-l din nou și repetă verificarea.",
+    "openSettings": "Deschide setările"
   },
   "common": {
     "loading": "Se încarcă…",

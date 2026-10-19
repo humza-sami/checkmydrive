@@ -42,10 +42,12 @@
       "dangerBody": "這會永久刪除 {{model}} 上的所有資料，且無法復原。只有在硬碟是空的或您已備份時才繼續。",
       "confirmLabel": "為了確認，請輸入硬碟的序號：{{serial}}",
       "confirmPlaceholder": "請在此輸入序號",
-      "noSerial": "這顆硬碟沒有提供序號，因此無法進行完整清除檢測。",
       "systemBlocked": "系統碟絕對不能被清除，只能使用安全檢測。",
       "mismatch": "輸入的內容與序號還不相符。",
-      "start": "清除並執行完整檢測"
+      "start": "清除並執行完整檢測",
+      "confirmLabelId": "此磁碟機未回報序號。請輸入裝置名稱以確認：{{id}}",
+      "confirmPlaceholderId": "在此輸入裝置名稱",
+      "mismatchId": "輸入的內容與裝置名稱尚不相符。"
     },
     "duration": "大約需要 3 到 4 分鐘，請不要拔除硬碟。"
   },
@@ -374,6 +376,7 @@
     "elevation_unavailable": "無法在這台電腦上請求系統管理員權限。",
     "bad_args": "由於內部要求錯誤，檢測無法開始。",
     "needs_admin": "檢測這顆硬碟需要系統管理員權限。",
+    "needs_full_disk_access": "CheckMyDrive 需要先取得 macOS 的許可才能讀取此磁碟機。請在「系統設定」中為 CheckMyDrive 開啟「完整磁碟取用權限」，然後重新開啟 App。",
     "drive_not_found": "找不到那顆硬碟，它可能已被拔除。",
     "system_disk_refused": "這是您的電腦正在執行所用的硬碟，因此不能被清除。請選擇其他硬碟。",
     "confirm_required": "在進行會清除資料的完整檢測之前，請先確認硬碟的序號。",
@@ -381,6 +384,15 @@
     "cannot_open_device": "無法開啟硬碟進行檢測，可能有其他程式正在使用它。",
     "unmount_failed": "完整檢測之前，無法安全中斷硬碟的磁碟區。請關閉所有正在使用它的程式後再試一次。",
     "internal": "檢測引擎內部發生了意外的錯誤。"
+  },
+  "fda": {
+    "title": "需要權限",
+    "intro": "macOS 為保護您的隱私，會阻止 CheckMyDrive 直接讀取此磁碟機。磁碟機本身沒有問題。您只需允許一次即可。",
+    "step1": "按一下下方的「打開設定」。",
+    "step2": "在「系統設定」中，前往「隱私權與安全性」，然後選擇「完整磁碟取用權限」。",
+    "step3": "開啟 CheckMyDrive 的開關。如果清單中沒有，請按一下 + 按鈕加入。",
+    "step4": "結束 CheckMyDrive，重新開啟，然後再次進行檢測。",
+    "openSettings": "打開設定"
   },
   "common": {
     "loading": "載入中…",

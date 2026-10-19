@@ -42,10 +42,12 @@
       "dangerBody": "Tím se nenávratně smažou VŠECHNA data na disku {{model}}. Nelze to vrátit zpět. Pokračujte jen tehdy, je-li disk prázdný nebo máte zálohu.",
       "confirmLabel": "Pro potvrzení opište sériové číslo disku: {{serial}}",
       "confirmPlaceholder": "Sem napište sériové číslo",
-      "noSerial": "Tento disk sériové číslo nehlásí, proto plný test s vymazáním není k dispozici.",
       "systemBlocked": "Systémový disk nelze nikdy vymazat. K dispozici je jen bezpečný test.",
       "mismatch": "Text zatím neodpovídá sériovému číslu.",
-      "start": "Vymazat a spustit plný test"
+      "start": "Vymazat a spustit plný test",
+      "confirmLabelId": "Tento disk nehlásí sériové číslo. Pro potvrzení zadejte název zařízení: {{id}}",
+      "confirmPlaceholderId": "Zde zadejte název zařízení",
+      "mismatchId": "Text zatím neodpovídá názvu zařízení."
     },
     "duration": "Trvá asi 3 až 4 minuty. Disk prosím neodpojujte."
   },
@@ -440,6 +442,7 @@
     "elevation_unavailable": "V tomto počítači se nepodařilo požádat o oprávnění správce.",
     "bad_args": "Test se nepodařilo spustit kvůli vnitřní chybě požadavku.",
     "needs_admin": "K otestování tohoto disku je potřeba oprávnění správce.",
+    "needs_full_disk_access": "macOS potřebuje vaše svolení, než bude moci CheckMyDrive tento disk číst. V Nastavení systému zapněte pro CheckMyDrive „Úplný přístup k disku“ a poté aplikaci znovu otevřete.",
     "drive_not_found": "Tento disk se nepodařilo najít. Možná byl odpojen.",
     "system_disk_refused": "Toto je disk, ze kterého běží váš počítač, proto ho nelze vymazat. Vyberte jiný disk.",
     "confirm_required": "Před plným testem, který maže data, prosím potvrďte sériové číslo disku.",
@@ -447,6 +450,15 @@
     "cannot_open_device": "Disk se nepodařilo otevřít k testování. Možná ho používá jiný program.",
     "unmount_failed": "Oddíly disku se před plným testem nepodařilo bezpečně odpojit. Zavřete programy, které ho používají, a zkuste to znovu.",
     "internal": "Uvnitř testovacího jádra se stalo něco neočekávaného."
+  },
+  "fda": {
+    "title": "Je potřeba oprávnění",
+    "intro": "macOS chrání vaše soukromí tím, že CheckMyDrive brání ve čtení tohoto disku. S diskem je vše v pořádku. Stačí to povolit jednou.",
+    "step1": "Klikněte níže na „Otevřít nastavení“.",
+    "step2": "V Nastavení systému přejděte na „Soukromí a zabezpečení“ a poté na „Úplný přístup k disku“.",
+    "step3": "Zapněte CheckMyDrive. Pokud v seznamu není, klikněte na tlačítko + a přidejte ho.",
+    "step4": "Zavřete CheckMyDrive, znovu ho otevřete a kontrolu zopakujte.",
+    "openSettings": "Otevřít nastavení"
   },
   "common": {
     "loading": "Načítání…",

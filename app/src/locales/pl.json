@@ -42,10 +42,12 @@
       "dangerBody": "To trwale usunie WSZYSTKIE dane z urządzenia {{model}}. Nie da się tego cofnąć. Kontynuuj tylko wtedy, gdy dysk jest pusty lub masz kopię zapasową.",
       "confirmLabel": "Aby potwierdzić, wpisz numer seryjny dysku: {{serial}}",
       "confirmPlaceholder": "Wpisz tutaj numer seryjny",
-      "noSerial": "Ten dysk nie podaje numeru seryjnego, więc pełny test z wymazaniem jest niedostępny.",
       "systemBlocked": "Dysku systemowego nigdy nie można wymazać. Dostępny jest tylko test bezpieczny.",
       "mismatch": "Wpisany tekst nie zgadza się jeszcze z numerem seryjnym.",
-      "start": "Wymaż i uruchom pełny test"
+      "start": "Wymaż i uruchom pełny test",
+      "confirmLabelId": "Ten dysk nie podaje numeru seryjnego. Aby potwierdzić, wpisz nazwę urządzenia: {{id}}",
+      "confirmPlaceholderId": "Wpisz tutaj nazwę urządzenia",
+      "mismatchId": "Tekst nie pasuje jeszcze do nazwy urządzenia."
     },
     "duration": "Trwa około 3–4 minut. Nie odłączaj dysku."
   },
@@ -440,6 +442,7 @@
     "elevation_unavailable": "Na tym komputerze nie udało się poprosić o uprawnienia administratora.",
     "bad_args": "Nie udało się rozpocząć testu z powodu wewnętrznego błędu żądania.",
     "needs_admin": "Do przetestowania tego dysku potrzebne są uprawnienia administratora.",
+    "needs_full_disk_access": "macOS potrzebuje Twojej zgody, zanim CheckMyDrive będzie mógł odczytać ten dysk. W Ustawieniach systemowych włącz dla CheckMyDrive opcję „Pełny dostęp do dysku”, a następnie otwórz aplikację ponownie.",
     "drive_not_found": "Nie znaleziono tego dysku. Mógł zostać odłączony.",
     "system_disk_refused": "To dysk, z którego działa Twój komputer, więc nie można go wymazać. Wybierz inny dysk.",
     "confirm_required": "Przed pełnym testem, który kasuje dane, potwierdź numer seryjny dysku.",
@@ -447,6 +450,15 @@
     "cannot_open_device": "Nie udało się otworzyć dysku do testu. Może go używać inny program.",
     "unmount_failed": "Przed pełnym testem nie udało się bezpiecznie odłączyć woluminów dysku. Zamknij programy, które go używają, i spróbuj ponownie.",
     "internal": "Wewnątrz silnika testującego wydarzyło się coś nieoczekiwanego."
+  },
+  "fda": {
+    "title": "Wymagane uprawnienie",
+    "intro": "macOS chroni Twoją prywatność, blokując CheckMyDrive przed bezpośrednim odczytem tego dysku. Z dyskiem wszystko jest w porządku. Zgodę wystarczy wyrazić tylko raz.",
+    "step1": "Kliknij poniżej „Otwórz ustawienia”.",
+    "step2": "W Ustawieniach systemowych przejdź do „Prywatność i ochrona”, a następnie do „Pełny dostęp do dysku”.",
+    "step3": "Włącz CheckMyDrive. Jeśli nie ma go na liście, kliknij przycisk + i dodaj go.",
+    "step4": "Zamknij CheckMyDrive, otwórz go ponownie i powtórz sprawdzanie.",
+    "openSettings": "Otwórz ustawienia"
   },
   "common": {
     "loading": "Wczytywanie…",

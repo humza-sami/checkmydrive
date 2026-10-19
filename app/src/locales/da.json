@@ -42,10 +42,12 @@
       "dangerBody": "Dette sletter permanent ALLE data på {{model}}. Det kan ikke fortrydes. Fortsæt kun, hvis drevet er tomt, eller du har en sikkerhedskopi.",
       "confirmLabel": "For at bekræfte skal du skrive drevets serienummer: {{serial}}",
       "confirmPlaceholder": "Skriv serienummeret her",
-      "noSerial": "Dette drev oplyser ikke et serienummer, så en fuld sletningstest er ikke tilgængelig.",
       "systemBlocked": "Dit systemdrev kan aldrig slettes. Kun den sikre test er tilgængelig.",
       "mismatch": "Teksten svarer ikke til serienummeret endnu.",
-      "start": "Slet og kør fuld test"
+      "start": "Slet og kør fuld test",
+      "confirmLabelId": "Dette drev oplyser ikke noget serienummer. Skriv enhedens navn for at bekræfte: {{id}}",
+      "confirmPlaceholderId": "Skriv enhedens navn her",
+      "mismatchId": "Teksten matcher ikke enhedens navn endnu."
     },
     "duration": "Tager cirka 3 til 4 minutter. Træk ikke drevet ud."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Kunne ikke bede om administratortilladelse på denne computer.",
     "bad_args": "Testen kunne ikke starte på grund af en intern anmodningsfejl.",
     "needs_admin": "Der kræves administratortilladelse for at teste dette drev.",
+    "needs_full_disk_access": "macOS skal have din tilladelse, før CheckMyDrive kan læse dette drev. Slå Fuld diskadgang til for CheckMyDrive i Systemindstillinger, og åbn derefter appen igen.",
     "drive_not_found": "Drevet kunne ikke findes. Det kan være blevet trukket ud.",
     "system_disk_refused": "Dette er det drev, din computer kører fra, så det kan ikke slettes. Vælg et andet drev.",
     "confirm_required": "Bekræft drevets serienummer før en fuld test, der sletter data.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "Drevet kunne ikke åbnes til test. Et andet program bruger det måske.",
     "unmount_failed": "Drevets diske kunne ikke frakobles sikkert før den fulde test. Luk programmer, der bruger det, og prøv igen.",
     "internal": "Noget uventet gik galt inde i testmotoren."
+  },
+  "fda": {
+    "title": "Tilladelse påkrævet",
+    "intro": "macOS beskytter dit privatliv ved at forhindre CheckMyDrive i at læse dette drev direkte. Der er ikke noget galt med drevet. Du skal kun give tilladelsen én gang.",
+    "step1": "Klik på “Åbn indstillinger” nedenfor.",
+    "step2": "I Systemindstillinger skal du gå til Anonymitet og sikkerhed og derefter Fuld diskadgang.",
+    "step3": "Slå CheckMyDrive til. Hvis det ikke står på listen, skal du klikke på knappen + og tilføje det.",
+    "step4": "Luk CheckMyDrive, åbn det igen, og prøv kontrollen igen.",
+    "openSettings": "Åbn indstillinger"
   },
   "common": {
     "loading": "Indlæser…",

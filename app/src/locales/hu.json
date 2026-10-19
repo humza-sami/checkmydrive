@@ -42,10 +42,12 @@
       "dangerBody": "Ez véglegesen töröl MINDEN adatot a(z) {{model}} meghajtóról. Nem vonható vissza. Csak akkor folytassa, ha a meghajtó üres, vagy van biztonsági mentése.",
       "confirmLabel": "A megerősítéshez írja be a meghajtó sorozatszámát: {{serial}}",
       "confirmPlaceholder": "Írja ide a sorozatszámot",
-      "noSerial": "Ez a meghajtó nem közöl sorozatszámot, ezért a teljes törléses teszt nem érhető el.",
       "systemBlocked": "A rendszermeghajtó soha nem törölhető. Csak a biztonságos teszt érhető el.",
       "mismatch": "A szöveg még nem egyezik a sorozatszámmal.",
-      "start": "Törlés és teljes teszt indítása"
+      "start": "Törlés és teljes teszt indítása",
+      "confirmLabelId": "Ez a meghajtó nem jelent sorozatszámot. A megerősítéshez írja be az eszköz nevét: {{id}}",
+      "confirmPlaceholderId": "Írja ide az eszköz nevét",
+      "mismatchId": "A szöveg még nem egyezik az eszköz nevével."
     },
     "duration": "Körülbelül 3–4 percig tart. Kérjük, ne húzza ki a meghajtót."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Ezen a számítógépen nem lehetett rendszergazdai engedélyt kérni.",
     "bad_args": "A tesztet belső kérési hiba miatt nem sikerült elindítani.",
     "needs_admin": "A meghajtó teszteléséhez rendszergazdai engedély kell.",
+    "needs_full_disk_access": "A macOS-nek engedélyre van szüksége, mielőtt a CheckMyDrive olvashatná ezt a meghajtót. A Rendszerbeállításokban kapcsolja be a „Teljes lemezhozzáférést” a CheckMyDrive számára, majd nyissa meg újra az alkalmazást.",
     "drive_not_found": "A meghajtó nem található. Lehet, hogy kihúzták.",
     "system_disk_refused": "Ez az a meghajtó, amelyről a számítógépe fut, ezért nem törölhető. Válasszon másik meghajtót.",
     "confirm_required": "Az adatokat törlő teljes teszt előtt erősítse meg a meghajtó sorozatszámát.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "A meghajtót nem lehetett megnyitni teszteléshez. Lehet, hogy egy másik program használja.",
     "unmount_failed": "A meghajtó köteteit nem lehetett biztonságosan leválasztani a teljes teszt előtt. Zárja be a használó programokat, és próbálja újra.",
     "internal": "Valami váratlan hiba történt a tesztmotoron belül."
+  },
+  "fda": {
+    "title": "Engedély szükséges",
+    "intro": "A macOS a magánszférája védelmében megakadályozza, hogy a CheckMyDrive közvetlenül olvassa ezt a meghajtót. A meghajtóval nincs semmi baj. Az engedélyt csak egyszer kell megadnia.",
+    "step1": "Kattintson lent a „Beállítások megnyitása” gombra.",
+    "step2": "A Rendszerbeállításokban nyissa meg az „Adatvédelem és biztonság”, majd a „Teljes lemezhozzáférés” részt.",
+    "step3": "Kapcsolja be a CheckMyDrive-ot. Ha nincs a listában, kattintson a + gombra, és adja hozzá.",
+    "step4": "Zárja be a CheckMyDrive-ot, nyissa meg újra, és ismételje meg az ellenőrzést.",
+    "openSettings": "Beállítások megnyitása"
   },
   "common": {
     "loading": "Betöltés…",

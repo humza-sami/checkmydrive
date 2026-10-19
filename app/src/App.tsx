@@ -10,6 +10,7 @@ import { XpIcon, XpIconSprite } from "./components/XpIcon";
 import { LANGUAGES, setLanguage } from "./i18n";
 import { EngineError, getEngineInfo, isMock, listDrives, type EngineInfo } from "./lib/engine";
 import { openExternal, REPO_URL } from "./lib/links";
+import { FullDiskAccessDialog } from "./components/FullDiskAccessDialog";
 import { buildHtmlReport, reportFileName, saveTextFile } from "./lib/report";
 import { useTest } from "./lib/useTest";
 import { closeWindow } from "./lib/windowControls";
@@ -173,7 +174,8 @@ export default function App() {
 
       {dialog === "mode" && selected && <ModeChoice drive={selected} onStart={doStart} onCancel={() => setDialog(null)} />}
       {dialog === "about" && <AboutDialog onClose={() => setDialog(null)} />}
-      {failed && (
+      {failed?.status === "error" && failed.code === "error.needs_full_disk_access" && <FullDiskAccessDialog onClose={another} />}
+      {failed && !(failed.status === "error" && failed.code === "error.needs_full_disk_access") && (
         <Dialog title={failed.status === "error" ? t("error.title") : t("running.cancel")} role="alertdialog" width={400} onClose={another}>
           <div className="msgbox">
             <XpIcon name={failed.status === "error" ? "error" : "warn"} size={32} />

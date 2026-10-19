@@ -16,6 +16,7 @@ pub const EXIT_BAD_ARGS: i32 = 2;
 pub const EXIT_NEEDS_ADMIN: i32 = 3;
 pub const EXIT_NOT_FOUND: i32 = 4;
 pub const EXIT_REFUSED: i32 = 5;
+pub const EXIT_NEEDS_FULL_DISK_ACCESS: i32 = 6;
 pub const EXIT_INTERNAL: i32 = 10;
 
 #[derive(Debug, Clone)]
@@ -107,6 +108,29 @@ fn norm_serial(s: &str) -> String {
     s.chars().filter(|c| !c.is_whitespace()).collect::<String>().to_lowercase()
 }
 
+/// True when this process runs with root privileges (always false off Unix).
+fn is_root() -> bool {
+    #[cfg(unix)]
+    {
+        unsafe { libc::geteuid() == 0 }
+    }
+    #[cfg(not(unix))]
+    {
+        false
+    }
+}
+
+/// Error for a raw-device open that failed with permission denied (EPERM/EACCES).
+/// Root on macOS that is still denied is blocked by TCC privacy protection, not by missing admin
+/// rights: the app needs Full Disk Access. Everywhere else it means "needs administrator".
+pub fn permission_denied_error(macos: bool, root: bool) -> EngineError {
+    if macos && root {
+        EngineError::new(EXIT_NEEDS_FULL_DISK_ACCESS, "error.needs_full_disk_access")
+    } else {
+        EngineError::new(EXIT_NEEDS_ADMIN, "error.needs_admin")
+    }
+}
+
 /// Wipe confirmation: must equal one of the drive's serials; if the drive reports none, its id.
 pub fn confirm_matches(confirm: &str, serials: &[&str], id: &str) -> bool {
     let c = norm_serial(confirm);
@@ -150,7 +174,7 @@ pub fn run_test(opts: &TestOptions, emit: Arc<Emitter>) -> Result<TestReport, En
     // ---- privilege check: raw device must open READ-ONLY
     match RawDevice::open(&drive, false) {
         Ok(_) => {}
-        Err(e) if e.kind() == std::io::ErrorKind::PermissionDenied => return Err(EngineError::new(EXIT_NEEDS_ADMIN, "error.needs_admin")),
+        Err(e) if e.kind() == std::io::ErrorKind::PermissionDenied => return Err(permission_denied_error(cfg!(target_os = "macos"), is_root())),
         Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Err(EngineError::new(EXIT_NOT_FOUND, "error.drive_not_found")),
         Err(e) => return Err(EngineError::new(EXIT_INTERNAL, "error.cannot_open_device").with("detail", e.to_string())),
     }
@@ -181,6 +205,9 @@ pub fn run_test(opts: &TestOptions, emit: Arc<Emitter>) -> Result<TestReport, En
         platform::unmount(&drive).map_err(|e| EngineError::new(EXIT_INTERNAL, "error.unmount_failed").with("detail", e))?;
         // Writable handle check (also proves we can write raw after unmount).
         if let Err(e) = RawDevice::open(&drive, true) {
+            if e.kind() == std::io::ErrorKind::PermissionDenied {
+                return Err(permission_denied_error(cfg!(target_os = "macos"), is_root()));
+            }
             return Err(EngineError::new(EXIT_INTERNAL, "error.cannot_open_device").with("detail", e.to_string()));
         }
     }
@@ -290,6 +317,15 @@ pub fn out_path(p: &Option<String>) -> Option<PathBuf> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn permission_denied_mapping() {
+        assert_eq!(permission_denied_error(true, true).code, "error.needs_full_disk_access");
+        assert_eq!(permission_denied_error(true, true).exit, EXIT_NEEDS_FULL_DISK_ACCESS);
+        assert_eq!(permission_denied_error(true, false).code, "error.needs_admin");
+        assert_eq!(permission_denied_error(false, true).code, "error.needs_admin");
+        assert_eq!(permission_denied_error(false, false).exit, EXIT_NEEDS_ADMIN);
+    }
 
     #[test]
     fn confirm_rules() {

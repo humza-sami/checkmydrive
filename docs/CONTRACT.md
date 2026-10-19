@@ -19,10 +19,14 @@ All output is JSON. Progress is NDJSON (one JSON object per line). Never prints 
 - `checkmydrive-engine list` → stdout: `DriveInfo[]` (one JSON array). Must work WITHOUT admin rights (basic info via diskutil / lsblk / PowerShell `Get-Disk`+`Get-PhysicalDisk`); SMART-derived fields may be null when unprivileged.
 - `checkmydrive-engine test --drive <id> --mode safe|wipe [--confirm-serial <serial>] [--out <file>]`
   → NDJSON lines of `{"type":"progress",...}` then exactly one `{"type":"report","report":TestReport}`, or `{"type":"error","code":...}`. If `--out` is given, the same lines are also appended to that file (used on macOS, where the elevated process can't pipe to the GUI).
-  - `wipe` requires `--confirm-serial` equal to the drive's serial; ALWAYS refuses the system/boot disk; unmounts the drive first.
+  - `wipe` requires `--confirm-serial`; ALWAYS refuses the system/boot disk; unmounts the drive first. The confirmation token ("what the user must type") is the drive's **serial number** when it has one (compared case- and whitespace-insensitively; either the OS-reported or the SMART serial is accepted). When the drive reports **no serial at all**, the token is its **device id as shown in the UI** (`disk6`, `sdb`, `PhysicalDrive2`; `/dev/` / `/dev/rdisk6` spellings are accepted too). When a serial exists the id is NOT accepted. The app shows the exact token in the wipe dialog, so a non-technical user only copies what they see. Missing token -> `error.confirm_required`, wrong token -> `error.confirm_mismatch` (both exit 5, nothing is touched).
 - `checkmydrive-engine version` → `{"version":"x.y.z","smartctl":"7.x"|null}`
 
-Exit codes: 0 ok, 2 bad args, 3 needs admin, 4 drive not found, 5 refused (system disk / bad confirm), 10 internal.
+Exit codes: 0 ok, 2 bad args, 3 needs admin, 4 drive not found, 5 refused (system disk / bad confirm), 6 needs Full Disk Access (macOS), 10 internal.
+
+Raw-device `PermissionDenied` (EPERM/EACCES) mapping: on macOS when the engine already runs as root (`geteuid() == 0`) the block is TCC privacy protection, so the engine emits `{"type":"error","code":"error.needs_full_disk_access"}` (exit 6): the responsible app (CheckMyDrive.app) needs *System Settings -> Privacy & Security -> Full Disk Access*. In every other case it stays `error.needs_admin` (exit 3). The app answers `needs_full_disk_access` with a dialog and an "Open Settings" button (`x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles`).
+
+macOS identity fallback: `list`/`test` fill missing `serial`, `vendor`, `firmware` of USB drives from the IORegistry (`ioreg -r -c IOUSBHostDevice -l -w0`, the nearest `IOUSBHostDevice` above the disk's `BSD Name`; firmware = `bcdDevice`). Generic vendors ("USB", "Generic") and all-zero serials are ignored. Values from diskutil/system_profiler/SMART always win.
 
 smartctl lookup order: next to the engine executable → `resources/` dir beside it → PATH → `/usr/sbin`, `/usr/local/sbin`, `/opt/homebrew/sbin`, `C:\Program Files\smartmontools\bin`. Missing smartctl ⇒ SMART tests `skipped` with issue `smart.unavailable`, other tests still run.
 

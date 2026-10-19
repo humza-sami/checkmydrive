@@ -1,6 +1,7 @@
 //! macOS: diskutil (plist -> JSON via plutil), /dev/rdiskN raw access, F_NOCACHE.
 
 use crate::report::*;
+use super::macos_usb as usb;
 use crate::util::run_with_timeout;
 use serde_json::Value;
 use std::collections::HashMap;
@@ -229,7 +230,26 @@ pub fn list_drives() -> Vec<DriveInfo> {
     .ok()
     .and_then(|o| serde_json::from_str::<Value>(&o.stdout).ok())
     .unwrap_or(Value::Null);
-    parse_drives(&list, &infos, &profiler)
+    let mut drives = parse_drives(&list, &infos, &profiler);
+    fill_usb_identity(&mut drives, &usb::read_idents);
+    drives
+}
+
+/// IORegistry fallback: fill missing vendor / serial / firmware of USB drives (never overwrites).
+/// `read` is only called when some USB drive actually has a gap.
+fn fill_usb_identity(drives: &mut [DriveInfo], read: &dyn Fn() -> HashMap<String, usb::UsbIdent>) {
+    let gap = |d: &DriveInfo| d.bus.as_deref() == Some("usb") && (d.serial.is_none() || d.vendor.is_none() || d.firmware.is_none());
+    if !drives.iter().any(gap) {
+        return;
+    }
+    let idents = read();
+    for d in drives.iter_mut().filter(|d| gap(d)) {
+        if let Some(i) = idents.get(&d.id) {
+            d.serial = d.serial.take().or_else(|| i.serial.clone());
+            d.vendor = d.vendor.take().or_else(|| i.vendor.clone());
+            d.firmware = d.firmware.take().or_else(|| i.firmware.clone());
+        }
+    }
 }
 
 pub fn unmount(drive: &DriveInfo) -> Result<(), String> {
@@ -346,5 +366,23 @@ mod tests {
         assert_eq!(d[1].mount_points, vec!["/Volumes/STICK"]);
         assert_eq!(d[1].smart_supported, Some(false));
         assert!(d[1].removable);
+    }
+
+    #[test]
+    fn usb_identity_fallback_fills_only_gaps() {
+        let mk = |id: &str, bus: &str, serial: Option<&str>| DriveInfo {
+            id: id.into(), path: format!("/dev/r{id}"), model: None, serial: serial.map(String::from), firmware: None, vendor: None,
+            capacity_bytes: 1, kind: DriveKind::Usb, bus: Some(bus.into()), rotation_rpm: None, removable: true, is_system_disk: false,
+            mount_points: vec![], smart_supported: None, power_on_hours: None, manufacture_date: None,
+        };
+        let mut v = vec![mk("disk6", "usb", None), mk("disk7", "usb", Some("KEEP")), mk("disk0", "nvme", None)];
+        let ident = |s: &str| usb::UsbIdent { serial: Some(s.into()), vendor: Some("V".into()), firmware: Some("1.00".into()) };
+        let map: HashMap<String, usb::UsbIdent> = [("disk6", ident("A")), ("disk7", ident("B")), ("disk0", ident("C"))].into_iter().map(|(k, x)| (k.to_string(), x)).collect();
+        fill_usb_identity(&mut v, &|| map.clone());
+        assert_eq!(v[0].serial.as_deref(), Some("A"));
+        assert_eq!(v[0].vendor.as_deref(), Some("V"));
+        assert_eq!(v[1].serial.as_deref(), Some("KEEP"));
+        assert_eq!(v[1].firmware.as_deref(), Some("1.00"));
+        assert_eq!(v[2].serial, None, "non-USB untouched");
     }
 }

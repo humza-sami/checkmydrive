@@ -42,10 +42,12 @@
       "dangerBody": "Dadurch werden ALLE Daten auf {{model}} unwiderruflich gelöscht. Das lässt sich nicht rückgängig machen. Fahren Sie nur fort, wenn das Laufwerk leer ist oder Sie eine Sicherung haben.",
       "confirmLabel": "Geben Sie zur Bestätigung die Seriennummer des Laufwerks ein: {{serial}}",
       "confirmPlaceholder": "Seriennummer hier eingeben",
-      "noSerial": "Dieses Laufwerk meldet keine Seriennummer, daher ist der vollständige Löschtest nicht verfügbar.",
       "systemBlocked": "Ihr Systemlaufwerk kann niemals gelöscht werden. Es ist nur der sichere Test verfügbar.",
       "mismatch": "Der Text stimmt noch nicht mit der Seriennummer überein.",
-      "start": "Löschen und vollständigen Test starten"
+      "start": "Löschen und vollständigen Test starten",
+      "confirmLabelId": "Dieses Laufwerk meldet keine Seriennummer. Geben Sie zur Bestätigung den Gerätenamen ein: {{id}}",
+      "confirmPlaceholderId": "Gerätenamen hier eingeben",
+      "mismatchId": "Der Text stimmt noch nicht mit dem Gerätenamen überein."
     },
     "duration": "Dauert etwa 3 bis 4 Minuten. Bitte ziehen Sie das Laufwerk nicht ab."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Auf diesem Computer konnte keine Administratorberechtigung angefragt werden.",
     "bad_args": "Der Test konnte wegen eines internen Anfragefehlers nicht gestartet werden.",
     "needs_admin": "Zum Testen dieses Laufwerks ist Administratorberechtigung nötig.",
+    "needs_full_disk_access": "macOS benötigt Ihre Erlaubnis, bevor CheckMyDrive dieses Laufwerk lesen kann. Aktivieren Sie in den Systemeinstellungen den „Festplattenvollzugriff“ für CheckMyDrive und öffnen Sie die App danach erneut.",
     "drive_not_found": "Dieses Laufwerk wurde nicht gefunden. Möglicherweise wurde es abgezogen.",
     "system_disk_refused": "Dies ist das Laufwerk, von dem Ihr Computer läuft, daher kann es nicht gelöscht werden. Wählen Sie ein anderes Laufwerk.",
     "confirm_required": "Bitte bestätigen Sie die Seriennummer des Laufwerks, bevor ein vollständiger Test startet, der Daten löscht.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "Das Laufwerk konnte nicht zum Testen geöffnet werden. Möglicherweise verwendet es ein anderes Programm.",
     "unmount_failed": "Die Volumes des Laufwerks konnten vor dem vollständigen Test nicht sicher getrennt werden. Schließen Sie Programme, die es verwenden, und versuchen Sie es erneut.",
     "internal": "In der Test-Engine ist etwas Unerwartetes schiefgelaufen."
+  },
+  "fda": {
+    "title": "Berechtigung erforderlich",
+    "intro": "macOS schützt Ihre Privatsphäre und hindert CheckMyDrive daran, dieses Laufwerk direkt zu lesen. Mit dem Laufwerk ist alles in Ordnung. Sie müssen dies nur einmal erlauben.",
+    "step1": "Klicken Sie unten auf „Einstellungen öffnen“.",
+    "step2": "Gehen Sie in den Systemeinstellungen zu „Datenschutz & Sicherheit“ und dann zu „Festplattenvollzugriff“.",
+    "step3": "Aktivieren Sie CheckMyDrive. Falls es nicht in der Liste steht, klicken Sie auf die Schaltfläche + und fügen Sie es hinzu.",
+    "step4": "Beenden Sie CheckMyDrive, öffnen Sie es erneut und wiederholen Sie die Prüfung.",
+    "openSettings": "Einstellungen öffnen"
   },
   "common": {
     "loading": "Wird geladen…",

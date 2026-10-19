@@ -42,10 +42,12 @@
       "dangerBody": "Detta raderar permanent ALLA data på {{model}}. Det går inte att ångra. Fortsätt bara om disken är tom eller om du har en säkerhetskopia.",
       "confirmLabel": "Bekräfta genom att skriva diskens serienummer: {{serial}}",
       "confirmPlaceholder": "Skriv serienumret här",
-      "noSerial": "Den här disken uppger inget serienummer, så ett fullständigt raderingstest är inte tillgängligt.",
       "systemBlocked": "Din systemdisk kan aldrig raderas. Bara det säkra testet är tillgängligt.",
       "mismatch": "Texten stämmer inte med serienumret ännu.",
-      "start": "Radera och kör fullständigt test"
+      "start": "Radera och kör fullständigt test",
+      "confirmLabelId": "Den här enheten anger inget serienummer. Bekräfta genom att skriva enhetens namn: {{id}}",
+      "confirmPlaceholderId": "Skriv enhetens namn här",
+      "mismatchId": "Texten matchar inte enhetens namn ännu."
     },
     "duration": "Tar ungefär 3 till 4 minuter. Koppla inte ur disken."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Det gick inte att be om administratörsbehörighet på den här datorn.",
     "bad_args": "Testet kunde inte starta på grund av ett internt förfrågningsfel.",
     "needs_admin": "Administratörsbehörighet krävs för att testa den här disken.",
+    "needs_full_disk_access": "macOS behöver ditt tillstånd innan CheckMyDrive kan läsa den här enheten. Slå på Full skivåtkomst för CheckMyDrive i Systeminställningar och öppna sedan appen igen.",
     "drive_not_found": "Disken hittades inte. Den kan ha kopplats ur.",
     "system_disk_refused": "Det här är disken som din dator startar från, så den kan inte raderas. Välj en annan disk.",
     "confirm_required": "Bekräfta diskens serienummer före ett fullständigt test som raderar data.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "Disken kunde inte öppnas för testning. Ett annat program kanske använder den.",
     "unmount_failed": "Diskens volymer kunde inte kopplas från säkert före det fullständiga testet. Stäng program som använder den och försök igen.",
     "internal": "Något oväntat gick fel inuti testmotorn."
+  },
+  "fda": {
+    "title": "Tillstånd krävs",
+    "intro": "macOS skyddar din integritet genom att hindra CheckMyDrive från att läsa den här enheten direkt. Det är inget fel på enheten. Du behöver bara tillåta det en gång.",
+    "step1": "Klicka på ”Öppna inställningar” nedan.",
+    "step2": "Gå till Integritet och säkerhet i Systeminställningar och sedan till Full skivåtkomst.",
+    "step3": "Slå på CheckMyDrive. Om den inte finns i listan klickar du på knappen + och lägger till den.",
+    "step4": "Stäng CheckMyDrive, öppna den igen och gör om kontrollen.",
+    "openSettings": "Öppna inställningar"
   },
   "common": {
     "loading": "Laddar…",

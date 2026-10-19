@@ -42,10 +42,12 @@
       "dangerBody": "Dette sletter ALLE data på {{model}} permanent. Det kan ikke angres. Fortsett bare hvis disken er tom eller du har en sikkerhetskopi.",
       "confirmLabel": "For å bekrefte, skriv inn diskens serienummer: {{serial}}",
       "confirmPlaceholder": "Skriv serienummeret her",
-      "noSerial": "Denne disken oppgir ikke serienummer, så full slettetest er ikke tilgjengelig.",
       "systemBlocked": "Systemdisken din kan aldri slettes. Bare den sikre testen er tilgjengelig.",
       "mismatch": "Teksten stemmer ikke med serienummeret ennå.",
-      "start": "Slett og kjør full test"
+      "start": "Slett og kjør full test",
+      "confirmLabelId": "Denne stasjonen oppgir ikke noe serienummer. Bekreft ved å skrive enhetsnavnet: {{id}}",
+      "confirmPlaceholderId": "Skriv enhetsnavnet her",
+      "mismatchId": "Teksten stemmer ikke med enhetsnavnet ennå."
     },
     "duration": "Tar omtrent 3 til 4 minutter. Ikke koble fra disken."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Kunne ikke be om administratortillatelse på denne datamaskinen.",
     "bad_args": "Testen kunne ikke starte på grunn av en intern forespørselsfeil.",
     "needs_admin": "Administratortillatelse trengs for å teste denne disken.",
+    "needs_full_disk_access": "macOS trenger tillatelsen din før CheckMyDrive kan lese denne stasjonen. Slå på Full disktilgang for CheckMyDrive i Systeminnstillinger, og åpne deretter appen på nytt.",
     "drive_not_found": "Disken ble ikke funnet. Den kan ha blitt koblet fra.",
     "system_disk_refused": "Dette er disken datamaskinen din kjører fra, så den kan ikke slettes. Velg en annen disk.",
     "confirm_required": "Bekreft diskens serienummer før en full test som sletter data.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "Disken kunne ikke åpnes for testing. Et annet program kan bruke den.",
     "unmount_failed": "Diskens volumer kunne ikke kobles trygt fra før den fulle testen. Lukk programmer som bruker den, og prøv igjen.",
     "internal": "Noe uventet gikk galt inne i testmotoren."
+  },
+  "fda": {
+    "title": "Tillatelse kreves",
+    "intro": "macOS beskytter personvernet ditt ved å hindre CheckMyDrive i å lese denne stasjonen direkte. Det er ikke noe galt med stasjonen. Du trenger bare å tillate det én gang.",
+    "step1": "Klikk på «Åpne innstillinger» nedenfor.",
+    "step2": "Gå til Personvern og sikkerhet i Systeminnstillinger, og deretter til Full disktilgang.",
+    "step3": "Slå på CheckMyDrive. Hvis den ikke står i listen, klikker du på +-knappen og legger den til.",
+    "step4": "Lukk CheckMyDrive, åpne den på nytt og prøv sjekken igjen.",
+    "openSettings": "Åpne innstillinger"
   },
   "common": {
     "loading": "Laster…",

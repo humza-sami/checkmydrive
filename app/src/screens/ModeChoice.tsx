@@ -11,7 +11,7 @@ interface Props {
   onCancel: () => void;
 }
 
-/** XP dialog: pick quick (safe) or full (wipe) test; wipe asks for the serial number. */
+/** XP dialog: pick quick (safe) or full (wipe) test; wipe asks for the serial number (or the device id when the drive has none). */
 export function ModeChoice({ drive, onStart, onCancel }: Props) {
   const { t, i18n } = useTranslation();
   const [mode, setMode] = useState<Mode>("safe");
@@ -19,11 +19,14 @@ export function ModeChoice({ drive, onStart, onCancel }: Props) {
   const uid = useId();
   const model = drive.model ?? t("picker.unknownModel");
   const serial = drive.serial?.trim() ?? "";
-  const blocked = drive.is_system_disk ? "systemBlocked" : !serial ? "noSerial" : null;
-  const matches = serial !== "" && typed.trim() === serial;
+  // What the user must type: the serial number, or the device id (e.g. "disk6") when the drive reports no serial.
+  const token = serial || drive.id;
+  const byId = serial === "";
+  const blocked = drive.is_system_disk ? "systemBlocked" : null;
+  const matches = typed.trim() === token;
   const canStart = mode === "safe" || (!blocked && matches);
 
-  const submit = () => { if (canStart) onStart(mode, mode === "wipe" ? serial : undefined); };
+  const submit = () => { if (canStart) onStart(mode, mode === "wipe" ? token : undefined); };
 
   return (
     <Dialog title={t("menu.startTest")} onClose={onCancel} width={470}>
@@ -57,10 +60,10 @@ export function ModeChoice({ drive, onStart, onCancel }: Props) {
             <div className="grow">
               <div className="dlg-strong">{t("mode.wipe.dangerTitle")}</div>
               <p>{t("mode.wipe.dangerBody", { model })}</p>
-              <label htmlFor={`${uid}-serial`} className="serial-label">{t("mode.wipe.confirmLabel", { serial })}</label>
+              <label htmlFor={`${uid}-serial`} className="serial-label">{byId ? t("mode.wipe.confirmLabelId", { id: token }) : t("mode.wipe.confirmLabel", { serial })}</label>
               <input
                 id={`${uid}-serial`} type="text" className="serial-input" value={typed} onChange={(e) => setTyped(e.target.value)}
-                placeholder={t("mode.wipe.confirmPlaceholder")} autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
+                placeholder={t(byId ? "mode.wipe.confirmPlaceholderId" : "mode.wipe.confirmPlaceholder")} autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
                 aria-invalid={typed !== "" && !matches} aria-describedby={`${uid}-hint`} dir="ltr"
               />
               <p id={`${uid}-hint`} className="serial-hint" aria-live="polite">{typed && !matches ? t("mode.wipe.mismatch") : " "}</p>

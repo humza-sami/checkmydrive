@@ -42,10 +42,12 @@
       "dangerBody": "Cela supprime définitivement TOUTES les données de {{model}}. Cette action est irréversible. Ne continuez que si le disque est vide ou si vous avez une sauvegarde.",
       "confirmLabel": "Pour confirmer, saisissez le numéro de série du disque : {{serial}}",
       "confirmPlaceholder": "Saisissez ici le numéro de série",
-      "noSerial": "Ce disque ne communique pas de numéro de série, le test complet avec effacement n'est donc pas disponible.",
       "systemBlocked": "Votre disque système ne peut jamais être effacé. Seul le test sûr est disponible.",
       "mismatch": "Le texte ne correspond pas encore au numéro de série.",
-      "start": "Effacer et lancer le test complet"
+      "start": "Effacer et lancer le test complet",
+      "confirmLabelId": "Ce disque n’indique pas de numéro de série. Pour confirmer, saisissez le nom de l’appareil : {{id}}",
+      "confirmPlaceholderId": "Saisissez ici le nom de l’appareil",
+      "mismatchId": "Le texte ne correspond pas encore au nom de l’appareil."
     },
     "duration": "Dure environ 3 à 4 minutes. Veuillez ne pas débrancher le disque."
   },
@@ -418,6 +420,7 @@
     "elevation_unavailable": "Impossible de demander l'autorisation de l'administrateur sur cet ordinateur.",
     "bad_args": "Le test n'a pas pu démarrer à cause d'une erreur interne de requête.",
     "needs_admin": "L'autorisation de l'administrateur est nécessaire pour tester ce disque.",
+    "needs_full_disk_access": "macOS doit d’abord obtenir votre autorisation pour que CheckMyDrive puisse lire ce disque. Activez « Accès complet au disque » pour CheckMyDrive dans les Réglages Système, puis rouvrez l’app.",
     "drive_not_found": "Ce disque est introuvable. Il a peut-être été débranché.",
     "system_disk_refused": "C'est le disque à partir duquel votre ordinateur fonctionne, il ne peut donc pas être effacé. Choisissez un autre disque.",
     "confirm_required": "Veuillez confirmer le numéro de série du disque avant un test complet qui efface les données.",
@@ -425,6 +428,15 @@
     "cannot_open_device": "Le disque n'a pas pu être ouvert pour le test. Un autre programme l'utilise peut-être.",
     "unmount_failed": "Les volumes du disque n'ont pas pu être déconnectés en toute sécurité avant le test complet. Fermez les programmes qui l'utilisent et réessayez.",
     "internal": "Un problème inattendu est survenu dans le moteur de test."
+  },
+  "fda": {
+    "title": "Autorisation nécessaire",
+    "intro": "macOS protège votre vie privée en empêchant CheckMyDrive de lire ce disque directement. Il n’y a aucun problème avec le disque. Vous ne devez l’autoriser qu’une seule fois.",
+    "step1": "Cliquez sur « Ouvrir les réglages » ci-dessous.",
+    "step2": "Dans Réglages Système, allez dans « Confidentialité et sécurité », puis « Accès complet au disque ».",
+    "step3": "Activez CheckMyDrive. S’il ne figure pas dans la liste, cliquez sur le bouton + pour l’ajouter.",
+    "step4": "Fermez CheckMyDrive, rouvrez-le, puis relancez la vérification.",
+    "openSettings": "Ouvrir les réglages"
   },
   "common": {
     "loading": "Chargement…",

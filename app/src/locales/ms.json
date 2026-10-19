@@ -42,10 +42,12 @@
       "dangerBody": "Ini akan memadam SEMUA data pada {{model}} secara kekal. Ia tidak boleh dibuat asal. Teruskan hanya jika pemacu itu kosong atau anda mempunyai sandaran.",
       "confirmLabel": "Untuk mengesahkan, taip nombor siri pemacu: {{serial}}",
       "confirmPlaceholder": "Taip nombor siri di sini",
-      "noSerial": "Pemacu ini tidak melaporkan nombor siri, jadi ujian padam penuh tidak tersedia.",
       "systemBlocked": "Cakera sistem anda tidak boleh dipadam sama sekali. Hanya ujian selamat tersedia.",
       "mismatch": "Teks itu belum sepadan dengan nombor siri.",
-      "start": "Padam dan jalankan ujian penuh"
+      "start": "Padam dan jalankan ujian penuh",
+      "confirmLabelId": "Pemacu ini tidak melaporkan nombor siri. Untuk mengesahkan, taip nama peranti: {{id}}",
+      "confirmPlaceholderId": "Taip nama peranti di sini",
+      "mismatchId": "Teks belum sepadan dengan nama peranti."
     },
     "duration": "Mengambil masa kira-kira 3 hingga 4 minit. Sila jangan cabut pemacu."
   },
@@ -374,6 +376,7 @@
     "elevation_unavailable": "Tidak dapat meminta kebenaran pentadbir pada komputer ini.",
     "bad_args": "Ujian tidak dapat dimulakan kerana ralat permintaan dalaman.",
     "needs_admin": "Kebenaran pentadbir diperlukan untuk menguji pemacu ini.",
+    "needs_full_disk_access": "macOS memerlukan kebenaran anda sebelum CheckMyDrive boleh membaca pemacu ini. Hidupkan “Capaian Cakera Penuh” untuk CheckMyDrive dalam Tetapan Sistem, kemudian buka semula apl.",
     "drive_not_found": "Pemacu itu tidak ditemui. Ia mungkin telah dicabut.",
     "system_disk_refused": "Ini ialah cakera tempat komputer anda berjalan, jadi ia tidak boleh dipadam. Pilih pemacu lain.",
     "confirm_required": "Sila sahkan nombor siri pemacu sebelum ujian penuh yang memadam data.",
@@ -381,6 +384,15 @@
     "cannot_open_device": "Pemacu tidak dapat dibuka untuk diuji. Program lain mungkin sedang menggunakannya.",
     "unmount_failed": "Volum pemacu tidak dapat diputuskan dengan selamat sebelum ujian penuh. Tutup mana-mana program yang menggunakannya dan cuba lagi.",
     "internal": "Sesuatu yang tidak dijangka berlaku di dalam enjin ujian."
+  },
+  "fda": {
+    "title": "Kebenaran diperlukan",
+    "intro": "macOS melindungi privasi anda dengan menghalang CheckMyDrive daripada membaca pemacu ini secara terus. Tiada masalah pada pemacu. Anda hanya perlu membenarkannya sekali.",
+    "step1": "Klik “Buka Tetapan” di bawah.",
+    "step2": "Dalam Tetapan Sistem, pergi ke “Privasi & Keselamatan”, kemudian “Capaian Cakera Penuh”.",
+    "step3": "Hidupkan CheckMyDrive. Jika tiada dalam senarai, klik butang + dan tambahkannya.",
+    "step4": "Tutup CheckMyDrive, buka semula, dan cuba semakan sekali lagi.",
+    "openSettings": "Buka Tetapan"
   },
   "common": {
     "loading": "Memuatkan…",

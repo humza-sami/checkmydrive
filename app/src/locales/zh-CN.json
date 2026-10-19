@@ -42,10 +42,12 @@
       "dangerBody": "这将永久删除 {{model}} 上的所有数据，且无法撤销。只有在硬盘是空的或您已备份时才继续。",
       "confirmLabel": "为确认操作，请输入硬盘的序列号：{{serial}}",
       "confirmPlaceholder": "请在此输入序列号",
-      "noSerial": "这块硬盘没有提供序列号，因此无法进行完整擦除检测。",
       "systemBlocked": "系统盘绝不能被擦除，只能使用安全检测。",
       "mismatch": "输入的内容与序列号还不一致。",
-      "start": "擦除并运行完整检测"
+      "start": "擦除并运行完整检测",
+      "confirmLabelId": "此驱动器未报告序列号。请输入设备名称以确认：{{id}}",
+      "confirmPlaceholderId": "在此输入设备名称",
+      "mismatchId": "输入的内容与设备名称尚不一致。"
     },
     "duration": "大约需要 3 到 4 分钟，请不要拔出硬盘。"
   },
@@ -374,6 +376,7 @@
     "elevation_unavailable": "无法在这台电脑上请求管理员权限。",
     "bad_args": "由于内部请求错误，检测无法开始。",
     "needs_admin": "检测这块硬盘需要管理员权限。",
+    "needs_full_disk_access": "CheckMyDrive 需要先获得 macOS 的许可才能读取此驱动器。请在“系统设置”中为 CheckMyDrive 打开“完全磁盘访问权限”，然后重新打开应用。",
     "drive_not_found": "找不到那块硬盘，它可能已被拔出。",
     "system_disk_refused": "这是您的电脑正在运行所用的硬盘，因此不能被擦除。请选择其他硬盘。",
     "confirm_required": "在进行会清除数据的完整检测之前，请先确认硬盘的序列号。",
@@ -381,6 +384,15 @@
     "cannot_open_device": "无法打开硬盘进行检测，可能有其他程序正在使用它。",
     "unmount_failed": "完整检测之前，无法安全断开硬盘的分区。请关闭所有正在使用它的程序后重试。",
     "internal": "检测引擎内部出现了意外错误。"
+  },
+  "fda": {
+    "title": "需要权限",
+    "intro": "macOS 为保护您的隐私，会阻止 CheckMyDrive 直接读取此驱动器。驱动器本身没有问题。您只需允许一次即可。",
+    "step1": "点击下方的“打开设置”。",
+    "step2": "在“系统设置”中，前往“隐私与安全性”，然后选择“完全磁盘访问权限”。",
+    "step3": "打开 CheckMyDrive 的开关。如果列表中没有，请点击 + 按钮添加。",
+    "step4": "退出 CheckMyDrive，重新打开，然后再次进行检测。",
+    "openSettings": "打开设置"
   },
   "common": {
     "loading": "加载中…",

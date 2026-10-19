@@ -42,10 +42,12 @@
       "dangerBody": "Hiermee worden ALLE gegevens op {{model}} definitief verwijderd. Dit kan niet ongedaan worden gemaakt. Ga alleen door als de schijf leeg is of je een back-up hebt.",
       "confirmLabel": "Typ ter bevestiging het serienummer van de schijf: {{serial}}",
       "confirmPlaceholder": "Typ hier het serienummer",
-      "noSerial": "Deze schijf geeft geen serienummer door, dus een volledige wistest is niet beschikbaar.",
       "systemBlocked": "Je systeemschijf kan nooit worden gewist. Alleen de veilige test is beschikbaar.",
       "mismatch": "De tekst komt nog niet overeen met het serienummer.",
-      "start": "Wissen en volledige test uitvoeren"
+      "start": "Wissen en volledige test uitvoeren",
+      "confirmLabelId": "Deze schijf meldt geen serienummer. Typ ter bevestiging de apparaatnaam: {{id}}",
+      "confirmPlaceholderId": "Typ hier de apparaatnaam",
+      "mismatchId": "De tekst komt nog niet overeen met de apparaatnaam."
     },
     "duration": "Duurt ongeveer 3 tot 4 minuten. Haal de schijf niet los."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Er kon op deze computer niet om beheerdersrechten worden gevraagd.",
     "bad_args": "De test kon niet starten door een interne fout in het verzoek.",
     "needs_admin": "Beheerdersrechten zijn nodig om deze schijf te testen.",
+    "needs_full_disk_access": "macOS heeft uw toestemming nodig voordat CheckMyDrive deze schijf kan lezen. Schakel ‘Volledige schijftoegang’ in voor CheckMyDrive in Systeeminstellingen en open de app daarna opnieuw.",
     "drive_not_found": "Die schijf is niet gevonden. Hij is misschien losgekoppeld.",
     "system_disk_refused": "Dit is de schijf waarvan je computer draait, dus hij kan niet worden gewist. Kies een andere schijf.",
     "confirm_required": "Bevestig het serienummer van de schijf voordat je een volledige test uitvoert die gegevens wist.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "De schijf kon niet worden geopend om te testen. Misschien gebruikt een ander programma hem.",
     "unmount_failed": "De volumes van de schijf konden vóór de volledige test niet veilig worden losgekoppeld. Sluit programma's die de schijf gebruiken en probeer het opnieuw.",
     "internal": "Er ging iets onverwachts mis in de testengine."
+  },
+  "fda": {
+    "title": "Toestemming nodig",
+    "intro": "macOS beschermt uw privacy door te voorkomen dat CheckMyDrive deze schijf rechtstreeks leest. Er is niets mis met de schijf. U hoeft dit maar één keer toe te staan.",
+    "step1": "Klik hieronder op ‘Open instellingen’.",
+    "step2": "Ga in Systeeminstellingen naar ‘Privacy en beveiliging’ en daarna naar ‘Volledige schijftoegang’.",
+    "step3": "Schakel CheckMyDrive in. Staat het niet in de lijst, klik dan op de knop + en voeg het toe.",
+    "step4": "Sluit CheckMyDrive, open het opnieuw en probeer de controle nogmaals.",
+    "openSettings": "Open instellingen"
   },
   "common": {
     "loading": "Laden…",

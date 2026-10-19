@@ -42,10 +42,12 @@
       "dangerBody": "Bu işlem {{model}} üzerindeki TÜM verileri kalıcı olarak siler. Geri alınamaz. Yalnızca sürücü boşsa veya yedeğiniz varsa devam edin.",
       "confirmLabel": "Onaylamak için sürücünün seri numarasını yazın: {{serial}}",
       "confirmPlaceholder": "Seri numarasını buraya yazın",
-      "noSerial": "Bu sürücü seri numarası bildirmiyor, bu yüzden tam silme testi kullanılamıyor.",
       "systemBlocked": "Sistem diskiniz asla silinemez. Yalnızca güvenli test kullanılabilir.",
       "mismatch": "Yazdığınız metin henüz seri numarasıyla eşleşmiyor.",
-      "start": "Sil ve tam testi çalıştır"
+      "start": "Sil ve tam testi çalıştır",
+      "confirmLabelId": "Bu sürücü bir seri numarası bildirmiyor. Onaylamak için aygıt adını yazın: {{id}}",
+      "confirmPlaceholderId": "Aygıt adını buraya yazın",
+      "mismatchId": "Yazdığınız metin henüz aygıt adıyla eşleşmiyor."
     },
     "duration": "Yaklaşık 3 ila 4 dakika sürer. Lütfen sürücüyü çıkarmayın."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Bu bilgisayarda yönetici izni istenemedi.",
     "bad_args": "Dahili bir istek hatası nedeniyle test başlatılamadı.",
     "needs_admin": "Bu sürücüyü test etmek için yönetici izni gerekli.",
+    "needs_full_disk_access": "CheckMyDrive'ın bu sürücüyü okuyabilmesi için macOS'in izninize ihtiyacı var. Sistem Ayarları'nda CheckMyDrive için “Tam Disk Erişimi”ni açın, ardından uygulamayı yeniden başlatın.",
     "drive_not_found": "Bu sürücü bulunamadı. Çıkarılmış olabilir.",
     "system_disk_refused": "Bu, bilgisayarınızın üzerinden çalıştığı disk, bu yüzden silinemez. Başka bir sürücü seçin.",
     "confirm_required": "Verileri silen tam testten önce lütfen sürücünün seri numarasını onaylayın.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "Sürücü test için açılamadı. Başka bir program kullanıyor olabilir.",
     "unmount_failed": "Tam testten önce sürücünün bölümleri güvenle ayrılamadı. Sürücüyü kullanan programları kapatıp tekrar deneyin.",
     "internal": "Test motorunun içinde beklenmedik bir sorun oluştu."
+  },
+  "fda": {
+    "title": "İzin gerekli",
+    "intro": "macOS, gizliliğinizi korumak için CheckMyDrive'ın bu sürücüyü doğrudan okumasını engelliyor. Sürücüde bir sorun yok. İzni yalnızca bir kez vermeniz yeterli.",
+    "step1": "Aşağıdaki “Ayarları Aç” düğmesine tıklayın.",
+    "step2": "Sistem Ayarları'nda “Gizlilik ve Güvenlik”e, ardından “Tam Disk Erişimi”ne gidin.",
+    "step3": "CheckMyDrive'ı açın. Listede yoksa + düğmesine tıklayıp ekleyin.",
+    "step4": "CheckMyDrive'ı kapatıp yeniden açın ve kontrolü tekrar deneyin.",
+    "openSettings": "Ayarları Aç"
   },
   "common": {
     "loading": "Yükleniyor…",

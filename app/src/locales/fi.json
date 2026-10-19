@@ -42,10 +42,12 @@
       "dangerBody": "Tämä poistaa pysyvästi KAIKEN aseman {{model}} tiedon. Sitä ei voi perua. Jatka vain, jos asema on tyhjä tai sinulla on varmuuskopio.",
       "confirmLabel": "Vahvista kirjoittamalla aseman sarjanumero: {{serial}}",
       "confirmPlaceholder": "Kirjoita sarjanumero tähän",
-      "noSerial": "Tämä asema ei ilmoita sarjanumeroa, joten täyttä tyhjennystestiä ei voi käyttää.",
       "systemBlocked": "Järjestelmälevyä ei voi koskaan tyhjentää. Vain turvallinen testi on käytettävissä.",
       "mismatch": "Teksti ei vielä vastaa sarjanumeroa.",
-      "start": "Tyhjennä ja suorita täysi testi"
+      "start": "Tyhjennä ja suorita täysi testi",
+      "confirmLabelId": "Tämä asema ei ilmoita sarjanumeroa. Vahvista kirjoittamalla laitteen nimi: {{id}}",
+      "confirmPlaceholderId": "Kirjoita laitteen nimi tähän",
+      "mismatchId": "Teksti ei vielä vastaa laitteen nimeä."
     },
     "duration": "Kestää noin 3–4 minuuttia. Älä irrota asemaa."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Järjestelmänvalvojan lupaa ei voitu pyytää tällä tietokoneella.",
     "bad_args": "Testiä ei voitu käynnistää sisäisen pyyntövirheen vuoksi.",
     "needs_admin": "Tämän aseman testaaminen vaatii järjestelmänvalvojan luvan.",
+    "needs_full_disk_access": "macOS tarvitsee lupasi, ennen kuin CheckMyDrive voi lukea tätä asemaa. Ota CheckMyDrivelle käyttöön ”Täysi levyn käyttöoikeus” Järjestelmäasetuksissa ja avaa sovellus sitten uudelleen.",
     "drive_not_found": "Asemaa ei löytynyt. Se on voitu irrottaa.",
     "system_disk_refused": "Tämä on asema, jolta tietokoneesi toimii, joten sitä ei voi tyhjentää. Valitse toinen asema.",
     "confirm_required": "Vahvista aseman sarjanumero ennen täyttä testiä, joka poistaa tietoja.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "Asemaa ei voitu avata testausta varten. Jokin toinen ohjelma voi käyttää sitä.",
     "unmount_failed": "Aseman osioita ei voitu irrottaa turvallisesti ennen täyttä testiä. Sulje sitä käyttävät ohjelmat ja yritä uudelleen.",
     "internal": "Testimoottorissa tapahtui jotain odottamatonta."
+  },
+  "fda": {
+    "title": "Lupa tarvitaan",
+    "intro": "macOS suojaa yksityisyyttäsi estämällä CheckMyDrivea lukemasta tätä asemaa suoraan. Asemassa ei ole mitään vikaa. Lupa tarvitsee antaa vain kerran.",
+    "step1": "Napsauta alla olevaa ”Avaa asetukset” -painiketta.",
+    "step2": "Siirry Järjestelmäasetuksissa kohtaan ”Yksityisyys ja turvallisuus” ja sitten ”Täysi levyn käyttöoikeus”.",
+    "step3": "Ota CheckMyDrive käyttöön. Jos sovellusta ei ole luettelossa, napsauta + -painiketta ja lisää se.",
+    "step4": "Sulje CheckMyDrive, avaa se uudelleen ja yritä tarkistusta uudelleen.",
+    "openSettings": "Avaa asetukset"
   },
   "common": {
     "loading": "Ladataan…",

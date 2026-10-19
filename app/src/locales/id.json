@@ -42,10 +42,12 @@
       "dangerBody": "Ini akan menghapus SEMUA data di {{model}} secara permanen. Tindakan ini tidak dapat dibatalkan. Lanjutkan hanya jika drive kosong atau Anda punya cadangan.",
       "confirmLabel": "Untuk mengonfirmasi, ketik nomor seri drive: {{serial}}",
       "confirmPlaceholder": "Ketik nomor seri di sini",
-      "noSerial": "Drive ini tidak melaporkan nomor seri, jadi tes hapus penuh tidak tersedia.",
       "systemBlocked": "Disk sistem Anda tidak akan pernah bisa dihapus. Hanya tes aman yang tersedia.",
       "mismatch": "Teks yang diketik belum sama dengan nomor seri.",
-      "start": "Hapus dan jalankan tes penuh"
+      "start": "Hapus dan jalankan tes penuh",
+      "confirmLabelId": "Drive ini tidak melaporkan nomor seri. Untuk mengonfirmasi, ketik nama perangkatnya: {{id}}",
+      "confirmPlaceholderId": "Ketik nama perangkat di sini",
+      "mismatchId": "Teks belum cocok dengan nama perangkat."
     },
     "duration": "Memakan waktu sekitar 3 sampai 4 menit. Mohon jangan cabut drive."
   },
@@ -374,6 +376,7 @@
     "elevation_unavailable": "Tidak dapat meminta izin administrator di komputer ini.",
     "bad_args": "Tes tidak dapat dimulai karena kesalahan permintaan internal.",
     "needs_admin": "Izin administrator diperlukan untuk menguji drive ini.",
+    "needs_full_disk_access": "macOS memerlukan izin Anda sebelum CheckMyDrive dapat membaca drive ini. Aktifkan “Akses Disk Penuh” untuk CheckMyDrive di Pengaturan Sistem, lalu buka kembali aplikasinya.",
     "drive_not_found": "Drive itu tidak ditemukan. Mungkin sudah dicabut.",
     "system_disk_refused": "Ini adalah disk tempat komputer Anda berjalan, sehingga tidak dapat dihapus. Pilih drive lain.",
     "confirm_required": "Mohon konfirmasi nomor seri drive sebelum tes penuh yang menghapus data.",
@@ -381,6 +384,15 @@
     "cannot_open_device": "Drive tidak dapat dibuka untuk diuji. Mungkin program lain sedang memakainya.",
     "unmount_failed": "Volume drive tidak dapat diputuskan dengan aman sebelum tes penuh. Tutup program yang memakainya lalu coba lagi.",
     "internal": "Terjadi kesalahan tak terduga di dalam mesin tes."
+  },
+  "fda": {
+    "title": "Izin diperlukan",
+    "intro": "macOS melindungi privasi Anda dengan mencegah CheckMyDrive membaca drive ini secara langsung. Tidak ada masalah pada drive. Anda hanya perlu mengizinkannya sekali.",
+    "step1": "Klik “Buka Pengaturan” di bawah.",
+    "step2": "Di Pengaturan Sistem, buka “Privasi & Keamanan”, lalu “Akses Disk Penuh”.",
+    "step3": "Aktifkan CheckMyDrive. Jika tidak ada dalam daftar, klik tombol + dan tambahkan.",
+    "step4": "Tutup CheckMyDrive, buka kembali, lalu ulangi pemeriksaan.",
+    "openSettings": "Buka Pengaturan"
   },
   "common": {
     "loading": "Memuat…",

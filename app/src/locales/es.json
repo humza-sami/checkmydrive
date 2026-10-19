@@ -42,10 +42,12 @@
       "dangerBody": "Esto elimina para siempre TODOS los datos de {{model}}. No se puede deshacer. Continúe solo si el disco está vacío o tiene una copia de seguridad.",
       "confirmLabel": "Para confirmar, escriba el número de serie del disco: {{serial}}",
       "confirmPlaceholder": "Escriba aquí el número de serie",
-      "noSerial": "Este disco no informa de su número de serie, por lo que no se puede hacer la prueba completa con borrado.",
       "systemBlocked": "El disco del sistema nunca se puede borrar. Solo está disponible la prueba segura.",
       "mismatch": "El texto todavía no coincide con el número de serie.",
-      "start": "Borrar y hacer la prueba completa"
+      "start": "Borrar y hacer la prueba completa",
+      "confirmLabelId": "Esta unidad no informa de un número de serie. Para confirmar, escribe el nombre del dispositivo: {{id}}",
+      "confirmPlaceholderId": "Escribe aquí el nombre del dispositivo",
+      "mismatchId": "El texto aún no coincide con el nombre del dispositivo."
     },
     "duration": "Dura unos 3 o 4 minutos. Por favor, no desconecte el disco."
   },
@@ -418,6 +420,7 @@
     "elevation_unavailable": "No se pudo pedir permiso de administrador en este ordenador.",
     "bad_args": "La prueba no pudo iniciarse por un error interno en la solicitud.",
     "needs_admin": "Se necesita permiso de administrador para probar este disco.",
+    "needs_full_disk_access": "macOS necesita tu permiso para que CheckMyDrive pueda leer esta unidad. Activa «Acceso total al disco» para CheckMyDrive en Ajustes del Sistema y vuelve a abrir la app.",
     "drive_not_found": "No se encontró ese disco. Puede que lo hayan desconectado.",
     "system_disk_refused": "Este es el disco desde el que funciona su ordenador, así que no se puede borrar. Elija otro disco.",
     "confirm_required": "Confirme el número de serie del disco antes de una prueba completa que borra datos.",
@@ -425,6 +428,15 @@
     "cannot_open_device": "No se pudo abrir el disco para probarlo. Puede que otro programa lo esté usando.",
     "unmount_failed": "No se pudieron desconectar con seguridad los volúmenes del disco antes de la prueba completa. Cierre los programas que lo usen e inténtelo de nuevo.",
     "internal": "Algo inesperado salió mal dentro del motor de pruebas."
+  },
+  "fda": {
+    "title": "Se necesita permiso",
+    "intro": "macOS protege tu privacidad impidiendo que CheckMyDrive lea esta unidad directamente. No le pasa nada a la unidad. Solo tienes que permitirlo una vez.",
+    "step1": "Haz clic en «Abrir Ajustes» más abajo.",
+    "step2": "En Ajustes del Sistema, ve a «Privacidad y seguridad» y después a «Acceso total al disco».",
+    "step3": "Activa CheckMyDrive. Si no aparece en la lista, haz clic en el botón + y añádelo.",
+    "step4": "Cierra CheckMyDrive, vuelve a abrirlo y repite la comprobación.",
+    "openSettings": "Abrir Ajustes"
   },
   "common": {
     "loading": "Cargando…",

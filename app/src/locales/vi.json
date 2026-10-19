@@ -42,10 +42,12 @@
       "dangerBody": "Thao tác này xóa vĩnh viễn TOÀN BỘ dữ liệu trên {{model}}. Không thể hoàn tác. Chỉ tiếp tục nếu ổ đĩa trống hoặc bạn đã có bản sao lưu.",
       "confirmLabel": "Để xác nhận, hãy nhập số sê-ri của ổ đĩa: {{serial}}",
       "confirmPlaceholder": "Nhập số sê-ri vào đây",
-      "noSerial": "Ổ đĩa này không cung cấp số sê-ri, nên không thể kiểm tra xóa toàn bộ.",
       "systemBlocked": "Ổ đĩa hệ thống của bạn không bao giờ được phép xóa. Chỉ có kiểm tra an toàn.",
       "mismatch": "Nội dung bạn nhập chưa khớp với số sê-ri.",
-      "start": "Xóa và chạy kiểm tra đầy đủ"
+      "start": "Xóa và chạy kiểm tra đầy đủ",
+      "confirmLabelId": "Ổ đĩa này không báo số sê-ri. Để xác nhận, hãy nhập tên thiết bị: {{id}}",
+      "confirmPlaceholderId": "Nhập tên thiết bị vào đây",
+      "mismatchId": "Nội dung nhập chưa khớp với tên thiết bị."
     },
     "duration": "Mất khoảng 3 đến 4 phút. Vui lòng không rút ổ đĩa."
   },
@@ -374,6 +376,7 @@
     "elevation_unavailable": "Không thể yêu cầu quyền quản trị viên trên máy tính này.",
     "bad_args": "Không thể bắt đầu kiểm tra vì lỗi yêu cầu nội bộ.",
     "needs_admin": "Cần quyền quản trị viên để kiểm tra ổ đĩa này.",
+    "needs_full_disk_access": "macOS cần bạn cho phép trước khi CheckMyDrive có thể đọc ổ đĩa này. Hãy bật “Quyền truy cập toàn bộ ổ đĩa” cho CheckMyDrive trong Cài đặt hệ thống, rồi mở lại ứng dụng.",
     "drive_not_found": "Không tìm thấy ổ đĩa đó. Có thể nó đã bị rút ra.",
     "system_disk_refused": "Đây là ổ đĩa mà máy tính của bạn đang chạy, nên không thể xóa. Hãy chọn ổ đĩa khác.",
     "confirm_required": "Vui lòng xác nhận số sê-ri của ổ đĩa trước khi chạy bài kiểm tra đầy đủ có xóa dữ liệu.",
@@ -381,6 +384,15 @@
     "cannot_open_device": "Không thể mở ổ đĩa để kiểm tra. Có thể một chương trình khác đang dùng nó.",
     "unmount_failed": "Không thể ngắt kết nối an toàn các phân vùng của ổ đĩa trước bài kiểm tra đầy đủ. Hãy đóng các chương trình đang dùng nó rồi thử lại.",
     "internal": "Đã xảy ra sự cố bất ngờ bên trong bộ máy kiểm tra."
+  },
+  "fda": {
+    "title": "Cần cấp quyền",
+    "intro": "macOS bảo vệ quyền riêng tư của bạn bằng cách chặn CheckMyDrive đọc trực tiếp ổ đĩa này. Ổ đĩa không có vấn đề gì. Bạn chỉ cần cho phép một lần.",
+    "step1": "Nhấp vào “Mở Cài đặt” bên dưới.",
+    "step2": "Trong Cài đặt hệ thống, vào “Quyền riêng tư & Bảo mật”, rồi chọn “Quyền truy cập toàn bộ ổ đĩa”.",
+    "step3": "Bật CheckMyDrive. Nếu chưa có trong danh sách, hãy nhấp nút + và thêm vào.",
+    "step4": "Đóng CheckMyDrive, mở lại và kiểm tra lần nữa.",
+    "openSettings": "Mở Cài đặt"
   },
   "common": {
     "loading": "Đang tải…",

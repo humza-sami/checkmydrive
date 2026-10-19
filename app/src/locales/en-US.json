@@ -42,10 +42,12 @@
       "dangerBody": "This permanently deletes ALL data on {{model}}. It cannot be undone. Only continue if the drive is empty or you have a backup.",
       "confirmLabel": "To confirm, type the drive's serial number: {{serial}}",
       "confirmPlaceholder": "Type the serial number here",
-      "noSerial": "This drive does not report a serial number, so a full wipe test is not available.",
       "systemBlocked": "Your system disk can never be wiped. Only the safe test is available.",
       "mismatch": "The text does not match the serial number yet.",
-      "start": "Erase and run full test"
+      "start": "Erase and run full test",
+      "confirmLabelId": "This drive does not report a serial number. To confirm, type its device name: {{id}}",
+      "confirmPlaceholderId": "Type the device name here",
+      "mismatchId": "The text does not match the device name yet."
     },
     "duration": "Takes about 3 to 4 minutes. Please do not unplug the drive."
   },
@@ -396,6 +398,7 @@
     "elevation_unavailable": "Could not ask for administrator permission on this computer.",
     "bad_args": "The test could not start because of an internal request error.",
     "needs_admin": "Administrator permission is needed to test this drive.",
+    "needs_full_disk_access": "macOS needs your permission before CheckMyDrive can read this drive. Turn on Full Disk Access for CheckMyDrive in System Settings, then reopen the app.",
     "drive_not_found": "That drive could not be found. It may have been unplugged.",
     "system_disk_refused": "This is the disk your computer runs from, so it cannot be erased. Choose another drive.",
     "confirm_required": "Please confirm the drive's serial number before a full test that erases data.",
@@ -403,6 +406,15 @@
     "cannot_open_device": "The drive could not be opened for testing. Another program may be using it.",
     "unmount_failed": "The drive's volumes could not be safely disconnected before the full test. Close any programs using it and try again.",
     "internal": "Something unexpected went wrong inside the test engine."
+  },
+  "fda": {
+    "title": "Permission needed",
+    "intro": "macOS protects your privacy by blocking CheckMyDrive from reading this drive directly. Nothing is wrong with the drive. You only need to allow it once.",
+    "step1": "Click \"Open Settings\" below.",
+    "step2": "In System Settings, go to Privacy & Security, then Full Disk Access.",
+    "step3": "Turn on CheckMyDrive. If it is not in the list, click the + button and add it.",
+    "step4": "Close CheckMyDrive, open it again, and retry the check.",
+    "openSettings": "Open Settings"
   },
   "common": {
     "loading": "Loading…",
