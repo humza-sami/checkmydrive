@@ -1,5 +1,6 @@
 //! Orchestration: resolve drive, safety checks, prepare, run the seven tests, score.
 
+use crate::blockdev::DriveBackend;
 use crate::platform::{self, RawDevice};
 use crate::progress::Emitter;
 use crate::report::*;
@@ -213,9 +214,40 @@ pub fn run_test(opts: &TestOptions, emit: Arc<Emitter>) -> Result<TestReport, En
     }
     emit.progress(Phase::Prepare, 100.0, "progress.prepare.ready", None);
 
-    // ---- context, watchdog, heartbeat
+    let report = run_suite(Suite {
+        drive,
+        mode: opts.mode,
+        emit,
+        smartctl,
+        reading,
+        backend: None,
+        cancel: None,
+        started,
+        started_at,
+    });
+    Ok(report)
+}
+
+/// Everything `run_suite` needs once the drive is resolved, authorised and its SMART baseline read.
+pub struct Suite {
+    pub drive: DriveInfo,
+    pub mode: Mode,
+    pub emit: Arc<Emitter>,
+    pub smartctl: Option<PathBuf>,
+    pub reading: SmartReading,
+    /// `Some` for drives that are not reachable through the host OS (supplied by an embedding host); `None` on desktop.
+    pub backend: Option<Arc<dyn DriveBackend>>,
+    /// Set by the caller to stop the run early.
+    pub cancel: Option<Arc<AtomicBool>>,
+    pub started: Instant,
+    pub started_at: String,
+}
+
+/// Run the seven tests (heartbeat + stability watchdog included), then score. Shared by the CLI and embedding hosts.
+pub fn run_suite(s: Suite) -> TestReport {
+    let Suite { drive, mode, emit, smartctl, reading, backend, cancel, started, started_at } = s;
     let stab = Arc::new(Stab::default());
-    let ctx = Arc::new(Ctx { drive: drive.clone(), mode: opts.mode, emit: emit.clone(), smartctl: smartctl.clone(), smart: reading, stab: stab.clone() });
+    let ctx = Arc::new(Ctx { drive: drive.clone(), mode, emit: emit.clone(), smartctl, smart: reading, stab: stab.clone(), backend: backend.clone() });
     let stop = Arc::new(AtomicBool::new(false));
     let hb = {
         let (emit, stop) = (emit.clone(), stop.clone());
@@ -227,14 +259,21 @@ pub fn run_test(opts: &TestOptions, emit: Arc<Emitter>) -> Result<TestReport, En
         })
     };
     let wd = {
-        let (drive, stab, stop) = (drive.clone(), stab.clone(), stop.clone());
+        let (drive, stab, stop, backend, cancel) = (drive.clone(), stab.clone(), stop.clone(), backend.clone(), cancel.clone());
         std::thread::spawn(move || {
             let mut last = Instant::now();
             while !stop.load(Ordering::Relaxed) {
-                std::thread::sleep(Duration::from_millis(250));
+                std::thread::sleep(Duration::from_millis(100));
+                if cancel.as_ref().map(|c| c.load(Ordering::Relaxed)).unwrap_or(false) {
+                    stab.cancelled.store(true, Ordering::SeqCst);
+                }
                 if last.elapsed() >= Duration::from_secs(5) {
                     last = Instant::now();
-                    if platform::present(&drive) {
+                    let here = match &backend {
+                        Some(b) => b.is_present(),
+                        None => platform::present(&drive),
+                    };
+                    if here {
                         stab.mark_back();
                     } else {
                         stab.mark_gone();
@@ -265,9 +304,9 @@ pub fn run_test(opts: &TestOptions, emit: Arc<Emitter>) -> Result<TestReport, En
 
     emit.progress(Phase::Finish, 20.0, "progress.finish.scoring", None);
     let tests = vec![r_info, r_smart, r_selftest, r_surface, r_write, r_cap, r_stab];
-    let report = build_report(drive, opts.mode, started_at, started.elapsed().as_millis() as u64, tests);
+    let report = build_report(drive, mode, started_at, started.elapsed().as_millis() as u64, tests);
     emit.progress(Phase::Finish, 100.0, "progress.finish.done", None);
-    Ok(report)
+    report
 }
 
 /// Pure report assembly (unit-tested).

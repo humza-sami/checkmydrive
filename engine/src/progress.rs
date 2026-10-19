@@ -8,7 +8,10 @@ use std::path::Path;
 use std::sync::Mutex;
 use std::time::{Duration, Instant};
 
+pub type Sink = Box<dyn Fn(&str) + Send + Sync>;
+
 pub struct Emitter {
+    sink: Option<Sink>,
     out_file: Mutex<Option<File>>,
     stdout_lock: Mutex<()>,
     last: Mutex<Option<(ProgressEvent, Instant)>>,
@@ -37,6 +40,7 @@ impl Emitter {
             None => None,
         };
         Ok(Emitter {
+            sink: None,
             out_file: Mutex::new(f),
             stdout_lock: Mutex::new(()),
             last: Mutex::new(None),
@@ -44,9 +48,22 @@ impl Emitter {
         })
     }
 
-    /// Write one JSON value as a line to stdout (and the --out file).
+    /// Emitter that hands every JSON line to `sink` instead of stdout (used by embedding hosts).
+    pub fn with_sink(sink: Sink) -> Self {
+        let mut e = Emitter::new(None).expect("no file to open");
+        e.sink = Some(sink);
+        e
+    }
+
+    /// Write one JSON value as a line to stdout (and the --out file), or to the sink when set.
     pub fn line<T: Serialize>(&self, v: &T) {
         let Ok(s) = serde_json::to_string(v) else { return };
+        if let Some(sink) = &self.sink {
+            let _g = self.stdout_lock.lock().unwrap();
+            // A misbehaving listener must never take the engine down.
+            let _ = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| sink(&s)));
+            return;
+        }
         let _g = self.stdout_lock.lock().unwrap();
         let stdout = std::io::stdout();
         let mut h = stdout.lock();

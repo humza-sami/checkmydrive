@@ -2,7 +2,6 @@
 //! Drives that lie about size alias (wrap) or drop writes, so read-back signatures differ.
 
 use super::*;
-use crate::platform::RawDevice;
 use crate::util::{AlignedBuf, SplitMix64, SECTOR};
 use rand::seq::SliceRandom;
 use std::time::{Duration, Instant};
@@ -82,14 +81,14 @@ pub fn run(ctx: &Ctx) -> TestResult {
         return TestResult::skipped(TestId::CapacityCheck, vec![Issue::info("issue.capacity_check.needs_wipe_mode")]);
     }
     let t0 = Instant::now();
-    let dev = match RawDevice::open(&ctx.drive, true) {
+    let dev = match ctx.open_dev(true) {
         Ok(d) => d,
         Err(e) => {
             ctx.stab.report_io_error(&e);
             return TestResult::from_issues(TestId::CapacityCheck, 0, Metrics::new(), vec![Issue::critical("issue.capacity_check.io_error").with("count", 1)]);
         }
     };
-    let offsets = plan_blocks(dev.size, BLOCKS);
+    let offsets = plan_blocks(dev.size(), BLOCKS);
     let nonce: u64 = rand::random();
     let mut buf = AlignedBuf::new(SECTOR);
     let mut io_errors = 0u64;
@@ -153,12 +152,12 @@ pub fn run(ctx: &Ctx) -> TestResult {
     m.insert("mismatches".into(), mval(mismatches));
     m.insert("aliased".into(), mval(aliased));
     m.insert("io_errors".into(), mval(io_errors));
-    m.insert("claimed_bytes".into(), mval(dev.size));
+    m.insert("claimed_bytes".into(), mval(dev.size()));
     m.insert("fake_capacity".into(), mval(fake.is_some()));
     m.insert("estimated_real_bytes".into(), mval(fake));
     let mut issues = Vec::new();
     if let Some(real) = fake {
-        issues.push(Issue::critical("issue.capacity_check.fake_capacity").with("claimed_bytes", dev.size).with("real_bytes", real));
+        issues.push(Issue::critical("issue.capacity_check.fake_capacity").with("claimed_bytes", dev.size()).with("real_bytes", real));
     } else if mismatches > 0 {
         issues.push(Issue::critical("issue.capacity_check.data_corruption").with("count", mismatches));
     }

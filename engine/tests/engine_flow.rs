@@ -25,6 +25,7 @@ fn ctx(path: &str, size: u64, mode: Mode, mounts: Vec<String>) -> Ctx {
         smartctl: None,
         smart: SmartReading { data: Err(SmartError::NoSmartctl), device_type: None, attempts: 0 },
         stab: Arc::new(Stab::default()),
+        backend: None,
     }
 }
 

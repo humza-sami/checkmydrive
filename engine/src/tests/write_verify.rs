@@ -4,7 +4,7 @@
 
 use super::*;
 use crate::cleanup::TempGuard;
-use crate::platform::{self, RawDevice};
+use crate::platform;
 use crate::util::{rand_hex, round1, AlignedBuf, SplitMix64};
 use std::io::Write;
 use std::path::{Path, PathBuf};
@@ -276,14 +276,14 @@ fn read_full(f: &mut std::fs::File, buf: &mut [u8]) -> std::io::Result<()> {
 
 fn run_raw(ctx: &Ctx) -> TestResult {
     let t0 = Instant::now();
-    let dev = match RawDevice::open(&ctx.drive, true) {
+    let dev = match ctx.open_dev(true) {
         Ok(d) => d,
         Err(e) => {
             ctx.stab.report_io_error(&e);
             return TestResult::from_issues(TestId::WriteVerify, 0, Metrics::new(), vec![Issue::critical("issue.write_verify.write_error")]);
         }
     };
-    let cap = dev.size / MIB * MIB;
+    let cap = dev.size() / MIB * MIB;
     if cap < 64 * MIB {
         return skipped("issue.write_verify.insufficient_space");
     }

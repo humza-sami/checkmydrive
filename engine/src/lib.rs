@@ -1,5 +1,6 @@
 //! CheckMyDrive engine: disk health / fake-capacity testing. See `docs/CONTRACT.md`.
 
+pub mod blockdev;
 pub mod cleanup;
 pub mod cli;
 pub mod engine;

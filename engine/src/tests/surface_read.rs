@@ -1,7 +1,6 @@
 //! surface_read: read-only raw-device sampling across the whole capacity + 15 s sequential read.
 
 use super::*;
-use crate::platform::RawDevice;
 use crate::util::{percentile, round1, round2, AlignedBuf, SECTOR};
 use rand::Rng;
 use std::time::{Duration, Instant};
@@ -224,7 +223,7 @@ pub fn run(ctx: &Ctx) -> TestResult {
 /// Same as `run` with a custom sequential-pass duration (used by tests).
 pub fn run_with(ctx: &Ctx, seq_duration: Duration) -> TestResult {
     let t0 = Instant::now();
-    let dev = match RawDevice::open(&ctx.drive, false) {
+    let dev = match ctx.open_dev(false) {
         Ok(d) => d,
         Err(e) => {
             ctx.stab.report_io_error(&e);
@@ -236,7 +235,7 @@ pub fn run_with(ctx: &Ctx, seq_duration: Duration) -> TestResult {
             );
         }
     };
-    let cap = dev.size;
+    let cap = dev.size();
     let cap_aligned = cap / SECTOR as u64 * SECTOR as u64;
     let len = (SAMPLE_LEN as u64).min(cap_aligned) as usize;
     let class = DriveClass::of(&ctx.drive);

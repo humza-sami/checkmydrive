@@ -2,7 +2,7 @@
 //! with surface_read (it only issues SMART commands; the surface test only reads).
 
 use super::*;
-use crate::smart::{self, SelfTestState};
+use crate::smart::SelfTestState;
 use std::sync::atomic::Ordering;
 use std::time::{Duration, Instant};
 
@@ -15,14 +15,15 @@ fn skipped(why: &str) -> TestResult {
 
 pub fn run(ctx: &Ctx) -> TestResult {
     let t0 = Instant::now();
-    let Some(sc) = ctx.smartctl.as_deref() else { return skipped("issue.selftest.smart_unavailable") };
+    if !ctx.selftest_possible() {
+        return skipped("issue.selftest.smart_unavailable");
+    }
     let Some(d) = ctx.smart_data() else { return skipped("issue.selftest.smart_unavailable") };
     if !d.selftest_supported {
         return skipped("issue.selftest.not_supported");
     }
-    let dt = ctx.smart.device_type.as_deref();
     ctx.progress(Phase::SelftestShort, 0.0, "progress.selftest_short.starting", None);
-    if !smart::start_short_selftest(sc, &ctx.drive, dt) {
+    if !ctx.start_selftest() {
         return skipped("issue.selftest.could_not_start");
     }
     let est = d.selftest_poll_minutes.map(|m| Duration::from_secs(m as u64 * 60)).unwrap_or(Duration::from_secs(120));
@@ -44,7 +45,7 @@ pub fn run(ctx: &Ctx) -> TestResult {
         }
         if last_poll.elapsed() >= POLL {
             last_poll = Instant::now();
-            if let Some(st) = smart::poll_selftest(sc, &ctx.drive, dt) {
+            if let Some(st) = ctx.poll_selftest() {
                 match st {
                     SelfTestState::Running { .. } => seen_running = true,
                     SelfTestState::Unknown => {}
@@ -68,8 +69,8 @@ pub fn run(ctx: &Ctx) -> TestResult {
         std::thread::sleep(Duration::from_millis(500));
     }
 
-    if timed_out {
-        smart::abort_selftest(sc, &ctx.drive, dt);
+    if timed_out || ctx.stab.is_cancelled() {
+        ctx.abort_selftest();
     }
     let mut m = Metrics::new();
     m.insert("duration_s".into(), mval(started.elapsed().as_secs()));

@@ -2,7 +2,7 @@
 //! (device disappearing, I/O errors, timeouts, SMART counter deltas before/after).
 
 use super::*;
-use crate::smart::{self, SmartData};
+use crate::smart::SmartData;
 use std::sync::atomic::Ordering;
 use std::time::{Duration, Instant};
 
@@ -36,10 +36,9 @@ pub fn run(ctx: &Ctx) -> TestResult {
 
     let mut compared = false;
     let mut d = Deltas::default();
-    if let (Some(before), Some(sc)) = (ctx.smart_data(), ctx.smartctl.as_deref()) {
+    if let (Some(before), true) = (ctx.smart_data(), ctx.selftest_possible()) {
         if !ctx.stab.is_gone() {
-            let after = smart::read_smart(Some(sc), &ctx.drive, Duration::from_secs(15));
-            if let Ok(after) = after.data {
+            if let Some(Ok(after)) = ctx.reread_smart(Duration::from_secs(15)).map(|r| r.data) {
                 d = smart_deltas(before, &after);
                 compared = true;
             }

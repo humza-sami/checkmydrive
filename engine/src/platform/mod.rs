@@ -182,6 +182,21 @@ impl RawDevice {
     }
 }
 
+impl crate::blockdev::BlockDev for RawDevice {
+    fn size(&self) -> u64 {
+        self.size
+    }
+    fn read_at(&self, offset: u64, buf: &mut [u8]) -> io::Result<()> {
+        RawDevice::read_at(self, offset, buf)
+    }
+    fn write_at(&self, offset: u64, buf: &[u8]) -> io::Result<()> {
+        RawDevice::write_at(self, offset, buf)
+    }
+    fn sync(&self) -> io::Result<()> {
+        RawDevice::sync(self)
+    }
+}
+
 /// True for OS errors that mean "the device is gone".
 pub fn is_gone_error(e: &io::Error) -> bool {
     #[cfg(unix)]

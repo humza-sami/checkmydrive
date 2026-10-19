@@ -267,7 +267,7 @@ fn raw_val(a: &Value) -> Option<u64> {
     path(a, &["raw", "value"]).and_then(u)
 }
 
-fn parse_ata_attributes(table: &[Value], d: &mut SmartData) {
+pub fn parse_ata_attributes(table: &[Value], d: &mut SmartData) {
     let mut wear: Option<f64> = None;
     let mut note = |w: f64| {
         let w = w.clamp(0.0, 100.0);
