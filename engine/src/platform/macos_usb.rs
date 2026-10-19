@@ -112,7 +112,7 @@ mod tests {
     fn real_macos26_stick() {
         let m = parse_ioreg(FIXTURE);
         let d = m.get("disk6").expect("disk6 found");
-        assert_eq!(d.serial.as_deref(), Some("4144221181064031014"));
+        assert_eq!(d.serial.as_deref(), Some("1234567890123456789"));
         assert_eq!(d.firmware.as_deref(), Some("2.00"));
         assert_eq!(d.vendor, None); // bridge reports the generic vendor "USB"
         assert!(!m.contains_key("disk6s1"), "partitions are not whole disks");

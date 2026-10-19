@@ -53,12 +53,12 @@
   | |   |   "iProduct" = 2
   | |   |   "iSerialNumber" = 3
   | |   |   "bNumConfigurations" = 1
-  | |   |   "UsbDeviceSignature" = <6d347856000234313434323231313831303634303331303134000000080650>
+  | |   |   "UsbDeviceSignature" = <6d347856000231323334353637383930313233343536373839000000080650>
   | |   |   "USB Product Name" = "Disk 2.0"
   | |   |   "locationID" = 34668544
   | |   |   "bDeviceSubClass" = 0
   | |   |   "bcdUSB" = 512
-  | |   |   "kUSBSerialNumberString" = "4144221181064031014"
+  | |   |   "kUSBSerialNumberString" = "1234567890123456789"
   | |   |   "USB Address" = 4
   | |   |   "IOCFPlugInTypes" = {"9dc7b780-9ec0-11d4-a54f-000a27052861"="IOUSBHostFamily.kext/Contents/PlugIns/IOUSBLib.bundle"}
   | |   |   "kUSBCurrentConfiguration" = 1
@@ -69,7 +69,7 @@
   | |   |   "Device Speed" = 2
   | |   |   "idVendor" = 13421
   | |   |   "kUSBProductString" = "Disk 2.0"
-  | |   |   "USB Serial Number" = "4144221181064031014"
+  | |   |   "USB Serial Number" = "1234567890123456789"
   | |   |   "kUSBAddress" = 4
   | |   |   "kUSBVendorString" = "USB"
   | |   | }
