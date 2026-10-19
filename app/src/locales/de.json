@@ -5,14 +5,10 @@
     "skip": "Zum Hauptinhalt springen"
   },
   "nav": {
-    "settings": "Einstellungen",
-    "back": "Zurück",
     "mockBanner": "Demomodus: Es werden Beispiel-Laufwerke angezeigt. Auf Ihrem Computer wird nichts getestet."
   },
   "picker": {
     "title": "Welches Laufwerk möchten Sie prüfen?",
-    "subtitle": "Schließen Sie das Laufwerk an, das Sie kaufen oder verwenden möchten, und wählen Sie es unten aus. Die Prüfung dauert etwa 3 bis 4 Minuten.",
-    "refresh": "Aktualisieren",
     "refreshing": "Laufwerke werden gesucht…",
     "empty": "Keine Laufwerke gefunden. Schließen Sie eines an und tippen Sie auf „Aktualisieren“.",
     "systemDisk": "Systemlaufwerk",
@@ -27,7 +23,6 @@
       "sd": "SD-/Speicherkarte",
       "unknown": "Laufwerk"
     },
-    "removable": "Wechseldatenträger",
     "loadFailed": "Die Liste der Laufwerke konnte nicht gelesen werden.",
     "noAdminNote": "Für manche Angaben, etwa die Gesundheitsdaten, ist möglicherweise Administratorberechtigung nötig. Sie wird zu Beginn der Prüfung angefragt."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Dieses Laufwerk meldet keine Seriennummer, daher ist der vollständige Löschtest nicht verfügbar.",
       "systemBlocked": "Ihr Systemlaufwerk kann niemals gelöscht werden. Es ist nur der sichere Test verfügbar.",
       "mismatch": "Der Text stimmt noch nicht mit der Seriennummer überein.",
-      "start": "Löschen und vollständigen Test starten",
-      "expand": "Vollständigen Löschtest anzeigen",
-      "collapse": "Vollständigen Löschtest ausblenden"
+      "start": "Löschen und vollständigen Test starten"
     },
-    "start": "Schnellen sicheren Test starten",
-    "back": "Anderes Laufwerk wählen",
     "duration": "Dauert etwa 3 bis 4 Minuten. Bitte ziehen Sie das Laufwerk nicht ab."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Wartet",
       "running": "Wird geprüft",
       "done": "Fertig"
-    }
+    },
+    "cancelled": "Der Test wurde abgebrochen."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Ergebnisse",
-    "scoreOutOf": "von 100",
     "scoreLabel": "Bewertung {{score}} von 100",
     "verdict": {
       "buy": "Kaufempfehlung",
@@ -168,44 +159,34 @@
       "info": "Hinweis"
     },
     "matrix": {
-      "title": "Testübersicht",
-      "subtitle": "Details für fortgeschrittene Nutzer",
       "show": "Details anzeigen",
       "hide": "Details ausblenden",
       "test": "Test",
       "status": "Status",
       "score": "Bewertung",
-      "metrics": "Wichtige Werte",
-      "none": "Keine Werte aufgezeichnet"
+      "none": "Keine Werte aufgezeichnet",
+      "details": "Details"
     },
-    "export": "Bericht exportieren",
     "exportJson": "Als JSON speichern",
     "exportHtml": "Als Webseite (HTML) speichern",
     "print": "Drucken oder als PDF speichern",
     "saved": "Bericht gespeichert.",
     "saveFailed": "Der Bericht konnte nicht gespeichert werden.",
-    "another": "Anderes Laufwerk testen",
     "mode": {
       "safe": "Schneller sicherer Test",
       "wipe": "Vollständiger Löschtest"
     },
     "tested": "Getestet am {{date}}",
     "engine": "Engine {{version}}",
-    "skippedNote": "Die Erkennung gefälschter Kapazität wurde nicht ausgeführt. Nutzen Sie für ein vollständiges Ergebnis den vollständigen Löschtest auf einem leeren Laufwerk."
+    "skippedNote": "Die Erkennung gefälschter Kapazität wurde nicht ausgeführt. Nutzen Sie für ein vollständiges Ergebnis den vollständigen Löschtest auf einem leeren Laufwerk.",
+    "testResults": "Testergebnisse"
   },
   "report": {
     "title": "CheckMyDrive-Bericht",
     "generatedBy": "Erstellt mit CheckMyDrive (Open Source)"
   },
   "settings": {
-    "title": "Einstellungen und Info",
     "language": "Sprache",
-    "languageHint": "Andere Sprachen als Englisch werden geladen, sobald sie verfügbar sind. Fehlende Texte erscheinen auf Englisch.",
-    "theme": "Darstellung",
-    "themeSystem": "Wie das System",
-    "themeLight": "Hell",
-    "themeDark": "Dunkel",
-    "about": "Info",
     "version": "Version",
     "license": "Lizenz",
     "licenseValue": "MIT-Lizenz (kostenlos und Open Source)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Wird geladen…",
     "close": "Schließen",
-    "unknown": "Unbekannt"
+    "unknown": "Unbekannt",
+    "cancel": "Abbrechen",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimieren",
+    "maximize": "Maximieren",
+    "close": "Schließen"
+  },
+  "menu": {
+    "file": "Datei",
+    "test": "Test",
+    "view": "Ansicht",
+    "help": "Hilfe",
+    "exit": "Beenden",
+    "startTest": "Test starten",
+    "refresh": "Laufwerke aktualisieren",
+    "github": "Projekt auf GitHub",
+    "about": "Über CheckMyDrive"
+  },
+  "props": {
+    "title": "Laufwerksinformationen",
+    "model": "Modell",
+    "serial": "Seriennummer",
+    "firmware": "Firmware",
+    "capacity": "Kapazität",
+    "interface": "Schnittstelle",
+    "type": "Typ",
+    "rpm": "Drehzahl",
+    "hours": "Betriebsstunden",
+    "count": "Anzahl Einschaltvorgänge",
+    "age": "Alter",
+    "made": "Herstellungsdatum"
+  },
+  "health": {
+    "title": "Gesundheitszustand",
+    "good": "Gut",
+    "caution": "Vorsicht",
+    "bad": "Schlecht",
+    "untested": "Nicht getestet"
+  },
+  "idle": {
+    "hint": "Dieses Laufwerk wurde noch nicht getestet. Wählen Sie „Test starten“, um seinen Zustand zu prüfen."
+  },
+  "statusbar": {
+    "ready": "Bereit",
+    "testing": "Laufwerk wird getestet …",
+    "drives": "Laufwerke: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Erstellt mit smartmontools, Tauri und XP.css."
   }
 }

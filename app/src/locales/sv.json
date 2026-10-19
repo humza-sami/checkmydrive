@@ -5,14 +5,10 @@
     "skip": "Hoppa till huvudinnehållet"
   },
   "nav": {
-    "settings": "Inställningar",
-    "back": "Tillbaka",
     "mockBanner": "Demoläge: exempeldiskar visas. Ingenting på din dator testas."
   },
   "picker": {
     "title": "Vilken disk vill du kontrollera?",
-    "subtitle": "Anslut disken du funderar på att köpa eller använda och välj den nedan. Kontrollen tar ungefär 3 till 4 minuter.",
-    "refresh": "Uppdatera",
     "refreshing": "Letar efter diskar…",
     "empty": "Inga diskar hittades. Anslut en och tryck på Uppdatera.",
     "systemDisk": "Systemdisk",
@@ -27,7 +23,6 @@
       "sd": "SD-/minneskort",
       "unknown": "Disk"
     },
-    "removable": "Flyttbar",
     "loadFailed": "Vi kunde inte läsa listan över diskar.",
     "noAdminNote": "Vissa uppgifter, till exempel hälsodata, kan kräva administratörsbehörighet och begärs när kontrollen startar."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Den här disken uppger inget serienummer, så ett fullständigt raderingstest är inte tillgängligt.",
       "systemBlocked": "Din systemdisk kan aldrig raderas. Bara det säkra testet är tillgängligt.",
       "mismatch": "Texten stämmer inte med serienumret ännu.",
-      "start": "Radera och kör fullständigt test",
-      "expand": "Visa fullständigt raderingstest",
-      "collapse": "Dölj fullständigt raderingstest"
+      "start": "Radera och kör fullständigt test"
     },
-    "start": "Starta snabbt säkert test",
-    "back": "Välj en annan disk",
     "duration": "Tar ungefär 3 till 4 minuter. Koppla inte ur disken."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Väntar",
       "running": "Kontrollerar",
       "done": "Klart"
-    }
+    },
+    "cancelled": "Testet avbröts."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Resultat",
-    "scoreOutOf": "av 100",
     "scoreLabel": "Betyg {{score}} av 100",
     "verdict": {
       "buy": "Bra att köpa",
@@ -168,44 +159,34 @@
       "info": "Notering"
     },
     "matrix": {
-      "title": "Testmatris",
-      "subtitle": "Detaljer för avancerade användare",
       "show": "Visa detaljer",
       "hide": "Dölj detaljer",
       "test": "Test",
       "status": "Status",
       "score": "Poäng",
-      "metrics": "Nyckeltal",
-      "none": "Inga siffror registrerades"
+      "none": "Inga siffror registrerades",
+      "details": "Detaljer"
     },
-    "export": "Exportera rapport",
     "exportJson": "Spara som JSON",
     "exportHtml": "Spara som webbsida (HTML)",
     "print": "Skriv ut eller spara som PDF",
     "saved": "Rapporten sparades.",
     "saveFailed": "Det gick inte att spara rapporten.",
-    "another": "Testa en annan disk",
     "mode": {
       "safe": "Snabbt säkert test",
       "wipe": "Fullständigt raderingstest"
     },
     "tested": "Testad den {{date}}",
     "engine": "Motor {{version}}",
-    "skippedNote": "Kontrollen av falsk kapacitet kördes inte. Använd det fullständiga raderingstestet på en tom disk för ett komplett svar."
+    "skippedNote": "Kontrollen av falsk kapacitet kördes inte. Använd det fullständiga raderingstestet på en tom disk för ett komplett svar.",
+    "testResults": "Testresultat"
   },
   "report": {
     "title": "CheckMyDrive-rapport",
     "generatedBy": "Skapad av CheckMyDrive (öppen källkod)"
   },
   "settings": {
-    "title": "Inställningar och om",
     "language": "Språk",
-    "languageHint": "Andra språk än engelska läses in när de blir tillgängliga; text som saknas visas på engelska.",
-    "theme": "Utseende",
-    "themeSystem": "Följ systemet",
-    "themeLight": "Ljust",
-    "themeDark": "Mörkt",
-    "about": "Om",
     "version": "Version",
     "license": "Licens",
     "licenseValue": "MIT-licens (gratis och öppen källkod)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Laddar…",
     "close": "Stäng",
-    "unknown": "Okänd"
+    "unknown": "Okänd",
+    "cancel": "Avbryt",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimera",
+    "maximize": "Maximera",
+    "close": "Stäng"
+  },
+  "menu": {
+    "file": "Arkiv",
+    "test": "Test",
+    "view": "Visa",
+    "help": "Hjälp",
+    "exit": "Avsluta",
+    "startTest": "Starta test",
+    "refresh": "Uppdatera enheter",
+    "github": "Projektet på GitHub",
+    "about": "Om CheckMyDrive"
+  },
+  "props": {
+    "title": "Enhetsinformation",
+    "model": "Modell",
+    "serial": "Serienummer",
+    "firmware": "Firmware",
+    "capacity": "Kapacitet",
+    "interface": "Gränssnitt",
+    "type": "Typ",
+    "rpm": "Rotationshastighet",
+    "hours": "Drifttimmar",
+    "count": "Antal påslag",
+    "age": "Ålder",
+    "made": "Tillverkningsdatum"
+  },
+  "health": {
+    "title": "Hälsostatus",
+    "good": "Bra",
+    "caution": "Varning",
+    "bad": "Dålig",
+    "untested": "Inte testad"
+  },
+  "idle": {
+    "hint": "Den här enheten har inte testats ännu. Välj Starta test för att kontrollera dess hälsa."
+  },
+  "statusbar": {
+    "ready": "Klar",
+    "testing": "Testar enheten …",
+    "drives": "Enheter: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Byggd med smartmontools, Tauri och XP.css."
   }
 }

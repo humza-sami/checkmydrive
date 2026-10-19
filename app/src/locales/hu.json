@@ -5,14 +5,10 @@
     "skip": "Ugrás a fő tartalomra"
   },
   "nav": {
-    "settings": "Beállítások",
-    "back": "Vissza",
     "mockBanner": "Bemutató mód: mintameghajtók látszanak. A számítógépén semmi sincs tesztelve."
   },
   "picker": {
     "title": "Melyik meghajtót szeretné ellenőrizni?",
-    "subtitle": "Csatlakoztassa a megvásárolni vagy használni kívánt meghajtót, majd válassza ki lent. Az ellenőrzés körülbelül 3–4 percig tart.",
-    "refresh": "Frissítés",
     "refreshing": "Meghajtók keresése…",
     "empty": "Nem található meghajtó. Csatlakoztasson egyet, és nyomja meg a Frissítés gombot.",
     "systemDisk": "Rendszermeghajtó",
@@ -27,7 +23,6 @@
       "sd": "SD / memóriakártya",
       "unknown": "Meghajtó"
     },
-    "removable": "Cserélhető",
     "loadFailed": "Nem sikerült beolvasni a meghajtók listáját.",
     "noAdminNote": "Egyes adatok, például az állapotadatok, rendszergazdai engedélyt kérhetnek, amit az ellenőrzés indításakor fog kérni a program."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Ez a meghajtó nem közöl sorozatszámot, ezért a teljes törléses teszt nem érhető el.",
       "systemBlocked": "A rendszermeghajtó soha nem törölhető. Csak a biztonságos teszt érhető el.",
       "mismatch": "A szöveg még nem egyezik a sorozatszámmal.",
-      "start": "Törlés és teljes teszt indítása",
-      "expand": "Teljes törléses teszt megjelenítése",
-      "collapse": "Teljes törléses teszt elrejtése"
+      "start": "Törlés és teljes teszt indítása"
     },
-    "start": "Gyors biztonságos teszt indítása",
-    "back": "Másik meghajtó választása",
     "duration": "Körülbelül 3–4 percig tart. Kérjük, ne húzza ki a meghajtót."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Várakozik",
       "running": "Ellenőrzés",
       "done": "Kész"
-    }
+    },
+    "cancelled": "A teszt megszakítva."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Eredmények",
-    "scoreOutOf": "a 100-ból",
     "scoreLabel": "Pontszám: {{score}} a 100-ból",
     "verdict": {
       "buy": "Megvehető",
@@ -168,44 +159,34 @@
       "info": "Megjegyzés"
     },
     "matrix": {
-      "title": "Tesztmátrix",
-      "subtitle": "Részletek haladó felhasználóknak",
       "show": "Részletek megjelenítése",
       "hide": "Részletek elrejtése",
       "test": "Teszt",
       "status": "Állapot",
       "score": "Pontszám",
-      "metrics": "Fő számok",
-      "none": "Nincs rögzített szám"
+      "none": "Nincs rögzített szám",
+      "details": "Részletek"
     },
-    "export": "Jelentés exportálása",
     "exportJson": "Mentés JSON-ként",
     "exportHtml": "Mentés weboldalként (HTML)",
     "print": "Nyomtatás vagy mentés PDF-ként",
     "saved": "A jelentés elmentve.",
     "saveFailed": "A jelentést nem sikerült elmenteni.",
-    "another": "Másik meghajtó tesztelése",
     "mode": {
       "safe": "Gyors biztonságos teszt",
       "wipe": "Teljes törléses teszt"
     },
     "tested": "Tesztelve: {{date}}",
     "engine": "Motor: {{version}}",
-    "skippedNote": "A hamis kapacitás felismerése nem futott le. A teljes válaszhoz használja a teljes törléses tesztet egy üres meghajtón."
+    "skippedNote": "A hamis kapacitás felismerése nem futott le. A teljes válaszhoz használja a teljes törléses tesztet egy üres meghajtón.",
+    "testResults": "Tesztek eredménye"
   },
   "report": {
     "title": "CheckMyDrive jelentés",
     "generatedBy": "Készítette: CheckMyDrive (nyílt forráskódú)"
   },
   "settings": {
-    "title": "Beállítások és névjegy",
     "language": "Nyelv",
-    "languageHint": "Az angolon kívüli nyelvek akkor töltődnek be, amikor elérhetővé válnak; a hiányzó szöveg angolul jelenik meg.",
-    "theme": "Megjelenés",
-    "themeSystem": "A rendszer szerint",
-    "themeLight": "Világos",
-    "themeDark": "Sötét",
-    "about": "Névjegy",
     "version": "Verzió",
     "license": "Licenc",
     "licenseValue": "MIT licenc (ingyenes és nyílt forráskódú)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Betöltés…",
     "close": "Bezárás",
-    "unknown": "Ismeretlen"
+    "unknown": "Ismeretlen",
+    "cancel": "Mégse",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Kicsinyítés",
+    "maximize": "Teljes méret",
+    "close": "Bezárás"
+  },
+  "menu": {
+    "file": "Fájl",
+    "test": "Teszt",
+    "view": "Nézet",
+    "help": "Súgó",
+    "exit": "Kilépés",
+    "startTest": "Teszt indítása",
+    "refresh": "Meghajtók frissítése",
+    "github": "Projekt a GitHubon",
+    "about": "A CheckMyDrive névjegye"
+  },
+  "props": {
+    "title": "Meghajtó adatai",
+    "model": "Modell",
+    "serial": "Sorozatszám",
+    "firmware": "Firmware",
+    "capacity": "Kapacitás",
+    "interface": "Csatoló",
+    "type": "Típus",
+    "rpm": "Fordulatszám",
+    "hours": "Üzemórák",
+    "count": "Bekapcsolások száma",
+    "age": "Kor",
+    "made": "Gyártás dátuma"
+  },
+  "health": {
+    "title": "Állapot",
+    "good": "Jó",
+    "caution": "Figyelem",
+    "bad": "Rossz",
+    "untested": "Nincs tesztelve"
+  },
+  "idle": {
+    "hint": "Ezt a meghajtót még nem tesztelték. Az állapotának ellenőrzéséhez válassza a Teszt indítása parancsot."
+  },
+  "statusbar": {
+    "ready": "Kész",
+    "testing": "A meghajtó tesztelése folyamatban…",
+    "drives": "Meghajtók: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Készült: smartmontools, Tauri és XP.css."
   }
 }

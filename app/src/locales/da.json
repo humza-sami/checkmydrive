@@ -5,14 +5,10 @@
     "skip": "Gå til hovedindholdet"
   },
   "nav": {
-    "settings": "Indstillinger",
-    "back": "Tilbage",
     "mockBanner": "Demotilstand: der vises eksempeldrev. Intet på din computer bliver testet."
   },
   "picker": {
     "title": "Hvilket drev vil du tjekke?",
-    "subtitle": "Tilslut det drev, du overvejer at købe eller bruge, og vælg det nedenfor. Tjekket tager cirka 3 til 4 minutter.",
-    "refresh": "Opdater",
     "refreshing": "Leder efter drev…",
     "empty": "Ingen drev fundet. Tilslut et, og tryk på Opdater.",
     "systemDisk": "Systemdrev",
@@ -27,7 +23,6 @@
       "sd": "SD-/hukommelseskort",
       "unknown": "Drev"
     },
-    "removable": "Flytbart",
     "loadFailed": "Vi kunne ikke læse listen over drev.",
     "noAdminNote": "Nogle oplysninger, f.eks. sundhedsdata, kan kræve administratortilladelse og bliver bedt om, når tjekket starter."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Dette drev oplyser ikke et serienummer, så en fuld sletningstest er ikke tilgængelig.",
       "systemBlocked": "Dit systemdrev kan aldrig slettes. Kun den sikre test er tilgængelig.",
       "mismatch": "Teksten svarer ikke til serienummeret endnu.",
-      "start": "Slet og kør fuld test",
-      "expand": "Vis fuld sletningstest",
-      "collapse": "Skjul fuld sletningstest"
+      "start": "Slet og kør fuld test"
     },
-    "start": "Start hurtig sikker test",
-    "back": "Vælg et andet drev",
     "duration": "Tager cirka 3 til 4 minutter. Træk ikke drevet ud."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Venter",
       "running": "Tjekker",
       "done": "Færdig"
-    }
+    },
+    "cancelled": "Testen blev annulleret."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Resultater",
-    "scoreOutOf": "ud af 100",
     "scoreLabel": "Score {{score}} ud af 100",
     "verdict": {
       "buy": "Godt at købe",
@@ -168,44 +159,34 @@
       "info": "Bemærkning"
     },
     "matrix": {
-      "title": "Testoversigt",
-      "subtitle": "Detaljer for avancerede brugere",
       "show": "Vis detaljer",
       "hide": "Skjul detaljer",
       "test": "Test",
       "status": "Status",
       "score": "Score",
-      "metrics": "Nøgletal",
-      "none": "Ingen tal registreret"
+      "none": "Ingen tal registreret",
+      "details": "Detaljer"
     },
-    "export": "Eksporter rapport",
     "exportJson": "Gem som JSON",
     "exportHtml": "Gem som webside (HTML)",
     "print": "Udskriv eller gem som PDF",
     "saved": "Rapporten er gemt.",
     "saveFailed": "Rapporten kunne ikke gemmes.",
-    "another": "Test et andet drev",
     "mode": {
       "safe": "Hurtig sikker test",
       "wipe": "Fuld sletningstest"
     },
     "tested": "Testet den {{date}}",
     "engine": "Motor {{version}}",
-    "skippedNote": "Registrering af falsk kapacitet blev ikke kørt. Brug den fulde sletningstest på et tomt drev for at få et fuldstændigt svar."
+    "skippedNote": "Registrering af falsk kapacitet blev ikke kørt. Brug den fulde sletningstest på et tomt drev for at få et fuldstændigt svar.",
+    "testResults": "Testresultater"
   },
   "report": {
     "title": "CheckMyDrive-rapport",
     "generatedBy": "Oprettet af CheckMyDrive (open source)"
   },
   "settings": {
-    "title": "Indstillinger og om",
     "language": "Sprog",
-    "languageHint": "Andre sprog end engelsk indlæses, efterhånden som de bliver tilgængelige; manglende tekst vises på engelsk.",
-    "theme": "Udseende",
-    "themeSystem": "Følg systemet",
-    "themeLight": "Lyst",
-    "themeDark": "Mørkt",
-    "about": "Om",
     "version": "Version",
     "license": "Licens",
     "licenseValue": "MIT-licens (gratis og open source)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Indlæser…",
     "close": "Luk",
-    "unknown": "Ukendt"
+    "unknown": "Ukendt",
+    "cancel": "Annuller",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimér",
+    "maximize": "Maksimér",
+    "close": "Luk"
+  },
+  "menu": {
+    "file": "Filer",
+    "test": "Test",
+    "view": "Vis",
+    "help": "Hjælp",
+    "exit": "Afslut",
+    "startTest": "Start test",
+    "refresh": "Opdater drev",
+    "github": "Projektet på GitHub",
+    "about": "Om CheckMyDrive"
+  },
+  "props": {
+    "title": "Drevoplysninger",
+    "model": "Model",
+    "serial": "Serienummer",
+    "firmware": "Firmware",
+    "capacity": "Kapacitet",
+    "interface": "Grænseflade",
+    "type": "Type",
+    "rpm": "Omdrejningshastighed",
+    "hours": "Driftstimer",
+    "count": "Antal tænd",
+    "age": "Alder",
+    "made": "Fremstillingsdato"
+  },
+  "health": {
+    "title": "Helbredstilstand",
+    "good": "God",
+    "caution": "Advarsel",
+    "bad": "Dårlig",
+    "untested": "Ikke testet"
+  },
+  "idle": {
+    "hint": "Dette drev er ikke testet endnu. Vælg Start test for at tjekke dets helbred."
+  },
+  "statusbar": {
+    "ready": "Klar",
+    "testing": "Tester drevet …",
+    "drives": "Drev: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Bygget med smartmontools, Tauri og XP.css."
   }
 }

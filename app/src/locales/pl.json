@@ -5,14 +5,10 @@
     "skip": "Przejdź do głównej treści"
   },
   "nav": {
-    "settings": "Ustawienia",
-    "back": "Wstecz",
     "mockBanner": "Tryb demo: pokazujemy przykładowe dyski. Nic na Twoim komputerze nie jest testowane."
   },
   "picker": {
     "title": "Który dysk chcesz sprawdzić?",
-    "subtitle": "Podłącz dysk, który zamierzasz kupić lub używać, a potem wybierz go poniżej. Sprawdzanie trwa około 3–4 minut.",
-    "refresh": "Odśwież",
     "refreshing": "Szukam dysków…",
     "empty": "Nie znaleziono żadnych dysków. Podłącz dysk i naciśnij Odśwież.",
     "systemDisk": "Dysk systemowy",
@@ -27,7 +23,6 @@
       "sd": "Karta SD / karta pamięci",
       "unknown": "Dysk"
     },
-    "removable": "Wymienny",
     "loadFailed": "Nie udało się odczytać listy dysków.",
     "noAdminNote": "Niektóre szczegóły, np. dane o stanie dysku, mogą wymagać uprawnień administratora. Poprosimy o nie po rozpoczęciu sprawdzania."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Ten dysk nie podaje numeru seryjnego, więc pełny test z wymazaniem jest niedostępny.",
       "systemBlocked": "Dysku systemowego nigdy nie można wymazać. Dostępny jest tylko test bezpieczny.",
       "mismatch": "Wpisany tekst nie zgadza się jeszcze z numerem seryjnym.",
-      "start": "Wymaż i uruchom pełny test",
-      "expand": "Pokaż pełny test z wymazaniem",
-      "collapse": "Ukryj pełny test z wymazaniem"
+      "start": "Wymaż i uruchom pełny test"
     },
-    "start": "Rozpocznij szybki test bezpieczny",
-    "back": "Wybierz inny dysk",
     "duration": "Trwa około 3–4 minut. Nie odłączaj dysku."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Oczekuje",
       "running": "Sprawdzam",
       "done": "Gotowe"
-    }
+    },
+    "cancelled": "Test został anulowany."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Wyniki",
-    "scoreOutOf": "na 100",
     "scoreLabel": "Wynik {{score}} na 100",
     "verdict": {
       "buy": "Warto kupić",
@@ -174,44 +165,34 @@
       "info": "Uwaga"
     },
     "matrix": {
-      "title": "Tabela testów",
-      "subtitle": "Szczegóły dla zaawansowanych",
       "show": "Pokaż szczegóły",
       "hide": "Ukryj szczegóły",
       "test": "Test",
       "status": "Stan",
       "score": "Wynik",
-      "metrics": "Najważniejsze liczby",
-      "none": "Brak zapisanych liczb"
+      "none": "Brak zapisanych liczb",
+      "details": "Szczegóły"
     },
-    "export": "Eksportuj raport",
     "exportJson": "Zapisz jako JSON",
     "exportHtml": "Zapisz jako stronę internetową (HTML)",
     "print": "Drukuj lub zapisz jako PDF",
     "saved": "Raport zapisany.",
     "saveFailed": "Nie udało się zapisać raportu.",
-    "another": "Sprawdź inny dysk",
     "mode": {
       "safe": "Szybki test bezpieczny",
       "wipe": "Pełny test z wymazaniem"
     },
     "tested": "Sprawdzono: {{date}}",
     "engine": "Silnik {{version}}",
-    "skippedNote": "Nie wykonano wykrywania fałszywej pojemności. Aby uzyskać pełną odpowiedź, użyj pełnego testu z wymazaniem na pustym dysku."
+    "skippedNote": "Nie wykonano wykrywania fałszywej pojemności. Aby uzyskać pełną odpowiedź, użyj pełnego testu z wymazaniem na pustym dysku.",
+    "testResults": "Wyniki testu"
   },
   "report": {
     "title": "Raport CheckMyDrive",
     "generatedBy": "Wygenerowano w CheckMyDrive (otwarte oprogramowanie)"
   },
   "settings": {
-    "title": "Ustawienia i informacje",
     "language": "Język",
-    "languageHint": "Języki inne niż angielski są ładowane, gdy tylko staną się dostępne; brakujące teksty pojawiają się po angielsku.",
-    "theme": "Wygląd",
-    "themeSystem": "Zgodnie z systemem",
-    "themeLight": "Jasny",
-    "themeDark": "Ciemny",
-    "about": "Informacje",
     "version": "Wersja",
     "license": "Licencja",
     "licenseValue": "Licencja MIT (darmowa i otwarta)",
@@ -470,6 +451,57 @@
   "common": {
     "loading": "Wczytywanie…",
     "close": "Zamknij",
-    "unknown": "Nieznane"
+    "unknown": "Nieznane",
+    "cancel": "Anuluj",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimalizuj",
+    "maximize": "Maksymalizuj",
+    "close": "Zamknij"
+  },
+  "menu": {
+    "file": "Plik",
+    "test": "Test",
+    "view": "Widok",
+    "help": "Pomoc",
+    "exit": "Zakończ",
+    "startTest": "Rozpocznij test",
+    "refresh": "Odśwież dyski",
+    "github": "Projekt na GitHubie",
+    "about": "O programie CheckMyDrive"
+  },
+  "props": {
+    "title": "Informacje o dysku",
+    "model": "Model",
+    "serial": "Numer seryjny",
+    "firmware": "Oprogramowanie sprzętowe",
+    "capacity": "Pojemność",
+    "interface": "Interfejs",
+    "type": "Typ",
+    "rpm": "Prędkość obrotowa",
+    "hours": "Godziny pracy",
+    "count": "Liczba włączeń",
+    "age": "Wiek",
+    "made": "Data produkcji"
+  },
+  "health": {
+    "title": "Stan zdrowia",
+    "good": "Dobry",
+    "caution": "Uwaga",
+    "bad": "Zły",
+    "untested": "Nie testowano"
+  },
+  "idle": {
+    "hint": "Ten dysk nie był jeszcze testowany. Wybierz Rozpocznij test, aby sprawdzić jego stan."
+  },
+  "statusbar": {
+    "ready": "Gotowe",
+    "testing": "Trwa testowanie dysku…",
+    "drives": "Dyski: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Utworzono przy użyciu smartmontools, Tauri i XP.css."
   }
 }

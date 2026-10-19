@@ -5,14 +5,10 @@
     "skip": "Saltar al contenido principal"
   },
   "nav": {
-    "settings": "Ajustes",
-    "back": "Atrás",
     "mockBanner": "Modo demostración: se muestran discos de ejemplo. No se está probando nada en su ordenador."
   },
   "picker": {
     "title": "¿Qué disco quiere comprobar?",
-    "subtitle": "Conecte el disco que está pensando en comprar o usar y elíjalo abajo. La comprobación dura unos 3 o 4 minutos.",
-    "refresh": "Actualizar",
     "refreshing": "Buscando discos…",
     "empty": "No se encontró ningún disco. Conecte uno y pulse Actualizar.",
     "systemDisk": "Disco del sistema",
@@ -27,7 +23,6 @@
       "sd": "Tarjeta SD / de memoria",
       "unknown": "Disco"
     },
-    "removable": "Extraíble",
     "loadFailed": "No pudimos leer la lista de discos.",
     "noAdminNote": "Algunos datos, como el estado de salud, pueden requerir permiso de administrador y se pedirá al iniciar la comprobación."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Este disco no informa de su número de serie, por lo que no se puede hacer la prueba completa con borrado.",
       "systemBlocked": "El disco del sistema nunca se puede borrar. Solo está disponible la prueba segura.",
       "mismatch": "El texto todavía no coincide con el número de serie.",
-      "start": "Borrar y hacer la prueba completa",
-      "expand": "Mostrar la prueba completa con borrado",
-      "collapse": "Ocultar la prueba completa con borrado"
+      "start": "Borrar y hacer la prueba completa"
     },
-    "start": "Iniciar prueba rápida y segura",
-    "back": "Elegir otro disco",
     "duration": "Dura unos 3 o 4 minutos. Por favor, no desconecte el disco."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "En espera",
       "running": "Comprobando",
       "done": "Listo"
-    }
+    },
+    "cancelled": "La prueba se canceló."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Resultados",
-    "scoreOutOf": "de 100",
     "scoreLabel": "Puntuación {{score}} de 100",
     "verdict": {
       "buy": "Buena para comprar",
@@ -171,44 +162,34 @@
       "info": "Nota"
     },
     "matrix": {
-      "title": "Tabla de pruebas",
-      "subtitle": "Detalles para usuarios avanzados",
       "show": "Mostrar detalles",
       "hide": "Ocultar detalles",
       "test": "Prueba",
       "status": "Estado",
       "score": "Puntuación",
-      "metrics": "Cifras clave",
-      "none": "No se registraron cifras"
+      "none": "No se registraron cifras",
+      "details": "Detalles"
     },
-    "export": "Exportar informe",
     "exportJson": "Guardar como JSON",
     "exportHtml": "Guardar como página web (HTML)",
     "print": "Imprimir o guardar como PDF",
     "saved": "Informe guardado.",
     "saveFailed": "No se pudo guardar el informe.",
-    "another": "Probar otro disco",
     "mode": {
       "safe": "Prueba rápida y segura",
       "wipe": "Prueba completa con borrado"
     },
     "tested": "Probado el {{date}}",
     "engine": "Motor {{version}}",
-    "skippedNote": "No se hizo la detección de capacidad falsa. Use la prueba completa con borrado en un disco vacío para una respuesta completa."
+    "skippedNote": "No se hizo la detección de capacidad falsa. Use la prueba completa con borrado en un disco vacío para una respuesta completa.",
+    "testResults": "Resultados de la prueba"
   },
   "report": {
     "title": "Informe de CheckMyDrive",
     "generatedBy": "Generado por CheckMyDrive (código abierto)"
   },
   "settings": {
-    "title": "Ajustes e información",
     "language": "Idioma",
-    "languageHint": "Los idiomas distintos del inglés se cargan a medida que están disponibles; el texto que falte aparece en inglés.",
-    "theme": "Apariencia",
-    "themeSystem": "Igual que el sistema",
-    "themeLight": "Claro",
-    "themeDark": "Oscuro",
-    "about": "Acerca de",
     "version": "Versión",
     "license": "Licencia",
     "licenseValue": "Licencia MIT (libre y de código abierto)",
@@ -448,6 +429,57 @@
   "common": {
     "loading": "Cargando…",
     "close": "Cerrar",
-    "unknown": "Desconocido"
+    "unknown": "Desconocido",
+    "cancel": "Cancelar",
+    "ok": "Aceptar"
+  },
+  "window": {
+    "minimize": "Minimizar",
+    "maximize": "Maximizar",
+    "close": "Cerrar"
+  },
+  "menu": {
+    "file": "Archivo",
+    "test": "Prueba",
+    "view": "Ver",
+    "help": "Ayuda",
+    "exit": "Salir",
+    "startTest": "Iniciar prueba",
+    "refresh": "Actualizar unidades",
+    "github": "Proyecto en GitHub",
+    "about": "Acerca de CheckMyDrive"
+  },
+  "props": {
+    "title": "Información de la unidad",
+    "model": "Modelo",
+    "serial": "Número de serie",
+    "firmware": "Firmware",
+    "capacity": "Capacidad",
+    "interface": "Interfaz",
+    "type": "Tipo",
+    "rpm": "Velocidad de rotación",
+    "hours": "Horas de encendido",
+    "count": "Veces encendida",
+    "age": "Antigüedad",
+    "made": "Fabricación"
+  },
+  "health": {
+    "title": "Estado de salud",
+    "good": "Bueno",
+    "caution": "Precaución",
+    "bad": "Malo",
+    "untested": "Sin probar"
+  },
+  "idle": {
+    "hint": "Esta unidad aún no se ha probado. Elija Iniciar prueba para comprobar su estado."
+  },
+  "statusbar": {
+    "ready": "Listo",
+    "testing": "Probando la unidad…",
+    "drives": "Unidades: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Creado con smartmontools, Tauri y XP.css."
   }
 }

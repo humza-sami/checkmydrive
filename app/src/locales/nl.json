@@ -5,14 +5,10 @@
     "skip": "Ga naar de hoofdinhoud"
   },
   "nav": {
-    "settings": "Instellingen",
-    "back": "Terug",
     "mockBanner": "Demomodus: er worden voorbeeldschijven getoond. Er wordt niets op je computer getest."
   },
   "picker": {
     "title": "Welke schijf wil je controleren?",
-    "subtitle": "Sluit de schijf aan die je wilt kopen of gebruiken en kies hem hieronder. De controle duurt ongeveer 3 tot 4 minuten.",
-    "refresh": "Vernieuwen",
     "refreshing": "Schijven zoeken…",
     "empty": "Geen schijven gevonden. Sluit er een aan en druk op Vernieuwen.",
     "systemDisk": "Systeemschijf",
@@ -27,7 +23,6 @@
       "sd": "SD- / geheugenkaart",
       "unknown": "Schijf"
     },
-    "removable": "Verwisselbaar",
     "loadFailed": "We konden de lijst met schijven niet lezen.",
     "noAdminNote": "Voor sommige gegevens, zoals de gezondheidsinformatie, kan beheerdersrechten nodig zijn. Daar wordt om gevraagd zodra de controle begint."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Deze schijf geeft geen serienummer door, dus een volledige wistest is niet beschikbaar.",
       "systemBlocked": "Je systeemschijf kan nooit worden gewist. Alleen de veilige test is beschikbaar.",
       "mismatch": "De tekst komt nog niet overeen met het serienummer.",
-      "start": "Wissen en volledige test uitvoeren",
-      "expand": "Volledige wistest tonen",
-      "collapse": "Volledige wistest verbergen"
+      "start": "Wissen en volledige test uitvoeren"
     },
-    "start": "Snelle veilige test starten",
-    "back": "Andere schijf kiezen",
     "duration": "Duurt ongeveer 3 tot 4 minuten. Haal de schijf niet los."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Wachten",
       "running": "Bezig",
       "done": "Klaar"
-    }
+    },
+    "cancelled": "De test is geannuleerd."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Resultaten",
-    "scoreOutOf": "van 100",
     "scoreLabel": "Score {{score}} van 100",
     "verdict": {
       "buy": "Goed om te kopen",
@@ -168,44 +159,34 @@
       "info": "Opmerking"
     },
     "matrix": {
-      "title": "Testoverzicht",
-      "subtitle": "Details voor gevorderde gebruikers",
       "show": "Details tonen",
       "hide": "Details verbergen",
       "test": "Test",
       "status": "Status",
       "score": "Score",
-      "metrics": "Belangrijkste cijfers",
-      "none": "Geen cijfers vastgelegd"
+      "none": "Geen cijfers vastgelegd",
+      "details": "Details"
     },
-    "export": "Rapport exporteren",
     "exportJson": "Opslaan als JSON",
     "exportHtml": "Opslaan als webpagina (HTML)",
     "print": "Afdrukken of opslaan als pdf",
     "saved": "Rapport opgeslagen.",
     "saveFailed": "Het rapport kon niet worden opgeslagen.",
-    "another": "Een andere schijf testen",
     "mode": {
       "safe": "Snelle veilige test",
       "wipe": "Volledige wistest"
     },
     "tested": "Getest op {{date}}",
     "engine": "Engine {{version}}",
-    "skippedNote": "De detectie van nepcapaciteit is niet uitgevoerd. Gebruik de volledige wistest op een lege schijf voor een compleet antwoord."
+    "skippedNote": "De detectie van nepcapaciteit is niet uitgevoerd. Gebruik de volledige wistest op een lege schijf voor een compleet antwoord.",
+    "testResults": "Testresultaten"
   },
   "report": {
     "title": "CheckMyDrive-rapport",
     "generatedBy": "Gemaakt met CheckMyDrive (open source)"
   },
   "settings": {
-    "title": "Instellingen en info",
     "language": "Taal",
-    "languageHint": "Andere talen dan Engels worden geladen zodra ze beschikbaar zijn; ontbrekende tekst verschijnt in het Engels.",
-    "theme": "Weergave",
-    "themeSystem": "Systeem volgen",
-    "themeLight": "Licht",
-    "themeDark": "Donker",
-    "about": "Over",
     "version": "Versie",
     "license": "Licentie",
     "licenseValue": "MIT-licentie (gratis en open source)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Laden…",
     "close": "Sluiten",
-    "unknown": "Onbekend"
+    "unknown": "Onbekend",
+    "cancel": "Annuleren",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimaliseren",
+    "maximize": "Maximaliseren",
+    "close": "Sluiten"
+  },
+  "menu": {
+    "file": "Bestand",
+    "test": "Test",
+    "view": "Beeld",
+    "help": "Help",
+    "exit": "Afsluiten",
+    "startTest": "Test starten",
+    "refresh": "Schijven vernieuwen",
+    "github": "Project op GitHub",
+    "about": "Over CheckMyDrive"
+  },
+  "props": {
+    "title": "Schijfgegevens",
+    "model": "Model",
+    "serial": "Serienummer",
+    "firmware": "Firmware",
+    "capacity": "Capaciteit",
+    "interface": "Interface",
+    "type": "Type",
+    "rpm": "Toerental",
+    "hours": "Draaiuren",
+    "count": "Aantal keer aangezet",
+    "age": "Leeftijd",
+    "made": "Productiedatum"
+  },
+  "health": {
+    "title": "Gezondheidsstatus",
+    "good": "Goed",
+    "caution": "Let op",
+    "bad": "Slecht",
+    "untested": "Niet getest"
+  },
+  "idle": {
+    "hint": "Deze schijf is nog niet getest. Kies Test starten om de gezondheid te controleren."
+  },
+  "statusbar": {
+    "ready": "Gereed",
+    "testing": "Schijf wordt getest…",
+    "drives": "Schijven: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Gemaakt met smartmontools, Tauri en XP.css."
   }
 }

@@ -7,7 +7,8 @@ export default defineConfig({
   clearScreen: false,
   server: { port: 1420, strictPort: true, fs: { allow: [".."] } },
   envPrefix: ["VITE_", "TAURI_ENV_*"],
-  build: { target: "es2022", sourcemap: false },
+  // xp.css ships a few selectors that lightningcss refuses to minify, so CSS minification is off.
+  build: { target: "es2022", sourcemap: false, cssMinify: false },
   test: {
     environment: "jsdom",
     globals: true,

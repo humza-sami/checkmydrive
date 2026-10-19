@@ -57,7 +57,7 @@ table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid 
 <li><b>${esc(t("results.can.fill"))}</b> ${esc(r.suitability.safe_fill_bytes > 0 ? t("results.can.fillYes", { size: formatBytes(r.suitability.safe_fill_bytes, locale), total: formatBytes(r.drive.capacity_bytes, locale) }) : t("results.can.fillNo"))}</li></ul>
 <h2>${esc(t("results.age.title"))}</h2><p>${esc(r.age.power_on_hours != null ? t("results.age.hours", { count: r.age.power_on_hours, hours: r.age.power_on_hours.toLocaleString(locale) }) + (years != null ? " (" + t(years < 1 ? "results.age.yearsLessThanOne" : "results.age.years", { count: years }) + ")" : "") : t("results.age.unknown"))}${r.age.manufacture_date ? "<br>" + esc(t("results.age.made", { date: formatManufactureDate(r.age.manufacture_date, locale) })) : ""}</p>
 <h2>${esc(t("results.issues.title"))}</h2><ul>${issues}</ul>
-<h2>${esc(t("results.matrix.title"))}</h2><table><thead><tr><th>${esc(t("results.matrix.test"))}</th><th>${esc(t("results.matrix.status"))}</th><th>${esc(t("results.matrix.score"))}</th><th>${esc(t("results.matrix.metrics"))}</th></tr></thead><tbody>${rows}</tbody></table>
+<h2>${esc(t("results.testResults"))}</h2><table><thead><tr><th>${esc(t("results.matrix.test"))}</th><th>${esc(t("results.matrix.status"))}</th><th>${esc(t("results.matrix.score"))}</th><th>${esc(t("results.matrix.details"))}</th></tr></thead><tbody>${rows}</tbody></table>
 <p><small>${esc(t("report.generatedBy"))} · ${esc(t("results.engine", { version: r.engine_version }))}<br>${esc(t("settings.disclaimer"))}</small></p></body></html>`;
 }
 

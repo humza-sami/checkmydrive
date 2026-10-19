@@ -5,14 +5,10 @@
     "skip": "Siirry pääsisältöön"
   },
   "nav": {
-    "settings": "Asetukset",
-    "back": "Takaisin",
     "mockBanner": "Esittelytila: näytetään esimerkkiasemia. Tietokoneellasi ei testata mitään."
   },
   "picker": {
     "title": "Minkä aseman haluat tarkistaa?",
-    "subtitle": "Liitä asema, jonka aiot ostaa tai ottaa käyttöön, ja valitse se alta. Tarkistus kestää noin 3–4 minuuttia.",
-    "refresh": "Päivitä",
     "refreshing": "Etsitään asemia…",
     "empty": "Asemia ei löytynyt. Liitä asema ja paina Päivitä.",
     "systemDisk": "Järjestelmälevy",
@@ -27,7 +23,6 @@
       "sd": "SD- / muistikortti",
       "unknown": "Asema"
     },
-    "removable": "Irrotettava",
     "loadFailed": "Asemien luetteloa ei voitu lukea.",
     "noAdminNote": "Jotkin tiedot, kuten kuntotiedot, voivat vaatia järjestelmänvalvojan luvan. Lupaa pyydetään, kun tarkistus alkaa."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Tämä asema ei ilmoita sarjanumeroa, joten täyttä tyhjennystestiä ei voi käyttää.",
       "systemBlocked": "Järjestelmälevyä ei voi koskaan tyhjentää. Vain turvallinen testi on käytettävissä.",
       "mismatch": "Teksti ei vielä vastaa sarjanumeroa.",
-      "start": "Tyhjennä ja suorita täysi testi",
-      "expand": "Näytä täysi tyhjennystesti",
-      "collapse": "Piilota täysi tyhjennystesti"
+      "start": "Tyhjennä ja suorita täysi testi"
     },
-    "start": "Aloita nopea turvallinen testi",
-    "back": "Valitse toinen asema",
     "duration": "Kestää noin 3–4 minuuttia. Älä irrota asemaa."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Odottaa",
       "running": "Tarkistetaan",
       "done": "Valmis"
-    }
+    },
+    "cancelled": "Testi peruttiin."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Tulokset",
-    "scoreOutOf": "/ 100",
     "scoreLabel": "Pisteet {{score}} / 100",
     "verdict": {
       "buy": "Hyvä ostaa",
@@ -168,44 +159,34 @@
       "info": "Huomautus"
     },
     "matrix": {
-      "title": "Testitaulukko",
-      "subtitle": "Tietoja edistyneille käyttäjille",
       "show": "Näytä tiedot",
       "hide": "Piilota tiedot",
       "test": "Testi",
       "status": "Tila",
       "score": "Pisteet",
-      "metrics": "Avainluvut",
-      "none": "Lukuja ei tallennettu"
+      "none": "Lukuja ei tallennettu",
+      "details": "Tiedot"
     },
-    "export": "Vie raportti",
     "exportJson": "Tallenna JSON-tiedostona",
     "exportHtml": "Tallenna verkkosivuna (HTML)",
     "print": "Tulosta tai tallenna PDF-tiedostona",
     "saved": "Raportti tallennettu.",
     "saveFailed": "Raporttia ei voitu tallentaa.",
-    "another": "Testaa toinen asema",
     "mode": {
       "safe": "Nopea turvallinen testi",
       "wipe": "Täysi tyhjennystesti"
     },
     "tested": "Testattu {{date}}",
     "engine": "Moottori {{version}}",
-    "skippedNote": "Väärennetyn kapasiteetin tunnistusta ei suoritettu. Käytä täyttä tyhjennystestiä tyhjällä asemalla saadaksesi täydellisen vastauksen."
+    "skippedNote": "Väärennetyn kapasiteetin tunnistusta ei suoritettu. Käytä täyttä tyhjennystestiä tyhjällä asemalla saadaksesi täydellisen vastauksen.",
+    "testResults": "Testin tulokset"
   },
   "report": {
     "title": "CheckMyDrive-raportti",
     "generatedBy": "Luonut CheckMyDrive (avoin lähdekoodi)"
   },
   "settings": {
-    "title": "Asetukset ja tietoja",
     "language": "Kieli",
-    "languageHint": "Muut kielet kuin englanti ladataan sitä mukaa kuin ne ovat saatavilla; puuttuva teksti näkyy englanniksi.",
-    "theme": "Ulkoasu",
-    "themeSystem": "Seuraa järjestelmää",
-    "themeLight": "Vaalea",
-    "themeDark": "Tumma",
-    "about": "Tietoja",
     "version": "Versio",
     "license": "Lisenssi",
     "licenseValue": "MIT-lisenssi (ilmainen ja avoin lähdekoodi)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Ladataan…",
     "close": "Sulje",
-    "unknown": "Tuntematon"
+    "unknown": "Tuntematon",
+    "cancel": "Peruuta",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Pienennä",
+    "maximize": "Suurenna",
+    "close": "Sulje"
+  },
+  "menu": {
+    "file": "Tiedosto",
+    "test": "Testi",
+    "view": "Näytä",
+    "help": "Ohje",
+    "exit": "Lopeta",
+    "startTest": "Aloita testi",
+    "refresh": "Päivitä asemat",
+    "github": "Projekti GitHubissa",
+    "about": "Tietoja: CheckMyDrive"
+  },
+  "props": {
+    "title": "Aseman tiedot",
+    "model": "Malli",
+    "serial": "Sarjanumero",
+    "firmware": "Laiteohjelmisto",
+    "capacity": "Kapasiteetti",
+    "interface": "Liitäntä",
+    "type": "Tyyppi",
+    "rpm": "Pyörimisnopeus",
+    "hours": "Käyttötunnit",
+    "count": "Käynnistyskerrat",
+    "age": "Ikä",
+    "made": "Valmistuspäivä"
+  },
+  "health": {
+    "title": "Kunto",
+    "good": "Hyvä",
+    "caution": "Varoitus",
+    "bad": "Huono",
+    "untested": "Ei testattu"
+  },
+  "idle": {
+    "hint": "Tätä asemaa ei ole vielä testattu. Tarkista sen kunto valitsemalla Aloita testi."
+  },
+  "statusbar": {
+    "ready": "Valmis",
+    "testing": "Testataan asemaa…",
+    "drives": "Asemia: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Tehty käyttäen smartmontoolsia, Tauria ja XP.css:ää."
   }
 }

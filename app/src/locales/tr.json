@@ -5,14 +5,10 @@
     "skip": "Ana içeriğe geç"
   },
   "nav": {
-    "settings": "Ayarlar",
-    "back": "Geri",
     "mockBanner": "Demo modu: örnek sürücüler gösteriliyor. Bilgisayarınızda hiçbir şey test edilmiyor."
   },
   "picker": {
     "title": "Hangi sürücüyü kontrol etmek istiyorsunuz?",
-    "subtitle": "Satın almayı veya kullanmayı düşündüğünüz sürücüyü takın, sonra aşağıdan seçin. Kontrol yaklaşık 3 ila 4 dakika sürer.",
-    "refresh": "Yenile",
     "refreshing": "Sürücüler aranıyor…",
     "empty": "Hiç sürücü bulunamadı. Bir sürücü takın ve Yenile'ye basın.",
     "systemDisk": "Sistem diski",
@@ -27,7 +23,6 @@
       "sd": "SD / hafıza kartı",
       "unknown": "Sürücü"
     },
-    "removable": "Çıkarılabilir",
     "loadFailed": "Sürücü listesini okuyamadık.",
     "noAdminNote": "Sağlık verisi gibi bazı ayrıntılar yönetici izni gerektirebilir ve kontrol başlarken istenecektir."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Bu sürücü seri numarası bildirmiyor, bu yüzden tam silme testi kullanılamıyor.",
       "systemBlocked": "Sistem diskiniz asla silinemez. Yalnızca güvenli test kullanılabilir.",
       "mismatch": "Yazdığınız metin henüz seri numarasıyla eşleşmiyor.",
-      "start": "Sil ve tam testi çalıştır",
-      "expand": "Tam silme testini göster",
-      "collapse": "Tam silme testini gizle"
+      "start": "Sil ve tam testi çalıştır"
     },
-    "start": "Hızlı güvenli testi başlat",
-    "back": "Başka bir sürücü seç",
     "duration": "Yaklaşık 3 ila 4 dakika sürer. Lütfen sürücüyü çıkarmayın."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Bekliyor",
       "running": "Kontrol ediliyor",
       "done": "Bitti"
-    }
+    },
+    "cancelled": "Test iptal edildi."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Sonuçlar",
-    "scoreOutOf": "/ 100",
     "scoreLabel": "Puan: 100 üzerinden {{score}}",
     "verdict": {
       "buy": "Almaya uygun",
@@ -168,44 +159,34 @@
       "info": "Not"
     },
     "matrix": {
-      "title": "Test tablosu",
-      "subtitle": "İleri düzey kullanıcılar için ayrıntılar",
       "show": "Ayrıntıları göster",
       "hide": "Ayrıntıları gizle",
       "test": "Test",
       "status": "Durum",
       "score": "Puan",
-      "metrics": "Önemli sayılar",
-      "none": "Kaydedilmiş sayı yok"
+      "none": "Kaydedilmiş sayı yok",
+      "details": "Ayrıntılar"
     },
-    "export": "Raporu dışa aktar",
     "exportJson": "JSON olarak kaydet",
     "exportHtml": "Web sayfası (HTML) olarak kaydet",
     "print": "Yazdır veya PDF olarak kaydet",
     "saved": "Rapor kaydedildi.",
     "saveFailed": "Rapor kaydedilemedi.",
-    "another": "Başka bir sürücüyü test et",
     "mode": {
       "safe": "Hızlı güvenli test",
       "wipe": "Tam silme testi"
     },
     "tested": "Test tarihi: {{date}}",
     "engine": "Motor {{version}}",
-    "skippedNote": "Sahte kapasite tespiti çalıştırılmadı. Tam bir sonuç için boş bir sürücüde tam silme testini kullanın."
+    "skippedNote": "Sahte kapasite tespiti çalıştırılmadı. Tam bir sonuç için boş bir sürücüde tam silme testini kullanın.",
+    "testResults": "Test Sonuçları"
   },
   "report": {
     "title": "CheckMyDrive raporu",
     "generatedBy": "CheckMyDrive tarafından oluşturuldu (açık kaynak)"
   },
   "settings": {
-    "title": "Ayarlar ve hakkında",
     "language": "Dil",
-    "languageHint": "İngilizce dışındaki diller hazır oldukça yüklenir; eksik metinler İngilizce görünür.",
-    "theme": "Görünüm",
-    "themeSystem": "Sistemi izle",
-    "themeLight": "Açık",
-    "themeDark": "Koyu",
-    "about": "Hakkında",
     "version": "Sürüm",
     "license": "Lisans",
     "licenseValue": "MIT Lisansı (ücretsiz ve açık kaynak)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Yükleniyor…",
     "close": "Kapat",
-    "unknown": "Bilinmiyor"
+    "unknown": "Bilinmiyor",
+    "cancel": "İptal",
+    "ok": "Tamam"
+  },
+  "window": {
+    "minimize": "Küçült",
+    "maximize": "Büyüt",
+    "close": "Kapat"
+  },
+  "menu": {
+    "file": "Dosya",
+    "test": "Test",
+    "view": "Görünüm",
+    "help": "Yardım",
+    "exit": "Çıkış",
+    "startTest": "Testi Başlat",
+    "refresh": "Sürücüleri Yenile",
+    "github": "GitHub’daki Proje",
+    "about": "CheckMyDrive Hakkında"
+  },
+  "props": {
+    "title": "Sürücü Bilgileri",
+    "model": "Model",
+    "serial": "Seri numarası",
+    "firmware": "Üretici yazılımı",
+    "capacity": "Kapasite",
+    "interface": "Arayüz",
+    "type": "Tür",
+    "rpm": "Dönüş hızı",
+    "hours": "Çalışma saati",
+    "count": "Açılma sayısı",
+    "age": "Yaş",
+    "made": "Üretim tarihi"
+  },
+  "health": {
+    "title": "Sağlık Durumu",
+    "good": "İyi",
+    "caution": "Dikkat",
+    "bad": "Kötü",
+    "untested": "Test edilmedi"
+  },
+  "idle": {
+    "hint": "Bu sürücü henüz test edilmedi. Sağlığını denetlemek için Testi Başlat’ı seçin."
+  },
+  "statusbar": {
+    "ready": "Hazır",
+    "testing": "Sürücü test ediliyor…",
+    "drives": "Sürücüler: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "smartmontools, Tauri ve XP.css ile yapıldı."
   }
 }

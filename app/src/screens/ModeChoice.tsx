@@ -1,90 +1,78 @@
 import { useId, useState } from "react";
-import { ArrowLeft, ChevronDown, ShieldCheck, Skull } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { DriveIcon } from "../components/DriveIcon";
+import { Dialog } from "../components/Dialog";
+import { DriveIcon, XpIcon } from "../components/XpIcon";
 import { formatBytes } from "../lib/format";
 import type { DriveInfo, Mode } from "../lib/types";
 
 interface Props {
   drive: DriveInfo;
   onStart: (mode: Mode, confirmSerial?: string) => void;
-  onBack: () => void;
+  onCancel: () => void;
 }
 
-export function ModeChoice({ drive, onStart, onBack }: Props) {
+/** XP dialog: pick quick (safe) or full (wipe) test; wipe asks for the serial number. */
+export function ModeChoice({ drive, onStart, onCancel }: Props) {
   const { t, i18n } = useTranslation();
-  const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState<Mode>("safe");
   const [typed, setTyped] = useState("");
-  const inputId = useId();
+  const uid = useId();
   const model = drive.model ?? t("picker.unknownModel");
   const serial = drive.serial?.trim() ?? "";
   const blocked = drive.is_system_disk ? "systemBlocked" : !serial ? "noSerial" : null;
   const matches = serial !== "" && typed.trim() === serial;
+  const canStart = mode === "safe" || (!blocked && matches);
+
+  const submit = () => { if (canStart) onStart(mode, mode === "wipe" ? serial : undefined); };
 
   return (
-    <section className="fade-in" aria-labelledby="mode-title">
-      <button className="btn ghost" onClick={onBack} style={{ marginBottom: 8 }}>
-        <ArrowLeft size={18} className="flip" aria-hidden="true" /> {t("mode.back")}
-      </button>
-      <div className="page-head">
-        <h1 id="mode-title">{t("mode.title")}</h1>
-        <p style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <DriveIcon kind={drive.kind} size={20} />
-          <span>{t("mode.checking")}: <strong style={{ color: "var(--text)" }}>{model}</strong> · {formatBytes(drive.capacity_bytes, i18n.language)}</span>
-        </p>
-      </div>
-
-      <div className="stack">
-        <div className="card mode-card selected">
-          <h2>
-            <ShieldCheck aria-hidden="true" color="var(--good)" /> {t("mode.safe.title")}
-            <span className="chip accent">{t("mode.safe.badge")}</span>
-          </h2>
-          <p>{t("mode.safe.desc")}</p>
-          <p className="hint">{t("mode.safe.limit")}</p>
-          <div className="actions">
-            <button className="btn primary" onClick={() => onStart("safe")}>{t("mode.start")}</button>
-            <span className="hint">{t("mode.duration")}</span>
+    <Dialog title={t("menu.startTest")} onClose={onCancel} width={470}>
+      <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
+        <div className="dlg-head">
+          <DriveIcon kind={drive.kind} size={32} />
+          <div>
+            <div>{t("mode.checking")}: <b>{model}</b> · {formatBytes(drive.capacity_bytes, i18n.language)}</div>
           </div>
         </div>
 
-        <div>
-          <button className="btn" aria-expanded={open} aria-controls="wipe-zone" onClick={() => setOpen((o) => !o)}>
-            <Skull size={18} aria-hidden="true" color="var(--bad)" />
-            {open ? t("mode.wipe.collapse") : t("mode.wipe.expand")}
-            <ChevronDown size={18} aria-hidden="true" style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform .2s" }} />
-          </button>
-        </div>
+        <fieldset className="radio-group">
+          <legend>{t("mode.title")}</legend>
+          <div className="radio-row">
+            <input type="radio" id={`${uid}-safe`} name={`${uid}-mode`} checked={mode === "safe"} onChange={() => setMode("safe")} data-autofocus />
+            <label htmlFor={`${uid}-safe`}>{t("mode.safe.title")} <span className="badge">{t("mode.safe.badge")}</span></label>
+          </div>
+          <p className="radio-desc">{t("mode.safe.desc")} {t("mode.safe.limit")}<br />{t("mode.duration")}</p>
 
-        {open && (
-          <div id="wipe-zone" className="danger-zone fade-in" role="group" aria-labelledby="wipe-title">
-            <h2 id="wipe-title"><Skull aria-hidden="true" /> {t("mode.wipe.dangerTitle")}</h2>
-            <p><strong>{t("mode.wipe.title")}</strong></p>
-            <p>{t("mode.wipe.desc")}</p>
-            {blocked ? (
-              <p className="hint bad" role="status" style={{ marginTop: 14 }}>{t(`mode.wipe.${blocked}`)}</p>
-            ) : (
-              <>
-                <p><strong>{t("mode.wipe.dangerBody", { model })}</strong></p>
-                <label htmlFor={inputId}>{t("mode.wipe.confirmLabel", { serial })}</label>
-                <input
-                  id={inputId} className="field" value={typed} onChange={(e) => setTyped(e.target.value)}
-                  placeholder={t("mode.wipe.confirmPlaceholder")} autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
-                  aria-invalid={typed !== "" && !matches} aria-describedby={`${inputId}-hint`}
-                />
-                <p id={`${inputId}-hint`} className={`hint ${typed && !matches ? "bad" : ""}`} aria-live="polite">
-                  {typed && !matches ? t("mode.wipe.mismatch") : " "}
-                </p>
-                <div style={{ marginTop: 14 }}>
-                  <button className="btn danger" disabled={!matches} onClick={() => onStart("wipe", serial)}>
-                    {t("mode.wipe.start")}
-                  </button>
-                </div>
-              </>
-            )}
+          <div className="radio-row">
+            <input type="radio" id={`${uid}-wipe`} name={`${uid}-mode`} checked={mode === "wipe"} onChange={() => setMode("wipe")} disabled={!!blocked} />
+            <label htmlFor={`${uid}-wipe`}>{t("mode.wipe.title")}</label>
+          </div>
+          <p className="radio-desc">{t("mode.wipe.desc")}</p>
+          {blocked && <p className="radio-desc note" role="status">{t(`mode.wipe.${blocked}`)}</p>}
+        </fieldset>
+
+        {mode === "wipe" && !blocked && (
+          <div className="warn-box" role="group" aria-label={t("mode.wipe.dangerTitle")}>
+            <XpIcon name="warn" size={32} />
+            <div className="grow">
+              <div className="dlg-strong">{t("mode.wipe.dangerTitle")}</div>
+              <p>{t("mode.wipe.dangerBody", { model })}</p>
+              <label htmlFor={`${uid}-serial`} className="serial-label">{t("mode.wipe.confirmLabel", { serial })}</label>
+              <input
+                id={`${uid}-serial`} type="text" className="serial-input" value={typed} onChange={(e) => setTyped(e.target.value)}
+                placeholder={t("mode.wipe.confirmPlaceholder")} autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
+                aria-invalid={typed !== "" && !matches} aria-describedby={`${uid}-hint`} dir="ltr"
+              />
+              <p id={`${uid}-hint`} className="serial-hint" aria-live="polite">{typed && !matches ? t("mode.wipe.mismatch") : " "}</p>
+            </div>
           </div>
         )}
-      </div>
-    </section>
+
+        <div className="dlg-buttons">
+          <button type="submit" className="default" disabled={!canStart}>{mode === "wipe" ? t("mode.wipe.start") : t("menu.startTest")}</button>
+          <button type="button" onClick={onCancel}>{t("common.cancel")}</button>
+        </div>
+      </form>
+    </Dialog>
   );
 }

@@ -5,14 +5,10 @@
     "skip": "Hopp til hovedinnholdet"
   },
   "nav": {
-    "settings": "Innstillinger",
-    "back": "Tilbake",
     "mockBanner": "Demomodus: viser eksempeldisker. Ingenting på datamaskinen din blir testet."
   },
   "picker": {
     "title": "Hvilken disk vil du sjekke?",
-    "subtitle": "Koble til disken du vurderer å kjøpe eller bruke, og velg den nedenfor. Sjekken tar omtrent 3 til 4 minutter.",
-    "refresh": "Oppdater",
     "refreshing": "Leter etter disker…",
     "empty": "Fant ingen disker. Koble til en og trykk på Oppdater.",
     "systemDisk": "Systemdisk",
@@ -27,7 +23,6 @@
       "sd": "SD-/minnekort",
       "unknown": "Disk"
     },
-    "removable": "Flyttbar",
     "loadFailed": "Vi kunne ikke lese listen over disker.",
     "noAdminNote": "Noen opplysninger, for eksempel helsedata, kan kreve administratortillatelse og blir spurt om når sjekken starter."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Denne disken oppgir ikke serienummer, så full slettetest er ikke tilgjengelig.",
       "systemBlocked": "Systemdisken din kan aldri slettes. Bare den sikre testen er tilgjengelig.",
       "mismatch": "Teksten stemmer ikke med serienummeret ennå.",
-      "start": "Slett og kjør full test",
-      "expand": "Vis full slettetest",
-      "collapse": "Skjul full slettetest"
+      "start": "Slett og kjør full test"
     },
-    "start": "Start rask sikker test",
-    "back": "Velg en annen disk",
     "duration": "Tar omtrent 3 til 4 minutter. Ikke koble fra disken."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Venter",
       "running": "Sjekker",
       "done": "Ferdig"
-    }
+    },
+    "cancelled": "Testen ble avbrutt."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Resultater",
-    "scoreOutOf": "av 100",
     "scoreLabel": "Poengsum {{score}} av 100",
     "verdict": {
       "buy": "Bra å kjøpe",
@@ -168,44 +159,34 @@
       "info": "Merknad"
     },
     "matrix": {
-      "title": "Testoversikt",
-      "subtitle": "Detaljer for avanserte brukere",
       "show": "Vis detaljer",
       "hide": "Skjul detaljer",
       "test": "Test",
       "status": "Status",
       "score": "Poeng",
-      "metrics": "Nøkkeltall",
-      "none": "Ingen tall registrert"
+      "none": "Ingen tall registrert",
+      "details": "Detaljer"
     },
-    "export": "Eksporter rapport",
     "exportJson": "Lagre som JSON",
     "exportHtml": "Lagre som nettside (HTML)",
     "print": "Skriv ut eller lagre som PDF",
     "saved": "Rapporten er lagret.",
     "saveFailed": "Kunne ikke lagre rapporten.",
-    "another": "Test en annen disk",
     "mode": {
       "safe": "Rask sikker test",
       "wipe": "Full slettetest"
     },
     "tested": "Testet {{date}}",
     "engine": "Motor {{version}}",
-    "skippedNote": "Oppdagelse av falsk kapasitet ble ikke kjørt. Bruk den fulle slettetesten på en tom disk for et fullstendig svar."
+    "skippedNote": "Oppdagelse av falsk kapasitet ble ikke kjørt. Bruk den fulle slettetesten på en tom disk for et fullstendig svar.",
+    "testResults": "Testresultater"
   },
   "report": {
     "title": "CheckMyDrive-rapport",
     "generatedBy": "Laget av CheckMyDrive (åpen kildekode)"
   },
   "settings": {
-    "title": "Innstillinger og om",
     "language": "Språk",
-    "languageHint": "Andre språk enn engelsk lastes inn etter hvert som de blir tilgjengelige; tekst som mangler vises på engelsk.",
-    "theme": "Utseende",
-    "themeSystem": "Følg systemet",
-    "themeLight": "Lys",
-    "themeDark": "Mørk",
-    "about": "Om",
     "version": "Versjon",
     "license": "Lisens",
     "licenseValue": "MIT-lisens (gratis og åpen kildekode)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Laster…",
     "close": "Lukk",
-    "unknown": "Ukjent"
+    "unknown": "Ukjent",
+    "cancel": "Avbryt",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimer",
+    "maximize": "Maksimer",
+    "close": "Lukk"
+  },
+  "menu": {
+    "file": "Fil",
+    "test": "Test",
+    "view": "Vis",
+    "help": "Hjelp",
+    "exit": "Avslutt",
+    "startTest": "Start test",
+    "refresh": "Oppdater stasjoner",
+    "github": "Prosjektet på GitHub",
+    "about": "Om CheckMyDrive"
+  },
+  "props": {
+    "title": "Stasjonsinformasjon",
+    "model": "Modell",
+    "serial": "Serienummer",
+    "firmware": "Fastvare",
+    "capacity": "Kapasitet",
+    "interface": "Grensesnitt",
+    "type": "Type",
+    "rpm": "Rotasjonshastighet",
+    "hours": "Driftstimer",
+    "count": "Antall oppstarter",
+    "age": "Alder",
+    "made": "Produksjonsdato"
+  },
+  "health": {
+    "title": "Helsestatus",
+    "good": "God",
+    "caution": "Advarsel",
+    "bad": "Dårlig",
+    "untested": "Ikke testet"
+  },
+  "idle": {
+    "hint": "Denne stasjonen er ikke testet ennå. Velg Start test for å sjekke helsen."
+  },
+  "statusbar": {
+    "ready": "Klar",
+    "testing": "Tester stasjonen …",
+    "drives": "Stasjoner: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Laget med smartmontools, Tauri og XP.css."
   }
 }

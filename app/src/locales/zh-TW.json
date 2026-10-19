@@ -5,14 +5,10 @@
     "skip": "跳到主要內容"
   },
   "nav": {
-    "settings": "設定",
-    "back": "返回",
     "mockBanner": "示範模式：顯示的是範例硬碟，不會檢測您電腦上的任何裝置。"
   },
   "picker": {
     "title": "您想檢查哪一顆硬碟？",
-    "subtitle": "請插入您打算購買或使用的硬碟，然後在下方選取它。檢查大約需要 3 到 4 分鐘。",
-    "refresh": "重新整理",
     "refreshing": "正在尋找硬碟…",
     "empty": "找不到硬碟。請插入一顆硬碟，然後按「重新整理」。",
     "systemDisk": "系統碟",
@@ -27,7 +23,6 @@
       "sd": "SD 卡 / 記憶卡",
       "unknown": "硬碟"
     },
-    "removable": "可移除",
     "loadFailed": "無法讀取硬碟清單。",
     "noAdminNote": "健康資料等部分資訊可能需要系統管理員權限，檢查開始時會請求授權。"
   },
@@ -50,12 +45,8 @@
       "noSerial": "這顆硬碟沒有提供序號，因此無法進行完整清除檢測。",
       "systemBlocked": "系統碟絕對不能被清除，只能使用安全檢測。",
       "mismatch": "輸入的內容與序號還不相符。",
-      "start": "清除並執行完整檢測",
-      "expand": "顯示完整清除檢測",
-      "collapse": "隱藏完整清除檢測"
+      "start": "清除並執行完整檢測"
     },
-    "start": "開始快速安全檢測",
-    "back": "選擇其他硬碟",
     "duration": "大約需要 3 到 4 分鐘，請不要拔除硬碟。"
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "等待中",
       "running": "檢查中",
       "done": "完成"
-    }
+    },
+    "cancelled": "測試已取消。"
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "檢測結果",
-    "scoreOutOf": "滿分 100",
     "scoreLabel": "分數 {{score}}（滿分 100）",
     "verdict": {
       "buy": "值得購買",
@@ -165,44 +156,34 @@
       "info": "提示"
     },
     "matrix": {
-      "title": "檢測明細表",
-      "subtitle": "供進階使用者查看的詳細資訊",
       "show": "顯示詳細資料",
       "hide": "隱藏詳細資料",
       "test": "檢測項目",
       "status": "狀態",
       "score": "得分",
-      "metrics": "關鍵數據",
-      "none": "沒有記錄數據"
+      "none": "沒有記錄數據",
+      "details": "詳細資料"
     },
-    "export": "匯出報告",
     "exportJson": "儲存為 JSON",
     "exportHtml": "儲存為網頁（HTML）",
     "print": "列印或儲存為 PDF",
     "saved": "報告已儲存。",
     "saveFailed": "無法儲存報告。",
-    "another": "檢測另一顆硬碟",
     "mode": {
       "safe": "快速安全檢測",
       "wipe": "完整清除檢測"
     },
     "tested": "檢測時間：{{date}}",
     "engine": "引擎 {{version}}",
-    "skippedNote": "未進行虛假容量偵測。如需完整結論，請在空的硬碟上使用完整清除檢測。"
+    "skippedNote": "未進行虛假容量偵測。如需完整結論，請在空的硬碟上使用完整清除檢測。",
+    "testResults": "測試結果"
   },
   "report": {
     "title": "CheckMyDrive 報告",
     "generatedBy": "由 CheckMyDrive（開放原始碼）產生"
   },
   "settings": {
-    "title": "設定與關於",
     "language": "語言",
-    "languageHint": "英文以外的語言會在可用時載入；缺少的文字將以英文顯示。",
-    "theme": "外觀",
-    "themeSystem": "跟隨系統",
-    "themeLight": "淺色",
-    "themeDark": "深色",
-    "about": "關於",
     "version": "版本",
     "license": "授權",
     "licenseValue": "MIT 授權（免費開放原始碼）",
@@ -404,6 +385,57 @@
   "common": {
     "loading": "載入中…",
     "close": "關閉",
-    "unknown": "未知"
+    "unknown": "未知",
+    "cancel": "取消",
+    "ok": "確定"
+  },
+  "window": {
+    "minimize": "最小化",
+    "maximize": "最大化",
+    "close": "關閉"
+  },
+  "menu": {
+    "file": "檔案",
+    "test": "測試",
+    "view": "檢視",
+    "help": "說明",
+    "exit": "結束",
+    "startTest": "開始測試",
+    "refresh": "重新整理磁碟機",
+    "github": "GitHub 專案頁面",
+    "about": "關於 CheckMyDrive"
+  },
+  "props": {
+    "title": "磁碟機資訊",
+    "model": "型號",
+    "serial": "序號",
+    "firmware": "韌體",
+    "capacity": "容量",
+    "interface": "介面",
+    "type": "類型",
+    "rpm": "轉速",
+    "hours": "通電時數",
+    "count": "通電次數",
+    "age": "使用年限",
+    "made": "製造日期"
+  },
+  "health": {
+    "title": "健康狀態",
+    "good": "良好",
+    "caution": "注意",
+    "bad": "不良",
+    "untested": "未測試"
+  },
+  "idle": {
+    "hint": "這個磁碟機尚未測試。請選擇「開始測試」來檢查其健康狀況。"
+  },
+  "statusbar": {
+    "ready": "就緒",
+    "testing": "正在測試磁碟機…",
+    "drives": "磁碟機：{{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "使用 smartmontools、Tauri 和 XP.css 建置。"
   }
 }

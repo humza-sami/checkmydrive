@@ -5,14 +5,10 @@
     "skip": "跳到主要内容"
   },
   "nav": {
-    "settings": "设置",
-    "back": "返回",
     "mockBanner": "演示模式：显示的是示例硬盘，不会检测您电脑上的任何设备。"
   },
   "picker": {
     "title": "您想检查哪块硬盘？",
-    "subtitle": "请插入您打算购买或使用的硬盘，然后在下方选择它。检查大约需要 3 到 4 分钟。",
-    "refresh": "刷新",
     "refreshing": "正在查找硬盘…",
     "empty": "没有找到硬盘。请插入一块硬盘，然后点击“刷新”。",
     "systemDisk": "系统盘",
@@ -27,7 +23,6 @@
       "sd": "SD 卡 / 存储卡",
       "unknown": "硬盘"
     },
-    "removable": "可移动",
     "loadFailed": "无法读取硬盘列表。",
     "noAdminNote": "健康数据等部分信息可能需要管理员权限，检查开始时会请求授权。"
   },
@@ -50,12 +45,8 @@
       "noSerial": "这块硬盘没有提供序列号，因此无法进行完整擦除检测。",
       "systemBlocked": "系统盘绝不能被擦除，只能使用安全检测。",
       "mismatch": "输入的内容与序列号还不一致。",
-      "start": "擦除并运行完整检测",
-      "expand": "显示完整擦除检测",
-      "collapse": "隐藏完整擦除检测"
+      "start": "擦除并运行完整检测"
     },
-    "start": "开始快速安全检测",
-    "back": "选择其他硬盘",
     "duration": "大约需要 3 到 4 分钟，请不要拔出硬盘。"
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "等待中",
       "running": "检查中",
       "done": "完成"
-    }
+    },
+    "cancelled": "测试已取消。"
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "检测结果",
-    "scoreOutOf": "满分 100",
     "scoreLabel": "评分 {{score}}（满分 100）",
     "verdict": {
       "buy": "值得购买",
@@ -165,44 +156,34 @@
       "info": "提示"
     },
     "matrix": {
-      "title": "检测明细表",
-      "subtitle": "供高级用户查看的详细信息",
       "show": "显示详情",
       "hide": "隐藏详情",
       "test": "检测项目",
       "status": "状态",
       "score": "得分",
-      "metrics": "关键数据",
-      "none": "没有记录数据"
+      "none": "没有记录数据",
+      "details": "详细信息"
     },
-    "export": "导出报告",
     "exportJson": "保存为 JSON",
     "exportHtml": "保存为网页（HTML）",
     "print": "打印或保存为 PDF",
     "saved": "报告已保存。",
     "saveFailed": "无法保存报告。",
-    "another": "检测另一块硬盘",
     "mode": {
       "safe": "快速安全检测",
       "wipe": "完整擦除检测"
     },
     "tested": "检测时间：{{date}}",
     "engine": "引擎 {{version}}",
-    "skippedNote": "未进行虚假容量检测。如需完整结论，请在空硬盘上使用完整擦除检测。"
+    "skippedNote": "未进行虚假容量检测。如需完整结论，请在空硬盘上使用完整擦除检测。",
+    "testResults": "测试结果"
   },
   "report": {
     "title": "CheckMyDrive 报告",
     "generatedBy": "由 CheckMyDrive（开源软件）生成"
   },
   "settings": {
-    "title": "设置与关于",
     "language": "语言",
-    "languageHint": "英语以外的语言会在可用时加载；缺少的文字将以英语显示。",
-    "theme": "外观",
-    "themeSystem": "跟随系统",
-    "themeLight": "浅色",
-    "themeDark": "深色",
-    "about": "关于",
     "version": "版本",
     "license": "许可证",
     "licenseValue": "MIT 许可证（免费开源）",
@@ -404,6 +385,57 @@
   "common": {
     "loading": "加载中…",
     "close": "关闭",
-    "unknown": "未知"
+    "unknown": "未知",
+    "cancel": "取消",
+    "ok": "确定"
+  },
+  "window": {
+    "minimize": "最小化",
+    "maximize": "最大化",
+    "close": "关闭"
+  },
+  "menu": {
+    "file": "文件",
+    "test": "测试",
+    "view": "查看",
+    "help": "帮助",
+    "exit": "退出",
+    "startTest": "开始测试",
+    "refresh": "刷新驱动器",
+    "github": "GitHub 项目主页",
+    "about": "关于 CheckMyDrive"
+  },
+  "props": {
+    "title": "驱动器信息",
+    "model": "型号",
+    "serial": "序列号",
+    "firmware": "固件",
+    "capacity": "容量",
+    "interface": "接口",
+    "type": "类型",
+    "rpm": "转速",
+    "hours": "通电时间",
+    "count": "通电次数",
+    "age": "使用年限",
+    "made": "生产日期"
+  },
+  "health": {
+    "title": "健康状态",
+    "good": "良好",
+    "caution": "注意",
+    "bad": "损坏",
+    "untested": "未测试"
+  },
+  "idle": {
+    "hint": "此驱动器尚未测试。请选择“开始测试”来检查其健康状况。"
+  },
+  "statusbar": {
+    "ready": "就绪",
+    "testing": "正在测试驱动器…",
+    "drives": "驱动器：{{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "基于 smartmontools、Tauri 和 XP.css 构建。"
   }
 }

@@ -85,6 +85,25 @@ async fn engine_available() -> bool {
     engine_path().is_ok()
 }
 
+/// `{"version": "...", "smartctl": "7.x" | null}` from `checkmydrive-engine version` (status bar).
+#[tauri::command]
+async fn engine_version(app: AppHandle) -> Result<Value, String> {
+    let mut cmd = Command::new(engine_path()?);
+    if let Some(sc) = bundled_smartctl(&app) {
+        cmd.env("CHECKMYDRIVE_SMARTCTL", sc);
+    }
+    let out = cmd
+        .arg("version")
+        .stdin(Stdio::null())
+        .output()
+        .await
+        .map_err(|e| format!("engine_spawn_failed: {e}"))?;
+    if !out.status.success() {
+        return Err("engine_failed".into());
+    }
+    serde_json::from_slice(&out.stdout).map_err(|e| format!("engine_bad_output: {e}"))
+}
+
 #[tauri::command]
 async fn list_drives(app: AppHandle) -> Result<Value, String> {
     list_drives_impl(engine_path()?, bundled_smartctl(&app)).await
@@ -402,6 +421,7 @@ pub fn run() {
         .manage(TestState::default())
         .invoke_handler(tauri::generate_handler![
             engine_available,
+            engine_version,
             list_drives,
             start_test,
             cancel_test,

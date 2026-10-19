@@ -5,14 +5,10 @@
     "skip": "Lompat ke konten utama"
   },
   "nav": {
-    "settings": "Pengaturan",
-    "back": "Kembali",
     "mockBanner": "Mode demo: menampilkan drive contoh. Tidak ada yang sedang diuji di komputer Anda."
   },
   "picker": {
     "title": "Drive mana yang ingin Anda periksa?",
-    "subtitle": "Colokkan drive yang ingin Anda beli atau pakai, lalu pilih di bawah ini. Pemeriksaan memakan waktu sekitar 3 sampai 4 menit.",
-    "refresh": "Segarkan",
     "refreshing": "Mencari drive…",
     "empty": "Tidak ada drive yang ditemukan. Colokkan satu drive lalu tekan Segarkan.",
     "systemDisk": "Disk sistem",
@@ -27,7 +23,6 @@
       "sd": "Kartu SD / kartu memori",
       "unknown": "Drive"
     },
-    "removable": "Dapat dilepas",
     "loadFailed": "Kami tidak dapat membaca daftar drive.",
     "noAdminNote": "Beberapa detail seperti data kesehatan mungkin memerlukan izin administrator dan akan diminta saat pemeriksaan dimulai."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Drive ini tidak melaporkan nomor seri, jadi tes hapus penuh tidak tersedia.",
       "systemBlocked": "Disk sistem Anda tidak akan pernah bisa dihapus. Hanya tes aman yang tersedia.",
       "mismatch": "Teks yang diketik belum sama dengan nomor seri.",
-      "start": "Hapus dan jalankan tes penuh",
-      "expand": "Tampilkan tes hapus penuh",
-      "collapse": "Sembunyikan tes hapus penuh"
+      "start": "Hapus dan jalankan tes penuh"
     },
-    "start": "Mulai tes aman cepat",
-    "back": "Pilih drive lain",
     "duration": "Memakan waktu sekitar 3 sampai 4 menit. Mohon jangan cabut drive."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Menunggu",
       "running": "Memeriksa",
       "done": "Selesai"
-    }
+    },
+    "cancelled": "Pengujian dibatalkan."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Hasil",
-    "scoreOutOf": "dari 100",
     "scoreLabel": "Skor {{score}} dari 100",
     "verdict": {
       "buy": "Layak dibeli",
@@ -165,44 +156,34 @@
       "info": "Catatan"
     },
     "matrix": {
-      "title": "Tabel tes",
-      "subtitle": "Detail untuk pengguna mahir",
       "show": "Tampilkan detail",
       "hide": "Sembunyikan detail",
       "test": "Tes",
       "status": "Status",
       "score": "Skor",
-      "metrics": "Angka penting",
-      "none": "Tidak ada angka yang dicatat"
+      "none": "Tidak ada angka yang dicatat",
+      "details": "Detail"
     },
-    "export": "Ekspor laporan",
     "exportJson": "Simpan sebagai JSON",
     "exportHtml": "Simpan sebagai halaman web (HTML)",
     "print": "Cetak atau simpan sebagai PDF",
     "saved": "Laporan tersimpan.",
     "saveFailed": "Laporan tidak dapat disimpan.",
-    "another": "Uji drive lain",
     "mode": {
       "safe": "Tes aman cepat",
       "wipe": "Tes hapus penuh"
     },
     "tested": "Diuji pada {{date}}",
     "engine": "Mesin {{version}}",
-    "skippedNote": "Deteksi kapasitas palsu tidak dijalankan. Gunakan tes hapus penuh pada drive kosong untuk jawaban yang lengkap."
+    "skippedNote": "Deteksi kapasitas palsu tidak dijalankan. Gunakan tes hapus penuh pada drive kosong untuk jawaban yang lengkap.",
+    "testResults": "Hasil Uji"
   },
   "report": {
     "title": "Laporan CheckMyDrive",
     "generatedBy": "Dibuat oleh CheckMyDrive (sumber terbuka)"
   },
   "settings": {
-    "title": "Pengaturan dan tentang",
     "language": "Bahasa",
-    "languageHint": "Bahasa selain Inggris dimuat saat sudah tersedia; teks yang belum ada akan tampil dalam bahasa Inggris.",
-    "theme": "Tampilan",
-    "themeSystem": "Ikuti sistem",
-    "themeLight": "Terang",
-    "themeDark": "Gelap",
-    "about": "Tentang",
     "version": "Versi",
     "license": "Lisensi",
     "licenseValue": "Lisensi MIT (gratis dan sumber terbuka)",
@@ -404,6 +385,57 @@
   "common": {
     "loading": "Memuat…",
     "close": "Tutup",
-    "unknown": "Tidak diketahui"
+    "unknown": "Tidak diketahui",
+    "cancel": "Batal",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Perkecil",
+    "maximize": "Perbesar",
+    "close": "Tutup"
+  },
+  "menu": {
+    "file": "Berkas",
+    "test": "Uji",
+    "view": "Tampilan",
+    "help": "Bantuan",
+    "exit": "Keluar",
+    "startTest": "Mulai Uji",
+    "refresh": "Segarkan Drive",
+    "github": "Proyek di GitHub",
+    "about": "Tentang CheckMyDrive"
+  },
+  "props": {
+    "title": "Informasi Drive",
+    "model": "Model",
+    "serial": "Nomor seri",
+    "firmware": "Firmware",
+    "capacity": "Kapasitas",
+    "interface": "Antarmuka",
+    "type": "Jenis",
+    "rpm": "Kecepatan putar",
+    "hours": "Jam hidup",
+    "count": "Jumlah dinyalakan",
+    "age": "Usia",
+    "made": "Tanggal produksi"
+  },
+  "health": {
+    "title": "Status Kesehatan",
+    "good": "Baik",
+    "caution": "Waspada",
+    "bad": "Buruk",
+    "untested": "Belum diuji"
+  },
+  "idle": {
+    "hint": "Drive ini belum diuji. Pilih Mulai Uji untuk memeriksa kesehatannya."
+  },
+  "statusbar": {
+    "ready": "Siap",
+    "testing": "Sedang menguji drive…",
+    "drives": "Drive: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Dibuat dengan smartmontools, Tauri, dan XP.css."
   }
 }

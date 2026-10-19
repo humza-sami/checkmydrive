@@ -5,14 +5,10 @@
     "skip": "Chuyển đến nội dung chính"
   },
   "nav": {
-    "settings": "Cài đặt",
-    "back": "Quay lại",
     "mockBanner": "Chế độ demo: đang hiển thị các ổ đĩa mẫu. Không có gì trên máy tính của bạn đang được kiểm tra."
   },
   "picker": {
     "title": "Bạn muốn kiểm tra ổ đĩa nào?",
-    "subtitle": "Cắm ổ đĩa bạn định mua hoặc sử dụng, rồi chọn nó bên dưới. Việc kiểm tra mất khoảng 3 đến 4 phút.",
-    "refresh": "Làm mới",
     "refreshing": "Đang tìm ổ đĩa…",
     "empty": "Không tìm thấy ổ đĩa nào. Hãy cắm một ổ đĩa vào rồi nhấn Làm mới.",
     "systemDisk": "Ổ đĩa hệ thống",
@@ -27,7 +23,6 @@
       "sd": "Thẻ nhớ SD",
       "unknown": "Ổ đĩa"
     },
-    "removable": "Có thể tháo rời",
     "loadFailed": "Chúng tôi không đọc được danh sách ổ đĩa.",
     "noAdminNote": "Một số thông tin như dữ liệu sức khỏe có thể cần quyền quản trị viên và sẽ được yêu cầu khi bắt đầu kiểm tra."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Ổ đĩa này không cung cấp số sê-ri, nên không thể kiểm tra xóa toàn bộ.",
       "systemBlocked": "Ổ đĩa hệ thống của bạn không bao giờ được phép xóa. Chỉ có kiểm tra an toàn.",
       "mismatch": "Nội dung bạn nhập chưa khớp với số sê-ri.",
-      "start": "Xóa và chạy kiểm tra đầy đủ",
-      "expand": "Hiện kiểm tra xóa toàn bộ",
-      "collapse": "Ẩn kiểm tra xóa toàn bộ"
+      "start": "Xóa và chạy kiểm tra đầy đủ"
     },
-    "start": "Bắt đầu kiểm tra an toàn nhanh",
-    "back": "Chọn ổ đĩa khác",
     "duration": "Mất khoảng 3 đến 4 phút. Vui lòng không rút ổ đĩa."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Đang chờ",
       "running": "Đang kiểm tra",
       "done": "Xong"
-    }
+    },
+    "cancelled": "Đã hủy kiểm tra."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Kết quả",
-    "scoreOutOf": "trên 100",
     "scoreLabel": "Điểm {{score}} trên 100",
     "verdict": {
       "buy": "Nên mua",
@@ -165,44 +156,34 @@
       "info": "Ghi chú"
     },
     "matrix": {
-      "title": "Bảng kiểm tra",
-      "subtitle": "Chi tiết dành cho người dùng nâng cao",
       "show": "Hiện chi tiết",
       "hide": "Ẩn chi tiết",
       "test": "Bài kiểm tra",
       "status": "Trạng thái",
       "score": "Điểm",
-      "metrics": "Các con số chính",
-      "none": "Không có số liệu được ghi lại"
+      "none": "Không có số liệu được ghi lại",
+      "details": "Chi tiết"
     },
-    "export": "Xuất báo cáo",
     "exportJson": "Lưu dưới dạng JSON",
     "exportHtml": "Lưu dưới dạng trang web (HTML)",
     "print": "In hoặc lưu thành PDF",
     "saved": "Đã lưu báo cáo.",
     "saveFailed": "Không thể lưu báo cáo.",
-    "another": "Kiểm tra ổ đĩa khác",
     "mode": {
       "safe": "Kiểm tra an toàn nhanh",
       "wipe": "Kiểm tra xóa toàn bộ"
     },
     "tested": "Kiểm tra vào {{date}}",
     "engine": "Bộ máy {{version}}",
-    "skippedNote": "Chưa chạy phát hiện dung lượng giả. Hãy dùng kiểm tra xóa toàn bộ trên ổ đĩa trống để có câu trả lời đầy đủ."
+    "skippedNote": "Chưa chạy phát hiện dung lượng giả. Hãy dùng kiểm tra xóa toàn bộ trên ổ đĩa trống để có câu trả lời đầy đủ.",
+    "testResults": "Kết quả kiểm tra"
   },
   "report": {
     "title": "Báo cáo CheckMyDrive",
     "generatedBy": "Được tạo bởi CheckMyDrive (mã nguồn mở)"
   },
   "settings": {
-    "title": "Cài đặt và giới thiệu",
     "language": "Ngôn ngữ",
-    "languageHint": "Các ngôn ngữ khác ngoài tiếng Anh sẽ được tải khi có sẵn; phần chữ còn thiếu sẽ hiển thị bằng tiếng Anh.",
-    "theme": "Giao diện",
-    "themeSystem": "Theo hệ thống",
-    "themeLight": "Sáng",
-    "themeDark": "Tối",
-    "about": "Giới thiệu",
     "version": "Phiên bản",
     "license": "Giấy phép",
     "licenseValue": "Giấy phép MIT (miễn phí và mã nguồn mở)",
@@ -404,6 +385,57 @@
   "common": {
     "loading": "Đang tải…",
     "close": "Đóng",
-    "unknown": "Không rõ"
+    "unknown": "Không rõ",
+    "cancel": "Hủy",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Thu nhỏ",
+    "maximize": "Phóng to",
+    "close": "Đóng"
+  },
+  "menu": {
+    "file": "Tệp",
+    "test": "Kiểm tra",
+    "view": "Xem",
+    "help": "Trợ giúp",
+    "exit": "Thoát",
+    "startTest": "Bắt đầu kiểm tra",
+    "refresh": "Làm mới ổ đĩa",
+    "github": "Dự án trên GitHub",
+    "about": "Giới thiệu CheckMyDrive"
+  },
+  "props": {
+    "title": "Thông tin ổ đĩa",
+    "model": "Kiểu máy",
+    "serial": "Số sê-ri",
+    "firmware": "Phần sụn",
+    "capacity": "Dung lượng",
+    "interface": "Giao diện",
+    "type": "Loại",
+    "rpm": "Tốc độ quay",
+    "hours": "Số giờ hoạt động",
+    "count": "Số lần bật",
+    "age": "Tuổi",
+    "made": "Ngày sản xuất"
+  },
+  "health": {
+    "title": "Tình trạng sức khỏe",
+    "good": "Tốt",
+    "caution": "Cẩn thận",
+    "bad": "Xấu",
+    "untested": "Chưa kiểm tra"
+  },
+  "idle": {
+    "hint": "Ổ đĩa này chưa được kiểm tra. Hãy chọn Bắt đầu kiểm tra để xem sức khỏe của nó."
+  },
+  "statusbar": {
+    "ready": "Sẵn sàng",
+    "testing": "Đang kiểm tra ổ đĩa…",
+    "drives": "Ổ đĩa: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Được tạo bằng smartmontools, Tauri và XP.css."
   }
 }

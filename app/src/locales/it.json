@@ -5,14 +5,10 @@
     "skip": "Vai al contenuto principale"
   },
   "nav": {
-    "settings": "Impostazioni",
-    "back": "Indietro",
     "mockBanner": "Modalità demo: vengono mostrati dischi di esempio. Nulla sul tuo computer viene controllato."
   },
   "picker": {
     "title": "Quale disco vuoi controllare?",
-    "subtitle": "Collega il disco che stai pensando di comprare o usare, poi sceglilo qui sotto. Il controllo richiede circa 3-4 minuti.",
-    "refresh": "Aggiorna",
     "refreshing": "Ricerca dei dischi in corso…",
     "empty": "Nessun disco trovato. Collegane uno e premi Aggiorna.",
     "systemDisk": "Disco di sistema",
@@ -27,7 +23,6 @@
       "sd": "Scheda SD / di memoria",
       "unknown": "Disco"
     },
-    "removable": "Rimovibile",
     "loadFailed": "Non siamo riusciti a leggere l'elenco dei dischi.",
     "noAdminNote": "Alcuni dettagli, come i dati sulla salute del disco, potrebbero richiedere i permessi di amministratore e verranno richiesti all'avvio del controllo."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Questo disco non comunica un numero di serie, quindi il test completo con cancellazione non è disponibile.",
       "systemBlocked": "Il disco di sistema non può mai essere cancellato. È disponibile solo il test sicuro.",
       "mismatch": "Il testo non corrisponde ancora al numero di serie.",
-      "start": "Cancella ed esegui il test completo",
-      "expand": "Mostra il test completo con cancellazione",
-      "collapse": "Nascondi il test completo con cancellazione"
+      "start": "Cancella ed esegui il test completo"
     },
-    "start": "Avvia il test rapido e sicuro",
-    "back": "Scegli un altro disco",
     "duration": "Richiede circa 3-4 minuti. Non scollegare il disco."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "In attesa",
       "running": "In corso",
       "done": "Fatto"
-    }
+    },
+    "cancelled": "Il test è stato annullato."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Risultati",
-    "scoreOutOf": "su 100",
     "scoreLabel": "Punteggio {{score}} su 100",
     "verdict": {
       "buy": "Buono da comprare",
@@ -171,44 +162,34 @@
       "info": "Nota"
     },
     "matrix": {
-      "title": "Tabella dei test",
-      "subtitle": "Dettagli per utenti esperti",
       "show": "Mostra i dettagli",
       "hide": "Nascondi i dettagli",
       "test": "Test",
       "status": "Stato",
       "score": "Punteggio",
-      "metrics": "Numeri principali",
-      "none": "Nessun numero registrato"
+      "none": "Nessun numero registrato",
+      "details": "Dettagli"
     },
-    "export": "Esporta il rapporto",
     "exportJson": "Salva come JSON",
     "exportHtml": "Salva come pagina web (HTML)",
     "print": "Stampa o salva come PDF",
     "saved": "Rapporto salvato.",
     "saveFailed": "Impossibile salvare il rapporto.",
-    "another": "Testa un altro disco",
     "mode": {
       "safe": "Test rapido e sicuro",
       "wipe": "Test completo con cancellazione"
     },
     "tested": "Testato il {{date}}",
     "engine": "Motore {{version}}",
-    "skippedNote": "Il rilevamento della capacità falsa non è stato eseguito. Usa il test completo con cancellazione su un disco vuoto per una risposta completa."
+    "skippedNote": "Il rilevamento della capacità falsa non è stato eseguito. Usa il test completo con cancellazione su un disco vuoto per una risposta completa.",
+    "testResults": "Risultati del test"
   },
   "report": {
     "title": "Rapporto CheckMyDrive",
     "generatedBy": "Generato da CheckMyDrive (open source)"
   },
   "settings": {
-    "title": "Impostazioni e informazioni",
     "language": "Lingua",
-    "languageHint": "Le lingue diverse dall'inglese vengono caricate man mano che diventano disponibili; i testi mancanti appaiono in inglese.",
-    "theme": "Aspetto",
-    "themeSystem": "Come il sistema",
-    "themeLight": "Chiaro",
-    "themeDark": "Scuro",
-    "about": "Informazioni",
     "version": "Versione",
     "license": "Licenza",
     "licenseValue": "Licenza MIT (libera e open source)",
@@ -448,6 +429,57 @@
   "common": {
     "loading": "Caricamento…",
     "close": "Chiudi",
-    "unknown": "Sconosciuto"
+    "unknown": "Sconosciuto",
+    "cancel": "Annulla",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Riduci a icona",
+    "maximize": "Ingrandisci",
+    "close": "Chiudi"
+  },
+  "menu": {
+    "file": "File",
+    "test": "Test",
+    "view": "Visualizza",
+    "help": "Aiuto",
+    "exit": "Esci",
+    "startTest": "Avvia test",
+    "refresh": "Aggiorna unità",
+    "github": "Progetto su GitHub",
+    "about": "Informazioni su CheckMyDrive"
+  },
+  "props": {
+    "title": "Informazioni sull’unità",
+    "model": "Modello",
+    "serial": "Numero di serie",
+    "firmware": "Firmware",
+    "capacity": "Capacità",
+    "interface": "Interfaccia",
+    "type": "Tipo",
+    "rpm": "Velocità di rotazione",
+    "hours": "Ore di accensione",
+    "count": "Numero di accensioni",
+    "age": "Età",
+    "made": "Data di produzione"
+  },
+  "health": {
+    "title": "Stato di salute",
+    "good": "Buono",
+    "caution": "Attenzione",
+    "bad": "Pessimo",
+    "untested": "Non testata"
+  },
+  "idle": {
+    "hint": "Questa unità non è ancora stata testata. Scegli Avvia test per controllarne lo stato."
+  },
+  "statusbar": {
+    "ready": "Pronto",
+    "testing": "Test dell’unità in corso…",
+    "drives": "Unità: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Realizzato con smartmontools, Tauri e XP.css."
   }
 }

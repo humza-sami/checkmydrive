@@ -5,14 +5,10 @@
     "skip": "Langkau ke kandungan utama"
   },
   "nav": {
-    "settings": "Tetapan",
-    "back": "Kembali",
     "mockBanner": "Mod demo: memaparkan pemacu contoh. Tiada apa-apa pada komputer anda sedang diuji."
   },
   "picker": {
     "title": "Pemacu manakah yang anda mahu periksa?",
-    "subtitle": "Sambungkan pemacu yang anda fikir untuk beli atau guna, kemudian pilih di bawah. Pemeriksaan mengambil masa kira-kira 3 hingga 4 minit.",
-    "refresh": "Muat semula",
     "refreshing": "Mencari pemacu…",
     "empty": "Tiada pemacu ditemui. Sambungkan satu dan tekan Muat semula.",
     "systemDisk": "Cakera sistem",
@@ -27,7 +23,6 @@
       "sd": "Kad SD / kad memori",
       "unknown": "Pemacu"
     },
-    "removable": "Boleh dikeluarkan",
     "loadFailed": "Kami tidak dapat membaca senarai pemacu.",
     "noAdminNote": "Sesetengah butiran seperti data kesihatan mungkin memerlukan kebenaran pentadbir dan akan diminta apabila pemeriksaan bermula."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Pemacu ini tidak melaporkan nombor siri, jadi ujian padam penuh tidak tersedia.",
       "systemBlocked": "Cakera sistem anda tidak boleh dipadam sama sekali. Hanya ujian selamat tersedia.",
       "mismatch": "Teks itu belum sepadan dengan nombor siri.",
-      "start": "Padam dan jalankan ujian penuh",
-      "expand": "Tunjukkan ujian padam penuh",
-      "collapse": "Sembunyikan ujian padam penuh"
+      "start": "Padam dan jalankan ujian penuh"
     },
-    "start": "Mulakan ujian selamat pantas",
-    "back": "Pilih pemacu lain",
     "duration": "Mengambil masa kira-kira 3 hingga 4 minit. Sila jangan cabut pemacu."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Menunggu",
       "running": "Memeriksa",
       "done": "Selesai"
-    }
+    },
+    "cancelled": "Ujian telah dibatalkan."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Keputusan",
-    "scoreOutOf": "daripada 100",
     "scoreLabel": "Skor {{score}} daripada 100",
     "verdict": {
       "buy": "Elok dibeli",
@@ -165,44 +156,34 @@
       "info": "Nota"
     },
     "matrix": {
-      "title": "Jadual ujian",
-      "subtitle": "Butiran untuk pengguna mahir",
       "show": "Tunjukkan butiran",
       "hide": "Sembunyikan butiran",
       "test": "Ujian",
       "status": "Status",
       "score": "Skor",
-      "metrics": "Angka utama",
-      "none": "Tiada angka direkodkan"
+      "none": "Tiada angka direkodkan",
+      "details": "Butiran"
     },
-    "export": "Eksport laporan",
     "exportJson": "Simpan sebagai JSON",
     "exportHtml": "Simpan sebagai laman web (HTML)",
     "print": "Cetak atau simpan sebagai PDF",
     "saved": "Laporan disimpan.",
     "saveFailed": "Laporan tidak dapat disimpan.",
-    "another": "Uji pemacu lain",
     "mode": {
       "safe": "Ujian selamat pantas",
       "wipe": "Ujian padam penuh"
     },
     "tested": "Diuji pada {{date}}",
     "engine": "Enjin {{version}}",
-    "skippedNote": "Pengesanan kapasiti palsu tidak dijalankan. Gunakan ujian padam penuh pada pemacu kosong untuk jawapan yang lengkap."
+    "skippedNote": "Pengesanan kapasiti palsu tidak dijalankan. Gunakan ujian padam penuh pada pemacu kosong untuk jawapan yang lengkap.",
+    "testResults": "Keputusan Ujian"
   },
   "report": {
     "title": "Laporan CheckMyDrive",
     "generatedBy": "Dijana oleh CheckMyDrive (sumber terbuka)"
   },
   "settings": {
-    "title": "Tetapan dan perihal",
     "language": "Bahasa",
-    "languageHint": "Bahasa selain Inggeris dimuatkan apabila tersedia; teks yang tiada akan dipaparkan dalam bahasa Inggeris.",
-    "theme": "Penampilan",
-    "themeSystem": "Ikut sistem",
-    "themeLight": "Cerah",
-    "themeDark": "Gelap",
-    "about": "Perihal",
     "version": "Versi",
     "license": "Lesen",
     "licenseValue": "Lesen MIT (percuma dan sumber terbuka)",
@@ -404,6 +385,57 @@
   "common": {
     "loading": "Memuatkan…",
     "close": "Tutup",
-    "unknown": "Tidak diketahui"
+    "unknown": "Tidak diketahui",
+    "cancel": "Batal",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimumkan",
+    "maximize": "Maksimumkan",
+    "close": "Tutup"
+  },
+  "menu": {
+    "file": "Fail",
+    "test": "Ujian",
+    "view": "Papar",
+    "help": "Bantuan",
+    "exit": "Keluar",
+    "startTest": "Mulakan Ujian",
+    "refresh": "Segar Semula Pemacu",
+    "github": "Projek di GitHub",
+    "about": "Perihal CheckMyDrive"
+  },
+  "props": {
+    "title": "Maklumat Pemacu",
+    "model": "Model",
+    "serial": "Nombor siri",
+    "firmware": "Perisian tegar",
+    "capacity": "Kapasiti",
+    "interface": "Antara muka",
+    "type": "Jenis",
+    "rpm": "Kelajuan putaran",
+    "hours": "Jam dihidupkan",
+    "count": "Bilangan dihidupkan",
+    "age": "Usia",
+    "made": "Tarikh dikeluarkan"
+  },
+  "health": {
+    "title": "Status Kesihatan",
+    "good": "Baik",
+    "caution": "Awas",
+    "bad": "Buruk",
+    "untested": "Belum diuji"
+  },
+  "idle": {
+    "hint": "Pemacu ini belum diuji. Pilih Mulakan Ujian untuk menyemak kesihatannya."
+  },
+  "statusbar": {
+    "ready": "Sedia",
+    "testing": "Sedang menguji pemacu…",
+    "drives": "Pemacu: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Dibina dengan smartmontools, Tauri dan XP.css."
   }
 }

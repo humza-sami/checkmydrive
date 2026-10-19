@@ -5,14 +5,10 @@
     "skip": "Ruka hadi maudhui makuu"
   },
   "nav": {
-    "settings": "Mipangilio",
-    "back": "Rudi",
     "mockBanner": "Hali ya maonyesho: diski za mfano zinaonyeshwa. Hakuna kitu kwenye kompyuta yako kinachojaribiwa."
   },
   "picker": {
     "title": "Ni diski gani ungependa kuikagua?",
-    "subtitle": "Chomeka diski unayofikiria kununua au kutumia, kisha uichague hapa chini. Ukaguzi huchukua takriban dakika 3 hadi 4.",
-    "refresh": "Onyesha upya",
     "refreshing": "Inatafuta diski…",
     "empty": "Hakuna diski iliyopatikana. Chomeka moja kisha bonyeza Onyesha upya.",
     "systemDisk": "Diski ya mfumo",
@@ -27,7 +23,6 @@
       "sd": "Kadi ya SD / kadi ya kumbukumbu",
       "unknown": "Diski"
     },
-    "removable": "Inayotolewa",
     "loadFailed": "Hatukuweza kusoma orodha ya diski.",
     "noAdminNote": "Baadhi ya maelezo, kama data ya afya, yanaweza kuhitaji ruhusa ya msimamizi na yataombwa ukaguzi utakapoanza."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Diski hii haitoi nambari ya ufuatiliaji, kwa hivyo jaribio kamili la kufuta halipatikani.",
       "systemBlocked": "Diski yako ya mfumo haiwezi kufutwa kamwe. Jaribio salama pekee ndilo linapatikana.",
       "mismatch": "Maandishi bado hayalingani na nambari ya ufuatiliaji.",
-      "start": "Futa na uendeshe jaribio kamili",
-      "expand": "Onyesha jaribio kamili la kufuta",
-      "collapse": "Ficha jaribio kamili la kufuta"
+      "start": "Futa na uendeshe jaribio kamili"
     },
-    "start": "Anza jaribio la haraka salama",
-    "back": "Chagua diski nyingine",
     "duration": "Huchukua takriban dakika 3 hadi 4. Tafadhali usitoe diski."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Inasubiri",
       "running": "Inakagua",
       "done": "Imekamilika"
-    }
+    },
+    "cancelled": "Jaribio limeghairiwa."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Matokeo",
-    "scoreOutOf": "kati ya 100",
     "scoreLabel": "Alama {{score}} kati ya 100",
     "verdict": {
       "buy": "Inafaa kununuliwa",
@@ -168,44 +159,34 @@
       "info": "Taarifa"
     },
     "matrix": {
-      "title": "Jedwali la majaribio",
-      "subtitle": "Maelezo kwa watumiaji wa hali ya juu",
       "show": "Onyesha maelezo",
       "hide": "Ficha maelezo",
       "test": "Jaribio",
       "status": "Hali",
       "score": "Alama",
-      "metrics": "Nambari muhimu",
-      "none": "Hakuna nambari zilizorekodiwa"
+      "none": "Hakuna nambari zilizorekodiwa",
+      "details": "Maelezo"
     },
-    "export": "Hamisha ripoti",
     "exportJson": "Hifadhi kama JSON",
     "exportHtml": "Hifadhi kama ukurasa wa wavuti (HTML)",
     "print": "Chapisha au hifadhi kama PDF",
     "saved": "Ripoti imehifadhiwa.",
     "saveFailed": "Imeshindwa kuhifadhi ripoti.",
-    "another": "Jaribu diski nyingine",
     "mode": {
       "safe": "Jaribio la haraka salama",
       "wipe": "Jaribio kamili la kufuta"
     },
     "tested": "Ilijaribiwa tarehe {{date}}",
     "engine": "Injini {{version}}",
-    "skippedNote": "Ugunduzi wa ukubwa wa uongo haukufanyika. Tumia jaribio kamili la kufuta kwenye diski tupu ili kupata jibu kamili."
+    "skippedNote": "Ugunduzi wa ukubwa wa uongo haukufanyika. Tumia jaribio kamili la kufuta kwenye diski tupu ili kupata jibu kamili.",
+    "testResults": "Matokeo ya Jaribio"
   },
   "report": {
     "title": "Ripoti ya CheckMyDrive",
     "generatedBy": "Imetengenezwa na CheckMyDrive (chanzo huria)"
   },
   "settings": {
-    "title": "Mipangilio na kuhusu",
     "language": "Lugha",
-    "languageHint": "Lugha zisizo Kiingereza hupakiwa zinapopatikana; maandishi yanayokosekana yanaonekana kwa Kiingereza.",
-    "theme": "Mwonekano",
-    "themeSystem": "Fuata mfumo",
-    "themeLight": "Mwanga",
-    "themeDark": "Giza",
-    "about": "Kuhusu",
     "version": "Toleo",
     "license": "Leseni",
     "licenseValue": "Leseni ya MIT (bure na chanzo huria)",
@@ -426,6 +407,57 @@
   "common": {
     "loading": "Inapakia…",
     "close": "Funga",
-    "unknown": "Haijulikani"
+    "unknown": "Haijulikani",
+    "cancel": "Ghairi",
+    "ok": "Sawa"
+  },
+  "window": {
+    "minimize": "Punguza",
+    "maximize": "Kuza",
+    "close": "Funga"
+  },
+  "menu": {
+    "file": "Faili",
+    "test": "Jaribio",
+    "view": "Mwonekano",
+    "help": "Msaada",
+    "exit": "Toka",
+    "startTest": "Anza Jaribio",
+    "refresh": "Onyesha Upya Diski",
+    "github": "Mradi kwenye GitHub",
+    "about": "Kuhusu CheckMyDrive"
+  },
+  "props": {
+    "title": "Taarifa za Diski",
+    "model": "Modeli",
+    "serial": "Nambari ya serial",
+    "firmware": "Programu dhibiti",
+    "capacity": "Uwezo",
+    "interface": "Kiolesura",
+    "type": "Aina",
+    "rpm": "Kasi ya kuzunguka",
+    "hours": "Saa za kuwashwa",
+    "count": "Idadi ya kuwashwa",
+    "age": "Umri",
+    "made": "Tarehe ya utengenezaji"
+  },
+  "health": {
+    "title": "Hali ya Afya",
+    "good": "Nzuri",
+    "caution": "Tahadhari",
+    "bad": "Mbaya",
+    "untested": "Haijajaribiwa"
+  },
+  "idle": {
+    "hint": "Diski hii haijajaribiwa bado. Chagua Anza Jaribio ili kukagua afya yake."
+  },
+  "statusbar": {
+    "ready": "Tayari",
+    "testing": "Inajaribu diski…",
+    "drives": "Diski: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Imetengenezwa kwa smartmontools, Tauri na XP.css."
   }
 }

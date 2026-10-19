@@ -5,14 +5,10 @@
     "skip": "Aller au contenu principal"
   },
   "nav": {
-    "settings": "Réglages",
-    "back": "Retour",
     "mockBanner": "Mode démo : des disques d'exemple sont affichés. Rien n'est testé sur votre ordinateur."
   },
   "picker": {
     "title": "Quel disque voulez-vous vérifier ?",
-    "subtitle": "Branchez le disque que vous envisagez d'acheter ou d'utiliser, puis choisissez-le ci-dessous. La vérification dure environ 3 à 4 minutes.",
-    "refresh": "Actualiser",
     "refreshing": "Recherche des disques…",
     "empty": "Aucun disque trouvé. Branchez-en un et appuyez sur Actualiser.",
     "systemDisk": "Disque système",
@@ -27,7 +23,6 @@
       "sd": "Carte SD / carte mémoire",
       "unknown": "Disque"
     },
-    "removable": "Amovible",
     "loadFailed": "Nous n'avons pas pu lire la liste des disques.",
     "noAdminNote": "Certaines informations, comme les données de santé, peuvent nécessiter l'autorisation de l'administrateur, qui sera demandée au début de la vérification."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Ce disque ne communique pas de numéro de série, le test complet avec effacement n'est donc pas disponible.",
       "systemBlocked": "Votre disque système ne peut jamais être effacé. Seul le test sûr est disponible.",
       "mismatch": "Le texte ne correspond pas encore au numéro de série.",
-      "start": "Effacer et lancer le test complet",
-      "expand": "Afficher le test complet avec effacement",
-      "collapse": "Masquer le test complet avec effacement"
+      "start": "Effacer et lancer le test complet"
     },
-    "start": "Lancer le test rapide et sûr",
-    "back": "Choisir un autre disque",
     "duration": "Dure environ 3 à 4 minutes. Veuillez ne pas débrancher le disque."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "En attente",
       "running": "Vérification",
       "done": "Terminé"
-    }
+    },
+    "cancelled": "Le test a été annulé."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Résultats",
-    "scoreOutOf": "sur 100",
     "scoreLabel": "Note : {{score}} sur 100",
     "verdict": {
       "buy": "Bon à acheter",
@@ -171,44 +162,34 @@
       "info": "Remarque"
     },
     "matrix": {
-      "title": "Tableau des tests",
-      "subtitle": "Détails pour utilisateurs avancés",
       "show": "Afficher les détails",
       "hide": "Masquer les détails",
       "test": "Test",
       "status": "État",
       "score": "Note",
-      "metrics": "Chiffres clés",
-      "none": "Aucun chiffre enregistré"
+      "none": "Aucun chiffre enregistré",
+      "details": "Détails"
     },
-    "export": "Exporter le rapport",
     "exportJson": "Enregistrer au format JSON",
     "exportHtml": "Enregistrer comme page web (HTML)",
     "print": "Imprimer ou enregistrer en PDF",
     "saved": "Rapport enregistré.",
     "saveFailed": "Impossible d'enregistrer le rapport.",
-    "another": "Tester un autre disque",
     "mode": {
       "safe": "Test rapide et sûr",
       "wipe": "Test complet avec effacement"
     },
     "tested": "Testé le {{date}}",
     "engine": "Moteur {{version}}",
-    "skippedNote": "La détection de fausse capacité n'a pas été effectuée. Pour une réponse complète, utilisez le test complet avec effacement sur un disque vide."
+    "skippedNote": "La détection de fausse capacité n'a pas été effectuée. Pour une réponse complète, utilisez le test complet avec effacement sur un disque vide.",
+    "testResults": "Résultats du test"
   },
   "report": {
     "title": "Rapport CheckMyDrive",
     "generatedBy": "Généré par CheckMyDrive (open source)"
   },
   "settings": {
-    "title": "Réglages et à propos",
     "language": "Langue",
-    "languageHint": "Les langues autres que l'anglais sont chargées au fur et à mesure de leur disponibilité ; les textes manquants s'affichent en anglais.",
-    "theme": "Apparence",
-    "themeSystem": "Suivre le système",
-    "themeLight": "Clair",
-    "themeDark": "Sombre",
-    "about": "À propos",
     "version": "Version",
     "license": "Licence",
     "licenseValue": "Licence MIT (libre et open source)",
@@ -448,6 +429,57 @@
   "common": {
     "loading": "Chargement…",
     "close": "Fermer",
-    "unknown": "Inconnu"
+    "unknown": "Inconnu",
+    "cancel": "Annuler",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Réduire",
+    "maximize": "Agrandir",
+    "close": "Fermer"
+  },
+  "menu": {
+    "file": "Fichier",
+    "test": "Test",
+    "view": "Affichage",
+    "help": "Aide",
+    "exit": "Quitter",
+    "startTest": "Démarrer le test",
+    "refresh": "Actualiser les disques",
+    "github": "Projet sur GitHub",
+    "about": "À propos de CheckMyDrive"
+  },
+  "props": {
+    "title": "Informations sur le disque",
+    "model": "Modèle",
+    "serial": "Numéro de série",
+    "firmware": "Micrologiciel",
+    "capacity": "Capacité",
+    "interface": "Interface",
+    "type": "Type",
+    "rpm": "Vitesse de rotation",
+    "hours": "Heures de fonctionnement",
+    "count": "Nombre de démarrages",
+    "age": "Âge",
+    "made": "Fabrication"
+  },
+  "health": {
+    "title": "État de santé",
+    "good": "Bon",
+    "caution": "Attention",
+    "bad": "Mauvais",
+    "untested": "Non testé"
+  },
+  "idle": {
+    "hint": "Ce disque n’a pas encore été testé. Choisissez Démarrer le test pour vérifier son état."
+  },
+  "statusbar": {
+    "ready": "Prêt",
+    "testing": "Test du disque en cours…",
+    "drives": "Disques : {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Créé avec smartmontools, Tauri et XP.css."
   }
 }

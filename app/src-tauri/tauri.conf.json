@@ -13,12 +13,13 @@
     "windows": [
       {
         "title": "CheckMyDrive",
-        "width": 1000,
-        "height": 760,
+        "width": 900,
+        "height": 650,
         "minWidth": 720,
-        "minHeight": 560,
+        "minHeight": 520,
         "center": true,
-        "label": "main"
+        "label": "main",
+        "decorations": false
       }
     ],
     "security": {

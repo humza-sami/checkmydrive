@@ -5,14 +5,10 @@
     "skip": "Preskočiť na hlavný obsah"
   },
   "nav": {
-    "settings": "Nastavenia",
-    "back": "Späť",
     "mockBanner": "Ukážkový režim: zobrazujú sa vzorové disky. Vo vašom počítači sa nič netestuje."
   },
   "picker": {
     "title": "Ktorý disk chcete skontrolovať?",
-    "subtitle": "Pripojte disk, ktorý zvažujete kúpiť alebo používať, a vyberte ho nižšie. Kontrola trvá približne 3 až 4 minúty.",
-    "refresh": "Obnoviť",
     "refreshing": "Hľadám disky…",
     "empty": "Nenašiel sa žiadny disk. Pripojte nejaký a stlačte Obnoviť.",
     "systemDisk": "Systémový disk",
@@ -27,7 +23,6 @@
       "sd": "SD / pamäťová karta",
       "unknown": "Disk"
     },
-    "removable": "Výmenný",
     "loadFailed": "Zoznam diskov sa nepodarilo načítať.",
     "noAdminNote": "Niektoré údaje, napríklad zdravotné dáta, môžu vyžadovať povolenie správcu. Požiadame oň pri spustení kontroly."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Tento disk nehlási sériové číslo, preto plný test s vymazaním nie je k dispozícii.",
       "systemBlocked": "Systémový disk sa nikdy nedá vymazať. K dispozícii je len bezpečný test.",
       "mismatch": "Text zatiaľ nezodpovedá sériovému číslu.",
-      "start": "Vymazať a spustiť plný test",
-      "expand": "Zobraziť plný test s vymazaním",
-      "collapse": "Skryť plný test s vymazaním"
+      "start": "Vymazať a spustiť plný test"
     },
-    "start": "Spustiť rýchly bezpečný test",
-    "back": "Vybrať iný disk",
     "duration": "Trvá približne 3 až 4 minúty. Disk, prosím, neodpájajte."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "Čaká",
       "running": "Kontroluje sa",
       "done": "Hotovo"
-    }
+    },
+    "cancelled": "Test bol zrušený."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Výsledky",
-    "scoreOutOf": "zo 100",
     "scoreLabel": "Skóre {{score}} zo 100",
     "verdict": {
       "buy": "Dá sa kúpiť",
@@ -174,44 +165,34 @@
       "info": "Poznámka"
     },
     "matrix": {
-      "title": "Tabuľka testov",
-      "subtitle": "Podrobnosti pre pokročilých používateľov",
       "show": "Zobraziť podrobnosti",
       "hide": "Skryť podrobnosti",
       "test": "Test",
       "status": "Stav",
       "score": "Skóre",
-      "metrics": "Kľúčové čísla",
-      "none": "Neboli zaznamenané žiadne čísla"
+      "none": "Neboli zaznamenané žiadne čísla",
+      "details": "Podrobnosti"
     },
-    "export": "Exportovať správu",
     "exportJson": "Uložiť ako JSON",
     "exportHtml": "Uložiť ako webovú stránku (HTML)",
     "print": "Vytlačiť alebo uložiť ako PDF",
     "saved": "Správa bola uložená.",
     "saveFailed": "Správu sa nepodarilo uložiť.",
-    "another": "Otestovať ďalší disk",
     "mode": {
       "safe": "Rýchly bezpečný test",
       "wipe": "Plný test s vymazaním"
     },
     "tested": "Testované dňa {{date}}",
     "engine": "Jadro {{version}}",
-    "skippedNote": "Zisťovanie falošnej kapacity nebolo spustené. Pre úplnú odpoveď použite plný test s vymazaním na prázdnom disku."
+    "skippedNote": "Zisťovanie falošnej kapacity nebolo spustené. Pre úplnú odpoveď použite plný test s vymazaním na prázdnom disku.",
+    "testResults": "Výsledky testu"
   },
   "report": {
     "title": "Správa CheckMyDrive",
     "generatedBy": "Vytvorené programom CheckMyDrive (open source)"
   },
   "settings": {
-    "title": "Nastavenia a informácie",
     "language": "Jazyk",
-    "languageHint": "Iné jazyky ako angličtina sa načítavajú postupne, ako sú k dispozícii; chýbajúci text sa zobrazí po anglicky.",
-    "theme": "Vzhľad",
-    "themeSystem": "Podľa systému",
-    "themeLight": "Svetlý",
-    "themeDark": "Tmavý",
-    "about": "O aplikácii",
     "version": "Verzia",
     "license": "Licencia",
     "licenseValue": "Licencia MIT (zadarmo a open source)",
@@ -470,6 +451,57 @@
   "common": {
     "loading": "Načítavanie…",
     "close": "Zavrieť",
-    "unknown": "Neznáme"
+    "unknown": "Neznáme",
+    "cancel": "Zrušiť",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimalizovať",
+    "maximize": "Maximalizovať",
+    "close": "Zavrieť"
+  },
+  "menu": {
+    "file": "Súbor",
+    "test": "Test",
+    "view": "Zobraziť",
+    "help": "Pomocník",
+    "exit": "Koniec",
+    "startTest": "Spustiť test",
+    "refresh": "Obnoviť zoznam diskov",
+    "github": "Projekt na GitHube",
+    "about": "O aplikácii CheckMyDrive"
+  },
+  "props": {
+    "title": "Informácie o disku",
+    "model": "Model",
+    "serial": "Sériové číslo",
+    "firmware": "Firmvér",
+    "capacity": "Kapacita",
+    "interface": "Rozhranie",
+    "type": "Typ",
+    "rpm": "Rýchlosť otáčania",
+    "hours": "Hodiny prevádzky",
+    "count": "Počet zapnutí",
+    "age": "Vek",
+    "made": "Dátum výroby"
+  },
+  "health": {
+    "title": "Stav zdravia",
+    "good": "Dobrý",
+    "caution": "Pozor",
+    "bad": "Zlý",
+    "untested": "Netestované"
+  },
+  "idle": {
+    "hint": "Tento disk ešte nebol testovaný. Vyberte Spustiť test a skontrolujte jeho stav."
+  },
+  "statusbar": {
+    "ready": "Pripravené",
+    "testing": "Prebieha test disku…",
+    "drives": "Disky: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Vytvorené pomocou smartmontools, Tauri a XP.css."
   }
 }

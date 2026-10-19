@@ -73,3 +73,18 @@ export async function cancelTest(): Promise<void> {
   }
   if (inTauri()) await invoke("cancel_test");
 }
+
+export interface EngineInfo {
+  version: string;
+  smartctl: string | null;
+}
+
+/** Engine and smartctl versions for the status bar. Null when unknown (mock mode, sidecar missing). */
+export async function getEngineInfo(): Promise<EngineInfo | null> {
+  if (await isMock()) return null;
+  try {
+    return await invoke<EngineInfo>("engine_version");
+  } catch {
+    return null;
+  }
+}

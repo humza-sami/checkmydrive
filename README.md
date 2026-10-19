@@ -37,9 +37,9 @@ You get:
 
 ## Screenshots
 
-| Pick a drive | Result: avoid | Result: good (dark) |
+| Result: good | Result: avoid | Choose a test |
 |---|---|---|
-| <img src="docs/screenshots/01-drive-picker.png" alt="Drive picker"> | <img src="docs/screenshots/05-results-avoid.png" alt="Avoid result"> | <img src="docs/screenshots/04-results-good-dark.png" alt="Good result, dark theme"> |
+| <img src="docs/screenshots/01-good-drive.png" alt="Good result"> | <img src="docs/screenshots/02-bad-drive.png" alt="Avoid result"> | <img src="docs/screenshots/03-mode-dialog-wipe.png" alt="Test mode dialog"> |
 
 ## Download and install
 
@@ -158,7 +158,7 @@ Bug reports, translations and pull requests are welcome. See [CONTRIBUTING.md](C
 
 ## Acknowledgements
 
-Drive health data comes from [smartmontools](https://www.smartmontools.org) (`smartctl`). The desktop app is built with [Tauri](https://tauri.app).
+Drive health data comes from [smartmontools](https://www.smartmontools.org) (`smartctl`). The desktop app is built with [Tauri](https://tauri.app), and its Windows XP look uses [XP.css](https://github.com/botoxparty/XP.css) (MIT).
 
 ## Disclaimer
 

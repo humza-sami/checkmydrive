@@ -5,14 +5,10 @@
     "skip": "Treci la conținutul principal"
   },
   "nav": {
-    "settings": "Setări",
-    "back": "Înapoi",
     "mockBanner": "Mod demo: sunt afișate unități de exemplu. Nimic de pe calculatorul tău nu este testat."
   },
   "picker": {
     "title": "Ce unitate vrei să verifici?",
-    "subtitle": "Conectează unitatea pe care te gândești să o cumperi sau să o folosești, apoi alege-o mai jos. Verificarea durează aproximativ 3-4 minute.",
-    "refresh": "Reîmprospătează",
     "refreshing": "Se caută unități…",
     "empty": "Nu s-a găsit nicio unitate. Conectează una și apasă Reîmprospătează.",
     "systemDisk": "Discul de sistem",
@@ -27,7 +23,6 @@
       "sd": "Card SD / card de memorie",
       "unknown": "Unitate"
     },
-    "removable": "Detașabilă",
     "loadFailed": "Nu am putut citi lista de unități.",
     "noAdminNote": "Unele detalii, cum ar fi datele despre starea de sănătate, pot necesita permisiune de administrator și vor fi cerute când începe verificarea."
   },
@@ -50,12 +45,8 @@
       "noSerial": "Această unitate nu raportează un număr de serie, deci testul complet cu ștergere nu este disponibil.",
       "systemBlocked": "Discul de sistem nu poate fi șters niciodată. Este disponibil doar testul sigur.",
       "mismatch": "Textul nu se potrivește încă cu numărul de serie.",
-      "start": "Șterge și rulează testul complet",
-      "expand": "Arată testul complet cu ștergere",
-      "collapse": "Ascunde testul complet cu ștergere"
+      "start": "Șterge și rulează testul complet"
     },
-    "start": "Începe testul rapid și sigur",
-    "back": "Alege altă unitate",
     "duration": "Durează aproximativ 3-4 minute. Te rugăm să nu deconectezi unitatea."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "În așteptare",
       "running": "Se verifică",
       "done": "Gata"
-    }
+    },
+    "cancelled": "Testul a fost anulat."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "Rezultate",
-    "scoreOutOf": "din 100",
     "scoreLabel": "Scor {{score}} din 100",
     "verdict": {
       "buy": "Bună de cumpărat",
@@ -171,44 +162,34 @@
       "info": "Notă"
     },
     "matrix": {
-      "title": "Tabelul testelor",
-      "subtitle": "Detalii pentru utilizatori avansați",
       "show": "Arată detaliile",
       "hide": "Ascunde detaliile",
       "test": "Test",
       "status": "Stare",
       "score": "Scor",
-      "metrics": "Cifre importante",
-      "none": "Nicio cifră înregistrată"
+      "none": "Nicio cifră înregistrată",
+      "details": "Detalii"
     },
-    "export": "Exportă raportul",
     "exportJson": "Salvează ca JSON",
     "exportHtml": "Salvează ca pagină web (HTML)",
     "print": "Tipărește sau salvează ca PDF",
     "saved": "Raport salvat.",
     "saveFailed": "Raportul nu a putut fi salvat.",
-    "another": "Testează altă unitate",
     "mode": {
       "safe": "Test rapid și sigur",
       "wipe": "Test complet cu ștergere"
     },
     "tested": "Testată la {{date}}",
     "engine": "Motor {{version}}",
-    "skippedNote": "Detectarea capacității false nu a fost rulată. Folosește testul complet cu ștergere pe o unitate goală pentru un răspuns complet."
+    "skippedNote": "Detectarea capacității false nu a fost rulată. Folosește testul complet cu ștergere pe o unitate goală pentru un răspuns complet.",
+    "testResults": "Rezultatele testului"
   },
   "report": {
     "title": "Raport CheckMyDrive",
     "generatedBy": "Generat de CheckMyDrive (cod sursă deschis)"
   },
   "settings": {
-    "title": "Setări și despre",
     "language": "Limba",
-    "languageHint": "Limbile în afară de engleză sunt încărcate pe măsură ce devin disponibile; textul lipsă apare în engleză.",
-    "theme": "Aspect",
-    "themeSystem": "Ca în sistem",
-    "themeLight": "Luminos",
-    "themeDark": "Întunecat",
-    "about": "Despre",
     "version": "Versiune",
     "license": "Licență",
     "licenseValue": "Licență MIT (gratuită și cu sursă deschisă)",
@@ -448,6 +429,57 @@
   "common": {
     "loading": "Se încarcă…",
     "close": "Închide",
-    "unknown": "Necunoscut"
+    "unknown": "Necunoscut",
+    "cancel": "Anulare",
+    "ok": "OK"
+  },
+  "window": {
+    "minimize": "Minimizare",
+    "maximize": "Maximizare",
+    "close": "Închidere"
+  },
+  "menu": {
+    "file": "Fișier",
+    "test": "Test",
+    "view": "Vizualizare",
+    "help": "Ajutor",
+    "exit": "Ieșire",
+    "startTest": "Pornește testul",
+    "refresh": "Reîmprospătează unitățile",
+    "github": "Proiectul pe GitHub",
+    "about": "Despre CheckMyDrive"
+  },
+  "props": {
+    "title": "Informații despre unitate",
+    "model": "Model",
+    "serial": "Număr de serie",
+    "firmware": "Firmware",
+    "capacity": "Capacitate",
+    "interface": "Interfață",
+    "type": "Tip",
+    "rpm": "Viteză de rotație",
+    "hours": "Ore de funcționare",
+    "count": "Număr de porniri",
+    "age": "Vechime",
+    "made": "Data fabricației"
+  },
+  "health": {
+    "title": "Starea de sănătate",
+    "good": "Bună",
+    "caution": "Atenție",
+    "bad": "Rea",
+    "untested": "Netestată"
+  },
+  "idle": {
+    "hint": "Această unitate nu a fost încă testată. Alegeți Pornește testul pentru a-i verifica starea."
+  },
+  "statusbar": {
+    "ready": "Gata",
+    "testing": "Se testează unitatea…",
+    "drives": "Unități: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "Creat cu smartmontools, Tauri și XP.css."
   }
 }

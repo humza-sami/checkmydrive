@@ -5,14 +5,10 @@
     "skip": "본문으로 건너뛰기"
   },
   "nav": {
-    "settings": "설정",
-    "back": "뒤로",
     "mockBanner": "데모 모드: 샘플 드라이브를 보여 드리고 있어요. 컴퓨터에서는 아무것도 검사하지 않습니다."
   },
   "picker": {
     "title": "어떤 드라이브를 검사할까요?",
-    "subtitle": "구입하거나 사용하려는 드라이브를 연결한 다음 아래에서 선택하세요. 검사는 약 3~4분 걸려요.",
-    "refresh": "새로고침",
     "refreshing": "드라이브를 찾는 중…",
     "empty": "드라이브를 찾지 못했어요. 드라이브를 연결하고 새로고침을 눌러 주세요.",
     "systemDisk": "시스템 디스크",
@@ -27,7 +23,6 @@
       "sd": "SD / 메모리 카드",
       "unknown": "드라이브"
     },
-    "removable": "이동식",
     "loadFailed": "드라이브 목록을 읽지 못했어요.",
     "noAdminNote": "건강 상태 같은 일부 정보는 관리자 권한이 필요할 수 있으며, 검사를 시작할 때 요청돼요."
   },
@@ -50,12 +45,8 @@
       "noSerial": "이 드라이브는 일련번호를 알려 주지 않아서 전체 삭제 검사를 할 수 없어요.",
       "systemBlocked": "시스템 디스크는 절대 지울 수 없어요. 안전 검사만 가능해요.",
       "mismatch": "입력한 내용이 아직 일련번호와 맞지 않아요.",
-      "start": "지우고 전체 검사 실행",
-      "expand": "전체 삭제 검사 보기",
-      "collapse": "전체 삭제 검사 숨기기"
+      "start": "지우고 전체 검사 실행"
     },
-    "start": "빠른 안전 검사 시작",
-    "back": "다른 드라이브 선택",
     "duration": "약 3~4분 걸려요. 드라이브를 뽑지 마세요."
   },
   "running": {
@@ -81,7 +72,8 @@
       "pending": "대기 중",
       "running": "검사 중",
       "done": "완료"
-    }
+    },
+    "cancelled": "테스트가 취소되었습니다."
   },
   "tests": {
     "drive_info": {
@@ -121,7 +113,6 @@
   },
   "results": {
     "title": "결과",
-    "scoreOutOf": "/ 100점",
     "scoreLabel": "100점 만점에 {{score}}점",
     "verdict": {
       "buy": "구입해도 좋아요",
@@ -165,44 +156,34 @@
       "info": "참고"
     },
     "matrix": {
-      "title": "검사 상세표",
-      "subtitle": "고급 사용자를 위한 자세한 정보",
       "show": "자세히 보기",
       "hide": "자세히 숨기기",
       "test": "검사",
       "status": "상태",
       "score": "점수",
-      "metrics": "주요 수치",
-      "none": "기록된 수치가 없어요"
+      "none": "기록된 수치가 없어요",
+      "details": "세부 정보"
     },
-    "export": "보고서 내보내기",
     "exportJson": "JSON으로 저장",
     "exportHtml": "웹 페이지(HTML)로 저장",
     "print": "인쇄 또는 PDF로 저장",
     "saved": "보고서를 저장했어요.",
     "saveFailed": "보고서를 저장하지 못했어요.",
-    "another": "다른 드라이브 검사하기",
     "mode": {
       "safe": "빠른 안전 검사",
       "wipe": "전체 삭제 검사"
     },
     "tested": "검사일: {{date}}",
     "engine": "엔진 {{version}}",
-    "skippedNote": "가짜 용량 검사는 실행되지 않았어요. 정확한 답을 얻으려면 빈 드라이브에서 전체 삭제 검사를 해 보세요."
+    "skippedNote": "가짜 용량 검사는 실행되지 않았어요. 정확한 답을 얻으려면 빈 드라이브에서 전체 삭제 검사를 해 보세요.",
+    "testResults": "테스트 결과"
   },
   "report": {
     "title": "CheckMyDrive 보고서",
     "generatedBy": "CheckMyDrive(오픈 소스)로 만든 보고서"
   },
   "settings": {
-    "title": "설정 및 정보",
     "language": "언어",
-    "languageHint": "영어 외의 언어는 준비되는 대로 불러오며, 아직 없는 문구는 영어로 표시돼요.",
-    "theme": "화면 모드",
-    "themeSystem": "시스템 설정 따르기",
-    "themeLight": "밝게",
-    "themeDark": "어둡게",
-    "about": "정보",
     "version": "버전",
     "license": "라이선스",
     "licenseValue": "MIT 라이선스 (무료 오픈 소스)",
@@ -404,6 +385,57 @@
   "common": {
     "loading": "불러오는 중…",
     "close": "닫기",
-    "unknown": "알 수 없음"
+    "unknown": "알 수 없음",
+    "cancel": "취소",
+    "ok": "확인"
+  },
+  "window": {
+    "minimize": "최소화",
+    "maximize": "최대화",
+    "close": "닫기"
+  },
+  "menu": {
+    "file": "파일",
+    "test": "테스트",
+    "view": "보기",
+    "help": "도움말",
+    "exit": "끝내기",
+    "startTest": "테스트 시작",
+    "refresh": "드라이브 새로 고침",
+    "github": "GitHub 프로젝트",
+    "about": "CheckMyDrive 정보"
+  },
+  "props": {
+    "title": "드라이브 정보",
+    "model": "모델",
+    "serial": "일련번호",
+    "firmware": "펌웨어",
+    "capacity": "용량",
+    "interface": "인터페이스",
+    "type": "종류",
+    "rpm": "회전 속도",
+    "hours": "전원 켜짐 시간",
+    "count": "전원 켜짐 횟수",
+    "age": "사용 기간",
+    "made": "제조일"
+  },
+  "health": {
+    "title": "상태",
+    "good": "양호",
+    "caution": "주의",
+    "bad": "불량",
+    "untested": "테스트 안 함"
+  },
+  "idle": {
+    "hint": "이 드라이브는 아직 테스트하지 않았습니다. '테스트 시작'을 선택해 상태를 확인하세요."
+  },
+  "statusbar": {
+    "ready": "준비",
+    "testing": "드라이브 테스트 중…",
+    "drives": "드라이브: {{n}}",
+    "smartctl": "smartctl {{version}}"
+  },
+  "about": {
+    "credits": "smartmontools, Tauri, XP.css로 만들었습니다."
   }
 }
