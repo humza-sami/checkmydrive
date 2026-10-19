@@ -287,7 +287,7 @@
       "slow_areas_one": "{{count}} area ({{percent}}%) ha risposto molto lentamente, il che può indicare che la superficie si sta consumando.",
       "slow_areas_many": "{{count}} di aree ({{percent}}%) hanno risposto molto lentamente, il che può indicare che la superficie si sta consumando.",
       "slow_areas_other": "{{count}} aree ({{percent}}%) hanno risposto molto lentamente, il che può indicare che la superficie si sta consumando.",
-      "low_speed": "Il disco legge lentamente ({{mbps}} MB/s)."
+      "slow_drive": "Questa unità è lenta ({{mbps}} MB/s). Va bene per archiviare file, ma è troppo lenta per eseguire programmi o un sistema operativo in modo agevole."
     },
     "write_verify": {
       "no_writable_volume": "Il test di scrittura è stato saltato perché sul disco non c'è una cartella in cui possiamo scrivere in sicurezza.",
@@ -394,6 +394,7 @@
     "os_install": {
       "ok": "Adatto per installarci un sistema operativo.",
       "bad_sectors": "Sconsigliato per un sistema operativo: ha aree danneggiate.",
+      "slow_speed": "Sconsigliata per un sistema operativo: l’unità legge troppo lentamente.",
       "slow_latency": "Sconsigliato per un sistema operativo: alcune letture sono troppo lente.",
       "score_low": "Sconsigliato per un sistema operativo: il punteggio complessivo ({{score}}) è troppo basso."
     },

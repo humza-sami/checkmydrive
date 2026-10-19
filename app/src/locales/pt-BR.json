@@ -287,7 +287,7 @@
       "slow_areas_one": "{{count}} área ({{percent}}%) respondeu muito devagar, o que pode significar que a superfície está se desgastando.",
       "slow_areas_many": "{{count}} de áreas ({{percent}}%) responderam muito devagar, o que pode significar que a superfície está se desgastando.",
       "slow_areas_other": "{{count}} áreas ({{percent}}%) responderam muito devagar, o que pode significar que a superfície está se desgastando.",
-      "low_speed": "O disco lê devagar ({{mbps}} MB/s)."
+      "slow_drive": "Esta unidade é lenta ({{mbps}} MB/s). Serve para guardar arquivos, mas é lenta demais para rodar programas ou um sistema operacional com conforto."
     },
     "write_verify": {
       "no_writable_volume": "O teste de gravação foi ignorado porque o disco não tem uma pasta em que possamos gravar com segurança.",
@@ -394,6 +394,7 @@
     "os_install": {
       "ok": "Bom para instalar um sistema operacional.",
       "bad_sectors": "Não recomendado para um sistema operacional: ele tem áreas danificadas.",
+      "slow_speed": "Não recomendada para um sistema operacional: a unidade lê devagar demais.",
       "slow_latency": "Não recomendado para um sistema operacional: algumas leituras são lentas demais.",
       "score_low": "Não recomendado para um sistema operacional: a nota geral ({{score}}) é baixa demais."
     },

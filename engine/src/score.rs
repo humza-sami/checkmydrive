@@ -47,7 +47,14 @@ pub struct Facts {
     pub wear_used_percent: Option<f64>,
     pub read_errors: u64,
     pub p99_latency_ok: bool,
+    /// Sequential read speed is high enough to run an operating system from the drive.
+    pub os_speed_ok: bool,
+    /// capacity_check ran and passed (so the claimed capacity is proven, not just assumed).
+    pub capacity_verified: bool,
 }
+
+/// Fallback for reports without the `os_speed_ok` metric: judge `read_mbps_avg` (0 = not measured).
+const OS_MIN_MBPS_FALLBACK: f64 = 30.0;
 
 fn metric<'a>(tests: &'a [TestResult], id: TestId, key: &str) -> Option<&'a Value> {
     tests.iter().find(|t| t.id == id).and_then(|t| t.metrics.get(key))
@@ -71,6 +78,11 @@ impl Facts {
                 + metric_u64(tests, WriteVerify, "verify_mismatches")
                 + metric_u64(tests, WriteVerify, "write_errors"),
             p99_latency_ok: metric(tests, SurfaceRead, "p99_latency_ok").and_then(|v| v.as_bool()).unwrap_or(true),
+            os_speed_ok: metric(tests, SurfaceRead, "os_speed_ok").and_then(|v| v.as_bool()).unwrap_or_else(|| {
+                let mbps = metric(tests, SurfaceRead, "read_mbps_avg").and_then(|v| v.as_f64()).unwrap_or(0.0);
+                mbps <= 0.0 || mbps >= OS_MIN_MBPS_FALLBACK
+            }),
+            capacity_verified: tests.iter().any(|t| t.id == CapacityCheck && t.status == Status::Pass),
         }
     }
 }
@@ -120,13 +132,41 @@ pub fn verdict(score: u8) -> Verdict {
     }
 }
 
-pub fn safe_fill_percent(score: u8) -> u8 {
+/// Score-only table, used as a conservative fallback when an unexplained critical issue exists.
+pub fn safe_fill_percent_for_score(score: u8) -> u8 {
     match score {
         80..=100 => 90,
         65..=79 => 60,
         50..=64 => 30,
         _ => 0,
     }
+}
+
+/// How much of the capacity we would fill. Driven by real problems (bad/unreadable regions, fake
+/// capacity, errors, wear), NOT by speed or by the numeric score: a slow drive with no errors that
+/// passed capacity_check is 100% safe to fill. Without a passed capacity_check (safe mode) the claimed
+/// size is unproven, so it stays at 90.
+pub fn safe_fill_percent(f: &Facts, score: u8, has_critical: bool) -> u8 {
+    if f.fake_capacity
+        || f.smart_failed
+        || f.disconnected
+        || f.pending_or_uncorrectable > 0
+        || f.read_errors > 0
+        || f.reallocated > 100
+    {
+        return 0;
+    }
+    let mut pct: u8 = if f.capacity_verified { 100 } else { 90 };
+    if f.reallocated > 0 {
+        pct = pct.min(60);
+    }
+    if f.wear_used_percent.map(|w| w >= 90.0).unwrap_or(false) {
+        pct = pct.min(30);
+    }
+    if has_critical || score < 50 {
+        pct = pct.min(safe_fill_percent_for_score(score));
+    }
+    pct
 }
 
 /// All issues sorted critical -> info (stable within a severity).
@@ -145,11 +185,13 @@ fn suit(level: SuitLevel, code: &str, score: u8) -> Suitability {
 pub fn suitability(score: u8, facts: &Facts, has_critical: bool, capacity_bytes: u64) -> SuitabilityReport {
     let bad_sectors = facts.pending_or_uncorrectable > 0 || facts.reallocated > 0;
 
-    let os_install = if score >= 80 && !bad_sectors && facts.p99_latency_ok {
+    let os_install = if score >= 80 && !bad_sectors && facts.p99_latency_ok && facts.os_speed_ok {
         suit(SuitLevel::Good, "suitability.os_install.ok", score)
     } else {
         let code = if bad_sectors {
             "suitability.os_install.bad_sectors"
+        } else if !facts.os_speed_ok {
+            "suitability.os_install.slow_speed"
         } else if !facts.p99_latency_ok {
             "suitability.os_install.slow_latency"
         } else {
@@ -180,7 +222,7 @@ pub fn suitability(score: u8, facts: &Facts, has_critical: bool, capacity_bytes:
         suit(SuitLevel::No, "suitability.daily_use.no", score)
     };
 
-    let pct = safe_fill_percent(score);
+    let pct = safe_fill_percent(facts, score, has_critical);
     SuitabilityReport {
         os_install,
         long_term_storage,
@@ -304,18 +346,50 @@ mod tests {
     }
 
     #[test]
-    fn safe_fill_table() {
-        assert_eq!(safe_fill_percent(100), 90);
-        assert_eq!(safe_fill_percent(80), 90);
-        assert_eq!(safe_fill_percent(79), 60);
-        assert_eq!(safe_fill_percent(65), 60);
-        assert_eq!(safe_fill_percent(64), 30);
-        assert_eq!(safe_fill_percent(50), 30);
-        assert_eq!(safe_fill_percent(49), 0);
+    fn safe_fill_score_fallback_table() {
+        assert_eq!(safe_fill_percent_for_score(100), 90);
+        assert_eq!(safe_fill_percent_for_score(80), 90);
+        assert_eq!(safe_fill_percent_for_score(79), 60);
+        assert_eq!(safe_fill_percent_for_score(65), 60);
+        assert_eq!(safe_fill_percent_for_score(64), 30);
+        assert_eq!(safe_fill_percent_for_score(50), 30);
+        assert_eq!(safe_fill_percent_for_score(49), 0);
     }
 
     fn facts_ok() -> Facts {
-        Facts { p99_latency_ok: true, ..Default::default() }
+        Facts { p99_latency_ok: true, os_speed_ok: true, ..Default::default() }
+    }
+
+    #[test]
+    fn safe_fill_follows_real_problems_not_score() {
+        let mut f = facts_ok();
+        f.capacity_verified = true;
+        assert_eq!(safe_fill_percent(&f, 60, false), 100); // many warnings, no real fault
+        assert_eq!(safe_fill_percent(&f, 100, false), 100);
+        f.capacity_verified = false;
+        assert_eq!(safe_fill_percent(&f, 95, false), 90); // capacity unproven (safe mode)
+        let mut f = facts_ok();
+        f.reallocated = 3;
+        assert_eq!(safe_fill_percent(&f, 70, false), 60);
+        f.reallocated = 101;
+        assert_eq!(safe_fill_percent(&f, 40, false), 0);
+        for mutate in [
+            (|f: &mut Facts| f.fake_capacity = true) as fn(&mut Facts),
+            |f| f.read_errors = 1,
+            |f| f.pending_or_uncorrectable = 1,
+            |f| f.smart_failed = true,
+            |f| f.disconnected = true,
+        ] {
+            let mut f = facts_ok();
+            f.capacity_verified = true;
+            mutate(&mut f);
+            assert_eq!(safe_fill_percent(&f, 80, true), 0);
+        }
+        let mut f = facts_ok();
+        f.wear_used_percent = Some(95.0);
+        assert_eq!(safe_fill_percent(&f, 90, false), 30);
+        // unexplained critical issue falls back to the score table
+        assert_eq!(safe_fill_percent(&facts_ok(), 55, true), 30);
     }
 
     #[test]
@@ -371,5 +445,88 @@ mod tests {
         let t = vec![tr(TestId::DriveInfo, &[], vec![Issue::info("i"), Issue::critical("c")]), tr(TestId::Stability, &[], vec![Issue::warn("w")])];
         let s = sorted_issues(&t);
         assert_eq!(s.iter().map(|i| i.code.as_str()).collect::<Vec<_>>(), vec!["c", "w", "i"]);
+    }
+
+    fn surface(c: crate::tests::surface_read::DriveClass, lat: &[f64], errors: u64, mbps: f64) -> TestResult {
+        let (mut m, issues) = crate::tests::surface_read::assess(c, 1 << 20, lat, errors, (mbps * 1_048_576.0 * 15.0) as u64, mbps);
+        m.insert("read_errors".into(), json!(errors));
+        m.insert("read_mbps_avg".into(), json!(mbps));
+        TestResult::from_issues(TestId::SurfaceRead, 0, m, issues)
+    }
+
+    fn report_for(surface: TestResult, wipe: bool) -> (u8, SuitabilityReport, Vec<Issue>) {
+        let mut t = clean();
+        t.retain(|x| x.id != TestId::SurfaceRead);
+        t.push(surface);
+        if !wipe {
+            t.iter_mut().find(|x| x.id == TestId::CapacityCheck).unwrap().status = Status::Skipped;
+        }
+        let sc = overall_score(&t);
+        let issues = sorted_issues(&t);
+        let has_critical = issues.iter().any(|i| i.severity == Severity::Critical);
+        let s = suitability(sc, &Facts::from_tests(&t), has_critical, 16_000_000_000);
+        (sc, s, issues)
+    }
+
+    #[test]
+    fn regression_slow_healthy_usb_stick_is_buy() {
+        use crate::tests::surface_read::{tests::real_stick_latencies, DriveClass};
+        let lat = real_stick_latencies();
+        for wipe in [false, true] {
+            let (score, s, issues) = report_for(surface(DriveClass::Flash, &lat, 0, 17.5), wipe);
+            assert!(!issues.iter().any(|i| i.severity == Severity::Critical), "{issues:?}");
+            assert!(score >= 80, "score {score}");
+            assert_eq!(verdict(score), Verdict::Buy);
+            assert!(s.long_term_storage.ok);
+            assert!(s.daily_use.ok);
+            assert!(!s.os_install.ok);
+            assert_eq!(s.os_install.reason_code, "suitability.os_install.slow_speed");
+            assert_eq!(s.safe_fill_percent, if wipe { 100 } else { 90 });
+            assert!(issues.iter().any(|i| i.code == "issue.surface_read.slow_drive" && i.severity == Severity::Info));
+        }
+    }
+
+    #[test]
+    fn regression_exact_reported_metrics_without_new_keys() {
+        // the old report's metrics, as stored: no os_speed_ok / drive_class; the stale p99_latency_ok=false
+        let mut t = clean();
+        for (k, v) in [("read_mbps_avg", json!(17.5)), ("read_errors", json!(0)), ("p99_latency_ok", json!(false)), ("latency_ms_p50", json!(65.55)), ("latency_ms_p99", json!(1905.74))] {
+            with(&mut t, TestId::SurfaceRead, k, v);
+        }
+        let f = Facts::from_tests(&t);
+        assert!(!f.os_speed_ok && f.capacity_verified);
+        let sc = overall_score(&t);
+        let s = suitability(sc, &f, false, 16_000_000_000);
+        assert!(sc >= 80 && s.long_term_storage.ok && s.daily_use.ok);
+        assert_eq!(s.os_install.reason_code, "suitability.os_install.slow_speed");
+        assert_eq!(s.safe_fill_percent, 100);
+        assert_eq!(s.safe_fill_bytes, 16_000_000_000);
+    }
+
+    #[test]
+    fn genuine_outliers_still_flagged_end_to_end() {
+        use crate::tests::surface_read::DriveClass;
+        let mut lat = vec![60.0; 252];
+        lat.extend([2000.0; 10]);
+        let (score, s, issues) = report_for(surface(DriveClass::Flash, &lat, 0, 30.0), true);
+        assert!(issues.iter().any(|i| i.code == "issue.surface_read.slow_areas" && i.severity == Severity::Warn));
+        assert!(!issues.iter().any(|i| i.severity == Severity::Critical));
+        assert!((80..100).contains(&score));
+        assert!(s.long_term_storage.ok);
+        assert_eq!(s.safe_fill_percent, 100);
+    }
+
+    #[test]
+    fn truly_failing_drive_is_avoid() {
+        use crate::tests::surface_read::DriveClass;
+        let mut lat = vec![60.0; 150];
+        lat.extend([5000.0; 112]);
+        let (score, s, issues) = report_for(surface(DriveClass::Flash, &lat, 40, 3.0), true);
+        assert!(issues.iter().any(|i| i.code == "issue.surface_read.read_errors"));
+        assert!(issues.iter().any(|i| i.code == "issue.surface_read.slow_areas" && i.severity == Severity::Critical));
+        assert_eq!(verdict(score), Verdict::Avoid);
+        assert_eq!(s.safe_fill_percent, 0);
+        assert_eq!(s.long_term_storage.level, SuitLevel::No);
+        assert_eq!(s.daily_use.level, SuitLevel::No);
     }
 }

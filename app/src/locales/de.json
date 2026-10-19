@@ -273,7 +273,7 @@
       "read_errors_other": "{{count}} Teile des Laufwerks konnten nicht gelesen werden.",
       "slow_areas_one": "{{count}} Bereich ({{percent}} %) hat sehr langsam geantwortet, was bedeuten kann, dass die Oberfläche verschleißt.",
       "slow_areas_other": "{{count}} Bereiche ({{percent}} %) haben sehr langsam geantwortet, was bedeuten kann, dass die Oberfläche verschleißt.",
-      "low_speed": "Das Laufwerk liest langsam ({{mbps}} MB/s)."
+      "slow_drive": "Dieses Laufwerk ist langsam ({{mbps}} MB/s). Zum Speichern von Dateien reicht das, zum komfortablen Ausführen von Programmen oder eines Betriebssystems ist es zu langsam."
     },
     "write_verify": {
       "no_writable_volume": "Der Schreibtest wurde übersprungen, weil das Laufwerk keinen Ordner hat, in den wir sicher schreiben können.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Gut geeignet, um ein Betriebssystem darauf zu installieren.",
       "bad_sectors": "Für ein Betriebssystem nicht empfohlen: Es hat beschädigte Bereiche.",
+      "slow_speed": "Für ein Betriebssystem nicht empfohlen: Das Laufwerk liest zu langsam.",
       "slow_latency": "Für ein Betriebssystem nicht empfohlen: Manche Lesevorgänge sind zu langsam.",
       "score_low": "Für ein Betriebssystem nicht empfohlen: Die Gesamtbewertung ({{score}}) ist zu niedrig."
     },

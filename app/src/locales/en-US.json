@@ -273,7 +273,7 @@
       "read_errors_other": "{{count}} parts of the drive could not be read.",
       "slow_areas_one": "{{count}} area ({{percent}}%) responded very slowly, which can mean the surface is wearing out.",
       "slow_areas_other": "{{count}} areas ({{percent}}%) responded very slowly, which can mean the surface is wearing out.",
-      "low_speed": "The drive reads slowly ({{mbps}} MB/s)."
+      "slow_drive": "This drive is slow ({{mbps}} MB/s). That is fine for storing files, but too slow to run programs or an operating system comfortably."
     },
     "write_verify": {
       "no_writable_volume": "The write test was skipped because the drive has no folder we can safely write to.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Good for installing an operating system on.",
       "bad_sectors": "Not recommended for an operating system: it has damaged areas.",
+      "slow_speed": "Not recommended for an operating system: the drive reads too slowly.",
       "slow_latency": "Not recommended for an operating system: some reads are too slow.",
       "score_low": "Not recommended for an operating system: the overall score ({{score}}) is too low."
     },

@@ -301,7 +301,7 @@
       "slow_areas_few": "{{count}} oblasti ({{percent}} %) reagovaly velmi pomalu, což může znamenat opotřebení povrchu.",
       "slow_areas_many": "{{count}} oblasti ({{percent}} %) reagovaly velmi pomalu, což může znamenat opotřebení povrchu.",
       "slow_areas_other": "{{count}} oblastí ({{percent}} %) reagovalo velmi pomalu, což může znamenat opotřebení povrchu.",
-      "low_speed": "Disk čte pomalu ({{mbps}} MB/s)."
+      "slow_drive": "Tento disk je pomalý ({{mbps}} MB/s). Na ukládání souborů to stačí, ale na pohodlné spouštění programů nebo operačního systému je příliš pomalý."
     },
     "write_verify": {
       "no_writable_volume": "Test zápisu byl přeskočen, protože na disku není složka, do které bychom mohli bezpečně zapisovat.",
@@ -416,6 +416,7 @@
     "os_install": {
       "ok": "Vhodný pro instalaci operačního systému.",
       "bad_sectors": "Pro operační systém se nedoporučuje: má poškozené oblasti.",
+      "slow_speed": "Pro operační systém nedoporučeno: disk čte příliš pomalu.",
       "slow_latency": "Pro operační systém se nedoporučuje: některá čtení jsou příliš pomalá.",
       "score_low": "Pro operační systém se nedoporučuje: celkové skóre ({{score}}) je příliš nízké."
     },

@@ -273,7 +273,7 @@
       "read_errors_other": "A meghajtó {{count}} részét nem lehetett beolvasni.",
       "slow_areas_one": "{{count}} terület ({{percent}}%) nagyon lassan válaszolt, ami a felület kopására utalhat.",
       "slow_areas_other": "{{count}} terület ({{percent}}%) nagyon lassan válaszolt, ami a felület kopására utalhat.",
-      "low_speed": "A meghajtó lassan olvas ({{mbps}} MB/s)."
+      "slow_drive": "Ez a meghajtó lassú ({{mbps}} MB/s). Fájlok tárolására megfelel, de programok vagy operációs rendszer kényelmes futtatásához túl lassú."
     },
     "write_verify": {
       "no_writable_volume": "Az írási teszt kimaradt, mert a meghajtón nincs olyan mappa, ahová biztonságosan írhatnánk.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Jó operációs rendszer telepítésére.",
       "bad_sectors": "Operációs rendszerhez nem ajánlott: sérült területei vannak.",
+      "slow_speed": "Operációs rendszerhez nem ajánlott: a meghajtó túl lassan olvas.",
       "slow_latency": "Operációs rendszerhez nem ajánlott: egyes olvasások túl lassúak.",
       "score_low": "Operációs rendszerhez nem ajánlott: az összpontszám ({{score}}) túl alacsony."
     },

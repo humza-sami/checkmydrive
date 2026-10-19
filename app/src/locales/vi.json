@@ -259,7 +259,7 @@
       "cannot_open": "Không thể mở ổ đĩa để đọc.",
       "read_errors_other": "{{count}} phần của ổ đĩa không thể đọc được.",
       "slow_areas_other": "{{count}} vùng ({{percent}}%) phản hồi rất chậm, có thể do bề mặt đang bị mòn.",
-      "low_speed": "Ổ đĩa đọc chậm ({{mbps}} MB/s)."
+      "slow_drive": "Ổ đĩa này chậm ({{mbps}} MB/s). Dùng để lưu trữ tệp thì ổn, nhưng quá chậm để chạy chương trình hoặc hệ điều hành một cách thoải mái."
     },
     "write_verify": {
       "no_writable_volume": "Bài kiểm tra ghi bị bỏ qua vì ổ đĩa không có thư mục nào chúng tôi có thể ghi an toàn.",
@@ -350,6 +350,7 @@
     "os_install": {
       "ok": "Phù hợp để cài hệ điều hành.",
       "bad_sectors": "Không khuyến nghị cài hệ điều hành: ổ đĩa có vùng bị hỏng.",
+      "slow_speed": "Không khuyến nghị cho hệ điều hành: ổ đĩa đọc quá chậm.",
       "slow_latency": "Không khuyến nghị cài hệ điều hành: một số lần đọc quá chậm.",
       "score_low": "Không khuyến nghị cài hệ điều hành: điểm tổng thể ({{score}}) quá thấp."
     },

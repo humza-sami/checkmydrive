@@ -259,7 +259,7 @@
       "cannot_open": "无法打开硬盘进行读取。",
       "read_errors_other": "硬盘上有 {{count}} 处无法读取。",
       "slow_areas_other": "有 {{count}} 个区域（{{percent}}%）响应非常慢，这可能意味着盘面正在磨损。",
-      "low_speed": "硬盘读取速度很慢（{{mbps}} MB/s）。"
+      "slow_drive": "此驱动器速度较慢（{{mbps}} MB/s）。用来存放文件没问题，但运行程序或操作系统会太慢。"
     },
     "write_verify": {
       "no_writable_volume": "已跳过写入检测，因为硬盘上没有可以安全写入的文件夹。",
@@ -350,6 +350,7 @@
     "os_install": {
       "ok": "适合用来安装操作系统。",
       "bad_sectors": "不建议用来安装操作系统：它有损坏的区域。",
+      "slow_speed": "不建议用于安装操作系统：驱动器读取速度太慢。",
       "slow_latency": "不建议用来安装操作系统：部分读取太慢。",
       "score_low": "不建议用来安装操作系统：总评分（{{score}}）太低。"
     },

@@ -82,7 +82,13 @@ fn finish(ctx: &Ctx, t0: Instant, o: Outcome, extra: Metrics, mut issues: Vec<Is
     if o.mismatches > 0 {
         issues.push(Issue::critical("issue.write_verify.data_mismatch").with("count", o.mismatches));
     }
-    if o.bytes_written > 0 && o.write_mbps < 3.0 {
+    // Class-aware: cheap USB flash legitimately writes at 1-5 MB/s; only far below that is worth a warning.
+    let min_write = match super::surface_read::DriveClass::of(&ctx.drive) {
+        super::surface_read::DriveClass::Flash => 1.0,
+        super::surface_read::DriveClass::Hdd => 5.0,
+        super::surface_read::DriveClass::Ssd => 3.0,
+    };
+    if o.bytes_written > 0 && o.write_mbps < min_write {
         issues.push(Issue::warn("issue.write_verify.slow_write").with("mbps", round1(o.write_mbps)));
     }
     ctx.progress(Phase::WriteVerify, 100.0, "progress.write_verify.done", None);

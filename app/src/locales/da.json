@@ -273,7 +273,7 @@
       "read_errors_other": "{{count}} dele af drevet kunne ikke læses.",
       "slow_areas_one": "{{count}} område ({{percent}} %) svarede meget langsomt, hvilket kan betyde, at overfladen slides ned.",
       "slow_areas_other": "{{count}} områder ({{percent}} %) svarede meget langsomt, hvilket kan betyde, at overfladen slides ned.",
-      "low_speed": "Drevet læser langsomt ({{mbps}} MB/s)."
+      "slow_drive": "Dette drev er langsomt ({{mbps}} MB/s). Det er fint til at gemme filer, men for langsomt til at køre programmer eller et operativsystem behageligt."
     },
     "write_verify": {
       "no_writable_volume": "Skrivetesten blev sprunget over, fordi drevet ikke har en mappe, vi sikkert kan skrive til.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Godt til at installere et operativsystem på.",
       "bad_sectors": "Anbefales ikke til et operativsystem: det har beskadigede områder.",
+      "slow_speed": "Anbefales ikke til et operativsystem: drevet læser for langsomt.",
       "slow_latency": "Anbefales ikke til et operativsystem: nogle læsninger er for langsomme.",
       "score_low": "Anbefales ikke til et operativsystem: den samlede score ({{score}}) er for lav."
     },

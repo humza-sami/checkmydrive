@@ -259,7 +259,7 @@
       "cannot_open": "Pemacu tidak dapat dibuka untuk dibaca.",
       "read_errors_other": "{{count}} bahagian pemacu tidak dapat dibaca.",
       "slow_areas_other": "{{count}} kawasan ({{percent}}%) bertindak balas dengan sangat perlahan, yang boleh bermakna permukaannya semakin haus.",
-      "low_speed": "Pemacu membaca dengan perlahan ({{mbps}} MB/s)."
+      "slow_drive": "Pemacu ini perlahan ({{mbps}} MB/s). Ia sesuai untuk menyimpan fail, tetapi terlalu perlahan untuk menjalankan program atau sistem pengendalian dengan selesa."
     },
     "write_verify": {
       "no_writable_volume": "Ujian tulis dilangkau kerana pemacu tidak mempunyai folder yang boleh kami tulis dengan selamat.",
@@ -350,6 +350,7 @@
     "os_install": {
       "ok": "Sesuai untuk memasang sistem pengendalian.",
       "bad_sectors": "Tidak disyorkan untuk sistem pengendalian: ia mempunyai kawasan rosak.",
+      "slow_speed": "Tidak disyorkan untuk sistem pengendalian: pemacu membaca terlalu perlahan.",
       "slow_latency": "Tidak disyorkan untuk sistem pengendalian: sesetengah bacaan terlalu perlahan.",
       "score_low": "Tidak disyorkan untuk sistem pengendalian: skor keseluruhan ({{score}}) terlalu rendah."
     },

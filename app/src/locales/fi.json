@@ -273,7 +273,7 @@
       "read_errors_other": "Aseman {{count}} osaa ei voitu lukea.",
       "slow_areas_one": "{{count}} alue ({{percent}} %) vastasi erittäin hitaasti, mikä voi tarkoittaa pinnan kulumista.",
       "slow_areas_other": "{{count}} aluetta ({{percent}} %) vastasi erittäin hitaasti, mikä voi tarkoittaa pinnan kulumista.",
-      "low_speed": "Asema lukee hitaasti ({{mbps}} MB/s)."
+      "slow_drive": "Tämä asema on hidas ({{mbps}} MB/s). Se kelpaa tiedostojen tallennukseen, mutta on liian hidas ohjelmien tai käyttöjärjestelmän sujuvaan ajamiseen."
     },
     "write_verify": {
       "no_writable_volume": "Kirjoitustesti ohitettiin, koska asemalla ei ole kansiota, johon voisimme kirjoittaa turvallisesti.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Hyvä käyttöjärjestelmän asentamiseen.",
       "bad_sectors": "Ei suositella käyttöjärjestelmälle: siinä on vaurioituneita alueita.",
+      "slow_speed": "Ei suositella käyttöjärjestelmälle: asema lukee liian hitaasti.",
       "slow_latency": "Ei suositella käyttöjärjestelmälle: osa lukuoperaatioista on liian hitaita.",
       "score_low": "Ei suositella käyttöjärjestelmälle: kokonaispisteet ({{score}}) ovat liian alhaiset."
     },

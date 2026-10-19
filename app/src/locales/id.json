@@ -259,7 +259,7 @@
       "cannot_open": "Drive tidak dapat dibuka untuk dibaca.",
       "read_errors_other": "{{count}} bagian drive tidak dapat dibaca.",
       "slow_areas_other": "{{count}} area ({{percent}}%) merespons sangat lambat, yang bisa berarti permukaannya mulai aus.",
-      "low_speed": "Drive membaca dengan lambat ({{mbps}} MB/s)."
+      "slow_drive": "Drive ini lambat ({{mbps}} MB/s). Cukup untuk menyimpan file, tetapi terlalu lambat untuk menjalankan program atau sistem operasi dengan nyaman."
     },
     "write_verify": {
       "no_writable_volume": "Tes tulis dilewati karena drive tidak memiliki folder yang aman untuk kami tulisi.",
@@ -350,6 +350,7 @@
     "os_install": {
       "ok": "Cocok untuk memasang sistem operasi.",
       "bad_sectors": "Tidak disarankan untuk sistem operasi: ada area yang rusak.",
+      "slow_speed": "Tidak disarankan untuk sistem operasi: drive membaca terlalu lambat.",
       "slow_latency": "Tidak disarankan untuk sistem operasi: beberapa pembacaan terlalu lambat.",
       "score_low": "Tidak disarankan untuk sistem operasi: skor keseluruhan ({{score}}) terlalu rendah."
     },

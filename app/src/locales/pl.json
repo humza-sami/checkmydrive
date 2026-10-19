@@ -301,7 +301,7 @@
       "slow_areas_few": "{{count}} obszary ({{percent}}%) odpowiadały bardzo wolno, co może oznaczać zużywanie się powierzchni.",
       "slow_areas_many": "{{count}} obszarów ({{percent}}%) odpowiadało bardzo wolno, co może oznaczać zużywanie się powierzchni.",
       "slow_areas_other": "{{count}} obszaru ({{percent}}%) odpowiadało bardzo wolno, co może oznaczać zużywanie się powierzchni.",
-      "low_speed": "Dysk czyta wolno ({{mbps}} MB/s)."
+      "slow_drive": "Ten dysk jest wolny ({{mbps}} MB/s). Wystarczy do przechowywania plików, ale jest za wolny, by wygodnie uruchamiać programy lub system operacyjny."
     },
     "write_verify": {
       "no_writable_volume": "Pominięto test zapisu, ponieważ na dysku nie ma folderu, do którego możemy bezpiecznie zapisywać.",
@@ -416,6 +416,7 @@
     "os_install": {
       "ok": "Dobrze nadaje się do instalacji systemu operacyjnego.",
       "bad_sectors": "Niezalecany dla systemu operacyjnego: ma uszkodzone obszary.",
+      "slow_speed": "Niezalecany dla systemu operacyjnego: dysk czyta zbyt wolno.",
       "slow_latency": "Niezalecany dla systemu operacyjnego: część odczytów jest zbyt wolna.",
       "score_low": "Niezalecany dla systemu operacyjnego: wynik ogólny ({{score}}) jest zbyt niski."
     },

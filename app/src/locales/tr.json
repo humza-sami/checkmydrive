@@ -273,7 +273,7 @@
       "read_errors_other": "Sürücünün {{count}} bölümü okunamadı.",
       "slow_areas_one": "{{count}} alan (%{{percent}}) çok yavaş yanıt verdi; bu, yüzeyin aşınıyor olabileceği anlamına gelebilir.",
       "slow_areas_other": "{{count}} alan (%{{percent}}) çok yavaş yanıt verdi; bu, yüzeyin aşınıyor olabileceği anlamına gelebilir.",
-      "low_speed": "Sürücü yavaş okuyor ({{mbps}} MB/s)."
+      "slow_drive": "Bu sürücü yavaş ({{mbps}} MB/sn). Dosya saklamak için yeterli, ancak programları veya bir işletim sistemini rahatça çalıştırmak için çok yavaş."
     },
     "write_verify": {
       "no_writable_volume": "Sürücüde güvenle yazabileceğimiz bir klasör olmadığı için yazma testi atlandı.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Üzerine işletim sistemi kurmak için uygun.",
       "bad_sectors": "İşletim sistemi için önerilmez: hasarlı alanları var.",
+      "slow_speed": "İşletim sistemi için önerilmez: sürücü çok yavaş okuyor.",
       "slow_latency": "İşletim sistemi için önerilmez: bazı okumalar çok yavaş.",
       "score_low": "İşletim sistemi için önerilmez: genel puan ({{score}}) çok düşük."
     },

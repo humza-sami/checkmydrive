@@ -118,16 +118,42 @@ interface TestReport {
 | drive_info | identify drive, kind, capacity, age | <5 s |
 | smart_health | smartctl -a -j (with `-d sat`/`-d auto` fallbacks for USB bridges): overall verdict, reallocated / pending / uncorrectable sectors, CRC errors, SSD wear / spare / media errors (NVMe), temperature, error log | <10 s |
 | selftest_short | `smartctl -t short`, poll until done; skipped if unsupported | ≤ 2.5 min (runs concurrently with surface_read where possible) |
-| surface_read | read-only raw-device sampling: ≥512 evenly spaced + random 1 MiB reads across the whole capacity, plus a 15 s sequential read; latency per sample, slow (>300 ms HDD / >50 ms SSD) and failed samples, throughput | ~60 s |
+| surface_read | read-only raw-device sampling: ≥512 evenly spaced + random 1 MiB reads across the whole capacity, plus a 15 s sequential read; latency per sample, slow (outlier, see *Latency & speed thresholds*) and failed samples, throughput | ~60 s |
 | write_verify | safe mode: temp file `.checkmydrive-<rand>.tmp` on a mounted writable volume of that drive, size min(1 GiB, 5% free), PRNG pattern, fsync, cache-bypassing read-back (F_NOCACHE / O_DIRECT / FILE_FLAG_NO_BUFFERING), verify, delete. wipe mode: same on raw device regions. Skipped (issue `issue.write_verify.no_writable_volume`) if no writable mount. | ~30 s |
 | capacity_check | wipe mode only: write unique signatures (offset+nonce) to ≥256 sectors spread across claimed capacity, read all back; mismatch/aliasing ⇒ fake capacity (critical). Safe mode: `skipped` with `issue.capacity_check.needs_wipe_mode` (info). | ~20 s |
 | stability | observed during all tests: device disappearing/reappearing, I/O errors, timeouts, CRC error delta before/after | passive |
 
 ## Scoring (engine, unit-tested)
 
-Start at 100; each issue deducts by severity and magnitude; hard caps: SMART overall FAILED → ≤10; fake capacity → ≤5; device disconnected during test → ≤25; any pending/uncorrectable sectors → ≤45; reallocated > 0 → ≤70 (≤40 if > 100); SSD wear ≥ 90 % used → ≤40; read errors → ≤30.
+Start at 100; each issue deducts by severity and magnitude (info 0; warn 8 + up to 12; critical 25 + up to 15); hard caps: SMART overall FAILED → ≤10; fake capacity → ≤5; device disconnected during test → ≤25; any pending/uncorrectable sectors → ≤45; reallocated > 0 → ≤70 (≤40 if > 100); SSD wear ≥ 90 % used → ≤40; read errors → ≤30.
 Verdict: score ≥ 80 `buy`, 50–79 `caution`, < 50 `avoid`.
-Suitability: os_install good iff score ≥ 80 and no pending/reallocated sectors and p99 latency OK; long_term_storage good iff score ≥ 75 and no critical issues; safe_fill_percent = 90 (≥80), 60 (65–79), 30 (50–64), 0 (<50).
+
+Principle: **speed is a property of the drive model, not a defect.** Every latency/throughput judgement is relative to the drive's own median and to its class (below). A slow drive with no errors is reported as slow (info/warn `slow_drive`), never as failing; only outliers, errors and integrity problems lower trust.
+
+### Latency & speed thresholds (surface_read, write_verify)
+
+Drive class: `hdd` (rotational), `flash` (kind `usb` or `sd`), `ssd` (everything else, incl. NVMe).
+
+| | hdd | flash (USB stick / SD) | ssd |
+|---|---|---|---|
+| per-sample floor, 1 MiB read = base + size / min-throughput | 250 ms + 1 MiB/20 MB/s = **300 ms** | 150 ms + 1 MiB/10 MB/s = **250 ms** | 30 ms + 1 MiB/50 MB/s = **50 ms** |
+| outlier factor k (× the drive's own p50) | 10 | 10 | 8 |
+| p99 allowance (or 40 × p50 if larger) | 1000 ms | 3000 ms | 250 ms |
+| `slow_drive` info / warn below (sequential MB/s) | 40 / 15 | 20 / 5 | 20 / 5 |
+| os_install needs sequential ≥ | 40 MB/s | 30 MB/s | 30 MB/s |
+| `slow_write` warn below (MB/s) | 5 | 1 | 3 |
+
+- **Slow area** (outlier sample): latency > `max(floor, k × p50)`. The floor scales with the bytes read; the relative term means a uniformly slow drive (every read ≈ 57 ms at 17.5 MB/s) yields **0** slow areas. Metric `slow_threshold_ms` is the threshold actually used.
+- `issue.surface_read.slow_areas`: **warn** when ≥ 3 outliers and ≥ 1 % of samples (a few genuine stalls); **critical** when ≥ 20 % of samples (and ≥ 5) are outliers, or ≥ 3 reads took ≥ 10 s (`hard_stalls`, hung reads).
+- `p99_latency_ok` = p99 ≤ max(class p99 allowance, 40 × p50). It only affects the os_install suitability (`slow_latency`), never the test status.
+- `issue.surface_read.slow_drive` (sequential read): info/warn per the table. It never fails the test, never blocks long-term storage / daily use / safe-fill.
+- Extra metrics: `drive_class`, `hard_stalls`, `os_speed_ok`.
+
+### Suitability
+
+- `os_install` good iff score ≥ 80, no pending/reallocated sectors, p99 latency OK **and** sequential speed OK (`os_speed_ok`). Otherwise reason is, in order: `bad_sectors`, `slow_speed`, `slow_latency`, `score_low`; level `caution` when score ≥ 65 with no critical issue and no pending sectors, else `no`.
+- `long_term_storage` good iff score ≥ 75 and no critical issues. `daily_use` good iff score ≥ 65 and no critical issues (caution ≥ 50).
+- `safe_fill_percent` reflects real problems, not speed or the numeric score: **0** when fake capacity, SMART failed, device disconnected, pending/uncorrectable sectors, any read/write/verify errors, or > 100 reallocated sectors; otherwise **100** when capacity_check passed (wipe mode) or **90** when the capacity is unproven (safe mode); then capped at 60 for 1–100 reallocated sectors and 30 for wear ≥ 90 %. If an unexplained critical issue exists, or score < 50, it is additionally capped by the old score table (≥80 → 90, 65–79 → 60, 50–64 → 30, else 0).
 
 ## i18n
 

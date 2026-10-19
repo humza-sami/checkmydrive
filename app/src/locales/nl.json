@@ -273,7 +273,7 @@
       "read_errors_other": "{{count}} delen van de schijf konden niet worden gelezen.",
       "slow_areas_one": "{{count}} gebied ({{percent}}%) reageerde erg traag, wat kan betekenen dat het oppervlak slijt.",
       "slow_areas_other": "{{count}} gebieden ({{percent}}%) reageerden erg traag, wat kan betekenen dat het oppervlak slijt.",
-      "low_speed": "De schijf leest langzaam ({{mbps}} MB/s)."
+      "slow_drive": "Deze schijf is traag ({{mbps}} MB/s). Prima om bestanden op te slaan, maar te traag om programma’s of een besturingssysteem comfortabel te draaien."
     },
     "write_verify": {
       "no_writable_volume": "De schrijftest is overgeslagen omdat de schijf geen map heeft waarin we veilig kunnen schrijven.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Goed geschikt om een besturingssysteem op te installeren.",
       "bad_sectors": "Niet aan te raden voor een besturingssysteem: er zijn beschadigde gebieden.",
+      "slow_speed": "Niet aanbevolen voor een besturingssysteem: de schijf leest te langzaam.",
       "slow_latency": "Niet aan te raden voor een besturingssysteem: sommige leesacties zijn te traag.",
       "score_low": "Niet aan te raden voor een besturingssysteem: de totaalscore ({{score}}) is te laag."
     },

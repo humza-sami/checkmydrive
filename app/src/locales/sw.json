@@ -273,7 +273,7 @@
       "read_errors_other": "Sehemu {{count}} za diski hazikuweza kusomwa.",
       "slow_areas_one": "Sehemu {{count}} ({{percent}}%) ilijibu polepole sana, jambo linaloweza kumaanisha uso unachakaa.",
       "slow_areas_other": "Sehemu {{count}} ({{percent}}%) zilijibu polepole sana, jambo linaloweza kumaanisha uso unachakaa.",
-      "low_speed": "Diski inasoma polepole ({{mbps}} MB/s)."
+      "slow_drive": "Hifadhi hii ni polepole ({{mbps}} MB/s). Inafaa kuhifadhi faili, lakini ni polepole mno kuendesha programu au mfumo wa uendeshaji kwa raha."
     },
     "write_verify": {
       "no_writable_volume": "Jaribio la kuandika lilirukwa kwa sababu diski haina folda tunayoweza kuandika kwa usalama.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Inafaa kusakinisha mfumo wa uendeshaji.",
       "bad_sectors": "Haipendekezwi kwa mfumo wa uendeshaji: ina sehemu zilizoharibika.",
+      "slow_speed": "Haipendekezwi kwa mfumo wa uendeshaji: hifadhi inasoma polepole mno.",
       "slow_latency": "Haipendekezwi kwa mfumo wa uendeshaji: baadhi ya usomaji ni polepole mno.",
       "score_low": "Haipendekezwi kwa mfumo wa uendeshaji: alama ya jumla ({{score}}) ni ndogo mno."
     },

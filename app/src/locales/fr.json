@@ -287,7 +287,7 @@
       "slow_areas_one": "{{count}} zone ({{percent}} %) a répondu très lentement, ce qui peut signifier que la surface s'use.",
       "slow_areas_many": "{{count}} de zones ({{percent}} %) ont répondu très lentement, ce qui peut signifier que la surface s'use.",
       "slow_areas_other": "{{count}} zones ({{percent}} %) ont répondu très lentement, ce qui peut signifier que la surface s'use.",
-      "low_speed": "Le disque lit lentement ({{mbps}} MB/s)."
+      "slow_drive": "Ce lecteur est lent ({{mbps}} Mo/s). C’est suffisant pour stocker des fichiers, mais trop lent pour exécuter confortablement des programmes ou un système d’exploitation."
     },
     "write_verify": {
       "no_writable_volume": "Le test d'écriture a été ignoré car le disque n'a aucun dossier dans lequel nous puissions écrire en toute sécurité.",
@@ -394,6 +394,7 @@
     "os_install": {
       "ok": "Convient pour y installer un système d'exploitation.",
       "bad_sectors": "Déconseillé pour un système d'exploitation : il présente des zones endommagées.",
+      "slow_speed": "Déconseillé pour un système d’exploitation : le lecteur lit trop lentement.",
       "slow_latency": "Déconseillé pour un système d'exploitation : certaines lectures sont trop lentes.",
       "score_low": "Déconseillé pour un système d'exploitation : la note globale ({{score}}) est trop basse."
     },

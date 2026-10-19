@@ -273,7 +273,7 @@
       "read_errors_other": "{{count}} deler av disken kunne ikke leses.",
       "slow_areas_one": "{{count}} område ({{percent}} %) svarte veldig tregt, noe som kan bety at overflaten slites ut.",
       "slow_areas_other": "{{count}} områder ({{percent}} %) svarte veldig tregt, noe som kan bety at overflaten slites ut.",
-      "low_speed": "Disken leser tregt ({{mbps}} MB/s)."
+      "slow_drive": "Denne stasjonen er treg ({{mbps}} MB/s). Den duger til å lagre filer, men er for treg til å kjøre programmer eller et operativsystem behagelig."
     },
     "write_verify": {
       "no_writable_volume": "Skrivetesten ble hoppet over fordi disken ikke har en mappe vi trygt kan skrive til.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Bra å installere et operativsystem på.",
       "bad_sectors": "Anbefales ikke for et operativsystem: den har skadde områder.",
+      "slow_speed": "Anbefales ikke for et operativsystem: stasjonen leser for tregt.",
       "slow_latency": "Anbefales ikke for et operativsystem: noen lesinger er for trege.",
       "score_low": "Anbefales ikke for et operativsystem: den samlede poengsummen ({{score}}) er for lav."
     },

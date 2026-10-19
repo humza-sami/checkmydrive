@@ -14,8 +14,147 @@ pub const SEQ_DURATION: Duration = Duration::from_secs(15);
 pub const SEQ_CHUNK: usize = 4 * 1024 * 1024;
 const MAX_CONSECUTIVE_ERRORS: u32 = 20;
 
-pub fn slow_threshold_ms(d: &DriveInfo) -> f64 {
-    if d.is_rotational() { 300.0 } else { 50.0 }
+/// Speed class of the drive; decides every latency / throughput threshold below.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum DriveClass {
+    /// Spinning disk (seek + rotation latency).
+    Hdd,
+    /// USB sticks and SD cards (cheap controllers, large natural variance, USB 2.0 class speeds).
+    Flash,
+    /// SATA / NVMe SSDs and anything unknown.
+    Ssd,
+}
+
+impl DriveClass {
+    pub fn of(d: &DriveInfo) -> DriveClass {
+        if d.is_rotational() {
+            DriveClass::Hdd
+        } else if matches!(d.kind, DriveKind::Usb | DriveKind::Sd) {
+            DriveClass::Flash
+        } else {
+            DriveClass::Ssd
+        }
+    }
+    pub fn as_str(self) -> &'static str {
+        match self {
+            DriveClass::Hdd => "hdd",
+            DriveClass::Flash => "flash",
+            DriveClass::Ssd => "ssd",
+        }
+    }
+    /// Fixed access latency (ms) a healthy drive of this class may need before the first byte.
+    fn base_ms(self) -> f64 {
+        match self {
+            DriveClass::Hdd => 250.0,
+            DriveClass::Flash => 150.0,
+            DriveClass::Ssd => 30.0,
+        }
+    }
+    /// Slowest sustained throughput (MB/s) we still treat as "normal" when sizing the per-sample floor.
+    fn floor_mbps(self) -> f64 {
+        match self {
+            DriveClass::Hdd => 20.0,
+            DriveClass::Flash => 10.0,
+            DriveClass::Ssd => 50.0,
+        }
+    }
+    /// A sample is an outlier only when it is also this many times slower than the drive's own median.
+    fn outlier_factor(self) -> f64 {
+        match self {
+            DriveClass::Hdd => 10.0,
+            DriveClass::Flash => 10.0,
+            DriveClass::Ssd => 8.0,
+        }
+    }
+    /// Absolute p99 allowance (ms) before relative scaling (40 x p50) takes over.
+    fn p99_floor_ms(self) -> f64 {
+        match self {
+            DriveClass::Hdd => 1000.0,
+            DriveClass::Flash => 3000.0,
+            DriveClass::Ssd => 250.0,
+        }
+    }
+    /// Sequential read (MB/s) below which we report `slow_drive` as info / as warn.
+    fn slow_drive_mbps(self) -> (f64, f64) {
+        match self {
+            DriveClass::Hdd => (40.0, 15.0),
+            _ => (20.0, 5.0),
+        }
+    }
+    /// Sequential read (MB/s) below which running an operating system from the drive is not advisable.
+    pub fn os_min_mbps(self) -> f64 {
+        match self {
+            DriveClass::Hdd => 40.0,
+            _ => 30.0,
+        }
+    }
+}
+
+/// Reads this slow (ms) are treated as hung regardless of the drive class.
+pub const HARD_STALL_MS: f64 = 10_000.0;
+
+/// Per-sample floor: fixed access latency plus the time `len` bytes need at the class' minimum throughput.
+/// For 1 MiB: HDD 300 ms, SSD 50 ms, USB flash 250 ms.
+pub fn slow_floor_ms(class: DriveClass, len_bytes: usize) -> f64 {
+    class.base_ms() + len_bytes as f64 / MIB as f64 / class.floor_mbps() * 1000.0
+}
+
+/// A sample is a "slow area" only if it is slower than BOTH the class floor and `factor x p50`
+/// of this very drive, so a uniformly slow drive has no outliers.
+pub fn slow_threshold_ms(class: DriveClass, len_bytes: usize, p50_ms: f64) -> f64 {
+    slow_floor_ms(class, len_bytes).max(class.outlier_factor() * p50_ms)
+}
+
+/// p99 is acceptable up to the class allowance or 40 x the drive's own median, whichever is larger.
+pub fn p99_ok(class: DriveClass, p50_ms: f64, p99_ms: f64) -> bool {
+    p99_ms <= class.p99_floor_ms().max(40.0 * p50_ms)
+}
+
+/// Pure analysis of the sampling + sequential results: metrics and issues (unit-tested).
+pub fn assess(class: DriveClass, len_bytes: usize, lat_ms: &[f64], errors: u64, seq_bytes: u64, seq_mbps: f64) -> (Metrics, Vec<Issue>) {
+    let mut sorted = lat_ms.to_vec();
+    sorted.sort_by(|a, b| a.partial_cmp(b).unwrap());
+    let p50 = percentile(&sorted, 0.5);
+    let threshold = slow_threshold_ms(class, len_bytes, p50);
+    let (avg, _, p99, max, slow) = summarize(&sorted, threshold);
+    let hard_stalls = sorted.iter().filter(|l| **l >= HARD_STALL_MS).count() as u64;
+    let p99_ok = p99_ok(class, p50, p99);
+    let os_speed_ok = !(seq_bytes > 0 && seq_mbps < class.os_min_mbps());
+
+    let mut m = Metrics::new();
+    m.insert("drive_class".into(), mval(class.as_str()));
+    m.insert("slow_samples".into(), mval(slow));
+    m.insert("slow_threshold_ms".into(), mval(round2(threshold)));
+    m.insert("hard_stalls".into(), mval(hard_stalls));
+    m.insert("latency_ms_avg".into(), mval(round2(avg)));
+    m.insert("latency_ms_p50".into(), mval(round2(p50)));
+    m.insert("latency_ms_p99".into(), mval(round2(p99)));
+    m.insert("latency_ms_max".into(), mval(round2(max)));
+    m.insert("p99_latency_ok".into(), mval(p99_ok));
+    m.insert("os_speed_ok".into(), mval(os_speed_ok));
+
+    let mut issues = Vec::new();
+    if errors > 0 {
+        issues.push(Issue::critical("issue.surface_read.read_errors").with("count", errors));
+    }
+    if !sorted.is_empty() {
+        let pct = slow as f64 / sorted.len() as f64 * 100.0;
+        let widespread = pct >= 20.0 && slow >= 5;
+        if widespread || hard_stalls >= 3 {
+            issues.push(Issue::critical("issue.surface_read.slow_areas").with("count", slow).with("percent", round1(pct)));
+        } else if slow >= 3 && pct >= 1.0 {
+            issues.push(Issue::warn("issue.surface_read.slow_areas").with("count", slow).with("percent", round1(pct)));
+        }
+    }
+    if seq_bytes > 0 {
+        let (info_below, warn_below) = class.slow_drive_mbps();
+        if seq_mbps < warn_below {
+            issues.push(Issue::warn("issue.surface_read.slow_drive").with("mbps", round1(seq_mbps)));
+        } else if seq_mbps < info_below {
+            issues.push(Issue::info("issue.surface_read.slow_drive").with("mbps", round1(seq_mbps)));
+        }
+    }
+    (m, issues)
 }
 
 /// Offsets for the sampling pass: evenly spaced then random, all 4096-aligned.
@@ -69,7 +208,7 @@ pub fn run_with(ctx: &Ctx, seq_duration: Duration) -> TestResult {
     let cap = dev.size;
     let cap_aligned = cap / SECTOR as u64 * SECTOR as u64;
     let len = (SAMPLE_LEN as u64).min(cap_aligned) as usize;
-    let threshold = slow_threshold_ms(&ctx.drive);
+    let class = DriveClass::of(&ctx.drive);
     let offsets = plan_offsets(cap_aligned, len as u64, EVEN_SAMPLES, RANDOM_SAMPLES);
     let total = offsets.len();
 
@@ -171,47 +310,22 @@ pub fn run_with(ctx: &Ctx, seq_duration: Duration) -> TestResult {
         seq_mbps_avg = seq_bytes as f64 / MIB as f64 / el;
     }
 
-    let (avg, p50, p99, max, slow) = summarize(&lat, threshold);
-    let mut m = Metrics::new();
+    let (mut m, issues) = assess(class, len, &lat, errors, seq_bytes, seq_mbps_avg);
     m.insert("samples_total".into(), mval(attempted));
     m.insert("samples_ok".into(), mval(lat.len()));
     m.insert("read_errors".into(), mval(errors));
-    m.insert("slow_samples".into(), mval(slow));
-    m.insert("slow_threshold_ms".into(), mval(threshold));
-    m.insert("latency_ms_avg".into(), mval(round2(avg)));
-    m.insert("latency_ms_p50".into(), mval(round2(p50)));
-    m.insert("latency_ms_p99".into(), mval(round2(p99)));
-    m.insert("latency_ms_max".into(), mval(round2(max)));
-    m.insert("p99_latency_ok".into(), mval(p99 <= threshold));
     m.insert("read_mbps_avg".into(), mval(round1(seq_mbps_avg)));
     m.insert("read_mbps_min".into(), mval(seq_min.map(round1)));
     m.insert("read_mbps_max".into(), mval(seq_max.map(round1)));
     m.insert("sequential_bytes".into(), mval(seq_bytes));
     m.insert("aborted_early".into(), mval(aborted_early));
     m.insert("first_bad_offsets".into(), mval(first_bad.iter().map(|o| o.to_string()).collect::<Vec<_>>().join(",")));
-
-    let mut issues = Vec::new();
-    if errors > 0 {
-        issues.push(Issue::critical("issue.surface_read.read_errors").with("count", errors));
-    }
-    if !lat.is_empty() {
-        let pct = slow as f64 / lat.len() as f64 * 100.0;
-        if pct >= 10.0 {
-            issues.push(Issue::critical("issue.surface_read.slow_areas").with("count", slow).with("percent", round1(pct)));
-        } else if pct >= 1.0 && slow >= 2 {
-            issues.push(Issue::warn("issue.surface_read.slow_areas").with("count", slow).with("percent", round1(pct)));
-        }
-    }
-    let min_speed = if ctx.drive.is_rotational() { 20.0 } else { 10.0 };
-    if seq_bytes > 0 && seq_mbps_avg < min_speed {
-        issues.push(Issue::warn("issue.surface_read.low_speed").with("mbps", round1(seq_mbps_avg)));
-    }
     ctx.progress(Phase::SurfaceRead, 100.0, "progress.surface_read.done", None);
     TestResult::from_issues(TestId::SurfaceRead, t0.elapsed().as_millis() as u64, m, issues)
 }
 
 #[cfg(test)]
-mod tests {
+pub(crate) mod tests {
     use super::*;
     #[test]
     fn offsets_are_aligned_and_in_range() {
@@ -236,5 +350,88 @@ mod tests {
         assert!((50.0..=51.0).contains(&p50));
         assert!(p99 >= 99.0);
         assert_eq!(slow, 10);
+    }
+
+    /// 262 samples shaped like the real-hardware report: p50 65.55, p99 1905.74, max 2446.14, avg ~150.
+    pub(crate) fn real_stick_latencies() -> Vec<f64> {
+        let mut v: Vec<f64> = (0..131).map(|i| 55.0 + 10.55 * i as f64 / 130.0).collect();
+        v.extend((0..100).map(|i| 65.6 + 65.0 * i as f64 / 99.0));
+        v.extend((0..27).map(|i| 700.0 + 40.0 * i as f64));
+        v.extend([1905.74, 1905.74, 2200.0, 2446.14]);
+        v
+    }
+
+    #[test]
+    fn real_stick_distribution_matches_report() {
+        let l = real_stick_latencies();
+        assert_eq!(l.len(), 262);
+        let mut s = l.clone();
+        s.sort_by(|a, b| a.partial_cmp(b).unwrap());
+        assert!((percentile(&s, 0.5) - 65.55).abs() < 1.0);
+        assert!((1800.0..=2000.0).contains(&percentile(&s, 0.99)));
+        assert_eq!(*s.last().unwrap(), 2446.14);
+    }
+
+    #[test]
+    fn thresholds_per_class_for_one_mib() {
+        assert_eq!(slow_floor_ms(DriveClass::Hdd, 1 << 20), 300.0);
+        assert_eq!(slow_floor_ms(DriveClass::Ssd, 1 << 20), 50.0);
+        assert_eq!(slow_floor_ms(DriveClass::Flash, 1 << 20), 250.0);
+        // smaller reads get a lower floor, relative rule still dominates on slow drives
+        assert!(slow_floor_ms(DriveClass::Flash, 4096) < 250.0);
+        assert_eq!(slow_threshold_ms(DriveClass::Flash, 1 << 20, 65.55), 655.5);
+        assert_eq!(slow_threshold_ms(DriveClass::Ssd, 1 << 20, 2.0), 50.0);
+    }
+
+    #[test]
+    fn uniformly_slow_drive_has_no_slow_areas() {
+        // every 1 MiB read takes ~57 ms (17.5 MB/s): the old fixed 50 ms limit flagged 100 % of them.
+        let l: Vec<f64> = (0..262).map(|i| 55.0 + (i % 5) as f64).collect();
+        let (m, issues) = assess(DriveClass::Flash, 1 << 20, &l, 0, 276_824_064, 17.5);
+        assert_eq!(m["slow_samples"], 0);
+        assert!(!issues.iter().any(|i| i.code == "issue.surface_read.slow_areas"));
+        // even if the drive were classed as an SSD, the relative rule keeps the count at 0
+        let (m, _) = assess(DriveClass::Ssd, 1 << 20, &l, 0, 276_824_064, 17.5);
+        assert_eq!(m["slow_samples"], 0);
+    }
+
+    #[test]
+    fn genuine_outliers_are_flagged() {
+        let mut l: Vec<f64> = vec![60.0; 252];
+        l.extend([2000.0; 10]);
+        let (m, issues) = assess(DriveClass::Flash, 1 << 20, &l, 0, 1 << 28, 17.5);
+        assert_eq!(m["slow_samples"], 10);
+        let sa = issues.iter().find(|i| i.code == "issue.surface_read.slow_areas").expect("slow_areas");
+        assert_eq!(sa.severity, Severity::Warn);
+    }
+
+    #[test]
+    fn widespread_outliers_or_hangs_are_critical() {
+        let mut l: Vec<f64> = vec![60.0; 200];
+        l.extend([2000.0; 62]); // 23.7 %
+        let (_, issues) = assess(DriveClass::Flash, 1 << 20, &l, 0, 1 << 28, 17.5);
+        assert_eq!(issues.iter().find(|i| i.code == "issue.surface_read.slow_areas").unwrap().severity, Severity::Critical);
+        let mut l: Vec<f64> = vec![60.0; 259];
+        l.extend([12_000.0; 3]);
+        let (_, issues) = assess(DriveClass::Flash, 1 << 20, &l, 0, 1 << 28, 17.5);
+        assert_eq!(issues.iter().find(|i| i.code == "issue.surface_read.slow_areas").unwrap().severity, Severity::Critical);
+    }
+
+    #[test]
+    fn slow_drive_severity_by_speed() {
+        let sev = |c, mbps| assess(c, 1 << 20, &[10.0; 10], 0, 1 << 20, mbps).1.iter().find(|i| i.code == "issue.surface_read.slow_drive").map(|i| i.severity);
+        assert_eq!(sev(DriveClass::Flash, 17.5), Some(Severity::Info));
+        assert_eq!(sev(DriveClass::Flash, 3.0), Some(Severity::Warn));
+        assert_eq!(sev(DriveClass::Flash, 25.0), None);
+        assert_eq!(sev(DriveClass::Hdd, 35.0), Some(Severity::Info));
+        assert_eq!(sev(DriveClass::Hdd, 90.0), None);
+    }
+
+    #[test]
+    fn stall_tolerance_for_p99() {
+        assert!(p99_ok(DriveClass::Flash, 65.55, 1905.74));
+        assert!(!p99_ok(DriveClass::Flash, 65.55, 9000.0));
+        assert!(!p99_ok(DriveClass::Ssd, 2.0, 400.0));
+        assert!(p99_ok(DriveClass::Hdd, 15.0, 900.0));
     }
 }

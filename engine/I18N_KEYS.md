@@ -98,7 +98,7 @@ Params are JSON numbers or strings. Severity is in brackets for issues. `en-US` 
 | `issue.surface_read.cannot_open` | critical | `count` | The drive could not be opened for reading. |
 | `issue.surface_read.read_errors` | critical | `count` | {count} parts of the drive could not be read. |
 | `issue.surface_read.slow_areas` | warn/critical | `count`, `percent` | {count} areas ({percent}%) responded very slowly, which can mean the surface is wearing out. |
-| `issue.surface_read.low_speed` | warn | `mbps` | The drive reads slowly ({mbps} MB/s). |
+| `issue.surface_read.slow_drive` | info/warn | `mbps` | This drive is slow ({mbps} MB/s). That is fine for storing files, but too slow to run programs or an operating system comfortably. |
 
 ### Write test
 | code | sev | params | en-US |
@@ -133,6 +133,7 @@ Params are JSON numbers or strings. Severity is in brackets for issues. `en-US` 
 |---|---|
 | `suitability.os_install.ok` | Good for installing an operating system on. |
 | `suitability.os_install.bad_sectors` | Not recommended for an operating system: it has damaged areas. |
+| `suitability.os_install.slow_speed` | Not recommended for an operating system: the drive reads too slowly. |
 | `suitability.os_install.slow_latency` | Not recommended for an operating system: some reads are too slow. |
 | `suitability.os_install.score_low` | Not recommended for an operating system: the overall score ({score}) is too low. |
 | `suitability.long_term_storage.ok` | Good for storing files long term. |

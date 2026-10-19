@@ -287,7 +287,7 @@
       "slow_areas_one": "{{count}} zonă ({{percent}}%) a răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
       "slow_areas_few": "{{count}} zone ({{percent}}%) au răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
       "slow_areas_other": "{{count}} de zone ({{percent}}%) au răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
-      "low_speed": "Unitatea citește lent ({{mbps}} MB/s)."
+      "slow_drive": "Această unitate este lentă ({{mbps}} MB/s). Este în regulă pentru stocarea fișierelor, dar prea lentă pentru a rula confortabil programe sau un sistem de operare."
     },
     "write_verify": {
       "no_writable_volume": "Testul de scriere a fost omis deoarece unitatea nu are un dosar în care să putem scrie în siguranță.",
@@ -394,6 +394,7 @@
     "os_install": {
       "ok": "Potrivită pentru instalarea unui sistem de operare.",
       "bad_sectors": "Nerecomandată pentru un sistem de operare: are zone deteriorate.",
+      "slow_speed": "Nerecomandată pentru un sistem de operare: unitatea citește prea lent.",
       "slow_latency": "Nerecomandată pentru un sistem de operare: unele citiri sunt prea lente.",
       "score_low": "Nerecomandată pentru un sistem de operare: scorul general ({{score}}) este prea mic."
     },

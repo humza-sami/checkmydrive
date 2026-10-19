@@ -58,7 +58,7 @@ fn healthy_sata_ssd() {
     assert_eq!(r.score, 100);
     assert_eq!(r.verdict, Verdict::Buy);
     assert!(r.suitability.os_install.ok);
-    assert_eq!(r.suitability.safe_fill_percent, 90);
+    assert_eq!(r.suitability.safe_fill_percent, 100);
     assert_eq!(r.age.power_on_years, Some(1.4));
 }
 

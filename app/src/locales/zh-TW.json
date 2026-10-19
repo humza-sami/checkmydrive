@@ -259,7 +259,7 @@
       "cannot_open": "無法開啟硬碟進行讀取。",
       "read_errors_other": "硬碟上有 {{count}} 處無法讀取。",
       "slow_areas_other": "有 {{count}} 個區域（{{percent}}%）回應非常慢，這可能表示碟面正在耗損。",
-      "low_speed": "硬碟讀取速度很慢（{{mbps}} MB/s）。"
+      "slow_drive": "此磁碟機速度較慢（{{mbps}} MB/s）。用來存放檔案沒問題，但執行程式或作業系統會太慢。"
     },
     "write_verify": {
       "no_writable_volume": "已略過寫入檢測，因為硬碟上沒有可以安全寫入的資料夾。",
@@ -350,6 +350,7 @@
     "os_install": {
       "ok": "適合用來安裝作業系統。",
       "bad_sectors": "不建議用來安裝作業系統：它有損壞的區域。",
+      "slow_speed": "不建議用於安裝作業系統：磁碟機讀取速度太慢。",
       "slow_latency": "不建議用來安裝作業系統：部分讀取太慢。",
       "score_low": "不建議用來安裝作業系統：整體分數（{{score}}）太低。"
     },

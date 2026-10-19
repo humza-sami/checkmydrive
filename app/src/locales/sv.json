@@ -273,7 +273,7 @@
       "read_errors_other": "{{count}} delar av disken gick inte att läsa.",
       "slow_areas_one": "{{count}} område ({{percent}} %) svarade mycket långsamt, vilket kan betyda att ytan slits ut.",
       "slow_areas_other": "{{count}} områden ({{percent}} %) svarade mycket långsamt, vilket kan betyda att ytan slits ut.",
-      "low_speed": "Disken läser långsamt ({{mbps}} MB/s)."
+      "slow_drive": "Den här enheten är långsam ({{mbps}} MB/s). Den duger för att lagra filer, men är för långsam för att köra program eller ett operativsystem bekvämt."
     },
     "write_verify": {
       "no_writable_volume": "Skrivtestet hoppades över eftersom disken saknar en mapp vi säkert kan skriva till.",
@@ -372,6 +372,7 @@
     "os_install": {
       "ok": "Bra att installera ett operativsystem på.",
       "bad_sectors": "Rekommenderas inte för ett operativsystem: den har skadade områden.",
+      "slow_speed": "Rekommenderas inte för ett operativsystem: enheten läser för långsamt.",
       "slow_latency": "Rekommenderas inte för ett operativsystem: vissa läsningar är för långsamma.",
       "score_low": "Rekommenderas inte för ett operativsystem: det totala betyget ({{score}}) är för lågt."
     },
