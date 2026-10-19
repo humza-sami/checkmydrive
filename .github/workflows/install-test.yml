@@ -55,6 +55,14 @@ jobs:
           "APP_EXE=$($exes[0].FullName)" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
           if (-not (Get-ChildItem $dir -Recurse -Filter smartctl.exe)) { throw 'smartctl.exe missing' }
 
+      - name: Executables must not depend on the VC++ redistributable
+        run: |
+          foreach ($f in @((Join-Path $env:INSTALL_DIR 'checkmydrive-engine.exe'), $env:APP_EXE)) {
+            $txt = [Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes($f))
+            if ($txt -match '(?i)(VCRUNTIME140(_1)?|MSVCP140)\.dll') { throw "$f imports the dynamic VC++ runtime ($($Matches[0]))" }
+            "$f : static CRT ok"
+          }
+
       - name: Engine version and list
         run: |
           $engine = Join-Path $env:INSTALL_DIR 'checkmydrive-engine.exe'
