@@ -201,8 +201,13 @@ jobs:
           python3 scripts/ci/pick_drive.py 1073741824 < artifacts/list-virtual.json | tee artifacts/picked-id.txt
           ID=$(cat artifacts/picked-id.txt)
           set +e
-          sudo env CHECKMYDRIVE_ALLOW_VIRTUAL=1 timeout 600 "$ENGINE" test --drive "$ID" --mode safe > artifacts/test-report.ndjson 2> artifacts/test-stderr.log
+          sudo env CHECKMYDRIVE_ALLOW_VIRTUAL=1 "$ENGINE" test --drive "$ID" --mode safe > artifacts/test-report.ndjson 2> artifacts/test-stderr.log &
+          TPID=$!
+          # macOS has no timeout(1): 10 minute watchdog
+          ( sleep 600; sudo pkill -f 'checkmydrive-engine test' ) & WD=$!
+          wait $TPID
           echo "engine exit code: $?"
+          kill $WD 2>/dev/null
           tail -n 30 artifacts/test-stderr.log
           python3 scripts/ci/assert_report.py artifacts/test-report.ndjson
 
@@ -242,6 +247,9 @@ jobs:
           gh release download "$TAG" -R "$GITHUB_REPOSITORY" -D dl -p '*_amd64.deb'
           ls -la dl
           sudo apt-get update
+          PKG=$(dpkg-deb -f dl/CheckMyDrive_*_amd64.deb Package)
+          echo "PKG=$PKG" >> "$GITHUB_ENV"
+          echo "package name: $PKG"
           sudo apt-get install -y ./dl/CheckMyDrive_*_amd64.deb
           command -v checkmydrive checkmydrive-engine smartctl
 
@@ -286,7 +294,7 @@ jobs:
 
       - name: Uninstall and verify removal
         run: |
-          sudo apt-get remove -y checkmydrive
+          sudo apt-get remove -y "$PKG"
           if command -v checkmydrive; then echo "::error::binary still present"; exit 1; fi
           test ! -e /usr/bin/checkmydrive-engine
 
