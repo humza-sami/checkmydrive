@@ -108,6 +108,8 @@ interface TestReport {
     safe_fill_bytes: number;  // how much data we'd recommend storing
     safe_fill_percent: number;
   };
+  score_cap?: number;         // lowest hard cap that applies (absent when none); old reports lack this field
+  score_reasons?: string[];   // i18n codes `score.reason.*` explaining the score, worst first; [] at 100
 }
 ```
 
@@ -126,6 +128,7 @@ interface TestReport {
 ## Scoring (engine, unit-tested)
 
 Start at 100; each issue deducts by severity and magnitude (info 0; warn 8 + up to 12; critical 25 + up to 15); hard caps: SMART overall FAILED → ≤10; fake capacity → ≤5; device disconnected during test → ≤25; any pending/uncorrectable sectors → ≤45; reallocated > 0 → ≤70 (≤40 if > 100); SSD wear ≥ 90 % used → ≤40; read errors → ≤30.
+**Why this score:** `score_reasons` lists every hard cap that applies (lowest cap first) as `score.reason.smart_failed` (≤10), `fake_capacity` (≤5), `disconnected` (≤25), `unreadable` (pending/uncorrectable, ≤45), `many_reallocated` (>100, ≤40), `reallocated` (≤70), `worn_out` (≤40), `read_errors` (≤30). When no cap applies but the score is < 100 it is `["score.reason.findings"]`. `score_cap` is the lowest cap. The GUI shows the reasons under the verdict so a score of 0 is never unexplained.
 Verdict: score ≥ 80 `buy`, 50–79 `caution`, < 50 `avoid`.
 
 Principle: **speed is a property of the drive model, not a defect.** Every latency/throughput judgement is relative to the drive's own median and to its class (below). A slow drive with no errors is reported as slow (info/warn `slow_drive`), never as failing; only outliers, errors and integrity problems lower trust.
@@ -147,7 +150,12 @@ Drive class: `hdd` (rotational), `flash` (kind `usb` or `sd`), `ssd` (everything
 - `issue.surface_read.slow_areas`: **warn** when ≥ 3 outliers and ≥ 1 % of samples (a few genuine stalls); **critical** when ≥ 20 % of samples (and ≥ 5) are outliers, or ≥ 3 reads took ≥ 10 s (`hard_stalls`, hung reads).
 - `p99_latency_ok` = p99 ≤ max(class p99 allowance, 40 × p50). It only affects the os_install suitability (`slow_latency`), never the test status.
 - `issue.surface_read.slow_drive` (sequential read): info/warn per the table. It never fails the test, never blocks long-term storage / daily use / safe-fill.
-- Extra metrics: `drive_class`, `hard_stalls`, `os_speed_ok`.
+- Extra metrics: `drive_class`, `hard_stalls`, `os_speed_ok`, `coverage_percent`.
+- **Speed needs enough data:** `read_mbps_avg/min/max` are `null` (and no `slow_drive`, `os_speed_ok` = true) unless the sequential pass read ≥ 32 MiB; one stalled 4 MiB chunk is not a speed. Speeds below 1 MB/s carry 2 decimals (0.27), otherwise 1.
+- **No `slow_drive` on a failing drive:** it is suppressed when the scan found read errors or hard stalls (those are the real problem).
+- **Coverage:** `samples_total` (attempted) vs `samples_planned`; `coverage_percent` = attempted / planned. When the 40 s sampling budget ran out (not `aborted_early`) while the drive showed slow areas, stalls or errors, the info issue `issue.surface_read.partial_coverage` (`checked`, `planned`) is added.
+- **Self-test:** `final_state` is `passed`, `failed` (critical), `aborted` (warn), `interrupted` (warn, poll ended early, e.g. device gone) or `timeout`. A `timeout` makes the test status `skipped` with `score: null` and the info note `issue.selftest.timeout`; it is never "passed".
+- **SMART:** equal pending and offline-uncorrectable counts are reported once as `issue.smart.unreadable_sectors`; different counts keep `pending_sectors` and `uncorrectable_sectors`.
 - **Speed measurements must be valid.** `write_mbps` / `read_mbps` (write_verify) are computed from the actual elapsed time including the flush, and are `null` when fewer than 4 MiB were moved or the elapsed time is < 50 ms; `slow_write` is never emitted for a `null` measurement. Wipe mode splits the 14 s write budget evenly over its 4 regions and writes at least 4 chunks to each (budget permitting), so the figure averages several areas of the drive.
 - **surface_read progress**: `progress.surface_read.sampling` carries `{done, total}`. `total` is the planned sample count (576) while the drive's pace fits the 40 s sampling budget, and otherwise the projected number that will actually be attempted; the last sampling event has `total == done == samples_total`. The plan size itself is reported as `samples_planned`.
 
@@ -160,3 +168,5 @@ Drive class: `hdd` (rotational), `flash` (kind `usb` or `sd`), `ssd` (everything
 ## i18n
 
 The engine emits only codes + params. All text lives in `app/src/locales/<lang>.json` (i18next). `en-US` is default and source of truth. RTL languages (ar, ur, fa, he) must render RTL.
+
+The Test Results table shows only a few friendly, translated, non-null highlights per test (`app/src/lib/details.ts`, labels `detail.*` / `metric.*`); raw metrics stay in the report JSON and in the per-test "Details…" dialog.

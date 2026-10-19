@@ -181,7 +181,10 @@
     "tested": "Ilijaribiwa tarehe {{date}}",
     "engine": "Injini {{version}}",
     "skippedNote": "Ugunduzi wa ukubwa wa uongo haukufanyika. Tumia jaribio kamili la kufuta kwenye diski tupu ili kupata jibu kamili.",
-    "testResults": "Matokeo ya Jaribio"
+    "testResults": "Matokeo ya Jaribio",
+    "why": {
+      "title": "Kwa nini alama hii"
+    }
   },
   "report": {
     "title": "Ripoti ya CheckMyDrive",
@@ -242,10 +245,6 @@
       "overall_failed": "Ukaguzi wa afya wa diski yenyewe unasema inaharibika.",
       "reallocated_sectors_one": "Diski tayari imebadilisha sehemu {{count}} iliyoharibika kwa akiba.",
       "reallocated_sectors_other": "Diski tayari imebadilisha sehemu {{count}} zilizoharibika kwa akiba.",
-      "pending_sectors_one": "Sehemu {{count}} ya diski haisomeki na inasubiri kubadilishwa.",
-      "pending_sectors_other": "Sehemu {{count}} za diski hazisomeki na zinasubiri kubadilishwa.",
-      "uncorrectable_sectors_one": "Sehemu {{count}} ya diski haikuweza kusomwa wala kurekebishwa.",
-      "uncorrectable_sectors_other": "Sehemu {{count}} za diski hazikuweza kusomwa wala kurekebishwa.",
       "crc_errors_one": "Hitilafu {{count}} ya kuhamisha data ilirekodiwa, mara nyingi husababishwa na kebo au kiunganishi kibovu.",
       "crc_errors_other": "Hitilafu {{count}} za kuhamisha data zilirekodiwa, mara nyingi husababishwa na kebo au kiunganishi kibovu.",
       "error_log_entries_one": "Kumbukumbu ya hitilafu za diski ina rekodi {{count}}.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "Kumbukumbu ya diski imerekodi hitilafu {{count}} ya uadilifu wa data.",
       "nvme_media_errors_other": "Kumbukumbu ya diski imerekodi hitilafu {{count}} za uadilifu wa data.",
       "spare_low": "Ni {{percent}}% tu ya kumbukumbu ya akiba ya diski iliyobaki.",
-      "temperature_high": "Diski inapata joto jingi ({{celsius}} C)."
+      "temperature_high": "Diski inapata joto jingi ({{celsius}} C).",
+      "unreadable_sectors": "Maeneo yasiyosomeka ambayo diski haikuweza kurekebisha: {{count}}",
+      "pending_sectors": "Maeneo ambayo diski haiwezi kusoma sasa na huenda ikabadilisha baadaye: {{count}}",
+      "uncorrectable_sectors": "Maeneo yaliyoshindwa katika uchanganuzi wa diski yenyewe na hayakuweza kusahihishwa: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Ukaguzi wa haraka wa diski ulirukwa kwa sababu kiolesura chake cha afya hakipatikani.",
@@ -273,7 +275,8 @@
       "read_errors_other": "Sehemu {{count}} za diski hazikuweza kusomwa.",
       "slow_areas_one": "Sehemu {{count}} ({{percent}}%) ilijibu polepole sana, jambo linaloweza kumaanisha uso unachakaa.",
       "slow_areas_other": "Sehemu {{count}} ({{percent}}%) zilijibu polepole sana, jambo linaloweza kumaanisha uso unachakaa.",
-      "slow_drive": "Hifadhi hii ni polepole ({{mbps}} MB/s). Inafaa kuhifadhi faili, lakini ni polepole mno kuendesha programu au mfumo wa uendeshaji kwa raha."
+      "slow_drive": "Hifadhi hii ni polepole ({{mbps}} MB/s). Inafaa kuhifadhi faili, lakini ni polepole mno kuendesha programu au mfumo wa uendeshaji kwa raha.",
+      "partial_coverage": "Uchanganuzi wa uso uliweza kukagua maeneo {{checked}} tu kati ya {{planned}} kwa sababu diski iliendelea kukwama."
     },
     "write_verify": {
       "no_writable_volume": "Jaribio la kuandika lilirukwa kwa sababu diski haina folda tunayoweza kuandika kwa usalama.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Imetengenezwa kwa smartmontools, Tauri na XP.css."
+  },
+  "detail": {
+    "title": "Maelezo ya kiufundi",
+    "button": "Maelezo…",
+    "slowest": "Jibu la polepole zaidi",
+    "of": "{{done}} kati ya {{total}}",
+    "crc_errors": "Hitilafu za uhamishaji data",
+    "read_mbps": "Kasi ya kusoma (MB/s)",
+    "new_bad_areas": "Maeneo mapya yaliyoharibika wakati wa jaribio",
+    "new_unreadable": "Maeneo mapya yasiyosomeka wakati wa jaribio",
+    "timeouts": "Muda kuisha",
+    "new_crc": "Hitilafu mpya za uhamishaji wakati wa jaribio",
+    "noProblems": "Hakuna tatizo jipya lililoonekana",
+    "selftest": {
+      "passed": "Imefaulu",
+      "failed": "Imeshindwa",
+      "aborted": "Imekatizwa",
+      "timeout": "Haikukamilika kwa wakati",
+      "interrupted": "Imekatizwa"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Alama imepunguzwa kwa sababu ukaguzi wa afya wa diski yenyewe unasema inaharibika.",
+      "fake_capacity": "Alama imepunguzwa kwa sababu diski ni ndogo kuliko inavyodai.",
+      "disconnected": "Alama imepunguzwa kwa sababu diski ilikatika wakati wa majaribio.",
+      "unreadable": "Alama imepunguzwa kwa sababu diski ina maeneo yasiyosomeka.",
+      "many_reallocated": "Alama imepunguzwa kwa sababu diski ina sekta nyingi mbovu ambazo tayari imezibadilisha.",
+      "reallocated": "Alama imepunguzwa kwa sababu diski ina sekta mbovu ambazo tayari imezibadilisha.",
+      "worn_out": "Alama imepunguzwa kwa sababu diski imechakaa karibu kabisa.",
+      "read_errors": "Alama imepunguzwa kwa sababu baadhi ya sehemu za diski hazikuweza kusomwa.",
+      "findings": "Alama imeshushwa na matatizo yaliyopatikana katika jaribio hili."
+    }
   }
 }

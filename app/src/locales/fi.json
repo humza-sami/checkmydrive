@@ -181,7 +181,10 @@
     "tested": "Testattu {{date}}",
     "engine": "Moottori {{version}}",
     "skippedNote": "Väärennetyn kapasiteetin tunnistusta ei suoritettu. Käytä täyttä tyhjennystestiä tyhjällä asemalla saadaksesi täydellisen vastauksen.",
-    "testResults": "Testin tulokset"
+    "testResults": "Testin tulokset",
+    "why": {
+      "title": "Miksi tämä pistemäärä"
+    }
   },
   "report": {
     "title": "CheckMyDrive-raportti",
@@ -242,10 +245,6 @@
       "overall_failed": "Aseman oman kuntotarkistuksen mukaan se on hajoamassa.",
       "reallocated_sectors_one": "Asema on jo korvannut {{count}} vaurioituneen alueen varalla.",
       "reallocated_sectors_other": "Asema on jo korvannut {{count}} vaurioitunutta aluetta varaosilla.",
-      "pending_sectors_one": "{{count}} alue asemalla on lukukelvoton ja odottaa korvaamista.",
-      "pending_sectors_other": "{{count}} aluetta asemalla on lukukelvottomia ja odottaa korvaamista.",
-      "uncorrectable_sectors_one": "Aseman {{count}} alue ei ollut luettavissa tai korjattavissa.",
-      "uncorrectable_sectors_other": "Aseman {{count}} aluetta ei voitu lukea tai korjata.",
       "crc_errors_one": "Kirjattiin {{count}} tiedonsiirtovirhe, joka johtuu usein huonosta kaapelista tai liittimestä.",
       "crc_errors_other": "Kirjattiin {{count}} tiedonsiirtovirhettä, jotka johtuvat usein huonosta kaapelista tai liittimestä.",
       "error_log_entries_one": "Aseman virhelokissa on {{count}} merkintä.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "Aseman muisti on kirjannut {{count}} tietojen eheysvirheen.",
       "nvme_media_errors_other": "Aseman muisti on kirjannut {{count}} tietojen eheysvirhettä.",
       "spare_low": "Aseman varamuistista on jäljellä vain {{percent}} %.",
-      "temperature_high": "Asema käy kuumana ({{celsius}} C)."
+      "temperature_high": "Asema käy kuumana ({{celsius}} C).",
+      "unreadable_sectors": "Lukukelvottomat alueet, joita asema ei pystynyt korjaamaan: {{count}}",
+      "pending_sectors": "Alueet, joita asema ei voi lukea juuri nyt ja jotka se voi korvata myöhemmin: {{count}}",
+      "uncorrectable_sectors": "Alueet, jotka eivät läpäisseet aseman omaa tarkistusta eikä niitä voitu korjata: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Aseman nopea omatesti ohitettiin, koska sen kuntorajapinta ei ole käytettävissä.",
@@ -273,7 +275,8 @@
       "read_errors_other": "Aseman {{count}} osaa ei voitu lukea.",
       "slow_areas_one": "{{count}} alue ({{percent}} %) vastasi erittäin hitaasti, mikä voi tarkoittaa pinnan kulumista.",
       "slow_areas_other": "{{count}} aluetta ({{percent}} %) vastasi erittäin hitaasti, mikä voi tarkoittaa pinnan kulumista.",
-      "slow_drive": "Tämä asema on hidas ({{mbps}} MB/s). Se kelpaa tiedostojen tallennukseen, mutta on liian hidas ohjelmien tai käyttöjärjestelmän sujuvaan ajamiseen."
+      "slow_drive": "Tämä asema on hidas ({{mbps}} MB/s). Se kelpaa tiedostojen tallennukseen, mutta on liian hidas ohjelmien tai käyttöjärjestelmän sujuvaan ajamiseen.",
+      "partial_coverage": "Pintatarkistus pystyi tarkistamaan vain {{checked}} / {{planned}} kohtaa, koska asema juuttui toistuvasti."
     },
     "write_verify": {
       "no_writable_volume": "Kirjoitustesti ohitettiin, koska asemalla ei ole kansiota, johon voisimme kirjoittaa turvallisesti.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Tehty käyttäen smartmontoolsia, Tauria ja XP.css:ää."
+  },
+  "detail": {
+    "title": "Tekniset tiedot",
+    "button": "Tiedot…",
+    "slowest": "Hitain vastaus",
+    "of": "{{done}} / {{total}}",
+    "crc_errors": "Tiedonsiirtovirheet",
+    "read_mbps": "Lukunopeus (MB/s)",
+    "new_bad_areas": "Uusia vaurioituneita alueita testin aikana",
+    "new_unreadable": "Uusia lukukelvottomia alueita testin aikana",
+    "timeouts": "Aikakatkaisut",
+    "new_crc": "Uusia tiedonsiirtovirheitä testin aikana",
+    "noProblems": "Uusia ongelmia ei havaittu",
+    "selftest": {
+      "passed": "Läpäisty",
+      "failed": "Epäonnistui",
+      "aborted": "Keskeytyi",
+      "timeout": "Ei valmistunut ajoissa",
+      "interrupted": "Keskeytyi"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Pistemäärää on rajoitettu, koska aseman oma kuntotarkistus kertoo sen olevan vikaantumassa.",
+      "fake_capacity": "Pistemäärää on rajoitettu, koska asema on pienempi kuin se väittää.",
+      "disconnected": "Pistemäärää on rajoitettu, koska asema katkaisi yhteyden testien aikana.",
+      "unreadable": "Pistemäärää on rajoitettu, koska asemalla on lukukelvottomia alueita.",
+      "many_reallocated": "Pistemäärää on rajoitettu, koska asemalla on paljon huonoja sektoreita, jotka se on jo korvannut.",
+      "reallocated": "Pistemäärää on rajoitettu, koska asemalla on huonoja sektoreita, jotka se on jo korvannut.",
+      "worn_out": "Pistemäärää on rajoitettu, koska asema on lähes loppuun kulunut.",
+      "read_errors": "Pistemäärää on rajoitettu, koska joitakin aseman osia ei voitu lukea.",
+      "findings": "Pistemäärää laskevat tässä testissä löytyneet ongelmat."
+    }
   }
 }

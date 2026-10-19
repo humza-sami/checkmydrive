@@ -184,7 +184,10 @@
     "tested": "Probado el {{date}}",
     "engine": "Motor {{version}}",
     "skippedNote": "No se hizo la detección de capacidad falsa. Use la prueba completa con borrado en un disco vacío para una respuesta completa.",
-    "testResults": "Resultados de la prueba"
+    "testResults": "Resultados de la prueba",
+    "why": {
+      "title": "Por qué esta puntuación"
+    }
   },
   "report": {
     "title": "Informe de CheckMyDrive",
@@ -248,12 +251,6 @@
       "reallocated_sectors_one": "El disco ya ha reemplazado {{count}} zona dañada por una de repuesto.",
       "reallocated_sectors_many": "El disco ya ha reemplazado {{count}} de zonas dañadas por otras de repuesto.",
       "reallocated_sectors_other": "El disco ya ha reemplazado {{count}} zonas dañadas por otras de repuesto.",
-      "pending_sectors_one": "{{count}} zona del disco es ilegible y está pendiente de reemplazo.",
-      "pending_sectors_many": "{{count}} de zonas del disco son ilegibles y están pendientes de reemplazo.",
-      "pending_sectors_other": "{{count}} zonas del disco son ilegibles y están pendientes de reemplazo.",
-      "uncorrectable_sectors_one": "{{count}} zona del disco no se pudo leer ni corregir.",
-      "uncorrectable_sectors_many": "{{count}} de zonas del disco no se pudieron leer ni corregir.",
-      "uncorrectable_sectors_other": "{{count}} zonas del disco no se pudieron leer ni corregir.",
       "crc_errors_one": "Se registró {{count}} error de transferencia de datos, a menudo causado por un cable o conector defectuoso.",
       "crc_errors_many": "Se registraron {{count}} de errores de transferencia de datos, a menudo causados por un cable o conector defectuoso.",
       "crc_errors_other": "Se registraron {{count}} errores de transferencia de datos, a menudo causados por un cable o conector defectuoso.",
@@ -267,7 +264,10 @@
       "nvme_media_errors_many": "La memoria del disco ha registrado {{count}} de errores de integridad de datos.",
       "nvme_media_errors_other": "La memoria del disco ha registrado {{count}} errores de integridad de datos.",
       "spare_low": "Solo queda el {{percent}} % de la memoria de reserva del disco.",
-      "temperature_high": "El disco está muy caliente ({{celsius}} C)."
+      "temperature_high": "El disco está muy caliente ({{celsius}} C).",
+      "unreadable_sectors": "Áreas ilegibles que la unidad no pudo reparar: {{count}}",
+      "pending_sectors": "Áreas que la unidad no puede leer ahora y que quizá reemplace más tarde: {{count}}",
+      "uncorrectable_sectors": "Áreas que no superaron el análisis de la propia unidad y no se pudieron corregir: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Se omitió la autocomprobación rápida del disco porque su interfaz de salud no está disponible.",
@@ -287,7 +287,8 @@
       "slow_areas_one": "{{count}} zona ({{percent}} %) respondió muy despacio, lo que puede significar que la superficie se está desgastando.",
       "slow_areas_many": "{{count}} de zonas ({{percent}} %) respondieron muy despacio, lo que puede significar que la superficie se está desgastando.",
       "slow_areas_other": "{{count}} zonas ({{percent}} %) respondieron muy despacio, lo que puede significar que la superficie se está desgastando.",
-      "slow_drive": "Esta unidad es lenta ({{mbps}} MB/s). Sirve para guardar archivos, pero es demasiado lenta para ejecutar programas o un sistema operativo con comodidad."
+      "slow_drive": "Esta unidad es lenta ({{mbps}} MB/s). Sirve para guardar archivos, pero es demasiado lenta para ejecutar programas o un sistema operativo con comodidad.",
+      "partial_coverage": "El análisis de superficie solo pudo comprobar {{checked}} de {{planned}} puntos porque la unidad se bloqueaba constantemente."
     },
     "write_verify": {
       "no_writable_volume": "Se omitió la prueba de escritura porque el disco no tiene una carpeta donde se pueda escribir con seguridad.",
@@ -494,5 +495,38 @@
   },
   "about": {
     "credits": "Creado con smartmontools, Tauri y XP.css."
+  },
+  "detail": {
+    "title": "Detalles técnicos",
+    "button": "Detalles…",
+    "slowest": "Respuesta más lenta",
+    "of": "{{done}} de {{total}}",
+    "crc_errors": "Errores de transferencia de datos",
+    "read_mbps": "Velocidad de lectura (MB/s)",
+    "new_bad_areas": "Áreas dañadas nuevas durante la prueba",
+    "new_unreadable": "Áreas ilegibles nuevas durante la prueba",
+    "timeouts": "Tiempos de espera agotados",
+    "new_crc": "Errores de transferencia nuevos durante la prueba",
+    "noProblems": "No se vieron problemas nuevos",
+    "selftest": {
+      "passed": "Superada",
+      "failed": "Fallida",
+      "aborted": "Interrumpida",
+      "timeout": "No terminó a tiempo",
+      "interrupted": "Interrumpida"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "La puntuación está limitada porque la propia comprobación de salud de la unidad indica que está fallando.",
+      "fake_capacity": "La puntuación está limitada porque la unidad es más pequeña de lo que dice ser.",
+      "disconnected": "La puntuación está limitada porque la unidad se desconectó durante las pruebas.",
+      "unreadable": "La puntuación está limitada porque la unidad tiene áreas ilegibles.",
+      "many_reallocated": "La puntuación está limitada porque la unidad tiene muchos sectores dañados que ya reemplazó.",
+      "reallocated": "La puntuación está limitada porque la unidad tiene sectores dañados que ya reemplazó.",
+      "worn_out": "La puntuación está limitada porque la unidad está casi desgastada.",
+      "read_errors": "La puntuación está limitada porque no se pudieron leer algunas partes de la unidad.",
+      "findings": "La puntuación baja por los problemas encontrados en esta prueba."
+    }
   }
 }

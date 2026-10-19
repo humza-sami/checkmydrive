@@ -107,7 +107,7 @@ describe("plural keys (en-US)", () => {
     const codes = engineCodes();
     for (const c of Object.keys(COUNT_PARAM)) expect(pluralBases.some((b) => b === c || b === `${c}_seconds`), c).toBe(true);
     // every engine code whose text puts `count` next to a noun/verb must be plural; "increased by {count}" is a bare delta
-    const BARE_NUMBER = ["issue.stability.crc_errors_increased"];
+    const BARE_NUMBER = ["issue.stability.crc_errors_increased", "issue.smart.unreadable_sectors", "issue.smart.pending_sectors", "issue.smart.uncorrectable_sectors"];
     for (const [code, params] of codes) if (!BARE_NUMBER.includes(code) && params.has("count") && code in flat && /\{\{count\}\}/.test(flat[code])) expect(pluralBases, code).toContain(code);
   });
 });
@@ -194,7 +194,8 @@ describe("rendering plurals", () => {
     const en_ = (await make("en-US")).t;
     expect(tCode(en_, "issue.stability.timeouts", { count: 1 })).toBe("The drive timed out 1 time during the tests.");
     expect(tCode(en_, "issue.stability.timeouts", { count: 3 })).toBe("The drive timed out 3 times during the tests.");
-    expect(tCode(en_, "issue.smart.pending_sectors", { count: 1 })).toContain("1 area of the drive is unreadable");
+    expect(tCode(en_, "issue.smart.reallocated_sectors", { count: 1 })).toContain("1 damaged area");
+    expect(tCode(en_, "issue.smart.pending_sectors", { count: 40 })).toBe("Areas the drive cannot read right now and may replace later: 40");
     const ru = (await make("ru")).t;
     expect(tCode(ru, "issue.stability.new_bad_sectors", { count: 1 })).toContain("1 новая");
     expect(tCode(ru, "issue.stability.new_bad_sectors", { count: 3 })).toContain("3 новые");

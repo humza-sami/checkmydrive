@@ -184,7 +184,10 @@
     "tested": "Testado em {{date}}",
     "engine": "Motor {{version}}",
     "skippedNote": "A detecção de capacidade falsa não foi executada. Use o teste completo com apagamento em um disco vazio para obter uma resposta completa.",
-    "testResults": "Resultados do teste"
+    "testResults": "Resultados do teste",
+    "why": {
+      "title": "Porque é que tem esta nota"
+    }
   },
   "report": {
     "title": "Relatório do CheckMyDrive",
@@ -248,12 +251,6 @@
       "reallocated_sectors_one": "O disco já substituiu {{count}} área danificada por uma área de reserva.",
       "reallocated_sectors_many": "O disco já substituiu {{count}} de áreas danificadas por áreas de reserva.",
       "reallocated_sectors_other": "O disco já substituiu {{count}} áreas danificadas por áreas de reserva.",
-      "pending_sectors_one": "{{count}} área do disco está ilegível e aguarda substituição.",
-      "pending_sectors_many": "{{count}} de áreas do disco estão ilegíveis e aguardam substituição.",
-      "pending_sectors_other": "{{count}} áreas do disco estão ilegíveis e aguardam substituição.",
-      "uncorrectable_sectors_one": "{{count}} área do disco não pôde ser lida nem corrigida.",
-      "uncorrectable_sectors_many": "{{count}} de áreas do disco não puderam ser lidas nem corrigidas.",
-      "uncorrectable_sectors_other": "{{count}} áreas do disco não puderam ser lidas nem corrigidas.",
       "crc_errors_one": "Foi registado {{count}} erro de transferência de dados, geralmente causado por um cabo ou conector defeituoso.",
       "crc_errors_many": "Foram registados {{count}} de erros de transferência de dados, geralmente causados por um cabo ou conector defeituoso.",
       "crc_errors_other": "Foram registados {{count}} erros de transferência de dados, geralmente causados por um cabo ou conector defeituoso.",
@@ -267,7 +264,10 @@
       "nvme_media_errors_many": "A memória do disco registou {{count}} de erros de integridade de dados.",
       "nvme_media_errors_other": "A memória do disco registou {{count}} erros de integridade de dados.",
       "spare_low": "Resta apenas {{percent}}% da memória de reserva do disco.",
-      "temperature_high": "O disco está a funcionar muito quente ({{celsius}} C)."
+      "temperature_high": "O disco está a funcionar muito quente ({{celsius}} C).",
+      "unreadable_sectors": "Áreas ilegíveis que o disco não conseguiu reparar: {{count}}",
+      "pending_sectors": "Áreas que o disco não consegue ler agora e que poderá substituir mais tarde: {{count}}",
+      "uncorrectable_sectors": "Áreas que falharam na verificação do próprio disco e não puderam ser corrigidas: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "A autoverificação rápida do disco foi ignorada porque a interface de saúde do disco não está disponível.",
@@ -287,7 +287,8 @@
       "slow_areas_one": "{{count}} área ({{percent}}%) respondeu muito devagar, o que pode significar que a superfície está a desgastar-se.",
       "slow_areas_many": "{{count}} de áreas ({{percent}}%) responderam muito devagar, o que pode significar que a superfície está a desgastar-se.",
       "slow_areas_other": "{{count}} áreas ({{percent}}%) responderam muito devagar, o que pode significar que a superfície está a desgastar-se.",
-      "slow_drive": "Esta unidade é lenta ({{mbps}} MB/s). Serve para guardar ficheiros, mas é demasiado lenta para executar programas ou um sistema operativo com conforto."
+      "slow_drive": "Esta unidade é lenta ({{mbps}} MB/s). Serve para guardar ficheiros, mas é demasiado lenta para executar programas ou um sistema operativo com conforto.",
+      "partial_coverage": "A verificação da superfície só conseguiu analisar {{checked}} de {{planned}} pontos porque o disco bloqueava constantemente."
     },
     "write_verify": {
       "no_writable_volume": "O teste de escrita foi ignorado porque o disco não tem uma pasta onde possamos escrever com segurança.",
@@ -494,5 +495,38 @@
   },
   "about": {
     "credits": "Criado com smartmontools, Tauri e XP.css."
+  },
+  "detail": {
+    "title": "Detalhes técnicos",
+    "button": "Detalhes…",
+    "slowest": "Resposta mais lenta",
+    "of": "{{done}} de {{total}}",
+    "crc_errors": "Erros de transferência de dados",
+    "read_mbps": "Velocidade de leitura (MB/s)",
+    "new_bad_areas": "Novas áreas danificadas durante o teste",
+    "new_unreadable": "Novas áreas ilegíveis durante o teste",
+    "timeouts": "Tempos limite excedidos",
+    "new_crc": "Novos erros de transferência durante o teste",
+    "noProblems": "Não foram vistos problemas novos",
+    "selftest": {
+      "passed": "Aprovado",
+      "failed": "Reprovado",
+      "aborted": "Interrompido",
+      "timeout": "Não terminou a tempo",
+      "interrupted": "Interrompido"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "A nota está limitada porque a verificação de saúde do próprio disco indica que está a falhar.",
+      "fake_capacity": "A nota está limitada porque o disco é mais pequeno do que afirma ser.",
+      "disconnected": "A nota está limitada porque o disco se desligou durante os testes.",
+      "unreadable": "A nota está limitada porque o disco tem áreas ilegíveis.",
+      "many_reallocated": "A nota está limitada porque o disco tem muitos setores danificados que já substituiu.",
+      "reallocated": "A nota está limitada porque o disco tem setores danificados que já substituiu.",
+      "worn_out": "A nota está limitada porque o disco está quase desgastado.",
+      "read_errors": "A nota está limitada porque não foi possível ler algumas partes do disco.",
+      "findings": "A nota é reduzida pelos problemas encontrados neste teste."
+    }
   }
 }

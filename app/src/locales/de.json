@@ -181,7 +181,10 @@
     "tested": "Getestet am {{date}}",
     "engine": "Engine {{version}}",
     "skippedNote": "Die Erkennung gefälschter Kapazität wurde nicht ausgeführt. Nutzen Sie für ein vollständiges Ergebnis den vollständigen Löschtest auf einem leeren Laufwerk.",
-    "testResults": "Testergebnisse"
+    "testResults": "Testergebnisse",
+    "why": {
+      "title": "Warum diese Bewertung"
+    }
   },
   "report": {
     "title": "CheckMyDrive-Bericht",
@@ -242,10 +245,6 @@
       "overall_failed": "Die eigene Gesundheitsprüfung des Laufwerks meldet, dass es ausfällt.",
       "reallocated_sectors_one": "Das Laufwerk hat bereits {{count}} beschädigten Bereich durch Reserve ersetzt.",
       "reallocated_sectors_other": "Das Laufwerk hat bereits {{count}} beschädigte Bereiche durch Reserve ersetzt.",
-      "pending_sectors_one": "{{count}} Bereich des Laufwerks ist nicht lesbar und wartet auf Ersatz.",
-      "pending_sectors_other": "{{count}} Bereiche des Laufwerks sind nicht lesbar und warten auf Ersatz.",
-      "uncorrectable_sectors_one": "{{count}} Bereich des Laufwerks konnte weder gelesen noch korrigiert werden.",
-      "uncorrectable_sectors_other": "{{count}} Bereiche des Laufwerks konnten weder gelesen noch korrigiert werden.",
       "crc_errors_one": "Es wurde {{count}} Datenübertragungsfehler aufgezeichnet, oft verursacht durch ein defektes Kabel oder einen defekten Anschluss.",
       "crc_errors_other": "Es wurden {{count}} Datenübertragungsfehler aufgezeichnet, oft verursacht durch ein defektes Kabel oder einen defekten Anschluss.",
       "error_log_entries_one": "Das Fehlerprotokoll des Laufwerks enthält {{count}} Eintrag.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "Der Speicher des Laufwerks hat {{count}} Datenintegritätsfehler protokolliert.",
       "nvme_media_errors_other": "Der Speicher des Laufwerks hat {{count}} Datenintegritätsfehler protokolliert.",
       "spare_low": "Vom Reservespeicher des Laufwerks sind nur noch {{percent}} % übrig.",
-      "temperature_high": "Das Laufwerk läuft heiß ({{celsius}} C)."
+      "temperature_high": "Das Laufwerk läuft heiß ({{celsius}} C).",
+      "unreadable_sectors": "Unlesbare Bereiche, die das Laufwerk nicht reparieren konnte: {{count}}",
+      "pending_sectors": "Bereiche, die das Laufwerk gerade nicht lesen kann und später ersetzen könnte: {{count}}",
+      "uncorrectable_sectors": "Bereiche, die den eigenen Scan des Laufwerks nicht bestanden und nicht korrigiert werden konnten: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Die schnelle Selbstprüfung des Laufwerks wurde übersprungen, weil seine Gesundheitsschnittstelle nicht verfügbar ist.",
@@ -273,7 +275,8 @@
       "read_errors_other": "{{count}} Teile des Laufwerks konnten nicht gelesen werden.",
       "slow_areas_one": "{{count}} Bereich ({{percent}} %) hat sehr langsam geantwortet, was bedeuten kann, dass die Oberfläche verschleißt.",
       "slow_areas_other": "{{count}} Bereiche ({{percent}} %) haben sehr langsam geantwortet, was bedeuten kann, dass die Oberfläche verschleißt.",
-      "slow_drive": "Dieses Laufwerk ist langsam ({{mbps}} MB/s). Zum Speichern von Dateien reicht das, zum komfortablen Ausführen von Programmen oder eines Betriebssystems ist es zu langsam."
+      "slow_drive": "Dieses Laufwerk ist langsam ({{mbps}} MB/s). Zum Speichern von Dateien reicht das, zum komfortablen Ausführen von Programmen oder eines Betriebssystems ist es zu langsam.",
+      "partial_coverage": "Der Oberflächenscan konnte nur {{checked}} von {{planned}} Stellen prüfen, weil das Laufwerk immer wieder hängen blieb."
     },
     "write_verify": {
       "no_writable_volume": "Der Schreibtest wurde übersprungen, weil das Laufwerk keinen Ordner hat, in den wir sicher schreiben können.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Erstellt mit smartmontools, Tauri und XP.css."
+  },
+  "detail": {
+    "title": "Technische Details",
+    "button": "Details…",
+    "slowest": "Langsamste Antwort",
+    "of": "{{done}} von {{total}}",
+    "crc_errors": "Datenübertragungsfehler",
+    "read_mbps": "Lesegeschwindigkeit (MB/s)",
+    "new_bad_areas": "Neue defekte Bereiche während des Tests",
+    "new_unreadable": "Neue unlesbare Bereiche während des Tests",
+    "timeouts": "Zeitüberschreitungen",
+    "new_crc": "Neue Datenübertragungsfehler während des Tests",
+    "noProblems": "Keine neuen Probleme festgestellt",
+    "selftest": {
+      "passed": "Bestanden",
+      "failed": "Fehlgeschlagen",
+      "aborted": "Unterbrochen",
+      "timeout": "Nicht rechtzeitig fertig",
+      "interrupted": "Unterbrochen"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Die Bewertung ist begrenzt, weil die eigene Gesundheitsprüfung des Laufwerks einen Defekt meldet.",
+      "fake_capacity": "Die Bewertung ist begrenzt, weil das Laufwerk kleiner ist, als es angibt.",
+      "disconnected": "Die Bewertung ist begrenzt, weil das Laufwerk während der Tests die Verbindung verloren hat.",
+      "unreadable": "Die Bewertung ist begrenzt, weil das Laufwerk unlesbare Bereiche hat.",
+      "many_reallocated": "Die Bewertung ist begrenzt, weil das Laufwerk viele defekte Sektoren hat, die es bereits ersetzt hat.",
+      "reallocated": "Die Bewertung ist begrenzt, weil das Laufwerk defekte Sektoren hat, die es bereits ersetzt hat.",
+      "worn_out": "Die Bewertung ist begrenzt, weil das Laufwerk fast verschlissen ist.",
+      "read_errors": "Die Bewertung ist begrenzt, weil Teile des Laufwerks nicht gelesen werden konnten.",
+      "findings": "Die Bewertung wird durch die in diesem Test gefundenen Probleme gesenkt."
+    }
   }
 }

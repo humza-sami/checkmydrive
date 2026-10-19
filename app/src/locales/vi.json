@@ -178,7 +178,10 @@
     "tested": "Kiểm tra vào {{date}}",
     "engine": "Bộ máy {{version}}",
     "skippedNote": "Chưa chạy phát hiện dung lượng giả. Hãy dùng kiểm tra xóa toàn bộ trên ổ đĩa trống để có câu trả lời đầy đủ.",
-    "testResults": "Kết quả kiểm tra"
+    "testResults": "Kết quả kiểm tra",
+    "why": {
+      "title": "Vì sao có điểm này"
+    }
   },
   "report": {
     "title": "Báo cáo CheckMyDrive",
@@ -236,8 +239,6 @@
       "usb_bridge_blocked": "Bộ chuyển USB che mất báo cáo sức khỏe của ổ đĩa, nên không biết tình trạng bên trong của nó.",
       "overall_failed": "Chính phần tự kiểm tra sức khỏe của ổ đĩa báo rằng nó đang hỏng.",
       "reallocated_sectors_other": "Ổ đĩa đã thay {{count}} vùng bị hỏng bằng vùng dự phòng.",
-      "pending_sectors_other": "{{count}} vùng của ổ đĩa không đọc được và đang chờ được thay thế.",
-      "uncorrectable_sectors_other": "{{count}} vùng của ổ đĩa không thể đọc hoặc sửa được.",
       "crc_errors_other": "Đã ghi nhận {{count}} lỗi truyền dữ liệu, thường do cáp hoặc đầu nối kém.",
       "error_log_entries_other": "Nhật ký lỗi của ổ đĩa có {{count}} mục.",
       "ssd_worn": "SSD này đã dùng hết khoảng {{percent}}% tuổi thọ định mức.",
@@ -245,7 +246,10 @@
       "nvme_critical_warning": "Ổ đĩa đang báo một cảnh báo nghiêm trọng (mã {{value}}).",
       "nvme_media_errors_other": "Bộ nhớ của ổ đĩa đã ghi {{count}} lỗi toàn vẹn dữ liệu.",
       "spare_low": "Bộ nhớ dự phòng của ổ đĩa chỉ còn {{percent}}%.",
-      "temperature_high": "Ổ đĩa đang chạy nóng ({{celsius}} C)."
+      "temperature_high": "Ổ đĩa đang chạy nóng ({{celsius}} C).",
+      "unreadable_sectors": "Vùng không đọc được mà ổ không sửa được: {{count}}",
+      "pending_sectors": "Vùng ổ hiện không đọc được và có thể thay thế sau: {{count}}",
+      "uncorrectable_sectors": "Vùng không qua được lần quét của chính ổ và không sửa được: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Bài tự kiểm tra nhanh của ổ đĩa bị bỏ qua vì giao diện sức khỏe không có sẵn.",
@@ -259,7 +263,8 @@
       "cannot_open": "Không thể mở ổ đĩa để đọc.",
       "read_errors_other": "{{count}} phần của ổ đĩa không thể đọc được.",
       "slow_areas_other": "{{count}} vùng ({{percent}}%) phản hồi rất chậm, có thể do bề mặt đang bị mòn.",
-      "slow_drive": "Ổ đĩa này chậm ({{mbps}} MB/s). Dùng để lưu trữ tệp thì ổn, nhưng quá chậm để chạy chương trình hoặc hệ điều hành một cách thoải mái."
+      "slow_drive": "Ổ đĩa này chậm ({{mbps}} MB/s). Dùng để lưu trữ tệp thì ổn, nhưng quá chậm để chạy chương trình hoặc hệ điều hành một cách thoải mái.",
+      "partial_coverage": "Quét bề mặt chỉ kiểm tra được {{checked}} trên {{planned}} vị trí vì ổ liên tục bị treo."
     },
     "write_verify": {
       "no_writable_volume": "Bài kiểm tra ghi bị bỏ qua vì ổ đĩa không có thư mục nào chúng tôi có thể ghi an toàn.",
@@ -450,5 +455,38 @@
   },
   "about": {
     "credits": "Được tạo bằng smartmontools, Tauri và XP.css."
+  },
+  "detail": {
+    "title": "Chi tiết kỹ thuật",
+    "button": "Chi tiết…",
+    "slowest": "Phản hồi chậm nhất",
+    "of": "{{done}} trên {{total}}",
+    "crc_errors": "Lỗi truyền dữ liệu",
+    "read_mbps": "Tốc độ đọc (MB/s)",
+    "new_bad_areas": "Vùng hỏng mới trong lúc kiểm tra",
+    "new_unreadable": "Vùng không đọc được mới trong lúc kiểm tra",
+    "timeouts": "Hết thời gian chờ",
+    "new_crc": "Lỗi truyền mới trong lúc kiểm tra",
+    "noProblems": "Không thấy vấn đề mới",
+    "selftest": {
+      "passed": "Đạt",
+      "failed": "Không đạt",
+      "aborted": "Bị gián đoạn",
+      "timeout": "Không kịp hoàn tất",
+      "interrupted": "Bị gián đoạn"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Điểm bị giới hạn vì chính phần kiểm tra sức khỏe của ổ cho biết nó đang hỏng.",
+      "fake_capacity": "Điểm bị giới hạn vì ổ nhỏ hơn dung lượng nó công bố.",
+      "disconnected": "Điểm bị giới hạn vì ổ bị ngắt kết nối trong lúc kiểm tra.",
+      "unreadable": "Điểm bị giới hạn vì ổ có vùng không đọc được.",
+      "many_reallocated": "Điểm bị giới hạn vì ổ có nhiều sector hỏng mà nó đã thay thế.",
+      "reallocated": "Điểm bị giới hạn vì ổ có sector hỏng mà nó đã thay thế.",
+      "worn_out": "Điểm bị giới hạn vì ổ gần như đã mòn hết.",
+      "read_errors": "Điểm bị giới hạn vì một số phần của ổ không đọc được.",
+      "findings": "Điểm bị hạ vì các vấn đề tìm thấy trong lần kiểm tra này."
+    }
   }
 }

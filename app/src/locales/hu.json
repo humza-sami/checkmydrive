@@ -181,7 +181,10 @@
     "tested": "Tesztelve: {{date}}",
     "engine": "Motor: {{version}}",
     "skippedNote": "A hamis kapacitás felismerése nem futott le. A teljes válaszhoz használja a teljes törléses tesztet egy üres meghajtón.",
-    "testResults": "Tesztek eredménye"
+    "testResults": "Tesztek eredménye",
+    "why": {
+      "title": "Miért ez a pontszám"
+    }
   },
   "report": {
     "title": "CheckMyDrive jelentés",
@@ -242,10 +245,6 @@
       "overall_failed": "A meghajtó saját állapotellenőrzése szerint meghibásodóban van.",
       "reallocated_sectors_one": "A meghajtó már {{count}} sérült területet cserélt le tartalékra.",
       "reallocated_sectors_other": "A meghajtó már {{count}} sérült területet cserélt le tartalékra.",
-      "pending_sectors_one": "A meghajtó {{count}} területe olvashatatlan, és cserére vár.",
-      "pending_sectors_other": "A meghajtó {{count}} területe olvashatatlan, és cserére vár.",
-      "uncorrectable_sectors_one": "A meghajtó {{count}} területét nem lehetett beolvasni vagy kijavítani.",
-      "uncorrectable_sectors_other": "A meghajtó {{count}} területét nem lehetett beolvasni vagy kijavítani.",
       "crc_errors_one": "{{count}} adatátviteli hibát jegyeztek fel, amit gyakran rossz kábel vagy csatlakozó okoz.",
       "crc_errors_other": "{{count}} adatátviteli hibát jegyeztek fel, amit gyakran rossz kábel vagy csatlakozó okoz.",
       "error_log_entries_one": "A meghajtó hibanaplója {{count}} bejegyzést tartalmaz.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "A meghajtó memóriája {{count}} adatintegritási hibát naplózott.",
       "nvme_media_errors_other": "A meghajtó memóriája {{count}} adatintegritási hibát naplózott.",
       "spare_low": "A meghajtó tartalékmemóriájából már csak {{percent}}% maradt.",
-      "temperature_high": "A meghajtó forró ({{celsius}} C)."
+      "temperature_high": "A meghajtó forró ({{celsius}} C).",
+      "unreadable_sectors": "Olvashatatlan területek, amelyeket a meghajtó nem tudott megjavítani: {{count}}",
+      "pending_sectors": "Területek, amelyeket a meghajtó most nem tud olvasni, és később kicserélhet: {{count}}",
+      "uncorrectable_sectors": "Területek, amelyek megbuktak a meghajtó saját vizsgálatán, és nem javíthatók: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "A meghajtó gyors önellenőrzése kimaradt, mert az állapotfelülete nem érhető el.",
@@ -273,7 +275,8 @@
       "read_errors_other": "A meghajtó {{count}} részét nem lehetett beolvasni.",
       "slow_areas_one": "{{count}} terület ({{percent}}%) nagyon lassan válaszolt, ami a felület kopására utalhat.",
       "slow_areas_other": "{{count}} terület ({{percent}}%) nagyon lassan válaszolt, ami a felület kopására utalhat.",
-      "slow_drive": "Ez a meghajtó lassú ({{mbps}} MB/s). Fájlok tárolására megfelel, de programok vagy operációs rendszer kényelmes futtatásához túl lassú."
+      "slow_drive": "Ez a meghajtó lassú ({{mbps}} MB/s). Fájlok tárolására megfelel, de programok vagy operációs rendszer kényelmes futtatásához túl lassú.",
+      "partial_coverage": "A felületvizsgálat csak {{checked}} helyet tudott ellenőrizni {{planned}} közül, mert a meghajtó folyton lefagyott."
     },
     "write_verify": {
       "no_writable_volume": "Az írási teszt kimaradt, mert a meghajtón nincs olyan mappa, ahová biztonságosan írhatnánk.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Készült: smartmontools, Tauri és XP.css."
+  },
+  "detail": {
+    "title": "Műszaki részletek",
+    "button": "Részletek…",
+    "slowest": "Leglassabb válasz",
+    "of": "{{done}} / {{total}}",
+    "crc_errors": "Adatátviteli hibák",
+    "read_mbps": "Olvasási sebesség (MB/s)",
+    "new_bad_areas": "Új sérült területek a teszt alatt",
+    "new_unreadable": "Új olvashatatlan területek a teszt alatt",
+    "timeouts": "Időtúllépések",
+    "new_crc": "Új átviteli hibák a teszt alatt",
+    "noProblems": "Nem láttunk új problémát",
+    "selftest": {
+      "passed": "Megfelelt",
+      "failed": "Sikertelen",
+      "aborted": "Megszakadt",
+      "timeout": "Nem fejeződött be időben",
+      "interrupted": "Megszakadt"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "A pontszám korlátozott, mert a meghajtó saját állapotellenőrzése szerint meghibásodóban van.",
+      "fake_capacity": "A pontszám korlátozott, mert a meghajtó kisebb, mint amekkorának mondja magát.",
+      "disconnected": "A pontszám korlátozott, mert a meghajtó megszakadt a teszt közben.",
+      "unreadable": "A pontszám korlátozott, mert a meghajtón olvashatatlan területek vannak.",
+      "many_reallocated": "A pontszám korlátozott, mert a meghajtónak sok hibás szektora van, amelyeket már kicserélt.",
+      "reallocated": "A pontszám korlátozott, mert a meghajtónak vannak hibás szektorai, amelyeket már kicserélt.",
+      "worn_out": "A pontszám korlátozott, mert a meghajtó majdnem elhasználódott.",
+      "read_errors": "A pontszám korlátozott, mert a meghajtó egyes részeit nem lehetett elolvasni.",
+      "findings": "A pontszámot a tesztben talált problémák csökkentik."
+    }
   }
 }

@@ -121,6 +121,8 @@ a, .link { color: #0000ee; text-decoration: underline; cursor: pointer; }
 .health-inner { display: flex; gap: 12px; align-items: flex-start; padding-top: 2px; }
 .health-text { flex: 1; min-width: 0; }
 .health-text .summary { margin: 4px 0 6px; }
+.health-text .why { margin: 0 0 6px; }
+.health-text .why ul { margin: 2px 0 0; padding-inline-start: 18px; }
 .health-text .meta { color: var(--dim); margin: 0 0 8px; }
 .verdict { display: flex; align-items: center; gap: 5px; font-weight: 700; font-size: 12px; }
 .verdict.good { color: var(--good); } .verdict.caution { color: var(--caution); } .verdict.bad { color: var(--bad); }
@@ -176,6 +178,10 @@ table.listview tbody th { white-space: nowrap; }
 .st { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .metric { display: inline-block; margin-inline-end: 12px; }
 .metric b { font-weight: 400; }
+.raw-btn { margin-inline-start: 4px; min-width: 0; padding: 0 8px; min-height: 18px; font-size: 11px; vertical-align: baseline; }
+.raw-metrics { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+.raw-metrics th, .raw-metrics td { text-align: start; font-weight: 400; padding: 2px 6px; border-bottom: 1px solid #e3e1d3; word-break: break-all; }
+.raw-metrics th { width: 45%; color: var(--dim); font-family: monospace; }
 
 /* ---------- running ---------- */
 .run-head { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }

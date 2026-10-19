@@ -87,33 +87,50 @@ impl Facts {
     }
 }
 
-/// Lowest applicable hard cap (100 when none apply).
-pub fn hard_cap(f: &Facts) -> u8 {
-    let mut cap = 100u8;
+/// Every hard cap that applies, as (reason code, cap), lowest cap first (stable for equal caps).
+/// The codes are i18n keys (`score.reason.*`, see engine/I18N_KEYS.md).
+pub fn cap_reasons(f: &Facts) -> Vec<(&'static str, u8)> {
+    let mut v: Vec<(&'static str, u8)> = Vec::new();
     if f.smart_failed {
-        cap = cap.min(CAP_SMART_FAILED);
+        v.push(("score.reason.smart_failed", CAP_SMART_FAILED));
     }
     if f.fake_capacity {
-        cap = cap.min(CAP_FAKE_CAPACITY);
+        v.push(("score.reason.fake_capacity", CAP_FAKE_CAPACITY));
     }
     if f.disconnected {
-        cap = cap.min(CAP_DISCONNECTED);
+        v.push(("score.reason.disconnected", CAP_DISCONNECTED));
     }
     if f.pending_or_uncorrectable > 0 {
-        cap = cap.min(CAP_PENDING);
+        v.push(("score.reason.unreadable", CAP_PENDING));
     }
     if f.reallocated > 100 {
-        cap = cap.min(CAP_REALLOCATED_MANY);
+        v.push(("score.reason.many_reallocated", CAP_REALLOCATED_MANY));
     } else if f.reallocated > 0 {
-        cap = cap.min(CAP_REALLOCATED);
+        v.push(("score.reason.reallocated", CAP_REALLOCATED));
     }
     if f.wear_used_percent.map(|w| w >= 90.0).unwrap_or(false) {
-        cap = cap.min(CAP_WEAR);
+        v.push(("score.reason.worn_out", CAP_WEAR));
     }
     if f.read_errors > 0 {
-        cap = cap.min(CAP_READ_ERRORS);
+        v.push(("score.reason.read_errors", CAP_READ_ERRORS));
     }
-    cap
+    v.sort_by_key(|(_, cap)| *cap);
+    v
+}
+
+/// Lowest applicable hard cap (100 when none apply).
+pub fn hard_cap(f: &Facts) -> u8 {
+    cap_reasons(f).first().map(|(_, c)| *c).unwrap_or(100)
+}
+
+/// Why the score is what it is: the caps that apply (worst first); when no cap applies but the score is
+/// below 100 because of the individual findings, the generic `score.reason.findings`. Empty at 100.
+pub fn score_reasons(f: &Facts, score: u8) -> Vec<String> {
+    let mut v: Vec<String> = cap_reasons(f).into_iter().map(|(c, _)| c.to_string()).collect();
+    if v.is_empty() && score < 100 {
+        v.push("score.reason.findings".to_string());
+    }
+    v
 }
 
 pub fn overall_score(tests: &[TestResult]) -> u8 {
@@ -333,6 +350,63 @@ mod tests {
         let mut t = clean();
         with(&mut t, TestId::SurfaceRead, "read_errors", json!(2));
         assert_eq!(overall_score(&t), 30);
+    }
+
+    #[test]
+    fn cap_reasons_are_reported_worst_first() {
+        let mut t = clean();
+        assert!(cap_reasons(&Facts::from_tests(&t)).is_empty());
+        assert_eq!(score_reasons(&Facts::from_tests(&t), 100), Vec::<String>::new());
+        assert_eq!(score_reasons(&Facts::from_tests(&t), 80), vec!["score.reason.findings"]);
+        with(&mut t, TestId::SmartHealth, "pending_sectors", json!(40));
+        with(&mut t, TestId::SmartHealth, "reallocated_sectors", json!(736));
+        with(&mut t, TestId::SurfaceRead, "read_errors", json!(1));
+        let f = Facts::from_tests(&t);
+        assert_eq!(hard_cap(&f), 30);
+        assert_eq!(score_reasons(&f, 0), vec!["score.reason.read_errors", "score.reason.many_reallocated", "score.reason.unreadable"]);
+        let mut t = clean();
+        with(&mut t, TestId::SmartHealth, "smart_passed", json!(false));
+        with(&mut t, TestId::SmartHealth, "reallocated_sectors", json!(3));
+        assert_eq!(score_reasons(&Facts::from_tests(&t), 10), vec!["score.reason.smart_failed", "score.reason.reallocated"]);
+    }
+
+    /// The owner's real failing ST2000LM007 (v0.1.0 test): must stay BAD 0/100 / Avoid, with an explanation.
+    #[test]
+    fn real_failing_hdd_report_is_avoid_zero_with_reasons() {
+        use crate::tests::{selftest_short, surface_read};
+        let smart = {
+            let mut m = Metrics::new();
+            for (k, v) in [("smart_passed", json!(true)), ("reallocated_sectors", json!(736)), ("pending_sectors", json!(40)), ("uncorrectable_sectors", json!(40)), ("temperature_c", json!(29))] {
+                m.insert(k.into(), v);
+            }
+            let issues = vec![Issue::critical("issue.smart.reallocated_sectors").with("count", 736), Issue::critical("issue.smart.unreadable_sectors").with("count", 40)];
+            TestResult::from_issues(TestId::SmartHealth, 0, m, issues)
+        };
+        let selftest = selftest_short::finish(90_000, Metrics::new(), crate::smart::SelfTestState::Unknown, true, 90);
+        assert_eq!((selftest.status, selftest.score), (Status::Skipped, None));
+        // surface: 13 of 576 samples, one 12.6 s stall, one read error, only 4 MiB read sequentially
+        let mut lat = vec![120.0, 125.0, 129.2, 130.0, 118.0, 140.0, 122.0, 127.0, 135.0, 115.0, 128.0, 126.0];
+        lat.push(12_599.73);
+        let (mut m, mut issues) = surface_read::assess(surface_read::DriveClass::Hdd, 1 << 20, &lat, 1, 4_194_304, 0.3);
+        issues.extend(surface_read::coverage_issue(13, 576, false, true));
+        m.insert("read_errors".into(), json!(1));
+        m.insert("samples_total".into(), json!(13));
+        m.insert("samples_planned".into(), json!(576));
+        let surface = TestResult::from_issues(TestId::SurfaceRead, 0, m, issues);
+        assert!(!surface.issues.iter().any(|i| i.code == "issue.surface_read.slow_drive"));
+        assert!(surface.issues.iter().any(|i| i.code == "issue.surface_read.partial_coverage"));
+        let mut sm = Metrics::new();
+        sm.insert("device_disconnected".into(), json!(false));
+        let stab_issues = vec![Issue::warn("issue.stability.io_errors").with("count", 1), Issue::critical("issue.stability.new_bad_sectors").with("count", 312)];
+        let stab = TestResult::from_issues(TestId::Stability, 0, sm, stab_issues);
+        let mut t = vec![tr(TestId::DriveInfo, &[], vec![]), smart, selftest, surface, TestResult::skipped(TestId::WriteVerify, vec![]), TestResult::skipped(TestId::CapacityCheck, vec![]), stab];
+        t.sort_by_key(|x| TestId::ALL.iter().position(|i| *i == x.id));
+        let sc = overall_score(&t);
+        assert_eq!(sc, 0);
+        assert_eq!(verdict(sc), Verdict::Avoid);
+        let f = Facts::from_tests(&t);
+        assert_eq!(suitability(sc, &f, true, 2_000_398_934_016).safe_fill_percent, 0);
+        assert_eq!(score_reasons(&f, sc), vec!["score.reason.read_errors", "score.reason.many_reallocated", "score.reason.unreadable"]);
     }
 
     #[test]

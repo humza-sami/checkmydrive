@@ -184,7 +184,10 @@
     "tested": "Testé le {{date}}",
     "engine": "Moteur {{version}}",
     "skippedNote": "La détection de fausse capacité n'a pas été effectuée. Pour une réponse complète, utilisez le test complet avec effacement sur un disque vide.",
-    "testResults": "Résultats du test"
+    "testResults": "Résultats du test",
+    "why": {
+      "title": "Pourquoi cette note"
+    }
   },
   "report": {
     "title": "Rapport CheckMyDrive",
@@ -248,12 +251,6 @@
       "reallocated_sectors_one": "Le disque a déjà remplacé {{count}} zone endommagée par une zone de rechange.",
       "reallocated_sectors_many": "Le disque a déjà remplacé {{count}} de zones endommagées par des zones de rechange.",
       "reallocated_sectors_other": "Le disque a déjà remplacé {{count}} zones endommagées par des zones de rechange.",
-      "pending_sectors_one": "{{count}} zone du disque est illisible et attend d'être remplacée.",
-      "pending_sectors_many": "{{count}} de zones du disque sont illisibles et attendent d'être remplacées.",
-      "pending_sectors_other": "{{count}} zones du disque sont illisibles et attendent d'être remplacées.",
-      "uncorrectable_sectors_one": "{{count}} zone du disque n'a pas pu être lue ni corrigée.",
-      "uncorrectable_sectors_many": "{{count}} de zones du disque n'ont pas pu être lues ni corrigées.",
-      "uncorrectable_sectors_other": "{{count}} zones du disque n'ont pas pu être lues ni corrigées.",
       "crc_errors_one": "{{count}} erreur de transfert de données a été enregistrée, souvent due à un câble ou un connecteur défectueux.",
       "crc_errors_many": "{{count}} d'erreurs de transfert de données ont été enregistrées, souvent dues à un câble ou un connecteur défectueux.",
       "crc_errors_other": "{{count}} erreurs de transfert de données ont été enregistrées, souvent dues à un câble ou un connecteur défectueux.",
@@ -267,7 +264,10 @@
       "nvme_media_errors_many": "La mémoire du disque a enregistré {{count}} d'erreurs d'intégrité des données.",
       "nvme_media_errors_other": "La mémoire du disque a enregistré {{count}} erreurs d'intégrité des données.",
       "spare_low": "Il ne reste que {{percent}} % de la mémoire de réserve du disque.",
-      "temperature_high": "Le disque chauffe beaucoup ({{celsius}} C)."
+      "temperature_high": "Le disque chauffe beaucoup ({{celsius}} C).",
+      "unreadable_sectors": "Zones illisibles que le disque n'a pas pu réparer : {{count}}",
+      "pending_sectors": "Zones que le disque ne peut pas lire pour l'instant et qu'il remplacera peut-être plus tard : {{count}}",
+      "uncorrectable_sectors": "Zones qui ont échoué à l'analyse du disque et n'ont pas pu être corrigées : {{count}}"
     },
     "selftest": {
       "smart_unavailable": "L'auto-vérification rapide du disque a été ignorée car son interface de santé n'est pas disponible.",
@@ -287,7 +287,8 @@
       "slow_areas_one": "{{count}} zone ({{percent}} %) a répondu très lentement, ce qui peut signifier que la surface s'use.",
       "slow_areas_many": "{{count}} de zones ({{percent}} %) ont répondu très lentement, ce qui peut signifier que la surface s'use.",
       "slow_areas_other": "{{count}} zones ({{percent}} %) ont répondu très lentement, ce qui peut signifier que la surface s'use.",
-      "slow_drive": "Ce lecteur est lent ({{mbps}} Mo/s). C’est suffisant pour stocker des fichiers, mais trop lent pour exécuter confortablement des programmes ou un système d’exploitation."
+      "slow_drive": "Ce lecteur est lent ({{mbps}} Mo/s). C’est suffisant pour stocker des fichiers, mais trop lent pour exécuter confortablement des programmes ou un système d’exploitation.",
+      "partial_coverage": "L'analyse de surface n'a pu vérifier que {{checked}} emplacements sur {{planned}}, car le disque n'arrêtait pas de se bloquer."
     },
     "write_verify": {
       "no_writable_volume": "Le test d'écriture a été ignoré car le disque n'a aucun dossier dans lequel nous puissions écrire en toute sécurité.",
@@ -494,5 +495,38 @@
   },
   "about": {
     "credits": "Créé avec smartmontools, Tauri et XP.css."
+  },
+  "detail": {
+    "title": "Détails techniques",
+    "button": "Détails…",
+    "slowest": "Réponse la plus lente",
+    "of": "{{done}} sur {{total}}",
+    "crc_errors": "Erreurs de transfert de données",
+    "read_mbps": "Vitesse de lecture (Mo/s)",
+    "new_bad_areas": "Nouvelles zones défectueuses pendant le test",
+    "new_unreadable": "Nouvelles zones illisibles pendant le test",
+    "timeouts": "Délais dépassés",
+    "new_crc": "Nouvelles erreurs de transfert pendant le test",
+    "noProblems": "Aucun nouveau problème constaté",
+    "selftest": {
+      "passed": "Réussi",
+      "failed": "Échec",
+      "aborted": "Interrompu",
+      "timeout": "Non terminé à temps",
+      "interrupted": "Interrompu"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "La note est limitée car le contrôle de santé du disque indique qu'il est en train de lâcher.",
+      "fake_capacity": "La note est limitée car le disque est plus petit que ce qu'il annonce.",
+      "disconnected": "La note est limitée car le disque s'est déconnecté pendant les tests.",
+      "unreadable": "La note est limitée car le disque contient des zones illisibles.",
+      "many_reallocated": "La note est limitée car le disque a de nombreux secteurs défectueux qu'il a déjà remplacés.",
+      "reallocated": "La note est limitée car le disque a des secteurs défectueux qu'il a déjà remplacés.",
+      "worn_out": "La note est limitée car le disque est presque usé.",
+      "read_errors": "La note est limitée car certaines parties du disque n'ont pas pu être lues.",
+      "findings": "La note est abaissée par les problèmes détectés pendant ce test."
+    }
   }
 }

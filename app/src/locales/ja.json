@@ -178,7 +178,10 @@
     "tested": "テスト日：{{date}}",
     "engine": "エンジン {{version}}",
     "skippedNote": "容量偽装の検出は実行されていません。確実な答えを得るには、空のドライブで完全消去テストを実行してください。",
-    "testResults": "テスト結果"
+    "testResults": "テスト結果",
+    "why": {
+      "title": "このスコアの理由"
+    }
   },
   "report": {
     "title": "CheckMyDrive レポート",
@@ -236,8 +239,6 @@
       "usb_bridge_blocked": "USBアダプターがドライブの健康レポートを隠しているため、内部の状態は不明です。",
       "overall_failed": "ドライブ自身の健康チェックで、故障しかけていると判定されました。",
       "reallocated_sectors_other": "ドライブはすでに{{count}}か所の損傷した領域を予備の領域に交換しています。",
-      "pending_sectors_other": "ドライブの{{count}}か所の領域が読み取れず、交換待ちになっています。",
-      "uncorrectable_sectors_other": "ドライブの{{count}}か所の領域が読み取りも修正もできませんでした。",
       "crc_errors_other": "データ転送エラーが{{count}}件記録されました。ケーブルやコネクターの不良が原因のことがよくあります。",
       "error_log_entries_other": "ドライブのエラーログに{{count}}件の記録があります。",
       "ssd_worn": "このSSDは定格寿命の約{{percent}}％を使い切っています。",
@@ -245,7 +246,10 @@
       "nvme_critical_warning": "ドライブが重大な警告を報告しています（コード {{value}}）。",
       "nvme_media_errors_other": "ドライブのメモリに、データ整合性エラーが{{count}}件記録されています。",
       "spare_low": "ドライブの予備メモリは残り{{percent}}％しかありません。",
-      "temperature_high": "ドライブが高温になっています（{{celsius}} C）。"
+      "temperature_high": "ドライブが高温になっています（{{celsius}} C）。",
+      "unreadable_sectors": "ドライブが修復できなかった読み取り不能領域: {{count}}",
+      "pending_sectors": "ドライブが現在読み取れず、後で交換する可能性のある領域: {{count}}",
+      "uncorrectable_sectors": "ドライブ自身のスキャンで不合格となり、修正できなかった領域: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "ドライブの健康インターフェースが利用できないため、ドライブの簡易セルフテストをスキップしました。",
@@ -259,7 +263,8 @@
       "cannot_open": "ドライブを読み取り用に開けませんでした。",
       "read_errors_other": "ドライブの{{count}}か所が読み取れませんでした。",
       "slow_areas_other": "{{count}}か所の領域（{{percent}}％）の応答が非常に遅く、表面が劣化している可能性があります。",
-      "slow_drive": "このドライブは低速です（{{mbps}} MB/s）。ファイルの保存には問題ありませんが、プログラムやOSを快適に動かすには遅すぎます。"
+      "slow_drive": "このドライブは低速です（{{mbps}} MB/s）。ファイルの保存には問題ありませんが、プログラムやOSを快適に動かすには遅すぎます。",
+      "partial_coverage": "ドライブが何度も停止したため、表面スキャンで確認できたのは{{planned}}か所中{{checked}}か所だけでした。"
     },
     "write_verify": {
       "no_writable_volume": "安全に書き込めるフォルダがドライブにないため、書き込みテストをスキップしました。",
@@ -450,5 +455,38 @@
   },
   "about": {
     "credits": "smartmontools、Tauri、XP.css で作られています。"
+  },
+  "detail": {
+    "title": "技術的な詳細",
+    "button": "詳細…",
+    "slowest": "最も遅い応答",
+    "of": "{{total}}件中{{done}}件",
+    "crc_errors": "データ転送エラー",
+    "read_mbps": "読み取り速度 (MB/s)",
+    "new_bad_areas": "テスト中に新たに見つかった不良領域",
+    "new_unreadable": "テスト中に新たに見つかった読み取り不能領域",
+    "timeouts": "タイムアウト",
+    "new_crc": "テスト中に新たに発生した転送エラー",
+    "noProblems": "新たな問題は見つかりませんでした",
+    "selftest": {
+      "passed": "合格",
+      "failed": "失敗",
+      "aborted": "中断",
+      "timeout": "時間内に完了せず",
+      "interrupted": "中断"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "ドライブ自身の健康チェックが故障しつつあると示しているため、スコアが制限されています。",
+      "fake_capacity": "ドライブが表示容量より小さいため、スコアが制限されています。",
+      "disconnected": "テスト中にドライブが切断されたため、スコアが制限されています。",
+      "unreadable": "ドライブに読み取れない領域があるため、スコアが制限されています。",
+      "many_reallocated": "ドライブにすでに交換済みの不良セクターが多数あるため、スコアが制限されています。",
+      "reallocated": "ドライブにすでに交換済みの不良セクターがあるため、スコアが制限されています。",
+      "worn_out": "ドライブがほぼ寿命に達しているため、スコアが制限されています。",
+      "read_errors": "ドライブの一部が読み取れなかったため、スコアが制限されています。",
+      "findings": "このテストで見つかった問題によりスコアが下がっています。"
+    }
   }
 }

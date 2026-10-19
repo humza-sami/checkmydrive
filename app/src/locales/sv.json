@@ -181,7 +181,10 @@
     "tested": "Testad den {{date}}",
     "engine": "Motor {{version}}",
     "skippedNote": "Kontrollen av falsk kapacitet kördes inte. Använd det fullständiga raderingstestet på en tom disk för ett komplett svar.",
-    "testResults": "Testresultat"
+    "testResults": "Testresultat",
+    "why": {
+      "title": "Varför detta betyg"
+    }
   },
   "report": {
     "title": "CheckMyDrive-rapport",
@@ -242,10 +245,6 @@
       "overall_failed": "Diskens egen hälsokontroll säger att den är på väg att gå sönder.",
       "reallocated_sectors_one": "Disken har redan ersatt {{count}} skadat område med en reserv.",
       "reallocated_sectors_other": "Disken har redan ersatt {{count}} skadade områden med reserver.",
-      "pending_sectors_one": "{{count}} område på disken är oläsligt och väntar på att bytas ut.",
-      "pending_sectors_other": "{{count}} områden på disken är oläsliga och väntar på att bytas ut.",
-      "uncorrectable_sectors_one": "{{count}} område på disken gick inte att läsa eller rätta till.",
-      "uncorrectable_sectors_other": "{{count}} områden på disken gick inte att läsa eller rätta till.",
       "crc_errors_one": "{{count}} dataöverföringsfel registrerades, ofta orsakade av en dålig kabel eller kontakt.",
       "crc_errors_other": "{{count}} dataöverföringsfel registrerades, ofta orsakade av en dålig kabel eller kontakt.",
       "error_log_entries_one": "Diskens fellogg innehåller {{count}} post.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "Diskens minne har loggat {{count}} dataintegritetsfel.",
       "nvme_media_errors_other": "Diskens minne har loggat {{count}} dataintegritetsfel.",
       "spare_low": "Bara {{percent}} % av diskens reservminne är kvar.",
-      "temperature_high": "Disken går varm ({{celsius}} C)."
+      "temperature_high": "Disken går varm ({{celsius}} C).",
+      "unreadable_sectors": "Oläsliga områden som enheten inte kunde reparera: {{count}}",
+      "pending_sectors": "Områden som enheten inte kan läsa just nu och kanske ersätter senare: {{count}}",
+      "uncorrectable_sectors": "Områden som föll igenom enhetens egen skanning och inte kunde korrigeras: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Diskens snabba självtest hoppades över eftersom dess hälsogränssnitt inte är tillgängligt.",
@@ -273,7 +275,8 @@
       "read_errors_other": "{{count}} delar av disken gick inte att läsa.",
       "slow_areas_one": "{{count}} område ({{percent}} %) svarade mycket långsamt, vilket kan betyda att ytan slits ut.",
       "slow_areas_other": "{{count}} områden ({{percent}} %) svarade mycket långsamt, vilket kan betyda att ytan slits ut.",
-      "slow_drive": "Den här enheten är långsam ({{mbps}} MB/s). Den duger för att lagra filer, men är för långsam för att köra program eller ett operativsystem bekvämt."
+      "slow_drive": "Den här enheten är långsam ({{mbps}} MB/s). Den duger för att lagra filer, men är för långsam för att köra program eller ett operativsystem bekvämt.",
+      "partial_coverage": "Ytskanningen kunde bara kontrollera {{checked}} av {{planned}} platser eftersom enheten hela tiden hängde sig."
     },
     "write_verify": {
       "no_writable_volume": "Skrivtestet hoppades över eftersom disken saknar en mapp vi säkert kan skriva till.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Byggd med smartmontools, Tauri och XP.css."
+  },
+  "detail": {
+    "title": "Tekniska detaljer",
+    "button": "Detaljer…",
+    "slowest": "Långsammaste svar",
+    "of": "{{done}} av {{total}}",
+    "crc_errors": "Dataöverföringsfel",
+    "read_mbps": "Läshastighet (MB/s)",
+    "new_bad_areas": "Nya skadade områden under testet",
+    "new_unreadable": "Nya oläsliga områden under testet",
+    "timeouts": "Tidsgränsöverskridanden",
+    "new_crc": "Nya överföringsfel under testet",
+    "noProblems": "Inga nya problem sågs",
+    "selftest": {
+      "passed": "Godkänd",
+      "failed": "Misslyckades",
+      "aborted": "Avbröts",
+      "timeout": "Hann inte bli klar",
+      "interrupted": "Avbröts"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Betyget begränsas eftersom enhetens egen hälsokontroll säger att den håller på att gå sönder.",
+      "fake_capacity": "Betyget begränsas eftersom enheten är mindre än den påstår.",
+      "disconnected": "Betyget begränsas eftersom enheten kopplades bort under testerna.",
+      "unreadable": "Betyget begränsas eftersom enheten har oläsliga områden.",
+      "many_reallocated": "Betyget begränsas eftersom enheten har många dåliga sektorer som den redan har ersatt.",
+      "reallocated": "Betyget begränsas eftersom enheten har dåliga sektorer som den redan har ersatt.",
+      "worn_out": "Betyget begränsas eftersom enheten är nästan utsliten.",
+      "read_errors": "Betyget begränsas eftersom vissa delar av enheten inte gick att läsa.",
+      "findings": "Betyget sänks av problemen som hittades i det här testet."
+    }
   }
 }

@@ -86,7 +86,7 @@ pub enum Severity {
     Critical,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Issue {
     pub severity: Severity,
     pub code: String,
@@ -206,6 +206,12 @@ pub struct TestReport {
     pub issues: Vec<Issue>,
     pub age: Age,
     pub suitability: SuitabilityReport,
+    /// Lowest hard cap that applies to the score (None when no cap applies).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub score_cap: Option<u8>,
+    /// i18n codes (`score.reason.*`) explaining the score, worst first; empty for a perfect score.
+    #[serde(default)]
+    pub score_reasons: Vec<String>,
 }
 
 /// `phase` of a progress event: a test id, `prepare` or `finish`.

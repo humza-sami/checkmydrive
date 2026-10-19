@@ -178,7 +178,10 @@
     "tested": "Diuji pada {{date}}",
     "engine": "Mesin {{version}}",
     "skippedNote": "Deteksi kapasitas palsu tidak dijalankan. Gunakan tes hapus penuh pada drive kosong untuk jawaban yang lengkap.",
-    "testResults": "Hasil Uji"
+    "testResults": "Hasil Uji",
+    "why": {
+      "title": "Mengapa skor ini"
+    }
   },
   "report": {
     "title": "Laporan CheckMyDrive",
@@ -236,8 +239,6 @@
       "usb_bridge_blocked": "Adaptor USB menyembunyikan laporan kesehatan drive, sehingga kondisi internalnya tidak diketahui.",
       "overall_failed": "Pemeriksaan kesehatan drive sendiri menyatakan drive ini rusak.",
       "reallocated_sectors_other": "Drive sudah mengganti {{count}} area yang rusak dengan area cadangan.",
-      "pending_sectors_other": "{{count}} area drive tidak terbaca dan menunggu diganti.",
-      "uncorrectable_sectors_other": "{{count}} area drive tidak dapat dibaca atau diperbaiki.",
       "crc_errors_other": "{{count}} kesalahan transfer data tercatat, yang sering disebabkan oleh kabel atau konektor yang buruk.",
       "error_log_entries_other": "Catatan kesalahan drive berisi {{count}} entri.",
       "ssd_worn": "SSD ini sudah memakai sekitar {{percent}}% dari umur pakainya.",
@@ -245,7 +246,10 @@
       "nvme_critical_warning": "Drive melaporkan peringatan kritis (kode {{value}}).",
       "nvme_media_errors_other": "Memori drive mencatat {{count}} kesalahan integritas data.",
       "spare_low": "Memori cadangan drive tinggal {{percent}}%.",
-      "temperature_high": "Drive berjalan panas ({{celsius}} C)."
+      "temperature_high": "Drive berjalan panas ({{celsius}} C).",
+      "unreadable_sectors": "Area tak terbaca yang tidak dapat diperbaiki drive: {{count}}",
+      "pending_sectors": "Area yang saat ini tidak dapat dibaca drive dan mungkin diganti nanti: {{count}}",
+      "uncorrectable_sectors": "Area yang gagal dalam pemindaian drive sendiri dan tidak dapat diperbaiki: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Tes mandiri cepat drive dilewati karena antarmuka kesehatannya tidak tersedia.",
@@ -259,7 +263,8 @@
       "cannot_open": "Drive tidak dapat dibuka untuk dibaca.",
       "read_errors_other": "{{count}} bagian drive tidak dapat dibaca.",
       "slow_areas_other": "{{count}} area ({{percent}}%) merespons sangat lambat, yang bisa berarti permukaannya mulai aus.",
-      "slow_drive": "Drive ini lambat ({{mbps}} MB/s). Cukup untuk menyimpan file, tetapi terlalu lambat untuk menjalankan program atau sistem operasi dengan nyaman."
+      "slow_drive": "Drive ini lambat ({{mbps}} MB/s). Cukup untuk menyimpan file, tetapi terlalu lambat untuk menjalankan program atau sistem operasi dengan nyaman.",
+      "partial_coverage": "Pemindaian permukaan hanya dapat memeriksa {{checked}} dari {{planned}} titik karena drive terus macet."
     },
     "write_verify": {
       "no_writable_volume": "Tes tulis dilewati karena drive tidak memiliki folder yang aman untuk kami tulisi.",
@@ -450,5 +455,38 @@
   },
   "about": {
     "credits": "Dibuat dengan smartmontools, Tauri, dan XP.css."
+  },
+  "detail": {
+    "title": "Detail teknis",
+    "button": "Detail…",
+    "slowest": "Respons terlambat",
+    "of": "{{done}} dari {{total}}",
+    "crc_errors": "Kesalahan transfer data",
+    "read_mbps": "Kecepatan baca (MB/dtk)",
+    "new_bad_areas": "Area rusak baru selama pengujian",
+    "new_unreadable": "Area tak terbaca baru selama pengujian",
+    "timeouts": "Waktu habis",
+    "new_crc": "Kesalahan transfer baru selama pengujian",
+    "noProblems": "Tidak ada masalah baru",
+    "selftest": {
+      "passed": "Lulus",
+      "failed": "Gagal",
+      "aborted": "Terhenti",
+      "timeout": "Tidak selesai tepat waktu",
+      "interrupted": "Terhenti"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Skor dibatasi karena pemeriksaan kesehatan drive sendiri menyatakan drive sedang rusak.",
+      "fake_capacity": "Skor dibatasi karena drive lebih kecil dari yang diklaim.",
+      "disconnected": "Skor dibatasi karena drive terputus selama pengujian.",
+      "unreadable": "Skor dibatasi karena drive memiliki area yang tidak dapat dibaca.",
+      "many_reallocated": "Skor dibatasi karena drive memiliki banyak sektor rusak yang sudah diganti.",
+      "reallocated": "Skor dibatasi karena drive memiliki sektor rusak yang sudah diganti.",
+      "worn_out": "Skor dibatasi karena drive hampir aus.",
+      "read_errors": "Skor dibatasi karena beberapa bagian drive tidak dapat dibaca.",
+      "findings": "Skor diturunkan oleh masalah yang ditemukan dalam pengujian ini."
+    }
   }
 }

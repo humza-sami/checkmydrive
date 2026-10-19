@@ -178,7 +178,10 @@
     "tested": "Diuji pada {{date}}",
     "engine": "Enjin {{version}}",
     "skippedNote": "Pengesanan kapasiti palsu tidak dijalankan. Gunakan ujian padam penuh pada pemacu kosong untuk jawapan yang lengkap.",
-    "testResults": "Keputusan Ujian"
+    "testResults": "Keputusan Ujian",
+    "why": {
+      "title": "Mengapa skor ini"
+    }
   },
   "report": {
     "title": "Laporan CheckMyDrive",
@@ -236,8 +239,6 @@
       "usb_bridge_blocked": "Penyesuai USB menyembunyikan laporan kesihatan pemacu, jadi keadaan dalamannya tidak diketahui.",
       "overall_failed": "Pemeriksaan kesihatan pemacu itu sendiri menyatakan ia semakin rosak.",
       "reallocated_sectors_other": "Pemacu telah menggantikan {{count}} kawasan rosak dengan kawasan simpanan.",
-      "pending_sectors_other": "{{count}} kawasan pemacu tidak boleh dibaca dan menunggu untuk diganti.",
-      "uncorrectable_sectors_other": "{{count}} kawasan pemacu tidak dapat dibaca atau dibetulkan.",
       "crc_errors_other": "{{count}} ralat pemindahan data direkodkan, yang selalunya disebabkan oleh kabel atau penyambung yang rosak.",
       "error_log_entries_other": "Log ralat pemacu mengandungi {{count}} catatan.",
       "ssd_worn": "SSD ini telah menggunakan kira-kira {{percent}}% daripada jangka hayat yang dijangkakan.",
@@ -245,7 +246,10 @@
       "nvme_critical_warning": "Pemacu melaporkan amaran kritikal (kod {{value}}).",
       "nvme_media_errors_other": "Memori pemacu telah merekodkan {{count}} ralat integriti data.",
       "spare_low": "Hanya {{percent}}% memori simpanan pemacu yang tinggal.",
-      "temperature_high": "Pemacu berjalan panas ({{celsius}} C)."
+      "temperature_high": "Pemacu berjalan panas ({{celsius}} C).",
+      "unreadable_sectors": "Kawasan tidak boleh dibaca yang tidak dapat dibaiki pemacu: {{count}}",
+      "pending_sectors": "Kawasan yang pemacu tidak dapat baca sekarang dan mungkin diganti kemudian: {{count}}",
+      "uncorrectable_sectors": "Kawasan yang gagal dalam imbasan pemacu sendiri dan tidak dapat dibetulkan: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Ujian kendiri pantas pemacu dilangkau kerana antara muka kesihatannya tidak tersedia.",
@@ -259,7 +263,8 @@
       "cannot_open": "Pemacu tidak dapat dibuka untuk dibaca.",
       "read_errors_other": "{{count}} bahagian pemacu tidak dapat dibaca.",
       "slow_areas_other": "{{count}} kawasan ({{percent}}%) bertindak balas dengan sangat perlahan, yang boleh bermakna permukaannya semakin haus.",
-      "slow_drive": "Pemacu ini perlahan ({{mbps}} MB/s). Ia sesuai untuk menyimpan fail, tetapi terlalu perlahan untuk menjalankan program atau sistem pengendalian dengan selesa."
+      "slow_drive": "Pemacu ini perlahan ({{mbps}} MB/s). Ia sesuai untuk menyimpan fail, tetapi terlalu perlahan untuk menjalankan program atau sistem pengendalian dengan selesa.",
+      "partial_coverage": "Imbasan permukaan hanya dapat menyemak {{checked}} daripada {{planned}} lokasi kerana pemacu kerap tersekat."
     },
     "write_verify": {
       "no_writable_volume": "Ujian tulis dilangkau kerana pemacu tidak mempunyai folder yang boleh kami tulis dengan selamat.",
@@ -450,5 +455,38 @@
   },
   "about": {
     "credits": "Dibina dengan smartmontools, Tauri dan XP.css."
+  },
+  "detail": {
+    "title": "Butiran teknikal",
+    "button": "Butiran…",
+    "slowest": "Respons paling perlahan",
+    "of": "{{done}} daripada {{total}}",
+    "crc_errors": "Ralat pemindahan data",
+    "read_mbps": "Kelajuan baca (MB/s)",
+    "new_bad_areas": "Kawasan rosak baharu semasa ujian",
+    "new_unreadable": "Kawasan tidak boleh dibaca baharu semasa ujian",
+    "timeouts": "Tamat masa",
+    "new_crc": "Ralat pemindahan baharu semasa ujian",
+    "noProblems": "Tiada masalah baharu dilihat",
+    "selftest": {
+      "passed": "Lulus",
+      "failed": "Gagal",
+      "aborted": "Terganggu",
+      "timeout": "Tidak siap tepat pada masanya",
+      "interrupted": "Terganggu"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Skor dihadkan kerana pemeriksaan kesihatan pemacu sendiri menyatakan ia sedang rosak.",
+      "fake_capacity": "Skor dihadkan kerana pemacu lebih kecil daripada yang didakwa.",
+      "disconnected": "Skor dihadkan kerana pemacu terputus semasa ujian.",
+      "unreadable": "Skor dihadkan kerana pemacu mempunyai kawasan yang tidak boleh dibaca.",
+      "many_reallocated": "Skor dihadkan kerana pemacu mempunyai banyak sektor rosak yang telah diganti.",
+      "reallocated": "Skor dihadkan kerana pemacu mempunyai sektor rosak yang telah diganti.",
+      "worn_out": "Skor dihadkan kerana pemacu hampir haus.",
+      "read_errors": "Skor dihadkan kerana sebahagian pemacu tidak dapat dibaca.",
+      "findings": "Skor diturunkan oleh masalah yang ditemui dalam ujian ini."
+    }
   }
 }

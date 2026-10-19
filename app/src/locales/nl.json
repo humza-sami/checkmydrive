@@ -181,7 +181,10 @@
     "tested": "Getest op {{date}}",
     "engine": "Engine {{version}}",
     "skippedNote": "De detectie van nepcapaciteit is niet uitgevoerd. Gebruik de volledige wistest op een lege schijf voor een compleet antwoord.",
-    "testResults": "Testresultaten"
+    "testResults": "Testresultaten",
+    "why": {
+      "title": "Waarom deze score"
+    }
   },
   "report": {
     "title": "CheckMyDrive-rapport",
@@ -242,10 +245,6 @@
       "overall_failed": "De eigen gezondheidscontrole van de schijf zegt dat hij kapotgaat.",
       "reallocated_sectors_one": "De schijf heeft al {{count}} beschadigd gebied vervangen door een reserve.",
       "reallocated_sectors_other": "De schijf heeft al {{count}} beschadigde gebieden vervangen door reserves.",
-      "pending_sectors_one": "{{count}} gebied van de schijf is onleesbaar en wacht op vervanging.",
-      "pending_sectors_other": "{{count}} gebieden van de schijf zijn onleesbaar en wachten op vervanging.",
-      "uncorrectable_sectors_one": "{{count}} gebied van de schijf kon niet worden gelezen of hersteld.",
-      "uncorrectable_sectors_other": "{{count}} gebieden van de schijf konden niet worden gelezen of hersteld.",
       "crc_errors_one": "Er is {{count}} fout bij gegevensoverdracht vastgelegd, vaak veroorzaakt door een slechte kabel of aansluiting.",
       "crc_errors_other": "Er zijn {{count}} fouten bij gegevensoverdracht vastgelegd, vaak veroorzaakt door een slechte kabel of aansluiting.",
       "error_log_entries_one": "Het foutenlogboek van de schijf bevat {{count}} melding.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "Het geheugen van de schijf heeft {{count}} fout in de gegevensintegriteit vastgelegd.",
       "nvme_media_errors_other": "Het geheugen van de schijf heeft {{count}} fouten in de gegevensintegriteit vastgelegd.",
       "spare_low": "Er is nog maar {{percent}}% van het reservegeheugen van de schijf over.",
-      "temperature_high": "De schijf wordt erg warm ({{celsius}} C)."
+      "temperature_high": "De schijf wordt erg warm ({{celsius}} C).",
+      "unreadable_sectors": "Onleesbare gebieden die de schijf niet kon herstellen: {{count}}",
+      "pending_sectors": "Gebieden die de schijf nu niet kan lezen en later misschien vervangt: {{count}}",
+      "uncorrectable_sectors": "Gebieden die de eigen scan van de schijf niet doorstonden en niet gecorrigeerd konden worden: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "De snelle zelftest van de schijf is overgeslagen omdat de gezondheidsinterface niet beschikbaar is.",
@@ -273,7 +275,8 @@
       "read_errors_other": "{{count}} delen van de schijf konden niet worden gelezen.",
       "slow_areas_one": "{{count}} gebied ({{percent}}%) reageerde erg traag, wat kan betekenen dat het oppervlak slijt.",
       "slow_areas_other": "{{count}} gebieden ({{percent}}%) reageerden erg traag, wat kan betekenen dat het oppervlak slijt.",
-      "slow_drive": "Deze schijf is traag ({{mbps}} MB/s). Prima om bestanden op te slaan, maar te traag om programma’s of een besturingssysteem comfortabel te draaien."
+      "slow_drive": "Deze schijf is traag ({{mbps}} MB/s). Prima om bestanden op te slaan, maar te traag om programma’s of een besturingssysteem comfortabel te draaien.",
+      "partial_coverage": "De oppervlaktescan kon slechts {{checked}} van {{planned}} plekken controleren omdat de schijf bleef haperen."
     },
     "write_verify": {
       "no_writable_volume": "De schrijftest is overgeslagen omdat de schijf geen map heeft waarin we veilig kunnen schrijven.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Gemaakt met smartmontools, Tauri en XP.css."
+  },
+  "detail": {
+    "title": "Technische details",
+    "button": "Details…",
+    "slowest": "Traagste reactie",
+    "of": "{{done}} van {{total}}",
+    "crc_errors": "Gegevensoverdrachtfouten",
+    "read_mbps": "Leessnelheid (MB/s)",
+    "new_bad_areas": "Nieuwe beschadigde gebieden tijdens de test",
+    "new_unreadable": "Nieuwe onleesbare gebieden tijdens de test",
+    "timeouts": "Time-outs",
+    "new_crc": "Nieuwe overdrachtsfouten tijdens de test",
+    "noProblems": "Geen nieuwe problemen gezien",
+    "selftest": {
+      "passed": "Geslaagd",
+      "failed": "Mislukt",
+      "aborted": "Onderbroken",
+      "timeout": "Niet op tijd klaar",
+      "interrupted": "Onderbroken"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "De score is beperkt omdat de eigen gezondheidscontrole van de schijf aangeeft dat hij defect raakt.",
+      "fake_capacity": "De score is beperkt omdat de schijf kleiner is dan hij beweert.",
+      "disconnected": "De score is beperkt omdat de schijf tijdens de tests de verbinding verloor.",
+      "unreadable": "De score is beperkt omdat de schijf onleesbare gebieden heeft.",
+      "many_reallocated": "De score is beperkt omdat de schijf veel slechte sectoren heeft die al zijn vervangen.",
+      "reallocated": "De score is beperkt omdat de schijf slechte sectoren heeft die al zijn vervangen.",
+      "worn_out": "De score is beperkt omdat de schijf bijna versleten is.",
+      "read_errors": "De score is beperkt omdat sommige delen van de schijf niet gelezen konden worden.",
+      "findings": "De score wordt verlaagd door de problemen die in deze test zijn gevonden."
+    }
   }
 }

@@ -136,7 +136,7 @@ fn worn_ssd_is_capped() {
 fn report_json_matches_contract_shape() {
     let r = report_for("healthy_sata_ssd.json", DriveKind::Ssd);
     let v = serde_json::to_value(&r).unwrap();
-    for k in ["schema_version", "engine_version", "drive", "mode", "started_at", "duration_ms", "tests", "score", "verdict", "issues", "age", "suitability"] {
+    for k in ["schema_version", "engine_version", "drive", "mode", "started_at", "duration_ms", "tests", "score", "verdict", "issues", "age", "suitability", "score_reasons"] {
         assert!(v.get(k).is_some(), "missing {}", k);
     }
     assert_eq!(v["schema_version"], 1);

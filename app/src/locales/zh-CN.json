@@ -178,7 +178,10 @@
     "tested": "检测时间：{{date}}",
     "engine": "引擎 {{version}}",
     "skippedNote": "未进行虚假容量检测。如需完整结论，请在空硬盘上使用完整擦除检测。",
-    "testResults": "测试结果"
+    "testResults": "测试结果",
+    "why": {
+      "title": "评分原因"
+    }
   },
   "report": {
     "title": "CheckMyDrive 报告",
@@ -236,8 +239,6 @@
       "usb_bridge_blocked": "USB 转接器隐藏了硬盘的健康报告，因此其内部状况未知。",
       "overall_failed": "硬盘自身的健康检查显示它正在损坏。",
       "reallocated_sectors_other": "硬盘已经用备用区域替换了 {{count}} 个损坏的区域。",
-      "pending_sectors_other": "硬盘上有 {{count}} 个区域无法读取，正等待被替换。",
-      "uncorrectable_sectors_other": "硬盘上有 {{count}} 个区域无法读取，也无法纠正。",
       "crc_errors_other": "记录到 {{count}} 次数据传输错误，通常由数据线或接口不良引起。",
       "error_log_entries_other": "硬盘的错误日志中有 {{count}} 条记录。",
       "ssd_worn": "这块固态硬盘已用掉其额定寿命的约 {{percent}}%。",
@@ -245,7 +246,10 @@
       "nvme_critical_warning": "硬盘报告了一个严重警告（代码 {{value}}）。",
       "nvme_media_errors_other": "硬盘的存储芯片已记录 {{count}} 次数据完整性错误。",
       "spare_low": "硬盘的备用存储空间只剩 {{percent}}%。",
-      "temperature_high": "硬盘温度很高（{{celsius}} C）。"
+      "temperature_high": "硬盘温度很高（{{celsius}} C）。",
+      "unreadable_sectors": "硬盘无法修复的不可读区域：{{count}}",
+      "pending_sectors": "硬盘目前无法读取、以后可能会替换的区域：{{count}}",
+      "uncorrectable_sectors": "未通过硬盘自身扫描且无法纠正的区域：{{count}}"
     },
     "selftest": {
       "smart_unavailable": "由于硬盘的健康接口不可用，已跳过硬盘的快速自检。",
@@ -259,7 +263,8 @@
       "cannot_open": "无法打开硬盘进行读取。",
       "read_errors_other": "硬盘上有 {{count}} 处无法读取。",
       "slow_areas_other": "有 {{count}} 个区域（{{percent}}%）响应非常慢，这可能意味着盘面正在磨损。",
-      "slow_drive": "此驱动器速度较慢（{{mbps}} MB/s）。用来存放文件没问题，但运行程序或操作系统会太慢。"
+      "slow_drive": "此驱动器速度较慢（{{mbps}} MB/s）。用来存放文件没问题，但运行程序或操作系统会太慢。",
+      "partial_coverage": "由于硬盘不断卡顿，表面扫描只检查了 {{planned}} 个位置中的 {{checked}} 个。"
     },
     "write_verify": {
       "no_writable_volume": "已跳过写入检测，因为硬盘上没有可以安全写入的文件夹。",
@@ -450,5 +455,38 @@
   },
   "about": {
     "credits": "基于 smartmontools、Tauri 和 XP.css 构建。"
+  },
+  "detail": {
+    "title": "技术详情",
+    "button": "详情…",
+    "slowest": "最慢响应",
+    "of": "{{done}} / {{total}}",
+    "crc_errors": "数据传输错误",
+    "read_mbps": "读取速度 (MB/s)",
+    "new_bad_areas": "测试期间新增的坏区",
+    "new_unreadable": "测试期间新增的无法读取区域",
+    "timeouts": "超时",
+    "new_crc": "测试期间新增的传输错误",
+    "noProblems": "未发现新问题",
+    "selftest": {
+      "passed": "通过",
+      "failed": "失败",
+      "aborted": "已中断",
+      "timeout": "未能按时完成",
+      "interrupted": "已中断"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "评分受限，因为硬盘自身的健康检查显示它正在损坏。",
+      "fake_capacity": "评分受限，因为硬盘的实际容量小于它声称的容量。",
+      "disconnected": "评分受限，因为硬盘在测试期间断开了连接。",
+      "unreadable": "评分受限，因为硬盘存在无法读取的区域。",
+      "many_reallocated": "评分受限，因为硬盘有许多已被替换的坏扇区。",
+      "reallocated": "评分受限，因为硬盘有已被替换的坏扇区。",
+      "worn_out": "评分受限，因为硬盘几乎已经损耗殆尽。",
+      "read_errors": "评分受限，因为硬盘的部分区域无法读取。",
+      "findings": "评分因本次测试中发现的问题而降低。"
+    }
   }
 }

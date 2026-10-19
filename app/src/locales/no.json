@@ -181,7 +181,10 @@
     "tested": "Testet {{date}}",
     "engine": "Motor {{version}}",
     "skippedNote": "Oppdagelse av falsk kapasitet ble ikke kjørt. Bruk den fulle slettetesten på en tom disk for et fullstendig svar.",
-    "testResults": "Testresultater"
+    "testResults": "Testresultater",
+    "why": {
+      "title": "Hvorfor denne poengsummen"
+    }
   },
   "report": {
     "title": "CheckMyDrive-rapport",
@@ -242,10 +245,6 @@
       "overall_failed": "Diskens egen helsesjekk sier at den er i ferd med å svikte.",
       "reallocated_sectors_one": "Disken har allerede byttet ut {{count}} skadet område med en reserve.",
       "reallocated_sectors_other": "Disken har allerede byttet ut {{count}} skadde områder med reserver.",
-      "pending_sectors_one": "{{count}} område på disken er uleselig og venter på å bli byttet ut.",
-      "pending_sectors_other": "{{count}} områder på disken er uleselige og venter på å bli byttet ut.",
-      "uncorrectable_sectors_one": "{{count}} område på disken kunne ikke leses eller rettes.",
-      "uncorrectable_sectors_other": "{{count}} områder på disken kunne ikke leses eller rettes.",
       "crc_errors_one": "{{count}} dataoverføringsfeil ble registrert, ofte forårsaket av en dårlig kabel eller kontakt.",
       "crc_errors_other": "{{count}} dataoverføringsfeil ble registrert, ofte forårsaket av en dårlig kabel eller kontakt.",
       "error_log_entries_one": "Diskens feillogg inneholder {{count}} oppføring.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "Diskens minne har logget {{count}} feil i dataintegriteten.",
       "nvme_media_errors_other": "Diskens minne har logget {{count}} feil i dataintegriteten.",
       "spare_low": "Bare {{percent}} % av diskens reserveminne er igjen.",
-      "temperature_high": "Disken går varm ({{celsius}} C)."
+      "temperature_high": "Disken går varm ({{celsius}} C).",
+      "unreadable_sectors": "Uleselige områder som stasjonen ikke klarte å reparere: {{count}}",
+      "pending_sectors": "Områder som stasjonen ikke kan lese akkurat nå, og som den kanskje erstatter senere: {{count}}",
+      "uncorrectable_sectors": "Områder som feilet stasjonens egen skanning og ikke kunne rettes: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Diskens raske selvtest ble hoppet over fordi helsegrensesnittet ikke er tilgjengelig.",
@@ -273,7 +275,8 @@
       "read_errors_other": "{{count}} deler av disken kunne ikke leses.",
       "slow_areas_one": "{{count}} område ({{percent}} %) svarte veldig tregt, noe som kan bety at overflaten slites ut.",
       "slow_areas_other": "{{count}} områder ({{percent}} %) svarte veldig tregt, noe som kan bety at overflaten slites ut.",
-      "slow_drive": "Denne stasjonen er treg ({{mbps}} MB/s). Den duger til å lagre filer, men er for treg til å kjøre programmer eller et operativsystem behagelig."
+      "slow_drive": "Denne stasjonen er treg ({{mbps}} MB/s). Den duger til å lagre filer, men er for treg til å kjøre programmer eller et operativsystem behagelig.",
+      "partial_coverage": "Overflateskanningen kunne bare sjekke {{checked}} av {{planned}} steder fordi stasjonen stadig hang seg opp."
     },
     "write_verify": {
       "no_writable_volume": "Skrivetesten ble hoppet over fordi disken ikke har en mappe vi trygt kan skrive til.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Laget med smartmontools, Tauri og XP.css."
+  },
+  "detail": {
+    "title": "Tekniske detaljer",
+    "button": "Detaljer…",
+    "slowest": "Tregeste svar",
+    "of": "{{done}} av {{total}}",
+    "crc_errors": "Dataoverføringsfeil",
+    "read_mbps": "Lesehastighet (MB/s)",
+    "new_bad_areas": "Nye skadde områder under testen",
+    "new_unreadable": "Nye uleselige områder under testen",
+    "timeouts": "Tidsavbrudd",
+    "new_crc": "Nye overføringsfeil under testen",
+    "noProblems": "Ingen nye problemer sett",
+    "selftest": {
+      "passed": "Bestått",
+      "failed": "Mislyktes",
+      "aborted": "Avbrutt",
+      "timeout": "Ble ikke ferdig i tide",
+      "interrupted": "Avbrutt"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Poengsummen er begrenset fordi stasjonens egen helsekontroll sier at den svikter.",
+      "fake_capacity": "Poengsummen er begrenset fordi stasjonen er mindre enn den oppgir.",
+      "disconnected": "Poengsummen er begrenset fordi stasjonen mistet forbindelsen under testene.",
+      "unreadable": "Poengsummen er begrenset fordi stasjonen har uleselige områder.",
+      "many_reallocated": "Poengsummen er begrenset fordi stasjonen har mange dårlige sektorer som den allerede har erstattet.",
+      "reallocated": "Poengsummen er begrenset fordi stasjonen har dårlige sektorer som den allerede har erstattet.",
+      "worn_out": "Poengsummen er begrenset fordi stasjonen er nesten utslitt.",
+      "read_errors": "Poengsummen er begrenset fordi noen deler av stasjonen ikke kunne leses.",
+      "findings": "Poengsummen senkes av problemene som ble funnet i denne testen."
+    }
   }
 }

@@ -184,7 +184,10 @@
     "tested": "Testată la {{date}}",
     "engine": "Motor {{version}}",
     "skippedNote": "Detectarea capacității false nu a fost rulată. Folosește testul complet cu ștergere pe o unitate goală pentru un răspuns complet.",
-    "testResults": "Rezultatele testului"
+    "testResults": "Rezultatele testului",
+    "why": {
+      "title": "De ce acest scor"
+    }
   },
   "report": {
     "title": "Raport CheckMyDrive",
@@ -248,12 +251,6 @@
       "reallocated_sectors_one": "Unitatea a înlocuit deja {{count}} zonă deteriorată cu una de rezervă.",
       "reallocated_sectors_few": "Unitatea a înlocuit deja {{count}} zone deteriorate cu unele de rezervă.",
       "reallocated_sectors_other": "Unitatea a înlocuit deja {{count}} de zone deteriorate cu unele de rezervă.",
-      "pending_sectors_one": "{{count}} zonă a unității nu poate fi citită și așteaptă înlocuirea.",
-      "pending_sectors_few": "{{count}} zone ale unității nu pot fi citite și așteaptă înlocuirea.",
-      "pending_sectors_other": "{{count}} de zone ale unității nu pot fi citite și așteaptă înlocuirea.",
-      "uncorrectable_sectors_one": "{{count}} zonă a unității nu a putut fi citită sau corectată.",
-      "uncorrectable_sectors_few": "{{count}} zone ale unității nu au putut fi citite sau corectate.",
-      "uncorrectable_sectors_other": "{{count}} de zone ale unității nu au putut fi citite sau corectate.",
       "crc_errors_one": "A fost înregistrată {{count}} eroare de transfer de date, adesea cauzată de un cablu sau un conector defect.",
       "crc_errors_few": "Au fost înregistrate {{count}} erori de transfer de date, adesea cauzate de un cablu sau un conector defect.",
       "crc_errors_other": "Au fost înregistrate {{count}} de erori de transfer de date, adesea cauzate de un cablu sau un conector defect.",
@@ -267,7 +264,10 @@
       "nvme_media_errors_few": "Memoria unității a înregistrat {{count}} erori de integritate a datelor.",
       "nvme_media_errors_other": "Memoria unității a înregistrat {{count}} de erori de integritate a datelor.",
       "spare_low": "Mai este doar {{percent}}% din memoria de rezervă a unității.",
-      "temperature_high": "Unitatea se încălzește prea tare ({{celsius}} C)."
+      "temperature_high": "Unitatea se încălzește prea tare ({{celsius}} C).",
+      "unreadable_sectors": "Zone nelizibile pe care unitatea nu le-a putut repara: {{count}}",
+      "pending_sectors": "Zone pe care unitatea nu le poate citi acum și pe care le-ar putea înlocui mai târziu: {{count}}",
+      "uncorrectable_sectors": "Zone care au picat scanarea proprie a unității și nu au putut fi corectate: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Autotestul rapid al unității a fost omis deoarece interfața ei de sănătate nu este disponibilă.",
@@ -287,7 +287,8 @@
       "slow_areas_one": "{{count}} zonă ({{percent}}%) a răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
       "slow_areas_few": "{{count}} zone ({{percent}}%) au răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
       "slow_areas_other": "{{count}} de zone ({{percent}}%) au răspuns foarte lent, ceea ce poate însemna că suprafața se uzează.",
-      "slow_drive": "Această unitate este lentă ({{mbps}} MB/s). Este în regulă pentru stocarea fișierelor, dar prea lentă pentru a rula confortabil programe sau un sistem de operare."
+      "slow_drive": "Această unitate este lentă ({{mbps}} MB/s). Este în regulă pentru stocarea fișierelor, dar prea lentă pentru a rula confortabil programe sau un sistem de operare.",
+      "partial_coverage": "Scanarea suprafeței a putut verifica doar {{checked}} din {{planned}} locuri, deoarece unitatea se bloca mereu."
     },
     "write_verify": {
       "no_writable_volume": "Testul de scriere a fost omis deoarece unitatea nu are un dosar în care să putem scrie în siguranță.",
@@ -494,5 +495,38 @@
   },
   "about": {
     "credits": "Creat cu smartmontools, Tauri și XP.css."
+  },
+  "detail": {
+    "title": "Detalii tehnice",
+    "button": "Detalii…",
+    "slowest": "Cel mai lent răspuns",
+    "of": "{{done}} din {{total}}",
+    "crc_errors": "Erori de transfer de date",
+    "read_mbps": "Viteză de citire (MB/s)",
+    "new_bad_areas": "Zone defecte noi în timpul testului",
+    "new_unreadable": "Zone nelizibile noi în timpul testului",
+    "timeouts": "Depășiri de timp",
+    "new_crc": "Erori noi de transfer în timpul testului",
+    "noProblems": "Nu au apărut probleme noi",
+    "selftest": {
+      "passed": "Promovat",
+      "failed": "Eșuat",
+      "aborted": "Întrerupt",
+      "timeout": "Nu s-a terminat la timp",
+      "interrupted": "Întrerupt"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Scorul este limitat deoarece verificarea de sănătate a unității arată că se defectează.",
+      "fake_capacity": "Scorul este limitat deoarece unitatea este mai mică decât pretinde.",
+      "disconnected": "Scorul este limitat deoarece unitatea s-a deconectat în timpul testelor.",
+      "unreadable": "Scorul este limitat deoarece unitatea are zone nelizibile.",
+      "many_reallocated": "Scorul este limitat deoarece unitatea are multe sectoare defecte pe care le-a înlocuit deja.",
+      "reallocated": "Scorul este limitat deoarece unitatea are sectoare defecte pe care le-a înlocuit deja.",
+      "worn_out": "Scorul este limitat deoarece unitatea este aproape uzată.",
+      "read_errors": "Scorul este limitat deoarece unele părți ale unității nu au putut fi citite.",
+      "findings": "Scorul este scăzut de problemele găsite în acest test."
+    }
   }
 }

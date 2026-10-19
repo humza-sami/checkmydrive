@@ -71,8 +71,9 @@ Params are JSON numbers or strings. Severity is in brackets for issues. `en-US` 
 | `issue.smart.usb_bridge_blocked` | info/warn | - | The USB adapter hides the drive's health report, so its internal condition is unknown. (info for USB sticks/SD cards, warn for external drives) |
 | `issue.smart.overall_failed` | critical | - | The drive's own health check says it is failing. |
 | `issue.smart.reallocated_sectors` | warn (critical if >100) | `count` | The drive has already replaced {count} damaged areas with spares. |
-| `issue.smart.pending_sectors` | critical | `count` | {count} areas of the drive are unreadable and waiting to be replaced. |
-| `issue.smart.uncorrectable_sectors` | critical | `count` | {count} areas of the drive could not be read or corrected. |
+| `issue.smart.unreadable_sectors` | critical | `count` | Unreadable areas the drive could not repair: {count} |
+| `issue.smart.pending_sectors` | critical | `count` | Areas the drive cannot read right now and may replace later: {count} |
+| `issue.smart.uncorrectable_sectors` | critical | `count` | Areas that failed the drive's own scan and could not be corrected: {count} |
 | `issue.smart.crc_errors` | warn | `count` | {count} data-transfer errors were recorded, often caused by a bad cable or connector. |
 | `issue.smart.error_log_entries` | warn | `count` | The drive's error log contains {count} entries. |
 | `issue.smart.ssd_worn` | warn | `percent` | This SSD has used up about {percent}% of its rated lifetime. |
@@ -98,6 +99,7 @@ Params are JSON numbers or strings. Severity is in brackets for issues. `en-US` 
 | `issue.surface_read.cannot_open` | critical | `count` | The drive could not be opened for reading. |
 | `issue.surface_read.read_errors` | critical | `count` | {count} parts of the drive could not be read. |
 | `issue.surface_read.slow_areas` | warn/critical | `count`, `percent` | {count} areas ({percent}%) responded very slowly, which can mean the surface is wearing out. |
+| `issue.surface_read.partial_coverage` | info | `checked`, `planned` | The surface scan could only check {checked} of {planned} spots because the drive kept stalling. |
 | `issue.surface_read.slow_drive` | info/warn | `mbps` | This drive is slow ({mbps} MB/s). That is fine for storing files, but too slow to run programs or an operating system comfortably. |
 
 ### Write test
@@ -142,3 +144,17 @@ Params are JSON numbers or strings. Severity is in brackets for issues. `en-US` 
 | `suitability.daily_use.ok` | Fine for everyday use. |
 | `suitability.daily_use.caution` | Usable for everyday files, but keep backups. |
 | `suitability.daily_use.no` | Not recommended for everyday use. |
+
+## Score reasons (`score_reasons` of the report; no params)
+
+| code | en-US |
+|---|---|
+| `score.reason.smart_failed` | The score is limited because the drive's own health check says it is failing. |
+| `score.reason.fake_capacity` | The score is limited because the drive is smaller than it claims to be. |
+| `score.reason.disconnected` | The score is limited because the drive disconnected during the tests. |
+| `score.reason.unreadable` | The score is limited because the drive has unreadable areas. |
+| `score.reason.many_reallocated` | The score is limited because the drive has many bad sectors it has already replaced. |
+| `score.reason.reallocated` | The score is limited because the drive has bad sectors it has already replaced. |
+| `score.reason.worn_out` | The score is limited because the drive is almost worn out. |
+| `score.reason.read_errors` | The score is limited because some parts of the drive could not be read. |
+| `score.reason.findings` | The score is lowered by the problems found in this test. |

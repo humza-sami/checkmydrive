@@ -181,7 +181,10 @@
     "tested": "Test tarihi: {{date}}",
     "engine": "Motor {{version}}",
     "skippedNote": "Sahte kapasite tespiti çalıştırılmadı. Tam bir sonuç için boş bir sürücüde tam silme testini kullanın.",
-    "testResults": "Test Sonuçları"
+    "testResults": "Test Sonuçları",
+    "why": {
+      "title": "Bu puan neden"
+    }
   },
   "report": {
     "title": "CheckMyDrive raporu",
@@ -242,10 +245,6 @@
       "overall_failed": "Sürücünün kendi sağlık kontrolü bozulduğunu söylüyor.",
       "reallocated_sectors_one": "Sürücü hasarlı {{count}} alanı yedekleriyle değiştirmiş.",
       "reallocated_sectors_other": "Sürücü hasarlı {{count}} alanı yedekleriyle değiştirmiş.",
-      "pending_sectors_one": "Sürücünün {{count}} alanı okunamıyor ve değiştirilmeyi bekliyor.",
-      "pending_sectors_other": "Sürücünün {{count}} alanı okunamıyor ve değiştirilmeyi bekliyor.",
-      "uncorrectable_sectors_one": "Sürücünün {{count}} alanı okunamadı veya düzeltilemedi.",
-      "uncorrectable_sectors_other": "Sürücünün {{count}} alanı okunamadı veya düzeltilemedi.",
       "crc_errors_one": "{{count}} veri aktarım hatası kaydedildi; bunlara çoğunlukla bozuk bir kablo veya bağlantı neden olur.",
       "crc_errors_other": "{{count}} veri aktarım hatası kaydedildi; bunlara çoğunlukla bozuk bir kablo veya bağlantı neden olur.",
       "error_log_entries_one": "Sürücünün hata kaydında {{count}} giriş var.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "Sürücünün belleği {{count}} veri bütünlüğü hatası kaydetmiş.",
       "nvme_media_errors_other": "Sürücünün belleği {{count}} veri bütünlüğü hatası kaydetmiş.",
       "spare_low": "Sürücünün yedek belleğinin yalnızca %{{percent}} kadarı kaldı.",
-      "temperature_high": "Sürücü sıcak çalışıyor ({{celsius}} C)."
+      "temperature_high": "Sürücü sıcak çalışıyor ({{celsius}} C).",
+      "unreadable_sectors": "Sürücünün onaramadığı okunamayan alanlar: {{count}}",
+      "pending_sectors": "Sürücünün şu an okuyamadığı ve daha sonra değiştirebileceği alanlar: {{count}}",
+      "uncorrectable_sectors": "Sürücünün kendi taramasında başarısız olan ve düzeltilemeyen alanlar: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Sağlık arayüzü kullanılamadığı için sürücünün hızlı kendi kendine testi atlandı.",
@@ -273,7 +275,8 @@
       "read_errors_other": "Sürücünün {{count}} bölümü okunamadı.",
       "slow_areas_one": "{{count}} alan (%{{percent}}) çok yavaş yanıt verdi; bu, yüzeyin aşınıyor olabileceği anlamına gelebilir.",
       "slow_areas_other": "{{count}} alan (%{{percent}}) çok yavaş yanıt verdi; bu, yüzeyin aşınıyor olabileceği anlamına gelebilir.",
-      "slow_drive": "Bu sürücü yavaş ({{mbps}} MB/sn). Dosya saklamak için yeterli, ancak programları veya bir işletim sistemini rahatça çalıştırmak için çok yavaş."
+      "slow_drive": "Bu sürücü yavaş ({{mbps}} MB/sn). Dosya saklamak için yeterli, ancak programları veya bir işletim sistemini rahatça çalıştırmak için çok yavaş.",
+      "partial_coverage": "Yüzey taraması, sürücü sürekli takıldığı için {{planned}} noktadan yalnızca {{checked}} tanesini kontrol edebildi."
     },
     "write_verify": {
       "no_writable_volume": "Sürücüde güvenle yazabileceğimiz bir klasör olmadığı için yazma testi atlandı.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "smartmontools, Tauri ve XP.css ile yapıldı."
+  },
+  "detail": {
+    "title": "Teknik ayrıntılar",
+    "button": "Ayrıntılar…",
+    "slowest": "En yavaş yanıt",
+    "of": "{{done}} / {{total}}",
+    "crc_errors": "Veri aktarım hataları",
+    "read_mbps": "Okuma hızı (MB/sn)",
+    "new_bad_areas": "Test sırasında yeni bozuk alanlar",
+    "new_unreadable": "Test sırasında yeni okunamayan alanlar",
+    "timeouts": "Zaman aşımları",
+    "new_crc": "Test sırasında yeni aktarım hataları",
+    "noProblems": "Yeni sorun görülmedi",
+    "selftest": {
+      "passed": "Geçti",
+      "failed": "Başarısız",
+      "aborted": "Yarıda kesildi",
+      "timeout": "Zamanında bitmedi",
+      "interrupted": "Yarıda kesildi"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Puan sınırlandı çünkü sürücünün kendi sağlık denetimi bozulduğunu söylüyor.",
+      "fake_capacity": "Puan sınırlandı çünkü sürücü iddia ettiğinden daha küçük.",
+      "disconnected": "Puan sınırlandı çünkü sürücü testler sırasında bağlantıyı kaybetti.",
+      "unreadable": "Puan sınırlandı çünkü sürücüde okunamayan alanlar var.",
+      "many_reallocated": "Puan sınırlandı çünkü sürücüde zaten değiştirdiği çok sayıda bozuk sektör var.",
+      "reallocated": "Puan sınırlandı çünkü sürücüde zaten değiştirdiği bozuk sektörler var.",
+      "worn_out": "Puan sınırlandı çünkü sürücü neredeyse yıpranmış.",
+      "read_errors": "Puan sınırlandı çünkü sürücünün bazı bölümleri okunamadı.",
+      "findings": "Puan, bu testte bulunan sorunlar nedeniyle düşürüldü."
+    }
   }
 }

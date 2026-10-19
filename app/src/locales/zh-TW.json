@@ -178,7 +178,10 @@
     "tested": "檢測時間：{{date}}",
     "engine": "引擎 {{version}}",
     "skippedNote": "未進行虛假容量偵測。如需完整結論，請在空的硬碟上使用完整清除檢測。",
-    "testResults": "測試結果"
+    "testResults": "測試結果",
+    "why": {
+      "title": "評分原因"
+    }
   },
   "report": {
     "title": "CheckMyDrive 報告",
@@ -236,8 +239,6 @@
       "usb_bridge_blocked": "USB 轉接器隱藏了硬碟的健康報告，因此其內部狀況未知。",
       "overall_failed": "硬碟自身的健康檢查顯示它正在故障。",
       "reallocated_sectors_other": "硬碟已經用備用區域替換了 {{count}} 個損壞的區域。",
-      "pending_sectors_other": "硬碟上有 {{count}} 個區域無法讀取，正等待被替換。",
-      "uncorrectable_sectors_other": "硬碟上有 {{count}} 個區域無法讀取，也無法修正。",
       "crc_errors_other": "記錄到 {{count}} 次資料傳輸錯誤，通常由傳輸線或接頭不良所引起。",
       "error_log_entries_other": "硬碟的錯誤記錄中有 {{count}} 筆資料。",
       "ssd_worn": "這顆固態硬碟已用掉其額定壽命的約 {{percent}}%。",
@@ -245,7 +246,10 @@
       "nvme_critical_warning": "硬碟回報了一個嚴重警告（代碼 {{value}}）。",
       "nvme_media_errors_other": "硬碟的記憶體已記錄 {{count}} 次資料完整性錯誤。",
       "spare_low": "硬碟的備用記憶體只剩 {{percent}}%。",
-      "temperature_high": "硬碟溫度很高（{{celsius}} C）。"
+      "temperature_high": "硬碟溫度很高（{{celsius}} C）。",
+      "unreadable_sectors": "硬碟無法修復的不可讀區域：{{count}}",
+      "pending_sectors": "硬碟目前無法讀取、之後可能會替換的區域：{{count}}",
+      "uncorrectable_sectors": "未通過硬碟自身掃描且無法更正的區域：{{count}}"
     },
     "selftest": {
       "smart_unavailable": "由於硬碟的健康介面無法使用，已略過硬碟的快速自我檢測。",
@@ -259,7 +263,8 @@
       "cannot_open": "無法開啟硬碟進行讀取。",
       "read_errors_other": "硬碟上有 {{count}} 處無法讀取。",
       "slow_areas_other": "有 {{count}} 個區域（{{percent}}%）回應非常慢，這可能表示碟面正在耗損。",
-      "slow_drive": "此磁碟機速度較慢（{{mbps}} MB/s）。用來存放檔案沒問題，但執行程式或作業系統會太慢。"
+      "slow_drive": "此磁碟機速度較慢（{{mbps}} MB/s）。用來存放檔案沒問題，但執行程式或作業系統會太慢。",
+      "partial_coverage": "由於硬碟不斷卡頓，表面掃描只檢查了 {{planned}} 個位置中的 {{checked}} 個。"
     },
     "write_verify": {
       "no_writable_volume": "已略過寫入檢測，因為硬碟上沒有可以安全寫入的資料夾。",
@@ -450,5 +455,38 @@
   },
   "about": {
     "credits": "使用 smartmontools、Tauri 和 XP.css 建置。"
+  },
+  "detail": {
+    "title": "技術詳細資料",
+    "button": "詳細資料…",
+    "slowest": "最慢回應",
+    "of": "{{done}} / {{total}}",
+    "crc_errors": "資料傳輸錯誤",
+    "read_mbps": "讀取速度 (MB/s)",
+    "new_bad_areas": "測試期間新增的壞區",
+    "new_unreadable": "測試期間新增的無法讀取區域",
+    "timeouts": "逾時",
+    "new_crc": "測試期間新增的傳輸錯誤",
+    "noProblems": "未發現新問題",
+    "selftest": {
+      "passed": "通過",
+      "failed": "失敗",
+      "aborted": "已中斷",
+      "timeout": "未能準時完成",
+      "interrupted": "已中斷"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "評分受限，因為硬碟自身的健康檢查顯示它正在損壞。",
+      "fake_capacity": "評分受限，因為硬碟的實際容量小於它宣稱的容量。",
+      "disconnected": "評分受限，因為硬碟在測試期間中斷了連線。",
+      "unreadable": "評分受限，因為硬碟有無法讀取的區域。",
+      "many_reallocated": "評分受限，因為硬碟有許多已被替換的壞磁區。",
+      "reallocated": "評分受限，因為硬碟有已被替換的壞磁區。",
+      "worn_out": "評分受限，因為硬碟幾乎已經耗損殆盡。",
+      "read_errors": "評分受限，因為硬碟的部分區域無法讀取。",
+      "findings": "評分因本次測試中發現的問題而降低。"
+    }
   }
 }

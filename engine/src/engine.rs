@@ -302,6 +302,8 @@ pub fn build_report(drive: DriveInfo, mode: Mode, started_at: String, duration_m
         issues,
         age,
         suitability,
+        score_cap: score::cap_reasons(&facts).first().map(|(_, c)| *c),
+        score_reasons: score::score_reasons(&facts, sc),
     }
 }
 

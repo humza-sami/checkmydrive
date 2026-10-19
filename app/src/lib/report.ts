@@ -1,7 +1,8 @@
 import type { TFunction } from "i18next";
 import type { TestReport } from "./types";
 import { formatBytes, formatManufactureDate, hoursToYears } from "./format";
-import { metricLabel, suitabilityText, tCode } from "./codes";
+import { suitabilityText, tCode } from "./codes";
+import { rawMetrics, testHighlights } from "./details";
 import { invoke } from "@tauri-apps/api/core";
 import { inTauri } from "./engine";
 
@@ -10,7 +11,7 @@ const esc = (s: unknown) =>
 
 export function summaryKey(r: TestReport): string {
   if (r.issues.some((i) => i.code === "issue.capacity_check.fake_capacity")) return "results.summary.fake_capacity";
-  if (r.verdict === "avoid" && r.issues.some((i) => i.code === "issue.smart.overall_failed" || i.code === "issue.stability.device_disconnected" || i.code === "issue.smart.pending_sectors"))
+  if (r.verdict === "avoid" && r.issues.some((i) => ["issue.smart.overall_failed", "issue.stability.device_disconnected", "issue.smart.pending_sectors", "issue.smart.unreadable_sectors"].includes(i.code)))
     return "results.summary.failing";
   return `results.summary.${r.verdict}`;
 }
@@ -36,8 +37,12 @@ export function buildHtmlReport(r: TestReport, t: TFunction, locale: string, dir
   const rows = r.tests
     .map(
       (x) => `<tr><td>${esc(t(`tests.${x.id}.name`))}</td><td>${esc(t(`status.${x.status}`))}</td><td>${x.score ?? "—"}</td><td>${esc(
-        Object.entries(x.metrics).map(([k, v]) => `${metricLabel(t, k)}: ${v}`).join("; ") || "—",
-      )}</td></tr>`,
+        testHighlights(t, x, locale).map((h) => (h.value ? `${h.label}: ${h.value}` : h.label)).join(" · ") || "—",
+      )}${
+        x.metrics && Object.keys(x.metrics).length
+          ? `<details><summary>${esc(t("detail.title"))}</summary><small>${rawMetrics(x).map(([k, v]) => `${esc(k)}: ${esc(v)}`).join("<br>")}</small></details>`
+          : ""
+      }</td></tr>`,
     )
     .join("");
   const issues = r.issues.length
@@ -52,7 +57,7 @@ table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid 
 .critical{color:#b91c1c}.warn{color:#b45309}li{margin:6px 0}small{color:#555}</style></head><body>
 <h1>${esc(t("report.title"))}</h1><p><small>${esc(r.drive.model ?? "")} · ${esc(formatBytes(r.drive.capacity_bytes, locale))} · ${esc(r.drive.serial ?? "")}<br>${esc(t("results.tested", { date: new Date(r.started_at).toLocaleString(locale) }))} · ${esc(t(`results.mode.${r.mode}`))}</small></p>
 <div class="score">${r.score}<small> / 100</small></div><div class="verdict">${esc(t(`results.verdict.${r.verdict}`))}</div>
-<p>${esc(summaryText(t, r))}</p>
+<p>${esc(summaryText(t, r))}</p>${r.score_reasons?.length ? `<p><b>${esc(t("results.why.title"))}</b></p><ul>${r.score_reasons.map((c) => `<li>${esc(t(c))}</li>`).join("")}</ul>` : ""}
 <h2>${esc(t("results.can.title"))}</h2><ul>${can(t("results.can.os"), "os_install")}${can(t("results.can.storage"), "long_term_storage")}${can(t("results.can.daily"), "daily_use")}
 <li><b>${esc(t("results.can.fill"))}</b> ${esc(r.suitability.safe_fill_bytes > 0 ? t("results.can.fillYes", { size: formatBytes(r.suitability.safe_fill_bytes, locale), total: formatBytes(r.drive.capacity_bytes, locale) }) : t("results.can.fillNo"))}</li></ul>
 <h2>${esc(t("results.age.title"))}</h2><p>${esc(r.age.power_on_hours != null ? t("results.age.hours", { count: r.age.power_on_hours, hours: r.age.power_on_hours.toLocaleString(locale) }) + (years != null ? " (" + t(years < 1 ? "results.age.yearsLessThanOne" : "results.age.years", { count: years }) + ")" : "") : t("results.age.unknown"))}${r.age.manufacture_date ? "<br>" + esc(t("results.age.made", { date: formatManufactureDate(r.age.manufacture_date, locale) })) : ""}</p>

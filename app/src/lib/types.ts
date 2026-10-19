@@ -100,6 +100,10 @@ export interface TestReport {
     safe_fill_bytes: number;
     safe_fill_percent: number;
   };
+  /** Lowest hard cap applying to the score; absent in reports from older engines. */
+  score_cap?: number;
+  /** i18n codes (`score.reason.*`) explaining the score, worst first. */
+  score_reasons?: string[];
 }
 
 export type EngineEvent =

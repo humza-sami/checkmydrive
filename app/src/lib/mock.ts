@@ -23,6 +23,12 @@ export const MOCK_DRIVES: DriveInfo[] = [
     mount_points: ["/Volumes/Backup"], smart_supported: true, power_on_hours: 41230, manufacture_date: "2017-11",
   },
   {
+    // the real failing drive from the v0.1.0 field test
+    id: "sda", path: "/dev/sda", model: "ST2000LM007-1R8174", serial: "WDZE3YPJ", firmware: "SDM2", vendor: "Seagate",
+    capacity_bytes: 2_000_398_934_016, kind: "hdd", bus: "usb", rotation_rpm: 5400, removable: true, is_system_disk: false,
+    mount_points: [], smart_supported: true, power_on_hours: 32160, manufacture_date: null,
+  },
+  {
     id: "disk6", path: "/dev/disk6", model: "Generic Flash Disk", serial: "AA00000000000489", firmware: null, vendor: null,
     capacity_bytes: 1024 * GB, kind: "usb", bus: "usb", rotation_rpm: null, removable: true, is_system_disk: false,
     mount_points: ["/Volumes/USB1TB"], smart_supported: false, power_on_hours: null, manufacture_date: null,
@@ -67,6 +73,45 @@ export function mockReport(drive: DriveInfo, mode: Mode): TestReport {
   const capSkipped = t("capacity_check", "skipped", null, 0, {}, [
     { severity: "info", code: "issue.capacity_check.needs_wipe_mode" },
   ]);
+  if (drive.id === "sda") {
+    const tests = [
+      t("drive_info", "pass", 100, 400, { bus: "usb", capacity_bytes: 2_000_398_934_016, is_system_disk: false, kind: "hdd", model: drive.model, power_on_hours: 32160, power_on_years: 3.7, serial_known: true }, [{ severity: "info", code: "issue.age.moderate_hours", params: { hours: 32160, years: 3.7 } }]),
+      t("smart_health", "fail", 2, 3000, {
+        protocol: "ata", smart_passed: true, reallocated_sectors: 736, pending_sectors: 40, uncorrectable_sectors: 40, crc_errors: 0, wear_used_percent: null,
+        available_spare_percent: null, media_errors: null, temperature_c: 29, power_on_hours: 32160, power_cycles: 55, error_log_entries: 0, device_type: null,
+      }, [
+        { severity: "critical", code: "issue.smart.reallocated_sectors", params: { count: 736 } },
+        { severity: "critical", code: "issue.smart.unreadable_sectors", params: { count: 40 } },
+      ]),
+      t("selftest_short", "skipped", null, 90_000, { duration_s: 90, device_gone: false, final_state: "timeout" }, [{ severity: "info", code: "issue.selftest.timeout", params: { seconds: 90 } }]),
+      t("surface_read", "fail", 67, 63_000, {
+        drive_class: "hdd", slow_samples: 1, slow_threshold_ms: 1292.02, hard_stalls: 1, latency_ms_avg: 1140.81, latency_ms_p50: 129.2, latency_ms_p99: 12599.73,
+        latency_ms_max: 12599.73, p99_latency_ok: false, os_speed_ok: true, samples_total: 13, samples_planned: 576, samples_ok: 12, read_errors: 1,
+        read_mbps_avg: null, read_mbps_min: null, read_mbps_max: null, coverage_percent: 2.3, sequential_bytes: 4194304, aborted_early: false, first_bad_offsets: "46976073728",
+      }, [
+        { severity: "critical", code: "issue.surface_read.read_errors", params: { count: 1 } },
+        { severity: "info", code: "issue.surface_read.partial_coverage", params: { checked: 13, planned: 576 } },
+      ]),
+      t("write_verify", "skipped", null, 0),
+      t("capacity_check", "skipped", null, 0, {}, [{ severity: "info", code: "issue.capacity_check.needs_wipe_mode" }]),
+      t("stability", "fail", 52, 4000, {
+        device_disconnected: false, disconnect_events: 0, io_errors: 1, timeouts: 0, smart_compared: true, crc_error_delta: 0, reallocated_delta: 296, pending_delta: 16,
+      }, [
+        { severity: "warn", code: "issue.stability.io_errors", params: { count: 1 } },
+        { severity: "critical", code: "issue.stability.new_bad_sectors", params: { count: 312 } },
+      ]),
+    ];
+    return build(drive, "safe", tests, 0, "avoid", {
+      score_cap: 30,
+      score_reasons: ["score.reason.read_errors", "score.reason.many_reallocated", "score.reason.unreadable"],
+      suitability: {
+        os_install: { ok: false, level: "no", reason_code: "suitability.os_install.bad_sectors", params: { score: 0 } },
+        long_term_storage: { ok: false, level: "no", reason_code: "suitability.long_term_storage.critical_issues", params: { score: 0 } },
+        daily_use: { ok: false, level: "no", reason_code: "suitability.daily_use.no", params: { score: 0 } },
+        safe_fill_bytes: 0, safe_fill_percent: 0,
+      },
+    });
+  }
   if (drive.id === "disk5") {
     const tests = [
       t("drive_info", "pass", 100, 800, { rpm: 5400, interface: "USB 3.0" }),

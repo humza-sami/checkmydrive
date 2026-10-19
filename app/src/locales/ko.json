@@ -178,7 +178,10 @@
     "tested": "검사일: {{date}}",
     "engine": "엔진 {{version}}",
     "skippedNote": "가짜 용량 검사는 실행되지 않았어요. 정확한 답을 얻으려면 빈 드라이브에서 전체 삭제 검사를 해 보세요.",
-    "testResults": "테스트 결과"
+    "testResults": "테스트 결과",
+    "why": {
+      "title": "이 점수의 이유"
+    }
   },
   "report": {
     "title": "CheckMyDrive 보고서",
@@ -236,8 +239,6 @@
       "usb_bridge_blocked": "USB 어댑터가 드라이브의 건강 보고서를 가리고 있어서 내부 상태를 알 수 없어요.",
       "overall_failed": "드라이브 자체 건강 검사에서 고장 나고 있다고 나왔어요.",
       "reallocated_sectors_other": "드라이브가 손상된 {{count}}개 영역을 예비 영역으로 이미 교체했어요.",
-      "pending_sectors_other": "드라이브의 {{count}}개 영역을 읽을 수 없고 교체를 기다리고 있어요.",
-      "uncorrectable_sectors_other": "드라이브의 {{count}}개 영역을 읽거나 복구할 수 없었어요.",
       "crc_errors_other": "데이터 전송 오류가 {{count}}건 기록됐어요. 케이블이나 연결 부위가 나쁠 때 자주 생겨요.",
       "error_log_entries_other": "드라이브의 오류 기록에 {{count}}개 항목이 있어요.",
       "ssd_worn": "이 SSD는 정해진 수명의 약 {{percent}}%를 사용했어요.",
@@ -245,7 +246,10 @@
       "nvme_critical_warning": "드라이브가 심각한 경고를 알리고 있어요 (코드 {{value}}).",
       "nvme_media_errors_other": "드라이브 메모리에 데이터 무결성 오류가 {{count}}건 기록됐어요.",
       "spare_low": "드라이브의 예비 메모리가 {{percent}}%만 남았어요.",
-      "temperature_high": "드라이브가 뜨겁게 작동하고 있어요 ({{celsius}} C)."
+      "temperature_high": "드라이브가 뜨겁게 작동하고 있어요 ({{celsius}} C).",
+      "unreadable_sectors": "드라이브가 복구하지 못한 읽을 수 없는 영역: {{count}}",
+      "pending_sectors": "드라이브가 지금은 읽을 수 없고 나중에 교체할 수 있는 영역: {{count}}",
+      "uncorrectable_sectors": "드라이브 자체 검사에서 실패했고 수정하지 못한 영역: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "건강 정보 인터페이스를 쓸 수 없어서 드라이브의 빠른 자가 점검을 건너뛰었어요.",
@@ -259,7 +263,8 @@
       "cannot_open": "드라이브를 읽기 위해 열 수 없었어요.",
       "read_errors_other": "드라이브의 {{count}}곳을 읽을 수 없었어요.",
       "slow_areas_other": "{{count}}개 영역({{percent}}%)의 응답이 매우 느렸어요. 표면이 닳고 있다는 뜻일 수 있어요.",
-      "slow_drive": "이 드라이브는 느립니다({{mbps}} MB/s). 파일을 저장하는 데는 문제없지만, 프로그램이나 운영 체제를 쾌적하게 실행하기에는 너무 느립니다."
+      "slow_drive": "이 드라이브는 느립니다({{mbps}} MB/s). 파일을 저장하는 데는 문제없지만, 프로그램이나 운영 체제를 쾌적하게 실행하기에는 너무 느립니다.",
+      "partial_coverage": "드라이브가 계속 멈춰서 표면 검사는 {{planned}}곳 중 {{checked}}곳만 확인할 수 있었습니다."
     },
     "write_verify": {
       "no_writable_volume": "드라이브에 안전하게 쓸 수 있는 폴더가 없어서 쓰기 검사를 건너뛰었어요.",
@@ -450,5 +455,38 @@
   },
   "about": {
     "credits": "smartmontools, Tauri, XP.css로 만들었습니다."
+  },
+  "detail": {
+    "title": "기술 세부 정보",
+    "button": "세부 정보…",
+    "slowest": "가장 느린 응답",
+    "of": "{{total}}개 중 {{done}}개",
+    "crc_errors": "데이터 전송 오류",
+    "read_mbps": "읽기 속도 (MB/s)",
+    "new_bad_areas": "테스트 중 새로 생긴 불량 영역",
+    "new_unreadable": "테스트 중 새로 생긴 읽을 수 없는 영역",
+    "timeouts": "시간 초과",
+    "new_crc": "테스트 중 새로 생긴 전송 오류",
+    "noProblems": "새로운 문제는 없었습니다",
+    "selftest": {
+      "passed": "통과",
+      "failed": "실패",
+      "aborted": "중단됨",
+      "timeout": "제시간에 끝나지 않음",
+      "interrupted": "중단됨"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "드라이브 자체 상태 점검에서 고장 나고 있다고 나와 점수가 제한되었습니다.",
+      "fake_capacity": "드라이브가 표시된 용량보다 작아서 점수가 제한되었습니다.",
+      "disconnected": "테스트 중 드라이브 연결이 끊겨서 점수가 제한되었습니다.",
+      "unreadable": "드라이브에 읽을 수 없는 영역이 있어서 점수가 제한되었습니다.",
+      "many_reallocated": "드라이브에 이미 교체한 불량 섹터가 많아서 점수가 제한되었습니다.",
+      "reallocated": "드라이브에 이미 교체한 불량 섹터가 있어서 점수가 제한되었습니다.",
+      "worn_out": "드라이브가 거의 마모되어서 점수가 제한되었습니다.",
+      "read_errors": "드라이브의 일부를 읽을 수 없어서 점수가 제한되었습니다.",
+      "findings": "이 테스트에서 발견된 문제로 점수가 낮아졌습니다."
+    }
   }
 }

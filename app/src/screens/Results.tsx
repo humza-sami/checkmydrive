@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Dialog } from "../components/Dialog";
 import { HealthTile, Properties } from "../components/DriveOverview";
 import { XpIcon, type IconName } from "../components/XpIcon";
-import { metricLabel, suitabilityText, tCode } from "../lib/codes";
+import { suitabilityText, tCode } from "../lib/codes";
+import { rawMetrics, testHighlights } from "../lib/details";
 import { formatBytes, scoreTone, SEVERITY_ORDER, verdictTone } from "../lib/format";
 import { summaryText } from "../lib/report";
-import type { Status, Suitability, TestReport } from "../lib/types";
+import type { Status, Suitability, TestReport, TestResult } from "../lib/types";
 
 const LEVEL_ICON: Record<Suitability["level"], IconName> = { good: "ok", caution: "warn", no: "error" };
 const STATUS_ICON: Record<Status, IconName> = { pass: "ok", warn: "warn", fail: "error", skipped: "skipped" };
@@ -13,6 +16,8 @@ const SEV_ICON = { critical: "error", warn: "warn", info: "info" } as const;
 export function Results({ report: r }: { report: TestReport; onAnother?: () => void }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+  const [rawFor, setRawFor] = useState<TestResult | null>(null);
+  const reasons = (r.score_reasons ?? []).slice(0, 3);
   const tone = scoreTone(r.score);
   const vTone = verdictTone(r.verdict);
   const issues = [...r.issues].sort((a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity]);
@@ -44,6 +49,12 @@ export function Results({ report: r }: { report: TestReport; onAnother?: () => v
                 <span>{t(`results.verdict.${r.verdict}`)}</span>
               </div>
               <p className="summary">{summaryText(t, r)}</p>
+              {reasons.length > 0 && (
+                <div className="why" data-testid="why-score">
+                  <b>{t("results.why.title")}</b>
+                  <ul>{reasons.map((c) => <li key={c}>{t(c)}</li>)}</ul>
+                </div>
+              )}
               <p className="meta">
                 {t(`results.mode.${r.mode}`)}<br />
                 {t("results.tested", { date: new Date(r.started_at).toLocaleString(lang) })}
@@ -111,9 +122,10 @@ export function Results({ report: r }: { report: TestReport; onAnother?: () => v
                   <td><span className="st"><XpIcon name={STATUS_ICON[x.status]} size={16} />{t(`status.${x.status}`)}</span></td>
                   <td className="num">{x.score ?? "—"}</td>
                   <td className="details">
-                    {Object.keys(x.metrics).length === 0
-                      ? <span className="dim">{t("results.matrix.none")}</span>
-                      : Object.entries(x.metrics).map(([k, v]) => <span key={k} className="metric">{metricLabel(t, k)}: <b>{String(v)}</b></span>)}
+                    <Highlights test={x} />
+                    {Object.keys(x.metrics).length > 0 && (
+                      <button type="button" className="raw-btn" onClick={() => setRawFor(x)}>{t("detail.button")}</button>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -121,6 +133,24 @@ export function Results({ report: r }: { report: TestReport; onAnother?: () => v
           </table>
         </div>
       </fieldset>
+      {rawFor && (
+        <Dialog title={`${t("detail.title")}: ${t(`tests.${rawFor.id}.name`)}`} onClose={() => setRawFor(null)} width={460}>
+          <table className="raw-metrics" data-testid="raw-metrics">
+            <tbody>
+              {rawMetrics(rawFor).map(([k, v]) => <tr key={k}><th scope="row">{k}</th><td dir="ltr">{v}</td></tr>)}
+            </tbody>
+          </table>
+          <div className="dlg-buttons"><button type="button" className="default" data-autofocus onClick={() => setRawFor(null)}>{t("common.close")}</button></div>
+        </Dialog>
+      )}
     </section>
   );
+}
+
+/** The few friendly facts of one test (never raw keys, never nulls). */
+export function Highlights({ test }: { test: TestResult }) {
+  const { t, i18n } = useTranslation();
+  const hs = testHighlights(t, test, i18n.language);
+  if (hs.length === 0) return <span className="dim">{test.status === "skipped" ? "—" : t("results.matrix.none")}</span>;
+  return <>{hs.map((h) => <span key={h.label} className="metric">{h.label}{h.value ? <>: <b>{h.value}</b></> : null}</span>)}</>;
 }

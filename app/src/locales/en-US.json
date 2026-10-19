@@ -181,7 +181,10 @@
     "tested": "Tested on {{date}}",
     "engine": "Engine {{version}}",
     "skippedNote": "Fake-capacity detection was not run. Use the full wipe test on an empty drive for a complete answer.",
-    "testResults": "Test Results"
+    "testResults": "Test Results",
+    "why": {
+      "title": "Why this score"
+    }
   },
   "report": {
     "title": "CheckMyDrive report",
@@ -242,10 +245,6 @@
       "overall_failed": "The drive's own health check says it is failing.",
       "reallocated_sectors_one": "The drive has already replaced {{count}} damaged area with a spare.",
       "reallocated_sectors_other": "The drive has already replaced {{count}} damaged areas with spares.",
-      "pending_sectors_one": "{{count}} area of the drive is unreadable and waiting to be replaced.",
-      "pending_sectors_other": "{{count}} areas of the drive are unreadable and waiting to be replaced.",
-      "uncorrectable_sectors_one": "{{count}} area of the drive could not be read or corrected.",
-      "uncorrectable_sectors_other": "{{count}} areas of the drive could not be read or corrected.",
       "crc_errors_one": "{{count}} data-transfer error was recorded, often caused by a bad cable or connector.",
       "crc_errors_other": "{{count}} data-transfer errors were recorded, often caused by a bad cable or connector.",
       "error_log_entries_one": "The drive's error log contains {{count}} entry.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "The drive's memory has logged {{count}} data-integrity error.",
       "nvme_media_errors_other": "The drive's memory has logged {{count}} data-integrity errors.",
       "spare_low": "Only {{percent}}% of the drive's spare memory is left.",
-      "temperature_high": "The drive is running hot ({{celsius}} C)."
+      "temperature_high": "The drive is running hot ({{celsius}} C).",
+      "unreadable_sectors": "Unreadable areas the drive could not repair: {{count}}",
+      "pending_sectors": "Areas the drive cannot read right now and may replace later: {{count}}",
+      "uncorrectable_sectors": "Areas that failed the drive's own scan and could not be corrected: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "The drive's quick self-test was skipped because its health interface is not available.",
@@ -273,7 +275,8 @@
       "read_errors_other": "{{count}} parts of the drive could not be read.",
       "slow_areas_one": "{{count}} area ({{percent}}%) responded very slowly, which can mean the surface is wearing out.",
       "slow_areas_other": "{{count}} areas ({{percent}}%) responded very slowly, which can mean the surface is wearing out.",
-      "slow_drive": "This drive is slow ({{mbps}} MB/s). That is fine for storing files, but too slow to run programs or an operating system comfortably."
+      "slow_drive": "This drive is slow ({{mbps}} MB/s). That is fine for storing files, but too slow to run programs or an operating system comfortably.",
+      "partial_coverage": "The surface scan could only check {{checked}} of {{planned}} spots because the drive kept stalling."
     },
     "write_verify": {
       "no_writable_volume": "The write test was skipped because the drive has no folder we can safely write to.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Built with smartmontools, Tauri and XP.css."
+  },
+  "detail": {
+    "title": "Technical details",
+    "button": "Details…",
+    "slowest": "Slowest response",
+    "of": "{{done}} of {{total}}",
+    "crc_errors": "Data-transfer errors",
+    "read_mbps": "Read speed (MB/s)",
+    "new_bad_areas": "New bad areas during test",
+    "new_unreadable": "New unreadable areas during test",
+    "timeouts": "Timeouts",
+    "new_crc": "New data-transfer errors during test",
+    "noProblems": "No new problems seen",
+    "selftest": {
+      "passed": "Passed",
+      "failed": "Failed",
+      "aborted": "Interrupted",
+      "timeout": "Did not finish in time",
+      "interrupted": "Interrupted"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "The score is limited because the drive's own health check says it is failing.",
+      "fake_capacity": "The score is limited because the drive is smaller than it claims to be.",
+      "disconnected": "The score is limited because the drive disconnected during the tests.",
+      "unreadable": "The score is limited because the drive has unreadable areas.",
+      "many_reallocated": "The score is limited because the drive has many bad sectors it has already replaced.",
+      "reallocated": "The score is limited because the drive has bad sectors it has already replaced.",
+      "worn_out": "The score is limited because the drive is almost worn out.",
+      "read_errors": "The score is limited because some parts of the drive could not be read.",
+      "findings": "The score is lowered by the problems found in this test."
+    }
   }
 }

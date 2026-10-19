@@ -187,7 +187,10 @@
     "tested": "Testováno dne {{date}}",
     "engine": "Jádro {{version}}",
     "skippedNote": "Zjišťování falešné kapacity nebylo spuštěno. Pro úplnou odpověď použijte plný test s vymazáním na prázdném disku.",
-    "testResults": "Výsledky testu"
+    "testResults": "Výsledky testu",
+    "why": {
+      "title": "Proč toto skóre"
+    }
   },
   "report": {
     "title": "Zpráva CheckMyDrive",
@@ -254,14 +257,6 @@
       "reallocated_sectors_few": "Disk již nahradil {{count}} poškozené oblasti záložními.",
       "reallocated_sectors_many": "Disk již nahradil {{count}} poškozené oblasti záložními.",
       "reallocated_sectors_other": "Disk již nahradil {{count}} poškozených oblastí záložními.",
-      "pending_sectors_one": "{{count}} oblast disku je nečitelná a čeká na výměnu.",
-      "pending_sectors_few": "{{count}} oblasti disku jsou nečitelné a čekají na výměnu.",
-      "pending_sectors_many": "{{count}} oblasti disku jsou nečitelné a čekají na výměnu.",
-      "pending_sectors_other": "{{count}} oblastí disku je nečitelných a čeká na výměnu.",
-      "uncorrectable_sectors_one": "Nepodařilo se přečíst ani opravit {{count}} oblast disku.",
-      "uncorrectable_sectors_few": "Nepodařilo se přečíst ani opravit {{count}} oblasti disku.",
-      "uncorrectable_sectors_many": "Nepodařilo se přečíst ani opravit {{count}} oblasti disku.",
-      "uncorrectable_sectors_other": "Nepodařilo se přečíst ani opravit {{count}} oblastí disku.",
       "crc_errors_one": "Byla zaznamenána {{count}} chyba přenosu dat, často způsobená špatným kabelem nebo konektorem.",
       "crc_errors_few": "Byly zaznamenány {{count}} chyby přenosu dat, často způsobené špatným kabelem nebo konektorem.",
       "crc_errors_many": "Byly zaznamenány {{count}} chyby přenosu dat, často způsobené špatným kabelem nebo konektorem.",
@@ -278,7 +273,10 @@
       "nvme_media_errors_many": "Paměť disku zaznamenala {{count}} chyby integrity dat.",
       "nvme_media_errors_other": "Paměť disku zaznamenala {{count}} chyb integrity dat.",
       "spare_low": "Zbývá jen {{percent}} % náhradní paměti disku.",
-      "temperature_high": "Disk je přehřátý ({{celsius}} C)."
+      "temperature_high": "Disk je přehřátý ({{celsius}} C).",
+      "unreadable_sectors": "Nečitelné oblasti, které disk nedokázal opravit: {{count}}",
+      "pending_sectors": "Oblasti, které disk právě teď nemůže přečíst a možná je později nahradí: {{count}}",
+      "uncorrectable_sectors": "Oblasti, které neprošly vlastním skenem disku a nešly opravit: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Rychlá samokontrola disku byla přeskočena, protože jeho zdravotní rozhraní není dostupné.",
@@ -301,7 +299,8 @@
       "slow_areas_few": "{{count}} oblasti ({{percent}} %) reagovaly velmi pomalu, což může znamenat opotřebení povrchu.",
       "slow_areas_many": "{{count}} oblasti ({{percent}} %) reagovaly velmi pomalu, což může znamenat opotřebení povrchu.",
       "slow_areas_other": "{{count}} oblastí ({{percent}} %) reagovalo velmi pomalu, což může znamenat opotřebení povrchu.",
-      "slow_drive": "Tento disk je pomalý ({{mbps}} MB/s). Na ukládání souborů to stačí, ale na pohodlné spouštění programů nebo operačního systému je příliš pomalý."
+      "slow_drive": "Tento disk je pomalý ({{mbps}} MB/s). Na ukládání souborů to stačí, ale na pohodlné spouštění programů nebo operačního systému je příliš pomalý.",
+      "partial_coverage": "Skenování povrchu mohlo zkontrolovat jen {{checked}} z {{planned}} míst, protože se disk neustále zasekával."
     },
     "write_verify": {
       "no_writable_volume": "Test zápisu byl přeskočen, protože na disku není složka, do které bychom mohli bezpečně zapisovat.",
@@ -516,5 +515,38 @@
   },
   "about": {
     "credits": "Vytvořeno pomocí smartmontools, Tauri a XP.css."
+  },
+  "detail": {
+    "title": "Technické podrobnosti",
+    "button": "Podrobnosti…",
+    "slowest": "Nejpomalejší odezva",
+    "of": "{{done}} z {{total}}",
+    "crc_errors": "Chyby přenosu dat",
+    "read_mbps": "Rychlost čtení (MB/s)",
+    "new_bad_areas": "Nové poškozené oblasti během testu",
+    "new_unreadable": "Nové nečitelné oblasti během testu",
+    "timeouts": "Vypršení časového limitu",
+    "new_crc": "Nové chyby přenosu během testu",
+    "noProblems": "Žádné nové problémy",
+    "selftest": {
+      "passed": "Prošlo",
+      "failed": "Selhalo",
+      "aborted": "Přerušeno",
+      "timeout": "Nedokončeno včas",
+      "interrupted": "Přerušeno"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Skóre je omezeno, protože vlastní kontrola stavu disku hlásí, že selhává.",
+      "fake_capacity": "Skóre je omezeno, protože disk je menší, než uvádí.",
+      "disconnected": "Skóre je omezeno, protože se disk během testů odpojil.",
+      "unreadable": "Skóre je omezeno, protože disk má nečitelné oblasti.",
+      "many_reallocated": "Skóre je omezeno, protože disk má mnoho vadných sektorů, které už nahradil.",
+      "reallocated": "Skóre je omezeno, protože disk má vadné sektory, které už nahradil.",
+      "worn_out": "Skóre je omezeno, protože je disk téměř opotřebovaný.",
+      "read_errors": "Skóre je omezeno, protože některé části disku nešlo přečíst.",
+      "findings": "Skóre snižují problémy nalezené v tomto testu."
+    }
   }
 }

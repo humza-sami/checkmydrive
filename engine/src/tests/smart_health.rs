@@ -35,11 +35,19 @@ pub fn analyze(d: &SmartData) -> (Metrics, Vec<Issue>) {
         let sev = if n > 100 { Severity::Critical } else { Severity::Warn };
         issues.push(Issue::new(sev, "issue.smart.reallocated_sectors").with("count", n));
     }
-    if let Some(n) = d.pending.filter(|n| *n > 0) {
-        issues.push(Issue::critical("issue.smart.pending_sectors").with("count", n));
-    }
-    if let Some(n) = d.uncorrectable.filter(|n| *n > 0) {
-        issues.push(Issue::critical("issue.smart.uncorrectable_sectors").with("count", n));
+    let pending = d.pending.filter(|n| *n > 0);
+    let uncorrectable = d.uncorrectable.filter(|n| *n > 0);
+    match (pending, uncorrectable) {
+        // Same figure twice reads as a duplicate: say it once.
+        (Some(p), Some(u)) if p == u => issues.push(Issue::critical("issue.smart.unreadable_sectors").with("count", p)),
+        (p, u) => {
+            if let Some(n) = p {
+                issues.push(Issue::critical("issue.smart.pending_sectors").with("count", n));
+            }
+            if let Some(n) = u {
+                issues.push(Issue::critical("issue.smart.uncorrectable_sectors").with("count", n));
+            }
+        }
     }
     if let Some(n) = d.crc_errors.filter(|n| *n > 0) {
         issues.push(Issue::warn("issue.smart.crc_errors").with("count", n));
@@ -112,4 +120,33 @@ pub fn run(ctx: &Ctx) -> TestResult {
     };
     ctx.progress(Phase::SmartHealth, 100.0, "progress.smart_health.analyzing", None);
     res
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn codes(d: &SmartData) -> Vec<String> {
+        analyze(d).1.into_iter().map(|i| i.code).collect()
+    }
+
+    #[test]
+    fn equal_pending_and_uncorrectable_are_merged_into_one_issue() {
+        let d = SmartData { pending: Some(40), uncorrectable: Some(40), ..Default::default() };
+        let (_, issues) = analyze(&d);
+        assert_eq!(issues.len(), 1);
+        assert_eq!(issues[0].code, "issue.smart.unreadable_sectors");
+        assert_eq!(issues[0].severity, Severity::Critical);
+        assert_eq!(issues[0].magnitude(), 40.0);
+    }
+
+    #[test]
+    fn different_counts_keep_both_issues() {
+        let d = SmartData { pending: Some(40), uncorrectable: Some(8), ..Default::default() };
+        assert_eq!(codes(&d), ["issue.smart.pending_sectors", "issue.smart.uncorrectable_sectors"]);
+        let d = SmartData { pending: Some(5), ..Default::default() };
+        assert_eq!(codes(&d), ["issue.smart.pending_sectors"]);
+        let d = SmartData { uncorrectable: Some(5), ..Default::default() };
+        assert_eq!(codes(&d), ["issue.smart.uncorrectable_sectors"]);
+    }
 }

@@ -68,28 +68,81 @@ pub fn run(ctx: &Ctx) -> TestResult {
         std::thread::sleep(Duration::from_millis(500));
     }
 
-    let mut issues = Vec::new();
-    let mut m = Metrics::new();
-    m.insert("duration_s".into(), mval(started.elapsed().as_secs()));
-    let state_name = match final_state {
-        SelfTestState::Passed => "passed",
-        SelfTestState::Failed => "failed",
-        SelfTestState::Aborted => "aborted",
-        _ => "unknown",
-    };
     if timed_out {
         smart::abort_selftest(sc, &ctx.drive, dt);
-        issues.push(Issue::info("issue.selftest.timeout").with("seconds", limit.as_secs()));
-        m.insert("final_state".into(), mval("timeout"));
-    } else {
-        m.insert("final_state".into(), mval(state_name));
-        match final_state {
-            SelfTestState::Failed => issues.push(Issue::critical("issue.selftest.failed")),
-            SelfTestState::Aborted => issues.push(Issue::warn("issue.selftest.aborted")),
-            _ => {}
-        }
     }
+    let mut m = Metrics::new();
+    m.insert("duration_s".into(), mval(started.elapsed().as_secs()));
     m.insert("device_gone".into(), mval(ctx.stab.gone.load(Ordering::Relaxed)));
     ctx.progress(Phase::SelftestShort, 100.0, "progress.selftest_short.done", None);
-    TestResult::from_issues(TestId::SelftestShort, t0.elapsed().as_millis() as u64, m, issues)
+    finish(t0.elapsed().as_millis() as u64, m, final_state, timed_out, limit.as_secs())
+}
+
+/// Build the result (pure; unit-tested). A time-out is "no answer": status skipped, no score.
+pub fn finish(duration_ms: u64, mut m: Metrics, final_state: SelfTestState, timed_out: bool, limit_secs: u64) -> TestResult {
+    let (name, issues) = conclude(final_state, timed_out, limit_secs);
+    m.insert("final_state".into(), mval(name));
+    let mut r = TestResult::from_issues(TestId::SelftestShort, duration_ms, m, issues);
+    if timed_out {
+        r.status = Status::Skipped;
+        r.score = None;
+    }
+    r
+}
+
+/// Map the final self-test state to the metric name and issues (pure; unit-tested).
+/// `timed_out` -> a note only (the caller reports the test as skipped); `Unknown` without a time-out means
+/// the poll loop ended early (device gone), which is reported as interrupted.
+pub fn conclude(final_state: SelfTestState, timed_out: bool, limit_secs: u64) -> (&'static str, Vec<Issue>) {
+    if timed_out {
+        return ("timeout", vec![Issue::info("issue.selftest.timeout").with("seconds", limit_secs)]);
+    }
+    match final_state {
+        SelfTestState::Passed => ("passed", vec![]),
+        SelfTestState::Failed => ("failed", vec![Issue::critical("issue.selftest.failed")]),
+        SelfTestState::Aborted => ("aborted", vec![Issue::warn("issue.selftest.aborted")]),
+        SelfTestState::Running { .. } | SelfTestState::Unknown => ("interrupted", vec![Issue::warn("issue.selftest.aborted")]),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn timeout_is_a_note_not_a_pass() {
+        let (name, issues) = conclude(SelfTestState::Unknown, true, 90);
+        assert_eq!(name, "timeout");
+        assert_eq!(issues.len(), 1);
+        assert_eq!(issues[0].code, "issue.selftest.timeout");
+        assert_eq!(issues[0].severity, Severity::Info);
+        assert_eq!(issues[0].params.as_ref().unwrap()["seconds"], 90);
+    }
+
+    #[test]
+    fn final_states_map_correctly() {
+        assert_eq!(conclude(SelfTestState::Passed, false, 90), ("passed", vec![]));
+        let (n, i) = conclude(SelfTestState::Failed, false, 90);
+        assert_eq!((n, i[0].severity), ("failed", Severity::Critical));
+        let (n, i) = conclude(SelfTestState::Aborted, false, 90);
+        assert_eq!((n, i[0].severity, i[0].code.as_str()), ("aborted", Severity::Warn, "issue.selftest.aborted"));
+        let (n, i) = conclude(SelfTestState::Unknown, false, 90);
+        assert_eq!((n, i[0].severity), ("interrupted", Severity::Warn));
+        // a late "passed" report after a time-out must not win
+        assert_eq!(conclude(SelfTestState::Passed, true, 90).0, "timeout");
+    }
+
+    #[test]
+    fn timed_out_result_is_skipped_without_score() {
+        let r = finish(90_000, Metrics::new(), SelfTestState::Unknown, true, 90);
+        assert_eq!((r.status, r.score), (Status::Skipped, None));
+        assert_eq!(r.metrics["final_state"], "timeout");
+        assert_eq!(r.issues.len(), 1);
+        let ok = finish(1, Metrics::new(), SelfTestState::Passed, false, 90);
+        assert_eq!((ok.status, ok.score), (Status::Pass, Some(100)));
+        let bad = finish(1, Metrics::new(), SelfTestState::Failed, false, 90);
+        assert_eq!(bad.status, Status::Fail);
+        let ab = finish(1, Metrics::new(), SelfTestState::Aborted, false, 90);
+        assert_eq!(ab.status, Status::Warn);
+    }
 }

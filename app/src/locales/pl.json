@@ -187,7 +187,10 @@
     "tested": "Sprawdzono: {{date}}",
     "engine": "Silnik {{version}}",
     "skippedNote": "Nie wykonano wykrywania fałszywej pojemności. Aby uzyskać pełną odpowiedź, użyj pełnego testu z wymazaniem na pustym dysku.",
-    "testResults": "Wyniki testu"
+    "testResults": "Wyniki testu",
+    "why": {
+      "title": "Dlaczego taka ocena"
+    }
   },
   "report": {
     "title": "Raport CheckMyDrive",
@@ -254,14 +257,6 @@
       "reallocated_sectors_few": "Dysk zastąpił już {{count}} uszkodzone obszary obszarami zapasowymi.",
       "reallocated_sectors_many": "Dysk zastąpił już {{count}} uszkodzonych obszarów obszarami zapasowymi.",
       "reallocated_sectors_other": "Dysk zastąpił już {{count}} uszkodzonego obszaru obszarami zapasowymi.",
-      "pending_sectors_one": "{{count}} obszar dysku jest nieczytelny i czeka na zastąpienie.",
-      "pending_sectors_few": "{{count}} obszary dysku są nieczytelne i czekają na zastąpienie.",
-      "pending_sectors_many": "{{count}} obszarów dysku jest nieczytelnych i czeka na zastąpienie.",
-      "pending_sectors_other": "{{count}} obszaru dysku jest nieczytelnych i czeka na zastąpienie.",
-      "uncorrectable_sectors_one": "Nie udało się odczytać ani naprawić {{count}} obszaru dysku.",
-      "uncorrectable_sectors_few": "Nie udało się odczytać ani naprawić {{count}} obszarów dysku.",
-      "uncorrectable_sectors_many": "Nie udało się odczytać ani naprawić {{count}} obszarów dysku.",
-      "uncorrectable_sectors_other": "Nie udało się odczytać ani naprawić {{count}} obszaru dysku.",
       "crc_errors_one": "Zarejestrowano {{count}} błąd transmisji danych, najczęściej z powodu złego kabla lub złącza.",
       "crc_errors_few": "Zarejestrowano {{count}} błędy transmisji danych, najczęściej z powodu złego kabla lub złącza.",
       "crc_errors_many": "Zarejestrowano {{count}} błędów transmisji danych, najczęściej z powodu złego kabla lub złącza.",
@@ -278,7 +273,10 @@
       "nvme_media_errors_many": "Pamięć dysku zarejestrowała {{count}} błędów spójności danych.",
       "nvme_media_errors_other": "Pamięć dysku zarejestrowała {{count}} błędu spójności danych.",
       "spare_low": "Zostało tylko {{percent}}% zapasowej pamięci dysku.",
-      "temperature_high": "Dysk mocno się grzeje ({{celsius}} C)."
+      "temperature_high": "Dysk mocno się grzeje ({{celsius}} C).",
+      "unreadable_sectors": "Nieczytelne obszary, których dysk nie zdołał naprawić: {{count}}",
+      "pending_sectors": "Obszary, których dysk w tej chwili nie może odczytać i może zastąpić później: {{count}}",
+      "uncorrectable_sectors": "Obszary, które nie przeszły własnego skanowania dysku i nie dało się ich poprawić: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Pominięto szybki autotest dysku, ponieważ jego interfejs informacji o stanie jest niedostępny.",
@@ -301,7 +299,8 @@
       "slow_areas_few": "{{count}} obszary ({{percent}}%) odpowiadały bardzo wolno, co może oznaczać zużywanie się powierzchni.",
       "slow_areas_many": "{{count}} obszarów ({{percent}}%) odpowiadało bardzo wolno, co może oznaczać zużywanie się powierzchni.",
       "slow_areas_other": "{{count}} obszaru ({{percent}}%) odpowiadało bardzo wolno, co może oznaczać zużywanie się powierzchni.",
-      "slow_drive": "Ten dysk jest wolny ({{mbps}} MB/s). Wystarczy do przechowywania plików, ale jest za wolny, by wygodnie uruchamiać programy lub system operacyjny."
+      "slow_drive": "Ten dysk jest wolny ({{mbps}} MB/s). Wystarczy do przechowywania plików, ale jest za wolny, by wygodnie uruchamiać programy lub system operacyjny.",
+      "partial_coverage": "Skanowanie powierzchni mogło sprawdzić tylko {{checked}} z {{planned}} miejsc, bo dysk ciągle się zawieszał."
     },
     "write_verify": {
       "no_writable_volume": "Pominięto test zapisu, ponieważ na dysku nie ma folderu, do którego możemy bezpiecznie zapisywać.",
@@ -516,5 +515,38 @@
   },
   "about": {
     "credits": "Utworzono przy użyciu smartmontools, Tauri i XP.css."
+  },
+  "detail": {
+    "title": "Szczegóły techniczne",
+    "button": "Szczegóły…",
+    "slowest": "Najwolniejsza odpowiedź",
+    "of": "{{done}} z {{total}}",
+    "crc_errors": "Błędy transferu danych",
+    "read_mbps": "Szybkość odczytu (MB/s)",
+    "new_bad_areas": "Nowe uszkodzone obszary podczas testu",
+    "new_unreadable": "Nowe nieczytelne obszary podczas testu",
+    "timeouts": "Przekroczenia czasu",
+    "new_crc": "Nowe błędy transferu podczas testu",
+    "noProblems": "Nie zauważono nowych problemów",
+    "selftest": {
+      "passed": "Zaliczony",
+      "failed": "Niezaliczony",
+      "aborted": "Przerwany",
+      "timeout": "Nie ukończył się w czasie",
+      "interrupted": "Przerwany"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Ocena jest ograniczona, bo własna kontrola kondycji dysku wskazuje, że się psuje.",
+      "fake_capacity": "Ocena jest ograniczona, bo dysk jest mniejszy, niż twierdzi.",
+      "disconnected": "Ocena jest ograniczona, bo dysk rozłączył się podczas testów.",
+      "unreadable": "Ocena jest ograniczona, bo dysk ma nieczytelne obszary.",
+      "many_reallocated": "Ocena jest ograniczona, bo dysk ma wiele uszkodzonych sektorów, które już zastąpił.",
+      "reallocated": "Ocena jest ograniczona, bo dysk ma uszkodzone sektory, które już zastąpił.",
+      "worn_out": "Ocena jest ograniczona, bo dysk jest prawie zużyty.",
+      "read_errors": "Ocena jest ograniczona, bo nie dało się odczytać niektórych części dysku.",
+      "findings": "Ocena jest obniżona przez problemy znalezione w tym teście."
+    }
   }
 }

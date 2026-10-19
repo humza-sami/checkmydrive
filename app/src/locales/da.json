@@ -181,7 +181,10 @@
     "tested": "Testet den {{date}}",
     "engine": "Motor {{version}}",
     "skippedNote": "Registrering af falsk kapacitet blev ikke kørt. Brug den fulde sletningstest på et tomt drev for at få et fuldstændigt svar.",
-    "testResults": "Testresultater"
+    "testResults": "Testresultater",
+    "why": {
+      "title": "Hvorfor denne score"
+    }
   },
   "report": {
     "title": "CheckMyDrive-rapport",
@@ -242,10 +245,6 @@
       "overall_failed": "Drevets eget sundhedstjek siger, at det er ved at gå i stykker.",
       "reallocated_sectors_one": "Drevet har allerede erstattet {{count}} beskadiget område med en reserve.",
       "reallocated_sectors_other": "Drevet har allerede erstattet {{count}} beskadigede områder med reserver.",
-      "pending_sectors_one": "{{count}} område på drevet er ulæseligt og venter på at blive udskiftet.",
-      "pending_sectors_other": "{{count}} områder på drevet er ulæselige og venter på at blive udskiftet.",
-      "uncorrectable_sectors_one": "{{count}} område på drevet kunne ikke læses eller rettes.",
-      "uncorrectable_sectors_other": "{{count}} områder på drevet kunne ikke læses eller rettes.",
       "crc_errors_one": "{{count}} dataoverførselsfejl blev registreret, ofte forårsaget af et dårligt kabel eller stik.",
       "crc_errors_other": "{{count}} dataoverførselsfejl blev registreret, ofte forårsaget af et dårligt kabel eller stik.",
       "error_log_entries_one": "Drevets fejllog indeholder {{count}} post.",
@@ -256,7 +255,10 @@
       "nvme_media_errors_one": "Drevets hukommelse har registreret {{count}} fejl i dataintegriteten.",
       "nvme_media_errors_other": "Drevets hukommelse har registreret {{count}} fejl i dataintegriteten.",
       "spare_low": "Kun {{percent}} % af drevets reservehukommelse er tilbage.",
-      "temperature_high": "Drevet kører varmt ({{celsius}} C)."
+      "temperature_high": "Drevet kører varmt ({{celsius}} C).",
+      "unreadable_sectors": "Ulæselige områder, som drevet ikke kunne reparere: {{count}}",
+      "pending_sectors": "Områder, som drevet ikke kan læse lige nu, og som det måske erstatter senere: {{count}}",
+      "uncorrectable_sectors": "Områder, der ikke bestod drevets egen scanning og ikke kunne rettes: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "Drevets hurtige selvtest blev sprunget over, fordi dets sundhedsgrænseflade ikke er tilgængelig.",
@@ -273,7 +275,8 @@
       "read_errors_other": "{{count}} dele af drevet kunne ikke læses.",
       "slow_areas_one": "{{count}} område ({{percent}} %) svarede meget langsomt, hvilket kan betyde, at overfladen slides ned.",
       "slow_areas_other": "{{count}} områder ({{percent}} %) svarede meget langsomt, hvilket kan betyde, at overfladen slides ned.",
-      "slow_drive": "Dette drev er langsomt ({{mbps}} MB/s). Det er fint til at gemme filer, men for langsomt til at køre programmer eller et operativsystem behageligt."
+      "slow_drive": "Dette drev er langsomt ({{mbps}} MB/s). Det er fint til at gemme filer, men for langsomt til at køre programmer eller et operativsystem behageligt.",
+      "partial_coverage": "Overfladescanningen kunne kun kontrollere {{checked}} af {{planned}} steder, fordi drevet blev ved med at hænge."
     },
     "write_verify": {
       "no_writable_volume": "Skrivetesten blev sprunget over, fordi drevet ikke har en mappe, vi sikkert kan skrive til.",
@@ -472,5 +475,38 @@
   },
   "about": {
     "credits": "Bygget med smartmontools, Tauri og XP.css."
+  },
+  "detail": {
+    "title": "Tekniske detaljer",
+    "button": "Detaljer…",
+    "slowest": "Langsomste svar",
+    "of": "{{done}} af {{total}}",
+    "crc_errors": "Dataoverførselsfejl",
+    "read_mbps": "Læsehastighed (MB/s)",
+    "new_bad_areas": "Nye beskadigede områder under testen",
+    "new_unreadable": "Nye ulæselige områder under testen",
+    "timeouts": "Timeouts",
+    "new_crc": "Nye overførselsfejl under testen",
+    "noProblems": "Ingen nye problemer set",
+    "selftest": {
+      "passed": "Bestået",
+      "failed": "Fejlet",
+      "aborted": "Afbrudt",
+      "timeout": "Nåede ikke at blive færdig",
+      "interrupted": "Afbrudt"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Scoren er begrænset, fordi drevets egen sundhedskontrol siger, at det er ved at svigte.",
+      "fake_capacity": "Scoren er begrænset, fordi drevet er mindre, end det påstår.",
+      "disconnected": "Scoren er begrænset, fordi drevet mistede forbindelsen under testene.",
+      "unreadable": "Scoren er begrænset, fordi drevet har ulæselige områder.",
+      "many_reallocated": "Scoren er begrænset, fordi drevet har mange dårlige sektorer, som det allerede har erstattet.",
+      "reallocated": "Scoren er begrænset, fordi drevet har dårlige sektorer, som det allerede har erstattet.",
+      "worn_out": "Scoren er begrænset, fordi drevet er næsten slidt op.",
+      "read_errors": "Scoren er begrænset, fordi nogle dele af drevet ikke kunne læses.",
+      "findings": "Scoren sænkes af de problemer, der blev fundet i denne test."
+    }
   }
 }

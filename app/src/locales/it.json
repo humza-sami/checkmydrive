@@ -184,7 +184,10 @@
     "tested": "Testato il {{date}}",
     "engine": "Motore {{version}}",
     "skippedNote": "Il rilevamento della capacità falsa non è stato eseguito. Usa il test completo con cancellazione su un disco vuoto per una risposta completa.",
-    "testResults": "Risultati del test"
+    "testResults": "Risultati del test",
+    "why": {
+      "title": "Perché questo punteggio"
+    }
   },
   "report": {
     "title": "Rapporto CheckMyDrive",
@@ -248,12 +251,6 @@
       "reallocated_sectors_one": "Il disco ha già sostituito {{count}} area danneggiata con un'area di riserva.",
       "reallocated_sectors_many": "Il disco ha già sostituito {{count}} di aree danneggiate con aree di riserva.",
       "reallocated_sectors_other": "Il disco ha già sostituito {{count}} aree danneggiate con aree di riserva.",
-      "pending_sectors_one": "{{count}} area del disco è illeggibile e in attesa di essere sostituita.",
-      "pending_sectors_many": "{{count}} di aree del disco sono illeggibili e in attesa di essere sostituite.",
-      "pending_sectors_other": "{{count}} aree del disco sono illeggibili e in attesa di essere sostituite.",
-      "uncorrectable_sectors_one": "{{count}} area del disco non ha potuto essere letta o corretta.",
-      "uncorrectable_sectors_many": "{{count}} di aree del disco non hanno potuto essere lette o corrette.",
-      "uncorrectable_sectors_other": "{{count}} aree del disco non hanno potuto essere lette o corrette.",
       "crc_errors_one": "È stato registrato {{count}} errore di trasferimento dati, spesso causato da un cavo o da un connettore difettoso.",
       "crc_errors_many": "Sono stati registrati {{count}} di errori di trasferimento dati, spesso causati da un cavo o da un connettore difettoso.",
       "crc_errors_other": "Sono stati registrati {{count}} errori di trasferimento dati, spesso causati da un cavo o da un connettore difettoso.",
@@ -267,7 +264,10 @@
       "nvme_media_errors_many": "La memoria del disco ha registrato {{count}} di errori di integrità dei dati.",
       "nvme_media_errors_other": "La memoria del disco ha registrato {{count}} errori di integrità dei dati.",
       "spare_low": "Resta solo il {{percent}}% della memoria di riserva del disco.",
-      "temperature_high": "Il disco si sta scaldando troppo ({{celsius}} C)."
+      "temperature_high": "Il disco si sta scaldando troppo ({{celsius}} C).",
+      "unreadable_sectors": "Aree illeggibili che l'unità non ha potuto riparare: {{count}}",
+      "pending_sectors": "Aree che l'unità non riesce a leggere in questo momento e potrebbe sostituire in seguito: {{count}}",
+      "uncorrectable_sectors": "Aree che non hanno superato la scansione dell'unità e non si sono potute correggere: {{count}}"
     },
     "selftest": {
       "smart_unavailable": "L'autotest rapido del disco è stato saltato perché la sua interfaccia di salute non è disponibile.",
@@ -287,7 +287,8 @@
       "slow_areas_one": "{{count}} area ({{percent}}%) ha risposto molto lentamente, il che può indicare che la superficie si sta consumando.",
       "slow_areas_many": "{{count}} di aree ({{percent}}%) hanno risposto molto lentamente, il che può indicare che la superficie si sta consumando.",
       "slow_areas_other": "{{count}} aree ({{percent}}%) hanno risposto molto lentamente, il che può indicare che la superficie si sta consumando.",
-      "slow_drive": "Questa unità è lenta ({{mbps}} MB/s). Va bene per archiviare file, ma è troppo lenta per eseguire programmi o un sistema operativo in modo agevole."
+      "slow_drive": "Questa unità è lenta ({{mbps}} MB/s). Va bene per archiviare file, ma è troppo lenta per eseguire programmi o un sistema operativo in modo agevole.",
+      "partial_coverage": "La scansione della superficie ha potuto controllare solo {{checked}} punti su {{planned}} perché l'unità continuava a bloccarsi."
     },
     "write_verify": {
       "no_writable_volume": "Il test di scrittura è stato saltato perché sul disco non c'è una cartella in cui possiamo scrivere in sicurezza.",
@@ -494,5 +495,38 @@
   },
   "about": {
     "credits": "Realizzato con smartmontools, Tauri e XP.css."
+  },
+  "detail": {
+    "title": "Dettagli tecnici",
+    "button": "Dettagli…",
+    "slowest": "Risposta più lenta",
+    "of": "{{done}} su {{total}}",
+    "crc_errors": "Errori di trasferimento dati",
+    "read_mbps": "Velocità di lettura (MB/s)",
+    "new_bad_areas": "Nuove aree danneggiate durante il test",
+    "new_unreadable": "Nuove aree illeggibili durante il test",
+    "timeouts": "Timeout",
+    "new_crc": "Nuovi errori di trasferimento durante il test",
+    "noProblems": "Nessun nuovo problema rilevato",
+    "selftest": {
+      "passed": "Superato",
+      "failed": "Non superato",
+      "aborted": "Interrotto",
+      "timeout": "Non terminato in tempo",
+      "interrupted": "Interrotto"
+    }
+  },
+  "score": {
+    "reason": {
+      "smart_failed": "Il punteggio è limitato perché il controllo di salute dell'unità indica che si sta guastando.",
+      "fake_capacity": "Il punteggio è limitato perché l'unità è più piccola di quanto dichiara.",
+      "disconnected": "Il punteggio è limitato perché l'unità si è scollegata durante i test.",
+      "unreadable": "Il punteggio è limitato perché l'unità ha aree illeggibili.",
+      "many_reallocated": "Il punteggio è limitato perché l'unità ha molti settori danneggiati che ha già sostituito.",
+      "reallocated": "Il punteggio è limitato perché l'unità ha settori danneggiati che ha già sostituito.",
+      "worn_out": "Il punteggio è limitato perché l'unità è quasi usurata.",
+      "read_errors": "Il punteggio è limitato perché alcune parti dell'unità non si sono potute leggere.",
+      "findings": "Il punteggio è abbassato dai problemi trovati in questo test."
+    }
   }
 }

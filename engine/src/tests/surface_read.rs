@@ -13,6 +13,24 @@ pub const SAMPLE_PHASE_MAX: Duration = Duration::from_secs(40);
 pub const SEQ_DURATION: Duration = Duration::from_secs(15);
 pub const SEQ_CHUNK: usize = 4 * 1024 * 1024;
 const MAX_CONSECUTIVE_ERRORS: u32 = 20;
+/// A sequential speed is only reported when at least this much was read (8 chunks); with less, one
+/// stalled read dominates the average and the figure means nothing.
+pub const MIN_SEQ_BYTES: u64 = 32 * MIB;
+
+/// Speed with sensible precision: 1 decimal from 1 MB/s up, 2 decimals below (so 0.27 is never shown as 0).
+pub fn round_speed(mbps: f64) -> f64 {
+    if mbps >= 1.0 { round1(mbps) } else { round2(mbps) }
+}
+
+/// Info issue when the scan could not cover the plan because the drive stalled (pure; unit-tested).
+pub fn coverage_issue(attempted: usize, planned: usize, aborted_early: bool, trouble: bool) -> Option<Issue> {
+    (attempted < planned && !aborted_early && trouble).then(|| Issue::info("issue.surface_read.partial_coverage").with("checked", attempted as u64).with("planned", planned as u64))
+}
+
+/// Share of the planned spots that were actually attempted, in percent (1 decimal).
+pub fn coverage_percent(attempted: usize, planned: usize) -> f64 {
+    if planned == 0 { 100.0 } else { round1(attempted as f64 / planned as f64 * 100.0) }
+}
 
 /// Speed class of the drive; decides every latency / throughput threshold below.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -119,7 +137,8 @@ pub fn assess(class: DriveClass, len_bytes: usize, lat_ms: &[f64], errors: u64, 
     let (avg, _, p99, max, slow) = summarize(&sorted, threshold);
     let hard_stalls = sorted.iter().filter(|l| **l >= HARD_STALL_MS).count() as u64;
     let p99_ok = p99_ok(class, p50, p99);
-    let os_speed_ok = !(seq_bytes > 0 && seq_mbps < class.os_min_mbps());
+    let measured = seq_bytes >= MIN_SEQ_BYTES;
+    let os_speed_ok = !(measured && seq_mbps < class.os_min_mbps());
 
     let mut m = Metrics::new();
     m.insert("drive_class".into(), mval(class.as_str()));
@@ -146,12 +165,13 @@ pub fn assess(class: DriveClass, len_bytes: usize, lat_ms: &[f64], errors: u64, 
             issues.push(Issue::warn("issue.surface_read.slow_areas").with("count", slow).with("percent", round1(pct)));
         }
     }
-    if seq_bytes > 0 {
+    // A failing drive's stalls and read errors are the real problem; "slow drive" would only be noise.
+    if measured && errors == 0 && hard_stalls == 0 {
         let (info_below, warn_below) = class.slow_drive_mbps();
         if seq_mbps < warn_below {
-            issues.push(Issue::warn("issue.surface_read.slow_drive").with("mbps", round1(seq_mbps)));
+            issues.push(Issue::warn("issue.surface_read.slow_drive").with("mbps", round_speed(seq_mbps)));
         } else if seq_mbps < info_below {
-            issues.push(Issue::info("issue.surface_read.slow_drive").with("mbps", round1(seq_mbps)));
+            issues.push(Issue::info("issue.surface_read.slow_drive").with("mbps", round_speed(seq_mbps)));
         }
     }
     (m, issues)
@@ -330,11 +350,16 @@ pub fn run_with(ctx: &Ctx, seq_duration: Duration) -> TestResult {
     m.insert("samples_planned".into(), mval(total));
     m.insert("samples_ok".into(), mval(lat.len()));
     m.insert("read_errors".into(), mval(errors));
-    m.insert("read_mbps_avg".into(), mval(round1(seq_mbps_avg)));
-    m.insert("read_mbps_min".into(), mval(seq_min.map(round1)));
-    m.insert("read_mbps_max".into(), mval(seq_max.map(round1)));
+    let measured = seq_bytes >= MIN_SEQ_BYTES;
+    m.insert("read_mbps_avg".into(), mval(measured.then(|| round_speed(seq_mbps_avg))));
+    m.insert("read_mbps_min".into(), mval(seq_min.filter(|_| measured).map(round_speed)));
+    m.insert("read_mbps_max".into(), mval(seq_max.filter(|_| measured).map(round_speed)));
+    m.insert("coverage_percent".into(), mval(coverage_percent(attempted, total)));
     m.insert("sequential_bytes".into(), mval(seq_bytes));
     m.insert("aborted_early".into(), mval(aborted_early));
+    let trouble = errors > 0 || m.get("slow_samples").and_then(|v| v.as_u64()).unwrap_or(0) > 0 || m.get("hard_stalls").and_then(|v| v.as_u64()).unwrap_or(0) > 0;
+    let mut issues = issues;
+    issues.extend(coverage_issue(attempted, total, aborted_early, trouble));
     m.insert("first_bad_offsets".into(), mval(first_bad.iter().map(|o| o.to_string()).collect::<Vec<_>>().join(",")));
     ctx.progress(Phase::SurfaceRead, 100.0, "progress.surface_read.done", None);
     TestResult::from_issues(TestId::SurfaceRead, t0.elapsed().as_millis() as u64, m, issues)
@@ -343,6 +368,7 @@ pub fn run_with(ctx: &Ctx, seq_duration: Duration) -> TestResult {
 #[cfg(test)]
 pub(crate) mod tests {
     use super::*;
+    use serde_json::json;
     #[test]
     fn offsets_are_aligned_and_in_range() {
         let cap = 500_000_000_000u64;
@@ -446,12 +472,61 @@ pub(crate) mod tests {
 
     #[test]
     fn slow_drive_severity_by_speed() {
-        let sev = |c, mbps| assess(c, 1 << 20, &[10.0; 10], 0, 1 << 20, mbps).1.iter().find(|i| i.code == "issue.surface_read.slow_drive").map(|i| i.severity);
+        let sev = |c, mbps| assess(c, 1 << 20, &[10.0; 10], 0, 1 << 28, mbps).1.iter().find(|i| i.code == "issue.surface_read.slow_drive").map(|i| i.severity);
         assert_eq!(sev(DriveClass::Flash, 17.5), Some(Severity::Info));
         assert_eq!(sev(DriveClass::Flash, 3.0), Some(Severity::Warn));
         assert_eq!(sev(DriveClass::Flash, 25.0), None);
         assert_eq!(sev(DriveClass::Hdd, 35.0), Some(Severity::Info));
         assert_eq!(sev(DriveClass::Hdd, 90.0), None);
+    }
+
+    #[test]
+    fn speed_precision_never_rounds_to_zero() {
+        assert_eq!(round_speed(0.27), 0.27);
+        assert_eq!(round_speed(0.3), 0.3);
+        assert_eq!(round_speed(17.46), 17.5);
+        assert_eq!(round_speed(0.0), 0.0);
+        let (_, issues) = assess(DriveClass::Hdd, 1 << 20, &[10.0; 10], 0, 1 << 28, 0.27);
+        let i = issues.iter().find(|i| i.code == "issue.surface_read.slow_drive").unwrap();
+        assert_eq!(i.params.as_ref().unwrap()["mbps"], 0.27);
+    }
+
+    #[test]
+    fn speed_needs_a_meaningful_amount_of_data() {
+        // exactly 4 MiB (one chunk) is not enough: no slow_drive, speed counts as OK for the OS rule
+        let (m, issues) = assess(DriveClass::Hdd, 1 << 20, &[10.0; 10], 0, 4 << 20, 0.3);
+        assert!(!issues.iter().any(|i| i.code == "issue.surface_read.slow_drive"));
+        assert_eq!(m["os_speed_ok"], true);
+        let (_, issues) = assess(DriveClass::Hdd, 1 << 20, &[10.0; 10], 0, MIN_SEQ_BYTES - 1, 0.3);
+        assert!(issues.is_empty());
+        let (m, issues) = assess(DriveClass::Hdd, 1 << 20, &[10.0; 10], 0, MIN_SEQ_BYTES, 0.3);
+        assert!(issues.iter().any(|i| i.code == "issue.surface_read.slow_drive"));
+        assert_eq!(m["os_speed_ok"], false);
+    }
+
+    #[test]
+    fn no_slow_drive_note_when_errors_or_hard_stalls_exist() {
+        let slow = |lat: &[f64], errors| assess(DriveClass::Hdd, 1 << 20, lat, errors, 1 << 28, 0.3).1;
+        assert!(slow(&[10.0; 10], 0).iter().any(|i| i.code == "issue.surface_read.slow_drive"));
+        let with_err = slow(&[10.0; 10], 1);
+        assert!(with_err.iter().any(|i| i.code == "issue.surface_read.read_errors"));
+        assert!(!with_err.iter().any(|i| i.code == "issue.surface_read.slow_drive"));
+        let mut l = vec![10.0; 12];
+        l.push(12_599.73);
+        assert!(!slow(&l, 0).iter().any(|i| i.code == "issue.surface_read.slow_drive"));
+    }
+
+    #[test]
+    fn coverage_is_reported_honestly() {
+        assert_eq!(coverage_percent(13, 576), 2.3);
+        assert_eq!(coverage_percent(576, 576), 100.0);
+        let i = coverage_issue(13, 576, false, true).unwrap();
+        assert_eq!((i.severity, i.code.as_str()), (Severity::Info, "issue.surface_read.partial_coverage"));
+        let p = i.params.unwrap();
+        assert_eq!((&p["checked"], &p["planned"]), (&json!(13), &json!(576)));
+        assert!(coverage_issue(576, 576, false, true).is_none());
+        assert!(coverage_issue(13, 576, true, true).is_none()); // aborted_early has its own explanation
+        assert!(coverage_issue(262, 576, false, false).is_none()); // merely slow, healthy: no scary note
     }
 
     #[test]
