@@ -202,6 +202,29 @@ jobs:
           prerelease: false
           args: ${{ matrix.tauri_args }}
 
+      # Version-less copies so README links to /releases/latest/download/<name> never break.
+      - name: Upload version-less download copies
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          VERSION="$(node -p "require('./app/src-tauri/tauri.conf.json').version")"
+          TAG="v${VERSION}"
+          BUNDLE_ROOT="app/src-tauri/target"
+          case "${{ runner.os }}-${{ runner.arch }}" in
+            Windows-*) PATTERN='*_x64-setup.exe'; DEST='CheckMyDrive-Windows-Setup.exe'; DIR=nsis ;;
+            macOS-*)   PATTERN='*_universal.dmg'; DEST='CheckMyDrive-Mac.dmg'; DIR=dmg ;;
+            Linux-X64) PATTERN='*_amd64.deb'; DEST='CheckMyDrive-Linux-x64.deb'; DIR=deb ;;
+            Linux-ARM64) PATTERN='*_arm64.deb'; DEST='CheckMyDrive-Linux-arm64.deb'; DIR=deb ;;
+            *) echo "::error::unsupported runner"; exit 1 ;;
+          esac
+          SRC="$(find "$BUNDLE_ROOT" -type f -name "$PATTERN" -path "*/release/bundle/$DIR/*" | head -n1)"
+          if [ -z "$SRC" ]; then echo "::error::$PATTERN not found"; exit 1; fi
+          mkdir -p "$RUNNER_TEMP/dl"
+          cp "$SRC" "$RUNNER_TEMP/dl/$DEST"
+          gh release upload "$TAG" "$RUNNER_TEMP/dl/$DEST#$DEST" --clobber --repo "$GITHUB_REPOSITORY"
+
       # ---------------- Post-build bundle verification ----------------
       - name: Verify bundle (macOS)
         if: runner.os == 'macOS'

@@ -11,6 +11,21 @@
   <img alt="Platforms: macOS, Windows, Linux" src="https://img.shields.io/badge/platforms-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey">
 </p>
 
+## Download
+
+| | |
+|---|---|
+| <a href="https://github.com/humza-sami/checkmydrive/releases/latest/download/CheckMyDrive-Windows-Setup.exe"><img alt="Download for Windows" src="https://img.shields.io/badge/Download_for_Windows-0078D6?style=for-the-badge&logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xIDMuNWw5LTEuMnY4LjZIMXpNMTEgMi4xTDIzIC41djEwLjRIMTF6TTEgMTIuOWg5djguNmwtOS0xLjJ6TTExIDEyLjloMTJ2MTAuNmwtMTItMS42eiIvPjwvc3ZnPg%3D%3D&logoColor=white"></a> | Windows 10 / 11 |
+| <a href="https://github.com/humza-sami/checkmydrive/releases/latest/download/CheckMyDrive-Mac.dmg"><img alt="Download for Mac" src="https://img.shields.io/badge/Download_for_Mac-000000?style=for-the-badge&logo=apple&logoColor=white"></a> | Intel and Apple Silicon |
+| <a href="https://github.com/humza-sami/checkmydrive/releases/latest/download/CheckMyDrive-Linux-x64.deb"><img alt="Download for Linux" src="https://img.shields.io/badge/Download_for_Linux-E95420?style=for-the-badge&logo=linux&logoColor=white"></a> | Ubuntu / Debian / Mint, 64-bit PCs |
+| <a href="https://github.com/humza-sami/checkmydrive/releases/latest/download/CheckMyDrive-Linux-arm64.deb"><img alt="Download for Raspberry Pi" src="https://img.shields.io/badge/Download_for_Raspberry_Pi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white"></a> | Linux ARM64 (Raspberry Pi and other ARM PCs) |
+
+- **Windows:** if a blue box appears, click "More info", then "Run anyway".
+- **Mac:** open the downloaded file, drag CheckMyDrive to Applications, then right-click it and choose Open the first time.
+- **Linux:** double-click the file to install, or run `sudo apt install ./<file>`.
+
+[All downloads and older versions](https://github.com/humza-sami/checkmydrive/releases)
+
 ## Why this exists
 
 I have a faulty 2 TB drive sitting on my desk. When I went looking for a simple way to check drives before buying, the tools were Windows-only, too technical (raw SMART tables), or took hours. Fake-capacity USB sticks make it worse, because they look normal until you actually fill them. I wanted one app that gives a plain answer in minutes on any OS.
